@@ -1,4 +1,5 @@
 buildscript {
+
     repositories {
         google()
         mavenCentral()
@@ -9,6 +10,13 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20"
         classpath 'com.google.gms:google-services:4.3.10'
     }
+
+    ext {
+        MIN_SDK = 21
+        TARGET_SDK = 30
+        COMPILE_SDK = 30
+    }
+
 }
 
 task clean(type: Delete) {

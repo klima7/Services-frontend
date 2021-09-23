@@ -5,12 +5,12 @@ plugins {
 }
 
 android {
-    compileSdk 30
+    compileSdk COMPILE_SDK
 
     defaultConfig {
         applicationId "com.klima7.services.expert"
-        minSdk 21
-        targetSdk 30
+        minSdk MIN_SDK
+        targetSdk TARGET_SDK
         versionCode 1
         versionName "1.0"
     }
