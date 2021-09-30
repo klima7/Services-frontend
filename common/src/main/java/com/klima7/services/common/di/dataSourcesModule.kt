@@ -8,7 +8,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import org.koin.dsl.module
 
-const val EMULATE = BuildConfig.BUILD_TYPE == "debug-emu"
+const val EMULATE = BuildConfig.BUILD_TYPE == "emulated"
 const val EMULATOR_HOST = "10.0.2.2"
 
 val dataSourcesModule = module {
