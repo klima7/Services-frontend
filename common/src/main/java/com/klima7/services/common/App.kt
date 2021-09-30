@@ -5,8 +5,9 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
+import org.koin.core.module.Module
 
-class App: Application() {
+abstract class App: Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -17,7 +18,12 @@ class App: Application() {
         startKoin {
             androidLogger(Level.ERROR)
             androidContext(this@App)
-            modules(listOf())
+            modules(commonModules)
+            modules(customModules)
         }
     }
+
+    private val commonModules = listOf<Module>()
+
+    protected abstract val customModules: List<Module>
 }

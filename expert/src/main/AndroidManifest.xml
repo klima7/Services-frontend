@@ -3,7 +3,7 @@
     package="com.klima7.services.expert">
 
     <application
-        android:name="com.klima7.services.common.App"
+        android:name="com.klima7.services.expert.ExpertApp"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,7 +12,7 @@
         android:theme="@style/Theme.Services">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".features.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
