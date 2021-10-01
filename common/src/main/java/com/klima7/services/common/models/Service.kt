@@ -1,4 +1,8 @@
 package com.klima7.services.common.models
 
-class Service {
-}
+data class Service(
+    val id: String,
+    val name: String,
+    val categoryId: String,
+    val categoryName: String
+)
