@@ -8,5 +8,6 @@ data class Expert(
     val ratingsCount: Int,
     val commentsCount: Int,
     val rating: Double,
-    val active: Boolean
+    val active: Boolean,
+    val fromCache: Boolean
 )

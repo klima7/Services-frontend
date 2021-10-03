@@ -1,14 +1,15 @@
 package com.klima7.services.common.di
 
+import android.util.Log
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.functions.ktx.functions
-import com.google.firebase.ktx.BuildConfig
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import com.klima7.services.common.BuildConfig
 import org.koin.dsl.module
 
-const val EMULATE = true
+const val EMULATE = BuildConfig.BUILD_TYPE == "emulated"
 const val EMULATOR_HOST = "10.0.2.2"
 
 val sourcesModule = module {
