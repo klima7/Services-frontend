@@ -17,12 +17,13 @@ class SplashViewModel(
 
     fun goToNextScreen(activity: Activity) {
         viewModelScope.launch {
-
-            val authorized = authRepository.getUid().getOrElse(null)
-
-            navigator.showHomeScreen(activity)
-//            val expert = expertsRepository.getExpert("expert1")
-//            expert.onSuccess { Log.i("Helloo", ""+expert) }
+            navigator.showLoginScreen(activity)
+//
+//            val authorized = authRepository.getUid().getOrElse(null)
+//
+//            navigator.showHomeScreen(activity)
+////            val expert = expertsRepository.getExpert("expert1")
+////            expert.onSuccess { Log.i("Helloo", ""+expert) }
         }
     }
 
