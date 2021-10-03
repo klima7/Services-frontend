@@ -14,7 +14,8 @@ class SplashFragment: BaseFragment<FragmentSplashBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.test()
+        viewModel.goToNextScreen(requireActivity())
     }
+
 
 }

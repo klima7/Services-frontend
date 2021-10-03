@@ -47,7 +47,7 @@ abstract class BaseFragment<DB: ViewDataBinding>: Fragment() {
         }
     }
 
-    open suspend fun handleEvent(event: BaseViewModel.Event) {}
+    open suspend fun handleEvent(event: BaseViewModel.BaseEvent) {}
 
     open fun init() {}
 }

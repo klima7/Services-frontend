@@ -10,12 +10,12 @@ open class BaseViewModel: ViewModel() {
 
     val TAG: String = this::class.java.simpleName
 
-    abstract class Event
+    abstract class BaseEvent
 
-    private val eventChannel = Channel<Event>()
+    private val eventChannel = Channel<BaseEvent>()
     val eventFlow = eventChannel.receiveAsFlow()
 
-    fun sendEvent(event: Event) {
+    fun sendEvent(event: BaseEvent) {
         viewModelScope.launch {
             eventChannel.send(event)
         }
