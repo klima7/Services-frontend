@@ -7,7 +7,7 @@ import com.klima7.services.common.data.entities.toDomain
 import com.klima7.services.common.domain.models.Expert
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.domain.util.Outcome
-import com.klima7.services.common.util.toDomain
+import com.klima7.services.common.data.converters.toDomain
 import kotlinx.coroutines.tasks.await
 
 class ExpertsRepository(

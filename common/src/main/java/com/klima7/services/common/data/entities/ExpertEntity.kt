@@ -1,7 +1,7 @@
 package com.klima7.services.common.data.entities
 
 import com.google.firebase.firestore.GeoPoint
-import com.klima7.services.common.util.toDomain
+import com.klima7.services.common.data.converters.toDomain
 import com.klima7.services.common.domain.models.Expert
 import com.klima7.services.common.domain.models.ExpertInfo
 import com.klima7.services.common.domain.models.NamedLocation
