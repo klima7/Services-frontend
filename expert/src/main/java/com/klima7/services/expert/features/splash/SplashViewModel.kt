@@ -1,11 +1,9 @@
 package com.klima7.services.expert.features.splash
 
 import android.app.Activity
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.lib.base.BaseViewModel
-import com.klima7.services.common.data.repo.ExpertsRepository
-import com.klima7.services.common.domain.util.onSuccess
+import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.expert.ExpertNavigator
 import kotlinx.coroutines.launch
 

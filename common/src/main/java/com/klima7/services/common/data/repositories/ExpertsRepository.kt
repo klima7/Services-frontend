@@ -1,4 +1,4 @@
-package com.klima7.services.common.data.repo
+package com.klima7.services.common.data.repositories
 
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
