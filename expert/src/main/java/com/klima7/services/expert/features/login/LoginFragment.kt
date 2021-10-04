@@ -41,6 +41,7 @@ class LoginFragment: BaseFragment<FragmentLoginBinding>() {
             result.resultCode == AppCompatActivity.RESULT_OK -> {
                 val user = FirebaseAuth.getInstance().currentUser
                 Log.i("Hello", "Login success")
+                requireActivity().finish()
             }
             response == null -> {
                 Log.i("Hello", "Login cancelled",)

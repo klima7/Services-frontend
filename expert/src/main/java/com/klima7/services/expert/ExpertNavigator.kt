@@ -21,11 +21,7 @@ class ExpertNavigator {
         activity.startActivity(intent)
     }
 
-    fun showSetupScreen() {
-
-    }
-
-    fun showNoInternetScreen() {
+    fun showSetupScreen(activity: Activity) {
 
     }
 

@@ -17,6 +17,13 @@ sealed class Outcome<out L, out R> {
             is Success -> fnSuccess(b)
         }
     }
+
+    suspend fun <T> foldS(fnFailure: suspend (L) -> T, fnSuccess: suspend (R) -> T): T {
+        return when (this) {
+            is Failure -> fnFailure(a)
+            is Success -> fnSuccess(b)
+        }
+    }
 }
 
 fun <L, R> Outcome<L, R>.onFailure(fn: (failure: L) -> Unit): Outcome<L, R> {
