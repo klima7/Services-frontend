@@ -9,6 +9,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.flow.collect
+import com.klima7.services.common.BR
 
 abstract class BaseFragment<DB: ViewDataBinding>: Fragment() {
 
@@ -35,7 +36,7 @@ abstract class BaseFragment<DB: ViewDataBinding>: Fragment() {
 
     private fun doDataBinding() {
         binding.lifecycleOwner = viewLifecycleOwner
-//        binding.setVariable(BR.viewModel, viewModel)
+        binding.setVariable(BR.viewmodel, viewModel)
         binding.executePendingBindings()
     }
 
