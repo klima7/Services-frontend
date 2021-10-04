@@ -43,6 +43,7 @@ class ExpertsRepository(
                 ?: return Outcome.Failure(Failure.ExpertNotFoundFailure)
             return Outcome.Success(expert)
         } catch(e: Exception) {
+            Log.e("Hello", "Error during getExpert", e)
             return Outcome.Failure(e.toDomain())
         }
     }

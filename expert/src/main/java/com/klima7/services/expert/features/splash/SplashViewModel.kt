@@ -22,6 +22,10 @@ class SplashViewModel(
     val refreshVisible = MutableLiveData(false)
     val refreshEnabled = MutableLiveData(true)
 
+    sealed class Event: BaseEvent() {
+        object ShowLoginScreen: Event()
+    }
+
     fun goToNextScreen(activity: Activity) {
         viewModelScope.launch {
             goToNextScreenSuspend(activity)
@@ -34,37 +38,49 @@ class SplashViewModel(
 
     private suspend fun checkAuthenticatedPart(activity: Activity) {
         disableRefresh()
-        delay(1000)
         authRepository.getUid().foldS({
             Log.i("Hello", "Error occurred")
         }, { uid ->
             val authenticated = uid != null
             if(!authenticated) {
-                navigator.showLoginScreen(activity)
+                sendEvent(Event.ShowLoginScreen)
             } else {
-                getExpertPart(activity, uid!!)
                 Log.i("Hello", "Not go to login")
+                getExpertPart(activity, uid!!)
             }
         })
     }
 
     private suspend fun getExpertPart(activity: Activity, uid: String) {
-        expertsRepository.getExpert(uid).fold({ failure ->
+        expertsRepository.getExpert(uid).foldS({ failure ->
             when(failure) {
-                Failure.ExpertNotFoundFailure -> enableRefresh()
-                else -> Log.i("Hello", "Unknown error while getExpert occurred")
+                Failure.ExpertNotFoundFailure -> createExpertPart(activity, uid)
+                Failure.InternetFailure -> enableRefresh()
+                else -> Log.i("Hello", "Unknown error while getExpert occurred $failure")
             }
-        }, { expert ->
-            if(isExpertReady(expert)) {
-                navigator.showHomeScreen(activity)
-            }
-            else if(!expert.fromCache) {
-                navigator.showSetupScreen(activity)
-            }
-            else {
-                enableRefresh()
-            }
+        }, { expert -> checkExpertReadyPart(activity, expert) })
+    }
+
+    private suspend fun createExpertPart(activity: Activity, uid: String) {
+        expertsRepository.createExpertAccount().foldS({ failure ->
+            Log.e("Hello", "failure during createExpertAccount")
+            enableRefresh()
+        }, {
+            Log.i("Hello", "createExpertAccount success")
+            getExpertPart(activity, uid)
         })
+    }
+
+    private suspend fun checkExpertReadyPart(activity: Activity, expert: Expert) {
+        if(isExpertReady(expert)) {
+            navigator.showHomeScreen(activity)
+        }
+        else if(!expert.fromCache) {
+            navigator.showSetupScreen(activity)
+        }
+        else {
+            enableRefresh()
+        }
     }
 
     private fun isExpertReady(expert: Expert): Boolean {

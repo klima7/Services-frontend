@@ -9,7 +9,7 @@ import com.klima7.services.common.domain.models.WorkingArea
 
 data class ExpertEntity(
     var info: InfoEntity = InfoEntity(),
-    var workingArea: WorkingAreaEntity = WorkingAreaEntity(),
+    var workingArea: WorkingAreaEntity? = null,
     var services: List<ServiceEntity> = listOf(),
     var profileImage: String? = null,
 
@@ -40,8 +40,10 @@ data class ExpertEntity(
 
 fun ExpertEntity.toDomain(fromCache: Boolean): Expert {
     val info = ExpertInfo(info.name, info.company, info.description, info.phone, info.email, info.website)
-    val nl = NamedLocation(workingArea.locationName, workingArea.coordinates.toDomain())
-    val wa = WorkingArea(nl, workingArea.radius)
+    val wa = workingArea?.let {
+        val nl = NamedLocation(it.locationName, it.coordinates.toDomain())
+        WorkingArea(nl, it.radius)
+    }
     val s = services.map { it.toDomain() }.toSet()
     return Expert(info, profileImage, wa, s, ratingsCount, commentsCount, rating, active, fromCache)
 }

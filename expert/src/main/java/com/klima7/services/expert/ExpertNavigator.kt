@@ -13,11 +13,6 @@ class ExpertNavigator {
         activity.startActivity(intent)
     }
 
-    fun showLoginScreen(activity: Activity) {
-        val intent = Intent(activity, LoginActivity::class.java)
-        activity.startActivity(intent)
-    }
-
     fun showSetupScreen(activity: Activity) {
         val intent = Intent(activity, SetupActivity::class.java)
         activity.startActivity(intent)
