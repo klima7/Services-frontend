@@ -26,13 +26,28 @@ class SplashViewModel(
         object ShowLoginScreen: Event()
     }
 
-    fun goToNextScreen(activity: Activity) {
+    fun splashStarted(activity: Activity) {
         viewModelScope.launch {
-            goToNextScreenSuspend(activity)
+            delay(2000)
+            goToNextScreen(activity)
         }
     }
 
-    private suspend fun goToNextScreenSuspend(activity: Activity) {
+    fun refreshClicked(activity: Activity) {
+        viewModelScope.launch {
+            disableRefresh()
+            delay(1000)
+            goToNextScreen(activity)
+        }
+    }
+
+    fun loginActivityFinished(activity: Activity) {
+        viewModelScope.launch {
+            goToNextScreen(activity)
+        }
+    }
+
+    private suspend fun goToNextScreen(activity: Activity) {
         checkAuthenticatedPart(activity)
     }
 
@@ -71,7 +86,7 @@ class SplashViewModel(
         })
     }
 
-    private suspend fun checkExpertReadyPart(activity: Activity, expert: Expert) {
+    private fun checkExpertReadyPart(activity: Activity, expert: Expert) {
         if(isExpertReady(expert)) {
             navigator.showHomeScreen(activity)
         }

@@ -27,17 +27,9 @@ class SplashFragment: BaseFragment<FragmentSplashBinding>() {
         this.onLoginResult(res)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        lifecycleScope.launch {
-            delay(2000)
-            viewModel.goToNextScreen(requireActivity())
-        }
-    }
-
     override fun init() {
-        binding.splashRefreshButton.setOnClickListener { viewModel.goToNextScreen(requireActivity()) }
+        binding.splashRefreshButton.setOnClickListener { viewModel.refreshClicked(requireActivity()) }
+        viewModel.splashStarted(requireActivity())
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
@@ -53,7 +45,7 @@ class SplashFragment: BaseFragment<FragmentSplashBinding>() {
 
     private fun onLoginResult(res: ActivityResult) {
         Log.i("Hello", "Login activity finished")
-        viewModel.goToNextScreen(requireActivity())
+        viewModel.loginActivityFinished(requireActivity())
 
     }
 }
