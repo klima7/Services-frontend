@@ -77,7 +77,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Odśwież"
-                android:enabled="@{viewmodel.refreshEnabled}" />
+                android:enabled="@{viewmodel.refreshEnabled}"
+                android:onClick="@{() -> viewmodel.refreshClicked()}"/>
 
         </LinearLayout>
 

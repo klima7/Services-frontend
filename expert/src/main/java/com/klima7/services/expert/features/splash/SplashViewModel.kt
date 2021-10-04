@@ -1,6 +1,5 @@
 package com.klima7.services.expert.features.splash
 
-import android.app.Activity
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -9,14 +8,12 @@ import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.domain.models.Expert
 import com.klima7.services.common.domain.models.Failure
-import com.klima7.services.expert.ExpertNavigator
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class SplashViewModel(
     private val authRepository: AuthRepository,
-    private val expertsRepository: ExpertsRepository,
-    private val navigator: ExpertNavigator
+    private val expertsRepository: ExpertsRepository
 ): BaseViewModel() {
 
     val refreshVisible = MutableLiveData(false)
@@ -24,34 +21,36 @@ class SplashViewModel(
 
     sealed class Event: BaseEvent() {
         object ShowLoginScreen: Event()
+        object ShowHomeScreen: Event()
+        object ShowSetupScreen: Event()
     }
 
-    fun splashStarted(activity: Activity) {
+    fun splashStarted() {
         viewModelScope.launch {
             delay(2000)
-            goToNextScreen(activity)
+            goToNextScreen()
         }
     }
 
-    fun refreshClicked(activity: Activity) {
+    fun refreshClicked() {
         viewModelScope.launch {
             disableRefresh()
             delay(1000)
-            goToNextScreen(activity)
+            goToNextScreen()
         }
     }
 
-    fun loginActivityFinished(activity: Activity) {
+    fun loginActivityFinished() {
         viewModelScope.launch {
-            goToNextScreen(activity)
+            goToNextScreen()
         }
     }
 
-    private suspend fun goToNextScreen(activity: Activity) {
-        checkAuthenticatedPart(activity)
+    private suspend fun goToNextScreen() {
+        checkAuthenticatedPart()
     }
 
-    private suspend fun checkAuthenticatedPart(activity: Activity) {
+    private suspend fun checkAuthenticatedPart() {
         disableRefresh()
         authRepository.getUid().foldS({
             Log.i("Hello", "Error occurred")
@@ -61,37 +60,37 @@ class SplashViewModel(
                 sendEvent(Event.ShowLoginScreen)
             } else {
                 Log.i("Hello", "Not go to login")
-                getExpertPart(activity, uid!!)
+                getExpertPart(uid!!)
             }
         })
     }
 
-    private suspend fun getExpertPart(activity: Activity, uid: String) {
+    private suspend fun getExpertPart(uid: String) {
         expertsRepository.getExpert(uid).foldS({ failure ->
             when(failure) {
-                Failure.ExpertNotFoundFailure -> createExpertPart(activity, uid)
+                Failure.ExpertNotFoundFailure -> createExpertPart(uid)
                 Failure.InternetFailure -> enableRefresh()
                 else -> Log.i("Hello", "Unknown error while getExpert occurred $failure")
             }
-        }, { expert -> checkExpertReadyPart(activity, expert) })
+        }, { expert -> checkExpertReadyPart(expert) })
     }
 
-    private suspend fun createExpertPart(activity: Activity, uid: String) {
+    private suspend fun createExpertPart(uid: String) {
         expertsRepository.createExpertAccount().foldS({ failure ->
             Log.e("Hello", "failure during createExpertAccount")
             enableRefresh()
         }, {
             Log.i("Hello", "createExpertAccount success")
-            getExpertPart(activity, uid)
+            getExpertPart(uid)
         })
     }
 
-    private fun checkExpertReadyPart(activity: Activity, expert: Expert) {
+    private fun checkExpertReadyPart(expert: Expert) {
         if(isExpertReady(expert)) {
-            navigator.showHomeScreen(activity)
+            sendEvent(Event.ShowHomeScreen)
         }
         else if(!expert.fromCache) {
-            navigator.showSetupScreen(activity)
+            sendEvent(Event.ShowSetupScreen)
         }
         else {
             enableRefresh()
