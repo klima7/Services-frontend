@@ -22,10 +22,6 @@ class SplashViewModel(
     val refreshVisible = MutableLiveData(false)
     val refreshEnabled = MutableLiveData(true)
 
-    sealed class Event: BaseEvent() {
-        object LaunchLoginScreen: Event()
-    }
-
     fun goToNextScreen(activity: Activity) {
         viewModelScope.launch {
             goToNextScreenSuspend(activity)

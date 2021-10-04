@@ -6,7 +6,7 @@ import org.koin.dsl.module
 
 val reposModule = module {
 
-    single { ExpertsRepository(get()) }
+    single { ExpertsRepository(get(), get()) }
     single { AuthRepository(get()) }
 
 }
