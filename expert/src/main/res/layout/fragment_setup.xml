@@ -74,6 +74,7 @@
                             app:title="@{`Uzupełnienie profilu`}"
                             app:ticked="@{viewmodel.profileConfigured}"
                             app:description="@{`Uzupełnij informacje o sobie. Dobry profil może zachęcić wielu klientów.`}"
+                            app:action="@{() -> viewmodel.infoClicked()}"
                             />
 
                         <include
@@ -81,6 +82,7 @@
                             app:title="@{`Określenie usług`}"
                             app:ticked="@{viewmodel.servicesConfigured}"
                             app:description="@{`Określ jakie usługi jesteś w stanie zrealizować, abyśmy mogli wyświetlać ci pasujące zlecenia`}"
+                            app:action="@{() -> viewmodel.servicesClicked()}"
                             />
 
                         <include
@@ -88,6 +90,7 @@
                             app:title="@{`Określenie lokalizacji`}"
                             app:ticked="@{viewmodel.locationConfigured}"
                             app:description="@{`Określ w jakim obszarze realizujesz swoje usługi`}"
+                            app:action="@{() -> viewmodel.locationClicked()}"
                             />
 
                     </LinearLayout>

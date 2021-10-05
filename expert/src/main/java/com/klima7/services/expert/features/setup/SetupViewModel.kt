@@ -27,7 +27,6 @@ class SetupViewModel(
     }
 
     fun setupStarted() {
-        sendEvent(Event.ShowInfoScreen)
         updateSetupState()
     }
 
@@ -37,6 +36,18 @@ class SetupViewModel(
 
     fun continueClicked() {
 
+    }
+
+    fun infoClicked() {
+        sendEvent(Event.ShowInfoScreen)
+    }
+
+    fun servicesClicked() {
+        sendEvent(Event.ShowServicesScreen)
+    }
+
+    fun locationClicked() {
+        sendEvent(Event.ShowLocationScreen)
     }
 
     private fun updateSetupState() {
