@@ -2,6 +2,7 @@ package com.klima7.services.expert.features.home
 
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.klima7.services.common.lib.base.BaseFragment
@@ -20,5 +21,8 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
         val navHostFragment = childFragmentManager.findFragmentById(R.id.home_nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         binding.homeBottomNav.setupWithNavController(navController)
+        val destinations = setOf(R.id.jobsFragment, R.id.offersFragment, R.id.profileFragment)
+        val appBarConfiguration = AppBarConfiguration.Builder(destinations).build()
+        binding.homeToolbar.setupWithNavController(navController, appBarConfiguration)
     }
 }

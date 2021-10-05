@@ -7,13 +7,13 @@
     <fragment
         android:id="@+id/jobsFragment"
         android:name="com.klima7.services.expert.features.home.JobsFragment"
-        android:label="JobsFragment" />
+        android:label="Zlecenia" />
     <fragment
         android:id="@+id/offersFragment"
         android:name="com.klima7.services.expert.features.home.OffersFragment"
-        android:label="OffersFragment" />
+        android:label="Oferty" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.klima7.services.expert.features.home.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:label="Mój profil" />
 </navigation>
