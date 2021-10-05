@@ -27,7 +27,7 @@ class SplashViewModel(
 
     fun splashStarted() {
         viewModelScope.launch {
-            delay(2000)
+            delay(1000)
             goToNextScreen()
         }
     }
@@ -35,7 +35,6 @@ class SplashViewModel(
     fun refreshClicked() {
         viewModelScope.launch {
             disableRefresh()
-            delay(1000)
             goToNextScreen()
         }
     }

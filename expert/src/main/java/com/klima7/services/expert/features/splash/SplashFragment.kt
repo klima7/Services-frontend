@@ -52,9 +52,12 @@ class SplashFragment: BaseFragment<FragmentSplashBinding>() {
     }
 
     private fun showSetupScreen() {
+        Log.i("Hello", "Starting setup screen")
 //        val intent = Intent(activity, HomeActivity::class.java)
         val intent = Intent(activity, SetupActivity::class.java)
-        loginLauncher.launch(intent)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
+        startActivity(intent)
+        requireActivity().finish()
     }
 
     private fun showHomeScreen() {
