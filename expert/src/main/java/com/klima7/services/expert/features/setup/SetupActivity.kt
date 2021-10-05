@@ -4,5 +4,5 @@ import com.klima7.services.common.lib.base.BaseActivity
 import com.klima7.services.common.lib.failurable.FailurableWrapperFragment
 
 class SetupActivity: BaseActivity() {
-    override fun fragment() = FailurableWrapperFragment(SetupFragment())
+    override fun fragment() = SetupFragment()
 }

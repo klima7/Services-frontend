@@ -11,7 +11,7 @@ import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.common.lib.failurable.FailurableViewModel
 import kotlinx.coroutines.launch
 
-class SetupViewModel(
+class SetupContentViewModel(
     private val authRepository: AuthRepository,
     private val expertsRepository: ExpertsRepository
 ): FailurableViewModel() {
