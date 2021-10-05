@@ -46,6 +46,7 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
 class FailurableWrapperViewModel: BaseViewModel() {
 
     val errorVisible = MutableLiveData(false)
+    val pendingRefresh = MutableLiveData(false)
 
     sealed class Event: BaseEvent() {
         object RefreshMainFragment: Event()
@@ -53,14 +54,22 @@ class FailurableWrapperViewModel: BaseViewModel() {
 
     fun showFailure(failure: Failure) {
         errorVisible.value = true
+        pendingRefresh.value = false
     }
 
     fun showMain() {
         errorVisible.value = false
+        pendingRefresh.value = false
     }
 
     fun refreshClicked() {
-        sendEvent(Event.RefreshMainFragment)
+        pendingRefresh.value?.let { value ->
+            if(!value) {
+                sendEvent(Event.RefreshMainFragment)
+                pendingRefresh.value = true
+            }
+        }
+
     }
 
 }
