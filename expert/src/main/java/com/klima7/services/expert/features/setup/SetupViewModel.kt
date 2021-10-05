@@ -52,6 +52,7 @@ class SetupViewModel(
     }
 
     fun configDone() {
+        Log.i("Hello", "Config done")
         updateSetupState()
     }
 
@@ -78,7 +79,13 @@ class SetupViewModel(
         expertsRepository.getExpert(uid).foldS({ failure ->
             notifyFailure(failure)
         }, { expert ->
-            verifyExpertPart(expert)
+            if(expert.fromCache) {
+                notifyFailure(Failure.InternetFailure)
+            }
+            else {
+                noInternetVisible.value = false
+                verifyExpertPart(expert)
+            }
         })
     }
 
@@ -89,6 +96,10 @@ class SetupViewModel(
     }
 
     private fun notifyFailure(failure: Failure) {
-
+        Log.i("Hello", "Failure first $failure")
+        when(failure) {
+            Failure.InternetFailure -> noInternetVisible.value = true
+            else -> Log.i("Hello", "Failure $failure")
+        }
     }
 }
