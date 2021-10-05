@@ -13,7 +13,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- No activity animations -->
         <item name="android:windowAnimationStyle">@null</item>
-
-        <item name = "android:windowBackground">@color/icon_background</item>
+        <!-- Activity background -->
+        <item name = "android:windowBackground">@color/theme_color</item>
     </style>
 </resources>

@@ -7,6 +7,6 @@ sealed class Failure {
     object PermissionFailure : Failure()
 
 
-    object ExpertNotFoundFailure : Failure()
+    object NotFoundFailure : Failure()
     object SpecificFailure : Failure()
 }

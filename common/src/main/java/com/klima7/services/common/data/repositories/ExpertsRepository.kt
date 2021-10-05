@@ -2,7 +2,6 @@ package com.klima7.services.common.data.repositories
 
 import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.functions.FirebaseFunctions
 import com.klima7.services.common.data.entities.ExpertEntity
 import com.klima7.services.common.data.entities.toDomain
@@ -40,7 +39,7 @@ class ExpertsRepository(
                 .await()
             val expertEntity = snapshot.toObject(ExpertEntity::class.java)
             val expert = expertEntity?.toDomain(snapshot.metadata.isFromCache)
-                ?: return Outcome.Failure(Failure.ExpertNotFoundFailure)
+                ?: return Outcome.Failure(Failure.NotFoundFailure)
             return Outcome.Success(expert)
         } catch(e: Exception) {
             Log.e("Hello", "Error during getExpert", e)

@@ -67,7 +67,7 @@ class SplashViewModel(
     private suspend fun getExpertPart(uid: String) {
         expertsRepository.getExpert(uid).foldS({ failure ->
             when(failure) {
-                Failure.ExpertNotFoundFailure -> createExpertPart(uid)
+                Failure.NotFoundFailure -> createExpertPart(uid)
                 Failure.InternetFailure -> enableRefresh()
                 else -> Log.i("Hello", "Unknown error while getExpert occurred $failure")
             }
