@@ -72,21 +72,21 @@
                         <include
                             layout="@layout/part_setup_tile"
                             app:title="@{`Uzupełnienie profilu`}"
-                            app:ticked="@{viewmodel.profileTileVisible}"
+                            app:ticked="@{viewmodel.profileConfigured}"
                             app:description="@{`Uzupełnij informacje o sobie. Dobry profil może zachęcić wielu klientów.`}"
                             />
 
                         <include
                             layout="@layout/part_setup_tile"
                             app:title="@{`Określenie usług`}"
-                            app:ticked="@{viewmodel.serviceTileVisible}"
+                            app:ticked="@{viewmodel.servicesConfigured}"
                             app:description="@{`Określ jakie usługi jesteś w stanie zrealizować, abyśmy mogli wyświetlać ci pasujące zlecenia`}"
                             />
 
                         <include
                             layout="@layout/part_setup_tile"
                             app:title="@{`Określenie lokalizacji`}"
-                            app:ticked="@{viewmodel.locationTileVisible}"
+                            app:ticked="@{viewmodel.locationConfigured}"
                             app:description="@{`Określ w jakim obszarze realizujesz swoje usługi`}"
                             />
 

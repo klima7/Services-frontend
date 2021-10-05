@@ -12,6 +12,6 @@ val viewModelsModule = module {
     viewModel { SplashViewModel(get(), get()) }
     viewModel { HomeViewModel() }
     viewModel { LoginViewModel() }
-    viewModel { SetupViewModel() }
+    viewModel { SetupViewModel(get(), get()) }
 
 }
