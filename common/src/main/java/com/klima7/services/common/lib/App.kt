@@ -1,6 +1,7 @@
 package com.klima7.services.common.lib
 
 import android.app.Application
+import com.klima7.services.common.data.di.commonViewModelsModule
 import com.klima7.services.common.data.di.reposModule
 import com.klima7.services.common.data.di.sourcesModule
 import org.koin.android.ext.koin.androidContext
@@ -25,7 +26,7 @@ abstract class App: Application() {
         }
     }
 
-    private val commonModules = listOf(sourcesModule, reposModule)
+    private val commonModules = listOf(sourcesModule, reposModule, commonViewModelsModule)
 
     protected abstract val customModules: List<Module>
 }
