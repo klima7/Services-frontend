@@ -1,5 +1,6 @@
 package com.klima7.services.expert.features.home
 
+import android.util.Log
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -24,5 +25,11 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
         val destinations = setOf(R.id.jobsFragment, R.id.offersFragment, R.id.profileFragment)
         val appBarConfiguration = AppBarConfiguration.Builder(destinations).build()
         binding.homeToolbar.setupWithNavController(navController, appBarConfiguration)
+
+        binding.homeToolbar.inflateMenu(R.menu.menu_home_toolbar)
+        binding.homeToolbar.setOnMenuItemClickListener {
+            Log.i("Hello", "Clicked: $it")
+            true
+        }
     }
 }
