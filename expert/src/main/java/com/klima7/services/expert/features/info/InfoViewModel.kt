@@ -3,8 +3,7 @@ package com.klima7.services.expert.features.info
 import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.domain.models.Failure
-import com.klima7.services.common.lib.base.BaseViewModel
-import com.klima7.services.common.lib.fragments.FailurableViewModel
+import com.klima7.services.common.lib.failurable.FailurableViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

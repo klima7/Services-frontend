@@ -1,4 +1,4 @@
-package com.klima7.services.common.lib.fragments
+package com.klima7.services.common.lib.failurable
 
 import androidx.databinding.ViewDataBinding
 import com.klima7.services.common.domain.models.Failure

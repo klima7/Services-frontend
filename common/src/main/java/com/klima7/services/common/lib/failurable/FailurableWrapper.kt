@@ -1,7 +1,7 @@
-package com.klima7.services.common.lib.fragments
+package com.klima7.services.common.lib.failurable
 
-import android.util.Log
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.MutableLiveData
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentFailurableWrapperBinding
 import com.klima7.services.common.domain.models.Failure
@@ -36,4 +36,24 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
     private fun refreshMainFragment() {
         mainFragment.refresh()
     }
+}
+
+
+class FailurableWrapperViewModel: BaseViewModel() {
+
+    val errorVisible = MutableLiveData(false)
+
+    sealed class Event: BaseEvent() {
+        object RefreshMainFragment: Event()
+    }
+
+    fun showFailureReceived(failure: Failure) {
+        errorVisible.value = true
+    }
+
+    fun refreshClicked() {
+        errorVisible.value = false
+        sendEvent(Event.RefreshMainFragment)
+    }
+
 }
