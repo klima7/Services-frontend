@@ -2,6 +2,8 @@ package com.klima7.services.expert.features.setup
 
 import android.content.Intent
 import android.widget.Button
+import androidx.activity.result.contract.ActivityResultContracts
+import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.klima7.services.common.lib.base.BaseFragment
 import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.expert.R
@@ -15,6 +17,12 @@ class SetupFragment: BaseFragment<FragmentSetupBinding>() {
 
     override val layoutId = R.layout.fragment_setup
     override val viewModel: SetupViewModel by viewModel()
+
+    private val configLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        this.onConfigDone()
+    }
 
     override fun init() {
         binding.setupToolbar.title = "Uzupełnienie informacji"
@@ -38,7 +46,7 @@ class SetupFragment: BaseFragment<FragmentSetupBinding>() {
 
     private fun showInfoScreen() {
         val intent = Intent(activity, InfoActivity::class.java)
-        startActivity(intent)
+        configLauncher.launch(intent)
     }
 
     private fun showLocationScreen() {
@@ -47,6 +55,10 @@ class SetupFragment: BaseFragment<FragmentSetupBinding>() {
 
     private fun showServicesScreen() {
 
+    }
+
+    private fun onConfigDone() {
+        viewModel.configDone()
     }
 
 }
