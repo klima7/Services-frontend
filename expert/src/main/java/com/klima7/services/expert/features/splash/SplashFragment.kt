@@ -52,8 +52,8 @@ class SplashFragment: BaseFragment<FragmentSplashBinding>() {
     }
 
     private fun showSetupScreen() {
-        val intent = Intent(activity, HomeActivity::class.java)
-//        val intent = Intent(activity, SetupActivity::class.java)
+//        val intent = Intent(activity, HomeActivity::class.java)
+        val intent = Intent(activity, SetupActivity::class.java)
         loginLauncher.launch(intent)
     }
 
