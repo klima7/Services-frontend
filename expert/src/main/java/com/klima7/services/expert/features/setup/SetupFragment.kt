@@ -7,7 +7,7 @@ import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentSetupBinding
 import com.klima7.services.expert.features.home.HomeActivity
-import com.klima7.services.expert.features.splash.SplashViewModel
+import com.klima7.services.expert.features.info.InfoActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -24,13 +24,29 @@ class SetupFragment: BaseFragment<FragmentSetupBinding>() {
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
         when(event) {
-            SplashViewModel.Event.ShowHomeScreen -> showHomeScreen()
+            SetupViewModel.Event.ShowHomeScreen -> showHomeScreen()
+            SetupViewModel.Event.ShowInfoScreen -> showInfoScreen()
+            SetupViewModel.Event.ShowServicesScreen -> showServicesScreen()
+            SetupViewModel.Event.ShowLocationScreen -> showLocationScreen()
         }
     }
 
     private fun showHomeScreen() {
         val intent = Intent(activity, HomeActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun showInfoScreen() {
+        val intent = Intent(activity, InfoActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun showLocationScreen() {
+
+    }
+
+    private fun showServicesScreen() {
+
     }
 
 }

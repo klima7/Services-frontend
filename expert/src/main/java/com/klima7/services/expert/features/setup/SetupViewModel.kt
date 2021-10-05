@@ -20,15 +20,23 @@ class SetupViewModel(
     val locationConfigured = MutableLiveData(false)
 
     sealed class Event: BaseEvent() {
-        object ShowHomeScreenEvent: Event()
+        object ShowHomeScreen: Event()
+        object ShowInfoScreen: Event()
+        object ShowServicesScreen: Event()
+        object ShowLocationScreen: Event()
     }
 
     fun setupStarted() {
-//        updateSetupState()
+        sendEvent(Event.ShowInfoScreen)
+        updateSetupState()
     }
 
     fun refreshClicked() {
         updateSetupState()
+    }
+
+    fun continueClicked() {
+
     }
 
     private fun updateSetupState() {
