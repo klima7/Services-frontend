@@ -25,104 +25,83 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <FrameLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@color/icon_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/setup_toolbar">
+            app:layout_constraintTop_toBottomOf="@+id/setup_toolbar"
+            tools:visibility="visible">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="@{viewmodel.noInternetVisible ? View.INVISIBLE : View.VISIBLE}"
-                tools:visibility="visible" >
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Aby myć korzystać z aplikacji w roli eksperta konieczne jest uzupełnienie kilku informacji"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="Aby myć korzystać z aplikacji w roli eksperta konieczne jest uzupełnienie kilku informacji"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <ScrollView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/button2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3">
 
-                <ScrollView
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="8dp"
-                    app:layout_constraintBottom_toTopOf="@+id/button2"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical" >
-
-                        <include
-                            layout="@layout/part_setup_tile"
-                            app:title="@{`Uzupełnienie profilu`}"
-                            app:ticked="@{viewmodel.profileConfigured}"
-                            app:description="@{`Uzupełnij informacje o sobie. Dobry profil może zachęcić wielu klientów.`}"
-                            app:action="@{() -> viewmodel.infoClicked()}"
-                            />
-
-                        <include
-                            layout="@layout/part_setup_tile"
-                            app:title="@{`Określenie usług`}"
-                            app:ticked="@{viewmodel.servicesConfigured}"
-                            app:description="@{`Określ jakie usługi jesteś w stanie zrealizować, abyśmy mogli wyświetlać ci pasujące zlecenia`}"
-                            app:action="@{() -> viewmodel.servicesClicked()}"
-                            />
-
-                        <include
-                            layout="@layout/part_setup_tile"
-                            app:title="@{`Określenie lokalizacji`}"
-                            app:ticked="@{viewmodel.locationConfigured}"
-                            app:description="@{`Określ w jakim obszarze realizujesz swoje usługi`}"
-                            app:action="@{() -> viewmodel.locationClicked()}"
-                            />
-
-                    </LinearLayout>
-
-                </ScrollView>
-
-                <Button
-                    android:id="@+id/button2"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="Kontynuuj"
-                    android:onClick="@{() -> viewmodel.continueClicked()}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    android:orientation="vertical">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <include
+                        layout="@layout/part_setup_tile"
+                        app:action="@{() -> viewmodel.infoClicked()}"
+                        app:description="@{`Uzupełnij informacje o sobie. Dobry profil może zachęcić wielu klientów.`}"
+                        app:ticked="@{viewmodel.profileConfigured}"
+                        app:title="@{`Uzupełnienie profilu`}" />
 
-            <FrameLayout
+                    <include
+                        layout="@layout/part_setup_tile"
+                        app:action="@{() -> viewmodel.servicesClicked()}"
+                        app:description="@{`Określ jakie usługi jesteś w stanie zrealizować, abyśmy mogli wyświetlać ci pasujące zlecenia`}"
+                        app:ticked="@{viewmodel.servicesConfigured}"
+                        app:title="@{`Określenie usług`}" />
+
+                    <include
+                        layout="@layout/part_setup_tile"
+                        app:action="@{() -> viewmodel.locationClicked()}"
+                        app:description="@{`Określ w jakim obszarze realizujesz swoje usługi`}"
+                        app:ticked="@{viewmodel.locationConfigured}"
+                        app:title="@{`Określenie lokalizacji`}" />
+
+                </LinearLayout>
+
+            </ScrollView>
+
+            <Button
+                android:id="@+id/button2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="@{viewmodel.noInternetVisible ? View.VISIBLE : View.INVISIBLE}"
-                tools:visibility="invisible">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="@{() -> viewmodel.continueClicked()}"
+                android:text="Kontynuuj"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-                <include layout="@layout/part_no_internet" />
-
-            </FrameLayout>
-
-        </FrameLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

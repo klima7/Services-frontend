@@ -8,14 +8,14 @@ import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.domain.models.Expert
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.lib.base.BaseViewModel
+import com.klima7.services.common.lib.failurable.FailurableViewModel
 import kotlinx.coroutines.launch
 
 class SetupViewModel(
     private val authRepository: AuthRepository,
     private val expertsRepository: ExpertsRepository
-): BaseViewModel() {
+): FailurableViewModel() {
 
-    val noInternetVisible = MutableLiveData(false)
     val profileConfigured = MutableLiveData(false)
     val servicesConfigured = MutableLiveData(false)
     val locationConfigured = MutableLiveData(false)
@@ -28,10 +28,6 @@ class SetupViewModel(
     }
 
     fun setupStarted() {
-        updateSetupState()
-    }
-
-    fun refreshClicked() {
         updateSetupState()
     }
 
@@ -83,7 +79,6 @@ class SetupViewModel(
                 notifyFailure(Failure.InternetFailure)
             }
             else {
-                noInternetVisible.value = false
                 verifyExpertPart(expert)
             }
         })
@@ -97,9 +92,14 @@ class SetupViewModel(
 
     private fun notifyFailure(failure: Failure) {
         Log.i("Hello", "Failure first $failure")
-        when(failure) {
-            Failure.InternetFailure -> noInternetVisible.value = true
-            else -> Log.i("Hello", "Failure $failure")
-        }
+        showFailure(failure)
+//        when(failure) {
+//            Failure.InternetFailure -> noInternetVisible.value = true
+//            else -> Log.i("Hello", "Failure $failure")
+//        }
+    }
+
+    override fun refresh() {
+        updateSetupState()
     }
 }

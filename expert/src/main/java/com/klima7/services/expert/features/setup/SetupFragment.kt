@@ -6,6 +6,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.klima7.services.common.lib.base.BaseFragment
 import com.klima7.services.common.lib.base.BaseViewModel
+import com.klima7.services.common.lib.failurable.FailurableFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentSetupBinding
 import com.klima7.services.expert.features.home.HomeActivity
@@ -13,7 +14,7 @@ import com.klima7.services.expert.features.info.InfoActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class SetupFragment: BaseFragment<FragmentSetupBinding>() {
+class SetupFragment: FailurableFragment<FragmentSetupBinding>() {
 
     override val layoutId = R.layout.fragment_setup
     override val viewModel: SetupViewModel by viewModel()
@@ -26,11 +27,11 @@ class SetupFragment: BaseFragment<FragmentSetupBinding>() {
 
     override fun init() {
         binding.setupToolbar.title = "Uzupełnienie informacji"
-        view?.findViewById<Button>(R.id.no_internet_refresh_button)?.setOnClickListener { viewModel.refreshClicked() }
         viewModel.setupStarted()
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
+        super.handleEvent(event)
         when(event) {
             SetupViewModel.Event.ShowHomeScreen -> showHomeScreen()
             SetupViewModel.Event.ShowInfoScreen -> showInfoScreen()
