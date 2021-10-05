@@ -80,6 +80,7 @@ class SetupViewModel(
             }
             else {
                 verifyExpertPart(expert)
+                showMain()
             }
         })
     }
@@ -93,10 +94,6 @@ class SetupViewModel(
     private fun notifyFailure(failure: Failure) {
         Log.i("Hello", "Failure first $failure")
         showFailure(failure)
-//        when(failure) {
-//            Failure.InternetFailure -> noInternetVisible.value = true
-//            else -> Log.i("Hello", "Failure $failure")
-//        }
     }
 
     override fun refresh() {

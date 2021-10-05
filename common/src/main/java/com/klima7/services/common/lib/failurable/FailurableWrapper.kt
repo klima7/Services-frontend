@@ -24,7 +24,11 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
     }
 
     fun showFailure(failure: Failure) {
-        viewModel.showFailureReceived(failure)
+        viewModel.showFailure(failure)
+    }
+
+    fun showMain() {
+        viewModel.showMain()
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
@@ -47,12 +51,15 @@ class FailurableWrapperViewModel: BaseViewModel() {
         object RefreshMainFragment: Event()
     }
 
-    fun showFailureReceived(failure: Failure) {
+    fun showFailure(failure: Failure) {
         errorVisible.value = true
     }
 
-    fun refreshClicked() {
+    fun showMain() {
         errorVisible.value = false
+    }
+
+    fun refreshClicked() {
         sendEvent(Event.RefreshMainFragment)
     }
 

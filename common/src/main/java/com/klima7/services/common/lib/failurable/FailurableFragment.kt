@@ -16,11 +16,17 @@ abstract class FailurableFragment<DB: ViewDataBinding>: BaseFragment<DB>() {
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
         when(event) {
             is FailurableViewModel.ShowFailureEvent -> showFailure(event.failure)
+            is FailurableViewModel.ShowMainEvent -> showMain()
         }
     }
 
     private fun showFailure(failure: Failure) {
         val parent = parentFragment as? FailurableWrapperFragment<*>
         parent?.showFailure(failure)
+    }
+
+    private fun showMain() {
+        val parent = parentFragment as? FailurableWrapperFragment<*>
+        parent?.showMain()
     }
 }
