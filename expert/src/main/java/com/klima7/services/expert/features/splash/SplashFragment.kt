@@ -24,7 +24,8 @@ class SplashFragment: FailurableFragment<FragmentSplashBinding>() {
         this.onLoginResult(res)
     }
 
-    override fun init() {
+    override fun onFirstCreation() {
+        super.onFirstCreation()
         viewModel.splashStarted()
     }
 

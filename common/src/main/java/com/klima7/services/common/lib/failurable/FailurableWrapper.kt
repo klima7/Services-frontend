@@ -1,5 +1,6 @@
 package com.klima7.services.common.lib.failurable
 
+import android.util.Log
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.MutableLiveData
 import com.klima7.services.common.R
@@ -64,7 +65,11 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
     }
 
     private fun refreshMainFragment() {
-        mainFragment?.refresh()
+        Log.i("Hello", "refreshMainFragment (FailurableWrapper fragment)")
+        val mainFragment = childFragmentManager.findFragmentById(R.id.failure_holder_main_fragment) as? FailurableFragment<*>
+        mainFragment?.let {
+            mainFragment.refresh()
+        }
     }
 }
 
@@ -80,12 +85,14 @@ class FailurableWrapperViewModel: BaseViewModel() {
     }
 
     fun showFailure(failure: Failure) {
+        Log.i("Hello", "showFailure (wrapper vm)")
         currentFailure.value = failure
         errorVisible.value = true
         pendingRefresh.value = false
     }
 
     fun showMain() {
+        Log.i("Hello", "showMain (wrapper vm)")
         errorVisible.value = false
         pendingRefresh.value = false
     }

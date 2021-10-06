@@ -1,5 +1,6 @@
 package com.klima7.services.expert.features.setup
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.data.repositories.AuthRepository
@@ -49,6 +50,11 @@ class SetupContentViewModel(
         updateSetupState()
     }
 
+    override fun refresh() {
+        Log.i("Hello", "Refresh (setup vm)")
+        updateSetupState()
+    }
+
     private fun updateSetupState() {
         viewModelScope.launch {
             getUidPart()
@@ -90,9 +96,5 @@ class SetupContentViewModel(
 
     private fun notifyFailure(failure: Failure) {
         showFailure(failure)
-    }
-
-    override fun refresh() {
-        updateSetupState()
     }
 }
