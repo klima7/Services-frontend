@@ -4,5 +4,5 @@ import com.klima7.services.common.lib.base.BaseActivity
 import com.klima7.services.expert.features.info.InfoFragment
 
 class ServicesActivity: BaseActivity() {
-    override fun fragment() = InfoFragment()
+    override fun fragment() = ServicesFragment()
 }
