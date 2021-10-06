@@ -3,13 +3,13 @@ package com.klima7.services.common.data.repositories
 import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.functions.FirebaseFunctions
+import com.klima7.services.common.data.converters.toDomain
 import com.klima7.services.common.data.entities.ExpertEntity
 import com.klima7.services.common.data.entities.toDomain
 import com.klima7.services.common.domain.models.Expert
 import com.klima7.services.common.domain.models.Failure
-import com.klima7.services.common.domain.util.Outcome
-import com.klima7.services.common.data.converters.toDomain
 import com.klima7.services.common.domain.util.None
+import com.klima7.services.common.domain.util.Outcome
 import kotlinx.coroutines.tasks.await
 
 class ExpertsRepository(

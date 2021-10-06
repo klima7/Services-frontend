@@ -2,14 +2,11 @@ package com.klima7.services.expert.features.home
 
 import android.util.Log
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.klima7.services.common.lib.base.BaseFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentHomeBinding
-import com.klima7.services.expert.databinding.FragmentSplashBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

@@ -4,7 +4,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.domain.util.None
 import com.klima7.services.common.domain.util.Outcome
-import java.lang.Exception
 
 class AuthRepository(
     private val auth: FirebaseAuth

@@ -8,8 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.flow.collect
 import com.klima7.services.common.BR
+import kotlinx.coroutines.flow.collect
 
 abstract class BaseFragment<DB: ViewDataBinding>: Fragment() {
 

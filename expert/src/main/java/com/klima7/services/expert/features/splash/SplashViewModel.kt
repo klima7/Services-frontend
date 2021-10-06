@@ -1,10 +1,8 @@
 package com.klima7.services.expert.features.splash
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.data.repositories.AuthRepository
-import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.domain.models.Expert
 import com.klima7.services.common.domain.models.Failure

@@ -1,12 +1,9 @@
 package com.klima7.services.expert.features.splash
 
 import android.content.Intent
-import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.lifecycle.lifecycleScope
-import com.klima7.services.common.lib.base.BaseFragment
 import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.common.lib.failurable.FailurableFragment
 import com.klima7.services.expert.R
@@ -14,8 +11,6 @@ import com.klima7.services.expert.databinding.FragmentSplashBinding
 import com.klima7.services.expert.features.home.HomeActivity
 import com.klima7.services.expert.features.login.LoginActivity
 import com.klima7.services.expert.features.setup.SetupActivity
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

@@ -1,10 +1,6 @@
 package com.klima7.services.common.lib.failurable
 
-import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.MutableLiveData
 import com.klima7.services.common.R
