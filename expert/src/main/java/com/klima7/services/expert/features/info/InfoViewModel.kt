@@ -13,6 +13,15 @@ class InfoViewModel: FailurableViewModel() {
         viewModelScope.launch {
             delay(1000)
             showFailure(Failure.InternetFailure)
+            delay(1000)
+            showFailure(Failure.NotFoundFailure)
+            delay(1000)
+            showFailure(Failure.PermissionFailure)
+            delay(1000)
+            showFailure(Failure.UnknownFailure)
+            delay(1000)
+            showFailure(Failure.ServerFailure)
+            delay(1000)
         }
     }
 
