@@ -7,6 +7,10 @@ class InfoContentViewModel: FailurableViewModel() {
     fun doSomething() {
     }
 
+    fun saveClicked() {
+
+    }
+
     override fun refresh() {
         doSomething()
     }
