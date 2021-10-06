@@ -45,11 +45,19 @@
                     android:id="@+id/info_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Imie i nazwisko">
+                    android:hint="Imie i nazwisko"
+                    app:startIconDrawable="@drawable/icon_person"
+                    app:helperText="Pole wymagane"
+                    android:layout_marginBottom="8dp"
+                    >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:maxLength="40"
+                        android:singleLine="true"
+                        android:scrollHorizontally="true"
+                        />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,11 +67,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Firma"
-                    android:layout_marginTop="8dp">
+                    app:startIconDrawable="@drawable/icon_company"
+                    app:helperText=" "
+                    android:layout_marginBottom="8dp"
+                    >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:maxLength="40"
+                        android:singleLine="true"
+                        android:scrollHorizontally="true"
+                        />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,9 +88,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Opis"
-                    android:layout_marginTop="8dp">
+                    app:startIconDrawable="@drawable/icon_description"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="500"
+                    app:helperText=" "
+                    android:layout_marginBottom="8dp"
+                    >
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/shipper_field"
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
@@ -84,7 +104,9 @@
                         android:overScrollMode="always"
                         android:padding="25dp"
                         android:scrollbarStyle="insideInset"
-                        android:scrollbars="vertical" />
+                        android:scrollbars="vertical"
+                        android:maxLength="500"
+                        />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -94,7 +116,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Numer telefonu"
-                    android:layout_marginTop="8dp">
+                    app:startIconDrawable="@drawable/icon_phone"
+                    app:helperText=" "
+                    android:layout_marginBottom="8dp"
+                    >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
@@ -108,11 +133,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Adres email"
-                    android:layout_marginTop="8dp">
+                    app:startIconDrawable="@drawable/icon_email"
+                    app:helperText=" "
+                    android:layout_marginBottom="8dp"
+                    >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:maxLength="50"
+                        android:singleLine="true"
+                        android:scrollHorizontally="true"
+                        />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -122,11 +154,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Strona internetowa"
-                    android:layout_marginTop="8dp">
+                    app:startIconDrawable="@drawable/icon_website"
+                    app:helperText=" "
+                    android:layout_marginBottom="8dp"
+                    >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:maxLength="200"
+                        android:singleLine="true"
+                        android:scrollHorizontally="true"
+                        />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
