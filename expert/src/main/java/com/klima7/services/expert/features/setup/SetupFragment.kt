@@ -3,6 +3,7 @@ package com.klima7.services.expert.features.setup
 import com.klima7.services.common.lib.base.BaseFragment
 import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.common.lib.failurable.FailurableWrapperFragment
+import com.klima7.services.common.lib.utils.replaceFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentSetupBinding
 
@@ -17,9 +18,6 @@ class SetupFragment: BaseFragment<FragmentSetupBinding>() {
 
     override fun onFirstCreation() {
         super.onFirstCreation()
-        childFragmentManager
-            .beginTransaction()
-            .add(R.id.setup_content_container_view, FailurableWrapperFragment(SetupContentFragment()))
-            .commit()
+        replaceFragment(R.id.setup_content_container_view, FailurableWrapperFragment(SetupContentFragment()))
     }
 }

@@ -8,6 +8,7 @@ import com.klima7.services.common.databinding.FragmentFailurableWrapperBinding
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.lib.base.BaseFragment
 import com.klima7.services.common.lib.base.BaseViewModel
+import com.klima7.services.common.lib.utils.replaceFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FailurableWrapperFragment<DB: ViewDataBinding>(
@@ -45,10 +46,7 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
 
     override fun onFirstCreation() {
         super.onFirstCreation()
-        childFragmentManager
-            .beginTransaction()
-            .add(R.id.failure_holder_main_fragment, mainFragment!!)
-            .commit()
+        replaceFragment(R.id.failure_holder_main_fragment, mainFragment!!)
     }
 
     fun showFailure(failure: Failure) {
