@@ -1,6 +1,5 @@
 package com.klima7.services.expert.features.home
 
-import android.util.Log
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -25,7 +24,6 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
 
         binding.homeToolbar.inflateMenu(R.menu.menu_home_toolbar)
         binding.homeToolbar.setOnMenuItemClickListener {
-            Log.i("Hello", "Clicked: $it")
             true
         }
     }

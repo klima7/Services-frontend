@@ -1,7 +1,6 @@
 package com.klima7.services.expert.features.splash
 
 import android.content.Intent
-import android.util.Log
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import com.klima7.services.common.lib.base.BaseViewModel
@@ -44,12 +43,10 @@ class SplashFragment: FailurableFragment<FragmentSplashBinding>() {
     }
 
     private fun onLoginResult(res: ActivityResult) {
-        Log.i("Hello", "Login activity finished")
         viewModel.loginActivityFinished()
     }
 
     private fun showSetupScreen() {
-        Log.i("Hello", "Starting setup screen")
         val intent = Intent(activity, SetupActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
         startActivity(intent)

@@ -1,6 +1,5 @@
 package com.klima7.services.expert.features.info
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.lib.failurable.FailurableViewModel
@@ -26,7 +25,6 @@ class InfoViewModel: FailurableViewModel() {
     }
 
     override fun refresh() {
-        Log.i("Hello", "Refreshing fragment")
         doSomething()
     }
 

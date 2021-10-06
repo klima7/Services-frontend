@@ -1,11 +1,9 @@
 package com.klima7.services.expert.features.login
 
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
-import com.google.firebase.auth.FirebaseAuth
 import com.klima7.services.common.lib.base.BaseFragment
 import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.expert.R
@@ -39,15 +37,13 @@ class LoginFragment: BaseFragment<FragmentLoginBinding>() {
         val response = result.idpResponse
         when {
             result.resultCode == AppCompatActivity.RESULT_OK -> {
-                val user = FirebaseAuth.getInstance().currentUser
-                Log.i("Hello", "Login success")
                 requireActivity().finish()
             }
             response == null -> {
-                Log.i("Hello", "Login cancelled",)
+                // Login cancelled
             }
             else -> {
-                Log.i("Hello", "Login failed", response.error)
+                // Login failed
             }
         }
     }

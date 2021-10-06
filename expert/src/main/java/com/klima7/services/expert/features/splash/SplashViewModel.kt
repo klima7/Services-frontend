@@ -1,6 +1,5 @@
 package com.klima7.services.expert.features.splash
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.data.repositories.AuthRepository
 import com.klima7.services.common.data.repositories.ExpertsRepository
@@ -46,13 +45,11 @@ class SplashViewModel(
 
     private suspend fun checkAuthenticatedPart() {
         authRepository.getUid().foldS({
-            Log.i("Hello", "Error occurred")
         }, { uid ->
             val authenticated = uid != null
             if(!authenticated) {
                 sendEvent(Event.ShowLoginScreen)
             } else {
-                Log.i("Hello", "Not go to login")
                 getExpertPart(uid!!)
             }
         })
@@ -69,10 +66,8 @@ class SplashViewModel(
 
     private suspend fun createExpertPart(uid: String) {
         expertsRepository.createExpertAccount().foldS({ failure ->
-            Log.e("Hello", "failure during createExpertAccount")
             notifyFailure(failure)
         }, {
-            Log.i("Hello", "createExpertAccount success")
             getExpertPart(uid)
         })
     }
@@ -94,7 +89,6 @@ class SplashViewModel(
     }
 
     private fun notifyFailure(failure: Failure) {
-        Log.i("Hello", "Failure in splash $failure")
         showFailure(failure)
     }
 

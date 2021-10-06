@@ -1,6 +1,5 @@
 package com.klima7.services.common.lib.failurable
 
-import android.util.Log
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.MutableLiveData
 import com.klima7.services.common.R
@@ -50,7 +49,6 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
     }
 
     fun showFailure(failure: Failure) {
-        Log.i("Hello", "showFailure in FailurableWrapper fragment")
         viewModel.showFailure(failure)
     }
 
@@ -82,14 +80,12 @@ class FailurableWrapperViewModel: BaseViewModel() {
     }
 
     fun showFailure(failure: Failure) {
-        Log.i("Hello", "showFailure")
         currentFailure.value = failure
         errorVisible.value = true
         pendingRefresh.value = false
     }
 
     fun showMain() {
-        Log.i("Hello", "showMain")
         errorVisible.value = false
         pendingRefresh.value = false
     }

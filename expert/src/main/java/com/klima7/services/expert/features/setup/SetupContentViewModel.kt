@@ -1,6 +1,5 @@
 package com.klima7.services.expert.features.setup
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.data.repositories.AuthRepository
@@ -47,7 +46,6 @@ class SetupContentViewModel(
     }
 
     fun configDone() {
-        Log.i("Hello", "Config done")
         updateSetupState()
     }
 
@@ -91,7 +89,6 @@ class SetupContentViewModel(
     }
 
     private fun notifyFailure(failure: Failure) {
-        Log.i("Hello", "Failure first $failure")
         showFailure(failure)
     }
 
