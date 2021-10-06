@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Error messages -->
+    <string name="internet_failure_message">Brak połączenia z internetem</string>
+    <string name="server_failure_message">Wystąpił błąd po stronie serwera</string>
+    <string name="unknown_failure_message">Wystąpił nieznany błąd</string>
+    <string name="permission_failure_message">Brak uprawnień</string>
+    <string name="not_found_failure_message">Nie znaleziono żądanego zasobu</string>
+</resources>

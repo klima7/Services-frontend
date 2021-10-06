@@ -5,8 +5,5 @@ sealed class Failure {
     object ServerFailure : Failure()
     object UnknownFailure : Failure()
     object PermissionFailure : Failure()
-
-
     object NotFoundFailure : Failure()
-    object SpecificFailure : Failure()
 }
