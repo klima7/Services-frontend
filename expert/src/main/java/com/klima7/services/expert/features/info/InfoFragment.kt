@@ -1,18 +1,30 @@
 package com.klima7.services.expert.features.info
 
-import com.klima7.services.common.lib.failurable.FailurableFragment
+import androidx.appcompat.app.AppCompatActivity
+import com.klima7.services.common.lib.base.BaseFragment
+import com.klima7.services.common.lib.base.BaseViewModel
+import com.klima7.services.common.lib.failurable.FailurableWrapperFragment
+import com.klima7.services.common.lib.utils.replaceFragment
 import com.klima7.services.expert.R
-import com.klima7.services.expert.databinding.FragmentLoginBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.klima7.services.expert.databinding.FragmentToolbarBinding
 
 
-class InfoFragment: FailurableFragment<FragmentLoginBinding>() {
 
-    override val layoutId = R.layout.fragment_info
-    override val viewModel: InfoViewModel by viewModel()
+
+class InfoFragment: BaseFragment<FragmentToolbarBinding>() {
+
+    override val layoutId = R.layout.fragment_toolbar
+    override val viewModel = BaseViewModel()
+
+    override fun init() {
+        val toolbar = binding.toolbarToolbar
+        toolbar.title = "Zmiana informacji"
+        toolbar.setNavigationIcon(R.drawable.icon_arrow_back)
+        toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
+    }
 
     override fun onFirstCreation() {
         super.onFirstCreation()
-        viewModel.doSomething()
+        replaceFragment(R.id.toolbar_container_view, FailurableWrapperFragment(InfoContentFragment()))
     }
 }
