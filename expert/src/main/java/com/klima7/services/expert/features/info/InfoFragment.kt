@@ -1,5 +1,9 @@
 package com.klima7.services.expert.features.info
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.klima7.services.common.lib.failurable.FailurableFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentLoginBinding
@@ -11,7 +15,14 @@ class InfoFragment: FailurableFragment<FragmentLoginBinding>() {
     override val layoutId = R.layout.fragment_info
     override val viewModel: InfoViewModel by viewModel()
 
-    override fun init() {
-        viewModel.doSomething()
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        if(savedInstanceState == null) {
+            viewModel.doSomething()
+        }
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
 }

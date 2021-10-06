@@ -1,5 +1,9 @@
 package com.klima7.services.expert.features.setup
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.klima7.services.common.lib.base.BaseFragment
 import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.common.lib.failurable.FailurableFragment
@@ -14,10 +18,20 @@ class SetupFragment: BaseFragment<FragmentSetupBinding>() {
 
     override fun init() {
         binding.setupToolbar.title = "Uzupełnienie informacji"
-        childFragmentManager
-            .beginTransaction()
-            .add(R.id.setup_content_container_view, FailurableWrapperFragment(SetupContentFragment()))
-            .commit()
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        if(savedInstanceState == null) {
+            childFragmentManager
+                .beginTransaction()
+                .add(R.id.setup_content_container_view, FailurableWrapperFragment(SetupContentFragment()))
+                .commit()
+        }
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
 
 }

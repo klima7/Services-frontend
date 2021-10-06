@@ -1,5 +1,10 @@
 package com.klima7.services.common.lib.failurable
 
+import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.MutableLiveData
 import com.google.rpc.context.AttributeContext
@@ -11,7 +16,7 @@ import com.klima7.services.common.lib.base.BaseViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FailurableWrapperFragment<DB: ViewDataBinding>(
-    private val mainFragment: FailurableFragment<DB>
+    private val mainFragment: FailurableFragment<DB>? = null
 ): BaseFragment<FragmentFailurableWrapperBinding>() {
 
     override val layoutId = R.layout.fragment_failurable_wrapper
@@ -32,12 +37,28 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
                 FailureDescription(R.string.not_found_failure_message, R.drawable.icon_error),
     )
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        if(savedInstanceState == null) {
+            childFragmentManager
+                .beginTransaction()
+                .add(R.id.failure_holder_main_fragment, mainFragment!!)
+                .commit()
+        }
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
 
     override fun init() {
-        childFragmentManager
-            .beginTransaction()
-            .add(R.id.failure_holder_main_fragment, mainFragment)
-            .commit()
+        viewModel.currentFailure.observe(viewLifecycleOwner) { failure ->
+            failure?.let {  failure ->
+                failureDescriptions[failure]?.let { desc ->
+                    binding.message = resources.getString(desc.textId)
+                }
+            }
+        }
     }
 
     fun showFailure(failure: Failure) {
@@ -51,18 +72,11 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
         when(event) {
             FailurableWrapperViewModel.Event.RefreshMainFragment -> refreshMainFragment()
-            is FailurableWrapperViewModel.Event.SetFailureMessage -> setFailureMessage(event.failure)
         }
     }
 
     private fun refreshMainFragment() {
-        mainFragment.refresh()
-    }
-
-    private fun setFailureMessage(failure: Failure) {
-        failureDescriptions[failure]?.let { desc ->
-            binding.message = resources.getString(desc.textId)
-        }
+        mainFragment?.refresh()
     }
 }
 
@@ -71,19 +85,21 @@ class FailurableWrapperViewModel: BaseViewModel() {
 
     val errorVisible = MutableLiveData(false)
     val pendingRefresh = MutableLiveData(false)
+    val currentFailure = MutableLiveData<Failure?>(null)
 
     sealed class Event: BaseEvent() {
         object RefreshMainFragment: Event()
-        class SetFailureMessage(val failure: Failure): Event()
     }
 
     fun showFailure(failure: Failure) {
-        sendEvent(Event.SetFailureMessage(failure))
+        Log.i("Hello", "showFailure")
+        currentFailure.value = failure
         errorVisible.value = true
         pendingRefresh.value = false
     }
 
     fun showMain() {
+        Log.i("Hello", "showMain")
         errorVisible.value = false
         pendingRefresh.value = false
     }
