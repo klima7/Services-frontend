@@ -8,6 +8,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.lifecycleScope
 import com.klima7.services.common.lib.base.BaseFragment
 import com.klima7.services.common.lib.base.BaseViewModel
+import com.klima7.services.common.lib.failurable.FailurableFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentSplashBinding
 import com.klima7.services.expert.features.home.HomeActivity
@@ -18,7 +19,7 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class SplashFragment: BaseFragment<FragmentSplashBinding>() {
+class SplashFragment: FailurableFragment<FragmentSplashBinding>() {
 
     override val layoutId = R.layout.fragment_splash
     override val viewModel: SplashViewModel by viewModel()
@@ -34,6 +35,7 @@ class SplashFragment: BaseFragment<FragmentSplashBinding>() {
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
+        super.handleEvent(event)
         when(event) {
             SplashViewModel.Event.ShowLoginScreen -> showLoginScreen()
             SplashViewModel.Event.ShowHomeScreen -> showHomeScreen()

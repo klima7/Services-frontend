@@ -62,6 +62,7 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
     }
 
     fun showFailure(failure: Failure) {
+        Log.i("Hello", "showFailure in FailurableWrapper fragment")
         viewModel.showFailure(failure)
     }
 

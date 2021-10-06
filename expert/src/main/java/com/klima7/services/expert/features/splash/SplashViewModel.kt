@@ -8,16 +8,14 @@ import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.domain.models.Expert
 import com.klima7.services.common.domain.models.Failure
+import com.klima7.services.common.lib.failurable.FailurableViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class SplashViewModel(
     private val authRepository: AuthRepository,
     private val expertsRepository: ExpertsRepository
-): BaseViewModel() {
-
-    val refreshVisible = MutableLiveData(false)
-    val refreshEnabled = MutableLiveData(true)
+): FailurableViewModel() {
 
     sealed class Event: BaseEvent() {
         object ShowLoginScreen: Event()
@@ -32,14 +30,13 @@ class SplashViewModel(
         }
     }
 
-    fun refreshClicked() {
+    fun loginActivityFinished() {
         viewModelScope.launch {
-            disableRefresh()
             goToNextScreen()
         }
     }
 
-    fun loginActivityFinished() {
+    override fun refresh() {
         viewModelScope.launch {
             goToNextScreen()
         }
@@ -50,7 +47,6 @@ class SplashViewModel(
     }
 
     private suspend fun checkAuthenticatedPart() {
-        disableRefresh()
         authRepository.getUid().foldS({
             Log.i("Hello", "Error occurred")
         }, { uid ->
@@ -68,8 +64,7 @@ class SplashViewModel(
         expertsRepository.getExpert(uid).foldS({ failure ->
             when(failure) {
                 Failure.NotFoundFailure -> createExpertPart(uid)
-                Failure.InternetFailure -> enableRefresh()
-                else -> Log.i("Hello", "Unknown error while getExpert occurred $failure")
+                else -> notifyFailure(failure)
             }
         }, { expert -> checkExpertReadyPart(expert) })
     }
@@ -77,7 +72,7 @@ class SplashViewModel(
     private suspend fun createExpertPart(uid: String) {
         expertsRepository.createExpertAccount().foldS({ failure ->
             Log.e("Hello", "failure during createExpertAccount")
-            enableRefresh()
+            notifyFailure(failure)
         }, {
             Log.i("Hello", "createExpertAccount success")
             getExpertPart(uid)
@@ -92,7 +87,7 @@ class SplashViewModel(
             sendEvent(Event.ShowSetupScreen)
         }
         else {
-            enableRefresh()
+            notifyFailure(Failure.InternetFailure)
         }
     }
 
@@ -100,13 +95,9 @@ class SplashViewModel(
         return expert.info.name != null && expert.area != null && expert.services.isNotEmpty()
     }
 
-    private fun enableRefresh() {
-        refreshVisible.value = true
-        refreshEnabled.value = true
-    }
-
-    private fun disableRefresh() {
-        refreshEnabled.value = false
+    private fun notifyFailure(failure: Failure) {
+        Log.i("Hello", "Failure in splash $failure")
+        showFailure(failure)
     }
 
 }
