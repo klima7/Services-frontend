@@ -53,6 +53,7 @@ class LoginFragment: BaseFragment<FragmentLoginBinding>() {
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
+        super.handleEvent(event)
         when(event) {
             LoginViewModel.Event.LaunchSignIn -> signIn()
         }

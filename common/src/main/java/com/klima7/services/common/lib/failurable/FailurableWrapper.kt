@@ -71,6 +71,7 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
+        super.handleEvent(event)
         when(event) {
             FailurableWrapperViewModel.Event.RefreshMainFragment -> refreshMainFragment()
         }
