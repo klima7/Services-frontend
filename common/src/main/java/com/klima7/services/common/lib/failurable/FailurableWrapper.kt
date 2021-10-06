@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.MutableLiveData
-import com.google.rpc.context.AttributeContext
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentFailurableWrapperBinding
 import com.klima7.services.common.domain.models.Failure
@@ -26,15 +25,15 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
 
     private val failureDescriptions = mapOf(
         Failure.InternetFailure to
-                FailureDescription(R.string.internet_failure_message, R.drawable.icon_error),
+                FailureDescription(R.string.internet_failure_message, R.drawable.icon_error_no_internet),
         Failure.ServerFailure to
-                FailureDescription(R.string.server_failure_message, R.drawable.icon_error),
+                FailureDescription(R.string.server_failure_message, R.drawable.icon_error_server),
         Failure.UnknownFailure to
-                FailureDescription(R.string.unknown_failure_message, R.drawable.icon_error),
+                FailureDescription(R.string.unknown_failure_message, R.drawable.icon_error_unknown),
         Failure.PermissionFailure to
-                FailureDescription(R.string.permission_failure_message, R.drawable.icon_error),
+                FailureDescription(R.string.permission_failure_message, R.drawable.icon_error_permission),
         Failure.NotFoundFailure to
-                FailureDescription(R.string.not_found_failure_message, R.drawable.icon_error),
+                FailureDescription(R.string.not_found_failure_message, R.drawable.icon_error_not_found),
     )
 
     override fun onCreateView(
@@ -52,10 +51,11 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
     }
 
     override fun init() {
-        viewModel.currentFailure.observe(viewLifecycleOwner) { failure ->
-            failure?.let {  failure ->
+        viewModel.currentFailure.observe(viewLifecycleOwner) {
+            it?.let {  failure ->
                 failureDescriptions[failure]?.let { desc ->
                     binding.message = resources.getString(desc.textId)
+                    binding.image = desc.imageId
                 }
             }
         }
