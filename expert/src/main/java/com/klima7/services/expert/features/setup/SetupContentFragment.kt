@@ -8,6 +8,7 @@ import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentSetupBinding
 import com.klima7.services.expert.features.home.HomeActivity
 import com.klima7.services.expert.features.info.InfoActivity
+import com.klima7.services.expert.features.services.ServicesActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -52,7 +53,8 @@ class SetupContentFragment: FailurableFragment<FragmentSetupBinding>() {
     }
 
     private fun showServicesScreen() {
-
+        val intent = Intent(activity, ServicesActivity::class.java)
+        configLauncher.launch(intent)
     }
 
     private fun onConfigDone() {
