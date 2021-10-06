@@ -26,15 +26,9 @@ class SetupContentFragment: FailurableFragment<FragmentSetupContentBinding>() {
         this.onConfigDone()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        if(savedInstanceState == null) {
-            viewModel.setupStarted()
-        }
-        return super.onCreateView(inflater, container, savedInstanceState)
+    override fun onFirstCreation() {
+        super.onFirstCreation()
+        viewModel.setupStarted()
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {

@@ -15,14 +15,8 @@ class InfoFragment: FailurableFragment<FragmentLoginBinding>() {
     override val layoutId = R.layout.fragment_info
     override val viewModel: InfoViewModel by viewModel()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        if(savedInstanceState == null) {
-            viewModel.doSomething()
-        }
-        return super.onCreateView(inflater, container, savedInstanceState)
+    override fun onFirstCreation() {
+        super.onFirstCreation()
+        viewModel.doSomething()
     }
 }

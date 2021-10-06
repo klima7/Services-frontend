@@ -55,7 +55,6 @@ class SplashFragment: FailurableFragment<FragmentSplashBinding>() {
 
     private fun showSetupScreen() {
         Log.i("Hello", "Starting setup screen")
-//        val intent = Intent(activity, HomeActivity::class.java)
         val intent = Intent(activity, SetupActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
         startActivity(intent)

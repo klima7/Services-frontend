@@ -23,6 +23,8 @@ abstract class BaseFragment<DB: ViewDataBinding>: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        if(savedInstanceState == null)
+            onFirstCreation()
         binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         return binding.root
     }
@@ -51,4 +53,6 @@ abstract class BaseFragment<DB: ViewDataBinding>: Fragment() {
     open suspend fun handleEvent(event: BaseViewModel.BaseEvent) {}
 
     open fun init() {}
+
+    open fun onFirstCreation() {}
 }

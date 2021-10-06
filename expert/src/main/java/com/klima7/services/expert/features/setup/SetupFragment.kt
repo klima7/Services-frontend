@@ -20,18 +20,11 @@ class SetupFragment: BaseFragment<FragmentSetupBinding>() {
         binding.setupToolbar.title = "Uzupełnienie informacji"
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        if(savedInstanceState == null) {
-            childFragmentManager
-                .beginTransaction()
-                .add(R.id.setup_content_container_view, FailurableWrapperFragment(SetupContentFragment()))
-                .commit()
-        }
-        return super.onCreateView(inflater, container, savedInstanceState)
+    override fun onFirstCreation() {
+        super.onFirstCreation()
+        childFragmentManager
+            .beginTransaction()
+            .add(R.id.setup_content_container_view, FailurableWrapperFragment(SetupContentFragment()))
+            .commit()
     }
-
 }

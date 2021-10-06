@@ -36,20 +36,6 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
                 FailureDescription(R.string.not_found_failure_message, R.drawable.icon_error_not_found),
     )
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        if(savedInstanceState == null) {
-            childFragmentManager
-                .beginTransaction()
-                .add(R.id.failure_holder_main_fragment, mainFragment!!)
-                .commit()
-        }
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
-
     override fun init() {
         viewModel.currentFailure.observe(viewLifecycleOwner) {
             it?.let {  failure ->
@@ -59,6 +45,14 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
                 }
             }
         }
+    }
+
+    override fun onFirstCreation() {
+        super.onFirstCreation()
+        childFragmentManager
+            .beginTransaction()
+            .add(R.id.failure_holder_main_fragment, mainFragment!!)
+            .commit()
     }
 
     fun showFailure(failure: Failure) {
