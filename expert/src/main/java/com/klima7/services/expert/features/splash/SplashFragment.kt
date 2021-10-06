@@ -20,8 +20,8 @@ class SplashFragment: FailurableFragment<FragmentSplashBinding>() {
 
     private val loginLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
-    ) { res ->
-        this.onLoginResult(res)
+    ) {
+        this.onLoginResult()
     }
 
     override fun onFirstCreation() {
@@ -43,7 +43,7 @@ class SplashFragment: FailurableFragment<FragmentSplashBinding>() {
         loginLauncher.launch(intent)
     }
 
-    private fun onLoginResult(res: ActivityResult) {
+    private fun onLoginResult() {
         viewModel.loginActivityFinished()
     }
 

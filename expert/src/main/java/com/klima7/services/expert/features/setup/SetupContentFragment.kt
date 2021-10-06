@@ -5,15 +5,15 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.common.lib.failurable.FailurableFragment
 import com.klima7.services.expert.R
-import com.klima7.services.expert.databinding.FragmentSetupContentBinding
+import com.klima7.services.expert.databinding.FragmentSetupBinding
 import com.klima7.services.expert.features.home.HomeActivity
 import com.klima7.services.expert.features.info.InfoActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class SetupContentFragment: FailurableFragment<FragmentSetupContentBinding>() {
+class SetupContentFragment: FailurableFragment<FragmentSetupBinding>() {
 
-    override val layoutId = R.layout.fragment_setup_content
+    override val layoutId = R.layout.fragment_setup
     override val viewModel: SetupContentViewModel by viewModel()
 
     private val configLauncher = registerForActivityResult(
