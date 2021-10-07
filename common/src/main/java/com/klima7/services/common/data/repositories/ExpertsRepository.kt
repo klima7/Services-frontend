@@ -87,7 +87,7 @@ class ExpertsRepository(
                 .await()
             Outcome.Success(None())
         } catch(e: Exception) {
-            Log.e("Hello", "Error while setExpertInfo", e)
+            Log.e("Hello", "Error while setExpertImage", e)
             Outcome.Failure(e.toDomain())
         }
     }
@@ -98,10 +98,9 @@ class ExpertsRepository(
                 .child("profile_images")
                 .child("$uid.png")
                 .downloadUrl.await().toString()
-            Log.i("Hello", "This uri is... $uri")
             Outcome.Success(uri)
         } catch(e: Exception) {
-            Log.e("Hello", "Error while setExpertInfo", e)
+            Log.e("Hello", "Error while getProfileImage", e)
             Outcome.Failure(e.toDomain())
         }
     }
