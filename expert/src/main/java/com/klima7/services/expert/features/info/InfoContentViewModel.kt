@@ -13,8 +13,10 @@ class InfoContentViewModel: FailurableViewModel() {
     val website = MutableLiveData<String>()
 
     enum class PhoneError { TooShort }
+    enum class EmailError { InvalidFormat }
 
     val phoneError = MutableLiveData<PhoneError?>(null)
+    val emailError = MutableLiveData<EmailError?>(null)
 
     init {
         phone.observeForever { phone ->
@@ -23,6 +25,15 @@ class InfoContentViewModel: FailurableViewModel() {
             }
             else {
                 phoneError.value = PhoneError.TooShort
+            }
+        }
+
+        email.observeForever { email ->
+            if(email.isEmpty() || isEmailValid(email)) {
+                emailError.value = null;
+            }
+            else {
+                emailError.value = EmailError.InvalidFormat
             }
         }
     }
@@ -36,6 +47,10 @@ class InfoContentViewModel: FailurableViewModel() {
 
     override fun refresh() {
         doSomething()
+    }
+
+    private fun isEmailValid(email: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
 }

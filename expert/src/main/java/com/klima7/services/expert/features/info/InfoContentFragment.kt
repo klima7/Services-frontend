@@ -35,6 +35,13 @@ class InfoContentFragment: FailurableFragment<FragmentInfoBinding>() {
             }
         }
 
+        viewModel.emailError.observe(viewLifecycleOwner) { emailError ->
+            binding.infoEmail.error = when(emailError) {
+                null -> null
+                InfoContentViewModel.EmailError.InvalidFormat -> "Nieprawidłowy format adresu"
+            }
+        }
+
 //        binding.infoPhone.editText!!.addTextChangedListener(PhoneNumberFormattingTextWatcher())
     }
 }
