@@ -71,6 +71,14 @@ class InfoContentViewModel(
 
     fun profileImageSelected(uri: String) {
         Log.i("Hello", "Profile image selected and cropped $uri")
+
+        viewModelScope.launch {
+            expertsRepository.setProfileImage(uri).foldS({
+                Log.i("Hello", "Profile image change failure ($it)")
+            }, {
+                Log.i("Hello", "Profile image change success")
+            })
+        }
     }
 
     override fun refresh() {
