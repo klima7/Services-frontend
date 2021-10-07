@@ -1,5 +1,6 @@
 package com.klima7.services.expert.features.info
 
+import android.graphics.Bitmap
 import android.net.Uri
 import android.util.Log
 import android.widget.Toast
@@ -18,6 +19,10 @@ class InfoContentFragment: FailurableFragment<FragmentInfoBinding>() {
 
     private val imagePickerLauncher = registerForActivityResult(PickImageContract()) {
         receiveProfileImagePickerResult(it)
+    }
+
+    private val profileImageCropperLauncher = registerForActivityResult(CropImageContract()) {
+        receiveProfileImageCropperResult(it)
     }
 
     override fun onFirstCreation() {
@@ -79,10 +84,40 @@ class InfoContentFragment: FailurableFragment<FragmentInfoBinding>() {
     private fun receiveProfileImagePickerResult(uri: Uri?) {
         if(uri != null) {
             Log.i("Hello", "Selected image: $uri")
-//            startProfileImageCropper(uri)
+            startProfileImageCropper(uri)
         }
         else {
             Log.i(TAG, "Pick image error")
+        }
+    }
+
+    private fun startProfileImageCropper(uri: Uri) {
+        Log.i(TAG, "Starting cropper")
+        profileImageCropperLauncher.launch(
+            options(uri = uri) {
+                setGuidelines(CropImageView.Guidelines.ON)
+                setOutputCompressFormat(Bitmap.CompressFormat.PNG)
+                setAspectRatio(1, 1)
+                setCropShape(CropImageView.CropShape.OVAL)
+                setRequestedSize(256, 256)
+            }
+        )
+    }
+
+    private fun receiveProfileImageCropperResult(result: CropImageView.CropResult) {
+        when {
+            result.isSuccessful -> {
+                Log.i(TAG, "result:" + result.uriContent)
+                result.uriContent?.let {
+                    viewModel.profileImageSelected(it.toString())
+                }
+            }
+            result is CropImage.CancelledResult -> {
+                Log.e(TAG, "Cropping cancelled")
+            }
+            else -> {
+                Log.e(TAG, "Cropping error")
+            }
         }
     }
 

@@ -69,6 +69,10 @@ class InfoContentViewModel(
         sendEvent(Event.StartProfileImagePicker)
     }
 
+    fun profileImageSelected(uri: String) {
+        Log.i("Hello", "Profile image selected and cropped $uri")
+    }
+
     override fun refresh() {
         updateViews()
     }
