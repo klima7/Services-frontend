@@ -1,5 +1,6 @@
 package com.klima7.services.expert.features.info
 
+import android.webkit.URLUtil
 import androidx.lifecycle.MutableLiveData
 import com.klima7.services.common.lib.failurable.FailurableViewModel
 
@@ -14,9 +15,11 @@ class InfoContentViewModel: FailurableViewModel() {
 
     enum class PhoneError { TooShort }
     enum class EmailError { InvalidFormat }
+    enum class WebsiteError { InvalidFormat }
 
     val phoneError = MutableLiveData<PhoneError?>(null)
     val emailError = MutableLiveData<EmailError?>(null)
+    val websiteError = MutableLiveData<WebsiteError?>(null)
 
     init {
         phone.observeForever { phone ->
@@ -36,6 +39,15 @@ class InfoContentViewModel: FailurableViewModel() {
                 emailError.value = EmailError.InvalidFormat
             }
         }
+
+        website.observeForever { website ->
+            if(website.isEmpty() || isWebsiteAddressValid(website)) {
+                websiteError.value = null;
+            }
+            else {
+                websiteError.value = WebsiteError.InvalidFormat
+            }
+        }
     }
 
     fun doSomething() {
@@ -51,6 +63,10 @@ class InfoContentViewModel: FailurableViewModel() {
 
     private fun isEmailValid(email: String): Boolean {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    private fun isWebsiteAddressValid(websiteAddress: String): Boolean {
+        return URLUtil.isValidUrl(websiteAddress)
     }
 
 }

@@ -21,12 +21,6 @@ class InfoContentFragment: FailurableFragment<FragmentInfoBinding>() {
 
     override fun init() {
         super.init()
-            lifecycleScope.launch {
-            delay(2000)
-            binding.infoName.error = "To pole jest wymagane"
-            delay(2000)
-            binding.infoName.error = null
-        }
 
         viewModel.phoneError.observe(viewLifecycleOwner) { phoneError ->
             binding.infoPhone.error = when(phoneError) {
@@ -42,6 +36,11 @@ class InfoContentFragment: FailurableFragment<FragmentInfoBinding>() {
             }
         }
 
-//        binding.infoPhone.editText!!.addTextChangedListener(PhoneNumberFormattingTextWatcher())
+        viewModel.websiteError.observe(viewLifecycleOwner) { websiteError ->
+            binding.infoWebsite.error = when(websiteError) {
+                null -> null
+                InfoContentViewModel.WebsiteError.InvalidFormat -> "Nieprawidłowy adres URL"
+            }
+        }
     }
 }
