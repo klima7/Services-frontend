@@ -22,6 +22,7 @@
             android:layout_marginBottom="8dp"
             android:text="Zapisz zmiany"
             android:onClick="@{() -> viewmodel.saveClicked()}"
+            android:enabled="@{viewmodel.saveButtonEnabled}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -47,7 +48,6 @@
                     android:layout_height="wrap_content"
                     android:hint="Imie i nazwisko"
                     app:startIconDrawable="@drawable/icon_person"
-                    app:helperText="Pole wymagane"
                     android:layout_marginBottom="8dp"
                     >
 
@@ -175,6 +175,7 @@
                         android:singleLine="true"
                         android:scrollHorizontally="true"
                         android:text="@={viewmodel.website}"
+                        android:enabled="@{viewmodel.saveButtonEnabled}"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>

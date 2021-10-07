@@ -16,7 +16,7 @@ val viewModelsModule = module {
     viewModel { HomeViewModel() }
     viewModel { LoginViewModel() }
     viewModel { SetupContentViewModel(get(), get()) }
-    viewModel { InfoContentViewModel() }
+    viewModel { InfoContentViewModel(get(), get()) }
     viewModel { ServicesContentViewModel() }
     viewModel { LocationContentViewModel() }
 

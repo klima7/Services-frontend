@@ -14,6 +14,6 @@ class ServicesContentFragment: FailurableFragment<FragmentLoginBinding>() {
 
     override fun onFirstCreation() {
         super.onFirstCreation()
-        viewModel.doSomething()
+        viewModel.infoStarted()
     }
 }
