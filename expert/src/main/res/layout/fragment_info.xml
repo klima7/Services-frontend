@@ -23,6 +23,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:visibility="@{viewmodel.loadingVisible ? View.VISIBLE : View.INVISIBLE}"
+            android:translationZ="90dp"
             />
 
         <ScrollView
