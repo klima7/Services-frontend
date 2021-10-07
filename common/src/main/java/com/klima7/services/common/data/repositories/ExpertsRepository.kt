@@ -82,7 +82,7 @@ class ExpertsRepository(
                 Outcome.Failure(Failure.PermissionFailure)
             storage.reference
                 .child("profile_images")
-                .child("$uid")
+                .child("$uid.png")
                 .putFile(Uri.parse(imageUri))
                 .await()
             Outcome.Success(None())

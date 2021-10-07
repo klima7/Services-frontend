@@ -13,6 +13,7 @@ import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.lib.failurable.FailurableViewModel
 import com.klima7.services.common.lib.utils.CombinedLiveData
 import com.klima7.services.common.lib.utils.nullifyBlank
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class InfoContentViewModel(
@@ -27,8 +28,9 @@ class InfoContentViewModel(
     val email = MutableLiveData("")
     val website = MutableLiveData("")
 
+    val avatar = MutableLiveData("")
+
     val nameError = Transformations.map(name) {
-        Log.i("Hello", "name '$it'")
         if (it.nullifyBlank() == null) NameError.NotProvided else null
     }
 
@@ -63,6 +65,7 @@ class InfoContentViewModel(
 
     fun saveClicked() {
         saveInfo()
+        saveProfileImage()
     }
 
     fun changeProfileImageClicked() {
@@ -71,14 +74,7 @@ class InfoContentViewModel(
 
     fun profileImageSelected(uri: String) {
         Log.i("Hello", "Profile image selected and cropped $uri")
-
-        viewModelScope.launch {
-            expertsRepository.setProfileImage(uri).foldS({
-                Log.i("Hello", "Profile image change failure ($it)")
-            }, {
-                Log.i("Hello", "Profile image change success")
-            })
-        }
+        avatar.value = uri
     }
 
     override fun refresh() {
@@ -116,6 +112,8 @@ class InfoContentViewModel(
         phone.value = expert.info.phone ?: ""
         email.value = expert.info.email ?: ""
         website.value = expert.info.website ?: ""
+        avatar.value = expert.profileImageUrl ?: ""
+        Log.i("Hello", "Avatar set to ${avatar.value}")
     }
 
     private fun notifyFailure(failure: Failure) {
@@ -151,6 +149,16 @@ class InfoContentViewModel(
                 Log.i("Hello","saveInfo Success")
                 loadingVisible.value = false
                 sendEvent(Event.FinishInfo)
+            })
+        }
+    }
+
+    private fun saveProfileImage() {
+        viewModelScope.launch {
+            expertsRepository.setProfileImage(avatar.value!!).foldS({
+                Log.i("Hello", "Profile image change failure ($it)")
+            }, {
+                Log.i("Hello", "Profile image change success")
             })
         }
     }
