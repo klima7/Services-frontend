@@ -13,7 +13,6 @@ import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.lib.failurable.FailurableViewModel
 import com.klima7.services.common.lib.utils.CombinedLiveData
 import com.klima7.services.common.lib.utils.nullifyBlank
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class InfoContentViewModel(
@@ -99,6 +98,7 @@ class InfoContentViewModel(
                     notifyFailure(failure)
                 }, { expert ->
                     setFields(expert)
+                    setProfileImage(expert)
                     showMain()
                 })
             }
@@ -112,8 +112,17 @@ class InfoContentViewModel(
         phone.value = expert.info.phone ?: ""
         email.value = expert.info.email ?: ""
         website.value = expert.info.website ?: ""
-        avatar.value = expert.profileImageUrl ?: ""
-        Log.i("Hello", "Avatar set to ${avatar.value}")
+    }
+
+    private fun setProfileImage(expert: Expert) {
+        viewModelScope.launch {
+            expertsRepository.getProfileImage(expert.uid).foldS({
+                Log.i("Hello", "profile failure");
+            }, {
+                Log.i("Hello", "profile success");
+                avatar.postValue(it)
+            })
+        }
     }
 
     private fun notifyFailure(failure: Failure) {

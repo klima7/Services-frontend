@@ -44,7 +44,7 @@ class ExpertsRepository(
                 .get()
                 .await()
             val expertEntity = snapshot.toObject(ExpertEntity::class.java)
-            val expert = expertEntity?.toDomain(snapshot.metadata.isFromCache)
+            val expert = expertEntity?.toDomain(uid, snapshot.metadata.isFromCache)
                 ?: return Outcome.Failure(Failure.NotFoundFailure)
             return Outcome.Success(expert)
         } catch(e: Exception) {
@@ -86,6 +86,20 @@ class ExpertsRepository(
                 .putFile(Uri.parse(imageUri))
                 .await()
             Outcome.Success(None())
+        } catch(e: Exception) {
+            Log.e("Hello", "Error while setExpertInfo", e)
+            Outcome.Failure(e.toDomain())
+        }
+    }
+
+    suspend fun getProfileImage(uid: String): Outcome<Failure, String> {
+        return try {
+            val uri = storage.reference
+                .child("profile_images")
+                .child("$uid.png")
+                .downloadUrl.await().toString()
+            Log.i("Hello", "This uri is... $uri")
+            Outcome.Success(uri)
         } catch(e: Exception) {
             Log.e("Hello", "Error while setExpertInfo", e)
             Outcome.Failure(e.toDomain())

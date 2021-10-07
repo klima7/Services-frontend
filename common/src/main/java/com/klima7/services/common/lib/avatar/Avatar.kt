@@ -46,6 +46,7 @@ class Avatar(context: Context, attrs: AttributeSet?) : FrameLayout(context, attr
         Glide.with(this)
             .load(fixedUri)
             .signature(ObjectKey(System.currentTimeMillis()))
+            .placeholder(R.drawable.image_profile_default)
             .error(R.drawable.image_profile_default)
             .into(image)
     }
