@@ -5,7 +5,6 @@ import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.functions.FirebaseFunctionsException
 import com.google.firebase.storage.StorageException
 import com.klima7.services.common.domain.models.Failure
-import java.io.IOException
 import java.net.ConnectException
 
 fun Exception.toDomain(): Failure {

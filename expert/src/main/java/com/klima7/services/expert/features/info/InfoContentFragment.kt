@@ -2,14 +2,16 @@ package com.klima7.services.expert.features.info
 
 import android.graphics.Bitmap
 import android.net.Uri
-import android.util.Log
 import android.widget.Toast
+import com.canhub.cropper.CropImageContract
+import com.canhub.cropper.CropImageView
+import com.canhub.cropper.PickImageContract
+import com.canhub.cropper.options
 import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.common.lib.failurable.FailurableFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentInfoBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import com.canhub.cropper.*
 
 
 class InfoContentFragment: FailurableFragment<FragmentInfoBinding>() {

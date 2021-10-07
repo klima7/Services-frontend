@@ -1,6 +1,5 @@
 package com.klima7.services.expert.features.splash
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.data.repositories.AuthRepository
 import com.klima7.services.common.data.repositories.ExpertsRepository

@@ -1,6 +1,5 @@
 package com.klima7.services.expert.features.setup
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.data.repositories.AuthRepository

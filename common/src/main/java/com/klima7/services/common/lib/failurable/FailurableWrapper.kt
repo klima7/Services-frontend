@@ -1,6 +1,5 @@
 package com.klima7.services.common.lib.failurable
 
-import android.util.Log
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.MutableLiveData
 import com.klima7.services.common.R
