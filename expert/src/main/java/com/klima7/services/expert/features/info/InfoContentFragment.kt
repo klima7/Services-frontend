@@ -19,11 +19,22 @@ class InfoContentFragment: FailurableFragment<FragmentInfoBinding>() {
         viewModel.doSomething()
     }
 
-    init {
-        lifecycleScope.launch {
+    override fun init() {
+        super.init()
+            lifecycleScope.launch {
             delay(2000)
             binding.infoName.error = "To pole jest wymagane"
-            binding.infoPhone.error = "To pole jest wymagane"
+            delay(2000)
+            binding.infoName.error = null
         }
+
+        viewModel.phoneError.observe(viewLifecycleOwner) { phoneError ->
+            binding.infoPhone.error = when(phoneError) {
+                null -> null
+                InfoContentViewModel.PhoneError.TooShort -> "Numer za krótki"
+            }
+        }
+
+//        binding.infoPhone.editText!!.addTextChangedListener(PhoneNumberFormattingTextWatcher())
     }
 }

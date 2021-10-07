@@ -57,6 +57,7 @@
                         android:maxLength="40"
                         android:singleLine="true"
                         android:scrollHorizontally="true"
+                        android:text="@={viewmodel.name}"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -78,6 +79,7 @@
                         android:maxLength="40"
                         android:singleLine="true"
                         android:scrollHorizontally="true"
+                        android:text="@={viewmodel.company}"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -106,6 +108,7 @@
                         android:scrollbarStyle="insideInset"
                         android:scrollbars="vertical"
                         android:maxLength="500"
+                        android:text="@={viewmodel.description}"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -123,7 +126,12 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:inputType="phone"
+                        android:digits="0123456789+"
+                        android:maxLength="9"
+                        android:text="@={viewmodel.phone}"
+                        />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -144,6 +152,7 @@
                         android:maxLength="50"
                         android:singleLine="true"
                         android:scrollHorizontally="true"
+                        android:text="@={viewmodel.email}"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -165,6 +174,7 @@
                         android:maxLength="200"
                         android:singleLine="true"
                         android:scrollHorizontally="true"
+                        android:text="@={viewmodel.website}"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
