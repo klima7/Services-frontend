@@ -54,6 +54,7 @@ class InfoContentViewModel(
 
     sealed class Event: BaseEvent() {
         object FinishInfo: Event()
+        object StartProfileImagePicker: Event()
     }
 
     fun infoStarted() {
@@ -62,6 +63,10 @@ class InfoContentViewModel(
 
     fun saveClicked() {
         saveInfo()
+    }
+
+    fun changeProfileImageClicked() {
+        sendEvent(Event.StartProfileImagePicker)
     }
 
     override fun refresh() {

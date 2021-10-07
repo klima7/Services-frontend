@@ -1,5 +1,6 @@
 package com.klima7.services.expert.features.info
 
+import android.net.Uri
 import android.util.Log
 import android.widget.Toast
 import com.klima7.services.common.lib.base.BaseViewModel
@@ -7,12 +8,17 @@ import com.klima7.services.common.lib.failurable.FailurableFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentInfoBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.canhub.cropper.*
 
 
 class InfoContentFragment: FailurableFragment<FragmentInfoBinding>() {
 
     override val layoutId = R.layout.fragment_info
     override val viewModel: InfoContentViewModel by viewModel()
+
+    private val imagePickerLauncher = registerForActivityResult(PickImageContract()) {
+        receiveProfileImagePickerResult(it)
+    }
 
     override fun onFirstCreation() {
         super.onFirstCreation()
@@ -57,6 +63,7 @@ class InfoContentFragment: FailurableFragment<FragmentInfoBinding>() {
         super.handleEvent(event)
         when(event) {
             InfoContentViewModel.Event.FinishInfo -> finishInfo()
+            InfoContentViewModel.Event.StartProfileImagePicker -> startProfileImagePicker()
         }
     }
 
@@ -64,4 +71,19 @@ class InfoContentFragment: FailurableFragment<FragmentInfoBinding>() {
         Toast.makeText(requireContext(), "Profil został zaktualizowany", Toast.LENGTH_SHORT).show()
         requireActivity().finish()
     }
+
+    private fun startProfileImagePicker() {
+        imagePickerLauncher.launch(false)
+    }
+
+    private fun receiveProfileImagePickerResult(uri: Uri?) {
+        if(uri != null) {
+            Log.i("Hello", "Selected image: $uri")
+//            startProfileImageCropper(uri)
+        }
+        else {
+            Log.i(TAG, "Pick image error")
+        }
+    }
+
 }

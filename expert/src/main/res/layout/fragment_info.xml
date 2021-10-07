@@ -38,6 +38,26 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginBottom="16dp"
+                    >
+
+                    <Button
+                        android:id="@+id/button3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Zmień zdjęcie"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:onClick="@{() -> viewmodel.changeProfileImageClicked()}"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <!-- Name-->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/info_name"
