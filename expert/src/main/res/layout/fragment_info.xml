@@ -48,6 +48,7 @@
                     >
 
                     <com.klima7.services.common.lib.avatar.Avatar
+                        android:id="@+id/info_avatar"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         custom:uri="@{viewmodel.avatar}"
