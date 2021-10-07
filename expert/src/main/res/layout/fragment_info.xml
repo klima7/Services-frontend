@@ -4,6 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="viewmodel"
             type="com.klima7.services.expert.features.info.InfoContentViewModel" />
@@ -13,24 +14,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="0dp"
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:text="Zapisz zmiany"
-            android:onClick="@{() -> viewmodel.saveClicked()}"
-            android:enabled="@{viewmodel.saveButtonEnabled}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:indeterminate="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="@{viewmodel.loadingVisible ? View.VISIBLE : View.INVISIBLE}"
+            />
 
         <ScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/button4"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -47,6 +44,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Imie i nazwisko"
+                    app:helperText="Pole wymagane"
                     app:startIconDrawable="@drawable/icon_person"
                     android:layout_marginBottom="8dp"
                     >
@@ -175,10 +173,17 @@
                         android:singleLine="true"
                         android:scrollHorizontally="true"
                         android:text="@={viewmodel.website}"
-                        android:enabled="@{viewmodel.saveButtonEnabled}"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Zapisz zmiany"
+                    android:onClick="@{() -> viewmodel.saveClicked()}"
+                    android:enabled="@{viewmodel.saveButtonEnabled}" />
 
             </LinearLayout>
 

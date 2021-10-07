@@ -1,6 +1,8 @@
 package com.klima7.services.expert.features.info
 
 import android.util.Log
+import android.widget.Toast
+import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.common.lib.failurable.FailurableFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentInfoBinding
@@ -49,5 +51,17 @@ class InfoContentFragment: FailurableFragment<FragmentInfoBinding>() {
             }
         }
 
+    }
+
+    override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
+        super.handleEvent(event)
+        when(event) {
+            InfoContentViewModel.Event.FinishInfo -> finishInfo()
+        }
+    }
+
+    private fun finishInfo() {
+        Toast.makeText(requireContext(), "Profil został zaktualizowany", Toast.LENGTH_SHORT).show()
+        requireActivity().finish()
     }
 }

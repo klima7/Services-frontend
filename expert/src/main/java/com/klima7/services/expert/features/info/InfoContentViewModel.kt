@@ -8,9 +8,11 @@ import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.data.repositories.AuthRepository
 import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.domain.models.Expert
+import com.klima7.services.common.domain.models.ExpertInfo
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.lib.failurable.FailurableViewModel
 import com.klima7.services.common.lib.utils.CombinedLiveData
+import com.klima7.services.common.lib.utils.nullifyBlank
 import kotlinx.coroutines.launch
 
 class InfoContentViewModel(
@@ -26,7 +28,8 @@ class InfoContentViewModel(
     val website = MutableLiveData("")
 
     val nameError = Transformations.map(name) {
-        if (it.isNotEmpty()) null else NameError.NotProvided
+        Log.i("Hello", "name '$it'")
+        if (it.nullifyBlank() == null) NameError.NotProvided else null
     }
 
     val phoneError = Transformations.map(phone) {
@@ -44,23 +47,28 @@ class InfoContentViewModel(
     val saveButtonEnabled = CombinedLiveData(nameError, phoneError, emailError, websiteError) {
         val (nameError, phoneError, emailError, websiteError) = it
         val enabled = nameError == null && phoneError == null && emailError == null && websiteError == null
-        Log.i("Hello", "Someting has changed: $nameError, $phoneError, $emailError, $websiteError, ($enabled)")
         enabled
     }
 
+    val loadingVisible = MutableLiveData(false)
+
+    sealed class Event: BaseEvent() {
+        object FinishInfo: Event()
+    }
+
     fun infoStarted() {
-        setExpertData()
+        updateViews()
     }
 
     fun saveClicked() {
-        Log.i("Hello", "Save clicked")
+        saveInfo()
     }
 
     override fun refresh() {
-        setExpertData()
+        updateViews()
     }
 
-    private fun setExpertData() {
+    private fun updateViews() {
         viewModelScope.launch {
             getExpertPart()
         }
@@ -103,5 +111,30 @@ class InfoContentViewModel(
 
     private fun isWebsiteAddressValid(websiteAddress: String): Boolean {
         return URLUtil.isValidUrl(websiteAddress)
+    }
+
+    private fun saveInfo() {
+        Log.i("Hello", "Saveing info")
+        loadingVisible.value = true
+
+        val info = ExpertInfo(
+            name.value.nullifyBlank(),
+            company.value.nullifyBlank(),
+            description.value.nullifyBlank(),
+            phone.value.nullifyBlank(),
+            email.value.nullifyBlank(),
+            website.value.nullifyBlank()
+        )
+
+        viewModelScope.launch {
+            expertsRepository.setExpertInfo(info).foldS({ failure ->
+                Log.w("Hello","saveInfo Failure $failure")
+                loadingVisible.value = false
+            }, {
+                Log.i("Hello","saveInfo Success")
+                loadingVisible.value = false
+                sendEvent(Event.FinishInfo)
+            })
+        }
     }
 }

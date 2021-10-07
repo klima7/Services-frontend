@@ -7,6 +7,7 @@ import com.klima7.services.common.data.converters.toDomain
 import com.klima7.services.common.data.entities.ExpertEntity
 import com.klima7.services.common.data.entities.toDomain
 import com.klima7.services.common.domain.models.Expert
+import com.klima7.services.common.domain.models.ExpertInfo
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.domain.util.None
 import com.klima7.services.common.domain.util.Outcome
@@ -47,8 +48,29 @@ class ExpertsRepository(
         }
     }
 
+    suspend fun setExpertInfo(info: ExpertInfo): Outcome<Failure, None> {
+        return try {
+            val data = hashMapOf(
+                "name" to info.name,
+                "company" to info.company,
+                "description" to info.description,
+                "phone" to info.phone,
+                "email" to info.email,
+                "website" to info.website,
+            )
+
+            functions
+                .getHttpsCallable("experts-setInfo")
+                .call(data)
+                .await()
+            Outcome.Success(None())
+        } catch(e: Exception) {
+            Log.e("Hello", "Error while setExpertInfo", e)
+            Outcome.Failure(e.toDomain())
+        }
+    }
+
     // setProfileImage
-    // setPrimaryInfo
     // setLocation
     // setServices
 }

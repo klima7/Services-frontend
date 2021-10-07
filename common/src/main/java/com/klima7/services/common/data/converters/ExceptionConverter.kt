@@ -5,6 +5,8 @@ import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.functions.FirebaseFunctionsException
 import com.google.firebase.storage.StorageException
 import com.klima7.services.common.domain.models.Failure
+import java.io.IOException
+import java.net.ConnectException
 
 fun Exception.toDomain(): Failure {
     return handleException(this)
@@ -51,12 +53,20 @@ private fun handleFirestoreException(e: FirebaseFirestoreException): Failure {
 
 private fun handleFunctionsException(e: FirebaseFunctionsException): Failure {
     return when(e.code) {
-        FirebaseFunctionsException.Code.INTERNAL -> Failure.ServerFailure
+        FirebaseFunctionsException.Code.INTERNAL -> handleFunctionsInternalException(e)
         FirebaseFunctionsException.Code.UNIMPLEMENTED -> Failure.ServerFailure
         FirebaseFunctionsException.Code.RESOURCE_EXHAUSTED -> Failure.ServerFailure
         FirebaseFunctionsException.Code.PERMISSION_DENIED -> Failure.PermissionFailure
         FirebaseFunctionsException.Code.UNAVAILABLE -> Failure.InternetFailure
         FirebaseFunctionsException.Code.UNKNOWN -> Failure.UnknownFailure
+        FirebaseFunctionsException.Code.UNAUTHENTICATED -> Failure.PermissionFailure
         else -> Failure.UnknownFailure
+    }
+}
+
+private fun handleFunctionsInternalException(e: FirebaseFunctionsException): Failure {
+    return when(e.cause) {
+        is ConnectException -> Failure.InternetFailure
+        else -> Failure.ServerFailure
     }
 }
