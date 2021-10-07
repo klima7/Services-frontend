@@ -65,7 +65,6 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
     }
 
     private fun refreshMainFragment() {
-        Log.i("Hello", "refreshMainFragment (FailurableWrapper fragment)")
         val mainFragment = childFragmentManager.findFragmentById(R.id.failure_holder_main_fragment) as? FailurableFragment<*>
         mainFragment?.let {
             mainFragment.refresh()
@@ -85,14 +84,12 @@ class FailurableWrapperViewModel: BaseViewModel() {
     }
 
     fun showFailure(failure: Failure) {
-        Log.i("Hello", "showFailure (wrapper vm)")
         currentFailure.value = failure
         errorVisible.value = true
         pendingRefresh.value = false
     }
 
     fun showMain() {
-        Log.i("Hello", "showMain (wrapper vm)")
         errorVisible.value = false
         pendingRefresh.value = false
     }

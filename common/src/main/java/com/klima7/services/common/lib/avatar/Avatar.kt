@@ -22,8 +22,6 @@ class Avatar(context: Context, attrs: AttributeSet?) : FrameLayout(context, attr
     private var signature: Long? = null
 
     init {
-        Log.i("Avatarr","Creating avatar")
-
         context.theme.obtainStyledAttributes(
             attrs,
             R.styleable.Avatar,

@@ -34,7 +34,6 @@ class InfoContentFragment: FailurableFragment<FragmentInfoBinding>() {
         super.init()
 
         viewModel.nameError.observe(viewLifecycleOwner) { nameError ->
-            Log.i("Hello", "NameError received $nameError")
             binding.infoName.error = when(nameError) {
                 null -> null
                 NameError.NotProvided -> "To pole jest wymagane"
@@ -83,16 +82,12 @@ class InfoContentFragment: FailurableFragment<FragmentInfoBinding>() {
 
     private fun receiveProfileImagePickerResult(uri: Uri?) {
         if(uri != null) {
-            Log.i("Hello", "Selected image: $uri")
             startProfileImageCropper(uri)
         }
-        else {
-            Log.i(TAG, "Pick image error")
-        }
+        // Else pick image error
     }
 
     private fun startProfileImageCropper(uri: Uri) {
-        Log.i(TAG, "Starting cropper")
         profileImageCropperLauncher.launch(
             options(uri = uri) {
                 setGuidelines(CropImageView.Guidelines.ON)
@@ -107,17 +102,11 @@ class InfoContentFragment: FailurableFragment<FragmentInfoBinding>() {
     private fun receiveProfileImageCropperResult(result: CropImageView.CropResult) {
         when {
             result.isSuccessful -> {
-                Log.i(TAG, "result:" + result.uriContent)
                 result.uriContent?.let {
                     viewModel.profileImageSelected(it.toString())
                 }
             }
-            result is CropImage.CancelledResult -> {
-                Log.e(TAG, "Cropping cancelled")
-            }
-            else -> {
-                Log.e(TAG, "Cropping error")
-            }
+            // May be also checked against cancelled and error
         }
     }
 

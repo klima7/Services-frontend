@@ -91,7 +91,6 @@ class SplashViewModel(
     }
 
     private fun notifyFailure(failure: Failure) {
-        Log.i("Hello", "failure Splash")
         showFailure(failure)
     }
 

@@ -72,7 +72,6 @@ class InfoContentViewModel(
     }
 
     fun profileImageSelected(uri: String) {
-        Log.i("Hello", "Profile image selected and cropped $uri")
         avatar.value = uri
     }
 
@@ -117,9 +116,7 @@ class InfoContentViewModel(
     private fun setProfileImage(expert: Expert) {
         viewModelScope.launch {
             expertsRepository.getProfileImage(expert.uid).foldS({
-                Log.i("Hello", "profile failure");
             }, {
-                Log.i("Hello", "profile success");
                 avatar.postValue(it)
             })
         }
@@ -138,7 +135,6 @@ class InfoContentViewModel(
     }
 
     private fun saveInfo() {
-        Log.i("Hello", "Saveing info")
         loadingVisible.value = true
 
         val info = ExpertInfo(
@@ -152,10 +148,8 @@ class InfoContentViewModel(
 
         viewModelScope.launch {
             expertsRepository.setExpertInfo(info).foldS({ failure ->
-                Log.w("Hello","saveInfo Failure $failure")
                 loadingVisible.value = false
             }, {
-                Log.i("Hello","saveInfo Success")
                 loadingVisible.value = false
                 sendEvent(Event.FinishInfo)
             })
@@ -164,11 +158,7 @@ class InfoContentViewModel(
 
     private fun saveProfileImage() {
         viewModelScope.launch {
-            expertsRepository.setProfileImage(avatar.value!!).foldS({
-                Log.i("Hello", "Profile image change failure ($it)")
-            }, {
-                Log.i("Hello", "Profile image change success")
-            })
+            expertsRepository.setProfileImage(avatar.value!!).foldS({}, {}) // TODO
         }
     }
 }

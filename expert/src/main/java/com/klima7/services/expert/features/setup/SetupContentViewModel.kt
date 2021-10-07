@@ -51,7 +51,6 @@ class SetupContentViewModel(
     }
 
     override fun refresh() {
-        Log.i("Hello", "Refresh (setup vm)")
         updateSetupState()
     }
 
