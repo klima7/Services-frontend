@@ -15,8 +15,8 @@ abstract class FailurableFragment<DB: ViewDataBinding>: BaseFragment<DB>() {
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
         when(event) {
-            is FailurableViewModel.ShowFailureEvent -> showFailure(event.failure)
-            is FailurableViewModel.ShowMainEvent -> showMain()
+            is FailurableViewModel.FailurableEvent.ShowFailureEvent -> showFailure(event.failure)
+            is FailurableViewModel.FailurableEvent.ShowMainEvent -> showMain()
         }
     }
 

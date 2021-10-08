@@ -7,15 +7,17 @@ abstract class FailurableViewModel: BaseViewModel() {
 
     abstract fun refresh()
 
-    data class ShowFailureEvent(val failure: Failure): BaseEvent()
-    object ShowMainEvent: BaseEvent()
+    sealed class FailurableEvent: BaseEvent() {
+        data class ShowFailureEvent(val failure: Failure): FailurableEvent()
+        object ShowMainEvent: FailurableEvent()
+    }
 
     fun showFailure(failure: Failure) {
-        sendEvent(ShowFailureEvent(failure))
+        sendEvent(FailurableEvent.ShowFailureEvent(failure))
     }
 
     fun showMain() {
-        sendEvent(ShowMainEvent)
+        sendEvent(FailurableEvent.ShowMainEvent)
     }
 
 }
