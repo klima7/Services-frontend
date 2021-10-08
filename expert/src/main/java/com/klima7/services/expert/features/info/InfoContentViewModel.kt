@@ -9,6 +9,8 @@ import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.domain.models.Expert
 import com.klima7.services.common.domain.models.ExpertInfo
 import com.klima7.services.common.domain.models.Failure
+import com.klima7.services.common.domain.util.None
+import com.klima7.services.common.domain.util.Outcome
 import com.klima7.services.common.lib.failurable.FailurableViewModel
 import com.klima7.services.common.lib.utils.CombinedLiveData
 import com.klima7.services.common.lib.utils.nullifyBlank
@@ -18,6 +20,8 @@ class InfoContentViewModel(
     private val authRepository: AuthRepository,
     private val expertsRepository: ExpertsRepository
 ): FailurableViewModel() {
+
+    private var avatarUriToSave: String? = null
 
     val name = MutableLiveData("")
     val company = MutableLiveData("")
@@ -55,6 +59,7 @@ class InfoContentViewModel(
     sealed class Event: BaseEvent() {
         object FinishInfo: Event()
         object StartProfileImagePicker: Event()
+        object ShowSaveError: Event()
     }
 
     fun infoStarted() {
@@ -62,8 +67,9 @@ class InfoContentViewModel(
     }
 
     fun saveClicked() {
-        saveInfo()
-        saveProfileImage()
+        viewModelScope.launch {
+            saveInfoAndProfile()
+        }
     }
 
     fun changeProfileImageClicked() {
@@ -71,6 +77,7 @@ class InfoContentViewModel(
     }
 
     fun profileImageSelected(uri: String) {
+        avatarUriToSave = uri
         avatar.value = uri
     }
 
@@ -80,11 +87,11 @@ class InfoContentViewModel(
 
     private fun updateViews() {
         viewModelScope.launch {
-            getExpertPart()
+            getExpertAndUpdateViews()
         }
     }
 
-    private suspend fun getExpertPart() {
+    private suspend fun getExpertAndUpdateViews() {
         authRepository.getUid().foldS({ failure ->
             notifyFailure(failure)
         }, { uid ->
@@ -115,6 +122,7 @@ class InfoContentViewModel(
     private fun setProfileImage(expert: Expert) {
         viewModelScope.launch {
             expertsRepository.getProfileImage(expert.uid).foldS({
+                avatar.postValue("")
             }, {
                 avatar.postValue(it)
             })
@@ -133,9 +141,20 @@ class InfoContentViewModel(
         return URLUtil.isValidUrl(websiteAddress)
     }
 
-    private fun saveInfo() {
+    private suspend fun saveInfoAndProfile() {
         loadingVisible.value = true
+        val infoResult = saveInfo()
+        val profileResult = saveProfileImage()
+        if(infoResult.isFailure || profileResult.isFailure) {
+            sendEvent(Event.ShowSaveError)
+        }
+        else {
+            sendEvent(Event.FinishInfo)
+        }
+        loadingVisible.value = false
+    }
 
+    private suspend fun saveInfo(): Outcome<Failure, None> {
         val info = ExpertInfo(
             name.value.nullifyBlank(),
             company.value.nullifyBlank(),
@@ -145,19 +164,15 @@ class InfoContentViewModel(
             website.value.nullifyBlank()
         )
 
-        viewModelScope.launch {
-            expertsRepository.setExpertInfo(info).foldS({ failure ->
-                loadingVisible.value = false
-            }, {
-                loadingVisible.value = false
-                sendEvent(Event.FinishInfo)
-            })
-        }
+        return expertsRepository.setExpertInfo(info)
     }
 
-    private fun saveProfileImage() {
-        viewModelScope.launch {
-            expertsRepository.setProfileImage(avatar.value!!).foldS({}, {}) // TODO
-        }
+    private suspend fun saveProfileImage(): Outcome<Failure, None> {
+        val avatarUriToSaveConst = avatarUriToSave
+        return if(avatarUriToSaveConst != null)
+            expertsRepository.setProfileImage(avatarUriToSaveConst)
+        else
+            Outcome.Success(None())
+
     }
 }

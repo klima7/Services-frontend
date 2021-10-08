@@ -215,7 +215,7 @@
                     android:id="@+id/button4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Zapisz zmiany"
+                    android:text="Zapisz"
                     android:onClick="@{() -> viewmodel.saveClicked()}"
                     android:enabled="@{viewmodel.saveButtonEnabled}" />
 

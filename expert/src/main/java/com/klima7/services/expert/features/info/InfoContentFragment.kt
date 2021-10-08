@@ -70,6 +70,7 @@ class InfoContentFragment: FailurableFragment<FragmentInfoBinding>() {
         when(event) {
             InfoContentViewModel.Event.FinishInfo -> finishInfo()
             InfoContentViewModel.Event.StartProfileImagePicker -> startProfileImagePicker()
+            InfoContentViewModel.Event.ShowSaveError -> showSaveError()
         }
     }
 
@@ -110,6 +111,10 @@ class InfoContentFragment: FailurableFragment<FragmentInfoBinding>() {
             }
             // May be also checked against cancelled and error
         }
+    }
+
+    private fun showSaveError() {
+        Toast.makeText(requireContext(), "Zapisywanie profilu się nie powiodło", Toast.LENGTH_SHORT).show()
     }
 
 }
