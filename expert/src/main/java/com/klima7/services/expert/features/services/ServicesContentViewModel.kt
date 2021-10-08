@@ -15,4 +15,7 @@ class ServicesContentViewModel: FailurableViewModel() {
         doSomething()
     }
 
+    fun servicesStarted() {
+    }
+
 }

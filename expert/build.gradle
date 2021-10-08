@@ -42,6 +42,7 @@ android {
 
 dependencies {
     implementation "com.github.CanHub:Android-Image-Cropper:3.2.2"
+    implementation "com.robertlevonyan.view:MaterialExpansionPanel:2.1.4"
 
     implementation project(path: ':common')
 }
