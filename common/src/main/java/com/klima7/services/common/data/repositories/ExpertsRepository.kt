@@ -12,6 +12,7 @@ import com.klima7.services.common.data.entities.toDomain
 import com.klima7.services.common.domain.models.Expert
 import com.klima7.services.common.domain.models.ExpertInfo
 import com.klima7.services.common.domain.models.Failure
+import com.klima7.services.common.domain.models.Service
 import com.klima7.services.common.domain.util.None
 import com.klima7.services.common.domain.util.Outcome
 import kotlinx.coroutines.tasks.await
@@ -105,6 +106,9 @@ class ExpertsRepository(
         }
     }
 
+    suspend fun setProvidedServicesIds(services: List<Int>): Outcome<Failure, None> {
+        return Outcome.Success(None())
+    }
+
     // setLocation
-    // setServices
 }

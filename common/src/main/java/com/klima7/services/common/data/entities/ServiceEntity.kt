@@ -10,5 +10,5 @@ data class ServiceEntity(
 )
 
 fun ServiceEntity.toDomain(): Service {
-    return Service(id, name, categoryId, categoryName)
+    return Service(id, name, categoryId)
 }

@@ -86,7 +86,7 @@ class SplashViewModel(
     }
 
     private fun isExpertReady(expert: Expert): Boolean {
-        return expert.info.name != null && expert.area != null && expert.services.isNotEmpty()
+        return expert.info.name != null && expert.area != null && expert.servicesIds.isNotEmpty()
     }
 
     private fun notifyFailure(failure: Failure) {

@@ -88,7 +88,7 @@ class SetupContentViewModel(
 
     private fun verifyExpertPart(expert: Expert) {
         profileConfigured.value = expert.info.name != null
-        servicesConfigured.value = expert.services.isNotEmpty()
+        servicesConfigured.value = expert.servicesIds.isNotEmpty()
         locationConfigured.value = expert.area != null
     }
 

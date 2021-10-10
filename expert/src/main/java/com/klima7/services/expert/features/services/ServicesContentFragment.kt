@@ -20,13 +20,13 @@ class ServicesContentFragment: FailurableFragment<FragmentServicesBinding>() {
         fragment.setName("Hydraulik")
         fragment.setServices(
             listOf(
-                Service("1", "abc", "2", "abc"),
-                Service("1", "abc", "2", "abc"),
-                Service("1", "abc", "2", "abc"),
-                Service("1", "abc", "2", "abc"),
-                Service("1", "abc", "2", "abc"),
-                Service("1", "abc", "2", "abc"),
-                Service("1", "abc", "2", "abc"),
+                Service("1", "abc", "2"),
+                Service("1", "abc", "2"),
+                Service("1", "abc", "2"),
+                Service("1", "abc", "2"),
+                Service("1", "abc", "2"),
+                Service("1", "abc", "2"),
+                Service("1", "abc", "2"),
             )
         )
 
@@ -34,18 +34,13 @@ class ServicesContentFragment: FailurableFragment<FragmentServicesBinding>() {
         fragment2.setName("Elektryk")
         fragment2.setServices(
             listOf(
-                Service("1", "Wymiana instalacji elektrycznej", "2", "abc"),
-                Service("1", "Wymiana instalacji elektrycznej", "2", "abc"),
-                Service("1", "Wymiana instalacji elektrycznej", "2", "abc"),
-                Service("1", "Wymiana instalacji elektrycznej", "2", "abc"),
-                Service("1", "Wymiana instalacji elektrycznej", "2", "abc"),
+                Service("1", "Wymiana instalacji elektrycznej", "2"),
+                Service("1", "Wymiana instalacji elektrycznej", "2"),
+                Service("1", "Wymiana instalacji elektrycznej", "2"),
+                Service("1", "Wymiana instalacji elektrycznej", "2"),
+                Service("1", "Wymiana instalacji elektrycznej", "2"),
             )
         )
-    }
-
-    override fun init() {
-        super.init()
-
     }
 
 }

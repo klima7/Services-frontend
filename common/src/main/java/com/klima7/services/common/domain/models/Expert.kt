@@ -4,7 +4,7 @@ data class Expert(
     val uid: String,
     val info: ExpertInfo,
     val area: WorkingArea?,
-    val services: Set<Service>,
+    val servicesIds: Set<String>,
     val ratingsCount: Int,
     val commentsCount: Int,
     val rating: Double,
