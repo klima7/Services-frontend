@@ -20,6 +20,7 @@
         <entry key="..\:/PI/src/frontend/expert/src/main/res/drawable/icon_foreground.xml" value="0.1935185185185185" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/drawable/shape_icon_background.xml" value="0.1935185185185185" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout-land/fragment_login.xml" value="0.176" />
+        <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/entry_services_list.xml" value="0.16757246376811594" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_avatar.xml" value="0.19157608695652173" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_info.xml" value="0.176" />
@@ -29,6 +30,8 @@
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_offers.xml" value="0.21195652173913043" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_profile.xml" value="0.264" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_services.xml" value="0.1526268115942029" />
+        <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_services_category.xml" value="0.18115942028985507" />
+        <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_services_list_entry.xml" value="0.536" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_setup.xml" value="0.2" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_setup_content.xml" value="0.17028985507246377" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_splash.xml" value="0.264" />

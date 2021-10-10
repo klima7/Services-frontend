@@ -23,9 +23,9 @@ abstract class BaseFragment<DB: ViewDataBinding>: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         if(savedInstanceState == null)
             onFirstCreation()
-        binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         return binding.root
     }
 

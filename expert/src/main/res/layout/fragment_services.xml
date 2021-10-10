@@ -40,23 +40,18 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <com.robertlevonyan.views.expandable.Expandable
-                    android:id="@+id/expandable"
+                <fragment
+                    android:id="@+id/services_category"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:exp_animateExpand="true">
+                    android:name="com.klima7.services.expert.features.services.ServicesCategoryFragment" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Header" />
+                <fragment
+                    android:id="@+id/services_category2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:name="com.klima7.services.expert.features.services.ServicesCategoryFragment" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Content" />
-
-                </com.robertlevonyan.views.expandable.Expandable>
 
             </LinearLayout>
 
