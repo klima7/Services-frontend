@@ -31,11 +31,28 @@ class ServicesContentViewModel(
             })
         }
 
+//        viewModelScope.launch {
+//            servicesRepository.getAllCategories().foldS({ failure ->
+//                Log.i("Hello", "getAllCategories in ViewModel failure $failure")
+//            }, { services ->
+//                Log.i("Hello", "getAllCategories in ViewModel success: $services")
+//            })
+//        }
+
+
         viewModelScope.launch {
-            servicesRepository.getAllCategories().foldS({ failure ->
-                Log.i("Hello", "getAllCategories in ViewModel failure $failure")
+            servicesRepository.getCategory("Builder").foldS({ failure ->
+                Log.i("Hello", "getCategory in ViewModel failure $failure")
             }, { services ->
-                Log.i("Hello", "getAllCategories in ViewModel success: $services")
+                Log.i("Hello", "getCategory in ViewModel success: $services")
+            })
+        }
+
+        viewModelScope.launch {
+            servicesRepository.getService("service1").foldS({ failure ->
+                Log.i("Hello", "getService in ViewModel failure $failure")
+            }, { services ->
+                Log.i("Hello", "getService in ViewModel success: $services")
             })
         }
     }

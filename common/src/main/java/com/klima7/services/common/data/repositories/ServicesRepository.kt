@@ -4,9 +4,9 @@ import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import com.klima7.services.common.data.converters.toDomain
 import com.klima7.services.common.data.entities.CategoryEntity
-import com.klima7.services.common.data.entities.ExpertEntity
 import com.klima7.services.common.data.entities.ServiceEntity
 import com.klima7.services.common.data.entities.toDomain
+import com.klima7.services.common.data.getCacheFirst
 import com.klima7.services.common.domain.models.Category
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.domain.models.Service
@@ -50,11 +50,37 @@ class ServicesRepository(
     }
 
     suspend fun getService(serviceId: String): Outcome<Failure, Service> {
-        return Outcome.Failure(Failure.NotFoundFailure)
+        try {
+            val snapshot = firestore
+                .collection("services")
+                .document(serviceId)
+                .getCacheFirst()
+                .await()
+            val serviceEntity = snapshot.toObject(ServiceEntity::class.java)
+            val service = serviceEntity?.toDomain(snapshot.id)
+                ?: return Outcome.Failure(Failure.NotFoundFailure)
+            return Outcome.Success(service)
+        } catch(e: Exception) {
+            Log.e("Hello", "Error during getService", e)
+            return Outcome.Failure(e.toDomain())
+        }
     }
 
     suspend fun getCategory(categoryId: String): Outcome<Failure, Category> {
-        return Outcome.Failure(Failure.NotFoundFailure)
+        try {
+            val snapshot = firestore
+                .collection("categories")
+                .document(categoryId)
+                .getCacheFirst()
+                .await()
+            val categoryEntity = snapshot.toObject(CategoryEntity::class.java)
+            val category = categoryEntity?.toDomain(snapshot.id)
+                ?: return Outcome.Failure(Failure.NotFoundFailure)
+            return Outcome.Success(category)
+        } catch(e: Exception) {
+            Log.e("Hello", "Error during getExpert", e)
+            return Outcome.Failure(e.toDomain())
+        }
     }
 
 }
