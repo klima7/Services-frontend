@@ -13,7 +13,6 @@ import com.klima7.services.expert.R
 class ServicesCategoryAdapter(context: Context, private var selectableServices: List<SelectableService> = listOf()) :
     BaseAdapter() {
 
-    private var context: Context? = context
     private var inflater: LayoutInflater? = null
 
     init {
@@ -34,7 +33,6 @@ class ServicesCategoryAdapter(context: Context, private var selectableServices: 
         checkbox?.text = selectableService.service.name
         checkbox?.isChecked = selectableService.selected
         checkbox?.setOnClickListener {
-            Log.i("Checkbox", "Clicked. Selected: ${checkbox.isChecked}")
             selectableService.selected = checkbox.isChecked
         }
         return vi!!
