@@ -11,7 +11,7 @@ import com.klima7.services.common.R
 import com.klima7.services.common.data.di.EMULATE
 import de.hdodenhof.circleimageview.CircleImageView
 
-class Avatar(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
+class AvatarView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
 
     private var uri: String = ""
     private var signature: Long = System.currentTimeMillis()
@@ -25,7 +25,7 @@ class Avatar(context: Context, attrs: AttributeSet?) : FrameLayout(context, attr
             try {
                 uri = getText(R.styleable.Avatar_uri)?.toString() ?: ""
             } finally {
-                inflate(context, R.layout.view_avatar, this@Avatar)
+                inflate(context, R.layout.view_avatar, this@AvatarView)
                 recycle()
 
                 refreshView()

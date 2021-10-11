@@ -48,7 +48,7 @@
                     android:orientation="horizontal"
                     >
 
-                    <com.klima7.services.common.lib.avatar.Avatar
+                    <com.klima7.services.common.lib.avatar.AvatarView
                         android:id="@+id/info_avatar"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
