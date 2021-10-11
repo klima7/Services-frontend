@@ -1,7 +1,6 @@
 package com.klima7.services.expert.features.services.multicategory
 
 import android.content.Context
-import android.util.Log
 import com.klima7.services.common.domain.models.Service
 import com.klima7.services.common.lib.base.BaseFragment
 import com.klima7.services.common.lib.base.BaseViewModel
@@ -17,21 +16,18 @@ class ServicesMultiCategoriesFragment: BaseFragment<FragmentServicesMultiCategor
     override val viewModel: ServicesMultiCategoryViewModel by viewModel()
 
     private var categoriesFragments = mutableListOf<ServicesCategoryFragment>()
-    private var lastServices = listOf<CategorizedServices>()
-    private var attached = false
+    private var pendingServices: List<CategorizedServices>? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        Log.i("Hello", "Attaching ${viewModel.categorizedServices.value}")
-        if(viewModel.categorizedServices.value?.size == 0)
-            viewModel.setServices(lastServices)
-        attached = true
+        val constPendingServices = pendingServices
+        if(constPendingServices != null)
+            viewModel.setServices(constPendingServices)
     }
 
     fun setServices(services: List<CategorizedServices>) {
-        Log.i("Hello", "Setting services in fragment $services")
-        if(!attached)
-            lastServices = services
+        if(activity == null)
+            pendingServices = services
         else
             viewModel.setServices(services)
     }
@@ -48,22 +44,21 @@ class ServicesMultiCategoriesFragment: BaseFragment<FragmentServicesMultiCategor
     }
 
     private fun updateServices(categorizedServices: List<CategorizedServices>) {
-        Log.i("Hello", "Noticing change in fragment")
-
         val container = binding.servicesMultiCategoryContainer
 
+        // Removing old
         var transaction = childFragmentManager.beginTransaction()
         categoriesFragments.forEach { fragment ->
             transaction = transaction.remove(fragment)
         }
 
+        // Adding new
         val newCategoriesFragments = mutableListOf<ServicesCategoryFragment>()
         categorizedServices.forEach { categorizedService ->
             val fragment = ServicesCategoryFragment()
             fragment.setServices(categorizedService)
             newCategoriesFragments.add(fragment)
             transaction = transaction.add(container.id, fragment, categorizedService.category.id)
-            Log.i("Hello", "Adding fragment")
         }
 
         transaction.commit()
