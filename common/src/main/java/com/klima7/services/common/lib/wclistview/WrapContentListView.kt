@@ -1,8 +1,7 @@
-package com.klima7.services.common.lib.wclv
+package com.klima7.services.common.lib.wclistview
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.View.MeasureSpec
 import android.widget.ListView
 
 

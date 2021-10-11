@@ -30,13 +30,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.klima7.services.common.lib.wclv.WrapContentListView
+            <com.klima7.services.common.lib.wclistview.WrapContentListView
                 android:id="@+id/services_category_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-            </com.klima7.services.common.lib.wclv.WrapContentListView>
+            </com.klima7.services.common.lib.wclistview.WrapContentListView>
 
         </LinearLayout>
 
