@@ -1,6 +1,7 @@
 package com.klima7.services.common.lib
 
 import android.app.Application
+import com.google.android.libraries.places.api.Places
 import com.klima7.services.common.data.di.commonViewModelsModule
 import com.klima7.services.common.data.di.reposModule
 import com.klima7.services.common.data.di.sourcesModule
@@ -15,6 +16,7 @@ abstract class App: Application() {
     override fun onCreate() {
         super.onCreate()
         setupKoin()
+        initPlaces()
     }
 
     private fun setupKoin() {
@@ -24,6 +26,10 @@ abstract class App: Application() {
             modules(commonModules)
             modules(customModules)
         }
+    }
+
+    private fun initPlaces() {
+        Places.initialize(applicationContext, "AIzaSyBgMDgU7VMT0L35f9TL4LZUB7v3NAS9pTs")
     }
 
     private val commonModules = listOf(sourcesModule, reposModule, commonViewModelsModule)
