@@ -1,15 +1,14 @@
 package com.klima7.services.expert.features.location
 
 import android.graphics.Color
-import android.location.Geocoder
 import android.util.Log
 import com.google.android.gms.common.api.Status
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.Circle
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.api.model.TypeFilter
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
@@ -17,7 +16,6 @@ import com.google.android.libraries.places.widget.listener.PlaceSelectionListene
 import com.klima7.services.common.lib.failurable.FailurableFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentLoginBinding
-import com.klima7.services.expert.features.info.InfoContentViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.LatLngBounds
@@ -27,14 +25,18 @@ import kotlin.math.cos
 class LocationContentFragment: FailurableFragment<FragmentLoginBinding>(), OnMapReadyCallback {
 
     override val layoutId = R.layout.fragment_location
-    override val viewModel: InfoContentViewModel by viewModel()
+    override val viewModel: LocationContentViewModel by viewModel()
 
-    private lateinit var mMap: GoogleMap
+    private lateinit var map: GoogleMap
+    private lateinit var circle: Circle
 
     override fun onFirstCreation() {
         super.onFirstCreation()
-        viewModel.infoStarted()
         configureFragment()
+    }
+
+    override fun init() {
+        super.init()
 
         val mapFragment = childFragmentManager.findFragmentById(R.id.location_map_fragment) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -54,22 +56,10 @@ class LocationContentFragment: FailurableFragment<FragmentLoginBinding>(), OnMap
         // Set up a PlaceSelectionListener to handle the response.
         autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(place: Place) {
-                // TODO: Get info about the selected place.
-                Log.i(TAG, "Place: ${place.name}, ${place.id}")
-                val geocoder = Geocoder(requireContext())
-                val pos = geocoder.getFromLocationName(place.name, 1)[0]
-                val latLng = place.latLng!!
-
-                val bounds = createLatLngBounds(latLng, 2.0)
-                mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 10))
-
-                val circleOptions = CircleOptions()
-                circleOptions.center(latLng)
-                circleOptions.radius(2000.0)
-                circleOptions.strokeColor(Color.BLACK)
-                circleOptions.fillColor(0x30ff0000);
-                circleOptions.strokeWidth(2F);
-                mMap.addCircle(circleOptions)
+                val latLng = place.latLng
+                if(latLng != null) {
+                    viewModel.locationSelected(latLng)
+                }
             }
 
             override fun onError(status: Status) {
@@ -77,6 +67,52 @@ class LocationContentFragment: FailurableFragment<FragmentLoginBinding>(), OnMap
                 Log.i(TAG, "An error occurred: $status")
             }
         })
+    }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        map = googleMap
+
+        map.uiSettings.isScrollGesturesEnabled = false
+        map.uiSettings.isRotateGesturesEnabled = false
+        map.uiSettings.isZoomGesturesEnabled = false
+        map.uiSettings.isZoomControlsEnabled = false
+        map.uiSettings.isTiltGesturesEnabled = false
+        map.uiSettings.isCompassEnabled = false
+        map.uiSettings.isIndoorLevelPickerEnabled = false
+        map.uiSettings.isMapToolbarEnabled = false
+        map.uiSettings.isMyLocationButtonEnabled = false
+        map.uiSettings.isScrollGesturesEnabledDuringRotateOrZoom = false
+
+        val circleOptions = CircleOptions().apply {
+            center(LatLng(0.0, 0.0))
+            radius(0.0)
+            strokeColor(Color.BLACK)
+            fillColor(0x30ff0000)
+            strokeWidth(2F)
+        }
+
+        circle = map.addCircle(circleOptions)
+
+        viewModel.locationCoordinates.observe(viewLifecycleOwner) {
+            updateMap(viewModel.locationCoordinates.value, viewModel.radius.value?.toDouble())
+        }
+
+        viewModel.radius.observe(viewLifecycleOwner) {
+            updateMap(viewModel.locationCoordinates.value, viewModel.radius.value?.toDouble())
+        }
+    }
+
+    private fun updateMap(location: LatLng?, radius: Double?) {
+        Log.i("Hello", "updateMap")
+
+        if(location == null || radius == null)
+            return
+
+        val bounds = createLatLngBounds(location, radius)
+        map.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 10))
+
+        circle.radius = radius * 1000
+        circle.center = location
     }
 
     private fun createLatLngBounds(center: LatLng, radius: Double): LatLngBounds {
@@ -90,29 +126,8 @@ class LocationContentFragment: FailurableFragment<FragmentLoginBinding>(), OnMap
         val latitude = start.latitude
         val longitude = start.longitude
 
-        val newLati  = latitude  + (dy / rEarth) * (180 / Math.PI)
+        val newLatitude  = latitude  + (dy / rEarth) * (180 / Math.PI)
         val newLongitude = longitude + (dx / rEarth) * (180 / Math.PI) / cos(latitude * Math.PI/180)
-        return LatLng(newLati, newLongitude)
-    }
-
-    override fun onMapReady(googleMap: GoogleMap) {
-        Log.i("Hello", "Map ready")
-        mMap = googleMap
-
-        // Add a marker in Sydney and move the camera
-        mMap.uiSettings.isScrollGesturesEnabled = false
-        mMap.uiSettings.isRotateGesturesEnabled = false
-        mMap.uiSettings.isZoomGesturesEnabled = false
-        mMap.uiSettings.isZoomControlsEnabled = false
-        mMap.uiSettings.isTiltGesturesEnabled = false
-        mMap.uiSettings.isCompassEnabled = false
-        mMap.uiSettings.isIndoorLevelPickerEnabled = false
-        mMap.uiSettings.isMapToolbarEnabled = false
-        mMap.uiSettings.isMyLocationButtonEnabled = false
-        mMap.uiSettings.isScrollGesturesEnabledDuringRotateOrZoom = false
-
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        return LatLng(newLatitude, newLongitude)
     }
 }

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.klima7.services.expert.features.info.InfoContentViewModel" />
+            type="com.klima7.services.expert.features.location.LocationContentViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,6 +48,14 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.slider.Slider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:valueFrom="1.0"
+                    android:valueTo="30.0"
+                    android:stepSize="1.0"
+                    android:value="@={viewmodel.radius}" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
