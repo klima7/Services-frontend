@@ -35,7 +35,6 @@ class ServicesMultiCategoriesFragment: BaseFragment<FragmentServicesMultiCategor
     }
 
     fun getSelectedServices(): List<Service> {
-        Log.i("Hello", "List size: ${fragmentsTags.size}")
         val selectedServices = mutableListOf<Service>()
         fragmentsTags.forEach { tag ->
             val fragment = getFragment(tag)

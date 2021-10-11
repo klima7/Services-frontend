@@ -20,10 +20,6 @@ class ServicesContentFragment: FailurableFragment<FragmentServicesBinding>() {
     override fun onFirstCreation() {
         super.onFirstCreation()
         viewModel.servicesStarted()
-
-        val fragment = childFragmentManager.findFragmentById(R.id.services_category) as ServicesCategoryFragment
-        fragment.setServices(CategorizedServices(Category("id", "Kategoria"), listOf(Service("id", "id", "Usługa"))))
-
     }
 
     override fun init() {
@@ -47,9 +43,5 @@ class ServicesContentFragment: FailurableFragment<FragmentServicesBinding>() {
         val fragment = childFragmentManager.findFragmentById(R.id.services_services) as ServicesMultiCategoriesFragment
         val selected = fragment.getSelectedServices()
         Log.i("Hello", "Selected services: $selected")
-
-//        val fragment = childFragmentManager.findFragmentById(R.id.services_category) as ServicesCategoryFragment
-//        val selected = fragment.getSelectedServices()
-//        Log.i("Hello", "Selected services: $selected")
     }
 }

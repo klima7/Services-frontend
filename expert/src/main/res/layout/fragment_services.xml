@@ -45,13 +45,6 @@
                     android:layout_height="wrap_content"
                     android:name="com.klima7.services.expert.features.services.multicategory.ServicesMultiCategoriesFragment" />
 
-                <fragment
-                    android:id="@+id/services_category"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:name="com.klima7.services.expert.features.services.category.ServicesCategoryFragment" />
-
-
             </LinearLayout>
 
         </ScrollView>
