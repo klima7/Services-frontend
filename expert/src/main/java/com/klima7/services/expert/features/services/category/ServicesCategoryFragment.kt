@@ -5,7 +5,8 @@ import com.klima7.services.common.domain.models.Service
 import com.klima7.services.common.lib.base.BaseFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentServicesCategoryBinding
-import com.klima7.services.expert.features.services.CategorizedServices
+import com.klima7.services.expert.features.services.CategorizedSelectableServices
+import com.klima7.services.expert.features.services.SelectableService
 import com.robertlevonyan.views.expandable.Expandable
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -15,7 +16,7 @@ class ServicesCategoryFragment: BaseFragment<FragmentServicesCategoryBinding>(),
     override val viewModel: ServicesCategoryViewModel by viewModel()
 
     private lateinit var adapter: ServicesCategoryAdapter
-    private var pendingServices: CategorizedServices? = null
+    private var pendingSelectableServices: CategorizedSelectableServices? = null
 
     override fun init() {
         super.init()
@@ -29,7 +30,7 @@ class ServicesCategoryFragment: BaseFragment<FragmentServicesCategoryBinding>(),
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        val constPendingServices = pendingServices
+        val constPendingServices = pendingSelectableServices
         if(constPendingServices != null)
             viewModel.setServices(constPendingServices)
     }
@@ -43,11 +44,11 @@ class ServicesCategoryFragment: BaseFragment<FragmentServicesCategoryBinding>(),
         }
     }
 
-    fun setServices(cServices: CategorizedServices) {
+    fun setServices(cSelectableServices: CategorizedSelectableServices) {
         if(activity == null)
-            pendingServices = cServices
+            pendingSelectableServices = cSelectableServices
         else
-            viewModel.setServices(cServices)
+            viewModel.setServices(cSelectableServices)
     }
 
     fun getSelectedServices(): List<Service> = viewModel.getSelectedServices()

@@ -3,7 +3,8 @@ package com.klima7.services.expert.features.services.category
 import androidx.lifecycle.MutableLiveData
 import com.klima7.services.common.domain.models.Service
 import com.klima7.services.common.lib.base.BaseViewModel
-import com.klima7.services.expert.features.services.CategorizedServices
+import com.klima7.services.expert.features.services.CategorizedSelectableServices
+import com.klima7.services.expert.features.services.SelectableService
 
 class ServicesCategoryViewModel: BaseViewModel() {
 
@@ -11,9 +12,9 @@ class ServicesCategoryViewModel: BaseViewModel() {
     val services = MutableLiveData<List<SelectableService>>()
     val expanded = MutableLiveData(false)
 
-    fun setServices(cServices: CategorizedServices) {
-        services.value = cServices.services.map { SelectableService(it) }
-        name.value = cServices.category.name
+    fun setServices(cSelectableServices: CategorizedSelectableServices) {
+        services.value = cSelectableServices.services
+        name.value = cSelectableServices.category.name
     }
 
     fun getSelectedServices(): List<Service> {

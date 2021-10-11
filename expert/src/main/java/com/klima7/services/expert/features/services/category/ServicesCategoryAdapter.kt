@@ -7,6 +7,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.widget.CheckBox
 import com.klima7.services.expert.R
+import com.klima7.services.expert.features.services.SelectableService
 
 
 class ServicesCategoryAdapter(context: Context, private var selectableServices: List<SelectableService> = listOf()) :

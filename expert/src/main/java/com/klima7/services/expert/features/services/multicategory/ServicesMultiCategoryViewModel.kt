@@ -1,27 +1,18 @@
 package com.klima7.services.expert.features.services.multicategory
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
-import com.klima7.services.common.domain.models.Service
 import com.klima7.services.common.lib.base.BaseViewModel
-import com.klima7.services.expert.features.services.CategorizedServices
+import com.klima7.services.expert.features.services.CategorizedSelectableServices
 
 class ServicesMultiCategoryViewModel: BaseViewModel() {
 
-    val categorizedServices = MutableLiveData<List<CategorizedServices>>()
-
     sealed class Event: BaseEvent() {
-        data class SetServices(val services: List<CategorizedServices>): Event()
+        data class SetServices(val services: List<CategorizedSelectableServices>): Event()
     }
 
-    fun setServices(services: List<CategorizedServices>) {
+    fun setServices(services: List<CategorizedSelectableServices>) {
         Log.i("Hello", "Setting services in viewModel: $services")
-        this.categorizedServices.value = services
         sendEvent(Event.SetServices(services))
-    }
-
-    fun getSelectedServices(): List<Service> {
-        return listOf()
     }
 
 }

@@ -2,13 +2,12 @@ package com.klima7.services.expert.features.services.multicategory
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import com.klima7.services.common.domain.models.Service
 import com.klima7.services.common.lib.base.BaseFragment
 import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentServicesMultiCategoryBinding
-import com.klima7.services.expert.features.services.CategorizedServices
+import com.klima7.services.expert.features.services.CategorizedSelectableServices
 import com.klima7.services.expert.features.services.category.ServicesCategoryFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -18,7 +17,7 @@ class ServicesMultiCategoriesFragment: BaseFragment<FragmentServicesMultiCategor
     override val viewModel: ServicesMultiCategoryViewModel by viewModel()
 
     private var fragmentsTags = mutableListOf<String>()
-    private var pendingServices: List<CategorizedServices>? = null
+    private var pendingServices: List<CategorizedSelectableServices>? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -27,7 +26,7 @@ class ServicesMultiCategoriesFragment: BaseFragment<FragmentServicesMultiCategor
             viewModel.setServices(constPendingServices)
     }
 
-    fun setServices(services: List<CategorizedServices>) {
+    fun setServices(services: List<CategorizedSelectableServices>) {
         if(activity == null)
             pendingServices = services
         else
@@ -50,7 +49,7 @@ class ServicesMultiCategoriesFragment: BaseFragment<FragmentServicesMultiCategor
         }
     }
 
-    private fun updateServices(categorizedServices: List<CategorizedServices>) {
+    private fun updateServices(categorizedSelectableServices: List<CategorizedSelectableServices>) {
         val container = binding.servicesMultiCategoryContainer
 
         // Removing old
@@ -63,7 +62,7 @@ class ServicesMultiCategoriesFragment: BaseFragment<FragmentServicesMultiCategor
 
         // Adding new
         val newFragmentsTags = mutableListOf<String>()
-        categorizedServices.forEach { categorizedService ->
+        categorizedSelectableServices.forEach { categorizedService ->
             val fragment = ServicesCategoryFragment()
             fragment.setServices(categorizedService)
             val tag = categorizedService.category.id
