@@ -1,6 +1,8 @@
 package com.klima7.services.expert.features.services.multicategory
 
 import android.content.Context
+import android.os.Bundle
+import android.util.Log
 import com.klima7.services.common.domain.models.Service
 import com.klima7.services.common.lib.base.BaseFragment
 import com.klima7.services.common.lib.base.BaseViewModel
@@ -15,7 +17,7 @@ class ServicesMultiCategoriesFragment: BaseFragment<FragmentServicesMultiCategor
     override val layoutId = R.layout.fragment_services_multi_category
     override val viewModel: ServicesMultiCategoryViewModel by viewModel()
 
-    private var categoriesFragments = mutableListOf<ServicesCategoryFragment>()
+    private var fragmentsTags = mutableListOf<String>()
     private var pendingServices: List<CategorizedServices>? = null
 
     override fun onAttach(context: Context) {
@@ -33,7 +35,13 @@ class ServicesMultiCategoriesFragment: BaseFragment<FragmentServicesMultiCategor
     }
 
     fun getSelectedServices(): List<Service> {
-        return listOf()
+        Log.i("Hello", "List size: ${fragmentsTags.size}")
+        val selectedServices = mutableListOf<Service>()
+        fragmentsTags.forEach { tag ->
+            val fragment = getFragment(tag)
+            selectedServices.addAll(fragment?.getSelectedServices() ?: listOf())
+        }
+        return selectedServices
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
@@ -48,21 +56,41 @@ class ServicesMultiCategoriesFragment: BaseFragment<FragmentServicesMultiCategor
 
         // Removing old
         var transaction = childFragmentManager.beginTransaction()
-        categoriesFragments.forEach { fragment ->
-            transaction = transaction.remove(fragment)
+        fragmentsTags.forEach { tag ->
+            val fragment = getFragment(tag)
+            if(fragment != null)
+                transaction = transaction.remove(fragment)
         }
 
         // Adding new
-        val newCategoriesFragments = mutableListOf<ServicesCategoryFragment>()
+        val newFragmentsTags = mutableListOf<String>()
         categorizedServices.forEach { categorizedService ->
             val fragment = ServicesCategoryFragment()
             fragment.setServices(categorizedService)
-            newCategoriesFragments.add(fragment)
-            transaction = transaction.add(container.id, fragment, categorizedService.category.id)
+            val tag = categorizedService.category.id
+            transaction = transaction.add(container.id, fragment, tag)
+            newFragmentsTags.add(tag)
         }
 
         transaction.commit()
-        categoriesFragments = newCategoriesFragments
+        fragmentsTags = newFragmentsTags
+    }
+
+    private fun getFragment(tag: String): ServicesCategoryFragment? {
+        return childFragmentManager.findFragmentByTag(tag) as ServicesCategoryFragment?
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putStringArray("fragmentsTags", fragmentsTags.toTypedArray())
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        if(savedInstanceState != null) {
+            val array = savedInstanceState.getStringArray("fragmentsTags") ?: arrayOf()
+            fragmentsTags = array.toMutableList()
+        }
     }
 
 }

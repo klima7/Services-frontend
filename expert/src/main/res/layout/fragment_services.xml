@@ -14,14 +14,13 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/services_save_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             android:text="Zapisz"
-            android:onClick="@{() -> viewmodel.saveClicked()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -30,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="2dp"
-            app:layout_constraintBottom_toTopOf="@+id/button4"
+            app:layout_constraintBottom_toTopOf="@+id/services_save_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -45,6 +44,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:name="com.klima7.services.expert.features.services.multicategory.ServicesMultiCategoriesFragment" />
+
+                <fragment
+                    android:id="@+id/services_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:name="com.klima7.services.expert.features.services.category.ServicesCategoryFragment" />
+
 
             </LinearLayout>
 

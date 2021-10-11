@@ -15,17 +15,11 @@ class ServicesContentViewModel(
     private val servicesRepository: ServicesRepository
 ): FailurableViewModel() {
 
-    val categorizedServices = MutableLiveData<List<CategorizedServices>>()
-
     sealed class Event: BaseEvent() {
         data class SetServices(val services: List<CategorizedServices>): Event()
     }
 
     fun doSomething() {
-
-    }
-
-    fun saveClicked() {
 
     }
 
