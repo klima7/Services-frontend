@@ -106,8 +106,21 @@ class ExpertsRepository(
         }
     }
 
-    suspend fun setProvidedServicesIds(services: List<Int>): Outcome<Failure, None> {
-        return Outcome.Success(None())
+    suspend fun setServicesIds(services: List<String>): Outcome<Failure, None> {
+        return try {
+            val data = hashMapOf(
+                "services" to services,
+            )
+
+            functions
+                .getHttpsCallable("experts-setServices")
+                .call(data)
+                .await()
+            Outcome.Success(None())
+        } catch(e: Exception) {
+            Log.e("Hello", "Error while setServicesIds", e)
+            Outcome.Failure(e.toDomain())
+        }
     }
 
     // setLocation

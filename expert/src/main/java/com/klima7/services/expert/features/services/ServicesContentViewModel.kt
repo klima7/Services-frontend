@@ -3,16 +3,19 @@ package com.klima7.services.expert.features.services
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.data.repositories.ServicesRepository
 import com.klima7.services.common.domain.models.Category
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.domain.models.Service
+import com.klima7.services.common.domain.util.None
 import com.klima7.services.common.domain.util.Outcome
 import com.klima7.services.common.lib.failurable.FailurableViewModel
 import kotlinx.coroutines.launch
 
 class ServicesContentViewModel(
-    private val servicesRepository: ServicesRepository
+    private val servicesRepository: ServicesRepository,
+    private val expertsRepository: ExpertsRepository
 ): FailurableViewModel() {
 
     sealed class Event: BaseEvent() {
@@ -65,4 +68,19 @@ class ServicesContentViewModel(
         return Outcome.Success(result)
     }
 
+    fun servicesSelected(services: List<Service>) {
+        Log.i("Hello", "Selected services: $services")
+        val servicesIds = services.map { it.id }
+        viewModelScope.launch {
+            setServicesIds(servicesIds)
+        }
+    }
+
+    private suspend fun setServicesIds(servicesIds: List<String>) {
+        expertsRepository.setServicesIds(servicesIds).foldS({ failure ->
+            Log.i("Hello", "Error during setServicesIds: $failure")
+        }, {
+            Log.i("Hello", "Success during setServicesIds")
+        })
+    }
 }

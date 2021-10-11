@@ -42,6 +42,6 @@ class ServicesContentFragment: FailurableFragment<FragmentServicesBinding>() {
     private fun saveButtonClicked() {
         val fragment = childFragmentManager.findFragmentById(R.id.services_services) as ServicesMultiCategoriesFragment
         val selected = fragment.getSelectedServices()
-        Log.i("Hello", "Selected services: $selected")
+        viewModel.servicesSelected(selected)
     }
 }
