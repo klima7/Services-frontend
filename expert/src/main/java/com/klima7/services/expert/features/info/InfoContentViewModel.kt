@@ -9,8 +9,8 @@ import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.domain.models.Expert
 import com.klima7.services.common.domain.models.ExpertInfo
 import com.klima7.services.common.domain.models.Failure
-import com.klima7.services.common.domain.util.None
-import com.klima7.services.common.domain.util.Outcome
+import com.klima7.services.common.domain.utils.None
+import com.klima7.services.common.domain.utils.Outcome
 import com.klima7.services.common.lib.failurable.FailurableViewModel
 import com.klima7.services.common.lib.utils.CombinedLiveData
 import com.klima7.services.common.lib.utils.nullifyBlank

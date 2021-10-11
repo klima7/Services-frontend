@@ -8,7 +8,7 @@ import com.klima7.services.common.data.repositories.ServicesRepository
 import com.klima7.services.common.domain.models.Category
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.domain.models.Service
-import com.klima7.services.common.domain.util.Outcome
+import com.klima7.services.common.domain.utils.Outcome
 import com.klima7.services.common.lib.failurable.FailurableViewModel
 import kotlinx.coroutines.launch
 
