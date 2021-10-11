@@ -22,21 +22,27 @@ class ServicesContentViewModel(
         data class SetServices(val services: List<CategorizedSelectableServices>): Event()
     }
 
-    fun doSomething() {
-
-    }
-
     override fun refresh() {
-        doSomething()
+        update()
     }
 
     fun servicesStarted() {
+        update()
+    }
+
+    private fun update() {
         viewModelScope.launch {
             getCategorizedSelectableServices().foldS({ failure ->
+                showFailure(failure)
                 Log.i("Hello", "getCategorizedServices in ViewModel failure $failure")
             }, { services ->
-                Log.i("Hello", "getCategorizedServices in ViewModel success: $services")
-                sendEvent(Event.SetServices(services))
+                if(services.isEmpty())
+                    showFailure(Failure.InternetFailure)
+                else {
+                    Log.i("Hello", "getCategorizedServices in ViewModel success: $services")
+                    sendEvent(Event.SetServices(services))
+                    showMain()
+                }
             })
         }
     }
