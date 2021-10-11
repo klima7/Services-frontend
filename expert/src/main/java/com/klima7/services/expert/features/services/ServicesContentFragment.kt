@@ -1,10 +1,10 @@
 package com.klima7.services.expert.features.services
 
-import com.klima7.services.common.domain.models.Service
 import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.common.lib.failurable.FailurableFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentServicesBinding
+import com.klima7.services.expert.features.services.multicategory.ServicesMultiCategoriesFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

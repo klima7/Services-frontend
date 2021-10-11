@@ -1,4 +1,4 @@
-package com.klima7.services.expert.features.services
+package com.klima7.services.expert.features.services.multicategory
 
 import android.content.Context
 import android.util.Log
@@ -7,6 +7,8 @@ import com.klima7.services.common.lib.base.BaseFragment
 import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentServicesMultiCategoryBinding
+import com.klima7.services.expert.features.services.CategorizedServices
+import com.klima7.services.expert.features.services.category.ServicesCategoryFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ServicesMultiCategoriesFragment: BaseFragment<FragmentServicesMultiCategoryBinding>() {

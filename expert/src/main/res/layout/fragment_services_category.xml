@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.klima7.services.expert.features.services.ServicesCategoryViewModel" />
+            type="com.klima7.services.expert.features.services.category.ServicesCategoryViewModel" />
     </data>
 
     <com.robertlevonyan.views.expandable.Expandable

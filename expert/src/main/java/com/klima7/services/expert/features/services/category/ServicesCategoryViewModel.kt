@@ -1,8 +1,9 @@
-package com.klima7.services.expert.features.services
+package com.klima7.services.expert.features.services.category
 
 import androidx.lifecycle.MutableLiveData
 import com.klima7.services.common.domain.models.Service
 import com.klima7.services.common.lib.base.BaseViewModel
+import com.klima7.services.expert.features.services.CategorizedServices
 
 class ServicesCategoryViewModel: BaseViewModel() {
 

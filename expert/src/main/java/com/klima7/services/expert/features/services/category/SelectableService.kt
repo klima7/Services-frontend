@@ -1,4 +1,4 @@
-package com.klima7.services.expert.features.services
+package com.klima7.services.expert.features.services.category
 
 import com.klima7.services.common.domain.models.Service
 
