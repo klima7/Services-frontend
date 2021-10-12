@@ -1,54 +1,53 @@
 package com.klima7.services.expert.features.location
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.klima7.services.common.lib.failurable.FailurableViewModel
+import com.klima7.services.common.lib.utils.CombinedLiveData
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.math.cos
 
 class LocationContentViewModel: FailurableViewModel() {
 
+    // Constants
     private val POLAND_BOUNDS = LatLngBounds(
         LatLng(49.0, 14.0),
         LatLng(55.0, 25.0),
     )
 
-    init {
-        viewModelScope.launch {
-            delay(5000)
-            currentScrollPosition.value = 10.0f
-            maxScrollPosition.value = 10.0f
-        }
-    }
-
+    // Internal data
     private var locationId: String? = null
 
+    // Other
     val visibleName = MutableLiveData<String>("Warszawa")
-
-    // Preview map
-    val visibleCenterCoordinates = MutableLiveData<LatLng>()
-    val visibleRadius = MutableLiveData<Int?>(null)
-    val visibleBounds = MutableLiveData(POLAND_BOUNDS)
 
     // Slider
     val currentScrollPosition = MutableLiveData(1.0F)
     val maxScrollPosition = MutableLiveData(100.0F)
-    val scrollEnabled = MutableLiveData(true)
+    val scrollEnabled = visibleName.map { it.isNotEmpty() }
 
-    fun locationChanged(id: String, name: String, coords: LatLng) {
-        locationId = id
+    // Preview map
+    val circleVisible = MutableLiveData(true)
+    val visibleCenterCoordinates = MutableLiveData<LatLng>(LatLng(52.22, 21.0))
+    val visibleRadius = currentScrollPosition.map { it.toInt() }
+    val visibleBounds = CombinedLiveData(circleVisible, visibleCenterCoordinates, visibleRadius) { getBounds() }
 
-        visibleCenterCoordinates.value = coords
-        visibleName.value = name
-        updateBounds()
-    }
-
-    fun radiusChanged(newRadius: Float) {
-        visibleRadius.value = newRadius.toInt()
-        updateBounds()
+    fun locationChanged(newLocation: ChangedLocation?) {
+        if(newLocation != null) {
+            visibleCenterCoordinates.value = newLocation.coords
+            visibleName.value = newLocation.name
+            circleVisible.value = true
+            locationId = newLocation.id
+        }
+        else {
+            circleVisible.value = false
+            visibleName.value = ""
+            locationId = null
+        }
     }
 
     fun saveClicked() {
@@ -58,14 +57,12 @@ class LocationContentViewModel: FailurableViewModel() {
     override fun refresh() {
     }
 
-    private fun updateBounds() {
-        val constCoordinates = visibleCenterCoordinates.value
-        visibleBounds.value = if(constCoordinates == null) {
-            POLAND_BOUNDS
-        }
-        else {
-            createCircleBounds(constCoordinates, visibleRadius.value?.toDouble() ?: 0.0)
-        }
+    private fun getBounds(): LatLngBounds {
+        val visible = circleVisible.value ?: false
+        if(!visible) return POLAND_BOUNDS
+        val center = visibleCenterCoordinates.value ?: return POLAND_BOUNDS
+        val radius = visibleRadius.value ?: 10
+        return createCircleBounds(center, radius.toDouble())
     }
 
     private fun createCircleBounds(center: LatLng, radius: Double): LatLngBounds {

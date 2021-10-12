@@ -58,8 +58,8 @@ class LocationContentFragment: FailurableFragment<FragmentLoginBinding>(), OnMap
                 val constName = place.name
                 val constCoords = place.latLng
                 if(constId != null && constName != null && constCoords != null) {
-//                    val location = Location(constId, constName, constCoords)
-                    viewModel.locationChanged(constId, constName, constCoords)
+                    val location = ChangedLocation(constId, constName, constCoords)
+                    viewModel.locationChanged(location)
                 }
             }
 
@@ -71,6 +71,7 @@ class LocationContentFragment: FailurableFragment<FragmentLoginBinding>(), OnMap
         autocompleteFragment.setOnPlaceClearedListener(object : OnClearListener {
             override fun onClear() {
                 Log.i("Hello", "Clear detected")
+                viewModel.locationChanged(null)
             }
         })
 
@@ -111,6 +112,10 @@ class LocationContentFragment: FailurableFragment<FragmentLoginBinding>(), OnMap
 
         viewModel.visibleCenterCoordinates.observe(viewLifecycleOwner) {
             circle.center = it
+        }
+
+        viewModel.circleVisible.observe(viewLifecycleOwner) {
+            circle.isVisible = it
         }
 
         viewModel.visibleRadius.observe(viewLifecycleOwner) { radius ->
