@@ -20,7 +20,7 @@ val viewModelsModule = module {
     viewModel { SetupContentViewModel(get(), get()) }
     viewModel { InfoContentViewModel(get(), get()) }
     viewModel { ServicesContentViewModel(get(), get(), get()) }
-    viewModel { LocationContentViewModel() }
+    viewModel { LocationContentViewModel(get()) }
     viewModel { ServicesCategoryViewModel() }
     viewModel { ServicesMultiCategoryViewModel() }
 

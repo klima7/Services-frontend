@@ -1,21 +1,22 @@
 package com.klima7.services.expert.features.location
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
-import com.klima7.services.common.domain.models.Coordinates
-import com.klima7.services.common.domain.models.NamedLocation
 import com.klima7.services.common.domain.models.WorkingArea
 import com.klima7.services.common.lib.converters.toLatLng
 import com.klima7.services.common.lib.failurable.FailurableViewModel
 import com.klima7.services.common.lib.utils.CombinedLiveData
-import kotlinx.coroutines.delay
+import com.klima7.services.expert.usecases.GetCurrentExpertUC
 import kotlinx.coroutines.launch
 import kotlin.math.cos
 
-class LocationContentViewModel: FailurableViewModel() {
+class LocationContentViewModel(
+    private val getCurrentExpertUC: GetCurrentExpertUC
+): FailurableViewModel() {
 
     // Constants
     private val POLAND_BOUNDS = LatLngBounds(
@@ -29,7 +30,7 @@ class LocationContentViewModel: FailurableViewModel() {
     // Input values
     val placeName = MutableLiveData<String>()
     val placeCoords = MutableLiveData<LatLng>()
-    val radiusFloat = MutableLiveData<Float>()
+    val radiusFloat = MutableLiveData(1F)
 
     // Derived values
     val radius = radiusFloat.map { it.toInt() }
@@ -38,7 +39,7 @@ class LocationContentViewModel: FailurableViewModel() {
     val mapBounds = CombinedLiveData(circleVisible, placeCoords, radius) { getBounds() }
 
     fun locationStarted() {
-
+        fetchAndInitWithWorkingArea()
     }
 
     fun locationSelected(newPlaceId: String, newPlaceName: String, newPlaceCoords: LatLng) {
@@ -57,9 +58,22 @@ class LocationContentViewModel: FailurableViewModel() {
     }
 
     override fun refresh() {
+        fetchAndInitWithWorkingArea()
+    }
+
+    private fun fetchAndInitWithWorkingArea() {
+        viewModelScope.launch {
+            getCurrentExpertUC.execute().foldS({ failure ->
+                showFailure(failure)
+            }, { expert ->
+                initWithWorkingArea(expert.area)
+                showMain()
+            })
+        }
     }
 
     private fun initWithWorkingArea(wa: WorkingArea?) {
+        Log.i("Hello", "initWithWorkingArea $wa")
         if(wa != null) {
             placeName.value = wa.location.name
             radiusFloat.value = wa.radius.toFloat()
