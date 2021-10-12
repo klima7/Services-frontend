@@ -28,7 +28,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_marginBottom="2dp"
             app:layout_constraintBottom_toTopOf="@+id/services_save_button"
             app:layout_constraintEnd_toEndOf="parent"
@@ -38,34 +38,101 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="10dp">
 
-                <fragment
-                    android:id="@+id/location_autocomplete_fragment"
-                    android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <com.google.android.material.slider.Slider
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:valueFrom="1.0"
-                    android:valueTo="30.0"
-                    android:stepSize="1.0"
-                    android:value="@={viewmodel.radius}" />
+                    android:text="Centralna lokalizacja"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="17sp"
+                    />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="20dp"
                     app:cardCornerRadius="12dp"
-                    app:cardElevation="12dp">
+                    app:cardElevation="8dp">
+
+                    <fragment
+                        android:id="@+id/location_autocomplete_fragment"
+                        android:name="com.klima7.services.expert.features.location.ClearableAutocompleteSupportFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.cardview.widget.CardView>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Promień działania"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="17sp"
+                    />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.slider.Slider
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:valueFrom="1.0"
+                            android:valueTo="@{viewmodel.maxScrollPosition}"
+                            android:stepSize="1.0"
+                            android:value="@={viewmodel.currentScrollPosition}"
+                            android:enabled="@{viewmodel.scrollEnabled}" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:text="@{Integer.toString(viewmodel.visibleRadius) + ` km`}"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginRight="8dp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Podgląd"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="17sp"
+                    />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="8dp">
 
                     <fragment
                         android:id="@+id/location_map_fragment"

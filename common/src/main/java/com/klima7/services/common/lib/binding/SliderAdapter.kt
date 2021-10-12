@@ -14,3 +14,14 @@ fun setSliderListeners(slider: Slider, attrChange: InverseBindingListener) {
         attrChange.onChange()
     }
 }
+
+@BindingAdapter(value = ["onValueChangeListener"])
+fun setOnValueChangeListener(slider: Slider, listener: OnValueChangeListener) {
+    slider.addOnChangeListener { _: Slider?, value: Float, _: Boolean ->
+        listener.onValueChanged(value)
+    }
+}
+
+interface OnValueChangeListener {
+    fun onValueChanged(value: Float)
+}

@@ -22,7 +22,7 @@ class SplashViewModel(
 
     fun splashStarted() {
         viewModelScope.launch {
-            delay(1000)
+//            delay(1000)
             goToNextScreen()
         }
     }
