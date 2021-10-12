@@ -5,6 +5,10 @@ import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
+import com.klima7.services.common.domain.models.Coordinates
+import com.klima7.services.common.domain.models.NamedLocation
+import com.klima7.services.common.domain.models.WorkingArea
+import com.klima7.services.common.lib.converters.toLatLng
 import com.klima7.services.common.lib.failurable.FailurableViewModel
 import com.klima7.services.common.lib.utils.CombinedLiveData
 import kotlinx.coroutines.delay
@@ -20,34 +24,32 @@ class LocationContentViewModel: FailurableViewModel() {
     )
 
     // Internal data
-    private var locationId: String? = null
+    private var placeId: String? = null
 
-    // Other
-    val visibleName = MutableLiveData<String>("Warszawa")
+    // Input values
+    val placeName = MutableLiveData<String>()
+    val placeCoords = MutableLiveData<LatLng>()
+    val radiusFloat = MutableLiveData<Float>()
 
-    // Slider
-    val currentScrollPosition = MutableLiveData(1.0F)
-    val maxScrollPosition = MutableLiveData(100.0F)
-    val scrollEnabled = visibleName.map { it.isNotEmpty() }
+    // Derived values
+    val radius = radiusFloat.map { it.toInt() }
+    val scrollEnabled = placeName.map { it.isNotEmpty() }
+    val circleVisible = placeName.map { it.isNotEmpty() }
+    val mapBounds = CombinedLiveData(circleVisible, placeCoords, radius) { getBounds() }
 
-    // Preview map
-    val circleVisible = MutableLiveData(true)
-    val visibleCenterCoordinates = MutableLiveData<LatLng>(LatLng(52.22, 21.0))
-    val visibleRadius = currentScrollPosition.map { it.toInt() }
-    val visibleBounds = CombinedLiveData(circleVisible, visibleCenterCoordinates, visibleRadius) { getBounds() }
+    fun locationStarted() {
 
-    fun locationChanged(newLocation: ChangedLocation?) {
-        if(newLocation != null) {
-            visibleCenterCoordinates.value = newLocation.coords
-            visibleName.value = newLocation.name
-            circleVisible.value = true
-            locationId = newLocation.id
-        }
-        else {
-            circleVisible.value = false
-            visibleName.value = ""
-            locationId = null
-        }
+    }
+
+    fun locationSelected(newPlaceId: String, newPlaceName: String, newPlaceCoords: LatLng) {
+        placeCoords.value = newPlaceCoords
+        placeName.value = newPlaceName
+        placeId = newPlaceId
+    }
+
+    fun locationCleared() {
+        placeName.value = ""
+        placeId = null
     }
 
     fun saveClicked() {
@@ -57,11 +59,22 @@ class LocationContentViewModel: FailurableViewModel() {
     override fun refresh() {
     }
 
+    private fun initWithWorkingArea(wa: WorkingArea?) {
+        if(wa != null) {
+            placeName.value = wa.location.name
+            radiusFloat.value = wa.radius.toFloat()
+            placeCoords.value = wa.location.coords.toLatLng()
+        }
+        else {
+            placeName.value = ""
+        }
+    }
+
     private fun getBounds(): LatLngBounds {
         val visible = circleVisible.value ?: false
         if(!visible) return POLAND_BOUNDS
-        val center = visibleCenterCoordinates.value ?: return POLAND_BOUNDS
-        val radius = visibleRadius.value ?: 10
+        val center = placeCoords.value ?: return POLAND_BOUNDS
+        val radius = radius.value ?: 10
         return createCircleBounds(center, radius.toDouble())
     }
 

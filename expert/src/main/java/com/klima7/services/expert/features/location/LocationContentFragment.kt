@@ -2,7 +2,6 @@ package com.klima7.services.expert.features.location
 
 import android.graphics.Color
 import android.util.Log
-import android.widget.Button
 import com.google.android.gms.common.api.Status
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -31,6 +30,7 @@ class LocationContentFragment: FailurableFragment<FragmentLoginBinding>(), OnMap
     override fun onFirstCreation() {
         super.onFirstCreation()
         configureAutocomplete()
+        viewModel.locationStarted()
     }
 
     override fun init() {
@@ -38,7 +38,7 @@ class LocationContentFragment: FailurableFragment<FragmentLoginBinding>(), OnMap
         val mapFragment = childFragmentManager.findFragmentById(R.id.location_map_fragment) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        viewModel.currentScrollPosition.observe(viewLifecycleOwner) {
+        viewModel.radiusFloat.observe(viewLifecycleOwner) {
             Log.i("Hello", "Scroll position: $it")
         }
     }
@@ -58,8 +58,7 @@ class LocationContentFragment: FailurableFragment<FragmentLoginBinding>(), OnMap
                 val constName = place.name
                 val constCoords = place.latLng
                 if(constId != null && constName != null && constCoords != null) {
-                    val location = ChangedLocation(constId, constName, constCoords)
-                    viewModel.locationChanged(location)
+                    viewModel.locationSelected(constId, constName, constCoords)
                 }
             }
 
@@ -71,14 +70,11 @@ class LocationContentFragment: FailurableFragment<FragmentLoginBinding>(), OnMap
         autocompleteFragment.setOnPlaceClearedListener(object : OnClearListener {
             override fun onClear() {
                 Log.i("Hello", "Clear detected")
-                viewModel.locationChanged(null)
+                viewModel.locationCleared()
             }
         })
 
-        val button = Button(requireContext())
-        button.setOnClickListener {  }
-
-        viewModel.visibleName.observe(viewLifecycleOwner) { name ->
+        viewModel.placeName.observe(viewLifecycleOwner) { name ->
             autocompleteFragment.setText(name)
         }
 
@@ -110,23 +106,20 @@ class LocationContentFragment: FailurableFragment<FragmentLoginBinding>(), OnMap
 
         circle = map.addCircle(circleOptions)
 
-        viewModel.visibleCenterCoordinates.observe(viewLifecycleOwner) {
-            circle.center = it
+        viewModel.placeCoords.observe(viewLifecycleOwner) { center ->
+            circle.center = center
         }
 
-        viewModel.circleVisible.observe(viewLifecycleOwner) {
-            circle.isVisible = it
+        viewModel.circleVisible.observe(viewLifecycleOwner) { visible ->
+            circle.isVisible = visible
         }
 
-        viewModel.visibleRadius.observe(viewLifecycleOwner) { radius ->
-            circle.radius = if(radius != null)
-                radius.toDouble() * 1000
-            else
-                0.0
+        viewModel.radius.observe(viewLifecycleOwner) { radius ->
+            circle.radius = radius.toDouble() * 1000
         }
 
-        viewModel.visibleBounds.observe(viewLifecycleOwner) {
-            map.moveCamera(CameraUpdateFactory.newLatLngBounds(it, 10))
+        viewModel.mapBounds.observe(viewLifecycleOwner) { bounds ->
+            map.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 20))
         }
     }
 

@@ -97,16 +97,16 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:valueFrom="1.0"
-                            android:valueTo="@{viewmodel.maxScrollPosition}"
+                            android:valueTo="100.0"
                             android:stepSize="1.0"
-                            android:value="@={viewmodel.currentScrollPosition}"
+                            android:value="@={viewmodel.radiusFloat}"
                             android:enabled="@{viewmodel.scrollEnabled}" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:text="@{Integer.toString(viewmodel.visibleRadius) + ` km`}"
+                            android:text="@{Integer.toString(viewmodel.radius) + ` km`}"
                             android:layout_marginBottom="8dp"
                             android:layout_marginRight="8dp" />
 
