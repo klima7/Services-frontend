@@ -12,6 +12,7 @@ import com.klima7.services.common.data.entities.toDomain
 import com.klima7.services.common.domain.models.Expert
 import com.klima7.services.common.domain.models.ExpertInfo
 import com.klima7.services.common.domain.models.Failure
+import com.klima7.services.common.domain.models.WorkingArea
 import com.klima7.services.common.domain.utils.None
 import com.klima7.services.common.domain.utils.Outcome
 import kotlinx.coroutines.tasks.await
@@ -122,5 +123,21 @@ class ExpertsRepository(
         }
     }
 
-    // setLocation
+    suspend fun setWorkingArea(placeId: String, radius: Int): Outcome<Failure, None> {
+        return try {
+            val data = hashMapOf(
+                "placeId" to placeId,
+                "radius" to radius,
+            )
+
+            functions
+                .getHttpsCallable("experts-setWorkingArea")
+                .call(data)
+                .await()
+            Outcome.Success(None())
+        } catch(e: Exception) {
+            Log.e("Hello", "Error while setWorkingArea", e)
+            Outcome.Failure(e.toDomain())
+        }
+    }
 }
