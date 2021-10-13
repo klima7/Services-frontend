@@ -56,7 +56,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     app:cardCornerRadius="12dp"
-                    app:cardElevation="8dp">
+                    app:cardElevation="8dp"
+                    app:cardBackgroundColor="@color/light_gray">
 
                     <fragment
                         android:id="@+id/location_autocomplete_fragment"
@@ -87,7 +88,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     app:cardCornerRadius="12dp"
-                    app:cardElevation="8dp">
+                    app:cardElevation="8dp"
+                    app:cardBackgroundColor="@color/light_gray">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -133,7 +135,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     app:cardCornerRadius="12dp"
-                    app:cardElevation="8dp">
+                    app:cardElevation="8dp"
+                    app:cardBackgroundColor="@color/light_gray">
 
                     <fragment
                         android:id="@+id/location_map_fragment"
