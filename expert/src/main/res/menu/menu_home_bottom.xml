@@ -3,11 +3,15 @@
 
     <item
         android:id="@+id/jobsFragment"
-        android:title="Zlecenia" />
+        android:title="Zlecenia"
+        android:icon="@drawable/icon_job" />
     <item
         android:id="@+id/offersFragment"
-        android:title="Oferty" />
+        android:title="Oferty"
+        android:icon="@drawable/icon_offer"/>
     <item
         android:id="@+id/profileFragment"
-        android:title="Mój profil" />
+        android:title="Mój profil"
+        android:icon="@drawable/icon_profile" />
+
 </menu>
