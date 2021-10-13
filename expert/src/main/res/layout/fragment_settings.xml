@@ -31,6 +31,26 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <include
+                    layout="@layout/part_settings_tile"
+                    app:title="@{`Zmiana profilu`}"
+                    />
+
+                <include
+                    layout="@layout/part_settings_tile"
+                    app:title="@{`Zmiana świadczonych usług`}"
+                    />
+
+                <include
+                    layout="@layout/part_settings_tile"
+                    app:title="@{`Zmiana lokalizacji`}"
+                    />
+
+                <include
+                    layout="@layout/part_settings_tile"
+                    app:title="@{`Wyloguj się`}"
+                    />
+
             </LinearLayout>
 
         </ScrollView>

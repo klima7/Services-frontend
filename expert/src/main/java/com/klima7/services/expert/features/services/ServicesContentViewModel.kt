@@ -54,9 +54,9 @@ class ServicesContentViewModel(
             if (uid == null)
                 return@foldS Outcome.Failure(Failure.PermissionFailure)
             return@foldS expertsRepository.getExpert(uid).foldS({ failure ->
-                return@foldS Outcome.Failure(failure)
+                Outcome.Failure(failure)
             }, { expert ->
-                return@foldS getAllServicesPart(expert.servicesIds)
+                getAllServicesPart(expert.servicesIds)
             })
         })
     }
