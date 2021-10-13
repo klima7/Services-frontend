@@ -7,7 +7,8 @@
         <import type="android.view.View"/>
         <variable name="title" type="java.lang.String"/>
         <variable name="image" type="Integer" />
-        <variable name="action" type="View.OnClickListener"/>
+        <variable name="logout" type="Boolean"/>
+        <variable name="action" type="View.OnClickListener" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -20,7 +21,8 @@
         android:onClick="@{action}"
         android:clickable="true"
         android:focusable="true"
-        android:foreground="?android:attr/selectableItemBackground">
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardBackgroundColor="@{logout ? @color/logout_button_color : @android:color/white}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -49,7 +51,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/imageView5"
                 app:layout_constraintStart_toEndOf="@+id/imageView4"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/black"/>
 
             <ImageView
                 android:id="@+id/imageView5"
