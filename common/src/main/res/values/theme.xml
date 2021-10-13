@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.Common" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
+        <!-- Activity background -->
+        <item name = "android:windowBackground">@color/white</item>
+
+    </style>
+
+</resources>

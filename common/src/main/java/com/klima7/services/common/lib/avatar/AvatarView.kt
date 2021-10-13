@@ -35,7 +35,7 @@ class AvatarView(context: Context, attrs: AttributeSet?) : FrameLayout(context, 
 
     override fun onSaveInstanceState(): Parcelable? {
         val bundle = Bundle()
-        bundle.putLong("signature", signature!!)
+        bundle.putLong("signature", signature)
         bundle.putParcelable("superState", super.onSaveInstanceState())
         return bundle
     }
