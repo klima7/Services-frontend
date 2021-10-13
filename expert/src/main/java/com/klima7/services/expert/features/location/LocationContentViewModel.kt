@@ -6,6 +6,7 @@ import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
+import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.domain.models.WorkingArea
 import com.klima7.services.common.lib.converters.toLatLng
 import com.klima7.services.common.lib.failurable.FailurableViewModel
@@ -15,6 +16,7 @@ import kotlinx.coroutines.launch
 import kotlin.math.cos
 
 class LocationContentViewModel(
+    private val expertsRepository: ExpertsRepository,
     private val getCurrentExpertUC: GetCurrentExpertUC
 ): FailurableViewModel() {
 
@@ -36,6 +38,7 @@ class LocationContentViewModel(
     val radius = radiusFloat.map { it.toInt() }
     val scrollEnabled = placeName.map { it.isNotEmpty() }
     val circleVisible = placeName.map { it.isNotEmpty() }
+    val saveEnabled = placeName.map { it.isNotEmpty() }
     val mapBounds = CombinedLiveData(circleVisible, placeCoords, radius) { getBounds() }
 
     fun locationStarted() {
@@ -54,7 +57,7 @@ class LocationContentViewModel(
     }
 
     fun saveClicked() {
-
+        saveWorkingArea()
     }
 
     override fun refresh() {
@@ -81,6 +84,20 @@ class LocationContentViewModel(
         }
         else {
             placeName.value = ""
+        }
+    }
+
+    private fun saveWorkingArea() {
+        val constPlaceId = placeId
+        val constRadius = radius.value
+        if(constPlaceId != null && constRadius != null) {
+            viewModelScope.launch {
+                expertsRepository.setWorkingArea(constPlaceId, constRadius).fold({ failure ->
+                    Log.i("Hello", "setWorkingArea failure in VM: $failure")
+                }, {
+                    Log.i("Hello", "setWorkingArea success in VM")
+                })
+            }
         }
     }
 

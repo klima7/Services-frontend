@@ -75,7 +75,8 @@ class SplashViewModel(
 
     private fun checkExpertReadyPart(expert: Expert) {
         if(isExpertReady(expert)) {
-            sendEvent(Event.ShowHomeScreen)
+//            sendEvent(Event.ShowHomeScreen)
+            sendEvent(Event.ShowSetupScreen)
         }
         else if(!expert.fromCache) {
             sendEvent(Event.ShowSetupScreen)
