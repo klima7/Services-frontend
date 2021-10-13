@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.klima7.services.expert.features.settings.SettingsViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -35,24 +41,28 @@
                     layout="@layout/part_settings_tile"
                     app:title="@{`Zmiana profilu`}"
                     app:image="@{com.klima7.services.common.R.drawable.icon_profile}"
+                    app:action="@{() -> viewmodel.profileClicked()}"
                     />
 
                 <include
                     layout="@layout/part_settings_tile"
                     app:title="@{`Zmiana świadczonych usług`}"
                     app:image="@{com.klima7.services.expert.R.drawable.icon_service}"
+                    app:action="@{() -> viewmodel.servicesClicked()}"
                     />
 
                 <include
                     layout="@layout/part_settings_tile"
                     app:title="@{`Zmiana lokalizacji`}"
                     app:image="@{com.klima7.services.expert.R.drawable.icon_location}"
+                    app:action="@{() -> viewmodel.locationClicked()}"
                     />
 
                 <include
                     layout="@layout/part_settings_tile"
                     app:title="@{`Wyloguj się`}"
                     app:image="@{com.klima7.services.common.R.drawable.icon_logout}"
+                    app:action="@{() -> viewmodel.logoutClicked()}"
                     />
 
             </LinearLayout>

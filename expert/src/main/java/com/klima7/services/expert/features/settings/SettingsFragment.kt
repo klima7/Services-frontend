@@ -1,9 +1,14 @@
 package com.klima7.services.expert.features.settings
 
+import android.content.Intent
 import com.klima7.services.common.lib.base.BaseFragment
+import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentSettingsBinding
+import com.klima7.services.expert.features.info.InfoActivity
+import com.klima7.services.expert.features.location.LocationActivity
 import com.klima7.services.expert.features.login.LoginViewModel
+import com.klima7.services.expert.features.services.ServicesActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SettingsFragment: BaseFragment<FragmentSettingsBinding>() {
@@ -18,4 +23,27 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>() {
         toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
     }
 
+    override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
+        super.handleEvent(event)
+        when(event) {
+            SettingsViewModel.Event.ShowInfoScreen -> showInfoScreen()
+            SettingsViewModel.Event.ShowLocationScreen -> showLocationScreen()
+            SettingsViewModel.Event.ShowServicesScreen -> showServicesScreen()
+        }
+    }
+
+    private fun showInfoScreen() {
+        val intent = Intent(activity, InfoActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun showLocationScreen() {
+        val intent = Intent(activity, LocationActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun showServicesScreen() {
+        val intent = Intent(activity, ServicesActivity::class.java)
+        startActivity(intent)
+    }
 }

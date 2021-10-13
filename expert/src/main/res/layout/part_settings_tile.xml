@@ -6,10 +6,8 @@
     <data>
         <import type="android.view.View"/>
         <variable name="title" type="java.lang.String"/>
-        <variable
-            name="image"
-            type="Integer" />
-<!--        <variable name="action" type="View.OnClickListener"/>-->
+        <variable name="image" type="Integer" />
+        <variable name="action" type="View.OnClickListener"/>
     </data>
 
     <androidx.cardview.widget.CardView
@@ -18,7 +16,11 @@
         android:layout_marginHorizontal="8dp"
         android:layout_marginTop="8dp"
         app:cardCornerRadius="8dp"
-        app:cardElevation="8dp">
+        app:cardElevation="8dp"
+        android:onClick="@{action}"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
