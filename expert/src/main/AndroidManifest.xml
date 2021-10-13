@@ -33,6 +33,7 @@
         <activity android:name=".features.info.InfoActivity" />
         <activity android:name=".features.services.ServicesActivity" />
         <activity android:name=".features.location.LocationActivity" />
+        <activity android:name=".features.settings.SettingsActivity" />
 
         <activity android:name="com.canhub.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
