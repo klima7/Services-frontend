@@ -1,14 +1,19 @@
 package com.klima7.services.expert.features.settings
 
-import android.util.Log
+import androidx.lifecycle.viewModelScope
+import com.klima7.services.common.data.repositories.AuthRepository
 import com.klima7.services.common.lib.base.BaseViewModel
+import kotlinx.coroutines.launch
 
-class SettingsViewModel: BaseViewModel() {
+class SettingsViewModel(
+    private val authRepository: AuthRepository
+): BaseViewModel() {
 
     sealed class Event: BaseEvent() {
         object ShowInfoScreen: Event()
         object ShowServicesScreen: Event()
         object ShowLocationScreen: Event()
+        object ShowSplashScreen: Event()
     }
 
     fun profileClicked() {
@@ -23,8 +28,13 @@ class SettingsViewModel: BaseViewModel() {
         sendEvent(Event.ShowLocationScreen)
     }
 
-    fun logoutClicked() {
-        Log.i("Hello", "Logout clicked")
+    fun signOutClicked() {
+        signOut()
+    }
+
+    private fun signOut() {
+        authRepository.signOut()
+        sendEvent(Event.ShowSplashScreen)
     }
 
 }

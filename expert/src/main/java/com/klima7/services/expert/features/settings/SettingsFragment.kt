@@ -9,6 +9,7 @@ import com.klima7.services.expert.features.info.InfoActivity
 import com.klima7.services.expert.features.location.LocationActivity
 import com.klima7.services.expert.features.login.LoginViewModel
 import com.klima7.services.expert.features.services.ServicesActivity
+import com.klima7.services.expert.features.splash.SplashActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SettingsFragment: BaseFragment<FragmentSettingsBinding>() {
@@ -29,6 +30,7 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>() {
             SettingsViewModel.Event.ShowInfoScreen -> showInfoScreen()
             SettingsViewModel.Event.ShowLocationScreen -> showLocationScreen()
             SettingsViewModel.Event.ShowServicesScreen -> showServicesScreen()
+            SettingsViewModel.Event.ShowSplashScreen -> showSplashScreen()
         }
     }
 
@@ -45,5 +47,12 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>() {
     private fun showServicesScreen() {
         val intent = Intent(activity, ServicesActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun showSplashScreen() {
+        val intent = Intent(activity, SplashActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
+        startActivity(intent)
+        requireActivity().finish()
     }
 }

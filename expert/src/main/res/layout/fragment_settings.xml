@@ -62,7 +62,7 @@
                     layout="@layout/part_settings_tile"
                     app:title="@{`Wyloguj się`}"
                     app:image="@{com.klima7.services.common.R.drawable.icon_logout}"
-                    app:action="@{() -> viewmodel.logoutClicked()}"
+                    app:action="@{() -> viewmodel.signOutClicked()}"
                     />
 
             </LinearLayout>

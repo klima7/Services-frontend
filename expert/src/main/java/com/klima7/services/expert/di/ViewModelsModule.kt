@@ -24,6 +24,6 @@ val viewModelsModule = module {
     viewModel { LocationContentViewModel(get(), get()) }
     viewModel { ServicesCategoryViewModel() }
     viewModel { ServicesMultiCategoryViewModel() }
-    viewModel { SettingsViewModel() }
+    viewModel { SettingsViewModel(get()) }
 
 }
