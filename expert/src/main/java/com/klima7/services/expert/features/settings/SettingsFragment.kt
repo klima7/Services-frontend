@@ -11,4 +11,11 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>() {
     override val layoutId = R.layout.fragment_settings
     override val viewModel: SettingsViewModel by viewModel()
 
+    override fun init() {
+        val toolbar = binding.settingsToolbar
+        toolbar.title = "Ustawienia"
+        toolbar.setNavigationIcon(R.drawable.icon_arrow_back)
+        toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
+    }
+
 }
