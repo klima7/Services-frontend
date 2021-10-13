@@ -16,20 +16,21 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/linearProgressIndicator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:indeterminate="true"
+            android:translationZ="90dp"
+            android:visibility="@{viewmodel.loadingVisible ? View.VISIBLE : View.INVISIBLE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:visibility="@{viewmodel.loadingVisible ? View.VISIBLE : View.INVISIBLE}"
-            android:translationZ="90dp"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ScrollView
+            android:id="@+id/scrollView3"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/services_save_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -45,15 +46,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:gravity="center"
-                    android:orientation="horizontal"
-                    >
+                    android:orientation="horizontal">
 
                     <com.klima7.services.common.lib.avatar.AvatarView
                         android:id="@+id/info_avatar"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
-                        custom:uri="@{viewmodel.avatar}"
-                        />
+                        custom:uri="@{viewmodel.avatar}" />
 
                     <Space
                         android:layout_width="16dp"
@@ -61,14 +60,14 @@
 
                     <Button
                         android:id="@+id/button3"
+                        uri="https://www.treehugger.com/thmb/KEjCLYSU5ZV8viCZ_uLzJ09j640=/1536x1536/smart/filters:no_upscale()/__opt__aboutcom__coeus__resources__content_migration__mnn__images__2020__05__Cat-sits-circle-square-8a72c79cd59f4a859c49a8981e029c7f.jpg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:onClick="@{() -> viewmodel.changeProfileImageClicked()}"
                         android:text="Zmień zdjęcie"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        uri="https://www.treehugger.com/thmb/KEjCLYSU5ZV8viCZ_uLzJ09j640=/1536x1536/smart/filters:no_upscale()/__opt__aboutcom__coeus__resources__content_migration__mnn__images__2020__05__Cat-sits-circle-square-8a72c79cd59f4a859c49a8981e029c7f.jpg"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </LinearLayout>
 
@@ -77,20 +76,18 @@
                     android:id="@+id/info_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:hint="Imie i nazwisko"
                     app:helperText="Pole wymagane"
-                    app:startIconDrawable="@drawable/icon_person"
-                    android:layout_marginBottom="8dp"
-                    >
+                    app:startIconDrawable="@drawable/icon_person">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLength="40"
-                        android:singleLine="true"
                         android:scrollHorizontally="true"
-                        android:text="@={viewmodel.name}"
-                        />
+                        android:singleLine="true"
+                        android:text="@={viewmodel.name}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,20 +96,18 @@
                     android:id="@+id/info_company"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Firma"
-                    app:startIconDrawable="@drawable/icon_company"
-                    app:helperText=" "
                     android:layout_marginBottom="8dp"
-                    >
+                    android:hint="Firma"
+                    app:helperText=" "
+                    app:startIconDrawable="@drawable/icon_company">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLength="40"
-                        android:singleLine="true"
                         android:scrollHorizontally="true"
-                        android:text="@={viewmodel.company}"
-                        />
+                        android:singleLine="true"
+                        android:text="@={viewmodel.company}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -121,13 +116,12 @@
                     android:id="@+id/info_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:hint="Opis"
-                    app:startIconDrawable="@drawable/icon_description"
                     app:counterEnabled="true"
                     app:counterMaxLength="500"
                     app:helperText=" "
-                    android:layout_marginBottom="8dp"
-                    >
+                    app:startIconDrawable="@drawable/icon_description">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/shipper_field"
@@ -135,13 +129,12 @@
                         android:layout_height="150dp"
                         android:gravity="top"
                         android:inputType="textMultiLine"
+                        android:maxLength="500"
                         android:overScrollMode="always"
                         android:padding="25dp"
                         android:scrollbarStyle="insideInset"
                         android:scrollbars="vertical"
-                        android:maxLength="500"
-                        android:text="@={viewmodel.description}"
-                        />
+                        android:text="@={viewmodel.description}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -150,20 +143,18 @@
                     android:id="@+id/info_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Numer telefonu"
-                    app:startIconDrawable="@drawable/icon_phone"
-                    app:helperText=" "
                     android:layout_marginBottom="8dp"
-                    >
+                    android:hint="Numer telefonu"
+                    app:helperText=" "
+                    app:startIconDrawable="@drawable/icon_phone">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="phone"
                         android:digits="0123456789+"
+                        android:inputType="phone"
                         android:maxLength="9"
-                        android:text="@={viewmodel.phone}"
-                        />
+                        android:text="@={viewmodel.phone}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -172,20 +163,18 @@
                     android:id="@+id/info_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Adres email"
-                    app:startIconDrawable="@drawable/icon_email"
-                    app:helperText=" "
                     android:layout_marginBottom="8dp"
-                    >
+                    android:hint="Adres email"
+                    app:helperText=" "
+                    app:startIconDrawable="@drawable/icon_email">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLength="50"
-                        android:singleLine="true"
                         android:scrollHorizontally="true"
-                        android:text="@={viewmodel.email}"
-                        />
+                        android:singleLine="true"
+                        android:text="@={viewmodel.email}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -194,34 +183,38 @@
                     android:id="@+id/info_website"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Strona internetowa"
-                    app:startIconDrawable="@drawable/icon_website"
-                    app:helperText=" "
                     android:layout_marginBottom="8dp"
-                    >
+                    android:hint="Strona internetowa"
+                    app:helperText=" "
+                    app:startIconDrawable="@drawable/icon_website">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLength="200"
-                        android:singleLine="true"
                         android:scrollHorizontally="true"
-                        android:text="@={viewmodel.website}"
-                        />
+                        android:singleLine="true"
+                        android:text="@={viewmodel.website}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
-
-                <Button
-                    android:id="@+id/services_save_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Zapisz"
-                    android:onClick="@{() -> viewmodel.saveClicked()}"
-                    android:enabled="@{viewmodel.saveButtonEnabled}" />
 
             </LinearLayout>
 
         </ScrollView>
+
+        <Button
+            android:id="@+id/services_save_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginBottom="8dp"
+            android:enabled="@{viewmodel.saveButtonEnabled}"
+            android:onClick="@{() -> viewmodel.saveClicked()}"
+            android:text="Zapisz"
+            android:background="@drawable/rounded_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
