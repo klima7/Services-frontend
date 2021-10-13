@@ -54,14 +54,14 @@
                 <include
                     layout="@layout/part_setup_tile"
                     app:action="@{() -> viewmodel.servicesClicked()}"
-                    app:description="@{`Określ jakie usługi realizujesz, wybierając je z listy`}"
+                    app:description="@{`Określ jakie usługi realizujesz, wybierając je z listy.`}"
                     app:ticked="@{viewmodel.servicesConfigured}"
                     app:title="@{`Określenie usług`}" />
 
                 <include
                     layout="@layout/part_setup_tile"
                     app:action="@{() -> viewmodel.locationClicked()}"
-                    app:description="@{`Określ w jakim obszarze realizujesz swoje usługi`}"
+                    app:description="@{`Określ w jakim obszarze realizujesz swoje usługi.`}"
                     app:ticked="@{viewmodel.locationConfigured}"
                     app:title="@{`Określenie lokalizacji`}" />
 
