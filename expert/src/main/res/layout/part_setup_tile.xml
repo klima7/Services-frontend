@@ -21,7 +21,8 @@
         android:clickable="true"
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
-        android:onClick="@{action}">
+        android:onClick="@{action}"
+        app:cardBackgroundColor="#DCDCDC">
 
         <LinearLayout
             android:layout_width="match_parent"
