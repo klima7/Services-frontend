@@ -41,7 +41,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="16dp"
-                    android:text="Aby korzystać z aplikacji w roli eksperta konieczne jest uzupełnienie najpierw kilku informacji." />
+                    android:text="Aby korzystać z aplikacji w roli eksperta konieczne jest uzupełnienie kilku informacji." />
 
 
                 <include
@@ -54,7 +54,7 @@
                 <include
                     layout="@layout/part_setup_tile"
                     app:action="@{() -> viewmodel.servicesClicked()}"
-                    app:description="@{`Określ jakie usługi jesteś w stanie zrealizować, abyśmy mogli wyświetlać ci pasujące zlecenia`}"
+                    app:description="@{`Określ jakie usługi realizujesz, wybierając je z listy`}"
                     app:ticked="@{viewmodel.servicesConfigured}"
                     app:title="@{`Określenie usług`}" />
 
