@@ -6,6 +6,9 @@
     <data>
         <import type="android.view.View"/>
         <variable name="title" type="java.lang.String"/>
+        <variable
+            name="image"
+            type="Integer" />
 <!--        <variable name="action" type="View.OnClickListener"/>-->
     </data>
 
@@ -14,7 +17,6 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
         android:layout_marginTop="8dp"
-        android:padding="16dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp">
 
@@ -22,13 +24,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="8dp">
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="24dp">
 
             <ImageView
                 android:id="@+id/imageView4"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:src="@drawable/icon_phone"
+                app:imageResource="@{image}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
