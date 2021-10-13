@@ -30,7 +30,7 @@ class SetupContentViewModel(
     }
 
     fun continueClicked() {
-
+        sendEvent(Event.ShowHomeScreen)
     }
 
     fun infoClicked() {
