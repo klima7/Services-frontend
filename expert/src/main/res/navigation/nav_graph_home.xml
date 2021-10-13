@@ -6,14 +6,14 @@
 
     <fragment
         android:id="@+id/jobsFragment"
-        android:name="com.klima7.services.expert.features.home.JobsFragment"
+        android:name="com.klima7.services.expert.features.home.jobs.JobsFragment"
         android:label="Zlecenia" />
     <fragment
         android:id="@+id/offersFragment"
-        android:name="com.klima7.services.expert.features.home.OffersFragment"
+        android:name="com.klima7.services.expert.features.home.offers.OffersFragment"
         android:label="Oferty" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.klima7.services.expert.features.home.ProfileFragment"
+        android:name="com.klima7.services.expert.features.home.profile.ProfileFragment"
         android:label="Mój profil" />
 </navigation>
