@@ -1,6 +1,7 @@
 package com.klima7.services.expert.features.setup
 
 import android.content.Intent
+import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.common.lib.failurable.FailurableFragment
@@ -41,7 +42,9 @@ class SetupContentFragment: FailurableFragment<FragmentSetupBinding>() {
 
     private fun showHomeScreen() {
         val intent = Intent(activity, HomeActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
         startActivity(intent)
+        requireActivity().finish()
     }
 
     private fun showInfoScreen() {

@@ -42,8 +42,6 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
 
     private fun showSettingsScreen() {
         val intent = Intent(activity, SettingsActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
         startActivity(intent)
-        requireActivity().finish()
     }
 }
