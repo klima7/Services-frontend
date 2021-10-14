@@ -16,6 +16,7 @@
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/selector_refresh_button.xml" value="0.25925925925925924" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/selector_rounded_button.xml" value="0.19722222222222222" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/shape_bottomnav_background.xml" value="0.17037037037037037" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/shape_dialog_background.xml" value="0.20185185185185187" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/shape_gray_background.xml" value="0.19444444444444445" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/shape_map_background.xml" value="0.1712962962962963" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/shape_refresh_button_background.xml" value="0.25925925925925924" />
@@ -24,6 +25,7 @@
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/toolbar_background.xml" value="0.20185185185185187" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/activity_layout.xml" value="0.15896739130434784" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_avatar.xml" value="0.19157608695652173" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_dialog.xml" value="0.1644021739130435" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_failurable_wrapper.xml" value="0.20520833333333333" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_failure.xml" value="0.1484375" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_failure_handler.xml" value="0.16927083333333334" />

@@ -8,6 +8,7 @@ import com.canhub.cropper.CropImageView
 import com.canhub.cropper.PickImageContract
 import com.canhub.cropper.options
 import com.klima7.services.common.lib.base.BaseViewModel
+import com.klima7.services.common.lib.dialog.MyDialogFragment
 import com.klima7.services.common.lib.failurable.FailurableFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentInfoBinding
@@ -69,9 +70,14 @@ class InfoContentFragment: FailurableFragment<FragmentInfoBinding>() {
         super.handleEvent(event)
         when(event) {
             InfoContentViewModel.Event.FinishInfo -> finishInfo()
-            InfoContentViewModel.Event.StartProfileImagePicker -> startProfileImagePicker()
+            InfoContentViewModel.Event.StartProfileImagePicker -> showDialog()
             InfoContentViewModel.Event.ShowSaveError -> showSaveError()
         }
+    }
+
+    private fun showDialog() {
+        val dialog = MyDialogFragment()
+        dialog.show(requireActivity().supportFragmentManager, "Dialog")
     }
 
     private fun finishInfo() {
