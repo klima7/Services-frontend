@@ -11,7 +11,7 @@ import com.klima7.services.common.domain.models.ExpertInfo
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.domain.utils.None
 import com.klima7.services.common.domain.utils.Outcome
-import com.klima7.services.common.lib.failurable.FailurableViewModel
+import com.klima7.services.common.lib.failfrag.FailurableViewModel
 import com.klima7.services.common.lib.utils.CombinedLiveData
 import com.klima7.services.common.lib.utils.nullifyBlank
 import kotlinx.coroutines.launch

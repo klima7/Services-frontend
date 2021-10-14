@@ -1,10 +1,9 @@
 package com.klima7.services.expert.features.setup
 
 import android.content.Intent
-import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import com.klima7.services.common.lib.base.BaseViewModel
-import com.klima7.services.common.lib.failurable.FailurableFragment
+import com.klima7.services.common.lib.failfrag.FailurableFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentSetupBinding
 import com.klima7.services.expert.features.home.HomeActivity

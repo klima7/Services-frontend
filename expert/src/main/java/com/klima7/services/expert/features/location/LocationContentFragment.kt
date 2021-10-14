@@ -12,7 +12,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.api.model.TypeFilter
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
-import com.klima7.services.common.lib.failurable.FailurableFragment
+import com.klima7.services.common.lib.failfrag.FailurableFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentLoginBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel

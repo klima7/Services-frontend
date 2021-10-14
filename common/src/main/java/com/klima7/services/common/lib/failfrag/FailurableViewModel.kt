@@ -1,4 +1,4 @@
-package com.klima7.services.common.lib.failurable
+package com.klima7.services.common.lib.failfrag
 
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.lib.base.BaseViewModel

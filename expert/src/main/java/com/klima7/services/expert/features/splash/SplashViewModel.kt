@@ -5,8 +5,7 @@ import com.klima7.services.common.data.repositories.AuthRepository
 import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.domain.models.Expert
 import com.klima7.services.common.domain.models.Failure
-import com.klima7.services.common.lib.failurable.FailurableViewModel
-import kotlinx.coroutines.delay
+import com.klima7.services.common.lib.failfrag.FailurableViewModel
 import kotlinx.coroutines.launch
 
 class SplashViewModel(
