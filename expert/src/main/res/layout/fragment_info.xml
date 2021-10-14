@@ -60,9 +60,9 @@
 
                     <Button
                         android:id="@+id/button3"
-                        uri="https://www.treehugger.com/thmb/KEjCLYSU5ZV8viCZ_uLzJ09j640=/1536x1536/smart/filters:no_upscale()/__opt__aboutcom__coeus__resources__content_migration__mnn__images__2020__05__Cat-sits-circle-square-8a72c79cd59f4a859c49a8981e029c7f.jpg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/rounded_button"
                         android:onClick="@{() -> viewmodel.changeProfileImageClicked()}"
                         android:text="Zmień zdjęcie"
                         app:layout_constraintBottom_toBottomOf="parent"
