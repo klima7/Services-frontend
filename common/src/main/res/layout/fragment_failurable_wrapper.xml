@@ -23,15 +23,33 @@
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/failure_holder_main_fragment"
             android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/failure_holder_spinner_animation"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:scaleType="fitCenter"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="lottie_loading_spinner.json"
+            app:lottie_loop="true"
+            android:layout_gravity="center"
+            app:lottie_speed="0.5"/>
+
+        <FrameLayout
+            android:id="@+id/failure_holder_touch_interceptor"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="@{viewmodel.mainVisible ? View.VISIBLE : View.INVISIBLE}"
-            android:alpha="0.5"/>
+            android:visibility="@{viewmodel.interactionEnabled ? View.INVISIBLE : View.VISIBLE}">
+        </FrameLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/failure_holder_failure_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="@{viewmodel.failureVisible ? View.VISIBLE : View.INVISIBLE}">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:id="@+id/linearLayout2"
@@ -49,47 +67,33 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     app:imageResource="@{image}"
-                    tools:src="@drawable/icon_error_no_internet"/>
+                    tools:src="@drawable/icon_error_no_internet" />
 
                 <TextView
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{message}"
-                    tools:text="Error message"
                     android:layout_marginTop="8dp"
+                    android:text="@{message}"
                     android:textColor="@android:color/black"
+                    android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textSize="20sp" />
+                    tools:text="Error message" />
 
                 <ImageButton
                     android:id="@+id/imageButton"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/icon_refresh"
+                    android:layout_marginTop="32dp"
                     android:background="@drawable/selector_refresh_button"
-                    android:onClick="@{() -> viewmodel.refreshClicked()}"
                     android:enabled="@{!viewmodel.pendingRefresh}"
-                    android:layout_marginTop="32dp" />
+                    android:onClick="@{() -> viewmodel.refreshClicked()}"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/icon_refresh" />
 
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/failure_holder_spinner_animation"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="0dp"
-            android:scaleType="fitCenter"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="lottie_loading_spinner.json"
-            app:lottie_loop="true"
-            android:layout_gravity="center"
-            android:visibility="@{viewmodel.spinnerVisible ? View.VISIBLE : View.INVISIBLE}"/>
 
     </FrameLayout>
 

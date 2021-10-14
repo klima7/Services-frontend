@@ -12,15 +12,13 @@ import kotlinx.coroutines.launch
 
 class FailurableWrapperViewModel: BaseViewModel() {
 
-    // Input values
-    val state = MutableLiveData(State.Main)
+    private val state = MutableLiveData(State.Loading)
     val currentFailure = MutableLiveData<Failure?>(null)
     val pendingRefresh = MutableLiveData(false)
 
-    val interactionEnabled = state.map { state -> state != State.Loading }
-    val failureVisible = state.map { state -> state == State.Failure }
-    val mainVisible = state.map { state -> state == State.Main }
-    val spinnerVisible = state.map { state -> state == State.Loading || state == State.Pending }
+    val interactionEnabled = state.map { state -> state == State.Main }
+
+    data class ViewState(val mainAlpha: Float, val failureAlpha: Float, val spinnerAlpha: Float)
 
     enum class State {
         Main,
@@ -29,16 +27,23 @@ class FailurableWrapperViewModel: BaseViewModel() {
         Pending
     }
 
+    val viewState = state.map { state ->
+        val main = when(state) {
+            State.Main -> 1.0f
+            State.Pending -> 0.5f
+            else -> 0.0f
+        }
+        val failure = if(state == State.Failure) 1.0f else 0.0f
+        val spinner = if(state == State.Loading || state == State.Pending) 1.0f else 0.0f
+        ViewState(main, failure, spinner)
+    }
+
     sealed class Event: BaseEvent() {
         object RefreshMainFragment: Event()
-        object StartShowMainAnimation: Event()
-        object StartShowFailureAnimation: Event()
     }
 
     fun showFailure(failure: Failure) {
         Log.i("Hello", "showFailure in VM")
-//        if(currentFailure.value == null)
-//            sendEvent(Event.StartShowFailureAnimation)
         pendingRefresh.value = false
         currentFailure.value = failure
         state.value = State.Failure
@@ -46,8 +51,6 @@ class FailurableWrapperViewModel: BaseViewModel() {
 
     fun showMain() {
         Log.i("Hello", "showMain in VM")
-//        if(currentFailure.value != null)
-//            sendEvent(Event.StartShowMainAnimation)
         pendingRefresh.value = false
         currentFailure.value = null
         state.value = State.Main
