@@ -24,13 +24,14 @@
             android:id="@+id/failure_holder_main_fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="@{viewmodel.currentFailure != null ? View.INVISIBLE : View.VISIBLE}" />
+            android:visibility="@{viewmodel.mainVisible ? View.VISIBLE : View.INVISIBLE}"
+            android:alpha="0.5"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/failure_holder_failure_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="@{viewmodel.currentFailure != null ? View.VISIBLE : View.INVISIBLE}">
+            android:visibility="@{viewmodel.failureVisible ? View.VISIBLE : View.INVISIBLE}">
 
             <LinearLayout
                 android:id="@+id/linearLayout2"
@@ -75,6 +76,20 @@
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/failure_holder_spinner_animation"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:scaleType="fitCenter"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="lottie_loading_spinner.json"
+            app:lottie_loop="true"
+            android:layout_gravity="center"
+            android:visibility="@{viewmodel.spinnerVisible ? View.VISIBLE : View.INVISIBLE}"/>
 
     </FrameLayout>
 

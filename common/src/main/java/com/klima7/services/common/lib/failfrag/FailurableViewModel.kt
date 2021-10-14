@@ -10,6 +10,8 @@ abstract class FailurableViewModel: BaseViewModel() {
     sealed class FailurableEvent: BaseEvent() {
         data class ShowFailureEvent(val failure: Failure): FailurableEvent()
         object ShowMainEvent: FailurableEvent()
+        object ShowLoadingEvent: FailurableEvent()
+        object ShowPendingEvent: FailurableEvent()
     }
 
     fun showFailure(failure: Failure) {
@@ -18,6 +20,14 @@ abstract class FailurableViewModel: BaseViewModel() {
 
     fun showMain() {
         sendEvent(FailurableEvent.ShowMainEvent)
+    }
+
+    fun showLoading() {
+        sendEvent(FailurableEvent.ShowLoadingEvent)
+    }
+
+    fun showPending() {
+        sendEvent(FailurableEvent.ShowPendingEvent)
     }
 
 }

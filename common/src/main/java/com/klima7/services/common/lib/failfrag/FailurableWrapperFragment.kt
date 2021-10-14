@@ -6,11 +6,11 @@ import android.view.animation.AnimationUtils
 import androidx.databinding.ViewDataBinding
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentFailurableWrapperBinding
-import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.lib.base.BaseFragment
 import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.common.lib.utils.FailureDescription
 import com.klima7.services.common.lib.utils.replaceFragment
+import com.klima7.services.common.lib.utils.setEnabledRecursive
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FailurableWrapperFragment<DB: ViewDataBinding>(
@@ -28,6 +28,12 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
                 binding.image = desc.imageId
             }
         }
+
+        viewModel.interactionEnabled.observe(viewLifecycleOwner) {
+            it?.let { interactionEnabled ->
+                binding.failureHolderMainFragment.setEnabledRecursive(interactionEnabled)
+            }
+        }
     }
 
     override fun onFirstCreation() {
@@ -35,21 +41,21 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
         replaceFragment(R.id.failure_holder_main_fragment, mainFragment!!)
     }
 
-    fun showFailure(failure: Failure) {
-        viewModel.showFailure(failure)
-    }
-
-    fun showMain() {
-        viewModel.showMain()
-    }
-
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
         super.handleEvent(event)
         when(event) {
             FailurableWrapperViewModel.Event.RefreshMainFragment -> refreshMainFragment()
-            FailurableWrapperViewModel.Event.StartShowMainAnimation -> showAnimation(false)
-            FailurableWrapperViewModel.Event.StartShowFailureAnimation -> showAnimation(true)
+            FailurableWrapperViewModel.Event.StartShowMainAnimation -> startShowMainAnimation()
+            FailurableWrapperViewModel.Event.StartShowFailureAnimation -> startShowFailureAnimation()
         }
+    }
+
+    private fun startShowMainAnimation() {
+        showAnimation(false)
+    }
+
+    private fun startShowFailureAnimation() {
+        showAnimation(true)
     }
 
     private fun refreshMainFragment() {
@@ -75,7 +81,6 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
     }
 
 }
-
 
 private class VisibilityAnimationListener(
     private val view: View,
