@@ -9,6 +9,4 @@
     <color name="secondary">#278BE3</color>
     <color name="secondary_variant">#0074DA</color>
 
-    <color name="text_input_color">@color/primary</color>
-
 </resources>
