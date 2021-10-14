@@ -1,11 +1,13 @@
-package com.klima7.services.common.data.di
+package com.klima7.services.common.lib.di
 
+import com.klima7.services.common.lib.dialog.FailureDialogViewModel
 import com.klima7.services.common.lib.failurable.FailurableWrapperViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-val commonViewModelsModule = module {
+val viewModelsCommonModule = module {
 
     viewModel { FailurableWrapperViewModel() }
+    viewModel { FailureDialogViewModel() }
 
 }

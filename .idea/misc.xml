@@ -24,12 +24,14 @@
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/shape_rounded_button.xml" value="0.19722222222222222" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/toolbar_background.xml" value="0.20185185185185187" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/activity_layout.xml" value="0.15896739130434784" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/layout/dialog_failure.xml" value="0.2" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_avatar.xml" value="0.19157608695652173" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_dialog.xml" value="0.1644021739130435" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_failurable_wrapper.xml" value="0.20520833333333333" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_failure.xml" value="0.1484375" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_failure_handler.xml" value="0.16927083333333334" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/part_no_internet.xml" value="0.264" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/layout/temp.xml" value="0.1644021739130435" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/view_avatar.xml" value="0.19157608695652173" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/drawable/icon.xml" value="0.1935185185185185" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/drawable/icon_foreground.xml" value="0.1935185185185185" />
@@ -57,6 +59,7 @@
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/part_setup_tile.xml" value="0.16" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/part_toolbar.xml" value="0.12092391304347826" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/rounded_button_ripple_effect.xml" value="0.1644021739130435" />
+        <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/temp.xml" value="0.1644021739130435" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/menu/menu_home_bottom.xml" value="0.21197916666666666" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/menu/menu_home_toolbar.xml" value="0.275" />
       </map>

@@ -9,6 +9,7 @@ import com.klima7.services.common.databinding.FragmentFailurableWrapperBinding
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.lib.base.BaseFragment
 import com.klima7.services.common.lib.base.BaseViewModel
+import com.klima7.services.common.lib.failures.FailureDescription
 import com.klima7.services.common.lib.utils.replaceFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -19,28 +20,12 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
     override val layoutId = R.layout.fragment_failurable_wrapper
     override val viewModel: FailurableWrapperViewModel by viewModel()
 
-    private data class FailureDescription(val textId: Int, val imageId: Int)
-
-    private val failureDescriptions = mapOf(
-        Failure.InternetFailure to
-                FailureDescription(R.string.internet_failure_message, R.drawable.icon_error_no_internet),
-        Failure.ServerFailure to
-                FailureDescription(R.string.server_failure_message, R.drawable.icon_error_server),
-        Failure.UnknownFailure to
-                FailureDescription(R.string.unknown_failure_message, R.drawable.icon_error_unknown),
-        Failure.PermissionFailure to
-                FailureDescription(R.string.permission_failure_message, R.drawable.icon_error_permission),
-        Failure.NotFoundFailure to
-                FailureDescription(R.string.not_found_failure_message, R.drawable.icon_error_not_found),
-    )
-
     override fun init() {
         viewModel.currentFailure.observe(viewLifecycleOwner) {
             it?.let {  failure ->
-                failureDescriptions[failure]?.let { desc ->
-                    binding.message = resources.getString(desc.textId)
-                    binding.image = desc.imageId
-                }
+                val desc = FailureDescription.get(failure)
+                binding.message = resources.getString(desc.textId)
+                binding.image = desc.imageId
             }
         }
     }

@@ -2,13 +2,21 @@ package com.klima7.services.expert.features.info
 
 import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Bundle
+import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.setFragmentResultListener
 import com.canhub.cropper.CropImageContract
 import com.canhub.cropper.CropImageView
 import com.canhub.cropper.PickImageContract
 import com.canhub.cropper.options
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.lib.base.BaseViewModel
-import com.klima7.services.common.lib.dialog.MyDialogFragment
+import com.klima7.services.common.lib.dialog.FailureDialogFragment
 import com.klima7.services.common.lib.failurable.FailurableFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentInfoBinding
@@ -35,6 +43,11 @@ class InfoContentFragment: FailurableFragment<FragmentInfoBinding>() {
 
     override fun init() {
         super.init()
+
+        childFragmentManager.setFragmentResultListener("key", viewLifecycleOwner) { _: String, bundle: Bundle ->
+            val result = bundle.get(FailureDialogFragment.BUNDLE_KEY)
+            Log.i("Hello", "Result: $result (retry=${result==FailureDialogFragment.Result.RETRY})")
+        }
 
         viewModel.nameError.observe(viewLifecycleOwner) { nameError ->
             binding.infoName.error = when(nameError) {
@@ -76,8 +89,8 @@ class InfoContentFragment: FailurableFragment<FragmentInfoBinding>() {
     }
 
     private fun showDialog() {
-        val dialog = MyDialogFragment()
-        dialog.show(requireActivity().supportFragmentManager, "Dialog")
+        val dialog = FailureDialogFragment.create("key", "Aktualizacja profilu się nie powiodła.", Failure.NotFoundFailure)
+        dialog.show(childFragmentManager, "FailureDialogFragment")
     }
 
     private fun finishInfo() {
