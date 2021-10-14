@@ -42,14 +42,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/icon_tick"
-                    android:visibility="@{ticked ? View.VISIBLE : View.INVISIBLE}" />
+                    android:visibility="@{ticked ? View.VISIBLE : View.INVISIBLE}"
+                    app:tint="#0F9900" />
 
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/icon_cross"
-                    android:visibility="@{ticked ? View.INVISIBLE : View.VISIBLE}"/>
+                    android:visibility="@{ticked ? View.INVISIBLE : View.VISIBLE}"
+                    app:tint="#A30000" />
 
             </FrameLayout>
 
