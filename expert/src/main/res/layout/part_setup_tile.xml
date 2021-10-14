@@ -22,7 +22,9 @@
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
         android:onClick="@{action}"
-        app:cardBackgroundColor="@color/light_gray">
+        app:cardBackgroundColor="@color/light_gray"
+        app:strokeColor="?attr/colorSecondary"
+        app:strokeWidth="@dimen/stroke_width_around_cards" >
 
         <LinearLayout
             android:layout_width="match_parent"
