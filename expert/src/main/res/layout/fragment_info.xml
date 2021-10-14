@@ -19,6 +19,7 @@
             android:id="@+id/linearProgressIndicator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:indicatorColor="?attr/colorSecondary"
             android:indeterminate="true"
             android:translationZ="90dp"
             android:visibility="@{viewmodel.loadingVisible ? View.VISIBLE : View.INVISIBLE}"
