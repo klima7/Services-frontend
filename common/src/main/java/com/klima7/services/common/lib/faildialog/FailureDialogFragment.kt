@@ -1,4 +1,4 @@
-package com.klima7.services.common.lib.dialog
+package com.klima7.services.common.lib.faildialog
 
 import android.app.Dialog
 import android.os.Bundle
@@ -12,7 +12,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.DialogFailureBinding
 import com.klima7.services.common.domain.models.Failure
-import com.klima7.services.common.lib.failures.FailureDescription
+import com.klima7.services.common.lib.utils.FailureDescription
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

@@ -9,7 +9,7 @@ import com.klima7.services.common.databinding.FragmentFailurableWrapperBinding
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.lib.base.BaseFragment
 import com.klima7.services.common.lib.base.BaseViewModel
-import com.klima7.services.common.lib.failures.FailureDescription
+import com.klima7.services.common.lib.utils.FailureDescription
 import com.klima7.services.common.lib.utils.replaceFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

@@ -1,4 +1,4 @@
-package com.klima7.services.common.lib.failures
+package com.klima7.services.common.lib.utils
 
 import com.klima7.services.common.R
 import com.klima7.services.common.domain.models.Failure
