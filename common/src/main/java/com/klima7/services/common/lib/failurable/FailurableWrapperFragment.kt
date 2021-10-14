@@ -1,7 +1,9 @@
 package com.klima7.services.common.lib.failurable
 
+import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.MutableLiveData
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentFailurableWrapperBinding
 import com.klima7.services.common.domain.models.Failure
@@ -60,6 +62,8 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
         super.handleEvent(event)
         when(event) {
             FailurableWrapperViewModel.Event.RefreshMainFragment -> refreshMainFragment()
+            FailurableWrapperViewModel.Event.StartShowMainAnimation -> showAnimation(false)
+            FailurableWrapperViewModel.Event.StartShowFailureAnimation -> showAnimation(true)
         }
     }
 
@@ -69,38 +73,37 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
             mainFragment.refresh()
         }
     }
+
+    private fun showAnimation(isShowFailure: Boolean) {
+        binding.failureHolderMainFragment.clearAnimation()
+
+        val mainAnimationR = if(isShowFailure) R.anim.failure_hide_animation else R.anim.failure_show_animation
+        val failureAnimationR = if(!isShowFailure) R.anim.failure_hide_animation else R.anim.failure_show_animation
+
+        val mainAnimation = AnimationUtils.loadAnimation(requireContext(), mainAnimationR)
+        binding.failureHolderMainFragment.startAnimation(mainAnimation)
+        mainAnimation.setAnimationListener(VisibilityAnimationListener(binding.failureHolderMainFragment, isShowFailure))
+
+        val failureAnimation = AnimationUtils.loadAnimation(requireContext(), failureAnimationR)
+        binding.failureHolderFailureView.startAnimation(failureAnimation)
+        failureAnimation.setAnimationListener(VisibilityAnimationListener(binding.failureHolderFailureView, !isShowFailure))
+    }
+
 }
 
 
-class FailurableWrapperViewModel: BaseViewModel() {
+private class VisibilityAnimationListener(
+    private val view: View,
+    private val isInitiallyVisible: Boolean,
+): Animation.AnimationListener {
 
-    val errorVisible = MutableLiveData(false)
-    val pendingRefresh = MutableLiveData(false)
-    val currentFailure = MutableLiveData<Failure?>(null)
-
-    sealed class Event: BaseEvent() {
-        object RefreshMainFragment: Event()
+    override fun onAnimationStart(animation: Animation?) {
+        if(!isInitiallyVisible) view.visibility = View.VISIBLE
     }
 
-    fun showFailure(failure: Failure) {
-        currentFailure.value = failure
-        errorVisible.value = true
-        pendingRefresh.value = false
+    override fun onAnimationEnd(animation: Animation?) {
+        view.visibility = if(isInitiallyVisible) View.INVISIBLE else View.VISIBLE
     }
 
-    fun showMain() {
-        errorVisible.value = false
-        pendingRefresh.value = false
-    }
-
-    fun refreshClicked() {
-        pendingRefresh.value?.let { value ->
-            if(!value) {
-                sendEvent(Event.RefreshMainFragment)
-                pendingRefresh.value = true
-            }
-        }
-
-    }
-
+    override fun onAnimationRepeat(animation: Animation?) { }
 }
