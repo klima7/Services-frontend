@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="bottom_button_horizontal_margin">8dp</dimen>
+    <dimen name="bottom_button_bottom_margin">8dp</dimen>
+
+</resources>
