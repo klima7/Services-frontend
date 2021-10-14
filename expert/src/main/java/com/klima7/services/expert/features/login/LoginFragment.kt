@@ -27,7 +27,7 @@ class LoginFragment: BaseFragment<FragmentLoginBinding>() {
             .createSignInIntentBuilder()
             .setAvailableProviders(viewModel.providers)
             .setLogo(R.drawable.logo)
-            .setTheme(R.style.login_theme)
+            .setTheme(R.style.LoginTheme)
             .build()
 
         signInLauncher.launch(signInIntent)

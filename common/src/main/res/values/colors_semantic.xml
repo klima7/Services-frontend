@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Override -->
+    <color name="mtrl_textinput_default_box_stroke_color">@color/text_input_color</color>
+
+    <color name="logout_button_color">#FF7676</color>
+    <color name="text_input_color">@android:color/transparent</color>
+
+</resources>

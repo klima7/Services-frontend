@@ -79,7 +79,8 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Imie i nazwisko"
                     app:helperText="Pole wymagane"
-                    app:startIconDrawable="@drawable/icon_person">
+                    app:startIconDrawable="@drawable/icon_person"
+                    style="@style/TextInputLayoutStyle">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
@@ -99,7 +100,8 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Firma"
                     app:helperText=" "
-                    app:startIconDrawable="@drawable/icon_company">
+                    app:startIconDrawable="@drawable/icon_company"
+                    style="@style/TextInputLayoutStyle">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
@@ -121,7 +123,8 @@
                     app:counterEnabled="true"
                     app:counterMaxLength="500"
                     app:helperText=" "
-                    app:startIconDrawable="@drawable/icon_description">
+                    app:startIconDrawable="@drawable/icon_description"
+                    style="@style/TextInputLayoutStyle">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/shipper_field"
@@ -146,7 +149,8 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Numer telefonu"
                     app:helperText=" "
-                    app:startIconDrawable="@drawable/icon_phone">
+                    app:startIconDrawable="@drawable/icon_phone"
+                    style="@style/TextInputLayoutStyle" >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
@@ -166,7 +170,8 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Adres email"
                     app:helperText=" "
-                    app:startIconDrawable="@drawable/icon_email">
+                    app:startIconDrawable="@drawable/icon_email"
+                    style="@style/TextInputLayoutStyle" >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
@@ -186,7 +191,8 @@
                     android:layout_marginBottom="8dp"
                     android:hint="Strona internetowa"
                     app:helperText=" "
-                    app:startIconDrawable="@drawable/icon_website">
+                    app:startIconDrawable="@drawable/icon_website"
+                    style="@style/TextInputLayoutStyle" >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
