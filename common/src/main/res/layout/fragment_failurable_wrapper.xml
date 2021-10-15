@@ -7,7 +7,7 @@
         <import type="android.view.View"/>
         <variable
             name="viewmodel"
-            type="com.klima7.services.common.lib.failfrag.FailurableWrapperViewModel" />
+            type="com.klima7.services.common.lib.loadable.LoadableWrapperViewModel" />
         <variable
             name="message"
             type="String" />

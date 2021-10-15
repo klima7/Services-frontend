@@ -1,14 +1,14 @@
 package com.klima7.services.expert.features.services
 
 import com.klima7.services.common.lib.base.BaseViewModel
-import com.klima7.services.common.lib.failfrag.FailurableFragment
+import com.klima7.services.common.lib.loadable.LoadableFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentServicesBinding
 import com.klima7.services.expert.features.services.multicategory.ServicesMultiCategoriesFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class ServicesContentFragment: FailurableFragment<FragmentServicesBinding>() {
+class ServicesContentFragment: LoadableFragment<FragmentServicesBinding>() {
 
     override val layoutId = R.layout.fragment_services
     override val viewModel: ServicesContentViewModel by viewModel()

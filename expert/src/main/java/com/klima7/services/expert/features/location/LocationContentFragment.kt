@@ -16,13 +16,13 @@ import com.google.android.libraries.places.widget.listener.PlaceSelectionListene
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.common.lib.faildialog.FailureDialogFragment
-import com.klima7.services.common.lib.failfrag.FailurableFragment
+import com.klima7.services.common.lib.loadable.LoadableFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentLoginBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class LocationContentFragment: FailurableFragment<FragmentLoginBinding>(), OnMapReadyCallback {
+class LocationContentFragment: LoadableFragment<FragmentLoginBinding>(), OnMapReadyCallback {
 
     companion object {
         const val SAVE_LOCATION_FAILURE_KEY = "SAVE_LOCATION_FAILURE_KEY"

@@ -6,13 +6,13 @@ import com.klima7.services.common.data.repositories.AuthRepository
 import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.domain.models.Expert
 import com.klima7.services.common.domain.models.Failure
-import com.klima7.services.common.lib.failfrag.FailurableViewModel
+import com.klima7.services.common.lib.loadable.LoadableViewModel
 import kotlinx.coroutines.launch
 
 class SetupContentViewModel(
     private val authRepository: AuthRepository,
     private val expertsRepository: ExpertsRepository
-): FailurableViewModel() {
+): LoadableViewModel() {
 
     val profileConfigured = MutableLiveData(false)
     val servicesConfigured = MutableLiveData(false)

@@ -9,7 +9,7 @@ import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.domain.models.WorkingArea
 import com.klima7.services.common.lib.converters.toLatLng
-import com.klima7.services.common.lib.failfrag.FailurableViewModel
+import com.klima7.services.common.lib.loadable.LoadableViewModel
 import com.klima7.services.common.lib.utils.CombinedLiveData
 import com.klima7.services.expert.usecases.GetCurrentExpertUC
 import kotlinx.coroutines.launch
@@ -18,7 +18,7 @@ import kotlin.math.cos
 class LocationContentViewModel(
     private val expertsRepository: ExpertsRepository,
     private val getCurrentExpertUC: GetCurrentExpertUC
-): FailurableViewModel() {
+): LoadableViewModel() {
 
     companion object {
         private val POLAND_BOUNDS = LatLngBounds(

@@ -1,9 +1,9 @@
-package com.klima7.services.common.lib.failfrag
+package com.klima7.services.common.lib.loadable
 
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.lib.base.BaseViewModel
 
-abstract class FailurableViewModel: BaseViewModel() {
+abstract class LoadableViewModel: BaseViewModel() {
 
     abstract fun refresh()
 

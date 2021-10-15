@@ -3,7 +3,6 @@ package com.klima7.services.expert.features.info
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import com.canhub.cropper.CropImageContract
 import com.canhub.cropper.CropImageView
@@ -12,14 +11,14 @@ import com.canhub.cropper.options
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.common.lib.faildialog.FailureDialogFragment
-import com.klima7.services.common.lib.failfrag.FailurableFragment
+import com.klima7.services.common.lib.loadable.LoadableFragment
 import com.klima7.services.common.lib.utils.showShortToast
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentInfoBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class InfoContentFragment: FailurableFragment<FragmentInfoBinding>() {
+class InfoContentFragment: LoadableFragment<FragmentInfoBinding>() {
 
     override val layoutId = R.layout.fragment_info
     override val viewModel: InfoContentViewModel by viewModel()

@@ -1,4 +1,4 @@
-package com.klima7.services.common.lib.failfrag
+package com.klima7.services.common.lib.loadable
 
 import androidx.databinding.ViewDataBinding
 import com.klima7.services.common.domain.models.Failure
@@ -6,10 +6,10 @@ import com.klima7.services.common.lib.base.BaseFragment
 import com.klima7.services.common.lib.base.BaseViewModel
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
-abstract class FailurableFragment<DB: ViewDataBinding>: BaseFragment<DB>() {
+abstract class LoadableFragment<DB: ViewDataBinding>: BaseFragment<DB>() {
 
-    abstract override val viewModel: FailurableViewModel
-    private val parentViewModel: FailurableWrapperViewModel by lazy {
+    abstract override val viewModel: LoadableViewModel
+    private val parentViewModel: LoadableWrapperViewModel by lazy {
         requireParentFragment().getViewModel()
     }
 
@@ -19,10 +19,10 @@ abstract class FailurableFragment<DB: ViewDataBinding>: BaseFragment<DB>() {
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
         when(event) {
-            is FailurableViewModel.FailurableEvent.ShowFailureEvent -> showFailure(event.failure)
-            is FailurableViewModel.FailurableEvent.ShowMainEvent -> showMain()
-            is FailurableViewModel.FailurableEvent.ShowLoadingEvent -> showLoading()
-            is FailurableViewModel.FailurableEvent.ShowPendingEvent -> showPending()
+            is LoadableViewModel.FailurableEvent.ShowFailureEvent -> showFailure(event.failure)
+            is LoadableViewModel.FailurableEvent.ShowMainEvent -> showMain()
+            is LoadableViewModel.FailurableEvent.ShowLoadingEvent -> showLoading()
+            is LoadableViewModel.FailurableEvent.ShowPendingEvent -> showPending()
         }
     }
 

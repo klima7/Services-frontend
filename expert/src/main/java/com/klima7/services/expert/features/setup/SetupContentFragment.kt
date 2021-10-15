@@ -3,7 +3,7 @@ package com.klima7.services.expert.features.setup
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContracts
 import com.klima7.services.common.lib.base.BaseViewModel
-import com.klima7.services.common.lib.failfrag.FailurableFragment
+import com.klima7.services.common.lib.loadable.LoadableFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentSetupBinding
 import com.klima7.services.expert.features.home.HomeActivity
@@ -13,7 +13,7 @@ import com.klima7.services.expert.features.services.ServicesActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class SetupContentFragment: FailurableFragment<FragmentSetupBinding>() {
+class SetupContentFragment: LoadableFragment<FragmentSetupBinding>() {
 
     override val layoutId = R.layout.fragment_setup
     override val viewModel: SetupContentViewModel by viewModel()

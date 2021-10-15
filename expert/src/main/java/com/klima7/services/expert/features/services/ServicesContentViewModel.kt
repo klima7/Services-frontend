@@ -8,14 +8,14 @@ import com.klima7.services.common.domain.models.Category
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.domain.models.Service
 import com.klima7.services.common.domain.utils.Outcome
-import com.klima7.services.common.lib.failfrag.FailurableViewModel
+import com.klima7.services.common.lib.loadable.LoadableViewModel
 import kotlinx.coroutines.launch
 
 class ServicesContentViewModel(
     private val servicesRepository: ServicesRepository,
     private val authRepository: AuthRepository,
     private val expertsRepository: ExpertsRepository
-): FailurableViewModel() {
+): LoadableViewModel() {
 
     sealed class Event: BaseEvent() {
         data class SetServices(val services: List<CategorizedSelectableServices>): Event()

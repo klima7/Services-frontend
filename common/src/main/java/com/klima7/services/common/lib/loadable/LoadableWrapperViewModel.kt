@@ -1,4 +1,4 @@
-package com.klima7.services.common.lib.failfrag
+package com.klima7.services.common.lib.loadable
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
@@ -6,7 +6,7 @@ import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.lib.base.BaseViewModel
 
 
-class FailurableWrapperViewModel: BaseViewModel() {
+class LoadableWrapperViewModel: BaseViewModel() {
 
     private val state = MutableLiveData<State?>(null)
     val currentFailure = MutableLiveData<Failure?>(null)
