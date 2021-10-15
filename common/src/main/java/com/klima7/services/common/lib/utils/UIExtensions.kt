@@ -1,6 +1,6 @@
 package com.klima7.services.common.lib.utils
 
-import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
@@ -13,18 +13,6 @@ fun Fragment.replaceFragment(containerId: Int, fragment: Fragment) {
         .commit()
 }
 
-fun ViewGroup.setEnabledRecursive(enabled: Boolean) {
-    this.isEnabled = enabled
-    for (i in 0 until this.childCount) {
-        val child = this.getChildAt(i)
-        if (child is ViewGroup) {
-            child.setEnabledRecursive(enabled)
-        } else {
-            child.isEnabled = enabled
-        }
-    }
-}
-
 fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observer<T>) {
     observe(lifecycleOwner, object : Observer<T> {
         override fun onChanged(t: T?) {
@@ -32,4 +20,8 @@ fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observ
             removeObserver(this)
         }
     })
+}
+
+fun Fragment.showShortToast(text: String) {
+    Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
 }

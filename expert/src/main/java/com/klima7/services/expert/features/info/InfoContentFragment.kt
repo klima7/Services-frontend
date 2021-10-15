@@ -13,6 +13,7 @@ import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.common.lib.faildialog.FailureDialogFragment
 import com.klima7.services.common.lib.failfrag.FailurableFragment
+import com.klima7.services.common.lib.utils.showShortToast
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentInfoBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -89,7 +90,7 @@ class InfoContentFragment: FailurableFragment<FragmentInfoBinding>() {
     }
 
     private fun finishInfo() {
-        Toast.makeText(requireContext(), "Profil został zaktualizowany", Toast.LENGTH_SHORT).show()
+        showShortToast("Profil został zaktualizowany")
         requireActivity().finish()
     }
 

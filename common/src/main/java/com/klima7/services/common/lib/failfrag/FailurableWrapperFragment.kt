@@ -16,7 +16,6 @@ import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.common.lib.utils.FailureDescription
 import com.klima7.services.common.lib.utils.observeOnce
 import com.klima7.services.common.lib.utils.replaceFragment
-import com.klima7.services.common.lib.utils.setEnabledRecursive
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FailurableWrapperFragment<DB: ViewDataBinding>(
