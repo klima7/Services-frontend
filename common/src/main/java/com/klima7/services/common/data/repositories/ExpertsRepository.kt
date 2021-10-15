@@ -98,6 +98,7 @@ class ExpertsRepository(
                 .child("profile_images")
                 .child("$uid.png")
                 .downloadUrl.await().toString()
+            Log.i("Hello", "Profile image: $uri")
             Outcome.Success(uri)
         } catch(e: Exception) {
             Log.e("Hello", "Error while getProfileImage", e)

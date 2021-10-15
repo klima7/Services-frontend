@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Parcelable
 import android.util.AttributeSet
+import android.util.Log
 import android.widget.FrameLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.signature.ObjectKey
@@ -57,12 +58,11 @@ class AvatarView(context: Context, attrs: AttributeSet?) : FrameLayout(context, 
 
     private fun refreshView() {
         val fixedUri = if(EMULATE) uri.replace("localhost", "10.0.2.2") else uri
+        Log.i("Glide", "Loading: $fixedUri")
         val image = findViewById<CircleImageView>(R.id.avatar_image)
         Glide.with(context).clear(image)
-
         Glide.with(this)
             .load(fixedUri)
-            .signature(ObjectKey(signature))
             .placeholder(R.drawable.image_profile_default)
             .error(R.drawable.image_profile_default)
             .into(image)
