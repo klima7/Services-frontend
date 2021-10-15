@@ -1,6 +1,5 @@
 package com.klima7.services.expert.features.services.multicategory
 
-import android.util.Log
 import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.expert.features.services.CategorizedSelectableServices
 
@@ -11,7 +10,6 @@ class ServicesMultiCategoryViewModel: BaseViewModel() {
     }
 
     fun setServices(services: List<CategorizedSelectableServices>) {
-        Log.i("Hello", "Setting services in viewModel: $services")
         sendEvent(Event.SetServices(services))
     }
 

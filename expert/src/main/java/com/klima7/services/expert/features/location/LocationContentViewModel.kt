@@ -1,6 +1,5 @@
 package com.klima7.services.expert.features.location
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
@@ -85,7 +84,6 @@ class LocationContentViewModel(
     }
 
     private fun initWithWorkingArea(wa: WorkingArea?) {
-        Log.i("Hello", "initWithWorkingArea $wa")
         if(wa != null) {
             placeName.value = wa.location.name
             radiusFloat.value = wa.radius.toFloat()
@@ -106,7 +104,6 @@ class LocationContentViewModel(
                     showMain()
                     sendEvent(Event.ShowSaveLocationFailure(failure))
                 }, {
-                    Log.i("Hello", "setWorkingArea success in VM")
                     showMain()
                 })
             }

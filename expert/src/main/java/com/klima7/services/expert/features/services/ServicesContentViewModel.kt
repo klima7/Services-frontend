@@ -1,6 +1,5 @@
 package com.klima7.services.expert.features.services
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.data.repositories.AuthRepository
 import com.klima7.services.common.data.repositories.ExpertsRepository
@@ -34,12 +33,10 @@ class ServicesContentViewModel(
         viewModelScope.launch {
             getCategorizedSelectableServices().foldS({ failure ->
                 showFailure(failure)
-                Log.i("Hello", "getCategorizedServices in ViewModel failure $failure")
             }, { services ->
                 if(services.isEmpty())
                     showFailure(Failure.InternetFailure)
                 else {
-                    Log.i("Hello", "getCategorizedServices in ViewModel success: $services")
                     sendEvent(Event.SetServices(services))
                     showMain()
                 }
@@ -88,7 +85,6 @@ class ServicesContentViewModel(
     }
 
     fun servicesSelected(services: List<Service>) {
-        Log.i("Hello", "Selected services: $services")
         val servicesIds = services.map { it.id }
         viewModelScope.launch {
             setServicesIds(servicesIds)
@@ -97,9 +93,9 @@ class ServicesContentViewModel(
 
     private suspend fun setServicesIds(servicesIds: List<String>) {
         expertsRepository.setServicesIds(servicesIds).foldS({ failure ->
-            Log.i("Hello", "Error during setServicesIds: $failure")
+            // Failure
         }, {
-            Log.i("Hello", "Success during setServicesIds")
+            // Success
         })
     }
 }

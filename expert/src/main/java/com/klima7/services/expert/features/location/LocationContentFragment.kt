@@ -2,7 +2,6 @@ package com.klima7.services.expert.features.location
 
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import com.google.android.gms.common.api.Status
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -74,7 +73,7 @@ class LocationContentFragment: FailurableFragment<FragmentLoginBinding>(), OnMap
             }
 
             override fun onError(status: Status) {
-                Log.i("Hello", "An error occurred: $status")
+                // Place selection error
             }
         })
 

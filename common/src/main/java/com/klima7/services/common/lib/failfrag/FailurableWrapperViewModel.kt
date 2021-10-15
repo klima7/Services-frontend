@@ -1,6 +1,5 @@
 package com.klima7.services.common.lib.failfrag
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import com.klima7.services.common.domain.models.Failure
@@ -41,26 +40,22 @@ class FailurableWrapperViewModel: BaseViewModel() {
     }
 
     fun showFailure(failure: Failure) {
-        Log.i("Hello", "showFailure in VM")
         pendingRefresh.value = false
         currentFailure.value = failure
         state.value = State.Failure
     }
 
     fun showMain() {
-        Log.i("Hello", "showMain in VM")
         pendingRefresh.value = false
         currentFailure.value = null
         state.value = State.Main
     }
 
     fun showLoading() {
-        Log.i("Hello", "showLoading in VM")
         state.value = State.Loading
     }
 
     fun showPending() {
-        Log.i("Hello", "showPending in VM")
         state.value = State.Pending
     }
 

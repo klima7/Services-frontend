@@ -1,7 +1,6 @@
 package com.klima7.services.common.lib.failfrag
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.databinding.ViewDataBinding
@@ -61,7 +60,6 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
     }
 
     private fun animateToViewState(viewState: FailurableWrapperViewModel.ViewState) {
-        Log.i("Hello", "Animate to $viewState")
         animateElement(binding.failureHolderMainFragment, viewState.mainAlpha)
         animateElement(binding.failureHolderFailureView, viewState.failureAlpha)
         animateElement(binding.failureHolderSpinnerAnimation, viewState.spinnerAlpha)

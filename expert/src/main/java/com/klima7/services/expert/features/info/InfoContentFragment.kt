@@ -42,7 +42,6 @@ class InfoContentFragment: FailurableFragment<FragmentInfoBinding>() {
 
         childFragmentManager.setFragmentResultListener("key", viewLifecycleOwner) { _: String, bundle: Bundle ->
             val result = bundle.get(FailureDialogFragment.BUNDLE_KEY)
-            Log.i("Hello", "Result: $result (retry=${result==FailureDialogFragment.Result.RETRY})")
         }
 
         viewModel.nameError.observe(viewLifecycleOwner) { nameError ->
