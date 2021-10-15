@@ -40,6 +40,7 @@ class FailurableWrapperViewModel: BaseViewModel() {
 
     sealed class Event: BaseEvent() {
         object RefreshMainFragment: Event()
+        object ShowRefreshButtonAnimation: Event()
     }
 
     fun showFailure(failure: Failure) {
@@ -70,6 +71,7 @@ class FailurableWrapperViewModel: BaseViewModel() {
         pendingRefresh.value?.let { value ->
             if(!value) {
                 sendEvent(Event.RefreshMainFragment)
+                sendEvent(Event.ShowRefreshButtonAnimation)
                 pendingRefresh.value = true
             }
         }

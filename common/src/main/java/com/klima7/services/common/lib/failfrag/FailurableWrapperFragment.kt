@@ -54,6 +54,7 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
         super.handleEvent(event)
         when(event) {
             is FailurableWrapperViewModel.Event.RefreshMainFragment -> refreshMainFragment()
+            is FailurableWrapperViewModel.Event.ShowRefreshButtonAnimation -> showRefreshButtonAnimation()
         }
     }
 
@@ -94,35 +95,17 @@ class FailurableWrapperFragment<DB: ViewDataBinding>(
         }
     }
 
-    private fun showAnimation(isShowFailure: Boolean) {
-        binding.failureHolderMainFragment.clearAnimation()
-
-        val mainAnimationR = if(isShowFailure) R.anim.failure_hide_animation else R.anim.failure_show_animation
-        val failureAnimationR = if(!isShowFailure) R.anim.failure_hide_animation else R.anim.failure_show_animation
-
-        val mainAnimation = AnimationUtils.loadAnimation(requireContext(), mainAnimationR)
-        binding.failureHolderMainFragment.startAnimation(mainAnimation)
-        mainAnimation.setAnimationListener(VisibilityAnimationListener(binding.failureHolderMainFragment, isShowFailure))
-
-        val failureAnimation = AnimationUtils.loadAnimation(requireContext(), failureAnimationR)
-        binding.failureHolderFailureView.startAnimation(failureAnimation)
-        failureAnimation.setAnimationListener(VisibilityAnimationListener(binding.failureHolderFailureView, !isShowFailure))
+    private fun showRefreshButtonAnimation() {
+        binding.failureHolderRefreshButton.apply {
+            clearAnimation()
+            rotation = 0.0f
+            animate().apply {
+                interpolator = LinearInterpolator()
+                duration = 500
+                rotationBy(360.0f)
+                start()
+            }
+        }
     }
 
-}
-
-private class VisibilityAnimationListener(
-    private val view: View,
-    private val isInitiallyVisible: Boolean,
-): Animation.AnimationListener {
-
-    override fun onAnimationStart(animation: Animation?) {
-        if(!isInitiallyVisible) view.visibility = View.VISIBLE
-    }
-
-    override fun onAnimationEnd(animation: Animation?) {
-        view.visibility = if(isInitiallyVisible) View.INVISIBLE else View.VISIBLE
-    }
-
-    override fun onAnimationRepeat(animation: Animation?) { }
 }
