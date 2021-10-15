@@ -74,6 +74,7 @@ class LocationContentViewModel(
     }
 
     private fun fetchAndInitWithWorkingArea() {
+        showLoading()
         viewModelScope.launch {
             getCurrentExpertUC.execute().foldS({ failure ->
                 showFailure(failure)

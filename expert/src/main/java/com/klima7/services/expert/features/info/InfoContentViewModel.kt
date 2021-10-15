@@ -86,6 +86,7 @@ class InfoContentViewModel(
     }
 
     private fun updateViews() {
+        showLoading()
         viewModelScope.launch {
             getExpertAndUpdateViews()
         }

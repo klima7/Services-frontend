@@ -30,6 +30,7 @@ class ServicesContentViewModel(
     }
 
     private fun update() {
+        showLoading()
         viewModelScope.launch {
             getCategorizedSelectableServices().foldS({ failure ->
                 showFailure(failure)

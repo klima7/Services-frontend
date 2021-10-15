@@ -8,7 +8,7 @@ import com.klima7.services.common.lib.base.BaseViewModel
 
 class FailurableWrapperViewModel: BaseViewModel() {
 
-    private val state = MutableLiveData(State.Loading)
+    private val state = MutableLiveData<State?>(null)
     val currentFailure = MutableLiveData<Failure?>(null)
     val pendingRefresh = MutableLiveData(false)
 

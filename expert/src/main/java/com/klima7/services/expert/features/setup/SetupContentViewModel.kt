@@ -54,6 +54,7 @@ class SetupContentViewModel(
     }
 
     private fun updateSetupState() {
+        showLoading()
         viewModelScope.launch {
             getUidPart()
         }

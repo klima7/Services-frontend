@@ -21,8 +21,9 @@ class SplashViewModel(
     }
 
     fun splashStarted() {
+        showMain()
         viewModelScope.launch {
-            delay(1000)
+            delay(2000)
             goToNextScreen()
         }
     }
