@@ -5,7 +5,7 @@ import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.databinding.ViewDataBinding
 import com.klima7.services.common.R
-import com.klima7.services.common.databinding.FragmentFailurableWrapperBinding
+import com.klima7.services.common.databinding.FragmentLoadableWrapperBinding
 import com.klima7.services.common.lib.base.BaseFragment
 import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.common.lib.utils.FailureDescription
@@ -15,14 +15,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoadableWrapperFragment<DB: ViewDataBinding>(
     private val mainFragment: LoadableFragment<DB>? = null
-): BaseFragment<FragmentFailurableWrapperBinding>() {
+): BaseFragment<FragmentLoadableWrapperBinding>() {
 
-    override val layoutId = R.layout.fragment_failurable_wrapper
+    override val layoutId = R.layout.fragment_loadable_wrapper
     override val viewModel: LoadableWrapperViewModel by viewModel()
 
     @SuppressLint("ClickableViewAccessibility")
     override fun init() {
-        binding.failureHolderTouchInterceptor.setOnTouchListener { _, _ -> true }
+        binding.loadablewrTouchInterceptor.setOnTouchListener { _, _ -> true }
 
         viewModel.viewState.observeOnce(viewLifecycleOwner) { viewState ->
             instantUpdate(viewState)
@@ -42,7 +42,7 @@ class LoadableWrapperFragment<DB: ViewDataBinding>(
 
     override fun onFirstCreation() {
         super.onFirstCreation()
-        replaceFragment(R.id.failure_holder_main_fragment, mainFragment!!)
+        replaceFragment(R.id.loadablewr_main, mainFragment!!)
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
@@ -54,15 +54,15 @@ class LoadableWrapperFragment<DB: ViewDataBinding>(
     }
 
     private fun instantUpdate(viewState: LoadableWrapperViewModel.ViewState) {
-        binding.failureHolderMainFragment.setAlphaAndVisibility(viewState.mainAlpha)
-        binding.failureHolderFailureView.setAlphaAndVisibility(viewState.failureAlpha)
-        binding.failureHolderSpinnerAnimation.setAlphaAndVisibility(viewState.spinnerAlpha)
+        binding.loadablewrMain.setAlphaAndVisibility(viewState.mainAlpha)
+        binding.loadablewrFailure.setAlphaAndVisibility(viewState.failureAlpha)
+        binding.loadablewrSpinner.setAlphaAndVisibility(viewState.spinnerAlpha)
     }
 
     private fun animateToViewState(viewState: LoadableWrapperViewModel.ViewState) {
-        animateElement(binding.failureHolderMainFragment, viewState.mainAlpha)
-        animateElement(binding.failureHolderFailureView, viewState.failureAlpha)
-        animateElement(binding.failureHolderSpinnerAnimation, viewState.spinnerAlpha)
+        animateElement(binding.loadablewrMain, viewState.mainAlpha)
+        animateElement(binding.loadablewrFailure, viewState.failureAlpha)
+        animateElement(binding.loadablewrSpinner, viewState.spinnerAlpha)
     }
 
     private fun animateElement(view: View, targetAlpha: Float) {
@@ -83,14 +83,14 @@ class LoadableWrapperFragment<DB: ViewDataBinding>(
     }
 
     private fun refreshMainFragment() {
-        val mainFragment = childFragmentManager.findFragmentById(R.id.failure_holder_main_fragment) as? LoadableFragment<*>
+        val mainFragment = childFragmentManager.findFragmentById(R.id.loadablewr_main) as? LoadableFragment<*>
         mainFragment?.let {
             mainFragment.refresh()
         }
     }
 
     private fun showRefreshButtonAnimation() {
-        binding.failureHolderRefreshButton.apply {
+        binding.loadablewrRefreshButton.apply {
             clearAnimation()
             rotation = 0.0f
             animate().apply {

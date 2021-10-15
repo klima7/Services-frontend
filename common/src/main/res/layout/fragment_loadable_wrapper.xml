@@ -21,12 +21,12 @@
         android:layout_height="match_parent">
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/failure_holder_main_fragment"
+            android:id="@+id/loadablewr_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
         <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/failure_holder_spinner_animation"
+            android:id="@+id/loadablewr_spinner"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_marginStart="0dp"
@@ -40,14 +40,14 @@
             app:lottie_speed="0.5"/>
 
         <FrameLayout
-            android:id="@+id/failure_holder_touch_interceptor"
+            android:id="@+id/loadablewr_touch_interceptor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="@{viewmodel.interactionEnabled ? View.INVISIBLE : View.VISIBLE}">
         </FrameLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/failure_holder_failure_view"
+            android:id="@+id/loadablewr_failure"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -81,7 +81,7 @@
                     tools:text="Error message" />
 
                 <ImageButton
-                    android:id="@+id/failure_holder_refresh_button"
+                    android:id="@+id/loadablewr_refresh_button"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:layout_marginTop="32dp"
