@@ -11,6 +11,7 @@
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/icon_person.xml" value="0.17037037037037037" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/icon_refresh.xml" value="0.2351851851851852" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/input_layout.xml" value="0.12037037037037036" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/logo.xml" value="0.21666666666666667" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/refresh_button.xml" value="0.19907407407407407" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/rounded_button.xml" value="0.19722222222222222" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/selector_bottomnav.xml" value="0.17037037037037037" />
@@ -57,7 +58,7 @@
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_settings.xml" value="0.1337386018237082" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_setup.xml" value="0.176" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_setup_content.xml" value="0.17028985507246377" />
-        <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_splash.xml" value="0.264" />
+        <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_splash.xml" value="0.1" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_toolbar.xml" value="0.15760869565217392" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/part_settings_tile.xml" value="0.2" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/part_setup_tile.xml" value="0.16" />
