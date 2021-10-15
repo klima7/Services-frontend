@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.klima7.services.common.data.repositories.ExpertsRepository
+import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.domain.models.WorkingArea
 import com.klima7.services.common.lib.converters.toLatLng
 import com.klima7.services.common.lib.failfrag.FailurableViewModel
@@ -25,6 +26,10 @@ class LocationContentViewModel(
         LatLng(49.0, 14.0),
         LatLng(55.0, 25.0),
     )
+
+    sealed class Event: BaseEvent() {
+        data class ShowSaveLocationFailure(val failure: Failure): Event()
+    }
 
     // Internal data
     private var placeId: String? = null
@@ -60,6 +65,10 @@ class LocationContentViewModel(
         saveWorkingArea()
     }
 
+    fun retrySaveLocationClicked() {
+        saveWorkingArea()
+    }
+
     override fun refresh() {
         fetchAndInitWithWorkingArea()
     }
@@ -88,16 +97,22 @@ class LocationContentViewModel(
     }
 
     private fun saveWorkingArea() {
+        showPending()
         val constPlaceId = placeId
         val constRadius = radius.value
         if(constPlaceId != null && constRadius != null) {
             viewModelScope.launch {
                 expertsRepository.setWorkingArea(constPlaceId, constRadius).fold({ failure ->
-                    Log.i("Hello", "setWorkingArea failure in VM: $failure")
+                    showMain()
+                    sendEvent(Event.ShowSaveLocationFailure(failure))
                 }, {
                     Log.i("Hello", "setWorkingArea success in VM")
+                    showMain()
                 })
             }
+        }
+        else {
+            showMain()
         }
     }
 

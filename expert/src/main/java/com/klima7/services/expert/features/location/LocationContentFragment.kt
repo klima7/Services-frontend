@@ -1,6 +1,7 @@
 package com.klima7.services.expert.features.location
 
 import android.graphics.Color
+import android.os.Bundle
 import android.util.Log
 import com.google.android.gms.common.api.Status
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -17,9 +18,16 @@ import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentLoginBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.google.android.gms.maps.model.CircleOptions
+import com.klima7.services.common.domain.models.Failure
+import com.klima7.services.common.lib.base.BaseViewModel
+import com.klima7.services.common.lib.faildialog.FailureDialogFragment
 
 
 class LocationContentFragment: FailurableFragment<FragmentLoginBinding>(), OnMapReadyCallback {
+
+    companion object {
+        const val SAVE_LOCATION_FAILURE_KEY = "SAVE_LOCATION_FAILURE_KEY"
+    }
 
     override val layoutId = R.layout.fragment_location
     override val viewModel: LocationContentViewModel by viewModel()
@@ -38,8 +46,11 @@ class LocationContentFragment: FailurableFragment<FragmentLoginBinding>(), OnMap
         val mapFragment = childFragmentManager.findFragmentById(R.id.location_map_fragment) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        viewModel.radiusFloat.observe(viewLifecycleOwner) {
-            Log.i("Hello", "Scroll position: $it")
+        childFragmentManager.setFragmentResultListener(SAVE_LOCATION_FAILURE_KEY, viewLifecycleOwner) { _: String, bundle: Bundle ->
+            val result = bundle.get(FailureDialogFragment.BUNDLE_KEY)
+            if(result == FailureDialogFragment.Result.RETRY) {
+                viewModel.retrySaveLocationClicked()
+            }
         }
     }
 
@@ -68,10 +79,7 @@ class LocationContentFragment: FailurableFragment<FragmentLoginBinding>(), OnMap
         })
 
         autocompleteFragment.setOnPlaceClearedListener(object : OnClearListener {
-            override fun onClear() {
-                Log.i("Hello", "Clear detected")
-                viewModel.locationCleared()
-            }
+            override fun onClear() = viewModel.locationCleared()
         })
 
         viewModel.placeName.observe(viewLifecycleOwner) { name ->
@@ -123,5 +131,16 @@ class LocationContentFragment: FailurableFragment<FragmentLoginBinding>(), OnMap
         }
     }
 
+    override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
+        super.handleEvent(event)
+        when(event) {
+            is LocationContentViewModel.Event.ShowSaveLocationFailure -> showSaveLocationError(event.failure)
+        }
+    }
 
+    private fun showSaveLocationError(failure: Failure) {
+        val dialog = FailureDialogFragment.create(SAVE_LOCATION_FAILURE_KEY,
+            "Zmiana lokalizacji się nie powiodła.", failure)
+        dialog.show(childFragmentManager, "FailureDialogFragment")
+    }
 }

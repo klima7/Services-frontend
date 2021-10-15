@@ -142,7 +142,7 @@ class InfoContentViewModel(
     }
 
     private suspend fun saveInfoAndProfile() {
-        loadingVisible.value = true
+        showPending()
         val infoResult = saveInfo()
         val profileResult = saveProfileImage()
         if(infoResult.isFailure || profileResult.isFailure) {
@@ -151,7 +151,7 @@ class InfoContentViewModel(
         else {
             sendEvent(Event.FinishInfo)
         }
-        loadingVisible.value = false
+        showMain()
     }
 
     private suspend fun saveInfo(): Outcome<Failure, None> {
