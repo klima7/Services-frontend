@@ -20,11 +20,12 @@ class LocationContentViewModel(
     private val getCurrentExpertUC: GetCurrentExpertUC
 ): FailurableViewModel() {
 
-    // Constants
-    private val POLAND_BOUNDS = LatLngBounds(
-        LatLng(49.0, 14.0),
-        LatLng(55.0, 25.0),
-    )
+    companion object {
+        private val POLAND_BOUNDS = LatLngBounds(
+            LatLng(49.0, 14.0),
+            LatLng(55.0, 25.0),
+        )
+    }
 
     sealed class Event: BaseEvent() {
         data class ShowSaveLocationFailure(val failure: Failure): Event()
