@@ -1,9 +1,7 @@
 package com.klima7.services.expert.features.settings
 
-import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.data.repositories.AuthRepository
 import com.klima7.services.common.lib.base.BaseViewModel
-import kotlinx.coroutines.launch
 
 class SettingsViewModel(
     private val authRepository: AuthRepository

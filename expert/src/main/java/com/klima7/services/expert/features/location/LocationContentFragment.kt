@@ -9,18 +9,18 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.Circle
+import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.api.model.TypeFilter
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
+import com.klima7.services.common.domain.models.Failure
+import com.klima7.services.common.lib.base.BaseViewModel
+import com.klima7.services.common.lib.faildialog.FailureDialogFragment
 import com.klima7.services.common.lib.failfrag.FailurableFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentLoginBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import com.google.android.gms.maps.model.CircleOptions
-import com.klima7.services.common.domain.models.Failure
-import com.klima7.services.common.lib.base.BaseViewModel
-import com.klima7.services.common.lib.faildialog.FailureDialogFragment
 
 
 class LocationContentFragment: FailurableFragment<FragmentLoginBinding>(), OnMapReadyCallback {

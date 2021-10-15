@@ -7,7 +7,6 @@ import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentSettingsBinding
 import com.klima7.services.expert.features.info.InfoActivity
 import com.klima7.services.expert.features.location.LocationActivity
-import com.klima7.services.expert.features.login.LoginViewModel
 import com.klima7.services.expert.features.services.ServicesActivity
 import com.klima7.services.expert.features.splash.SplashActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel

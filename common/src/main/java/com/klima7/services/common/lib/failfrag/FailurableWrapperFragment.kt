@@ -1,12 +1,8 @@
 package com.klima7.services.common.lib.failfrag
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.view.animation.LinearInterpolator
 import androidx.databinding.ViewDataBinding
 import com.klima7.services.common.R

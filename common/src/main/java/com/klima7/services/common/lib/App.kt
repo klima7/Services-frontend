@@ -2,9 +2,9 @@ package com.klima7.services.common.lib
 
 import android.app.Application
 import com.google.android.libraries.places.api.Places
-import com.klima7.services.common.lib.di.viewModelsCommonModule
 import com.klima7.services.common.data.di.reposModule
 import com.klima7.services.common.data.di.sourcesModule
+import com.klima7.services.common.lib.di.viewModelsCommonModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

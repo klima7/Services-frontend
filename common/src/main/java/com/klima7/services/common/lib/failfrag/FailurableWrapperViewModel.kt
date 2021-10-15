@@ -3,11 +3,8 @@ package com.klima7.services.common.lib.failfrag
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
-import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.lib.base.BaseViewModel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 
 class FailurableWrapperViewModel: BaseViewModel() {

@@ -12,7 +12,6 @@ import com.klima7.services.common.data.entities.toDomain
 import com.klima7.services.common.domain.models.Expert
 import com.klima7.services.common.domain.models.ExpertInfo
 import com.klima7.services.common.domain.models.Failure
-import com.klima7.services.common.domain.models.WorkingArea
 import com.klima7.services.common.domain.utils.None
 import com.klima7.services.common.domain.utils.Outcome
 import kotlinx.coroutines.tasks.await

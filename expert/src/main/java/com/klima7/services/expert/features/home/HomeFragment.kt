@@ -8,7 +8,6 @@ import com.klima7.services.common.lib.base.BaseFragment
 import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentHomeBinding
-import com.klima7.services.expert.features.location.LocationActivity
 import com.klima7.services.expert.features.settings.SettingsActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
