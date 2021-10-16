@@ -18,7 +18,7 @@ val viewModelsExpertModule = module {
     viewModel { SplashViewModel(get(), get()) }
     viewModel { HomeViewModel() }
     viewModel { LoginViewModel() }
-    viewModel { SetupContentViewModel(get(), get()) }
+    viewModel { SetupContentViewModel(get()) }
     viewModel { InfoContentViewModel(get(), get()) }
     viewModel { ServicesContentViewModel(get(), get(), get()) }
     viewModel { LocationContentViewModel(get(), get()) }
