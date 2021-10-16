@@ -24,9 +24,14 @@ class FailureDialogFragment: DialogFragment() {
     }
 
     companion object {
+
         const val BUNDLE_KEY = "result"
 
-        fun create(requestKey: String, message: String, failure: Failure? = null, retryAbility: Boolean = true): FailureDialogFragment {
+        fun createRetry(requestKey: String, message: String, failure: Failure? = null) = create(requestKey, message, failure, true)
+
+        fun createDismiss(requestKey: String, message: String, failure: Failure? = null) = create(requestKey, message, failure, false)
+
+        private fun create(requestKey: String, message: String, failure: Failure?, retryAbility: Boolean): FailureDialogFragment {
             val fragment = FailureDialogFragment()
             fragment.setData(requestKey, message, failure, retryAbility)
             return fragment

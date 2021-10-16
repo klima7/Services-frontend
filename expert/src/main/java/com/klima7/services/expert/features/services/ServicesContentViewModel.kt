@@ -1,5 +1,6 @@
 package com.klima7.services.expert.features.services
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.data.repositories.AuthRepository
 import com.klima7.services.common.data.repositories.ExpertsRepository
@@ -35,8 +36,10 @@ class ServicesContentViewModel(
             getCategorizedSelectableServices().foldS({ failure ->
                 showFailure(failure)
             }, { services ->
-                if(services.isEmpty())
+                if(services.isEmpty()) {
+                    Log.i("Glide", "Empty")
                     showFailure(Failure.InternetFailure)
+                }
                 else {
                     sendEvent(Event.SetServices(services))
                     showMain()

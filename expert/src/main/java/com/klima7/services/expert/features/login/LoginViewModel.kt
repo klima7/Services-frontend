@@ -17,12 +17,11 @@ class LoginViewModel: BaseViewModel() {
         AuthUI.IdpConfig.GoogleBuilder().build()
     )
 
-    fun launchLoginClicked() {
+    fun loginButtonClicked() {
         sendEvent(Event.LaunchSignIn)
     }
 
     fun retryLoginClicked() {
-        Log.i("Hello", "retry clicked")
         sendEvent(Event.LaunchSignIn)
     }
 

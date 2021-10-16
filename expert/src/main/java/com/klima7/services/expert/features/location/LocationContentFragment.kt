@@ -138,7 +138,7 @@ class LocationContentFragment: LoadableFragment<FragmentLoginBinding>(), OnMapRe
     }
 
     private fun showSaveLocationError(failure: Failure) {
-        val dialog = FailureDialogFragment.create(SAVE_LOCATION_FAILURE_KEY,
+        val dialog = FailureDialogFragment.createRetry(SAVE_LOCATION_FAILURE_KEY,
             "Zmiana lokalizacji się nie powiodła.", failure)
         dialog.show(childFragmentManager, "FailureDialogFragment")
     }

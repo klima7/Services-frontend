@@ -80,9 +80,10 @@ class LoginFragment: BaseFragment<FragmentLoginBinding>() {
     }
 
     private fun showFailure() {
-        val dialog = FailureDialogFragment.create(
+        val dialog = FailureDialogFragment.createRetry(
             LOGIN_FAILURE_DIALOG_KEY,
-            "Logowanie się nie powiodło.", Failure.InternetFailure)
+            "Logowanie się nie powiodło."
+        )
         dialog.show(childFragmentManager, "FailureDialogFragment")
     }
 }

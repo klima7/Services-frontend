@@ -89,7 +89,7 @@ class InfoContentFragment: LoadableFragment<FragmentInfoBinding>() {
     }
 
     private fun showDialog() {
-        val dialog = FailureDialogFragment.create("key", "Aktualizacja profilu się nie powiodła.", Failure.NotFoundFailure)
+        val dialog = FailureDialogFragment.createRetry("key", "Aktualizacja profilu się nie powiodła.", Failure.NotFoundFailure)
         dialog.show(childFragmentManager, "FailureDialogFragment")
     }
 
