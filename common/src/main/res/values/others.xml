@@ -2,5 +2,6 @@
 <resources>
 
     <integer name="failure_fade_time">500</integer>
+    <integer name="avatar_fade_time">400</integer>
 
 </resources>
