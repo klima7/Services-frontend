@@ -39,7 +39,7 @@ class AvatarFragment : BaseFragment<FragmentAvatarBinding>() {
             .transition(withCrossFade(resources.getInteger(R.integer.avatar_fade_time)))
             .signature(ObjectKey(profileImage.changeTime))
             .placeholder(R.drawable.avatar_placeholder)
-            .error(R.drawable.image_profile_default)
+            .error(R.drawable.avatar_failure)
             .into(image)
     }
 }
