@@ -25,7 +25,7 @@ class SplashFragment: LoadableFragment<FragmentSplashBinding>() {
 
     override fun onFirstCreation() {
         super.onFirstCreation()
-        viewModel.splashStarted()
+        viewModel.started()
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {

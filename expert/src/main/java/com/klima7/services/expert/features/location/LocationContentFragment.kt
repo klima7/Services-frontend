@@ -37,7 +37,7 @@ class LocationContentFragment: LoadableFragment<FragmentLoginBinding>(), OnMapRe
     override fun onFirstCreation() {
         super.onFirstCreation()
         configureAutocomplete()
-        viewModel.locationStarted()
+        viewModel.started()
     }
 
     override fun init() {

@@ -20,7 +20,7 @@ class SplashViewModel(
         object ShowSetupScreen: Event()
     }
 
-    fun splashStarted() {
+    fun started() {
         showMain()
         viewModelScope.launch {
             delay(2000)

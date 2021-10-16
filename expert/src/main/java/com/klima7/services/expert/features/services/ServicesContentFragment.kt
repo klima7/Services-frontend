@@ -15,7 +15,7 @@ class ServicesContentFragment: LoadableFragment<FragmentServicesBinding>() {
 
     override fun onFirstCreation() {
         super.onFirstCreation()
-        viewModel.servicesStarted()
+        viewModel.started()
     }
 
     override fun init() {

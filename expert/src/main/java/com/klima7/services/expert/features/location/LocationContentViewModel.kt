@@ -46,7 +46,7 @@ class LocationContentViewModel(
     val saveEnabled = placeName.map { it.isNotEmpty() }
     val mapBounds = CombinedLiveData(circleVisible, placeCoords, radius) { getBounds() }
 
-    fun locationStarted() {
+    fun started() {
         fetchAndInitWithWorkingArea()
     }
 

@@ -26,7 +26,7 @@ class ServicesContentViewModel(
         update()
     }
 
-    fun servicesStarted() {
+    fun started() {
         update()
     }
 

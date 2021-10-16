@@ -63,7 +63,7 @@ class InfoContentViewModel(
         object ShowSaveError: Event()
     }
 
-    fun infoStarted() {
+    fun started() {
         updateViews()
     }
 

@@ -25,7 +25,7 @@ class SetupContentViewModel(
         object ShowLocationScreen: Event()
     }
 
-    fun setupStarted() {
+    fun started() {
         updateSetupState()
     }
 

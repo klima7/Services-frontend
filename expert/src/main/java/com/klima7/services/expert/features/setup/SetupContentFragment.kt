@@ -26,7 +26,7 @@ class SetupContentFragment: LoadableFragment<FragmentSetupBinding>() {
 
     override fun onFirstCreation() {
         super.onFirstCreation()
-        viewModel.setupStarted()
+        viewModel.started()
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {

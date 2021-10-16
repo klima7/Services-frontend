@@ -33,7 +33,7 @@ class InfoContentFragment: LoadableFragment<FragmentInfoBinding>() {
 
     override fun onFirstCreation() {
         super.onFirstCreation()
-        viewModel.infoStarted()
+        viewModel.started()
     }
 
     override fun init() {
