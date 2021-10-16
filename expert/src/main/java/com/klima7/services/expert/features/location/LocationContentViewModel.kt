@@ -47,7 +47,11 @@ class LocationContentViewModel(
     val mapBounds = CombinedLiveData(circleVisible, placeCoords, radius) { getBounds() }
 
     fun started() {
-        fetchAndInitWithWorkingArea()
+        loadContent()
+    }
+
+    override fun refresh() {
+        loadContent()
     }
 
     fun locationSelected(newPlaceId: String, newPlaceName: String, newPlaceCoords: LatLng) {
@@ -69,11 +73,7 @@ class LocationContentViewModel(
         saveWorkingArea()
     }
 
-    override fun refresh() {
-        fetchAndInitWithWorkingArea()
-    }
-
-    private fun fetchAndInitWithWorkingArea() {
+    private fun loadContent() {
         showLoading()
         viewModelScope.launch {
             getCurrentExpertUC.execute().foldS({ failure ->

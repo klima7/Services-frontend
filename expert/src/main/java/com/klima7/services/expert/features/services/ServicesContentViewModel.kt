@@ -22,15 +22,15 @@ class ServicesContentViewModel(
         data class SetServices(val services: List<CategorizedSelectableServices>): Event()
     }
 
-    override fun refresh() {
-        update()
-    }
-
     fun started() {
-        update()
+        loadContent()
     }
 
-    private fun update() {
+    override fun refresh() {
+        loadContent()
+    }
+
+    private fun loadContent() {
         showLoading()
         viewModelScope.launch {
             getCategorizedSelectableServices().foldS({ failure ->

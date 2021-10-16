@@ -67,6 +67,10 @@ class InfoContentViewModel(
         loadContent()
     }
 
+    override fun refresh() {
+        loadContent()
+    }
+
     fun saveClicked() {
         viewModelScope.launch {
             saveInfoAndProfile()
@@ -80,10 +84,6 @@ class InfoContentViewModel(
     fun profileImageSelected(uri: String) {
         avatarUriToSave = uri
         avatar.value = ProfileImage(uri, 0)
-    }
-
-    override fun refresh() {
-        loadContent()
     }
 
     private fun loadContent() {

@@ -26,7 +26,11 @@ class SetupContentViewModel(
     }
 
     fun started() {
-        updateSetupState()
+        loadContent()
+    }
+
+    override fun refresh() {
+        loadContent()
     }
 
     fun continueClicked() {
@@ -46,14 +50,10 @@ class SetupContentViewModel(
     }
 
     fun configDone() {
-        updateSetupState()
+        loadContent()
     }
 
-    override fun refresh() {
-        updateSetupState()
-    }
-
-    private fun updateSetupState() {
+    private fun loadContent() {
         showLoading()
         viewModelScope.launch {
             getUidPart()
@@ -62,10 +62,10 @@ class SetupContentViewModel(
 
     private suspend fun getUidPart() {
         authRepository.getUid().foldS({ failure ->
-            notifyFailure(failure)
+            showFailure(failure)
         }, { uid ->
             if(uid == null) {
-                notifyFailure(Failure.UnknownFailure)
+                showFailure(Failure.UnknownFailure)
             }
             else {
                 getExpertPart(uid)
@@ -75,10 +75,10 @@ class SetupContentViewModel(
 
     private suspend fun getExpertPart(uid: String) {
         expertsRepository.getExpert(uid).foldS({ failure ->
-            notifyFailure(failure)
+            showFailure(failure)
         }, { expert ->
             if(expert.fromCache) {
-                notifyFailure(Failure.InternetFailure)
+                showFailure(Failure.InternetFailure)
             }
             else {
                 verifyExpertPart(expert)
@@ -93,7 +93,4 @@ class SetupContentViewModel(
         locationConfigured.value = expert.area != null
     }
 
-    private fun notifyFailure(failure: Failure) {
-        showFailure(failure)
-    }
 }
