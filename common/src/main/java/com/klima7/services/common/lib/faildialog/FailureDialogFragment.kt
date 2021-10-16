@@ -26,7 +26,7 @@ class FailureDialogFragment: DialogFragment() {
     companion object {
         const val BUNDLE_KEY = "result"
 
-        fun create(requestKey: String, message: String, failure: Failure, retryAbility: Boolean = true): FailureDialogFragment {
+        fun create(requestKey: String, message: String, failure: Failure? = null, retryAbility: Boolean = true): FailureDialogFragment {
             val fragment = FailureDialogFragment()
             fragment.setData(requestKey, message, failure, retryAbility)
             return fragment
@@ -39,10 +39,10 @@ class FailureDialogFragment: DialogFragment() {
 
     private lateinit var requestKey: String
     private lateinit var message: String
-    private lateinit var failure: Failure
+    private var failure: Failure? = null
     private var retryAbility: Boolean = false
 
-    private fun setData(requestKey: String, message: String, failure: Failure, retryAbility: Boolean) {
+    private fun setData(requestKey: String, message: String, failure: Failure?, retryAbility: Boolean) {
         this.requestKey = requestKey
         this.message = message
         this.failure = failure
@@ -51,7 +51,7 @@ class FailureDialogFragment: DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         if(savedInstanceState == null)
-            viewModel.setData(requestKey, message, failure, retryAbility)
+            viewModel.setData(requestKey, message, failure)
 
         val inflater = this.layoutInflater
         binding = DataBindingUtil.inflate(inflater, R.layout.dialog_failure, null, false)
@@ -80,10 +80,17 @@ class FailureDialogFragment: DialogFragment() {
     }
 
     private fun initView() {
-        val desc = FailureDescription.get(viewModel.failure)
-        binding.dialogFailureImage.setImageResource(desc.imageId)
-        val completeMessage = "${resources.getString(desc.textId)}. ${viewModel.message}"
-        binding.dialogFailureText.text = completeMessage
+        val failure = viewModel.failure
+        if(failure != null) {
+            val desc = FailureDescription.get(failure)
+            binding.dialogFailureImage.setImageResource(desc.imageId)
+            val completeMessage = "${resources.getString(desc.textId)}. ${viewModel.message}"
+            binding.dialogFailureText.text = completeMessage
+        }
+        else {
+            binding.dialogFailureImage.setImageResource(R.drawable.icon_error)
+            binding.dialogFailureText.text = viewModel.message
+        }
     }
 
 }

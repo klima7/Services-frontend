@@ -7,19 +7,16 @@ class FailureDialogViewModel: ViewModel() {
 
     private lateinit var mRequestKey: String
     private lateinit var mMessage: String
-    private lateinit var mFailure: Failure
-    private var mRetryAbility: Boolean = false
+    private var mFailure: Failure? = null
 
-    fun setData(requestKey: String, message: String, failure: Failure, retryAbility: Boolean) {
+    fun setData(requestKey: String, message: String, failure: Failure?) {
         mRequestKey = requestKey
         mMessage = message
         mFailure = failure
-        mRetryAbility = retryAbility
     }
 
     val requestKey get() = mRequestKey
     val message get() = mMessage
     val failure get() = mFailure
-    val retryAbility get() = mRetryAbility
 
 }
