@@ -15,7 +15,7 @@
     </style>
 
 
-    <style name="Theme.Expert.Splash" parent="Theme.Expert">
+    <style name="Theme.Expert.Background" parent="Theme.Expert">
 
         <item name = "android:windowBackground">@color/icon_background</item>
 
