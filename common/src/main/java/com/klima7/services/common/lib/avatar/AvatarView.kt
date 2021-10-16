@@ -57,7 +57,7 @@ class AvatarView(context: Context, attrs: AttributeSet?) : FrameLayout(context, 
     }
 
     private fun refreshView() {
-        val fixedUri = if(EMULATE) uri.replace("localhost", "10.0.2.2") else uri
+        val fixedUri = "https://firebasestorage.googleapis.com/v0/b/services-a7389.appspot.com/o/profile_images%2FpnmE94NiTQbRV3tuUWYf0Pj3XHq1.png?alt=media&token=e5b9e28d-0a84-4f70-ae62-60a005ec564e"
         Log.i("Glide", "Loading: $fixedUri")
         val image = findViewById<CircleImageView>(R.id.avatar_image)
         Glide.with(context).clear(image)

@@ -72,9 +72,9 @@ class InfoContentFragment: LoadableFragment<FragmentInfoBinding>() {
             }
         }
 
-        viewModel.avatar.observe(viewLifecycleOwner) { uri ->
+        viewModel.avatar.observe(viewLifecycleOwner) { avatar ->
             val fragment = childFragmentManager.findFragmentById(R.id.info_avatar_fragment) as AvatarFragment
-            fragment.setUri(uri)
+            fragment.setProfileImage(avatar)
         }
 
     }

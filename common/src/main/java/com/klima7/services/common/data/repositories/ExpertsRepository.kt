@@ -92,20 +92,6 @@ class ExpertsRepository(
         }
     }
 
-    suspend fun getProfileImage(uid: String): Outcome<Failure, String> {
-        return try {
-            val uri = storage.reference
-                .child("profile_images")
-                .child("$uid.png")
-                .downloadUrl.await().toString()
-            Log.i("Hello", "Profile image: $uri")
-            Outcome.Success(uri)
-        } catch(e: Exception) {
-            Log.e("Hello", "Error while getProfileImage", e)
-            Outcome.Failure(e.toDomain())
-        }
-    }
-
     suspend fun setServicesIds(services: List<String>): Outcome<Failure, None> {
         return try {
             val data = hashMapOf(

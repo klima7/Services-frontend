@@ -1,14 +1,14 @@
 package com.klima7.services.common.data.entities
 
+import android.util.Log
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.GeoPoint
 import com.klima7.services.common.data.converters.toDomain
-import com.klima7.services.common.domain.models.Expert
-import com.klima7.services.common.domain.models.ExpertInfo
-import com.klima7.services.common.domain.models.NamedLocation
-import com.klima7.services.common.domain.models.WorkingArea
+import com.klima7.services.common.domain.models.*
 
 data class ExpertEntity(
     var info: InfoEntity = InfoEntity(),
+    var profileImage: ProfileImageEntity? = null,
     var workingArea: WorkingAreaEntity? = null,
     var services: List<String> = listOf(),
 
@@ -35,6 +35,11 @@ data class ExpertEntity(
         var radius: Int = 0
     )
 
+    data class ProfileImageEntity(
+        var url: String = "",
+        var changeTime: Timestamp = Timestamp.now()
+    )
+
 }
 
 fun ExpertEntity.toDomain(id: String, fromCache: Boolean): Expert {
@@ -43,6 +48,7 @@ fun ExpertEntity.toDomain(id: String, fromCache: Boolean): Expert {
         val nl = NamedLocation(it.locationName, it.coordinates.toDomain())
         WorkingArea(nl, it.radius)
     }
+    val pi = profileImage?.run { ProfileImage(url, changeTime.seconds) }
     val s = services.toSet()
-    return Expert(id, info, wa, s, ratingsCount, commentsCount, rating, active, fromCache)
+    return Expert(id, info, pi, wa, s, ratingsCount, commentsCount, rating, active, fromCache)
 }

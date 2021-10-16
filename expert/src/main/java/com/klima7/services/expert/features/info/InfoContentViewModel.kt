@@ -9,6 +9,7 @@ import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.domain.models.Expert
 import com.klima7.services.common.domain.models.ExpertInfo
 import com.klima7.services.common.domain.models.Failure
+import com.klima7.services.common.domain.models.ProfileImage
 import com.klima7.services.common.domain.utils.None
 import com.klima7.services.common.domain.utils.Outcome
 import com.klima7.services.common.lib.loadable.LoadableViewModel
@@ -30,7 +31,7 @@ class InfoContentViewModel(
     val email = MutableLiveData("")
     val website = MutableLiveData("")
 
-    val avatar = MutableLiveData("")
+    val avatar = MutableLiveData<ProfileImage?>()
 
     val nameError = Transformations.map(name) {
         if (it.nullifyBlank() == null) NameError.NotProvided else null
@@ -78,7 +79,7 @@ class InfoContentViewModel(
 
     fun profileImageSelected(uri: String) {
         avatarUriToSave = uri
-        avatar.value = uri
+        avatar.value = ProfileImage(uri, 0)
     }
 
     override fun refresh() {
@@ -121,13 +122,14 @@ class InfoContentViewModel(
     }
 
     private fun setProfileImage(expert: Expert) {
-        viewModelScope.launch {
-            expertsRepository.getProfileImage(expert.uid).foldS({
-                avatar.postValue("")
-            }, {
-                avatar.postValue(it)
-            })
-        }
+        avatar.value = expert.profileImage // TODO: Tidy
+//        viewModelScope.launch {
+//            expertsRepository.getProfileImage(expert.uid).foldS({
+//                avatar.postValue("")
+//            }, {
+//                avatar.postValue(it)
+//            })
+//        }
     }
 
     private fun notifyFailure(failure: Failure) {
