@@ -10,7 +10,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.signature.ObjectKey
 import com.klima7.services.common.R
 import com.klima7.services.common.data.di.EMULATE
-import de.hdodenhof.circleimageview.CircleImageView
 
 class AvatarView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
 
@@ -57,14 +56,14 @@ class AvatarView(context: Context, attrs: AttributeSet?) : FrameLayout(context, 
     }
 
     private fun refreshView() {
-        val fixedUri = "https://firebasestorage.googleapis.com/v0/b/services-a7389.appspot.com/o/profile_images%2FpnmE94NiTQbRV3tuUWYf0Pj3XHq1.png?alt=media&token=e5b9e28d-0a84-4f70-ae62-60a005ec564e"
-        Log.i("Glide", "Loading: $fixedUri")
-        val image = findViewById<CircleImageView>(R.id.avatar_image)
-        Glide.with(context).clear(image)
-        Glide.with(this)
-            .load(fixedUri)
-            .placeholder(R.drawable.image_profile_default)
-            .error(R.drawable.image_profile_default)
-            .into(image)
+//        val fixedUri = "https://firebasestorage.googleapis.com/v0/b/services-a7389.appspot.com/o/profile_images%2FpnmE94NiTQbRV3tuUWYf0Pj3XHq1.png?alt=media&token=e5b9e28d-0a84-4f70-ae62-60a005ec564e"
+//        Log.i("Glide", "Loading: $fixedUri")
+//        val image = findViewById<CircleImageView>(R.id.avatar_image)
+//        Glide.with(context).clear(image)
+//        Glide.with(this)
+//            .load(fixedUri)
+//            .placeholder(R.drawable.image_profile_default)
+//            .error(R.drawable.image_profile_default)
+//            .into(image)
     }
 }
