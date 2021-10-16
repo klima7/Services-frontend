@@ -19,16 +19,16 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class FailureDialogFragment: DialogFragment() {
 
     enum class Result {
-        CANCEL,
+        DISMISS,
         RETRY
     }
 
     companion object {
         const val BUNDLE_KEY = "result"
 
-        fun create(requestKey: String, message: String, failure: Failure): FailureDialogFragment {
+        fun create(requestKey: String, message: String, failure: Failure, retryAbility: Boolean = true): FailureDialogFragment {
             val fragment = FailureDialogFragment()
-            fragment.setData(requestKey, message, failure)
+            fragment.setData(requestKey, message, failure, retryAbility)
             return fragment
         }
 
@@ -40,34 +40,39 @@ class FailureDialogFragment: DialogFragment() {
     private lateinit var requestKey: String
     private lateinit var message: String
     private lateinit var failure: Failure
+    private var retryAbility: Boolean = false
 
-    private fun setData(requestKey: String, message: String, failure: Failure) {
+    private fun setData(requestKey: String, message: String, failure: Failure, retryAbility: Boolean) {
         this.requestKey = requestKey
         this.message = message
         this.failure = failure
+        this.retryAbility = retryAbility
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         if(savedInstanceState == null)
-            viewModel.setData(requestKey, message, failure)
+            viewModel.setData(requestKey, message, failure, retryAbility)
 
         val inflater = this.layoutInflater
         binding = DataBindingUtil.inflate(inflater, R.layout.dialog_failure, null, false)
 
-        val dialog: AlertDialog = MaterialAlertDialogBuilder(requireContext())
-            .setNegativeButton("Anuluj") { _, _ ->
-                val bundle = bundleOf("result" to Result.CANCEL)
+        val dialog: AlertDialog = MaterialAlertDialogBuilder(requireContext()).run {
+            setNegativeButton("Anuluj") { _, _ ->
+                val bundle = bundleOf("result" to Result.DISMISS)
                 setFragmentResult(viewModel.requestKey, bundle)
             }
-            .setPositiveButton("Ponów próbę") { _, _ ->
-                val bundle = bundleOf("result" to Result.RETRY)
-                setFragmentResult(viewModel.requestKey, bundle)
+            if(retryAbility) {
+                setPositiveButton("Ponów próbę") { _, _ ->
+                    val bundle = bundleOf("result" to Result.RETRY)
+                    setFragmentResult(viewModel.requestKey, bundle)
+                }
             }
-            .setBackground(
-                ResourcesCompat.getDrawable(
-                resources, R.drawable.shape_dialog_background, requireContext().theme))
-            .setView(binding.root)
-            .create()
+            background = ResourcesCompat.getDrawable(resources, R.drawable.shape_dialog_background,
+                requireContext().theme)
+            setView(binding.root)
+            create()
+        }
+
 
         initView()
 
