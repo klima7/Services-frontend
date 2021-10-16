@@ -1,17 +1,25 @@
 package com.klima7.services.expert.features.login
 
+import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
+import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.lib.base.BaseFragment
 import com.klima7.services.common.lib.base.BaseViewModel
+import com.klima7.services.common.lib.faildialog.FailureDialogFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentLoginBinding
+import com.klima7.services.expert.features.location.LocationContentFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class LoginFragment: BaseFragment<FragmentLoginBinding>() {
+
+    companion object {
+        const val LOGIN_FAILURE_DIALOG_KEY = "LOGIN_FAILURE_DIALOG_KEY"
+    }
 
     override val layoutId = R.layout.fragment_login
     override val viewModel: LoginViewModel by viewModel()
@@ -20,6 +28,16 @@ class LoginFragment: BaseFragment<FragmentLoginBinding>() {
         FirebaseAuthUIActivityResultContract()
     ) { res ->
         this.onSignInResult(res)
+    }
+
+    override fun init() {
+        super.init()
+        childFragmentManager.setFragmentResultListener(LOGIN_FAILURE_DIALOG_KEY, viewLifecycleOwner) { _: String, bundle: Bundle ->
+            val result = bundle.get(FailureDialogFragment.BUNDLE_KEY)
+            if(result == FailureDialogFragment.Result.RETRY) {
+                viewModel.retryLoginClicked();
+            }
+        }
     }
 
     private fun signIn() {
@@ -37,13 +55,13 @@ class LoginFragment: BaseFragment<FragmentLoginBinding>() {
         val response = result.idpResponse
         when {
             result.resultCode == AppCompatActivity.RESULT_OK -> {
-                requireActivity().finish()
+                viewModel.loginSuccess()
             }
             response == null -> {
                 // Login cancelled
             }
             else -> {
-                // Login failed
+                viewModel.loginFailure()
             }
         }
     }
@@ -52,6 +70,19 @@ class LoginFragment: BaseFragment<FragmentLoginBinding>() {
         super.handleEvent(event)
         when(event) {
             LoginViewModel.Event.LaunchSignIn -> signIn()
+            LoginViewModel.Event.Finish -> finish()
+            LoginViewModel.Event.ShowFailure -> showFailure()
         }
+    }
+
+    private fun finish() {
+        requireActivity().finish()
+    }
+
+    private fun showFailure() {
+        val dialog = FailureDialogFragment.create(
+            LOGIN_FAILURE_DIALOG_KEY,
+            "Logowanie się nie powiodło.", Failure.InternetFailure)
+        dialog.show(childFragmentManager, "FailureDialogFragment")
     }
 }

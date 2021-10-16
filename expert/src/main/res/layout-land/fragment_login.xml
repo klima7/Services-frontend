@@ -58,7 +58,7 @@
             android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
             android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
             android:background="@drawable/rounded_button"
-            android:onClick="@{() -> viewmodel.launchLogin()}"
+            android:onClick="@{() -> viewmodel.launchLoginClicked()}"
             android:text="Zaloguj się"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
