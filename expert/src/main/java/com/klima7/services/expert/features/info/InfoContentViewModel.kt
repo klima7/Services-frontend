@@ -64,7 +64,7 @@ class InfoContentViewModel(
     }
 
     fun started() {
-        updateViews()
+        loadContent()
     }
 
     fun saveClicked() {
@@ -83,33 +83,29 @@ class InfoContentViewModel(
     }
 
     override fun refresh() {
-        updateViews()
+        loadContent()
     }
 
-    private fun updateViews() {
+    private fun loadContent() {
         showLoading()
         viewModelScope.launch {
-            getExpertAndUpdateViews()
+            authRepository.getUid().foldS({ failure ->
+                notifyFailure(failure)
+            }, { uid ->
+                if(uid == null) {
+                    notifyFailure(Failure.UnknownFailure)
+                }
+                else {
+                    expertsRepository.getExpert(uid).foldS({ failure ->
+                        notifyFailure(failure)
+                    }, { expert ->
+                        setFields(expert)
+                        setProfileImage(expert)
+                        showMain()
+                    })
+                }
+            })
         }
-    }
-
-    private suspend fun getExpertAndUpdateViews() {
-        authRepository.getUid().foldS({ failure ->
-            notifyFailure(failure)
-        }, { uid ->
-            if(uid == null) {
-                notifyFailure(Failure.UnknownFailure)
-            }
-            else {
-                expertsRepository.getExpert(uid).foldS({ failure ->
-                    notifyFailure(failure)
-                }, { expert ->
-                    setFields(expert)
-                    setProfileImage(expert)
-                    showMain()
-                })
-            }
-        })
     }
 
     private fun setFields(expert: Expert) {
