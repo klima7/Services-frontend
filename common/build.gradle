@@ -48,9 +48,6 @@ dependencies {
     api "androidx.constraintlayout:constraintlayout:2.1.1"
     api "androidx.cardview:cardview:1.0.0"
 
-    // Round images
-    api "de.hdodenhof:circleimageview:3.1.0"
-
     // Lottie
     api "com.airbnb.android:lottie:4.1.0"
 

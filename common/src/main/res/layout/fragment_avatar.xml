@@ -5,22 +5,27 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <FrameLayout
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:cardCornerRadius="1000dp"
+        android:layout_centerHorizontal="true"
+        android:innerRadius="0dp"
+        android:shape="ring"
+        android:thicknessRatio="1.9"
+        app:strokeColor="?attr/colorPrimary"
+        app:strokeWidth="2dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/avatar_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/image_profile_default"
-            app:civ_border_color="@color/colorPrimary"
-            app:civ_border_width="3dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </FrameLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </layout>
