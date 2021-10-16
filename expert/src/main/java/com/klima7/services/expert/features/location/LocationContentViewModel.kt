@@ -8,9 +8,9 @@ import com.google.android.gms.maps.model.LatLngBounds
 import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.domain.models.WorkingArea
-import com.klima7.services.common.lib.converters.toLatLng
-import com.klima7.services.common.lib.loadable.LoadableViewModel
-import com.klima7.services.common.lib.utils.CombinedLiveData
+import com.klima7.services.common.ui.converters.toLatLng
+import com.klima7.services.common.ui.loadable.LoadableViewModel
+import com.klima7.services.common.ui.utils.CombinedLiveData
 import com.klima7.services.expert.usecases.GetCurrentExpertUC
 import kotlinx.coroutines.launch
 import kotlin.math.cos

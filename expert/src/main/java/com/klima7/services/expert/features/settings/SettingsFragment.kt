@@ -1,8 +1,8 @@
 package com.klima7.services.expert.features.settings
 
 import android.content.Intent
-import com.klima7.services.common.lib.base.BaseFragment
-import com.klima7.services.common.lib.base.BaseViewModel
+import com.klima7.services.common.ui.base.BaseFragment
+import com.klima7.services.common.ui.base.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentSettingsBinding
 import com.klima7.services.expert.features.info.InfoActivity

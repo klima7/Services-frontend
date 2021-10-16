@@ -1,4 +1,4 @@
-package com.klima7.services.common.lib.loadable
+package com.klima7.services.common.ui.loadable
 
 import android.annotation.SuppressLint
 import android.view.View
@@ -6,11 +6,11 @@ import android.view.animation.LinearInterpolator
 import androidx.databinding.ViewDataBinding
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentLoadableWrapperBinding
-import com.klima7.services.common.lib.base.BaseFragment
-import com.klima7.services.common.lib.base.BaseViewModel
-import com.klima7.services.common.lib.utils.FailureDescription
-import com.klima7.services.common.lib.utils.observeOnce
-import com.klima7.services.common.lib.utils.replaceFragment
+import com.klima7.services.common.ui.base.BaseFragment
+import com.klima7.services.common.ui.base.BaseViewModel
+import com.klima7.services.common.ui.utils.FailureDescription
+import com.klima7.services.common.ui.utils.observeOnce
+import com.klima7.services.common.ui.utils.replaceFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoadableWrapperFragment<DB: ViewDataBinding>(

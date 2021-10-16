@@ -1,4 +1,4 @@
-package com.klima7.services.common.lib.utils
+package com.klima7.services.common.ui.utils
 
 fun String?.nullifyBlank(): String? {
     return this?.trim()?.let {

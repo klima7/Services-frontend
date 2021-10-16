@@ -1,9 +1,9 @@
-package com.klima7.services.common.lib.loadable
+package com.klima7.services.common.ui.loadable
 
 import androidx.databinding.ViewDataBinding
 import com.klima7.services.common.domain.models.Failure
-import com.klima7.services.common.lib.base.BaseFragment
-import com.klima7.services.common.lib.base.BaseViewModel
+import com.klima7.services.common.ui.base.BaseFragment
+import com.klima7.services.common.ui.base.BaseViewModel
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 abstract class LoadableFragment<DB: ViewDataBinding>: BaseFragment<DB>() {

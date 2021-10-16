@@ -1,4 +1,4 @@
-package com.klima7.services.common.lib.base
+package com.klima7.services.common.ui.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

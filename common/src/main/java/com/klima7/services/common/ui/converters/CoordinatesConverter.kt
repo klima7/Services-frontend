@@ -1,4 +1,4 @@
-package com.klima7.services.common.lib.converters
+package com.klima7.services.common.ui.converters
 
 import com.google.android.gms.maps.model.LatLng
 import com.klima7.services.common.domain.models.Coordinates

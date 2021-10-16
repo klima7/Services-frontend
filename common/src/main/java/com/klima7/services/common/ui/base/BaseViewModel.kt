@@ -1,4 +1,4 @@
-package com.klima7.services.common.lib.base
+package com.klima7.services.common.ui.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

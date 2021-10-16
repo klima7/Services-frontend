@@ -1,7 +1,7 @@
 package com.klima7.services.expert.features.services
 
-import com.klima7.services.common.lib.base.BaseViewModel
-import com.klima7.services.common.lib.loadable.LoadableFragment
+import com.klima7.services.common.ui.base.BaseViewModel
+import com.klima7.services.common.ui.loadable.LoadableFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentServicesBinding
 import com.klima7.services.expert.features.services.multicategory.ServicesMultiCategoriesFragment

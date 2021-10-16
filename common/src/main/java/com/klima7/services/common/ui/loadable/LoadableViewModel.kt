@@ -1,7 +1,7 @@
-package com.klima7.services.common.lib.loadable
+package com.klima7.services.common.ui.loadable
 
 import com.klima7.services.common.domain.models.Failure
-import com.klima7.services.common.lib.base.BaseViewModel
+import com.klima7.services.common.ui.base.BaseViewModel
 
 abstract class LoadableViewModel: BaseViewModel() {
 

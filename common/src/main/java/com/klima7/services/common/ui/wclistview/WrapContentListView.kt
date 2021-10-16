@@ -1,4 +1,4 @@
-package com.klima7.services.common.lib.wclistview
+package com.klima7.services.common.ui.wclistview
 
 import android.content.Context
 import android.util.AttributeSet

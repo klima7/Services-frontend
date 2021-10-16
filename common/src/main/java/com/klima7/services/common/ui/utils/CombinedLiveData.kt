@@ -3,7 +3,7 @@ Thanks to Damia Fuentes
 https://stackoverflow.com/questions/47572913/livedata-transformations-map-with-multiple-arguments
  */
 
-package com.klima7.services.common.lib.utils
+package com.klima7.services.common.ui.utils
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData

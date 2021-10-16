@@ -12,9 +12,9 @@ import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.domain.models.ProfileImage
 import com.klima7.services.common.domain.utils.None
 import com.klima7.services.common.domain.utils.Outcome
-import com.klima7.services.common.lib.loadable.LoadableViewModel
-import com.klima7.services.common.lib.utils.CombinedLiveData
-import com.klima7.services.common.lib.utils.nullifyBlank
+import com.klima7.services.common.ui.loadable.LoadableViewModel
+import com.klima7.services.common.ui.utils.CombinedLiveData
+import com.klima7.services.common.ui.utils.nullifyBlank
 import kotlinx.coroutines.launch
 
 class InfoContentViewModel(

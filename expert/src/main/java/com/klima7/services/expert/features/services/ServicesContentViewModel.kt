@@ -9,7 +9,7 @@ import com.klima7.services.common.domain.models.Category
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.domain.models.Service
 import com.klima7.services.common.domain.utils.Outcome
-import com.klima7.services.common.lib.loadable.LoadableViewModel
+import com.klima7.services.common.ui.loadable.LoadableViewModel
 import kotlinx.coroutines.launch
 
 class ServicesContentViewModel(

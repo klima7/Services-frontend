@@ -1,9 +1,9 @@
 package com.klima7.services.expert.features.setup
 
-import com.klima7.services.common.lib.base.BaseFragment
-import com.klima7.services.common.lib.base.BaseViewModel
-import com.klima7.services.common.lib.loadable.LoadableWrapperFragment
-import com.klima7.services.common.lib.utils.replaceFragment
+import com.klima7.services.common.ui.base.BaseFragment
+import com.klima7.services.common.ui.base.BaseViewModel
+import com.klima7.services.common.ui.loadable.LoadableWrapperFragment
+import com.klima7.services.common.ui.utils.replaceFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentToolbarBinding
 

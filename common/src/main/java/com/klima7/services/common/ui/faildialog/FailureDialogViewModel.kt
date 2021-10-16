@@ -1,4 +1,4 @@
-package com.klima7.services.common.lib.faildialog
+package com.klima7.services.common.ui.faildialog
 
 import androidx.lifecycle.ViewModel
 import com.klima7.services.common.domain.models.Failure

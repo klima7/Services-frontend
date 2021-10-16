@@ -1,4 +1,4 @@
-package com.klima7.services.common.lib
+package com.klima7.services.common.ui
 
 import android.content.Context
 import android.util.Log

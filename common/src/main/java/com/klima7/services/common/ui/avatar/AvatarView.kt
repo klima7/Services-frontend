@@ -1,4 +1,4 @@
-package com.klima7.services.common.lib.avatar
+package com.klima7.services.common.ui.avatar
 
 import android.content.Context
 import android.os.Bundle

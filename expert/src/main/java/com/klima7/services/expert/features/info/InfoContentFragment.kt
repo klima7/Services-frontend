@@ -9,10 +9,10 @@ import com.canhub.cropper.CropImageView
 import com.canhub.cropper.PickImageContract
 import com.canhub.cropper.options
 import com.klima7.services.common.domain.models.Failure
-import com.klima7.services.common.lib.base.BaseViewModel
-import com.klima7.services.common.lib.faildialog.FailureDialogFragment
-import com.klima7.services.common.lib.loadable.LoadableFragment
-import com.klima7.services.common.lib.utils.showShortToast
+import com.klima7.services.common.ui.base.BaseViewModel
+import com.klima7.services.common.ui.faildialog.FailureDialogFragment
+import com.klima7.services.common.ui.loadable.LoadableFragment
+import com.klima7.services.common.ui.utils.showShortToast
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentInfoBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel

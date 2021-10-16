@@ -2,7 +2,7 @@ package com.klima7.services.expert.features.services.category
 
 import android.content.Context
 import com.klima7.services.common.domain.models.Service
-import com.klima7.services.common.lib.base.BaseFragment
+import com.klima7.services.common.ui.base.BaseFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentServicesCategoryBinding
 import com.klima7.services.expert.features.services.CategorizedSelectableServices

@@ -2,7 +2,7 @@ package com.klima7.services.expert.features.services.category
 
 import androidx.lifecycle.MutableLiveData
 import com.klima7.services.common.domain.models.Service
-import com.klima7.services.common.lib.base.BaseViewModel
+import com.klima7.services.common.ui.base.BaseViewModel
 import com.klima7.services.expert.features.services.CategorizedSelectableServices
 import com.klima7.services.expert.features.services.SelectableService
 
