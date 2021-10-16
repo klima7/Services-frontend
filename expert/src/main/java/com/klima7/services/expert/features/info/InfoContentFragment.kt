@@ -9,7 +9,6 @@ import com.canhub.cropper.CropImageView
 import com.canhub.cropper.PickImageContract
 import com.canhub.cropper.options
 import com.klima7.services.common.domain.models.Failure
-import com.klima7.services.common.lib.avatar.AvatarFragment
 import com.klima7.services.common.lib.base.BaseViewModel
 import com.klima7.services.common.lib.faildialog.FailureDialogFragment
 import com.klima7.services.common.lib.loadable.LoadableFragment
@@ -73,8 +72,7 @@ class InfoContentFragment: LoadableFragment<FragmentInfoBinding>() {
         }
 
         viewModel.avatar.observe(viewLifecycleOwner) { avatar ->
-            val fragment = childFragmentManager.findFragmentById(R.id.info_avatar_fragment) as AvatarFragment
-            fragment.setProfileImage(avatar)
+            binding.infoAvatarView.setProfileImage(avatar)
         }
 
     }
