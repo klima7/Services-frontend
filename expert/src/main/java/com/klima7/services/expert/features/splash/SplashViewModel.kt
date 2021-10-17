@@ -34,7 +34,7 @@ class SplashViewModel(
     }
 
     private fun proceed() {
-        showLoading()
+        showPending()
         getCurrentExpertStateUC.start(
             viewModelScope,
             None(),

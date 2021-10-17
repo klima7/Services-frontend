@@ -17,8 +17,8 @@ import kotlinx.coroutines.launch
 import kotlin.math.cos
 
 class LocationContentViewModel(
-    private val expertsRepository: ExpertsRepository,
-    private val getCurrentExpertUC: GetCurrentExpertUC
+    private val getCurrentExpertUC: GetCurrentExpertUC,
+    private val setCurrentExpertLocationUC: SetCurrentExpertLocationUC
 ): LoadableViewModel() {
 
     companion object {
@@ -103,14 +103,16 @@ class LocationContentViewModel(
         val constPlaceId = placeId
         val constRadius = radius.value
         if(constPlaceId != null && constRadius != null) {
-            viewModelScope.launch {
-                expertsRepository.setWorkingArea(constPlaceId, constRadius).fold({ failure ->
+            setCurrentExpertLocationUC.start(
+                viewModelScope,
+                SetCurrentExpertLocationUC.Params(constPlaceId, constRadius),
+                { failure ->
                     showMain()
                     sendEvent(Event.ShowSaveLocationFailure(failure))
                 }, {
                     showMain()
-                })
-            }
+                }
+            )
         }
         else {
             showMain()
