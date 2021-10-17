@@ -5,7 +5,6 @@ import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
-import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.domain.models.WorkingArea
 import com.klima7.services.common.domain.utils.None
@@ -13,12 +12,11 @@ import com.klima7.services.common.ui.converters.toLatLng
 import com.klima7.services.common.ui.loadable.LoadableViewModel
 import com.klima7.services.common.ui.utils.CombinedLiveData
 import com.klima7.services.expert.common.domain.usecases.GetCurrentExpertUC
-import kotlinx.coroutines.launch
 import kotlin.math.cos
 
 class LocationContentViewModel(
     private val getCurrentExpertUC: GetCurrentExpertUC,
-    private val setCurrentExpertLocationUC: SetCurrentExpertLocationUC
+    private val setCurrentExpertWorkingAreaUC: SetCurrentExpertWorkingAreaUC
 ): LoadableViewModel() {
 
     companion object {
@@ -103,9 +101,9 @@ class LocationContentViewModel(
         val constPlaceId = placeId
         val constRadius = radius.value
         if(constPlaceId != null && constRadius != null) {
-            setCurrentExpertLocationUC.start(
+            setCurrentExpertWorkingAreaUC.start(
                 viewModelScope,
-                SetCurrentExpertLocationUC.Params(constPlaceId, constRadius),
+                SetCurrentExpertWorkingAreaUC.Params(constPlaceId, constRadius),
                 { failure ->
                     showMain()
                     sendEvent(Event.ShowSaveLocationFailure(failure))

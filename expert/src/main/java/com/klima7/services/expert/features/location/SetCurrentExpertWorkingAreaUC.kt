@@ -6,9 +6,9 @@ import com.klima7.services.common.domain.utils.BaseUC
 import com.klima7.services.common.domain.utils.None
 import com.klima7.services.common.domain.utils.Outcome
 
-class SetCurrentExpertLocationUC(
+class SetCurrentExpertWorkingAreaUC(
     private val expertsRepository: ExpertsRepository
-): BaseUC<SetCurrentExpertLocationUC.Params, None>() {
+): BaseUC<SetCurrentExpertWorkingAreaUC.Params, None>() {
 
     override suspend fun execute(params: Params): Outcome<Failure, None> {
         return  expertsRepository.setWorkingArea(params.placeId, params.radius)
