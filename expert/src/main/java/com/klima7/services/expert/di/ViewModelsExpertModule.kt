@@ -20,7 +20,7 @@ val viewModelsExpertModule = module {
     viewModel { LoginViewModel() }
     viewModel { SetupContentViewModel(get()) }
     viewModel { InfoContentViewModel(get(), get()) }
-    viewModel { ServicesContentViewModel(get(), get(), get()) }
+    viewModel { ServicesContentViewModel(get(), get(), get(), get()) }
     viewModel { LocationContentViewModel(get(), get()) }
     viewModel { ServicesCategoryViewModel() }
     viewModel { ServicesMultiCategoryViewModel() }

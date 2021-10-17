@@ -15,7 +15,8 @@ import kotlinx.coroutines.launch
 class ServicesContentViewModel(
     private val servicesRepository: ServicesRepository,
     private val authRepository: AuthRepository,
-    private val expertsRepository: ExpertsRepository
+    private val expertsRepository: ExpertsRepository,
+    private val setCurrentExpertServices: SetCurrentExpertServices
 ): LoadableViewModel() {
 
     sealed class Event: BaseEvent() {
@@ -89,17 +90,18 @@ class ServicesContentViewModel(
     }
 
     fun servicesSelected(services: List<Service>) {
-        val servicesIds = services.map { it.id }
-        viewModelScope.launch {
-            setServicesIds(servicesIds)
-        }
+        setServices(services)
     }
 
-    private suspend fun setServicesIds(servicesIds: List<String>) {
-        expertsRepository.setServicesIds(servicesIds).foldS({ failure ->
-            // Failure
-        }, {
-            // Success
-        })
+    private fun setServices(services: List<Service>) {
+        setCurrentExpertServices.start(
+            viewModelScope,
+            SetCurrentExpertServices.Params(services),
+            {
+                // TODO: failure action
+            }, {
+                // TODO: success action
+            }
+        )
     }
 }
