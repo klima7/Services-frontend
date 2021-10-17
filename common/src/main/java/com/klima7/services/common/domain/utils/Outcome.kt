@@ -54,6 +54,3 @@ fun <T, L, R> Outcome<L, R>.flatMap(fn: (R) -> Outcome<L, T>): Outcome<L, T> {
         is Outcome.Success -> fn(b)
     }
 }
-
-
-class None
