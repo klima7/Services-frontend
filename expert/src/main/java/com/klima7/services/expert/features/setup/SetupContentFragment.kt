@@ -6,9 +6,9 @@ import com.klima7.services.common.ui.base.BaseViewModel
 import com.klima7.services.common.ui.loadable.LoadableFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentSetupBinding
+import com.klima7.services.expert.features.area.WorkingAreaActivity
 import com.klima7.services.expert.features.home.HomeActivity
 import com.klima7.services.expert.features.info.InfoActivity
-import com.klima7.services.expert.features.area.WorkingAreaActivity
 import com.klima7.services.expert.features.services.ServicesActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

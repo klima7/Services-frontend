@@ -19,8 +19,8 @@ import com.klima7.services.common.ui.faildialog.FailureDialogFragment
 import com.klima7.services.common.ui.loadable.LoadableFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentLoginBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.klima7.services.expert.features.area.ClearableAutocompleteSupportFragment.OnClearListener
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class WorkingAreaContentFragment: LoadableFragment<FragmentLoginBinding>(), OnMapReadyCallback {
