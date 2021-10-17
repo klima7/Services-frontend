@@ -21,7 +21,7 @@ class GetCategorisedAndMarkedServices(
     }
 
     private suspend fun getExpertPart(): Outcome<Failure, List<CategorizedSelectableServices>> {
-        return getCurrentExpertUC.execute(None()).foldS({ failure ->
+        return getCurrentExpertUC.run(None()).foldS({ failure ->
             Outcome.Failure(failure)
         }, { expert ->
             getAllServicesPart(expert.servicesIds)

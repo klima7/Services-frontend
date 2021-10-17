@@ -1,3 +1,5 @@
 package com.klima7.services.common.domain.utils
 
-class None
+class None {
+    override fun toString() = "None"
+}

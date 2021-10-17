@@ -16,7 +16,7 @@ class GetCurrentExpertSetupStateUC(
     }
 
     private suspend fun getExpertPart(): Outcome<Failure, ExpertSetupState> {
-        return getCurrentExpertUC.execute(None()).foldS({ failure ->
+        return getCurrentExpertUC.run(None()).foldS({ failure ->
             Outcome.Failure(failure)
         }, { expert ->
             if(expert.fromCache) {
