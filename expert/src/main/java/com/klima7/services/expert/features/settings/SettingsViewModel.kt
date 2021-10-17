@@ -13,7 +13,7 @@ class SettingsViewModel(
     sealed class Event: BaseEvent() {
         object ShowInfoScreen: Event()
         object ShowServicesScreen: Event()
-        object ShowLocationScreen: Event()
+        object ShowWorkingAreaScreen: Event()
         object ShowSplashScreen: Event()
     }
 
@@ -26,7 +26,7 @@ class SettingsViewModel(
     }
 
     fun locationClicked() {
-        sendEvent(Event.ShowLocationScreen)
+        sendEvent(Event.ShowWorkingAreaScreen)
     }
 
     fun signOutClicked() {

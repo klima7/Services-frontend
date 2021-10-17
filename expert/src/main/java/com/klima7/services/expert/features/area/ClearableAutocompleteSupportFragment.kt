@@ -1,4 +1,4 @@
-package com.klima7.services.expert.features.location
+package com.klima7.services.expert.features.area
 
 import android.os.Bundle
 import android.view.View

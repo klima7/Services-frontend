@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.klima7.services.expert.features.location.LocationContentViewModel" />
+            type="com.klima7.services.expert.features.area.WorkingAreaContentViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -62,7 +62,7 @@
 
                     <fragment
                         android:id="@+id/location_autocomplete_fragment"
-                        android:name="com.klima7.services.expert.features.location.ClearableAutocompleteSupportFragment"
+                        android:name="com.klima7.services.expert.features.area.ClearableAutocompleteSupportFragment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:layout_constraintEnd_toEndOf="parent"

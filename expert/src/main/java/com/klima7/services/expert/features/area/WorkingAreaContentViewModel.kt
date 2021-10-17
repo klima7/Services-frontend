@@ -1,4 +1,4 @@
-package com.klima7.services.expert.features.location
+package com.klima7.services.expert.features.area
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
@@ -14,7 +14,7 @@ import com.klima7.services.common.ui.utils.CombinedLiveData
 import com.klima7.services.expert.common.domain.usecases.GetCurrentExpertUC
 import kotlin.math.cos
 
-class LocationContentViewModel(
+class WorkingAreaContentViewModel(
     private val getCurrentExpertUC: GetCurrentExpertUC,
     private val setCurrentExpertWorkingAreaUC: SetCurrentExpertWorkingAreaUC
 ): LoadableViewModel() {

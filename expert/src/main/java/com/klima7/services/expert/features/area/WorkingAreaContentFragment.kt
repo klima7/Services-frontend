@@ -1,4 +1,4 @@
-package com.klima7.services.expert.features.location
+package com.klima7.services.expert.features.area
 
 import android.graphics.Color
 import android.os.Bundle
@@ -22,14 +22,14 @@ import com.klima7.services.expert.databinding.FragmentLoginBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class LocationContentFragment: LoadableFragment<FragmentLoginBinding>(), OnMapReadyCallback {
+class WorkingAreaContentFragment: LoadableFragment<FragmentLoginBinding>(), OnMapReadyCallback {
 
     companion object {
         const val SAVE_LOCATION_FAILURE_KEY = "SAVE_LOCATION_FAILURE_KEY"
     }
 
     override val layoutId = R.layout.fragment_location
-    override val viewModel: LocationContentViewModel by viewModel()
+    override val viewModel: WorkingAreaContentViewModel by viewModel()
 
     private lateinit var map: GoogleMap
     private lateinit var circle: Circle
@@ -133,7 +133,7 @@ class LocationContentFragment: LoadableFragment<FragmentLoginBinding>(), OnMapRe
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
         super.handleEvent(event)
         when(event) {
-            is LocationContentViewModel.Event.ShowSaveLocationFailure -> showSaveLocationError(event.failure)
+            is WorkingAreaContentViewModel.Event.ShowSaveLocationFailure -> showSaveLocationError(event.failure)
         }
     }
 

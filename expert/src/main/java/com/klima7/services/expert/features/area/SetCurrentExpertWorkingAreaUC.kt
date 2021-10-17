@@ -1,4 +1,4 @@
-package com.klima7.services.expert.features.location
+package com.klima7.services.expert.features.area
 
 import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.domain.models.Failure

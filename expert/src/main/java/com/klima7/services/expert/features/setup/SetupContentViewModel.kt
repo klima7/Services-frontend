@@ -15,7 +15,7 @@ class SetupContentViewModel(
         object ShowHomeScreen: Event()
         object ShowInfoScreen: Event()
         object ShowServicesScreen: Event()
-        object ShowLocationScreen: Event()
+        object ShowWorkingAreaScreen: Event()
     }
 
     fun started() {
@@ -43,7 +43,7 @@ class SetupContentViewModel(
     }
 
     fun locationClicked() {
-        sendEvent(Event.ShowLocationScreen)
+        sendEvent(Event.ShowWorkingAreaScreen)
     }
 
     private fun loadContent() {

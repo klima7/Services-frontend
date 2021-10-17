@@ -6,7 +6,7 @@ import com.klima7.services.common.ui.base.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentSettingsBinding
 import com.klima7.services.expert.features.info.InfoActivity
-import com.klima7.services.expert.features.location.LocationActivity
+import com.klima7.services.expert.features.area.WorkingAreaActivity
 import com.klima7.services.expert.features.services.ServicesActivity
 import com.klima7.services.expert.features.splash.SplashActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -27,7 +27,7 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>() {
         super.handleEvent(event)
         when(event) {
             SettingsViewModel.Event.ShowInfoScreen -> showInfoScreen()
-            SettingsViewModel.Event.ShowLocationScreen -> showLocationScreen()
+            SettingsViewModel.Event.ShowWorkingAreaScreen -> showLocationScreen()
             SettingsViewModel.Event.ShowServicesScreen -> showServicesScreen()
             SettingsViewModel.Event.ShowSplashScreen -> showSplashScreen()
         }
@@ -39,7 +39,7 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>() {
     }
 
     private fun showLocationScreen() {
-        val intent = Intent(activity, LocationActivity::class.java)
+        val intent = Intent(activity, WorkingAreaActivity::class.java)
         startActivity(intent)
     }
 

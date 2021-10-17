@@ -1,4 +1,4 @@
-package com.klima7.services.expert.features.location
+package com.klima7.services.expert.features.area
 
 import com.klima7.services.common.ui.base.BaseFragment
 import com.klima7.services.common.ui.base.BaseViewModel
@@ -7,7 +7,7 @@ import com.klima7.services.common.ui.utils.replaceFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentToolbarBinding
 
-class LocationFragment: BaseFragment<FragmentToolbarBinding>() {
+class WorkingAreaFragment: BaseFragment<FragmentToolbarBinding>() {
 
     override val layoutId = R.layout.fragment_toolbar
     override val viewModel = BaseViewModel()
@@ -21,6 +21,6 @@ class LocationFragment: BaseFragment<FragmentToolbarBinding>() {
 
     override fun onFirstCreation() {
         super.onFirstCreation()
-        replaceFragment(R.id.toolbar_container_view, LoadableWrapperFragment(LocationContentFragment()))
+        replaceFragment(R.id.toolbar_container_view, LoadableWrapperFragment(WorkingAreaContentFragment()))
     }
 }

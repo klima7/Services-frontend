@@ -2,7 +2,7 @@ package com.klima7.services.expert.di
 
 import com.klima7.services.expert.features.setup.GetCurrentExpertSetupStateUC
 import com.klima7.services.expert.common.domain.usecases.GetCurrentExpertUC
-import com.klima7.services.expert.features.location.SetCurrentExpertWorkingAreaUC
+import com.klima7.services.expert.features.area.SetCurrentExpertWorkingAreaUC
 import com.klima7.services.expert.features.services.SetCurrentExpertServices
 import com.klima7.services.expert.features.splash.GetCurrentExpertStateUC
 import org.koin.dsl.module
