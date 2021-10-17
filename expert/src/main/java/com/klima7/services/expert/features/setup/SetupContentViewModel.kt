@@ -2,9 +2,8 @@ package com.klima7.services.expert.features.setup
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.klima7.services.common.domain.utils.BaseUC
+import com.klima7.services.common.domain.utils.None
 import com.klima7.services.common.ui.loadable.LoadableViewModel
-import kotlinx.coroutines.launch
 
 class SetupContentViewModel(
     private val getCurrentExpertSetupStateUC: GetCurrentExpertSetupStateUC
@@ -51,7 +50,7 @@ class SetupContentViewModel(
         showLoading()
         getCurrentExpertSetupStateUC.start(
             viewModelScope,
-            BaseUC.NoParams(),
+            None(),
             { failure ->
                 showFailure(failure)
             }, { setupState ->

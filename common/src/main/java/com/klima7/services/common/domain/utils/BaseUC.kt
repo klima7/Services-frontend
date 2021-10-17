@@ -18,7 +18,4 @@ abstract class BaseUC<P, R> {
         }
     }
 
-    class NoParams()
-    class NoResult()
-
 }

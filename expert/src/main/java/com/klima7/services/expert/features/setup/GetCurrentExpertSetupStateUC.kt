@@ -3,19 +3,20 @@ package com.klima7.services.expert.features.setup
 import com.klima7.services.common.domain.models.Expert
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.domain.utils.BaseUC
+import com.klima7.services.common.domain.utils.None
 import com.klima7.services.common.domain.utils.Outcome
 import com.klima7.services.expert.common.domain.usecases.GetCurrentExpertUC
 
 class GetCurrentExpertSetupStateUC(
     private val getCurrentExpertUC: GetCurrentExpertUC
-): BaseUC<BaseUC.NoParams, ExpertSetupState>() {
+): BaseUC<None, ExpertSetupState>() {
 
-    override suspend fun execute(params: NoParams): Outcome<Failure, ExpertSetupState> {
+    override suspend fun execute(params: None): Outcome<Failure, ExpertSetupState> {
         return getExpertPart();
     }
 
     private suspend fun getExpertPart(): Outcome<Failure, ExpertSetupState> {
-        return getCurrentExpertUC.execute(NoParams()).foldS({ failure ->
+        return getCurrentExpertUC.execute(None()).foldS({ failure ->
             Outcome.Failure(failure)
         }, { expert ->
             if(expert.fromCache) {

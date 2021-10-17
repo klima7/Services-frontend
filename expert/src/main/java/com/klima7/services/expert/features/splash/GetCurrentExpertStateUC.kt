@@ -6,14 +6,15 @@ import com.klima7.services.common.domain.models.Expert
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.domain.models.UserState
 import com.klima7.services.common.domain.utils.BaseUC
+import com.klima7.services.common.domain.utils.None
 import com.klima7.services.common.domain.utils.Outcome
 
 class GetCurrentExpertStateUC(
     private val authRepository: AuthRepository,
     private val expertsRepository: ExpertsRepository
-): BaseUC<BaseUC.NoParams, UserState>() {
+): BaseUC<None, UserState>() {
 
-    override suspend fun execute(params: NoParams): Outcome<Failure, UserState> {
+    override suspend fun execute(params: None): Outcome<Failure, UserState> {
         return getUidPart()
     }
 

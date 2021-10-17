@@ -3,6 +3,7 @@ package com.klima7.services.expert.features.settings
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.domain.usecases.SignOutUC
 import com.klima7.services.common.domain.utils.BaseUC
+import com.klima7.services.common.domain.utils.None
 import com.klima7.services.common.ui.base.BaseViewModel
 
 class SettingsViewModel(
@@ -35,7 +36,7 @@ class SettingsViewModel(
     private fun signOut() {
         signOutUC.start(
             viewModelScope,
-            BaseUC.NoParams(),
+            None(),
             {
                 // Do nothing - in current implementation sign out failure is impossible
             }, {
