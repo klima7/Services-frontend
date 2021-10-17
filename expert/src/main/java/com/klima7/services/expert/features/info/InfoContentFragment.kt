@@ -40,7 +40,6 @@ class InfoContentFragment: LoadableFragment<FragmentInfoBinding>() {
         super.init()
 
         childFragmentManager.setFragmentResultListener("key", viewLifecycleOwner) { _: String, bundle: Bundle ->
-            val result = bundle.get(FailureDialogFragment.BUNDLE_KEY)
         }
 
         viewModel.nameError.observe(viewLifecycleOwner) { nameError ->

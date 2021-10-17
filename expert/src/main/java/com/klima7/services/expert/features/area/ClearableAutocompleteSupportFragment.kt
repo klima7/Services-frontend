@@ -22,9 +22,9 @@ class ClearableAutocompleteSupportFragment: AutocompleteSupportFragment() {
     fun setOnPlaceClearedListener(listener: OnClearListener) {
         this.listener = listener
     }
-}
 
+    interface OnClearListener {
+        fun onClear()
+    }
 
-interface OnClearListener {
-    fun onClear()
 }
