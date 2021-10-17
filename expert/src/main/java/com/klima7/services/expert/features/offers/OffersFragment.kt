@@ -1,4 +1,4 @@
-package com.klima7.services.expert.features.home.offers
+package com.klima7.services.expert.features.offers
 
 import androidx.fragment.app.Fragment
 import com.klima7.services.expert.R

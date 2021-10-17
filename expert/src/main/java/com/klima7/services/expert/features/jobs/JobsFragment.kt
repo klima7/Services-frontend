@@ -1,4 +1,4 @@
-package com.klima7.services.expert.features.home.jobs
+package com.klima7.services.expert.features.jobs
 
 import androidx.fragment.app.Fragment
 import com.klima7.services.expert.R
