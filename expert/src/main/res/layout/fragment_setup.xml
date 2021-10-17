@@ -49,21 +49,21 @@
                     layout="@layout/part_setup_tile"
                     app:action="@{() -> viewmodel.infoClicked()}"
                     app:description="@{`Uzupełnij informacje o sobie. Dobry profil może zachęcić wielu klientów.`}"
-                    app:ticked="@{viewmodel.infoSetup}"
+                    app:ticked="@{viewmodel.setupState.infoSetup}"
                     app:title="@{`Uzupełnienie profilu`}" />
 
                 <include
                     layout="@layout/part_setup_tile"
                     app:action="@{() -> viewmodel.servicesClicked()}"
                     app:description="@{`Określ jakie usługi realizujesz, wybierając je z listy.`}"
-                    app:ticked="@{viewmodel.servicesSetup}"
+                    app:ticked="@{viewmodel.setupState.servicesSetup}"
                     app:title="@{`Określenie usług`}" />
 
                 <include
                     layout="@layout/part_setup_tile"
                     app:action="@{() -> viewmodel.locationClicked()}"
                     app:description="@{`Określ w jakim obszarze realizujesz swoje usługi.`}"
-                    app:ticked="@{viewmodel.locationSetup}"
+                    app:ticked="@{viewmodel.setupState.locationSetup}"
                     app:title="@{`Określenie lokalizacji`}" />
 
             </LinearLayout>

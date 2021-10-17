@@ -9,9 +9,7 @@ class SetupContentViewModel(
     private val getCurrentExpertSetupStateUC: GetCurrentExpertSetupStateUC
 ): LoadableViewModel() {
 
-    val infoSetup = MutableLiveData(false)
-    val servicesSetup = MutableLiveData(false)
-    val locationSetup = MutableLiveData(false)
+    val setupState = MutableLiveData<ExpertSetupState>()
 
     sealed class Event: BaseEvent() {
         object ShowHomeScreen: Event()
@@ -50,16 +48,16 @@ class SetupContentViewModel(
 
     private fun loadContent() {
         showLoading()
-        viewModelScope.launch {
-            getCurrentExpertSetupStateUC.execute().foldS({failure ->
+        getCurrentExpertSetupStateUC.start(
+            viewModelScope,
+            GetCurrentExpertSetupStateUC.Params(),
+            { failure ->
                 showFailure(failure)
-            }, { result ->
-                infoSetup.value = result.infoSetup
-                servicesSetup.value = result.servicesSetup
-                locationSetup.value = result.locationSetup
+            }, { setupState ->
+                this.setupState.value = setupState
                 showMain()
-            })
-        }
+            }
+        )
     }
 
 }

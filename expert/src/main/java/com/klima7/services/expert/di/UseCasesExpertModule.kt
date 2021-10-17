@@ -8,7 +8,7 @@ import org.koin.dsl.module
 val useCasesExpertModule = module {
 
     single { GetCurrentExpertUC(get(), get()) }
-    single { GetCurrentExpertSetupStateUC(get(), get()) }
+    single { GetCurrentExpertSetupStateUC(get()) }
     single { GetCurrentExpertStateUC(get(), get()) }
 
 }

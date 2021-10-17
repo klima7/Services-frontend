@@ -1,57 +1,39 @@
 package com.klima7.services.expert.features.setup
 
-import com.klima7.services.common.data.repositories.AuthRepository
-import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.domain.models.Expert
 import com.klima7.services.common.domain.models.Failure
+import com.klima7.services.common.domain.utils.BaseUC
 import com.klima7.services.common.domain.utils.Outcome
+import com.klima7.services.expert.common.domain.usecases.GetCurrentExpertUC
 
 class GetCurrentExpertSetupStateUC(
-    private val authRepository: AuthRepository,
-    private val expertsRepository: ExpertsRepository,
-) {
+    private val getCurrentExpertUC: GetCurrentExpertUC
+): BaseUC<GetCurrentExpertSetupStateUC.Params, ExpertSetupState>() {
 
-    data class Result(  // TODO: Maybe domain model?
-        val infoSetup: Boolean,
-        val servicesSetup: Boolean,
-        val locationSetup: Boolean,
-    )
+    class Params
 
-    suspend fun execute(): Outcome<Failure, Result> {
-        return getUidPart()
+    override suspend fun execute(params: Params): Outcome<Failure, ExpertSetupState> {
+        return getExpertPart();
     }
 
-    private suspend fun getUidPart(): Outcome<Failure, Result> {
-        return authRepository.getUid().foldS({ failure ->
-            Outcome.Failure(failure)
-        }, { uid ->
-            if(uid == null) {
-                Outcome.Failure(Failure.PermissionFailure)
-            }
-            else {
-                getExpertPart(uid)
-            }
-        })
-    }
-
-    private suspend fun getExpertPart(uid: String): Outcome<Failure, Result> {
-        return expertsRepository.getExpert(uid).foldS({ failure ->
+    private suspend fun getExpertPart(): Outcome<Failure, ExpertSetupState> {
+        return getCurrentExpertUC.execute(GetCurrentExpertUC.Params()).foldS({ failure ->
             Outcome.Failure(failure)
         }, { expert ->
             if(expert.fromCache) {
                 Outcome.Failure(Failure.InternetFailure)
             }
             else {
-                verifyExpertPart(expert)
+                analyseExpertPart(expert)
             }
         })
     }
 
-    private fun verifyExpertPart(expert: Expert): Outcome<Failure, Result> {
+    private fun analyseExpertPart(expert: Expert): Outcome<Failure, ExpertSetupState> {
         val infoConfigured = expert.info.name != null
         val servicesConfigured = expert.servicesIds.isNotEmpty()
         val locationConfigured = expert.area != null
-        return Outcome.Success(Result(infoConfigured, servicesConfigured, locationConfigured))
+        return Outcome.Success(ExpertSetupState(infoConfigured, servicesConfigured, locationConfigured))
     }
 
 }
