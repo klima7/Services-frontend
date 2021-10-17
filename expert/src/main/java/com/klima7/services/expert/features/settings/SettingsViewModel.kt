@@ -1,10 +1,12 @@
 package com.klima7.services.expert.features.settings
 
-import com.klima7.services.common.data.repositories.AuthRepository
+import androidx.lifecycle.viewModelScope
+import com.klima7.services.common.domain.usecases.SignOutUC
+import com.klima7.services.common.domain.utils.BaseUC
 import com.klima7.services.common.ui.base.BaseViewModel
 
 class SettingsViewModel(
-    private val authRepository: AuthRepository
+    private val signOutUC: SignOutUC
 ): BaseViewModel() {
 
     sealed class Event: BaseEvent() {
@@ -31,8 +33,15 @@ class SettingsViewModel(
     }
 
     private fun signOut() {
-        authRepository.signOut()
-        sendEvent(Event.ShowSplashScreen)
+        signOutUC.start(
+            viewModelScope,
+            BaseUC.NoParams(),
+            {
+                // Do nothing - in current implementation sign out failure is impossible
+            }, {
+                sendEvent(Event.ShowSplashScreen)
+            }
+        )
     }
 
 }

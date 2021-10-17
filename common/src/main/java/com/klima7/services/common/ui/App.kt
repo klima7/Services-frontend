@@ -4,6 +4,7 @@ import android.app.Application
 import com.google.android.libraries.places.api.Places
 import com.klima7.services.common.data.di.reposModule
 import com.klima7.services.common.data.di.sourcesModule
+import com.klima7.services.common.domain.di.useCasesCommonModule
 import com.klima7.services.common.ui.di.viewModelsCommonModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -32,7 +33,7 @@ abstract class App: Application() {
         Places.initialize(applicationContext, "AIzaSyBgMDgU7VMT0L35f9TL4LZUB7v3NAS9pTs")
     }
 
-    private val commonModules = listOf(sourcesModule, reposModule, viewModelsCommonModule)
+    private val commonModules = listOf(sourcesModule, reposModule, useCasesCommonModule, viewModelsCommonModule)
 
     protected abstract val customModules: List<Module>
 }
