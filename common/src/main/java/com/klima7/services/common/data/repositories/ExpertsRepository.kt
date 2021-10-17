@@ -74,7 +74,7 @@ class ExpertsRepository(
         }
     }
 
-    suspend fun setProfileImage(imageUri: String): Outcome<Failure, None> {
+    suspend fun setProfileImage(profileImageUrl: String): Outcome<Failure, None> {
         return try {
             val uid = auth.currentUser?.uid
             if(uid == null)
@@ -82,7 +82,7 @@ class ExpertsRepository(
             storage.reference
                 .child("profile_images")
                 .child("$uid.png")
-                .putFile(Uri.parse(imageUri))
+                .putFile(Uri.parse(profileImageUrl))
                 .await()
             Outcome.Success(None())
         } catch(e: Exception) {

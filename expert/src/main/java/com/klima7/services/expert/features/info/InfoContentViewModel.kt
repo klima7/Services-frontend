@@ -4,26 +4,21 @@ import android.webkit.URLUtil
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
-import com.klima7.services.common.data.repositories.AuthRepository
-import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.domain.models.Expert
 import com.klima7.services.common.domain.models.ExpertInfo
-import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.domain.models.ProfileImage
 import com.klima7.services.common.domain.utils.None
-import com.klima7.services.common.domain.utils.Outcome
 import com.klima7.services.common.ui.loadable.LoadableViewModel
 import com.klima7.services.common.ui.utils.CombinedLiveData
 import com.klima7.services.common.ui.utils.nullifyBlank
 import com.klima7.services.expert.common.domain.usecases.GetCurrentExpertUC
-import kotlinx.coroutines.launch
 
 class InfoContentViewModel(
     private val getCurrentExpertUC: GetCurrentExpertUC,
-    private val expertsRepository: ExpertsRepository
+    private val setCurrentExpertInfoAndImageUC: SetCurrentExpertInfoAndImageUC
 ): LoadableViewModel() {
 
-    private var avatarUriToSave: String? = null
+    private var profileImageUrlToSave: String? = null
 
     val name = MutableLiveData("")
     val company = MutableLiveData("")
@@ -73,9 +68,7 @@ class InfoContentViewModel(
     }
 
     fun saveClicked() {
-        viewModelScope.launch {
-            save()
-        }
+        save()
     }
 
     fun changeProfileImageClicked() {
@@ -83,7 +76,7 @@ class InfoContentViewModel(
     }
 
     fun profileImageSelected(uri: String) {
-        avatarUriToSave = uri
+        profileImageUrlToSave = uri
         avatar.value = ProfileImage(uri, 0)
     }
 
@@ -124,38 +117,30 @@ class InfoContentViewModel(
         return URLUtil.isValidUrl(websiteAddress)
     }
 
-    private suspend fun save() {
+    private fun save() {
         showPending()
-        val infoResult = saveInfo()
-        val profileResult = saveProfileImage()
-        if(infoResult.isFailure || profileResult.isFailure) {
-            sendEvent(Event.ShowSaveError)
-        }
-        else {
-            sendEvent(Event.FinishInfo)
-        }
-        showMain()
-    }
-
-    private suspend fun saveInfo(): Outcome<Failure, None> {
-        val info = ExpertInfo(
-            name.value.nullifyBlank(),
-            company.value.nullifyBlank(),
-            description.value.nullifyBlank(),
-            phone.value.nullifyBlank(),
-            email.value.nullifyBlank(),
-            website.value.nullifyBlank()
+        setCurrentExpertInfoAndImageUC.start(
+            viewModelScope,
+            SetCurrentExpertInfoAndImageUC.Params(
+                ExpertInfo(
+                    name.value.nullifyBlank(),
+                    company.value.nullifyBlank(),
+                    description.value.nullifyBlank(),
+                    phone.value.nullifyBlank(),
+                    email.value.nullifyBlank(),
+                    website.value.nullifyBlank()
+                ),
+                profileImageUrlToSave
+            ),
+            {
+                sendEvent(Event.ShowSaveError)
+                showMain()
+            },
+            {
+                sendEvent(Event.FinishInfo)
+                showMain()
+            }
         )
-
-        return expertsRepository.setExpertInfo(info)
     }
 
-    private suspend fun saveProfileImage(): Outcome<Failure, None> {
-        val avatarUriToSaveConst = avatarUriToSave
-        return if(avatarUriToSaveConst != null)
-            expertsRepository.setProfileImage(avatarUriToSaveConst)
-        else
-            Outcome.Success(None())
-
-    }
 }
