@@ -15,7 +15,7 @@ import org.koin.dsl.module
 
 val viewModelsExpertModule = module {
 
-    viewModel { SplashViewModel(get(), get()) }
+    viewModel { SplashViewModel(get()) }
     viewModel { HomeViewModel() }
     viewModel { LoginViewModel() }
     viewModel { SetupContentViewModel(get()) }
