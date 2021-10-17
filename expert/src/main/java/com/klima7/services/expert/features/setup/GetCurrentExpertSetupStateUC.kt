@@ -8,16 +8,14 @@ import com.klima7.services.expert.common.domain.usecases.GetCurrentExpertUC
 
 class GetCurrentExpertSetupStateUC(
     private val getCurrentExpertUC: GetCurrentExpertUC
-): BaseUC<GetCurrentExpertSetupStateUC.Params, ExpertSetupState>() {
+): BaseUC<BaseUC.NoParams, ExpertSetupState>() {
 
-    class Params
-
-    override suspend fun execute(params: Params): Outcome<Failure, ExpertSetupState> {
+    override suspend fun execute(params: NoParams): Outcome<Failure, ExpertSetupState> {
         return getExpertPart();
     }
 
     private suspend fun getExpertPart(): Outcome<Failure, ExpertSetupState> {
-        return getCurrentExpertUC.execute(GetCurrentExpertUC.Params()).foldS({ failure ->
+        return getCurrentExpertUC.execute(NoParams()).foldS({ failure ->
             Outcome.Failure(failure)
         }, { expert ->
             if(expert.fromCache) {

@@ -10,11 +10,9 @@ import com.klima7.services.common.domain.utils.Outcome
 class GetCurrentExpertUC(
     private val authRepository: AuthRepository,
     private val expertsRepository: ExpertsRepository
-) : BaseUC<GetCurrentExpertUC.Params, Expert>(){
+) : BaseUC<BaseUC.NoParams, Expert>(){
 
-    class Params
-
-    override suspend fun execute(params: Params): Outcome<Failure, Expert> {
+    override suspend fun execute(params: NoParams): Outcome<Failure, Expert> {
         return getUidPart()
     }
 
