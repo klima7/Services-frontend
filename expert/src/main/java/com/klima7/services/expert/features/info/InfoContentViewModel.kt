@@ -15,10 +15,11 @@ import com.klima7.services.common.domain.utils.Outcome
 import com.klima7.services.common.ui.loadable.LoadableViewModel
 import com.klima7.services.common.ui.utils.CombinedLiveData
 import com.klima7.services.common.ui.utils.nullifyBlank
+import com.klima7.services.expert.common.domain.usecases.GetCurrentExpertUC
 import kotlinx.coroutines.launch
 
 class InfoContentViewModel(
-    private val authRepository: AuthRepository,
+    private val getCurrentExpertUC: GetCurrentExpertUC,
     private val expertsRepository: ExpertsRepository
 ): LoadableViewModel() {
 
@@ -88,24 +89,18 @@ class InfoContentViewModel(
 
     private fun loadContent() {
         showLoading()
-        viewModelScope.launch {
-            authRepository.getUid().foldS({ failure ->
-                notifyFailure(failure)
-            }, { uid ->
-                if(uid == null) {
-                    notifyFailure(Failure.UnknownFailure)
-                }
-                else {
-                    expertsRepository.getExpert(uid).foldS({ failure ->
-                        notifyFailure(failure)
-                    }, { expert ->
-                        setFields(expert)
-                        setProfileImage(expert)
-                        showMain()
-                    })
-                }
-            })
-        }
+        getCurrentExpertUC.start(
+            viewModelScope,
+            None(),
+            { failure ->
+                showFailure(failure)
+            },
+            { expert ->
+                setFields(expert)
+                setProfileImage(expert)
+                showMain()
+            }
+        )
     }
 
     private fun setFields(expert: Expert) {
@@ -118,18 +113,7 @@ class InfoContentViewModel(
     }
 
     private fun setProfileImage(expert: Expert) {
-        avatar.value = expert.profileImage // TODO: Tidy
-//        viewModelScope.launch {
-//            expertsRepository.getProfileImage(expert.uid).foldS({
-//                avatar.postValue("")
-//            }, {
-//                avatar.postValue(it)
-//            })
-//        }
-    }
-
-    private fun notifyFailure(failure: Failure) {
-        showFailure(failure)
+        avatar.value = expert.profileImage
     }
 
     private fun isEmailValid(email: String): Boolean {
