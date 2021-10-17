@@ -65,11 +65,11 @@ class WorkingAreaContentViewModel(
     }
 
     fun saveClicked() {
-        saveWorkingArea()
+        save()
     }
 
     fun retrySaveLocationClicked() {
-        saveWorkingArea()
+        save()
     }
 
     private fun loadContent() {
@@ -96,7 +96,7 @@ class WorkingAreaContentViewModel(
         }
     }
 
-    private fun saveWorkingArea() {
+    private fun save() {
         showPending()
         val constPlaceId = placeId
         val constRadius = radius.value

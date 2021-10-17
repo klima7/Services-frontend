@@ -38,6 +38,6 @@ class ServicesContentFragment: LoadableFragment<FragmentServicesBinding>() {
     private fun saveButtonClicked() {
         val fragment = childFragmentManager.findFragmentById(R.id.services_services) as ServicesMultiCategoriesFragment
         val selected = fragment.getSelectedServices()
-        viewModel.servicesSelected(selected)
+        viewModel.saveClicked(selected)
     }
 }

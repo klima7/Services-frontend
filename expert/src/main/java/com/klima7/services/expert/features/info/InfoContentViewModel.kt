@@ -73,7 +73,7 @@ class InfoContentViewModel(
 
     fun saveClicked() {
         viewModelScope.launch {
-            saveInfoAndProfile()
+            save()
         }
     }
 
@@ -140,7 +140,7 @@ class InfoContentViewModel(
         return URLUtil.isValidUrl(websiteAddress)
     }
 
-    private suspend fun saveInfoAndProfile() {
+    private suspend fun save() {
         showPending()
         val infoResult = saveInfo()
         val profileResult = saveProfileImage()

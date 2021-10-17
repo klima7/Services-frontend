@@ -23,8 +23,8 @@ class ServicesContentViewModel(
         loadContent()
     }
 
-    fun servicesSelected(services: List<Service>) {
-        setServices(services)
+    fun saveClicked(services: List<Service>) {
+        save(services)
     }
 
     private fun loadContent() {
@@ -46,7 +46,7 @@ class ServicesContentViewModel(
         )
     }
 
-    private fun setServices(services: List<Service>) {
+    private fun save(services: List<Service>) {
         showPending()
         setCurrentExpertServices.start(
             viewModelScope,
