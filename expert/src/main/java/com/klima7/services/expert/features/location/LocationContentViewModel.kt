@@ -75,14 +75,15 @@ class LocationContentViewModel(
 
     private fun loadContent() {
         showLoading()
-        viewModelScope.launch {
-            getCurrentExpertUC.execute().foldS({ failure ->
+        getCurrentExpertUC.start(
+            viewModelScope,
+            GetCurrentExpertUC.Params(),
+            { failure ->
                 showFailure(failure)
             }, { expert ->
                 initWithWorkingArea(expert.area)
                 showMain()
             })
-        }
     }
 
     private fun initWithWorkingArea(wa: WorkingArea?) {

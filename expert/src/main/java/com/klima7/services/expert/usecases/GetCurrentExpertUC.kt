@@ -4,18 +4,21 @@ import com.klima7.services.common.data.repositories.AuthRepository
 import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.domain.models.Expert
 import com.klima7.services.common.domain.models.Failure
+import com.klima7.services.common.domain.utils.BaseUC
 import com.klima7.services.common.domain.utils.Outcome
 
 class GetCurrentExpertUC(
     private val authRepository: AuthRepository,
     private val expertsRepository: ExpertsRepository
-) {
+) : BaseUC<GetCurrentExpertUC.Params, Expert>(){
 
-    suspend fun execute(): Outcome<Failure, Expert> {
+    class Params
+
+    override suspend fun execute(params: Params): Outcome<Failure, Expert> {
         return getUidPart()
     }
 
-    suspend fun getUidPart(): Outcome<Failure, Expert> {
+    private suspend fun getUidPart(): Outcome<Failure, Expert> {
         return authRepository.getUid().foldS({ failure ->
             Outcome.Failure(failure)
         }, { uid ->
@@ -26,7 +29,7 @@ class GetCurrentExpertUC(
         })
     }
 
-    suspend fun getExpertPart(uid: String): Outcome<Failure, Expert> {
+    private suspend fun getExpertPart(uid: String): Outcome<Failure, Expert> {
         return expertsRepository.getExpert(uid).foldS({ failure ->
             Outcome.Failure(failure)
         }, { expert ->
