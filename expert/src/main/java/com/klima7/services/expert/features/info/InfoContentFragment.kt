@@ -45,28 +45,28 @@ class InfoContentFragment: LoadableFragment<FragmentInfoBinding>() {
         viewModel.nameError.observe(viewLifecycleOwner) { nameError ->
             binding.infoName.error = when(nameError) {
                 null -> null
-                NameError.NotProvided -> "To pole jest wymagane"
+                InfoFormErrors.NameError.NotProvided -> "To pole jest wymagane"
             }
         }
 
         viewModel.phoneError.observe(viewLifecycleOwner) { phoneError ->
             binding.infoPhone.error = when(phoneError) {
                 null -> null
-                PhoneError.TooShort -> "Numer za krótki"
+                InfoFormErrors.PhoneError.TooShort -> "Numer za krótki"
             }
         }
 
         viewModel.emailError.observe(viewLifecycleOwner) { emailError ->
             binding.infoEmail.error = when(emailError) {
                 null -> null
-                EmailError.InvalidFormat -> "Nieprawidłowy format adresu email"
+                InfoFormErrors.EmailError.InvalidFormat -> "Nieprawidłowy format adresu email"
             }
         }
 
         viewModel.websiteError.observe(viewLifecycleOwner) { websiteError ->
             binding.infoWebsite.error = when(websiteError) {
                 null -> null
-                WebsiteError.InvalidFormat -> "Nieprawidłowy format adresu URL"
+                InfoFormErrors.WebsiteError.InvalidFormat -> "Nieprawidłowy format adresu URL"
             }
         }
 

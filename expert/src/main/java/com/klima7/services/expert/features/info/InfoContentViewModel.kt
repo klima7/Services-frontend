@@ -30,19 +30,19 @@ class InfoContentViewModel(
     val avatar = MutableLiveData<ProfileImage?>()
 
     val nameError = Transformations.map(name) {
-        if (it.nullifyBlank() == null) NameError.NotProvided else null
+        if (it.nullifyBlank() == null) InfoFormErrors.NameError.NotProvided else null
     }
 
     val phoneError = Transformations.map(phone) {
-        if (it.isEmpty() || it.length == 9) null else PhoneError.TooShort
+        if (it.isEmpty() || it.length == 9) null else InfoFormErrors.PhoneError.TooShort
     }
 
     val emailError = Transformations.map(email) { email ->
-        if (email.isEmpty() || isEmailValid(email)) null else EmailError.InvalidFormat
+        if (email.isEmpty() || isEmailValid(email)) null else InfoFormErrors.EmailError.InvalidFormat
     }
 
     val websiteError = Transformations.map(website) { website ->
-        if (website.isEmpty() || isWebsiteAddressValid(website)) null else WebsiteError.InvalidFormat
+        if (website.isEmpty() || isWebsiteAddressValid(website)) null else InfoFormErrors.WebsiteError.InvalidFormat
     }
 
     val saveButtonEnabled = CombinedLiveData(nameError, phoneError, emailError, websiteError) {

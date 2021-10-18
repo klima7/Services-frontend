@@ -1,6 +1,8 @@
 package com.klima7.services.expert.features.info
 
-enum class NameError { NotProvided }
-enum class PhoneError { TooShort }
-enum class EmailError { InvalidFormat }
-enum class WebsiteError { InvalidFormat }
+class InfoFormErrors {
+    enum class NameError { NotProvided }
+    enum class PhoneError { TooShort }
+    enum class EmailError { InvalidFormat }
+    enum class WebsiteError { InvalidFormat }
+}
