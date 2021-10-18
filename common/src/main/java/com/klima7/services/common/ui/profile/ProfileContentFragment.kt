@@ -12,6 +12,14 @@ class ProfileContentFragment: LoadableFragment<FragmentProfileBinding>() {
     override val layoutId = R.layout.fragment_profile
     override val viewModel: ProfileContentViewModel by viewModel()
 
+    override fun init() {
+        super.init()
+
+        viewModel.expert.observe(viewLifecycleOwner) { expert ->
+            binding.infoAvatarView.setProfileImage(expert.profileImage)
+        }
+    }
+
     override fun onFirstCreation() {
         super.onFirstCreation()
         viewModel.start()

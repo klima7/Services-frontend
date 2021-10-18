@@ -23,7 +23,8 @@
             android:text="@{viewmodel.name}"
             tools:text="Header"
             android:textSize="22sp"
-            android:layout_marginLeft="16dp"/>
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/black"/>
 
         <LinearLayout
             android:layout_width="match_parent"
