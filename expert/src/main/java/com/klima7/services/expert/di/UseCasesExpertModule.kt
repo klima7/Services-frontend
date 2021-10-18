@@ -16,7 +16,7 @@ val useCasesExpertModule = module {
     single { GetCurrentExpertStateUC(get(), get()) }
     single { SetCurrentExpertServices(get()) }
     single { SetCurrentExpertWorkingAreaUC(get()) }
-    single { GetCategorisedAndMarkedServices(get(), get(), get()) }
+    single { GetCategorisedAndMarkedServices(get(), get()) }
     single { SetCurrentExpertInfoAndImageUC(get()) }
 
 }

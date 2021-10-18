@@ -1,6 +1,5 @@
 package com.klima7.services.expert.features.services
 
-import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.data.repositories.ServicesRepository
 import com.klima7.services.common.domain.models.Category
 import com.klima7.services.common.domain.models.Failure
@@ -13,7 +12,6 @@ import com.klima7.services.expert.common.domain.usecases.GetCurrentExpertUC
 class GetCategorisedAndMarkedServices(
     private val servicesRepository: ServicesRepository,
     private val getCurrentExpertUC: GetCurrentExpertUC,
-    private val expertsRepository: ExpertsRepository,
 ): BaseUC<None, List<CategorizedSelectableServices>>() {
 
     override suspend fun execute(params: None): Outcome<Failure, List<CategorizedSelectableServices>> {
