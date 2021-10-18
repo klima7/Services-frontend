@@ -13,6 +13,8 @@ class ServicesContentViewModel(
 
     sealed class Event: BaseEvent() {
         data class SetServices(val services: List<CategorizedSelectableServices>): Event()
+        data class ShowSaveFailure(val failure: Failure): Event()
+        object Finish: Event()
     }
 
     fun started() {
@@ -51,12 +53,12 @@ class ServicesContentViewModel(
         setCurrentExpertServices.start(
             viewModelScope,
             SetCurrentExpertServices.Params(services),
-            {
-                // TODO: failure action
+            { failure ->
                 showMain()
+                sendEvent(Event.ShowSaveFailure(failure))
             }, {
-                // TODO: success action
                 showMain()
+                sendEvent(Event.Finish)
             }
         )
     }
