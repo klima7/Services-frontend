@@ -127,8 +127,8 @@ class WorkingAreaContentViewModel(
 
     private fun createCircleBounds(center: LatLng, radius: Double): LatLngBounds {
         val southWest = addDistance(center, -radius, -radius)
-        val northEasst = addDistance(center, radius, radius)
-        return LatLngBounds(southWest, northEasst)
+        val northEast = addDistance(center, radius, radius)
+        return LatLngBounds(southWest, northEast)
     }
 
     private fun addDistance(start: LatLng, dx: Double, dy: Double): LatLng {

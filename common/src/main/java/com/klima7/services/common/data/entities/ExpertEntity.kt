@@ -29,6 +29,7 @@ data class ExpertEntity(
     data class WorkingAreaEntity(
         var coordinates: GeoPoint = GeoPoint(0.0, 0.0),
         var locationName: String = "",
+        var locationId: String = "",
         var radius: Int = 0
     )
 
