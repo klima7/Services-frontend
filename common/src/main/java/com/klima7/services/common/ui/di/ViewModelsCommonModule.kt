@@ -10,6 +10,6 @@ val viewModelsCommonModule = module {
 
     viewModel { LoadableWrapperViewModel() }
     viewModel { FailureDialogViewModel() }
-    viewModel { ProfileContentViewModel() }
+    viewModel { ProfileContentViewModel(get()) }
 
 }
