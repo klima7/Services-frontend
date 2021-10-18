@@ -17,6 +17,7 @@ import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.ui.base.BaseViewModel
 import com.klima7.services.common.ui.faildialog.FailureDialogFragment
 import com.klima7.services.common.ui.loadable.LoadableFragment
+import com.klima7.services.common.ui.utils.showShortToast
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentLoginBinding
 import com.klima7.services.expert.features.area.ClearableAutocompleteSupportFragment.OnClearListener
@@ -135,6 +136,7 @@ class WorkingAreaContentFragment: LoadableFragment<FragmentLoginBinding>(), OnMa
         super.handleEvent(event)
         when(event) {
             is WorkingAreaContentViewModel.Event.ShowSaveLocationFailure -> showSaveLocationError(event.failure)
+            is WorkingAreaContentViewModel.Event.Finish -> finish()
         }
     }
 
@@ -142,5 +144,10 @@ class WorkingAreaContentFragment: LoadableFragment<FragmentLoginBinding>(), OnMa
         val dialog = FailureDialogFragment.createRetry(SAVE_LOCATION_FAILURE_KEY,
             "Zmiana lokalizacji się nie powiodła.", failure)
         dialog.show(childFragmentManager, "FailureDialogFragment")
+    }
+
+    private fun finish() {
+        showShortToast("Lokalizacja zostałą zmieniona")
+        requireActivity().finish()
     }
 }

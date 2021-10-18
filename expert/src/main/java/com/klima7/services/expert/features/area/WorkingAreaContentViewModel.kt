@@ -28,6 +28,7 @@ class WorkingAreaContentViewModel(
 
     sealed class Event: BaseEvent() {
         data class ShowSaveLocationFailure(val failure: Failure): Event()
+        object Finish: Event()
     }
 
     // Internal data
@@ -90,6 +91,7 @@ class WorkingAreaContentViewModel(
             placeName.value = wa.location.name
             radiusFloat.value = wa.radius.toFloat()
             placeCoords.value = wa.location.coords.toLatLng()
+            placeId = wa.location.id
         }
         else {
             placeName.value = ""
@@ -109,6 +111,7 @@ class WorkingAreaContentViewModel(
                     sendEvent(Event.ShowSaveLocationFailure(failure))
                 }, {
                     showMain()
+                    sendEvent(Event.Finish)
                 }
             )
         }
