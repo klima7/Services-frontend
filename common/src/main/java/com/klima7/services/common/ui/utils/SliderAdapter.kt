@@ -1,4 +1,4 @@
-package com.klima7.services.common.ui.binding
+package com.klima7.services.common.ui.utils
 
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
