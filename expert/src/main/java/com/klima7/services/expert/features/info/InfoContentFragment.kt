@@ -39,9 +39,6 @@ class InfoContentFragment: LoadableFragment<FragmentInfoBinding>() {
     override fun init() {
         super.init()
 
-        childFragmentManager.setFragmentResultListener("key", viewLifecycleOwner) { _: String, bundle: Bundle ->
-        }
-
         viewModel.nameError.observe(viewLifecycleOwner) { nameError ->
             binding.infoName.error = when(nameError) {
                 null -> null

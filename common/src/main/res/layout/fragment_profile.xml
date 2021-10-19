@@ -7,11 +7,11 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.klima7.services.common.ui.profile.ProfileContentViewModel" />
+            type="com.klima7.services.common.ui.profile.ProfileViewModel" />
     </data>
 
-
     <ScrollView
+        android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

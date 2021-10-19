@@ -3,11 +3,11 @@ package com.klima7.services.common.ui.profile
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.domain.models.Expert
-import com.klima7.services.common.ui.loadable.LoadableViewModel
+import com.klima7.services.common.ui.base.BaseLoadViewModel
 
-class ProfileContentViewModel(
+class ProfileViewModel(
     private val getExpertUC: GetExpertUC
-): LoadableViewModel() {
+): BaseLoadViewModel() {
 
     val expert = MutableLiveData<Expert>()
 
@@ -30,6 +30,7 @@ class ProfileContentViewModel(
             { expert ->
                 this.expert.value = expert
                 showMain()
+//                showFailure(Failure.InternetFailure)
             }
         )
     }

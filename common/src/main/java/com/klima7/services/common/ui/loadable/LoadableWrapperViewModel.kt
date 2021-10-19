@@ -67,7 +67,6 @@ class LoadableWrapperViewModel: BaseViewModel() {
                 pendingRefresh.value = true
             }
         }
-
     }
 
 }
