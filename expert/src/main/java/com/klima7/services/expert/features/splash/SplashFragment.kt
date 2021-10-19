@@ -2,8 +2,8 @@ package com.klima7.services.expert.features.splash
 
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContracts
+import com.klima7.services.common.ui.base.BaseLoadFragment
 import com.klima7.services.common.ui.base.BaseViewModel
-import com.klima7.services.common.ui.loadable.LoadableFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentSplashBinding
 import com.klima7.services.expert.features.home.HomeActivity
@@ -12,7 +12,7 @@ import com.klima7.services.expert.features.setup.SetupActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class SplashFragment: LoadableFragment<FragmentSplashBinding>() {
+class SplashFragment: BaseLoadFragment<FragmentSplashBinding>() {
 
     override val layoutId = R.layout.fragment_splash
     override val viewModel: SplashViewModel by viewModel()

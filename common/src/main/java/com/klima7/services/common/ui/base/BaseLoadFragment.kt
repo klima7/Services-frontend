@@ -44,7 +44,7 @@ abstract class BaseLoadFragment<DB: ViewDataBinding>: BaseFragment<DB>() {
 
         // Get views
         failurePart = requireView().findViewById(R.id.load_failure)
-        mainPart = requireView().findViewById(R.id.main_content)
+        mainPart = binding.root
         touchInterceptor = requireView().findViewById(R.id.load_touch_interceptor)
         failureImage = requireView().findViewById(R.id.load_failure_image)
         failureMessage = requireView().findViewById(R.id.load_failure_message)

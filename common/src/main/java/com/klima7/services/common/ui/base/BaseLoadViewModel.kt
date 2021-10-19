@@ -65,8 +65,8 @@ open class BaseLoadViewModel: BaseViewModel() {
     }
 
     fun refreshClicked() {
-        loadPending.value?.let { value ->
-            if(!value) {
+        loadPending.value?.let { loadPending ->
+            if(!loadPending) {
                 refresh()
                 sendEvent(LoadEvent.ShowRefreshButtonAnimation)
                 _pendingRefresh.value = true

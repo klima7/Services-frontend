@@ -4,5 +4,5 @@ import com.klima7.services.common.ui.base.BaseActivity
 import com.klima7.services.common.ui.loadable.LoadableWrapperFragment
 
 class SplashActivity: BaseActivity() {
-    override fun fragment() = LoadableWrapperFragment(SplashFragment())
+    override fun fragment() = SplashFragment()
 }
