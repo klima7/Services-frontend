@@ -4,7 +4,6 @@ import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.domain.models.UserState
 import com.klima7.services.common.domain.utils.None
 import com.klima7.services.common.ui.base.BaseLoadViewModel
-import com.klima7.services.common.ui.loadable.LoadableViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

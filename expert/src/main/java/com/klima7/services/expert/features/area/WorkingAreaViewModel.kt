@@ -10,7 +10,6 @@ import com.klima7.services.common.domain.models.WorkingArea
 import com.klima7.services.common.domain.utils.None
 import com.klima7.services.common.ui.base.BaseLoadViewModel
 import com.klima7.services.common.ui.converters.toLatLng
-import com.klima7.services.common.ui.loadable.LoadableViewModel
 import com.klima7.services.common.ui.utils.CombinedLiveData
 import com.klima7.services.expert.common.domain.usecases.GetCurrentExpertUC
 import kotlin.math.cos

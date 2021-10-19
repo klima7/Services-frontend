@@ -5,7 +5,6 @@ import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.domain.models.Service
 import com.klima7.services.common.domain.utils.None
 import com.klima7.services.common.ui.base.BaseLoadViewModel
-import com.klima7.services.common.ui.loadable.LoadableViewModel
 
 class ServicesViewModel(
     private val getCategorisedAndMarkedServices: GetCategorisedAndMarkedServices,

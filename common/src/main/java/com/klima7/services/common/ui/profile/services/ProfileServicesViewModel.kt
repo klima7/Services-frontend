@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.domain.models.Service
 import com.klima7.services.common.ui.base.BaseLoadViewModel
-import com.klima7.services.common.ui.loadable.LoadableViewModel
 
 class ProfileServicesViewModel(
     private val getServicesFromIds: GetServicesFromIds
