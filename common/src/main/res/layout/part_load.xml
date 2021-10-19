@@ -18,7 +18,7 @@
         app:lottie_fileName="lottie_loading_spinner.json"
         app:lottie_loop="true"
         android:layout_gravity="center"
-        app:lottie_speed="0.5"/>
+        app:lottie_speed="1"/>
 
     <FrameLayout
         android:id="@+id/load_touch_interceptor"
