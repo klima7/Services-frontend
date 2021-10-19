@@ -38,8 +38,6 @@ class InfoFragment: BaseLoadFragment<FragmentInfoBinding>() {
     override fun init() {
         super.init()
 
-        binding.toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
-
         viewModel.nameError.observe(viewLifecycleOwner) { nameError ->
             binding.infoName.error = when(nameError) {
                 null -> null
