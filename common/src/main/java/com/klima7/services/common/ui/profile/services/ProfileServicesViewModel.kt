@@ -3,11 +3,12 @@ package com.klima7.services.common.ui.profile.services
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.domain.models.Service
+import com.klima7.services.common.ui.base.BaseLoadViewModel
 import com.klima7.services.common.ui.loadable.LoadableViewModel
 
-class ProfileServicesContentViewModel(
+class ProfileServicesViewModel(
     private val getServicesFromIds: GetServicesFromIds
-): LoadableViewModel() {
+): BaseLoadViewModel() {
 
     private var servicesIds = listOf<String>()
     val services = MutableLiveData<List<Service>>()
