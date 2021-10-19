@@ -7,4 +7,16 @@
         <item name="startIconTint">?attr/colorPrimary</item>
     </style>
 
+    <style name="ToolBarTheme">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+    </style>
+
+    <style name="ToolBar">
+        <item name="android:background">@drawable/toolbar_rounded_background</item>
+        <item name="android:theme">@style/ToolBarTheme</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+    </style>
+
 </resources>
