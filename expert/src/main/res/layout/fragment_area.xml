@@ -6,26 +6,23 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.klima7.services.expert.features.area.WorkingAreaContentViewModel" />
+            type="com.klima7.services.expert.features.area.WorkingAreaViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/services_save_button"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
-            android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
-            android:background="@drawable/rounded_button"
-            android:text="Zapisz"
-            android:onClick="@{() -> viewmodel.saveClicked()}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            style="@style/ToolBar"
+            app:title="Zmiana lokalizacji"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:enabled="@{viewmodel.saveEnabled}"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/icon_arrow_back"/>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -34,7 +31,7 @@
             app:layout_constraintBottom_toTopOf="@+id/services_save_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -154,6 +151,20 @@
             </LinearLayout>
 
         </ScrollView>
+
+        <Button
+            android:id="@+id/services_save_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
+            android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
+            android:background="@drawable/rounded_button"
+            android:text="Zapisz"
+            android:onClick="@{() -> viewmodel.saveClicked()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:enabled="@{viewmodel.saveEnabled}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -8,16 +8,17 @@ import com.google.android.gms.maps.model.LatLngBounds
 import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.domain.models.WorkingArea
 import com.klima7.services.common.domain.utils.None
+import com.klima7.services.common.ui.base.BaseLoadViewModel
 import com.klima7.services.common.ui.converters.toLatLng
 import com.klima7.services.common.ui.loadable.LoadableViewModel
 import com.klima7.services.common.ui.utils.CombinedLiveData
 import com.klima7.services.expert.common.domain.usecases.GetCurrentExpertUC
 import kotlin.math.cos
 
-class WorkingAreaContentViewModel(
+class WorkingAreaViewModel(
     private val getCurrentExpertUC: GetCurrentExpertUC,
     private val setCurrentExpertWorkingAreaUC: SetCurrentExpertWorkingAreaUC
-): LoadableViewModel() {
+): BaseLoadViewModel() {
 
     companion object {
         private val POLAND_BOUNDS = LatLngBounds(
