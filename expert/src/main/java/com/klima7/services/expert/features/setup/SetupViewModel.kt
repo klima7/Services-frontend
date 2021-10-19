@@ -3,11 +3,11 @@ package com.klima7.services.expert.features.setup
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.domain.utils.None
-import com.klima7.services.common.ui.loadable.LoadableViewModel
+import com.klima7.services.common.ui.base.BaseLoadViewModel
 
-class SetupContentViewModel(
+class SetupViewModel(
     private val getCurrentExpertSetupStateUC: GetCurrentExpertSetupStateUC
-): LoadableViewModel() {
+): BaseLoadViewModel() {
 
     val setupState = MutableLiveData<ExpertSetupState>()
 

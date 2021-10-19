@@ -8,7 +8,7 @@ import com.klima7.services.expert.features.services.ServicesContentViewModel
 import com.klima7.services.expert.features.services.category.ServicesCategoryViewModel
 import com.klima7.services.expert.features.services.multicategory.ServicesMultiCategoryViewModel
 import com.klima7.services.expert.features.settings.SettingsViewModel
-import com.klima7.services.expert.features.setup.SetupContentViewModel
+import com.klima7.services.expert.features.setup.SetupViewModel
 import com.klima7.services.expert.features.splash.SplashViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -18,7 +18,7 @@ val viewModelsExpertModule = module {
     viewModel { SplashViewModel(get()) }
     viewModel { HomeViewModel() }
     viewModel { LoginViewModel() }
-    viewModel { SetupContentViewModel(get()) }
+    viewModel { SetupViewModel(get()) }
     viewModel { InfoContentViewModel(get(), get()) }
     viewModel { ServicesContentViewModel(get(), get()) }
     viewModel { WorkingAreaContentViewModel(get(), get()) }

@@ -1,23 +1,68 @@
 package com.klima7.services.expert.features.setup
 
-import com.klima7.services.common.ui.base.BaseFragment
+import android.content.Intent
+import androidx.activity.result.contract.ActivityResultContracts
+import com.klima7.services.common.ui.base.BaseLoadFragment
 import com.klima7.services.common.ui.base.BaseViewModel
-import com.klima7.services.common.ui.loadable.LoadableWrapperFragment
-import com.klima7.services.common.ui.utils.replaceFragment
 import com.klima7.services.expert.R
-import com.klima7.services.expert.databinding.FragmentToolbarBinding
+import com.klima7.services.expert.databinding.FragmentSetupBinding
+import com.klima7.services.expert.features.area.WorkingAreaActivity
+import com.klima7.services.expert.features.home.HomeActivity
+import com.klima7.services.expert.features.info.InfoActivity
+import com.klima7.services.expert.features.services.ServicesActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SetupFragment: BaseFragment<FragmentToolbarBinding>() {
 
-    override val layoutId = R.layout.fragment_toolbar
-    override val viewModel = BaseViewModel()
+class SetupFragment: BaseLoadFragment<FragmentSetupBinding>() {
 
-    override fun init() {
-        binding.toolbarToolbar.title = "Uzupełnienie danych"
+    override val layoutId = R.layout.fragment_setup
+    override val viewModel: SetupViewModel by viewModel()
+
+    private val configLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        this.onConfigDone()
     }
 
     override fun onFirstCreation() {
         super.onFirstCreation()
-        replaceFragment(R.id.toolbar_container_view, LoadableWrapperFragment(SetupContentFragment()))
+        viewModel.started()
     }
+
+    override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
+        super.handleEvent(event)
+        when(event) {
+            SetupViewModel.Event.ShowHomeScreen -> showHomeScreen()
+            SetupViewModel.Event.ShowInfoScreen -> showInfoScreen()
+            SetupViewModel.Event.ShowServicesScreen -> showServicesScreen()
+            SetupViewModel.Event.ShowWorkingAreaScreen -> showLocationScreen()
+        }
+    }
+
+    private fun showHomeScreen() {
+        val intent = Intent(activity, HomeActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
+        startActivity(intent)
+        requireActivity().finish()
+    }
+
+    private fun showInfoScreen() {
+        val intent = Intent(activity, InfoActivity::class.java)
+        configLauncher.launch(intent)
+    }
+
+    private fun showLocationScreen() {
+        val intent = Intent(activity, WorkingAreaActivity::class.java)
+        configLauncher.launch(intent)
+    }
+
+    private fun showServicesScreen() {
+        val intent = Intent(activity, ServicesActivity::class.java)
+        configLauncher.launch(intent)
+    }
+
+    private fun onConfigDone() {
+        viewModel.configDone()
+    }
+
 }
