@@ -12,6 +12,7 @@ import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.LatLng
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentAreaVisualizationBinding
+import com.klima7.services.common.domain.models.Coordinates
 import com.klima7.services.common.domain.models.WorkingArea
 import com.klima7.services.common.ui.base.BaseFragment
 import com.klima7.services.common.ui.faildialog.FailureDialogFragment
@@ -33,7 +34,16 @@ class AreaVisualizationFragment: BaseFragment<FragmentAreaVisualizationBinding>(
     }
 
     fun setArea(area: WorkingArea?) {
-        viewModel.setArea(area)
+        viewModel.setCoords(area?.location?.coords)
+        viewModel.setRadius(area?.radius)
+    }
+
+    fun setRadius(radius: Int?) {
+        viewModel.setRadius(radius)
+    }
+
+    fun setCoords(coords: Coordinates?) {
+        viewModel.setCoords(coords)
     }
 
     override fun onMapReady(googleMap: GoogleMap) {

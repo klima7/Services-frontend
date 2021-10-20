@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
+import com.klima7.services.common.domain.models.Coordinates
 import com.klima7.services.common.domain.models.WorkingArea
 import com.klima7.services.common.ui.base.BaseViewModel
 import com.klima7.services.common.ui.converters.toLatLng
@@ -20,16 +21,18 @@ class AreaVisualizationViewModel: BaseViewModel() {
     }
 
     // Input
-    private val area = MutableLiveData<WorkingArea?>(null)
+    val placeCoords = MutableLiveData<LatLng?>(null)
+    val radius = MutableLiveData<Int?>(null)
 
-    // Output
-    val placeCoords = area.map { it?.location?.coords?.toLatLng() }
-    val radius = area.map { it?.radius }
-    val circleVisible = area.map { it != null }
+    val circleVisible = CombinedLiveData(placeCoords, radius) { it.all { it != null } }
     val mapBounds = CombinedLiveData(circleVisible, placeCoords, radius) { getBounds() }
 
-    fun setArea(area: WorkingArea?) {
-        this.area.value = area
+    fun setRadius(radius: Int?) {
+        this.radius.value = radius
+    }
+
+    fun setCoords(coords: Coordinates?) {
+        this.placeCoords.value = coords?.toLatLng()
     }
 
     private fun getBounds(): LatLngBounds {

@@ -129,11 +129,10 @@
                     app:strokeWidth="@dimen/stroke_width_around_cards" >
 
                     <fragment
-                        android:id="@+id/location_map_fragment"
-                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:id="@+id/location_area_visualization_fragment"
+                        android:name="com.klima7.services.common.ui.areavis.AreaVisualizationFragment"
                         android:layout_width="match_parent"
-                        android:layout_height="300dp"
-                        android:background="@drawable/shape_map_background" />
+                        android:layout_height="wrap_content"/>
 
                 </com.google.android.material.card.MaterialCardView>
 

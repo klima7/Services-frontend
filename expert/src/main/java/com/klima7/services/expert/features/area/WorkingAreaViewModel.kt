@@ -5,7 +5,9 @@ import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
+import com.klima7.services.common.domain.models.Coordinates
 import com.klima7.services.common.domain.models.Failure
+import com.klima7.services.common.domain.models.Location
 import com.klima7.services.common.domain.models.WorkingArea
 import com.klima7.services.common.domain.utils.None
 import com.klima7.services.common.ui.base.BaseLoadViewModel
@@ -42,9 +44,13 @@ class WorkingAreaViewModel(
     // Derived values
     val radius = radiusFloat.map { it.toInt() }
     val scrollEnabled = placeName.map { it.isNotEmpty() }
-    val circleVisible = placeName.map { it.isNotEmpty() }
     val saveEnabled = placeName.map { it.isNotEmpty() }
-    val mapBounds = CombinedLiveData(circleVisible, placeCoords, radius) { getBounds() }
+
+    val areaVisualization = CombinedLiveData(placeCoords, radius) {
+//        val placeCoords = it[0] as LatLng?
+//        val radius = it[1] as Int?
+//        val wa = WorkingArea(Location("", "", Coordinates(placeCoords.latitude, placeCoords.longitude)))
+    }
 
     fun started() {
         loadContent()
@@ -120,27 +126,4 @@ class WorkingAreaViewModel(
         }
     }
 
-    private fun getBounds(): LatLngBounds {
-        val visible = circleVisible.value ?: false
-        if(!visible) return POLAND_BOUNDS
-        val center = placeCoords.value ?: return POLAND_BOUNDS
-        val radius = radius.value ?: 10
-        return createCircleBounds(center, radius.toDouble())
-    }
-
-    private fun createCircleBounds(center: LatLng, radius: Double): LatLngBounds {
-        val southWest = addDistance(center, -radius, -radius)
-        val northEast = addDistance(center, radius, radius)
-        return LatLngBounds(southWest, northEast)
-    }
-
-    private fun addDistance(start: LatLng, dx: Double, dy: Double): LatLng {
-        val rEarth = 6378.0
-        val latitude = start.latitude
-        val longitude = start.longitude
-
-        val newLatitude  = latitude  + (dy / rEarth) * (180 / Math.PI)
-        val newLongitude = longitude + (dx / rEarth) * (180 / Math.PI) / cos(latitude * Math.PI/180)
-        return LatLng(newLatitude, newLongitude)
-    }
 }
