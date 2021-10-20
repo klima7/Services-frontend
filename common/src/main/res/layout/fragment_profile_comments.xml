@@ -29,6 +29,12 @@
             android:text="@{@string/comments_count(commentsCount)}"
             android:textStyle="bold" />
 
+        <fragment
+            android:id="@+id/profile_comments_latest_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="com.klima7.services.common.ui.profile.comments.ProfileCommentsLatestFragment" />
+
     </LinearLayout>
 
 </layout>
