@@ -1,20 +1,19 @@
-package com.klima7.services.expert.features.area
+package com.klima7.services.expert.features.services
 
 import androidx.fragment.app.Fragment
 import com.klima7.services.common.ui.toolbar.ToolbarFragment
 import com.klima7.services.expert.R
-import com.klima7.services.expert.features.info.InfoFragment
 
-class WorkingAreaToolbarFragment: ToolbarFragment(
+class ServicesToolbarFragment: ToolbarFragment(
     menu = R.menu.menu_home_toolbar,
     back = true,
 ) {
 
-    override fun fragment(): Fragment = WorkingAreaFragment()
+    override fun fragment(): Fragment = ServicesFragment()
 
     override fun configToolbar() {
         toolbar.apply {
-            title = "Zmiana lokalizacji"
+            title = "Zmiana usług"
         }
     }
 
