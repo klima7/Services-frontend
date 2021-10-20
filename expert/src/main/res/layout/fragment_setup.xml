@@ -19,16 +19,6 @@
         app:layout_constraintTop_toBottomOf="@+id/settings_toolbar"
         tools:visibility="visible">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_toolbar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            style="@style/ToolBar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:title="Uzupełnianie danych"/>
-
         <ScrollView
             android:id="@+id/scrollView2"
             android:layout_width="0dp"
@@ -36,7 +26,7 @@
             app:layout_constraintBottom_toTopOf="@+id/button2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_toolbar">
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"

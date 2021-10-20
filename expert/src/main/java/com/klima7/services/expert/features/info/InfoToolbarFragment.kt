@@ -5,7 +5,6 @@ import com.klima7.services.common.ui.toolbar.ToolbarFragment
 import com.klima7.services.expert.R
 
 class InfoToolbarFragment: ToolbarFragment(
-    menu = R.menu.menu_home_toolbar,
     back = true,
 ) {
 
