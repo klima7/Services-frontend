@@ -15,6 +15,7 @@ import com.klima7.services.common.databinding.FragmentAreaVisualizationBinding
 import com.klima7.services.common.domain.models.Coordinates
 import com.klima7.services.common.domain.models.WorkingArea
 import com.klima7.services.common.ui.base.BaseFragment
+import com.klima7.services.common.ui.converters.toLatLng
 import com.klima7.services.common.ui.faildialog.FailureDialogFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -34,7 +35,7 @@ class AreaVisualizationFragment: BaseFragment<FragmentAreaVisualizationBinding>(
     }
 
     fun setArea(area: WorkingArea?) {
-        viewModel.setCoords(area?.location?.coords)
+        viewModel.setCoords(area?.location?.coords?.toLatLng())
         viewModel.setRadius(area?.radius)
     }
 
@@ -42,7 +43,7 @@ class AreaVisualizationFragment: BaseFragment<FragmentAreaVisualizationBinding>(
         viewModel.setRadius(radius)
     }
 
-    fun setCoords(coords: Coordinates?) {
+    fun setCoords(coords: LatLng?) {
         viewModel.setCoords(coords)
     }
 

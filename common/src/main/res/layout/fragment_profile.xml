@@ -89,129 +89,23 @@
                 android:layout_width="0dp"
                 android:layout_height="32dp" />
 
-            <LinearLayout
-                android:id="@+id/profile_contact_part"
+            <fragment
+                android:id="@+id/profile_contact_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <include
-                    layout="@layout/part_profile_header"
-                    app:title="@{`Kontakt`}"
-                    />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="16dp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:text="Numer telefonu"
-                        android:layout_marginHorizontal="16dp"
-                        android:textStyle="bold"
-                        />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:text="@{viewmodel.expert.info.phone}"
-                        android:layout_marginHorizontal="16dp"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="16dp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:text="Adres email"
-                        android:layout_marginHorizontal="16dp"
-                        android:textStyle="bold"
-                        />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:text="@{viewmodel.expert.info.email}"
-                        android:layout_marginHorizontal="16dp"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="16dp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:text="Strona internetowa"
-                        android:layout_marginHorizontal="16dp"
-                        android:textStyle="bold"
-                        />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:text="@{viewmodel.expert.info.website}"
-                        android:layout_marginHorizontal="16dp"
-                        />
-
-                </LinearLayout>
-
-            </LinearLayout>
+                android:name="com.klima7.services.common.ui.profile.contact.ProfileContactFragment"
+                />
 
             <Space
                 android:layout_width="0dp"
                 android:layout_height="32dp" />
 
-            <LinearLayout
-                android:id="@+id/profile_services_part"
+            <fragment
+                android:id="@+id/profile_services_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <include
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    layout="@layout/part_profile_header"
-                    app:title="@{`Świadczone usługi`}"
-                    android:layout_marginBottom="8dp"
-                    />
-
-                <fragment
-                    android:id="@+id/wervcd"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:name="com.klima7.services.common.ui.profile.services.ProfileServicesFragment"
-                    />
-
-            </LinearLayout>
+                android:name="com.klima7.services.common.ui.profile.services.ProfileServicesFragment"
+                />
 
             <Space
                 android:layout_width="0dp"

@@ -51,7 +51,7 @@ class WorkingAreaFragment: BaseLoadFragment<FragmentAreaBinding>() {
         }
 
         viewModel.placeCoords.observe(viewLifecycleOwner) { coords ->
-            areaVisualization.setCoords(coords?.toDomain())
+            areaVisualization.setCoords(coords)
         }
     }
 

@@ -31,8 +31,8 @@ class AreaVisualizationViewModel: BaseViewModel() {
         this.radius.value = radius
     }
 
-    fun setCoords(coords: Coordinates?) {
-        this.placeCoords.value = coords?.toLatLng()
+    fun setCoords(coords: LatLng?) {
+        this.placeCoords.value = coords
     }
 
     private fun getBounds(): LatLngBounds {
