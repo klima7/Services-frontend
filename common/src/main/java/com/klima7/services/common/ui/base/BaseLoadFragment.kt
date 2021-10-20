@@ -126,7 +126,12 @@ abstract class BaseLoadFragment<DB: ViewDataBinding>: BaseFragment<DB>() {
             duration = resources.getInteger(R.integer.failure_fade_time).toLong()
             alpha(targetAlpha)
             withStartAction { view.visibility = View.VISIBLE }
-            withEndAction { view.setAlphaAndVisibility(targetAlpha) }
+            withEndAction {
+                view.setAlphaAndVisibility(targetAlpha)
+                if(targetAlpha == 0f) {
+                    view.visibility = View.GONE
+                }
+            }
             start()
         }
     }
