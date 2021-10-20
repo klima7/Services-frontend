@@ -18,6 +18,8 @@ abstract class BaseLoadFragment<DB: ViewDataBinding>: BaseFragment<DB>() {
 
     abstract override val viewModel: BaseLoadViewModel
 
+    private lateinit var mixin: View
+
     private lateinit var failurePart: View
     private lateinit var mainPart: View
     private lateinit var spinner: View
@@ -33,7 +35,7 @@ abstract class BaseLoadFragment<DB: ViewDataBinding>: BaseFragment<DB>() {
     ): View? {
         mainPart = super.onCreateView(inflater, container, savedInstanceState)!!
         val frame = FrameLayout(requireContext())
-        val mixin = LayoutInflater.from(context).inflate(R.layout.part_load, frame, false)
+        mixin = LayoutInflater.from(context).inflate(R.layout.part_load, frame, false)
         frame.addView(mainPart)
         frame.addView(mixin)
         return frame
@@ -43,13 +45,13 @@ abstract class BaseLoadFragment<DB: ViewDataBinding>: BaseFragment<DB>() {
         super.init()
 
         // Get views
-        failurePart = requireView().findViewById(R.id.load_failure)
+        failurePart = mixin.findViewById(R.id.load_failure)
         mainPart = binding.root
-        touchInterceptor = requireView().findViewById(R.id.load_touch_interceptor)
-        failureImage = requireView().findViewById(R.id.load_failure_image)
-        failureMessage = requireView().findViewById(R.id.load_failure_message)
-        refreshButton = requireView().findViewById(R.id.load_refresh_button)
-        spinner = requireView().findViewById(R.id.load_spinner)
+        touchInterceptor = mixin.findViewById(R.id.load_touch_interceptor)
+        failureImage = mixin.findViewById(R.id.load_failure_image)
+        failureMessage = mixin.findViewById(R.id.load_failure_message)
+        refreshButton = mixin.findViewById(R.id.load_refresh_button)
+        spinner = mixin.findViewById(R.id.load_spinner)
 
         // Prepare
         touchInterceptor.setOnTouchListener { _, _ -> true }
