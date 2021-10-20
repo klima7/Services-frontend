@@ -13,8 +13,10 @@ class ProfileServicesViewModel(
     val services = MutableLiveData<List<Service>>()
 
     fun setServicesIds(servicesIds: List<String>) {
-        this.servicesIds = servicesIds
-        loadContent(servicesIds)
+        if(servicesIds != this.servicesIds) {
+            this.servicesIds = servicesIds
+            loadContent(servicesIds)
+        }
     }
 
     override fun refresh() {
