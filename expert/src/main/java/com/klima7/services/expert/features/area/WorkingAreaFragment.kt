@@ -45,8 +45,6 @@ class WorkingAreaFragment: BaseLoadFragment<FragmentAreaBinding>(), OnMapReadyCa
     override fun init() {
         super.init()
 
-        binding.toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
-
         val mapFragment = childFragmentManager.findFragmentById(R.id.location_map_fragment) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
