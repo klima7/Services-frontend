@@ -21,41 +21,11 @@
             android:orientation="vertical"
             android:paddingVertical="16dp">
 
-            <LinearLayout
-                android:id="@+id/profile_avatar_part"
+            <fragment
+                android:id="@+id/profile_header_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <com.klima7.services.common.ui.avatar.AvatarView
-                    android:id="@+id/info_avatar_view"
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
-                    android:layout_gravity="center_horizontal"/>
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="16dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@{viewmodel.expert.info.name}"
-                    tools:text="Name"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="21sp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@{viewmodel.expert.info.company}"
-                    tools:text="Company"
-                    android:textSize="18sp"/>
-
-            </LinearLayout>
+                android:name="com.klima7.services.common.ui.profile.header.ProfileHeaderFragment" />
 
             <Space
                 android:layout_width="0dp"
