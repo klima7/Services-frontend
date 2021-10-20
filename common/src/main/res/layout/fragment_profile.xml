@@ -70,6 +70,18 @@
                 android:name="com.klima7.services.common.ui.profile.area.ProfileAreaFragment"
                 />
 
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="32dp" />
+
+            <fragment
+                android:id="@+id/profile_rating_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:name="com.klima7.services.common.ui.profile.rating.ProfileRatingFragment"
+                />
+
+
         </LinearLayout>
 
     </ScrollView>
