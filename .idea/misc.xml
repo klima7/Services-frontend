@@ -31,6 +31,7 @@
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/activity_layout.xml" value="0.15896739130434784" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/activity_single.xml" value="0.178125" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/dialog_failure.xml" value="0.2" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_area_visualization.xml" value="0.275" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_avatar.xml" value="0.19157608695652173" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_container.xml" value="0.19375" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_dialog.xml" value="0.1644021739130435" />
@@ -38,7 +39,8 @@
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_failure.xml" value="0.1484375" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_failure_handler.xml" value="0.16927083333333334" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_loadable_wrapper.xml" value="0.17028985507246377" />
-        <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_profile.xml" value="0.264" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_profile.xml" value="0.2" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_profile_area.xml" value="0.275" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_profile_services.xml" value="0.275" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_toolbar.xml" value="0.16510416666666666" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/part_load.xml" value="0.184375" />
