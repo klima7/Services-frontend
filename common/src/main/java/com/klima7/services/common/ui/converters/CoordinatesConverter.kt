@@ -6,3 +6,7 @@ import com.klima7.services.common.domain.models.Coordinates
 fun Coordinates.toLatLng(): LatLng {
     return LatLng(latitude, longitude)
 }
+
+fun LatLng.toDomain(): Coordinates {
+    return Coordinates(latitude, longitude)
+}

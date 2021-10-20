@@ -1,21 +1,15 @@
 package com.klima7.services.expert.features.area
 
-import android.graphics.Color
 import android.os.Bundle
 import com.google.android.gms.common.api.Status
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.Circle
-import com.google.android.gms.maps.model.CircleOptions
-import com.google.android.gms.maps.model.LatLng
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.api.model.TypeFilter
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import com.klima7.services.common.domain.models.Failure
+import com.klima7.services.common.ui.areavis.AreaVisualizationFragment
 import com.klima7.services.common.ui.base.BaseLoadFragment
 import com.klima7.services.common.ui.base.BaseViewModel
+import com.klima7.services.common.ui.converters.toDomain
 import com.klima7.services.common.ui.faildialog.FailureDialogFragment
 import com.klima7.services.common.ui.utils.showShortToast
 import com.klima7.services.expert.R
@@ -47,6 +41,17 @@ class WorkingAreaFragment: BaseLoadFragment<FragmentAreaBinding>() {
             if(result == FailureDialogFragment.Result.RETRY) {
                 viewModel.retrySaveLocationClicked()
             }
+        }
+
+        val areaVisualization = childFragmentManager.
+        findFragmentById(R.id.location_area_visualization_fragment) as AreaVisualizationFragment
+
+        viewModel.radius.observe(viewLifecycleOwner) { radius ->
+            areaVisualization.setRadius(radius)
+        }
+
+        viewModel.placeCoords.observe(viewLifecycleOwner) { coords ->
+            areaVisualization.setCoords(coords?.toDomain())
         }
     }
 

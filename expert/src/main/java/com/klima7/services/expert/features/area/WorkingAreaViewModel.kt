@@ -4,29 +4,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.LatLngBounds
-import com.klima7.services.common.domain.models.Coordinates
 import com.klima7.services.common.domain.models.Failure
-import com.klima7.services.common.domain.models.Location
 import com.klima7.services.common.domain.models.WorkingArea
 import com.klima7.services.common.domain.utils.None
 import com.klima7.services.common.ui.base.BaseLoadViewModel
 import com.klima7.services.common.ui.converters.toLatLng
-import com.klima7.services.common.ui.utils.CombinedLiveData
 import com.klima7.services.expert.common.domain.usecases.GetCurrentExpertUC
-import kotlin.math.cos
 
 class WorkingAreaViewModel(
     private val getCurrentExpertUC: GetCurrentExpertUC,
     private val setCurrentExpertWorkingAreaUC: SetCurrentExpertWorkingAreaUC
 ): BaseLoadViewModel() {
-
-    companion object {
-        private val POLAND_BOUNDS = LatLngBounds(
-            LatLng(49.0, 14.0),
-            LatLng(55.0, 25.0),
-        )
-    }
 
     sealed class Event: BaseEvent() {
         data class ShowSaveLocationFailure(val failure: Failure): Event()
@@ -38,19 +26,13 @@ class WorkingAreaViewModel(
 
     // Input values
     val placeName = MutableLiveData<String>()
-    val placeCoords = MutableLiveData<LatLng>()
+    val placeCoords = MutableLiveData<LatLng?>()
     val radiusFloat = MutableLiveData(1F)
 
     // Derived values
     val radius = radiusFloat.map { it.toInt() }
     val scrollEnabled = placeName.map { it.isNotEmpty() }
     val saveEnabled = placeName.map { it.isNotEmpty() }
-
-    val areaVisualization = CombinedLiveData(placeCoords, radius) {
-//        val placeCoords = it[0] as LatLng?
-//        val radius = it[1] as Int?
-//        val wa = WorkingArea(Location("", "", Coordinates(placeCoords.latitude, placeCoords.longitude)))
-    }
 
     fun started() {
         loadContent()
@@ -68,6 +50,7 @@ class WorkingAreaViewModel(
 
     fun locationCleared() {
         placeName.value = ""
+        placeCoords.value = null
         placeId = null
     }
 
