@@ -6,4 +6,8 @@
     <string name="unknown_failure_message">Nieznany błąd</string>
     <string name="permission_failure_message">Brak uprawnień</string>
     <string name="not_found_failure_message">Brak żądanego zasobu</string>
+
+    <!-- Other -->
+    <string name="comments_count">Łącznie %s komentarzy</string>
+
 </resources>
