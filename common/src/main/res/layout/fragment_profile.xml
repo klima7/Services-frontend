@@ -31,29 +31,11 @@
                 android:layout_width="0dp"
                 android:layout_height="32dp" />
 
-            <LinearLayout
-                android:id="@+id/profile_description_part"
+            <fragment
+                android:id="@+id/profile_description_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <include
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    layout="@layout/part_profile_header"
-                    app:title="@{`Opis`}"
-                    android:layout_marginBottom="8dp"
-                    />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:text="@{viewmodel.expert.info.description}"
-                    android:layout_marginHorizontal="16dp"
-                    />
-
-            </LinearLayout>
+                android:name="com.klima7.services.common.ui.profile.description.ProfileDescriptionFragment" />
 
             <Space
                 android:layout_width="0dp"
