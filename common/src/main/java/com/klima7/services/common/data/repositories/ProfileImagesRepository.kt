@@ -13,7 +13,7 @@ class ProfileImagesRepository(
     private val firestore: FirebaseFirestore
 ) {
 
-    suspend fun getProfileImage(expertUid: String): Outcome<Failure, ProfileImage> {
+    suspend fun getProfileImage(expertUid: String): Outcome<Failure, ProfileImage?> {
         try {
             val snapshot = firestore
                 .collection("profile_images")
@@ -22,7 +22,7 @@ class ProfileImagesRepository(
                 .await()
             val profileImageEntity = snapshot.toObject(ProfileImageEntity::class.java)
             val profileImage = profileImageEntity?.toDomain()
-                ?: return Outcome.Failure(Failure.NotFoundFailure)
+                ?: return Outcome.Success(null)
             return Outcome.Success(profileImage)
         } catch(e: Exception) {
             Log.e("Hello", "Error during getProfileImage", e)
