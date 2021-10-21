@@ -10,16 +10,15 @@
     </data>
 
     <LinearLayout
-        android:id="@+id/profile_area_part"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <LinearLayout
+        <com.klima7.services.common.ui.wclistview.WrapContentListView
+            android:id="@+id/profile_comments_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="500dp"
-            android:background="@color/light_gray" />
+            android:orientation="vertical" />
 
     </LinearLayout>
 
