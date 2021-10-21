@@ -22,7 +22,7 @@ val viewModelsCommonModule = module {
     viewModel { ProfileContactViewModel() }
     viewModel { ProfileHeaderViewModel() }
     viewModel { ProfileRatingViewModel() }
-    viewModel { ProfileCommentsLatestViewModel() }
+    viewModel { ProfileCommentsLatestViewModel(get()) }
     viewModel { ProfileCommentsViewModel() }
     viewModel { CommentsViewModel(get()) }
 
