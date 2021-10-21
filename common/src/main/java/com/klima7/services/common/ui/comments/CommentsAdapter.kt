@@ -5,14 +5,14 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.klima7.services.common.domain.models.Rating
 
-class CommentsAdapter: PagingDataAdapter<Rating, CommentViewHolder>(CommentsComparator) {
+class CommentsAdapter: PagingDataAdapter<RatingWithProfileImage, CommentViewHolder>(CommentsComparator) {
 
-    object CommentsComparator: DiffUtil.ItemCallback<Rating>() {
-        override fun areItemsTheSame(oldItem: Rating, newItem: Rating): Boolean {
-            return oldItem.id == newItem.id
+    object CommentsComparator: DiffUtil.ItemCallback<RatingWithProfileImage>() {
+        override fun areItemsTheSame(oldItem: RatingWithProfileImage, newItem: RatingWithProfileImage): Boolean {
+            return oldItem.rating.id == newItem.rating.id
         }
 
-        override fun areContentsTheSame(oldItem: Rating, newItem: Rating): Boolean {
+        override fun areContentsTheSame(oldItem: RatingWithProfileImage, newItem: RatingWithProfileImage): Boolean {
             return oldItem == newItem
         }
     }

@@ -6,7 +6,7 @@ import com.klima7.services.common.data.repositories.RatingsRepository
 import com.klima7.services.common.ui.base.BaseViewModel
 
 class CommentsViewModel(
-    private val ratingsRepository: RatingsRepository
+    private val getExpertRatingsWithProfileImagesUC: GetExpertRatingsWithProfileImagesUC
 ): BaseViewModel() {
 
     private val expertId = MutableLiveData<String>()
@@ -20,7 +20,7 @@ class CommentsViewModel(
     private fun createPager(expertId: String) = Pager(
         PagingConfig(pageSize = 5)
     ) {
-        CommentsPagingSource(ratingsRepository, expertId)
+        CommentsPagingSource(getExpertRatingsWithProfileImagesUC, expertId)
     }
 
 }
