@@ -11,7 +11,7 @@ class CommentsViewModel(
 
     private val expertId = MutableLiveData<String>()
     private val pager = expertId.map { expertId -> createPager(expertId) }
-    val pagingData = pager.switchMap { pager -> pager.liveData }
+    val pagingData = pager.switchMap { pager -> pager.flow.cachedIn(viewModelScope).asLiveData() }
 
     fun start(expertId: String) {
         this.expertId.value = expertId

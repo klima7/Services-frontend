@@ -31,11 +31,13 @@
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/toast_background.xml" value="0.19907407407407407" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/toolbar_background.xml" value="0.20185185185185187" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/activity_layout.xml" value="0.15896739130434784" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/layout/activity_main.xml" value="0.16875" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/activity_single.xml" value="0.178125" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/dialog_failure.xml" value="0.2" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/element_comment.xml" value="0.1671875" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_area_visualization.xml" value="0.275" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_avatar.xml" value="0.19157608695652173" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_comment.xml" value="0.275" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_comments.xml" value="0.18489583333333334" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_container.xml" value="0.19375" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_dialog.xml" value="0.1644021739130435" />

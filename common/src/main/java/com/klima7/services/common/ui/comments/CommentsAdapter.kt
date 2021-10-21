@@ -1,10 +1,8 @@
 package com.klima7.services.common.ui.comments
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import com.klima7.services.common.R
 import com.klima7.services.common.domain.models.Rating
 
 class CommentsAdapter: PagingDataAdapter<Rating, CommentViewHolder>(CommentsComparator) {
@@ -20,13 +18,11 @@ class CommentsAdapter: PagingDataAdapter<Rating, CommentViewHolder>(CommentsComp
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.element_comment, parent, false)
-        return CommentViewHolder(view)
+        return CommentViewHolder(parent)
     }
 
     override fun onBindViewHolder(holder: CommentViewHolder, position: Int) {
-        holder.id.text = getItem(position)?.id ?: "null"
+        holder.bind(getItem(position))
     }
 
 }

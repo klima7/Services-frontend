@@ -30,7 +30,7 @@ class CommentsFragment: BaseFragment<FragmentCommentsBinding>() {
 
         viewModel.pagingData.observe(viewLifecycleOwner) { pagingData ->
             lifecycleScope.launch {
-                adapter.submitData(pagingData)
+                adapter.submitData(lifecycle, pagingData)
             }
         }
     }
