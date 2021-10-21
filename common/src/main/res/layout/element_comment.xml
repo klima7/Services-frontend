@@ -5,7 +5,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
+        <com.klima7.services.common.ui.rating.RatingView
+            android:id="@+id/comment_rating_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
 
     </FrameLayout>
 

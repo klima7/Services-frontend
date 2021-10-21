@@ -25,6 +25,7 @@ class CommentViewHolder private constructor(val binding: ElementCommentBinding):
     fun bind(rating: Rating?) {
         if(rating == null)
             return
+        binding.commentRatingView.setRating(rating)
     }
 
 }

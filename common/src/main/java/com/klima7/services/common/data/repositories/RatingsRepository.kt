@@ -46,7 +46,6 @@ class RatingsRepository(
                 .get()
                 .await()
 
-            Log.i("abcdef", "Received ${snapshot.documents.size} documents")
             val ratings: List<Rating> = snapshot.documents.map { document ->
                 Pair(document.id, document.toObject(RatingEntity::class.java))
             }.filter { it.second != null }.map { it.second!!.toDomain(it.first) }
