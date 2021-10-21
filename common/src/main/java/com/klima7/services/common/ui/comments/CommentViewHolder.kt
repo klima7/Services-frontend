@@ -1,12 +1,14 @@
 package com.klima7.services.common.ui.comments
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.ElementCommentBinding
 import com.klima7.services.common.domain.models.Rating
+import kotlin.properties.Delegates
 
 class CommentViewHolder private constructor(val binding: ElementCommentBinding):
     RecyclerView.ViewHolder(binding.root) {
@@ -23,8 +25,6 @@ class CommentViewHolder private constructor(val binding: ElementCommentBinding):
     fun bind(rating: Rating?) {
         if(rating == null)
             return
-        binding.commentContent.text = rating.comment
-        binding.commentServiceName.text = rating.serviceName
     }
 
 }
