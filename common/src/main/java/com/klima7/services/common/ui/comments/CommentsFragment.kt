@@ -1,5 +1,6 @@
 package com.klima7.services.common.ui.comments
 
+import android.util.Log
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentCommentsBinding
 import com.klima7.services.common.ui.base.BaseFragment
@@ -12,7 +13,8 @@ class CommentsFragment: BaseFragment<FragmentCommentsBinding>() {
 
     override fun onFirstCreation() {
         super.onFirstCreation()
-        viewModel.start()
+        val expertId = arguments?.getString("expertId")
+        viewModel.start(expertId!!)
     }
 
 }

@@ -1,7 +1,7 @@
 package com.klima7.services.common.ui.profile.comments
 
 import android.content.Intent
-import android.util.Log
+import androidx.core.os.bundleOf
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentProfileCommentsBinding
 import com.klima7.services.common.ui.base.BaseFragment
@@ -38,6 +38,8 @@ class ProfileCommentsFragment: BaseFragment<FragmentProfileCommentsBinding>() {
 
     private fun showCommentsScreen() {
         val intent = Intent(activity, CommentsActivity::class.java)
+        val extras = bundleOf("expertId" to "GVUPHpMgt36NtVg9vsClFSaaOQQ7")
+        intent.putExtras(extras)
         startActivity(intent)
     }
 }
