@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.ElementCommentBinding
+import com.klima7.services.common.ui.rating.RatingWithProfileImage
 
 class CommentViewHolder private constructor(val binding: ElementCommentBinding):
     RecyclerView.ViewHolder(binding.root) {
@@ -22,7 +23,7 @@ class CommentViewHolder private constructor(val binding: ElementCommentBinding):
     fun bind(ratingWithProfileImage: RatingWithProfileImage?) {
         if(ratingWithProfileImage == null)
             return
-        binding.commentRatingView.setRating(ratingWithProfileImage.rating)
+        binding.commentRatingView.setRatingWithProfileImage(ratingWithProfileImage)
     }
 
 }

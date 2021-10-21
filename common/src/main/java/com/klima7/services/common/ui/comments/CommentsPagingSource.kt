@@ -2,6 +2,7 @@ package com.klima7.services.common.ui.comments
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.klima7.services.common.ui.rating.RatingWithProfileImage
 
 class CommentsPagingSource(
     private val getExpertRatingsWithProfileImagesUC: GetExpertRatingsWithProfileImagesUC,

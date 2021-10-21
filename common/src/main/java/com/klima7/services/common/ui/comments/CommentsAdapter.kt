@@ -3,7 +3,7 @@ package com.klima7.services.common.ui.comments
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import com.klima7.services.common.domain.models.Rating
+import com.klima7.services.common.ui.rating.RatingWithProfileImage
 
 class CommentsAdapter: PagingDataAdapter<RatingWithProfileImage, CommentViewHolder>(CommentsComparator) {
 

@@ -5,15 +5,15 @@ import android.util.AttributeSet
 import android.widget.FrameLayout
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.ViewRatingBinding
-import com.klima7.services.common.domain.models.Rating
 import android.view.LayoutInflater
 import androidx.databinding.DataBindingUtil
 
 
 class RatingView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
 
-    private var rating: Rating? = null
     private var binding: ViewRatingBinding
+
+    private var rwpi: RatingWithProfileImage? = null
 
     init {
         val inflater = LayoutInflater.from(context)
@@ -21,18 +21,21 @@ class RatingView(context: Context, attrs: AttributeSet?) : FrameLayout(context, 
         refreshView()
     }
 
-    fun setRating(rating: Rating?) {
-        this.rating = rating
+    fun setRatingWithProfileImage(rwpi: RatingWithProfileImage?) {
+        this.rwpi = rwpi
         refreshView()
         invalidate()
         requestLayout()
     }
 
     private fun refreshView() {
-        val cRating = rating ?: return
+        val cRwpi = rwpi ?: return
+        val cRating = cRwpi.rating
+        val cProfileImage = cRwpi.profileImage
 
         binding.ratingComment.text = cRating.comment
         binding.ratingServiceName.text = cRating.serviceName
         binding.ratingRating.rating = cRating.rating.toFloat()
+        binding.ratingAvatar.setProfileImage(cProfileImage)
     }
 }

@@ -6,6 +6,7 @@ import com.klima7.services.common.domain.models.Failure
 import com.klima7.services.common.domain.models.Rating
 import com.klima7.services.common.domain.utils.BaseUC
 import com.klima7.services.common.domain.utils.Outcome
+import com.klima7.services.common.ui.rating.RatingWithProfileImage
 
 class GetExpertRatingsWithProfileImagesUC(
     private val ratingsRepository: RatingsRepository,
