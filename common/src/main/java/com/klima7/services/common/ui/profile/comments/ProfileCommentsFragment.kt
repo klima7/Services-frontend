@@ -1,10 +1,12 @@
 package com.klima7.services.common.ui.profile.comments
 
+import android.content.Intent
 import android.util.Log
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentProfileCommentsBinding
 import com.klima7.services.common.ui.base.BaseFragment
 import com.klima7.services.common.ui.base.BaseViewModel
+import com.klima7.services.common.ui.comments.CommentsActivity
 import com.klima7.services.common.ui.profile.ProfileViewModel
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -35,6 +37,7 @@ class ProfileCommentsFragment: BaseFragment<FragmentProfileCommentsBinding>() {
     }
 
     private fun showCommentsScreen() {
-        Log.i("Hello", "Showing comments screen")
+        val intent = Intent(activity, CommentsActivity::class.java)
+        startActivity(intent)
     }
 }
