@@ -1,9 +1,6 @@
 package com.klima7.services.common.data.di
 
-import com.klima7.services.common.data.repositories.AuthRepository
-import com.klima7.services.common.data.repositories.ExpertsRepository
-import com.klima7.services.common.data.repositories.RatingsRepository
-import com.klima7.services.common.data.repositories.ServicesRepository
+import com.klima7.services.common.data.repositories.*
 import org.koin.dsl.module
 
 val reposModule = module {
@@ -12,5 +9,6 @@ val reposModule = module {
     single { AuthRepository(get()) }
     single { ServicesRepository(get()) }
     single { RatingsRepository(get(), get()) }
+    single { ProfileImagesRepository(get()) }
 
 }

@@ -1,6 +1,5 @@
 package com.klima7.services.common.data.entities
 
-import com.google.firebase.Timestamp
 import com.google.firebase.firestore.GeoPoint
 
 data class ExpertEntity(
@@ -33,10 +32,7 @@ data class ExpertEntity(
         var radius: Int = 0
     )
 
-    data class ProfileImageEntity(
-        var url: String = "",
-        var changeTime: Timestamp = Timestamp.now()
-    )
+
 
 }
 
