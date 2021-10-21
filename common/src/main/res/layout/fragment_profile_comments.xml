@@ -7,6 +7,9 @@
         <variable
             name="commentsCount"
             type="Integer" />
+        <variable
+            name="viewmodel"
+            type="com.klima7.services.common.ui.profile.comments.ProfileCommentsViewModel" />
     </data>
 
     <LinearLayout
@@ -29,15 +32,24 @@
             android:text="@{@string/comments_count(commentsCount)}"
             android:textStyle="bold" />
 
-        <fragment
-            android:id="@+id/profile_comments_latest_fragment"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:name="com.klima7.services.common.ui.profile.comments.ProfileCommentsLatestFragment" />
+            android:onClick="@{() -> viewmodel.showAllCommentsClicked()}">
+
+            <fragment
+                android:id="@+id/profile_comments_latest_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:name="com.klima7.services.common.ui.profile.comments.ProfileCommentsLatestFragment" />
+
+        </FrameLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewmodel.showAllCommentsClicked()}"
+            >
 
             <ImageView
                 android:layout_width="30dp"

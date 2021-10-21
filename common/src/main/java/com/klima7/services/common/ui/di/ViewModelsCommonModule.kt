@@ -4,6 +4,7 @@ import com.klima7.services.common.ui.areavis.AreaVisualizationViewModel
 import com.klima7.services.common.ui.faildialog.FailureDialogViewModel
 import com.klima7.services.common.ui.profile.ProfileViewModel
 import com.klima7.services.common.ui.profile.comments.ProfileCommentsLatestViewModel
+import com.klima7.services.common.ui.profile.comments.ProfileCommentsViewModel
 import com.klima7.services.common.ui.profile.contact.ProfileContactViewModel
 import com.klima7.services.common.ui.profile.header.ProfileHeaderViewModel
 import com.klima7.services.common.ui.profile.rating.ProfileRatingViewModel
@@ -21,5 +22,6 @@ val viewModelsCommonModule = module {
     viewModel { ProfileHeaderViewModel() }
     viewModel { ProfileRatingViewModel() }
     viewModel { ProfileCommentsLatestViewModel() }
+    viewModel { ProfileCommentsViewModel() }
 
 }
