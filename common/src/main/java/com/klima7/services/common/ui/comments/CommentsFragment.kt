@@ -10,4 +10,9 @@ class CommentsFragment: BaseFragment<FragmentCommentsBinding>() {
     override val layoutId = R.layout.fragment_comments
     override val viewModel: CommentsViewModel by viewModel()
 
+    override fun onFirstCreation() {
+        super.onFirstCreation()
+        viewModel.start()
+    }
+
 }

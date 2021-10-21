@@ -24,6 +24,6 @@ val viewModelsCommonModule = module {
     viewModel { ProfileRatingViewModel() }
     viewModel { ProfileCommentsLatestViewModel() }
     viewModel { ProfileCommentsViewModel() }
-    viewModel { CommentsViewModel() }
+    viewModel { CommentsViewModel(get()) }
 
 }
