@@ -24,6 +24,13 @@ sealed class Outcome<out L, out R> {
             is Success -> fnSuccess(b)
         }
     }
+
+    fun getResultOrNull(): R? {
+        return when (this) {
+            is Failure -> null
+            is Success -> b
+        }
+    }
 }
 
 fun <L, R> Outcome<L, R>.onFailure(fn: (failure: L) -> Unit): Outcome<L, R> {

@@ -46,11 +46,10 @@ class RatingsRepository(
                 .get()
                 .await()
 
-            Log.i("Hello", "Received ${snapshot.documents.size} documents")
+            Log.i("abcdef", "Received ${snapshot.documents.size} documents")
             val ratings: List<Rating> = snapshot.documents.map { document ->
                 Pair(document.id, document.toObject(RatingEntity::class.java))
             }.filter { it.second != null }.map { it.second!!.toDomain(it.first) }
-            Log.i("Hello","Confirming ${ratings.size} documents")
             Outcome.Success(ratings)
         }
         catch(e: Exception) {

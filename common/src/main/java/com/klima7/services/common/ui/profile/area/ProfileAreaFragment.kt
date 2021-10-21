@@ -24,7 +24,6 @@ class ProfileAreaFragment: BaseFragment<FragmentProfileAreaBinding>() {
         findFragmentById(R.id.profile_area_visualization_fragment) as AreaVisualizationFragment
 
         profileViewModel.expert.observe(viewLifecycleOwner) { expert ->
-            Log.i("Hello", "Expert changed to $expert")
             areaVisualization.setArea(expert.area)
         }
     }

@@ -15,7 +15,6 @@ class ProfileFragment: BaseLoadFragment<FragmentProfileBinding>() {
     override fun onFirstCreation() {
         super.onFirstCreation()
         viewModel.start()
-        Log.i("Hello", "First creation")
     }
 
 }
