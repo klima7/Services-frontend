@@ -9,5 +9,7 @@
 
     <!-- Other -->
     <string name="comments_count">Łącznie %s komentarzy</string>
+    <string name="area_description">%s, promień %s km</string>
+    <string name="area_not_specified">nieokreślony</string>
 
 </resources>

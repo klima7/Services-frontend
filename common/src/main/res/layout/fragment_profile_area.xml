@@ -4,9 +4,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="viewmodel"
-            type="com.klima7.services.common.ui.base.BaseViewModel" />
+            type="com.klima7.services.common.ui.profile.area.ProfileAreaViewModel" />
     </data>
 
     <LinearLayout
@@ -27,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="4dp"
-            android:text="Warszawa"
+            tools:text="@{viewmodel.isSpecified ? @string/area_description(viewmodel.name, viewmodel.radius) : @string/area_not_specified}"
             android:textColor="@color/black"
             android:textSize="17sp"/>
 
@@ -61,6 +62,8 @@
             app:icon="@drawable/icon_map"
             android:textColor="@color/black"
             app:iconTint="#555555"
+            android:visibility="@{viewmodel.isSpecified ? View.VISIBLE : View.GONE}"
+            android:onClick="@{() -> viewmodel.openInGoogleMapClicked()}"
             />
 
     </LinearLayout>
