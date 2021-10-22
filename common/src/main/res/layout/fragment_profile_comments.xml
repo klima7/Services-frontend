@@ -5,9 +5,6 @@
 
     <data>
         <variable
-            name="commentsCount"
-            type="Integer" />
-        <variable
             name="viewmodel"
             type="com.klima7.services.common.ui.profile.comments.ProfileCommentsViewModel" />
     </data>
@@ -29,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@{@string/comments_count(commentsCount)}"
+            android:text="@{@string/comments_count(viewmodel.commentsCount)}"
             android:textStyle="bold" />
 
         <FrameLayout

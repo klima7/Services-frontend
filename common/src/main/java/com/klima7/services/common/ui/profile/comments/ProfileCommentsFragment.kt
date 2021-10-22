@@ -24,7 +24,7 @@ class ProfileCommentsFragment: BaseFragment<FragmentProfileCommentsBinding>() {
 
         profileViewModel.expert.observe(viewLifecycleOwner) { expert ->
             if(expert != null) {
-                binding.commentsCount = expert.commentsCount
+                viewModel.setCommentsCount(expert.commentsCount)
             }
         }
     }
