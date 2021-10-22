@@ -21,7 +21,7 @@ data class FailureDescription(val textId: Int, val imageId: Int) {
         )
 
         fun get(failure: Failure): FailureDescription {
-            return all[failure] ?: throw Exception("Undescribed failure encountered: $failure")
+            return all[failure] ?: throw Exception("Not described failure encountered: $failure")
         }
     }
 

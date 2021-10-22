@@ -46,7 +46,7 @@
                     app:strokeColor="?attr/colorPrimary"
                     app:strokeWidth="@dimen/stroke_width_around_cards">
 
-                    <fragment
+                    <androidx.fragment.app.FragmentContainerView
                         android:id="@+id/location_autocomplete_fragment"
                         android:name="com.klima7.services.expert.features.area.ClearableAutocompleteSupportFragment"
                         android:layout_width="match_parent"
@@ -128,7 +128,7 @@
                     app:strokeColor="?attr/colorPrimary"
                     app:strokeWidth="@dimen/stroke_width_around_cards" >
 
-                    <fragment
+                    <androidx.fragment.app.FragmentContainerView
                         android:id="@+id/location_area_visualization_fragment"
                         android:name="com.klima7.services.common.components.areavisual.AreaVisualizationFragment"
                         android:layout_width="match_parent"

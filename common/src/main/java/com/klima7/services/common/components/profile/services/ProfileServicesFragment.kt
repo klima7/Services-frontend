@@ -34,7 +34,7 @@ class ProfileServicesFragment: BaseLoadFragment<FragmentProfileServicesBinding>(
         }
     }
 
-    fun List<String>.toBulletedList(): CharSequence {
+    private fun List<String>.toBulletedList(): CharSequence {
         return SpannableString(this.joinToString("\n")).apply {
             this@toBulletedList.foldIndexed(0) { index, acc, span ->
                 val end = acc + span.length + if (index != this@toBulletedList.size - 1) 1 else 0
