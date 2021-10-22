@@ -2,15 +2,15 @@ package com.klima7.services.expert.features.info
 
 import android.graphics.Bitmap
 import android.net.Uri
-import android.widget.Toast
+import android.os.Bundle
 import com.canhub.cropper.CropImageContract
 import com.canhub.cropper.CropImageView
 import com.canhub.cropper.PickImageContract
 import com.canhub.cropper.options
+import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.platform.BaseLoadFragment
 import com.klima7.services.common.platform.BaseViewModel
-import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentInfoBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -20,6 +20,10 @@ class InfoFragment: BaseLoadFragment<FragmentInfoBinding>() {
 
     override val layoutId = R.layout.fragment_info
     override val viewModel: InfoViewModel by viewModel()
+
+    companion object {
+        const val SAVE_INFO_FAILURE_KEY = "SAVE_INFO_FAILURE_KEY"
+    }
 
     private val imagePickerLauncher = registerForActivityResult(PickImageContract()) {
         receiveProfileImagePickerResult(it)
@@ -36,6 +40,13 @@ class InfoFragment: BaseLoadFragment<FragmentInfoBinding>() {
 
     override fun init() {
         super.init()
+
+        childFragmentManager.setFragmentResultListener(SAVE_INFO_FAILURE_KEY, viewLifecycleOwner) { _: String, bundle: Bundle ->
+            val result = bundle.get(FailureDialogFragment.BUNDLE_KEY)
+            if(result == FailureDialogFragment.Result.RETRY) {
+                viewModel.retrySaveClicked()
+            }
+        }
 
         viewModel.nameError.observe(viewLifecycleOwner) { nameError ->
             binding.infoName.error = when(nameError) {
@@ -76,13 +87,8 @@ class InfoFragment: BaseLoadFragment<FragmentInfoBinding>() {
         when(event) {
             InfoViewModel.Event.FinishInfo -> finishInfo()
             InfoViewModel.Event.StartProfileImagePicker -> startProfileImagePicker()
-            InfoViewModel.Event.ShowSaveError -> showSaveError()
+            is InfoViewModel.Event.ShowSaveFailure -> showSaveError(event.failure)
         }
-    }
-
-    private fun showDialog() {
-        val dialog = FailureDialogFragment.createRetry("key", "Aktualizacja profilu się nie powiodła.", Failure.NotFoundFailure)
-        dialog.show(childFragmentManager, "FailureDialogFragment")
     }
 
     private fun finishInfo() {
@@ -124,8 +130,10 @@ class InfoFragment: BaseLoadFragment<FragmentInfoBinding>() {
         }
     }
 
-    private fun showSaveError() {
-        Toast.makeText(requireContext(), "Zapisywanie profilu się nie powiodło", Toast.LENGTH_SHORT).show()
-    }
+    private fun showSaveError(failure: Failure) {
+        val dialog = FailureDialogFragment.createRetry(
+            SAVE_INFO_FAILURE_KEY,
+            "Zmiana profilu się nie powiodła.", failure)
+        dialog.show(childFragmentManager, "FailureDialogFragment")    }
 
 }

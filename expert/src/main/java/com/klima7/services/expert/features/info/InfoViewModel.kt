@@ -11,6 +11,7 @@ import com.klima7.services.common.core.None
 import com.klima7.services.common.platform.BaseLoadViewModel
 import com.klima7.services.common.platform.CombinedLiveData
 import com.klima7.services.common.extensions.nullifyBlank
+import com.klima7.services.common.models.Failure
 import com.klima7.services.expert.usecases.GetCurrentExpertUC
 
 class InfoViewModel(
@@ -56,7 +57,7 @@ class InfoViewModel(
     sealed class Event: BaseEvent() {
         object FinishInfo: Event()
         object StartProfileImagePicker: Event()
-        object ShowSaveError: Event()
+        data class ShowSaveFailure(val failure: Failure): Event()
     }
 
     fun started() {
@@ -68,6 +69,10 @@ class InfoViewModel(
     }
 
     fun saveClicked() {
+        save()
+    }
+
+    fun retrySaveClicked() {
         save()
     }
 
@@ -132,8 +137,8 @@ class InfoViewModel(
                 ),
                 profileImageUrlToSave
             ),
-            {
-                sendEvent(Event.ShowSaveError)
+            { failure ->
+                sendEvent(Event.ShowSaveFailure(failure))
                 showMain()
             },
             {
