@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.klima7.services.common.ui.avatar.AvatarView
+        <com.klima7.services.common.ui.views.AvatarView
             android:id="@+id/profile_header_avatar"
             android:layout_width="160dp"
             android:layout_height="160dp"

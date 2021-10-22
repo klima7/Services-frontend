@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import com.klima7.services.common.R
 import com.klima7.services.common.domain.models.Rating
-import com.klima7.services.common.ui.rating.RatingView
+import com.klima7.services.common.ui.views.RatingView
 
 
 class ProfileCommentsLatestAdapter(context: Context, private var ratings: List<Rating> = listOf()) :

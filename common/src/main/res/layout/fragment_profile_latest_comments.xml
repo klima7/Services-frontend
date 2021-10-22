@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.klima7.services.common.ui.wclistview.WrapContentListView
+        <com.klima7.services.common.ui.views.WrapContentListView
             android:id="@+id/profile_comments_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
