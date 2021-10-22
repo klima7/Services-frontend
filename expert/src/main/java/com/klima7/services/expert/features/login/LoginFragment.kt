@@ -33,7 +33,7 @@ class LoginFragment: BaseFragment<FragmentLoginBinding>() {
         childFragmentManager.setFragmentResultListener(LOGIN_FAILURE_DIALOG_KEY, viewLifecycleOwner) { _: String, bundle: Bundle ->
             val result = bundle.get(FailureDialogFragment.BUNDLE_KEY)
             if(result == FailureDialogFragment.Result.RETRY) {
-                viewModel.retryLoginClicked();
+                viewModel.retryLoginClicked()
             }
         }
     }

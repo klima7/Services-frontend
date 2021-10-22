@@ -1,4 +1,3 @@
 package com.klima7.services.common.data.repositories
 
-class JobsRepository {
-}
+class JobsRepository

@@ -12,7 +12,7 @@ class GetCurrentExpertSetupStateUC(
 ): BaseUC<None, ExpertSetupState>() {
 
     override suspend fun execute(params: None): Outcome<Failure, ExpertSetupState> {
-        return getExpertPart();
+        return getExpertPart()
     }
 
     private suspend fun getExpertPart(): Outcome<Failure, ExpertSetupState> {

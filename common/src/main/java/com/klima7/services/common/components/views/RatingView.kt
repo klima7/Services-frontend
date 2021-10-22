@@ -20,7 +20,7 @@ class RatingView(context: Context, attrs: AttributeSet?) : FrameLayout(context, 
 
     init {
         val inflater = LayoutInflater.from(context)
-        binding = DataBindingUtil.inflate(inflater, R.layout.view_rating, this, true);
+        binding = DataBindingUtil.inflate(inflater, R.layout.view_rating, this, true)
         refreshView()
     }
 
