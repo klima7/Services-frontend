@@ -3,8 +3,8 @@ package com.klima7.services.common.components.comments
 import com.klima7.services.common.data.repositories.RatingsRepository
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Rating
-import com.klima7.services.common.base.BaseUC
-import com.klima7.services.common.utils.Outcome
+import com.klima7.services.common.core.BaseUC
+import com.klima7.services.common.core.Outcome
 
 class GetRatingsForExpertUC(
     private val ratingsRepository: RatingsRepository

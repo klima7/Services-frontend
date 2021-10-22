@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import com.klima7.services.common.models.Coordinates
 import com.klima7.services.common.models.WorkingArea
-import com.klima7.services.common.base.BaseViewModel
+import com.klima7.services.common.platform.BaseViewModel
 
 class ProfileAreaViewModel: BaseViewModel() {
 

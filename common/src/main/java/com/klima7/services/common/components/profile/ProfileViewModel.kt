@@ -3,7 +3,7 @@ package com.klima7.services.common.components.profile
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.models.Expert
-import com.klima7.services.common.base.BaseLoadViewModel
+import com.klima7.services.common.platform.BaseLoadViewModel
 
 class ProfileViewModel(
     private val getExpertUC: GetExpertUC

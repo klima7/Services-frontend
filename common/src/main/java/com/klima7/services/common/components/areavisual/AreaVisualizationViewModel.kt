@@ -3,8 +3,8 @@ package com.klima7.services.common.components.areavisual
 import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
-import com.klima7.services.common.base.BaseViewModel
-import com.klima7.services.common.utils.CombinedLiveData
+import com.klima7.services.common.platform.BaseViewModel
+import com.klima7.services.common.platform.CombinedLiveData
 import kotlin.math.cos
 
 class AreaVisualizationViewModel: BaseViewModel() {

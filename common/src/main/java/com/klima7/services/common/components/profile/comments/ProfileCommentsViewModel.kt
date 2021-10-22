@@ -2,7 +2,7 @@ package com.klima7.services.common.components.profile.comments
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
-import com.klima7.services.common.base.BaseViewModel
+import com.klima7.services.common.platform.BaseViewModel
 
 class ProfileCommentsViewModel: BaseViewModel() {
 

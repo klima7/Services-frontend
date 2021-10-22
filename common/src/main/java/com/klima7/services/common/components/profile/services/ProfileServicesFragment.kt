@@ -4,7 +4,7 @@ import android.text.SpannableString
 import android.text.style.BulletSpan
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentProfileServicesBinding
-import com.klima7.services.common.base.BaseLoadFragment
+import com.klima7.services.common.platform.BaseLoadFragment
 import com.klima7.services.common.components.profile.ProfileViewModel
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel

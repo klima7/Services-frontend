@@ -6,7 +6,7 @@ import com.klima7.services.common.data.converters.toDomain
 import com.klima7.services.common.data.entities.ProfileImageEntity
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.ProfileImage
-import com.klima7.services.common.utils.Outcome
+import com.klima7.services.common.core.Outcome
 import kotlinx.coroutines.tasks.await
 
 class ProfileImagesRepository(

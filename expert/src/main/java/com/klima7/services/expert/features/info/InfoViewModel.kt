@@ -7,10 +7,10 @@ import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.models.Expert
 import com.klima7.services.common.models.ExpertInfo
 import com.klima7.services.common.models.ProfileImage
-import com.klima7.services.common.utils.None
-import com.klima7.services.common.base.BaseLoadViewModel
-import com.klima7.services.common.utils.CombinedLiveData
-import com.klima7.services.common.utils.nullifyBlank
+import com.klima7.services.common.core.None
+import com.klima7.services.common.platform.BaseLoadViewModel
+import com.klima7.services.common.platform.CombinedLiveData
+import com.klima7.services.common.extensions.nullifyBlank
 import com.klima7.services.expert.usecases.GetCurrentExpertUC
 
 class InfoViewModel(

@@ -2,8 +2,8 @@ package com.klima7.services.common.data.repositories
 
 import com.google.firebase.auth.FirebaseAuth
 import com.klima7.services.common.models.Failure
-import com.klima7.services.common.utils.None
-import com.klima7.services.common.utils.Outcome
+import com.klima7.services.common.core.None
+import com.klima7.services.common.core.Outcome
 
 class AuthRepository(
     private val auth: FirebaseAuth

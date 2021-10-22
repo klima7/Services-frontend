@@ -11,7 +11,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentAreaVisualizationBinding
 import com.klima7.services.common.models.WorkingArea
-import com.klima7.services.common.base.BaseFragment
+import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.components.converters.toLatLng
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

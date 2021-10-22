@@ -1,4 +1,4 @@
-package com.klima7.services.common.base
+package com.klima7.services.common.platform
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

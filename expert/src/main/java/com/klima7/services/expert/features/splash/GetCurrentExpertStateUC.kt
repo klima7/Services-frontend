@@ -5,9 +5,9 @@ import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.models.Expert
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.UserState
-import com.klima7.services.common.base.BaseUC
-import com.klima7.services.common.utils.None
-import com.klima7.services.common.utils.Outcome
+import com.klima7.services.common.core.BaseUC
+import com.klima7.services.common.core.None
+import com.klima7.services.common.core.Outcome
 
 class GetCurrentExpertStateUC(
     private val authRepository: AuthRepository,

@@ -2,8 +2,8 @@ package com.klima7.services.expert.features.settings
 
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.usecases.SignOutUC
-import com.klima7.services.common.utils.None
-import com.klima7.services.common.base.BaseViewModel
+import com.klima7.services.common.core.None
+import com.klima7.services.common.platform.BaseViewModel
 
 class SettingsViewModel(
     private val signOutUC: SignOutUC

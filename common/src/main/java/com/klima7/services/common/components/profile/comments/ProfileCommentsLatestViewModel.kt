@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.models.Rating
-import com.klima7.services.common.base.BaseViewModel
+import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.common.components.comments.GetRatingsForExpertUC
 
 class ProfileCommentsLatestViewModel(

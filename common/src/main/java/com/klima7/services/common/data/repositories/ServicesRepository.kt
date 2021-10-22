@@ -9,7 +9,7 @@ import com.klima7.services.common.data.extensions.getCacheFirst
 import com.klima7.services.common.models.Category
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Service
-import com.klima7.services.common.utils.Outcome
+import com.klima7.services.common.core.Outcome
 import kotlinx.coroutines.tasks.await
 
 class ServicesRepository(

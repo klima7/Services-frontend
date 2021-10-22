@@ -4,9 +4,9 @@ import com.klima7.services.common.data.repositories.ServicesRepository
 import com.klima7.services.common.models.Category
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Service
-import com.klima7.services.common.base.BaseUC
-import com.klima7.services.common.utils.None
-import com.klima7.services.common.utils.Outcome
+import com.klima7.services.common.core.BaseUC
+import com.klima7.services.common.core.None
+import com.klima7.services.common.core.Outcome
 import com.klima7.services.expert.usecases.GetCurrentExpertUC
 
 class GetCategorisedAndMarkedServices(

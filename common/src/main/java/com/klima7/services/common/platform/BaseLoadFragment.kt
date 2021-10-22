@@ -1,4 +1,4 @@
-package com.klima7.services.common.base
+package com.klima7.services.common.platform
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +12,7 @@ import android.widget.TextView
 import androidx.databinding.ViewDataBinding
 import com.klima7.services.common.R
 import com.klima7.services.common.ui.FailureDescription
-import com.klima7.services.common.utils.observeOnce
+import com.klima7.services.common.extensions.observeOnce
 
 abstract class BaseLoadFragment<DB: ViewDataBinding>: BaseFragment<DB>() {
 

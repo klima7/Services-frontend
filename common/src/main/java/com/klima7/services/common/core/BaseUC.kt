@@ -1,8 +1,7 @@
-package com.klima7.services.common.base
+package com.klima7.services.common.core
 
 import android.util.Log
 import com.klima7.services.common.models.Failure
-import com.klima7.services.common.utils.Outcome
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

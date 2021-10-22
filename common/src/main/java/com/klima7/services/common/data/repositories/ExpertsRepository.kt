@@ -11,8 +11,8 @@ import com.klima7.services.common.data.entities.ExpertEntity
 import com.klima7.services.common.models.Expert
 import com.klima7.services.common.models.ExpertInfo
 import com.klima7.services.common.models.Failure
-import com.klima7.services.common.utils.None
-import com.klima7.services.common.utils.Outcome
+import com.klima7.services.common.core.None
+import com.klima7.services.common.core.Outcome
 import kotlinx.coroutines.tasks.await
 
 class ExpertsRepository(

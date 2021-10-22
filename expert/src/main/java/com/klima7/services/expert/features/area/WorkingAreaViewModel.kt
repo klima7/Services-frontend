@@ -6,8 +6,8 @@ import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.model.LatLng
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.WorkingArea
-import com.klima7.services.common.utils.None
-import com.klima7.services.common.base.BaseLoadViewModel
+import com.klima7.services.common.core.None
+import com.klima7.services.common.platform.BaseLoadViewModel
 import com.klima7.services.common.components.converters.toLatLng
 import com.klima7.services.expert.usecases.GetCurrentExpertUC
 

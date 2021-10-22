@@ -1,4 +1,4 @@
-package com.klima7.services.common.utils
+package com.klima7.services.common.core
 
 
 sealed class Outcome<out L, out R> {

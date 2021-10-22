@@ -4,7 +4,7 @@ import androidx.lifecycle.*
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
-import com.klima7.services.common.base.BaseViewModel
+import com.klima7.services.common.platform.BaseViewModel
 
 class CommentsViewModel(
     private val getRatingsForExpertUC: GetRatingsForExpertUC

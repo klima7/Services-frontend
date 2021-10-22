@@ -2,8 +2,8 @@ package com.klima7.services.common.components.profile.description
 
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentProfileDescriptionBinding
-import com.klima7.services.common.base.BaseFragment
-import com.klima7.services.common.base.BaseViewModel
+import com.klima7.services.common.platform.BaseFragment
+import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.common.components.profile.ProfileViewModel
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 

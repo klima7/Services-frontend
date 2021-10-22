@@ -5,9 +5,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentToolbarBinding
-import com.klima7.services.common.base.BaseFragment
-import com.klima7.services.common.base.BaseViewModel
-import com.klima7.services.common.utils.replaceFragment
+import com.klima7.services.common.platform.BaseFragment
+import com.klima7.services.common.platform.BaseViewModel
 
 abstract class ToolbarFragment(
     private val menu: Int? = null,
@@ -38,7 +37,11 @@ abstract class ToolbarFragment(
         super.onFirstCreation()
         val frag = fragment()
         frag.arguments = arguments
-        replaceFragment(R.id.toolbar_container_view, frag)
+
+        childFragmentManager
+            .beginTransaction()
+            .add(R.id.toolbar_container_view, frag)
+            .commit()
     }
 
     private fun configMenu() {
