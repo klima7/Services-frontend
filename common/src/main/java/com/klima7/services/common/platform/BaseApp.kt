@@ -2,8 +2,8 @@ package com.klima7.services.common.platform
 
 import android.app.Application
 import com.google.android.libraries.places.api.Places
-import com.klima7.services.common.components.di.useCasesModule
-import com.klima7.services.common.components.di.viewModelsModule
+import com.klima7.services.common.di.useCasesModule
+import com.klima7.services.common.di.viewModelsModule
 import com.klima7.services.common.data.di.reposModule
 import com.klima7.services.common.data.di.sourcesModule
 import org.koin.android.ext.koin.androidContext

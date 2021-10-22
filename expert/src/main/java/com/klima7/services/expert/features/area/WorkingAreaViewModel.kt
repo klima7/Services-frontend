@@ -8,7 +8,7 @@ import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.WorkingArea
 import com.klima7.services.common.core.None
 import com.klima7.services.common.platform.BaseLoadViewModel
-import com.klima7.services.common.components.converters.toLatLng
+import com.klima7.services.common.ui.toLatLng
 import com.klima7.services.expert.usecases.GetCurrentExpertUC
 
 class WorkingAreaViewModel(

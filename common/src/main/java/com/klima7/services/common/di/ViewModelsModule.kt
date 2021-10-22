@@ -1,4 +1,4 @@
-package com.klima7.services.common.components.di
+package com.klima7.services.common.di
 
 import com.klima7.services.common.components.areavisual.AreaVisualizationViewModel
 import com.klima7.services.common.components.comments.CommentsViewModel

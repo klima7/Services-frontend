@@ -12,7 +12,7 @@ import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentAreaVisualizationBinding
 import com.klima7.services.common.models.WorkingArea
 import com.klima7.services.common.platform.BaseFragment
-import com.klima7.services.common.components.converters.toLatLng
+import com.klima7.services.common.ui.toLatLng
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AreaVisualizationFragment: BaseFragment<FragmentAreaVisualizationBinding>(),
