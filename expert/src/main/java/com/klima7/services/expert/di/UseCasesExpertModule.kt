@@ -1,6 +1,6 @@
 package com.klima7.services.expert.di
 
-import com.klima7.services.expert.common.domain.usecases.GetCurrentExpertUC
+import com.klima7.services.expert.usecases.GetCurrentExpertUC
 import com.klima7.services.expert.features.area.SetCurrentExpertWorkingAreaUC
 import com.klima7.services.expert.features.info.SetCurrentExpertInfoAndImageUC
 import com.klima7.services.expert.features.services.GetCategorisedAndMarkedServices

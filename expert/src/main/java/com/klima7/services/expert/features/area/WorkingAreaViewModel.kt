@@ -9,7 +9,7 @@ import com.klima7.services.common.domain.models.WorkingArea
 import com.klima7.services.common.domain.utils.None
 import com.klima7.services.common.ui.base.BaseLoadViewModel
 import com.klima7.services.common.ui.converters.toLatLng
-import com.klima7.services.expert.common.domain.usecases.GetCurrentExpertUC
+import com.klima7.services.expert.usecases.GetCurrentExpertUC
 
 class WorkingAreaViewModel(
     private val getCurrentExpertUC: GetCurrentExpertUC,

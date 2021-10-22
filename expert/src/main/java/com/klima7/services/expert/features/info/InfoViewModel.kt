@@ -11,7 +11,7 @@ import com.klima7.services.common.domain.utils.None
 import com.klima7.services.common.ui.base.BaseLoadViewModel
 import com.klima7.services.common.ui.utils.CombinedLiveData
 import com.klima7.services.common.ui.utils.nullifyBlank
-import com.klima7.services.expert.common.domain.usecases.GetCurrentExpertUC
+import com.klima7.services.expert.usecases.GetCurrentExpertUC
 
 class InfoViewModel(
     private val getCurrentExpertUC: GetCurrentExpertUC,

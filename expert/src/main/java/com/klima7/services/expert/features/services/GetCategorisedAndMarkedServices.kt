@@ -7,7 +7,7 @@ import com.klima7.services.common.domain.models.Service
 import com.klima7.services.common.domain.utils.BaseUC
 import com.klima7.services.common.domain.utils.None
 import com.klima7.services.common.domain.utils.Outcome
-import com.klima7.services.expert.common.domain.usecases.GetCurrentExpertUC
+import com.klima7.services.expert.usecases.GetCurrentExpertUC
 
 class GetCategorisedAndMarkedServices(
     private val servicesRepository: ServicesRepository,

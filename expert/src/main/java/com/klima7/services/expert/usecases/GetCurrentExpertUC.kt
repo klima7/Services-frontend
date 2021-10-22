@@ -1,4 +1,4 @@
-package com.klima7.services.expert.common.domain.usecases
+package com.klima7.services.expert.usecases
 
 import com.klima7.services.common.data.repositories.AuthRepository
 import com.klima7.services.common.data.repositories.ExpertsRepository
