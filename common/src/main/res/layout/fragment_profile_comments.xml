@@ -4,6 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="viewmodel"
             type="com.klima7.services.common.ui.profile.comments.ProfileCommentsViewModel" />
@@ -52,6 +53,7 @@
             android:textColor="@color/black"
             app:iconTint="@color/black"
             android:onClick="@{() -> viewmodel.showAllCommentsClicked()}"
+            android:visibility="@{viewmodel.showMoreVisible ? View.VISIBLE : View.GONE}"
             />
 
     </LinearLayout>

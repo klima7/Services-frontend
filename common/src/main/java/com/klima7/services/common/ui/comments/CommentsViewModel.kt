@@ -1,12 +1,13 @@
 package com.klima7.services.common.ui.comments
 
 import androidx.lifecycle.*
-import androidx.paging.*
-import com.klima7.services.common.data.repositories.RatingsRepository
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.cachedIn
 import com.klima7.services.common.ui.base.BaseViewModel
 
 class CommentsViewModel(
-    private val getExpertRatingsWithProfileImagesUC: GetExpertRatingsWithProfileImagesUC
+    private val getRatingsForExpertUC: GetRatingsForExpertUC
 ): BaseViewModel() {
 
     private val expertId = MutableLiveData<String>()
@@ -20,7 +21,7 @@ class CommentsViewModel(
     private fun createPager(expertId: String) = Pager(
         PagingConfig(pageSize = 5)
     ) {
-        CommentsPagingSource(getExpertRatingsWithProfileImagesUC, expertId)
+        CommentsPagingSource(getRatingsForExpertUC, expertId)
     }
 
 }

@@ -2,14 +2,13 @@ package com.klima7.services.common.ui.rating
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.widget.FrameLayout
+import androidx.databinding.DataBindingUtil
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.ViewRatingBinding
-import android.view.LayoutInflater
-import androidx.databinding.DataBindingUtil
-import java.text.DateFormat
+import com.klima7.services.common.domain.models.Rating
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 import java.util.*
 
 
@@ -17,7 +16,7 @@ class RatingView(context: Context, attrs: AttributeSet?) : FrameLayout(context, 
 
     private var binding: ViewRatingBinding
 
-    private var rwpi: RatingWithProfileImage? = null
+    private var rating: Rating? = null
 
     init {
         val inflater = LayoutInflater.from(context)
@@ -25,16 +24,15 @@ class RatingView(context: Context, attrs: AttributeSet?) : FrameLayout(context, 
         refreshView()
     }
 
-    fun setRatingWithProfileImage(rwpi: RatingWithProfileImage?) {
-        this.rwpi = rwpi
+    fun setRating(rating: Rating?) {
+        this.rating = rating
         refreshView()
         invalidate()
         requestLayout()
     }
 
     private fun refreshView() {
-        val cRwpi = rwpi ?: return
-        val cRating = cRwpi.rating
+        val cRating = rating ?: return
 
         binding.ratingComment.text = cRating.comment
         binding.ratingServiceName.text = cRating.serviceName

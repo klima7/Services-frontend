@@ -30,7 +30,7 @@ class ProfileCommentsLatestAdapter(context: Context, private var rwpis: List<Rat
         if (vi == null) vi = inflater?.inflate(R.layout.element_comment, null)
         val rwpi = rwpis[position]
         val ratingView = vi?.findViewById<RatingView>(R.id.comment_rating_view)
-        ratingView?.setRatingWithProfileImage(rwpi)
+        ratingView?.setRating(rwpi.rating)
         return vi!!
     }
 
