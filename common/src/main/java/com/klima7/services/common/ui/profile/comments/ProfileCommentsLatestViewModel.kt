@@ -3,29 +3,29 @@ package com.klima7.services.common.ui.profile.comments
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.klima7.services.common.domain.models.Rating
 import com.klima7.services.common.ui.base.BaseViewModel
-import com.klima7.services.common.ui.comments.GetExpertRatingsWithProfileImagesUC
-import com.klima7.services.common.ui.rating.RatingWithProfileImage
+import com.klima7.services.common.ui.comments.GetRatingsForExpertUC
 
 class ProfileCommentsLatestViewModel(
-    private val getExpertRatingsWithProfileImagesUC: GetExpertRatingsWithProfileImagesUC
+    private val getRatingsForExpertUC: GetRatingsForExpertUC
 ): BaseViewModel() {
 
     companion object {
         const val MAX_COMMENTS_COUNT = 3
     }
 
-    val rwpis = MutableLiveData<List<RatingWithProfileImage>>()
+    val ratings = MutableLiveData<List<Rating>>()
 
     fun setExpertUid(expertUid: String) {
-        getExpertRatingsWithProfileImagesUC.start(
+        getRatingsForExpertUC.start(
             viewModelScope,
-            GetExpertRatingsWithProfileImagesUC.Params(expertUid, null, MAX_COMMENTS_COUNT),
+            GetRatingsForExpertUC.Params(expertUid, null, MAX_COMMENTS_COUNT),
             { failure ->
                 Log.i("Hello", "Failure occured $failure")
             },
-            { rwpis ->
-                this.rwpis.value = rwpis
+            { ratings ->
+                this.ratings.value = ratings
             }
         )
     }

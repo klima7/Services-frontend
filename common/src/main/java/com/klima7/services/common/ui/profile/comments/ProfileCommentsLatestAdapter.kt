@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import com.klima7.services.common.R
+import com.klima7.services.common.domain.models.Rating
 import com.klima7.services.common.ui.rating.RatingView
-import com.klima7.services.common.ui.rating.RatingWithProfileImage
 
 
-class ProfileCommentsLatestAdapter(context: Context, private var rwpis: List<RatingWithProfileImage> = listOf()) :
+class ProfileCommentsLatestAdapter(context: Context, private var ratings: List<Rating> = listOf()) :
     BaseAdapter() {
 
     private var inflater: LayoutInflater? = null
@@ -19,23 +19,23 @@ class ProfileCommentsLatestAdapter(context: Context, private var rwpis: List<Rat
         inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
     }
 
-    override fun getCount() = rwpis.size
+    override fun getCount() = ratings.size
 
-    override fun getItem(position: Int) = rwpis[position]
+    override fun getItem(position: Int) = ratings[position]
 
     override fun getItemId(position: Int) = position.toLong()
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         var vi = convertView
         if (vi == null) vi = inflater?.inflate(R.layout.element_comment, null)
-        val rwpi = rwpis[position]
+        val rwpi = ratings[position]
         val ratingView = vi?.findViewById<RatingView>(R.id.comment_rating_view)
-        ratingView?.setRating(rwpi.rating)
+        ratingView?.setRating(rwpi)
         return vi!!
     }
 
-    fun setRatings(rwpi: List<RatingWithProfileImage>) {
-        this.rwpis = rwpi
+    fun setRatings(ratings: List<Rating>) {
+        this.ratings = ratings
         super.notifyDataSetChanged()
         super.notifyDataSetInvalidated()
     }

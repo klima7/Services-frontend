@@ -21,8 +21,8 @@ class ProfileCommentsLatestFragment: BaseFragment<FragmentProfileLatestCommentsB
         val adapter = ProfileCommentsLatestAdapter(requireContext())
         binding.profileCommentsList.adapter = adapter
 
-        viewModel.rwpis.observe(viewLifecycleOwner) { rwpis ->
-            adapter.setRatings(rwpis)
+        viewModel.ratings.observe(viewLifecycleOwner) { ratings ->
+            adapter.setRatings(ratings)
         }
 
         profileViewModel.expert.observe(viewLifecycleOwner) { expert ->
