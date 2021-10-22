@@ -1,13 +1,13 @@
 package com.klima7.services.common.components.profile.comments
 
 import com.klima7.services.common.R
-import com.klima7.services.common.databinding.FragmentProfileLatestCommentsBinding
-import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.components.profile.ProfileViewModel
+import com.klima7.services.common.databinding.FragmentProfileLatestCommentsBinding
+import com.klima7.services.common.platform.BaseLoadFragment
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ProfileCommentsLatestFragment: BaseFragment<FragmentProfileLatestCommentsBinding>() {
+class ProfileCommentsLatestFragment: BaseLoadFragment<FragmentProfileLatestCommentsBinding>() {
 
     override val layoutId = R.layout.fragment_profile_latest_comments
     override val viewModel: ProfileCommentsLatestViewModel by viewModel()
