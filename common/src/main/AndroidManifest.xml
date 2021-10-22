@@ -3,7 +3,7 @@
     package="com.klima7.services.common">
 
     <application>
-        <activity android:name=".ui.comments.CommentsActivity" />
+        <activity android:name=".components.comments.CommentsActivity" />
     </application>
 
 </manifest>

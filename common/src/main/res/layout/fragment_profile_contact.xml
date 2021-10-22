@@ -7,7 +7,7 @@
         <import type="android.view.View" />
         <variable
             name="viewmodel"
-            type="com.klima7.services.common.ui.profile.contact.ProfileContactViewModel" />
+            type="com.klima7.services.common.components.profile.contact.ProfileContactViewModel" />
     </data>
 
     <LinearLayout

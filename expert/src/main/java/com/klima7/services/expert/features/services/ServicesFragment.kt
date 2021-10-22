@@ -1,10 +1,10 @@
 package com.klima7.services.expert.features.services
 
-import com.klima7.services.common.domain.models.Failure
-import com.klima7.services.common.ui.base.BaseLoadFragment
-import com.klima7.services.common.ui.base.BaseViewModel
-import com.klima7.services.common.ui.faildialog.FailureDialogFragment
-import com.klima7.services.common.ui.utils.showShortToast
+import com.klima7.services.common.models.Failure
+import com.klima7.services.common.base.BaseLoadFragment
+import com.klima7.services.common.base.BaseViewModel
+import com.klima7.services.common.components.faildialog.FailureDialogFragment
+import com.klima7.services.common.utils.showShortToast
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentServicesBinding
 import com.klima7.services.expert.features.services.multicategory.ServicesMultiCategoriesFragment

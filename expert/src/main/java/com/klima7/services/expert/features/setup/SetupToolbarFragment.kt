@@ -1,7 +1,7 @@
 package com.klima7.services.expert.features.setup
 
 import androidx.fragment.app.Fragment
-import com.klima7.services.common.ui.toolbar.ToolbarFragment
+import com.klima7.services.common.components.toolbar.ToolbarFragment
 
 class SetupToolbarFragment: ToolbarFragment() {
 

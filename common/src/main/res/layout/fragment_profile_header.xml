@@ -7,7 +7,7 @@
         <import type="android.view.View" />
         <variable
             name="viewmodel"
-            type="com.klima7.services.common.ui.profile.header.ProfileHeaderViewModel" />
+            type="com.klima7.services.common.components.profile.header.ProfileHeaderViewModel" />
     </data>
 
     <LinearLayout
@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.klima7.services.common.ui.views.AvatarView
+        <com.klima7.services.common.components.views.AvatarView
             android:id="@+id/profile_header_avatar"
             android:layout_width="160dp"
             android:layout_height="160dp"

@@ -1,9 +1,9 @@
 package com.klima7.services.expert
 
-import com.klima7.services.common.ui.App
-import com.klima7.services.expert.di.useCasesExpertModule
-import com.klima7.services.expert.di.viewModelsExpertModule
+import com.klima7.services.common.base.BaseApp
+import com.klima7.services.expert.di.useCasesModule
+import com.klima7.services.expert.di.viewModelsModule
 
-class ExpertApp: App() {
-    override val customModules = listOf(viewModelsExpertModule, useCasesExpertModule)
+class ExpertApp: BaseApp() {
+    override val customModules = listOf(viewModelsModule, useCasesModule)
 }

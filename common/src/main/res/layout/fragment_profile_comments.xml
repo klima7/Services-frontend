@@ -7,7 +7,7 @@
         <import type="android.view.View" />
         <variable
             name="viewmodel"
-            type="com.klima7.services.common.ui.profile.comments.ProfileCommentsViewModel" />
+            type="com.klima7.services.common.components.profile.comments.ProfileCommentsViewModel" />
     </data>
 
     <LinearLayout
@@ -38,7 +38,7 @@
                 android:id="@+id/profile_comments_latest_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:name="com.klima7.services.common.ui.profile.comments.ProfileCommentsLatestFragment" />
+                android:name="com.klima7.services.common.components.profile.comments.ProfileCommentsLatestFragment" />
 
         </FrameLayout>
 

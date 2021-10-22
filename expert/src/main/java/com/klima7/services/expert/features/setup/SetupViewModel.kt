@@ -2,8 +2,8 @@ package com.klima7.services.expert.features.setup
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.klima7.services.common.domain.utils.None
-import com.klima7.services.common.ui.base.BaseLoadViewModel
+import com.klima7.services.common.utils.None
+import com.klima7.services.common.base.BaseLoadViewModel
 
 class SetupViewModel(
     private val getCurrentExpertSetupStateUC: GetCurrentExpertSetupStateUC

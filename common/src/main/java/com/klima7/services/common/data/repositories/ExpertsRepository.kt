@@ -8,11 +8,11 @@ import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.storage.FirebaseStorage
 import com.klima7.services.common.data.converters.toDomain
 import com.klima7.services.common.data.entities.ExpertEntity
-import com.klima7.services.common.domain.models.Expert
-import com.klima7.services.common.domain.models.ExpertInfo
-import com.klima7.services.common.domain.models.Failure
-import com.klima7.services.common.domain.utils.None
-import com.klima7.services.common.domain.utils.Outcome
+import com.klima7.services.common.models.Expert
+import com.klima7.services.common.models.ExpertInfo
+import com.klima7.services.common.models.Failure
+import com.klima7.services.common.utils.None
+import com.klima7.services.common.utils.Outcome
 import kotlinx.coroutines.tasks.await
 
 class ExpertsRepository(

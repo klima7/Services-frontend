@@ -1,11 +1,11 @@
 package com.klima7.services.expert.features.services
 
 import com.klima7.services.common.data.repositories.ExpertsRepository
-import com.klima7.services.common.domain.models.Failure
-import com.klima7.services.common.domain.models.Service
-import com.klima7.services.common.domain.utils.BaseUC
-import com.klima7.services.common.domain.utils.None
-import com.klima7.services.common.domain.utils.Outcome
+import com.klima7.services.common.models.Failure
+import com.klima7.services.common.models.Service
+import com.klima7.services.common.base.BaseUC
+import com.klima7.services.common.utils.None
+import com.klima7.services.common.utils.Outcome
 
 class SetCurrentExpertServices(
     private val expertsRepository: ExpertsRepository

@@ -14,6 +14,6 @@
         android:label="Oferty" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.klima7.services.common.ui.profile.ProfileFragment"
+        android:name="com.klima7.services.common.components.profile.ProfileFragment"
         android:label="Mój profil" />
 </navigation>

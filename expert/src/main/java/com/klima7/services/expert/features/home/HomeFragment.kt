@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import com.klima7.services.common.ui.base.BaseFragment
-import com.klima7.services.common.ui.base.BaseViewModel
+import com.klima7.services.common.base.BaseFragment
+import com.klima7.services.common.base.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentHomeBinding
 import com.klima7.services.expert.features.settings.SettingsActivity

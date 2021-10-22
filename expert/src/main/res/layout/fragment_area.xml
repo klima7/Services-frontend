@@ -130,7 +130,7 @@
 
                     <fragment
                         android:id="@+id/location_area_visualization_fragment"
-                        android:name="com.klima7.services.common.ui.areavis.AreaVisualizationFragment"
+                        android:name="com.klima7.services.common.components.areavisual.AreaVisualizationFragment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 

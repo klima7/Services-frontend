@@ -31,13 +31,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.klima7.services.common.ui.views.WrapContentListView
+            <com.klima7.services.common.components.views.WrapContentListView
                 android:id="@+id/services_category_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-            </com.klima7.services.common.ui.views.WrapContentListView>
+            </com.klima7.services.common.components.views.WrapContentListView>
 
         </LinearLayout>
 

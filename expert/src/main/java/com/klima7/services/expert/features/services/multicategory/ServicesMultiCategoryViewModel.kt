@@ -1,6 +1,6 @@
 package com.klima7.services.expert.features.services.multicategory
 
-import com.klima7.services.common.ui.base.BaseViewModel
+import com.klima7.services.common.base.BaseViewModel
 import com.klima7.services.expert.features.services.CategorizedSelectableServices
 
 class ServicesMultiCategoryViewModel: BaseViewModel() {

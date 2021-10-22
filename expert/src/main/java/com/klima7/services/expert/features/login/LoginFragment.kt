@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
-import com.klima7.services.common.ui.base.BaseFragment
-import com.klima7.services.common.ui.base.BaseViewModel
-import com.klima7.services.common.ui.faildialog.FailureDialogFragment
+import com.klima7.services.common.base.BaseFragment
+import com.klima7.services.common.base.BaseViewModel
+import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentLoginBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel

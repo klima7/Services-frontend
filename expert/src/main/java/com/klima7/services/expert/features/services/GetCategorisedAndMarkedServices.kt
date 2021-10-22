@@ -1,12 +1,12 @@
 package com.klima7.services.expert.features.services
 
 import com.klima7.services.common.data.repositories.ServicesRepository
-import com.klima7.services.common.domain.models.Category
-import com.klima7.services.common.domain.models.Failure
-import com.klima7.services.common.domain.models.Service
-import com.klima7.services.common.domain.utils.BaseUC
-import com.klima7.services.common.domain.utils.None
-import com.klima7.services.common.domain.utils.Outcome
+import com.klima7.services.common.models.Category
+import com.klima7.services.common.models.Failure
+import com.klima7.services.common.models.Service
+import com.klima7.services.common.base.BaseUC
+import com.klima7.services.common.utils.None
+import com.klima7.services.common.utils.Outcome
 import com.klima7.services.expert.usecases.GetCurrentExpertUC
 
 class GetCategorisedAndMarkedServices(

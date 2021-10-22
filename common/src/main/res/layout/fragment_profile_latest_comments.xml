@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.klima7.services.common.ui.profile.comments.ProfileCommentsLatestViewModel" />
+            type="com.klima7.services.common.components.profile.comments.ProfileCommentsLatestViewModel" />
     </data>
 
     <LinearLayout
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.klima7.services.common.ui.views.WrapContentListView
+        <com.klima7.services.common.components.views.WrapContentListView
             android:id="@+id/profile_comments_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

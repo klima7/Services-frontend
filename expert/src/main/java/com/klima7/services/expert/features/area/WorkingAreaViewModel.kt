@@ -4,11 +4,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.model.LatLng
-import com.klima7.services.common.domain.models.Failure
-import com.klima7.services.common.domain.models.WorkingArea
-import com.klima7.services.common.domain.utils.None
-import com.klima7.services.common.ui.base.BaseLoadViewModel
-import com.klima7.services.common.ui.converters.toLatLng
+import com.klima7.services.common.models.Failure
+import com.klima7.services.common.models.WorkingArea
+import com.klima7.services.common.utils.None
+import com.klima7.services.common.base.BaseLoadViewModel
+import com.klima7.services.common.components.converters.toLatLng
 import com.klima7.services.expert.usecases.GetCurrentExpertUC
 
 class WorkingAreaViewModel(

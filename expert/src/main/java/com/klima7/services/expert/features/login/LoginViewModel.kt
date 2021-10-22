@@ -1,7 +1,7 @@
 package com.klima7.services.expert.features.login
 
 import com.firebase.ui.auth.AuthUI
-import com.klima7.services.common.ui.base.BaseViewModel
+import com.klima7.services.common.base.BaseViewModel
 
 class LoginViewModel: BaseViewModel() {
 

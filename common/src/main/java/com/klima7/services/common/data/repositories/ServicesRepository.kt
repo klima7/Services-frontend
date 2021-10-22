@@ -5,11 +5,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.klima7.services.common.data.converters.toDomain
 import com.klima7.services.common.data.entities.CategoryEntity
 import com.klima7.services.common.data.entities.ServiceEntity
-import com.klima7.services.common.data.utils.getCacheFirst
-import com.klima7.services.common.domain.models.Category
-import com.klima7.services.common.domain.models.Failure
-import com.klima7.services.common.domain.models.Service
-import com.klima7.services.common.domain.utils.Outcome
+import com.klima7.services.common.data.extensions.getCacheFirst
+import com.klima7.services.common.models.Category
+import com.klima7.services.common.models.Failure
+import com.klima7.services.common.models.Service
+import com.klima7.services.common.utils.Outcome
 import kotlinx.coroutines.tasks.await
 
 class ServicesRepository(

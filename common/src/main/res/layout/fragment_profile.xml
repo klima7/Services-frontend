@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.klima7.services.common.ui.profile.ProfileViewModel" />
+            type="com.klima7.services.common.components.profile.ProfileViewModel" />
     </data>
 
     <ScrollView
@@ -25,7 +25,7 @@
                 android:id="@+id/profile_header_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:name="com.klima7.services.common.ui.profile.header.ProfileHeaderFragment" />
+                android:name="com.klima7.services.common.components.profile.header.ProfileHeaderFragment" />
 
             <Space
                 android:layout_width="0dp"
@@ -35,7 +35,7 @@
                 android:id="@+id/profile_description_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:name="com.klima7.services.common.ui.profile.description.ProfileDescriptionFragment" />
+                android:name="com.klima7.services.common.components.profile.description.ProfileDescriptionFragment" />
 
             <Space
                 android:layout_width="0dp"
@@ -45,7 +45,7 @@
                 android:id="@+id/profile_contact_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:name="com.klima7.services.common.ui.profile.contact.ProfileContactFragment"
+                android:name="com.klima7.services.common.components.profile.contact.ProfileContactFragment"
                 />
 
             <Space
@@ -56,7 +56,7 @@
                 android:id="@+id/profile_services_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:name="com.klima7.services.common.ui.profile.services.ProfileServicesFragment"
+                android:name="com.klima7.services.common.components.profile.services.ProfileServicesFragment"
                 />
 
             <Space
@@ -67,7 +67,7 @@
                 android:id="@+id/profile_area_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:name="com.klima7.services.common.ui.profile.area.ProfileAreaFragment"
+                android:name="com.klima7.services.common.components.profile.area.ProfileAreaFragment"
                 />
 
             <Space
@@ -78,7 +78,7 @@
                 android:id="@+id/profile_rating_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:name="com.klima7.services.common.ui.profile.rating.ProfileRatingFragment"
+                android:name="com.klima7.services.common.components.profile.rating.ProfileRatingFragment"
                 />
 
             <Space
@@ -89,7 +89,7 @@
                 android:id="@+id/profile_comments_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:name="com.klima7.services.common.ui.profile.comments.ProfileCommentsFragment"
+                android:name="com.klima7.services.common.components.profile.comments.ProfileCommentsFragment"
                 />
 
 
