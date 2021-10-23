@@ -1,6 +1,9 @@
 package com.klima7.services.common.components.comments
 
+import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentCommentsBinding
@@ -23,9 +26,10 @@ class CommentsFragment: BaseFragment<FragmentCommentsBinding>() {
         super.init()
 
         val adapter = CommentsAdapter()
-        val recycler = binding.commentsRecycler
-        recycler.adapter = adapter
-        recycler.layoutManager = LinearLayoutManager(context)
+        binding.commentsLoadList.apply {
+            this.adapter = adapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
 
         viewModel.pagingData.observe(viewLifecycleOwner) { pagingData ->
             lifecycleScope.launch {

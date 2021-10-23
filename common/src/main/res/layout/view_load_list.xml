@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/loadlist_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loadlist_spinner"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:scaleType="fitCenter"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="lottie_loading_spinner.json"
+            app:lottie_loop="true"
+            android:layout_gravity="center"
+            app:lottie_speed="1"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/loadlist_failure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            >
+
+            <TextView
+                android:id="@+id/paging_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Wystąpił błąd" />
+
+            <ImageButton
+                android:id="@+id/loadlist_refresh_button"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/refresh_button_selector"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/icon_refresh"
+                android:elevation="8dp"
+                android:layout_marginBottom="16dp"
+                app:tint="@color/white" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</layout>
