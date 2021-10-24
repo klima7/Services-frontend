@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_home"
+    app:startDestination="@id/jobsFragment">
+    <fragment
+        android:id="@+id/jobsFragment"
+        android:name="com.klima7.services.client.features.jobs.JobsFragment"
+        android:label="JobsFragment" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.klima7.services.client.features.search.SearchFragment"
+        android:label="SearchFragment" />
+</navigation>

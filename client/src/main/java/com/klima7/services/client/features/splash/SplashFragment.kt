@@ -3,6 +3,7 @@ package com.klima7.services.client.features.splash
 import android.content.Intent
 import android.util.Log
 import com.klima7.services.client.R
+import com.klima7.services.client.features.home.HomeActivity
 import com.klima7.services.client.features.login.LoginActivity
 import com.klima7.services.client.features.setup.SetupActivity
 import com.klima7.services.common.components.splash.BaseSplashFragment
@@ -29,6 +30,10 @@ class SplashFragment: BaseSplashFragment(R.string.app_subtitle) {
 
     override fun showHomeScreen() {
         Log.i("Hello", "showHomeScreen")
+        val intent = Intent(activity, HomeActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
+        startActivity(intent)
+        requireActivity().finish()
     }
 
 }

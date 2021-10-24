@@ -25,6 +25,7 @@
         <activity android:name=".features.login.LoginActivity" android:theme="@style/Theme.Client.Background" />
         <activity android:name=".features.setup.SetupActivity" />
         <activity android:name=".features.info.InfoActivity" />
+        <activity android:name=".features.home.HomeActivity" />
 
     </application>
 
