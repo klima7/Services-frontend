@@ -3,6 +3,7 @@ package com.klima7.services.common.di
 import com.klima7.services.common.components.areavisual.AreaVisualizationViewModel
 import com.klima7.services.common.components.comments.CommentsViewModel
 import com.klima7.services.common.components.faildialog.FailureDialogViewModel
+import com.klima7.services.common.components.login.LoginViewModel
 import com.klima7.services.common.components.profile.ProfileViewModel
 import com.klima7.services.common.components.profile.area.ProfileAreaViewModel
 import com.klima7.services.common.components.profile.comments.ProfileCommentsLatestViewModel
@@ -27,5 +28,6 @@ val viewModelsModule = module {
     viewModel { ProfileCommentsViewModel() }
     viewModel { CommentsViewModel(get()) }
     viewModel { ProfileAreaViewModel() }
+    viewModel { LoginViewModel() }
 
 }

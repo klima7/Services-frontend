@@ -1,4 +1,4 @@
-package com.klima7.services.expert.features.login
+package com.klima7.services.common.components.login
 
 import com.firebase.ui.auth.AuthUI
 import com.klima7.services.common.platform.BaseViewModel

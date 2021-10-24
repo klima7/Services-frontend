@@ -3,7 +3,6 @@ package com.klima7.services.expert.di
 import com.klima7.services.expert.features.area.WorkingAreaViewModel
 import com.klima7.services.expert.features.home.HomeViewModel
 import com.klima7.services.expert.features.info.InfoViewModel
-import com.klima7.services.expert.features.login.LoginViewModel
 import com.klima7.services.expert.features.services.ServicesViewModel
 import com.klima7.services.expert.features.services.category.ServicesCategoryViewModel
 import com.klima7.services.expert.features.services.multicategory.ServicesMultiCategoryViewModel
@@ -17,7 +16,6 @@ val viewModelsModule = module {
 
     viewModel { SplashViewModel(get()) }
     viewModel { HomeViewModel() }
-    viewModel { LoginViewModel() }
     viewModel { SetupViewModel(get()) }
     viewModel { InfoViewModel(get(), get()) }
     viewModel { ServicesViewModel(get(), get()) }

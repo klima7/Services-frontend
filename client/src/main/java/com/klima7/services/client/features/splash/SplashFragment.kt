@@ -1,7 +1,9 @@
 package com.klima7.services.client.features.splash
 
+import android.content.Intent
 import android.util.Log
 import com.klima7.services.client.R
+import com.klima7.services.client.features.login.LoginActivity
 import com.klima7.services.common.components.splash.BaseSplashFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -12,6 +14,8 @@ class SplashFragment: BaseSplashFragment(R.string.app_subtitle) {
 
     override fun showLoginScreen() {
         Log.i("Hello", "showLoginScreen")
+        val intent = Intent(activity, LoginActivity::class.java)
+        loginLauncher.launch(intent)
     }
 
     override fun showSetupScreen() {

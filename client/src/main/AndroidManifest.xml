@@ -22,6 +22,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".features.login.LoginActivity" android:theme="@style/Theme.Client.Background" />
+
     </application>
 
 </manifest>

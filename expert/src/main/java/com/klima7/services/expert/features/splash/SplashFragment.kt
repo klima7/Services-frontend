@@ -1,10 +1,10 @@
 package com.klima7.services.expert.features.splash
 
 import android.content.Intent
+import com.klima7.services.expert.features.login.LoginActivity
 import com.klima7.services.common.components.splash.BaseSplashFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.features.home.HomeActivity
-import com.klima7.services.expert.features.login.LoginActivity
 import com.klima7.services.expert.features.setup.SetupActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

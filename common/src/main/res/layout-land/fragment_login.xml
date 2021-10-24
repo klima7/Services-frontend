@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.klima7.services.expert.features.login.LoginViewModel" />
+            type="com.klima7.services.common.components.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="dla wykonawców"
+                android:textColor="@color/black"
                 android:fontFamily="@font/baloo"
                 android:textSize="22sp"/>
 
@@ -72,6 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Aplikacja wymaga logowania"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/login_login_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/login_guideline"
