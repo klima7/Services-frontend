@@ -52,8 +52,6 @@ class InfoViewModel(
         enabled
     }
 
-    val loadingVisible = MutableLiveData(false)
-
     sealed class Event: BaseEvent() {
         object FinishInfo: Event()
         object StartProfileImagePicker: Event()

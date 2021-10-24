@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContracts
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentSetupBinding
+import com.klima7.services.client.features.info.InfoActivity
 import com.klima7.services.common.platform.BaseLoadFragment
 import com.klima7.services.common.platform.BaseViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -30,8 +31,6 @@ class SetupFragment: BaseLoadFragment<FragmentSetupBinding>() {
         when(event) {
             SetupViewModel.Event.ShowHomeScreen -> showHomeScreen()
             SetupViewModel.Event.ShowInfoScreen -> showInfoScreen()
-            SetupViewModel.Event.ShowServicesScreen -> showServicesScreen()
-            SetupViewModel.Event.ShowWorkingAreaScreen -> showLocationScreen()
         }
     }
 
@@ -43,18 +42,8 @@ class SetupFragment: BaseLoadFragment<FragmentSetupBinding>() {
     }
 
     private fun showInfoScreen() {
-//        val intent = Intent(activity, InfoActivity::class.java)
-//        configLauncher.launch(intent)
-    }
-
-    private fun showLocationScreen() {
-//        val intent = Intent(activity, WorkingAreaActivity::class.java)
-//        configLauncher.launch(intent)
-    }
-
-    private fun showServicesScreen() {
-//        val intent = Intent(activity, ServicesActivity::class.java)
-//        configLauncher.launch(intent)
+        val intent = Intent(activity, InfoActivity::class.java)
+        configLauncher.launch(intent)
     }
 
     private fun onConfigDone() {

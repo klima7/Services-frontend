@@ -14,8 +14,6 @@ class SetupViewModel(
     sealed class Event: BaseEvent() {
         object ShowHomeScreen: Event()
         object ShowInfoScreen: Event()
-        object ShowServicesScreen: Event()
-        object ShowWorkingAreaScreen: Event()
     }
 
     fun started() {
@@ -36,14 +34,6 @@ class SetupViewModel(
 
     fun infoClicked() {
         sendEvent(Event.ShowInfoScreen)
-    }
-
-    fun servicesClicked() {
-        sendEvent(Event.ShowServicesScreen)
-    }
-
-    fun locationClicked() {
-        sendEvent(Event.ShowWorkingAreaScreen)
     }
 
     private fun loadContent() {
