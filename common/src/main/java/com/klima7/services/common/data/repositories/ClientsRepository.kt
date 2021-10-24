@@ -19,7 +19,7 @@ class ClientsRepository(
     suspend fun createClientAccount(): Outcome<Failure, None> {
         return try {
             functions
-                .getHttpsCallable("experts-createClientAccount")
+                .getHttpsCallable("clients-createClientAccount")
                 .call()
                 .await()
             Outcome.Success(None())
