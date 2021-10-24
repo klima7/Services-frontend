@@ -4,14 +4,15 @@ import com.klima7.services.common.components.splash.GetCurrentUserStateUC
 import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.repositories.AuthRepository
-import com.klima7.services.common.data.repositories.ExpertsRepository
+import com.klima7.services.common.data.repositories.ClientsRepository
+import com.klima7.services.common.models.Client
 import com.klima7.services.common.models.Expert
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.UserState
 
 class GetCurrentClientStateUC(
     private val authRepository: AuthRepository,
-    private val expertsRepository: ExpertsRepository
+    private val clientsRepository: ClientsRepository
 ): GetCurrentUserStateUC() {
 
     override suspend fun execute(params: None): Outcome<Failure, UserState> {
@@ -31,36 +32,36 @@ class GetCurrentClientStateUC(
     }
 
     private suspend fun getExpertPart(uid: String): Outcome<Failure, UserState> {
-        return expertsRepository.getExpert(uid).foldS({ failure ->
+        return clientsRepository.getClient(uid).foldS({ failure ->
             when(failure) {
-                Failure.NotFoundFailure -> createExpertPart(uid)
+                Failure.NotFoundFailure -> createClientPart(uid)
                 else -> Outcome.Failure(failure)
             }
-        }, { expert ->
-            analyseExpertPart(expert)
+        }, { client ->
+            analyseClientPart(client)
         })
     }
 
-    private suspend fun createExpertPart(uid: String): Outcome<Failure, UserState> {
-        return expertsRepository.createExpertAccount().foldS({ failure ->
+    private suspend fun createClientPart(uid: String): Outcome<Failure, UserState> {
+        return clientsRepository.createClientAccount().foldS({ failure ->
             Outcome.Failure(failure)
         }, {
             getExpertPart(uid)
         })
     }
 
-    private fun analyseExpertPart(expert: Expert): Outcome<Failure, UserState> {
-        return if(isExpertReady(expert)) {
+    private fun analyseClientPart(client: Client): Outcome<Failure, UserState> {
+        return if(isClientReady(client)) {
             Outcome.Success(UserState.READY)
-        } else if(!expert.fromCache) {
+        } else if(!client.fromCache) {
             Outcome.Success(UserState.NOT_READY)
         } else {
             Outcome.Failure(Failure.InternetFailure)
         }
     }
 
-    private fun isExpertReady(expert: Expert): Boolean {
-        return expert.info.name != null && expert.area != null && expert.servicesIds.isNotEmpty()
+    private fun isClientReady(client: Client): Boolean {
+        return client.info.name != null
     }
 
 }
