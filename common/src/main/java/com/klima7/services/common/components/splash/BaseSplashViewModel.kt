@@ -7,7 +7,7 @@ import com.klima7.services.common.platform.BaseLoadViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class SplashViewModel(
+open class BaseSplashViewModel(
     private val getCurrentUserStateUC: GetCurrentUserStateUC
 ): BaseLoadViewModel() {
 

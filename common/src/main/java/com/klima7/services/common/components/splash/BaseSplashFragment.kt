@@ -5,7 +5,6 @@ import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentSplashBinding
 import com.klima7.services.common.platform.BaseLoadFragment
 import com.klima7.services.common.platform.BaseViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 abstract class BaseSplashFragment(
@@ -13,7 +12,7 @@ abstract class BaseSplashFragment(
 ): BaseLoadFragment<FragmentSplashBinding>() {
 
     override val layoutId = R.layout.fragment_splash
-    override val viewModel: SplashViewModel by viewModel()
+    abstract override val viewModel: BaseSplashViewModel
 
     protected val loginLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -34,9 +33,9 @@ abstract class BaseSplashFragment(
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
         super.handleEvent(event)
         when(event) {
-            SplashViewModel.Event.ShowLoginScreen -> showLoginScreen()
-            SplashViewModel.Event.ShowHomeScreen -> showHomeScreen()
-            SplashViewModel.Event.ShowSetupScreen -> showSetupScreen()
+            BaseSplashViewModel.Event.ShowLoginScreen -> showLoginScreen()
+            BaseSplashViewModel.Event.ShowHomeScreen -> showHomeScreen()
+            BaseSplashViewModel.Event.ShowSetupScreen -> showSetupScreen()
         }
     }
 

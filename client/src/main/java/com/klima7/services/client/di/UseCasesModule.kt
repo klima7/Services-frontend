@@ -1,10 +1,10 @@
 package com.klima7.services.client.di
 
-import com.klima7.services.client.features.splash.GetCurrentExpertStateUC
+import com.klima7.services.client.features.splash.GetCurrentClientStateUC
 import org.koin.dsl.module
 
 val useCasesModule = module {
 
-    single { GetCurrentExpertStateUC(get(), get()) }
+    single { GetCurrentClientStateUC(get(), get()) }
 
 }
