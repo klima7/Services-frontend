@@ -5,14 +5,17 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.paging.LoadState
+import androidx.paging.LoadStateAdapter
 import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.klima7.services.common.R
+import com.klima7.services.common.databinding.ElementLoadListStateBinding
 import com.klima7.services.common.databinding.ViewLoadListBinding
 import java.util.NoSuchElementException
 
@@ -54,7 +57,10 @@ class LoadRecycleView(context: Context, attrs: AttributeSet?) : FrameLayout(cont
     private fun setAdapterHelper(adapter: PagingDataAdapter<*, *>) {
         this.mAdapter = adapter
         addLoadStateListener(adapter)
-        binding.loadlistRecycler.adapter = adapter
+        val a2 = adapter.withLoadStateFooter(
+            footer = SimpleLoadStateAdapter { adapter.retry() }
+        )
+        binding.loadlistRecycler.adapter = a2
     }
 
     private fun addLoadStateListener(adapter: PagingDataAdapter<*, *>) {
@@ -85,5 +91,34 @@ class LoadRecycleView(context: Context, attrs: AttributeSet?) : FrameLayout(cont
                 }
             }
         }
+    }
+
+    class SimpleLoadStateAdapter(
+        private val retry: () -> Unit
+    ) : LoadStateAdapter<SimpleLoadStateAdapter.LoadStateViewHolder>() {
+
+        override fun onBindViewHolder(holder: LoadStateViewHolder, loadState: LoadState) {
+
+            val progress = holder.loadStateViewBinding.loadStateProgress
+            val retry = holder.loadStateViewBinding.loadStateRetry
+            val message = holder.loadStateViewBinding.loadStateErrorMessage
+
+            retry.isVisible = loadState !is LoadState.Loading
+            message.isVisible = loadState !is LoadState.Loading
+            progress.isVisible = loadState is LoadState.Loading
+
+            retry.setOnClickListener {
+                this.retry.invoke()
+            }
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): LoadStateViewHolder {
+            return LoadStateViewHolder(
+                ElementLoadListStateBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            )
+        }
+
+        class LoadStateViewHolder(val loadStateViewBinding: ElementLoadListStateBinding) :
+            RecyclerView.ViewHolder(loadStateViewBinding.root)
     }
 }

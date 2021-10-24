@@ -20,7 +20,7 @@ class CommentsPagingSource(
             return LoadResult.Page(
                 data = result,
                 prevKey = null,
-                nextKey = result.last().id
+                nextKey = if(result.size == params.loadSize) result.last().id else null
             )
         } catch(e: Exception) {
             return LoadResult.Error(e)
