@@ -8,6 +8,8 @@ import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.converters.toDomain
 import com.klima7.services.common.data.entities.ClientEntity
 import com.klima7.services.common.models.Client
+import com.klima7.services.common.models.ClientInfo
+import com.klima7.services.common.models.ExpertInfo
 import com.klima7.services.common.models.Failure
 import kotlinx.coroutines.tasks.await
 
@@ -43,6 +45,24 @@ class ClientsRepository(
         } catch(e: Exception) {
             Log.e("Hello", "Error during getClient", e)
             return Outcome.Failure(e.toDomain())
+        }
+    }
+
+    suspend fun setClientInfo(info: ClientInfo): Outcome<Failure, None> {
+        return try {
+            val data = hashMapOf(
+                "name" to info.name,
+                "phone" to info.phone,
+            )
+
+            functions
+                .getHttpsCallable("clients-setInfo")
+                .call(data)
+                .await()
+            Outcome.Success(None())
+        } catch(e: Exception) {
+            Log.e("Hello", "Error while setClientInfo", e)
+            Outcome.Failure(e.toDomain())
         }
     }
 
