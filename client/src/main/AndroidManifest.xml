@@ -23,6 +23,7 @@
         </activity>
 
         <activity android:name=".features.login.LoginActivity" android:theme="@style/Theme.Client.Background" />
+        <activity android:name=".features.setup.SetupActivity" />
 
     </application>
 
