@@ -38,6 +38,11 @@ class LoadRecycleView(context: Context, attrs: AttributeSet?) : FrameLayout(cont
                 refresh()
             }
         }
+
+        binding.loadlistSwipeRefresh.setOnRefreshListener {
+            binding.loadlistSwipeRefresh.isRefreshing = false
+            adapter?.refresh()
+        }
     }
 
     var adapter: PagingDataAdapter<*, *>?
