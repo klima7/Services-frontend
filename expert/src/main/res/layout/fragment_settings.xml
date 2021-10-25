@@ -60,8 +60,7 @@
                     layout="@layout/part_settings_tile"
                     app:title="@{`Usuń konto wykonawcy`}"
                     app:image="@{com.klima7.services.common.R.drawable.icon_delete_account}"
-                    app:action="@{() -> viewmodel.signOutClicked()}"
-                    app:logout="@{true}"
+                    app:action="@{() -> viewmodel.deleteClicked()}"
                     />
 
                 <include

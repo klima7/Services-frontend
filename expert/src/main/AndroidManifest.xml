@@ -35,6 +35,7 @@
         <activity android:name=".features.services.ServicesActivity" />
         <activity android:name=".features.area.WorkingAreaActivity" />
         <activity android:name=".features.settings.SettingsActivity" />
+        <activity android:name=".features.delete.DeleteActivity" />
 
         <activity android:name="com.canhub.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />

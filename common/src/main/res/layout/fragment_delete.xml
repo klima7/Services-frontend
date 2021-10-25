@@ -7,80 +7,106 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.klima7.services.common.components.profile.ProfileViewModel" />
+            type="com.klima7.services.common.components.delete.BaseDeleteViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/delete_toolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/ToolBar"
+            android:backgroundTint="#FF4848"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ScrollView
             android:id="@+id/main_content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/delete_toolbar"
+            app:layout_constraintBottom_toTopOf="@id/delete_button">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingVertical="16dp"
-                android:paddingHorizontal="16dp">
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="16dp">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="32dp" />
 
                 <TextView
+                    android:id="@+id/delete_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:text="Czy jesteś pewien, że chcesz usunąć konto wykonawcy? Operacja ta jest nieodwracalna."
-                    />
+                    tools:text="Czy jesteś pewien, że chcesz usunąć konto wykonawcy? Operacja ta jest nieodwracalna." />
 
                 <Space
                     android:layout_width="0dp"
                     android:layout_height="16dp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="W celu potwierdzenia operacji wpisz “Potwierdzam” w polu poniżej."
-                    />
-
                 <Space
                     android:layout_width="0dp"
-                    android:layout_height="16dp" />
+                    android:layout_height="32dp" />
 
                 <!-- Confirm field -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/info_phone"
+                    style="@style/TextInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:hint="Numer telefonu"
-                    app:helperText=" "
-                    app:startIconDrawable="@drawable/icon_phone"
-                    style="@style/TextInputLayoutStyle"
                     app:boxStrokeColor="#ff0000">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:digits="0123456789+"
-                        android:inputType="phone"
-                        android:maxLength="9"
-                        android:text="" />
+                        android:text="@={viewmodel.typedText}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="W celu potwierdzenia operacji wpisz “Potwierdzam” w polu powyżej." />
+
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lav_actionBar"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:lottie_autoPlay="true"
+                    app:lottie_fileName="lottie_delete.json"
+                    app:lottie_loop="false"
+                    app:lottie_speed="0.4"/>
 
             </LinearLayout>
 
         </ScrollView>
 
         <Button
-            android:id="@+id/delete_save_button"
+            android:id="@+id/delete_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
             android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
-            android:enabled="true"
+            android:enabled="@{viewmodel.buttonEnabled}"
             android:text="Usuń konto"
+            android:theme="@style/Button.Red"
             android:background="@drawable/rounded_delete_button"
+            android:onClick="@{()->viewmodel.deleteClicked()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

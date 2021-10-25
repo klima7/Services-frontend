@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Usługi dla wykonawców</string>
     <string name="app_subtitle">dla wykonawców</string>
+    <string name="delete_title">Usuwanie konta wykonawcy</string>
+    <string name="delete_text">Czy jesteś pewien, że chcesz usunąć konto wykonawcy? Operacja ta jest nieodwracalna.</string>
 </resources>

@@ -14,6 +14,7 @@ class SettingsViewModel(
         object ShowServicesScreen: Event()
         object ShowWorkingAreaScreen: Event()
         object ShowSplashScreen: Event()
+        object ShowDeleteScreen: Event()
     }
 
     fun profileClicked() {
@@ -26,6 +27,10 @@ class SettingsViewModel(
 
     fun locationClicked() {
         sendEvent(Event.ShowWorkingAreaScreen)
+    }
+
+    fun deleteClicked() {
+        sendEvent(Event.ShowDeleteScreen)
     }
 
     fun signOutClicked() {

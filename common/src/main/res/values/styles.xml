@@ -36,4 +36,8 @@
         <item name="android:minHeight">?attr/actionBarSize</item>
     </style>
 
+    <style name="Button.Red" parent="ThemeOverlay.AppCompat">
+        <item name="colorPrimary">@android:color/holo_red_light</item>
+    </style>
+
 </resources>

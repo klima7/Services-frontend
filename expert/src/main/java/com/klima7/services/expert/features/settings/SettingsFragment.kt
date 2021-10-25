@@ -6,6 +6,7 @@ import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentSettingsBinding
 import com.klima7.services.expert.features.area.WorkingAreaActivity
+import com.klima7.services.expert.features.delete.DeleteActivity
 import com.klima7.services.expert.features.info.InfoActivity
 import com.klima7.services.expert.features.services.ServicesActivity
 import com.klima7.services.expert.features.splash.SplashActivity
@@ -29,6 +30,7 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>() {
             SettingsViewModel.Event.ShowInfoScreen -> showInfoScreen()
             SettingsViewModel.Event.ShowWorkingAreaScreen -> showLocationScreen()
             SettingsViewModel.Event.ShowServicesScreen -> showServicesScreen()
+            SettingsViewModel.Event.ShowDeleteScreen -> showDeleteScreen()
             SettingsViewModel.Event.ShowSplashScreen -> showSplashScreen()
         }
     }
@@ -45,6 +47,11 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>() {
 
     private fun showServicesScreen() {
         val intent = Intent(activity, ServicesActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun showDeleteScreen() {
+        val intent = Intent(activity, DeleteActivity::class.java)
         startActivity(intent)
     }
 

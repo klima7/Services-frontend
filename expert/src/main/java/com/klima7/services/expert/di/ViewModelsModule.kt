@@ -1,6 +1,7 @@
 package com.klima7.services.expert.di
 
 import com.klima7.services.expert.features.area.WorkingAreaViewModel
+import com.klima7.services.expert.features.delete.DeleteViewModel
 import com.klima7.services.expert.features.home.HomeViewModel
 import com.klima7.services.expert.features.info.InfoViewModel
 import com.klima7.services.expert.features.services.ServicesViewModel
@@ -23,5 +24,6 @@ val viewModelsModule = module {
     viewModel { ServicesCategoryViewModel() }
     viewModel { ServicesMultiCategoryViewModel() }
     viewModel { SettingsViewModel(get()) }
+    viewModel { DeleteViewModel(get()) }
 
 }
