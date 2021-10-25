@@ -27,7 +27,9 @@ class SplashFragment: BaseSplashFragment(R.string.app_subtitle) {
 
     override fun showHomeScreen() {
         val intent = Intent(activity, HomeActivity::class.java)
-        loginLauncher.launch(intent)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
+        startActivity(intent)
+        requireActivity().finish()
     }
 
 }
