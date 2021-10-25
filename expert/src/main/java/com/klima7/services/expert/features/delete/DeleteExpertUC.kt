@@ -6,7 +6,6 @@ import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.repositories.AuthRepository
 import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.models.Failure
-import kotlinx.coroutines.delay
 
 class DeleteExpertUC(
     private val expertsRepository: ExpertsRepository,
@@ -14,8 +13,23 @@ class DeleteExpertUC(
 ): BaseDeleteUserUC() {
 
     override suspend fun execute(params: None): Outcome<Failure, None> {
-        delay(3000)
-        return Outcome.Failure(Failure.InternetFailure)
+        return deleteExpertPart()
+    }
+
+    private suspend fun deleteExpertPart(): Outcome<Failure, None> {
+        return expertsRepository.deleteAccount().foldS({ failure ->
+            Outcome.Failure(failure)
+        }, {
+            signOutPart()
+        })
+    }
+
+    private suspend fun signOutPart(): Outcome<Failure, None> {
+        return authRepository.signOut().foldS({ failure ->
+            Outcome.Failure(failure)
+        }, {
+            Outcome.Success(None())
+        })
     }
 
 }
