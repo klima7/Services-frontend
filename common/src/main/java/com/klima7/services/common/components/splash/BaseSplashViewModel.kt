@@ -34,7 +34,6 @@ open class BaseSplashViewModel(
     }
 
     private fun proceed() {
-        showPending()
         getCurrentUserStateUC.start(
             viewModelScope,
             None(),
