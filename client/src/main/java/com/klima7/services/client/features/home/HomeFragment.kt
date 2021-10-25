@@ -8,6 +8,7 @@ import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentHomeBinding
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
+import com.klima7.services.client.features.delete.DeleteActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -27,6 +28,11 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
         binding.homeToolbar.inflateMenu(R.menu.menu_home_toolbar)
         binding.homeToolbar.setOnMenuItemClickListener {
             viewModel.settingsIconClicked()
+
+            // TODO: To delete
+            val intent = Intent(activity, DeleteActivity::class.java)
+            startActivity(intent)
+
             true
         }
     }

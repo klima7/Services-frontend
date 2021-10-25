@@ -1,5 +1,6 @@
 package com.klima7.services.client.di
 
+import com.klima7.services.client.features.delete.DeleteClientUC
 import com.klima7.services.client.features.info.SetCurrentClientInfoUC
 import com.klima7.services.client.features.setup.GetCurrentClientSetupStateUC
 import com.klima7.services.client.features.splash.GetCurrentClientStateUC
@@ -12,5 +13,6 @@ val useCasesModule = module {
     single { GetCurrentClientUC(get(), get()) }
     single { GetCurrentClientSetupStateUC(get()) }
     single { SetCurrentClientInfoUC(get()) }
+    single { DeleteClientUC(get(), get()) }
 
 }

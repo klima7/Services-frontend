@@ -1,5 +1,6 @@
 package com.klima7.services.client.di
 
+import com.klima7.services.client.features.delete.DeleteViewModel
 import com.klima7.services.client.features.home.HomeViewModel
 import com.klima7.services.client.features.info.InfoViewModel
 import com.klima7.services.client.features.setup.SetupViewModel
@@ -13,5 +14,6 @@ val viewModelsModule = module {
     viewModel { SetupViewModel(get()) }
     viewModel { InfoViewModel(get(), get()) }
     viewModel { HomeViewModel() }
+    viewModel { DeleteViewModel(get()) }
 
 }
