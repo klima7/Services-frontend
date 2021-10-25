@@ -28,6 +28,7 @@
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/refresh_button_ripple.xml" value="0.18703703703703703" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/refresh_button_selector.xml" value="0.18703703703703703" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/rounded_button.xml" value="0.19722222222222222" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/rounded_delete_button.xml" value="0.13425925925925927" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/selector_bottomnav.xml" value="0.17037037037037037" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/selector_refresh_button.xml" value="0.25925925925925924" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/selector_rounded_button.xml" value="0.19722222222222222" />
@@ -53,6 +54,7 @@
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_comment.xml" value="0.275" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_comments.xml" value="0.18489583333333334" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_container.xml" value="0.19375" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_delete.xml" value="0.264" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_dialog.xml" value="0.1644021739130435" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_failurable_wrapper.xml" value="0.16507936507936508" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/fragment_failure.xml" value="0.1484375" />
