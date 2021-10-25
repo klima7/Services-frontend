@@ -4,5 +4,5 @@ import com.klima7.services.common.data.entities.ServiceEntity
 import com.klima7.services.common.models.Service
 
 fun ServiceEntity.toDomain(id: String): Service {
-    return Service(id, categoryId, name)
+    return Service(id, categoryId, name, locationConstrained)
 }
