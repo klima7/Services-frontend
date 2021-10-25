@@ -10,6 +10,5 @@ val reposModule = module {
     single { AuthRepository(get()) }
     single { ServicesRepository(get()) }
     single { RatingsRepository(get(), get()) }
-    single { ProfileImagesRepository(get()) }
 
 }
