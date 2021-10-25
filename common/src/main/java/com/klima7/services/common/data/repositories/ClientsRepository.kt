@@ -66,4 +66,17 @@ class ClientsRepository(
         }
     }
 
+    suspend fun deleteAccount(): Outcome<Failure, None> {
+        return try {
+            functions
+                .getHttpsCallable("clients-deleteAccount")
+                .call()
+                .await()
+            Outcome.Success(None())
+        } catch(e: Exception) {
+            Log.e("Hello", "Error while clients-deleteAccount", e)
+            Outcome.Failure(e.toDomain())
+        }
+    }
+
 }

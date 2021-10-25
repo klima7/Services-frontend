@@ -125,4 +125,17 @@ class ExpertsRepository(
             Outcome.Failure(e.toDomain())
         }
     }
+
+    suspend fun deleteAccount(): Outcome<Failure, None> {
+        return try {
+            functions
+                .getHttpsCallable("experts-deleteAccount")
+                .call()
+                .await()
+            Outcome.Success(None())
+        } catch(e: Exception) {
+            Log.e("Hello", "Error while experts-deleteAccount", e)
+            Outcome.Failure(e.toDomain())
+        }
+    }
 }
