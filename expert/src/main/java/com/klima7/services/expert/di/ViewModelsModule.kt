@@ -26,6 +26,6 @@ val viewModelsModule = module {
     viewModel { ServicesMultiCategoryViewModel() }
     viewModel { SettingsViewModel(get()) }
     viewModel { DeleteViewModel(get()) }
-    viewModel { JobsViewModel() }
+    viewModel { JobsViewModel(get(), get()) }
 
 }

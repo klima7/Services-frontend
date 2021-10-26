@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.ElementLoadListStateBinding
 import com.klima7.services.common.databinding.ViewLoadListBinding
-import java.util.NoSuchElementException
+import java.util.*
 
 
 class LoadRecycleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
@@ -38,12 +38,10 @@ class LoadRecycleView(context: Context, attrs: AttributeSet?) : FrameLayout(cont
                 refresh()
             }
         }
-
-        binding.loadlistSwipeRefresh.setOnRefreshListener {
-            binding.loadlistSwipeRefresh.isRefreshing = false
-            adapter?.refresh()
-        }
     }
+
+    val recycler: RecyclerView
+    get() = binding.loadlistRecycler
 
     var adapter: PagingDataAdapter<*, *>?
         get() = mAdapter
