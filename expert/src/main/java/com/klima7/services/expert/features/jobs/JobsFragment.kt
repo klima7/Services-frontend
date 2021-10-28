@@ -1,10 +1,9 @@
 package com.klima7.services.expert.features.jobs
 
 import android.graphics.Canvas
-import android.graphics.Paint
 import android.util.Log
-import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,16 +12,14 @@ import com.klima7.services.common.platform.BaseLoadFragment
 import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentJobsBinding
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-import androidx.core.content.ContextCompat
-import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-
-class JobsFragment : BaseLoadFragment<FragmentJobsBinding>() {
+class JobsFragment : BaseLoadFragment<FragmentJobsBinding>(), JobsAdapter.OnJobListener {
 
     override val layoutId = R.layout.fragment_jobs
     override val viewModel: JobsViewModel by viewModel()
@@ -38,7 +35,7 @@ class JobsFragment : BaseLoadFragment<FragmentJobsBinding>() {
     override fun init() {
         super.init()
 
-        jobsAdapter = JobsAdapter()
+        jobsAdapter = JobsAdapter(this)
         binding.jobsLoadList.adapter = jobsAdapter
         binding.jobsLoadList.layoutManager = LinearLayoutManager(requireContext())
         ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(binding.jobsLoadList.recycler)
@@ -60,6 +57,10 @@ class JobsFragment : BaseLoadFragment<FragmentJobsBinding>() {
     private fun showRejectFailure() {
         Toast.makeText(requireContext(), "Odrzucenie zlecenia się nie powiodło", Toast.LENGTH_SHORT)
             .show()
+    }
+
+    override fun onJobClicked(position: Int) {
+        Log.i("Hello", "Item clicked $position")
     }
 
     private val itemTouchHelperCallback =

@@ -5,7 +5,9 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.klima7.services.common.models.Job
 
-class JobsAdapter: PagingDataAdapter<Job, JobViewHolder>(JobComparator) {
+class JobsAdapter(
+    private val onJobListener: OnJobListener
+): PagingDataAdapter<Job, JobViewHolder>(JobComparator) {
 
     object JobComparator: DiffUtil.ItemCallback<Job>() {
         override fun areItemsTheSame(oldItem: Job, newItem: Job): Boolean {
@@ -18,7 +20,7 @@ class JobsAdapter: PagingDataAdapter<Job, JobViewHolder>(JobComparator) {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobViewHolder {
-        return JobViewHolder(parent)
+        return JobViewHolder(parent, onJobListener)
     }
 
     override fun onBindViewHolder(holder: JobViewHolder, position: Int) {
@@ -27,6 +29,10 @@ class JobsAdapter: PagingDataAdapter<Job, JobViewHolder>(JobComparator) {
 
     fun getJob(position: Int): Job? {
         return getItem(position)
+    }
+
+    interface OnJobListener {
+        fun onJobClicked(position: Int);
     }
 
 }
