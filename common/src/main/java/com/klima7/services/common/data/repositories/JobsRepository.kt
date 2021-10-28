@@ -80,7 +80,7 @@ class JobsRepository(
                 .await()
         } catch(e: Exception) {
             Log.e("Hello", "Error while rejectJob", e)
-            Outcome.Failure(e.toDomain())
+            return Outcome.Failure(e.toDomain())
         }
         return Outcome.Success(None())
     }

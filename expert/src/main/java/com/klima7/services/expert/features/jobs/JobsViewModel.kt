@@ -8,23 +8,24 @@ import androidx.paging.cachedIn
 import androidx.paging.filter
 import com.klima7.services.common.core.None
 import com.klima7.services.common.platform.BaseLoadViewModel
-import com.klima7.services.common.platform.BaseViewModel
-import kotlinx.coroutines.delay
+import com.klima7.services.expert.usecases.RejectJobUC
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
 
 class JobsViewModel(
     private val getAvailableJobsIdsUC: GetAvailableJobsIdsUC,
     private val getJobsUC: GetJobsUC,
+    private val rejectJobUC: RejectJobUC,
 ): BaseLoadViewModel() {
 
-    private val jobsIds = MutableLiveData<List<String>>()
-    val visibleJobsIds = MutableLiveData<List<String>>()
+    sealed class Event: BaseEvent() {
+        object ShowRejectFailure: Event()
+    }
 
-    val flow = jobsIds.asFlow().flatMapLatest { list -> createPager(list).flow }
+    private val allJobsIds = MutableLiveData<List<String>>()
+    private val visibleJobsIds = MutableLiveData<Set<String>>()
+
+    val pagingDataFlow = allJobsIds.asFlow().flatMapLatest { list -> createPager(list).flow }
         .cachedIn(viewModelScope)
         .combine(visibleJobsIds.asFlow()) { pagingData, visibleList ->
             pagingData.filter { job ->
@@ -35,22 +36,15 @@ class JobsViewModel(
         }
 
     fun start() {
-        showMain()
         getIds()
     }
 
-    private fun getIds() {
-        getAvailableJobsIdsUC.start(
-            viewModelScope,
-            None(),
-            { failure ->
-                Log.i("Hello", "getIds failure: $failure")
-            },
-            { ids ->
-                jobsIds.value = ids
-                visibleJobsIds.value = ids.toMutableList()
-            }
-        )
+    override fun refresh() {
+        getIds()
+    }
+
+    fun jobSwiped(id: String) {
+        rejectJob(id)
     }
 
     private fun createPager(jobsIds: List<String>) = Pager(
@@ -59,17 +53,55 @@ class JobsViewModel(
         JobsPagingSource(jobsIds, getJobsUC)
     }
 
-    fun hideId(id: String) {
-        val newList = visibleJobsIds.value?.toMutableList()
-        newList?.remove(id)
-        visibleJobsIds.value = newList!!
+    private fun getIds() {
+        showLoading()
+        getAvailableJobsIdsUC.start(
+            viewModelScope,
+            None(),
+            { failure ->
+                Log.i("Hello", "getIds failure: $failure")
+                showFailure(failure)
+            },
+            { ids ->
+                allJobsIds.value = ids
+                visibleJobsIds.value = ids.toMutableSet()
+                showMain()
+            }
+        )
     }
 
-    fun fade() {
-        viewModelScope.launch {
-            showPending()
-            delay(1000)
-            showMain()
+    private fun rejectJob(jobId: String) {
+        hideJob(jobId);
+        showPending()
+        rejectJobUC.start(
+            viewModelScope,
+            RejectJobUC.Params(jobId),
+            {
+                showMain()
+                showJob(jobId)
+                sendEvent(Event.ShowRejectFailure);
+            },
+            {
+                showMain()
+            }
+        )
+    }
+
+    private fun hideJob(jobId: String) {
+        val cVisibleJobsIds = visibleJobsIds.value
+        if(cVisibleJobsIds != null) {
+            val newVisibleJobsIds = cVisibleJobsIds.toMutableSet()
+            newVisibleJobsIds.remove(jobId)
+            visibleJobsIds.value = newVisibleJobsIds
+        }
+    }
+
+    private fun showJob(jobId: String) {
+        val cVisibleJobsIds = visibleJobsIds.value
+        if(cVisibleJobsIds != null) {
+            val newVisibleJobsIds = cVisibleJobsIds.toMutableSet()
+            newVisibleJobsIds.add(jobId)
+            visibleJobsIds.value = newVisibleJobsIds
         }
     }
 

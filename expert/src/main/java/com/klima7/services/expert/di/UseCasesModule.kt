@@ -10,6 +10,7 @@ import com.klima7.services.expert.features.services.GetCategorisedAndMarkedServi
 import com.klima7.services.expert.features.services.SetCurrentExpertServices
 import com.klima7.services.expert.features.setup.GetCurrentExpertSetupStateUC
 import com.klima7.services.expert.features.splash.GetCurrentExpertStateUC
+import com.klima7.services.expert.usecases.RejectJobUC
 import org.koin.dsl.module
 
 val useCasesModule = module {
@@ -24,5 +25,6 @@ val useCasesModule = module {
     single { DeleteExpertUC(get(), get()) }
     single { GetJobsUC(get()) }
     single { GetAvailableJobsIdsUC(get()) }
+    single { RejectJobUC(get()) }
 
 }
