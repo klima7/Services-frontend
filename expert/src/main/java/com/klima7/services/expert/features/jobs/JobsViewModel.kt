@@ -9,6 +9,7 @@ import androidx.paging.filter
 import com.klima7.services.common.core.None
 import com.klima7.services.common.platform.BaseLoadViewModel
 import com.klima7.services.expert.usecases.RejectJobUC
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
 
@@ -25,6 +26,7 @@ class JobsViewModel(
     private val allJobsIds = MutableLiveData<List<String>>()
     private val visibleJobsIds = MutableLiveData<Set<String>>()
 
+    @ExperimentalCoroutinesApi
     val pagingDataFlow = allJobsIds.asFlow().flatMapLatest { list -> createPager(list).flow }
         .cachedIn(viewModelScope)
         .combine(visibleJobsIds.asFlow()) { pagingData, visibleList ->
