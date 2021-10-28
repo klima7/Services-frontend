@@ -35,7 +35,6 @@ class JobsRepository(
     }
 
     suspend fun getAvailableJobIds(): Outcome<Failure, List<String>> {
-        Log.i("Hello", "Getting jobs ids list")
         return try {
             val res = functions
                 .getHttpsCallable("jobs-getAvailableIds")
@@ -52,6 +51,38 @@ class JobsRepository(
             Log.e("Hello", "Error while getAvailableJobIds", e)
             Outcome.Failure(e.toDomain())
         }
+    }
+
+    suspend fun acceptJob(jobId: String): Outcome<Failure, None> {
+        val data = hashMapOf(
+            "id" to jobId
+        )
+        try {
+            functions
+                .getHttpsCallable("jobs-accept")
+                .call(data)
+                .await()
+        } catch(e: Exception) {
+            Log.e("Hello", "Error while acceptJob", e)
+            Outcome.Failure(e.toDomain())
+        }
+        return Outcome.Success(None())
+    }
+
+    suspend fun rejectJob(jobId: String): Outcome<Failure, None> {
+        val data = hashMapOf(
+            "id" to jobId
+        )
+        try {
+            functions
+                .getHttpsCallable("jobs-reject")
+                .call(data)
+                .await()
+        } catch(e: Exception) {
+            Log.e("Hello", "Error while rejectJob", e)
+            Outcome.Failure(e.toDomain())
+        }
+        return Outcome.Success(None())
     }
 
 }
