@@ -4,6 +4,7 @@ import com.klima7.services.expert.features.area.WorkingAreaViewModel
 import com.klima7.services.expert.features.delete.DeleteViewModel
 import com.klima7.services.expert.features.home.HomeViewModel
 import com.klima7.services.expert.features.info.InfoViewModel
+import com.klima7.services.expert.features.job.JobViewModel
 import com.klima7.services.expert.features.jobs.JobsViewModel
 import com.klima7.services.expert.features.services.ServicesViewModel
 import com.klima7.services.expert.features.services.category.ServicesCategoryViewModel
@@ -27,5 +28,6 @@ val viewModelsModule = module {
     viewModel { SettingsViewModel(get()) }
     viewModel { DeleteViewModel(get()) }
     viewModel { JobsViewModel(get(), get(), get()) }
+    viewModel { JobViewModel() }
 
 }
