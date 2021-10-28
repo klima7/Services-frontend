@@ -1,16 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="100dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp">
 
         <TextView
-            android:id="@+id/job_text"
+            android:id="@+id/job_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            tools:text="Malowanie mieszkania"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/job_client_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Ryszard Stępień"
+            android:textColor="@android:color/darker_gray"
+            />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            />
+
+        <TextView
+            android:id="@+id/job_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Witam, do złożenia jest zestaw mebli z Ikei. Składa się on z 15 elementów"
+            />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Czas realizacji:"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/job_realization_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Czas realizacji:"
+            />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            />
+
+        <TextView
+            android:id="@+id/job_creation_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="3 dni temu"
+            android:textColor="@android:color/darker_gray"
             />
 
     </LinearLayout>

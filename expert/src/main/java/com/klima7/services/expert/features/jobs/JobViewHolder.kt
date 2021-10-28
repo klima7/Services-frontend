@@ -25,7 +25,14 @@ class JobViewHolder private constructor(val binding: ElementJobBinding):
     fun bind(job: Job?) {
         if(job == null)
             return
-        binding.jobText.text = job.id
+        binding.apply {
+            jobTitle.text = job.serviceName
+            jobClientName.text = job.clientName
+            jobDescription.text = job.description
+            jobRealizationTime.text = job.realizationTime
+            jobCreationTime.text = "4 godziny temu" // TODO
+        }
+
     }
 
 }
