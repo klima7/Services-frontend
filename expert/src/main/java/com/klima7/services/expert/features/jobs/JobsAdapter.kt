@@ -32,7 +32,7 @@ class JobsAdapter(
     }
 
     interface OnJobListener {
-        fun onJobClicked(position: Int);
+        fun onJobClicked(job: Job);
     }
 
 }

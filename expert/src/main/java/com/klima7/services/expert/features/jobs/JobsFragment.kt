@@ -1,17 +1,21 @@
 package com.klima7.services.expert.features.jobs
 
+import android.content.Intent
 import android.graphics.Canvas
 import android.util.Log
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.klima7.services.common.models.Job
 import com.klima7.services.common.platform.BaseLoadFragment
 import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentJobsBinding
+import com.klima7.services.expert.features.job.JobActivity
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collectLatest
@@ -59,8 +63,11 @@ class JobsFragment : BaseLoadFragment<FragmentJobsBinding>(), JobsAdapter.OnJobL
             .show()
     }
 
-    override fun onJobClicked(position: Int) {
-        Log.i("Hello", "Item clicked $position")
+    override fun onJobClicked(job: Job) {
+        val intent = Intent(requireContext(), JobActivity::class.java)
+        val bundle = bundleOf("jobId" to job.id)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 
     private val itemTouchHelperCallback =

@@ -17,7 +17,7 @@ abstract class BaseActivity: AppCompatActivity() {
         savedInstanceState ?:
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.fragmentContainer, fragment())
+                .add(R.id.fragmentContainer, fragment().apply { arguments=intent.extras })
                 .commit()
     }
 

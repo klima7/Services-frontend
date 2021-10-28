@@ -27,13 +27,16 @@ class JobViewHolder private constructor(
     fun bind(job: Job?) {
         if(job == null)
             return
+
         binding.apply {
             jobTitle.text = job.serviceName
             jobClientName.text = job.clientName
             jobDescription.text = job.description
             jobRealizationTime.text = job.realizationTime
             jobCreationTime.text = "4 godziny temu" // TODO
-            binding.jobCard.setOnClickListener { onJobListener.onJobClicked(bindingAdapterPosition) }
+            binding.jobCard.setOnClickListener {
+                onJobListener.onJobClicked(job)
+            }
         }
 
     }
