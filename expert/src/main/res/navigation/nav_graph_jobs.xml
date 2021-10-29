@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_jobs"
+    app:startDestination="@id/newJobsListFragment">
+    <fragment
+        android:id="@+id/newJobsListFragment"
+        android:name="com.klima7.services.expert.features.jobs.newjobs.NewJobsListFragment"
+        android:label="NewJobsListFragment" />
+    <fragment
+        android:id="@+id/rejectedJobsListFragment"
+        android:name="com.klima7.services.expert.features.jobs.rejected.RejectedJobsListFragment"
+        android:label="RejectedJobsListFragment" />
+</navigation>
