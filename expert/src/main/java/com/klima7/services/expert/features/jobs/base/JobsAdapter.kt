@@ -1,4 +1,4 @@
-package com.klima7.services.expert.features.jobs
+package com.klima7.services.expert.features.jobs.base
 
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter

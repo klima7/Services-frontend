@@ -1,10 +1,7 @@
-package com.klima7.services.expert.features.jobs
+package com.klima7.services.expert.features.jobs.base
 
-import android.util.Log
 import com.klima7.services.common.core.BaseUC
-import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
-import com.klima7.services.common.core.onSuccess
 import com.klima7.services.common.data.repositories.JobsRepository
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Job
