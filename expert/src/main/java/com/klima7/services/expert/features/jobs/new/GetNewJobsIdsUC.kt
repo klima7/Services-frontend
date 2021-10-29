@@ -8,5 +8,5 @@ class GetNewJobsIdsUC(
     private val jobsRepository: JobsRepository
 ): BaseGetJobsIdsUC() {
 
-    override suspend fun execute(params: None) = jobsRepository.getAvailableJobIds()
+    override suspend fun execute(params: None) = jobsRepository.getNewJobsIds()
 }
