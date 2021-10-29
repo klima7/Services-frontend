@@ -65,7 +65,7 @@ abstract class BaseJobsListViewModel(
         )
     }
 
-    private fun hideJob(jobId: String) {
+    protected fun hideJob(jobId: String) {
         val cVisibleJobsIds = visibleJobsIds.value
         if(cVisibleJobsIds != null) {
             val newVisibleJobsIds = cVisibleJobsIds.toMutableSet()
@@ -74,7 +74,7 @@ abstract class BaseJobsListViewModel(
         }
     }
 
-    private fun showJob(jobId: String) {
+    protected fun showJob(jobId: String) {
         val cVisibleJobsIds = visibleJobsIds.value
         if(cVisibleJobsIds != null) {
             val newVisibleJobsIds = cVisibleJobsIds.toMutableSet()

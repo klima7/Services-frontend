@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.common.models.Job
 import com.klima7.services.common.platform.BaseLoadFragment
@@ -48,5 +49,9 @@ abstract class BaseJobsListFragment : BaseLoadFragment<FragmentJobsListBinding>(
         val bundle = bundleOf("jobId" to job.id)
         intent.putExtras(bundle)
         startActivity(intent)
+    }
+
+    protected fun attachItemTouchHelper(itemTouchHelper: ItemTouchHelper) {
+        itemTouchHelper.attachToRecyclerView(binding.jobsLoadList.recycler)
     }
 }
