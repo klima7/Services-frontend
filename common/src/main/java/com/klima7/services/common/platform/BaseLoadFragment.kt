@@ -1,6 +1,7 @@
 package com.klima7.services.common.platform
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,12 +10,16 @@ import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.IdRes
+import androidx.core.view.children
 import androidx.databinding.ViewDataBinding
 import com.klima7.services.common.R
 import com.klima7.services.common.ui.FailureDescription
 import com.klima7.services.common.extensions.observeOnce
 
-abstract class BaseLoadFragment<DB: ViewDataBinding>: BaseFragment<DB>() {
+abstract class BaseLoadFragment<DB: ViewDataBinding>(
+    private val mainId: Int? = null
+): BaseFragment<DB>() {
 
     abstract override val viewModel: BaseLoadViewModel
 
@@ -33,12 +38,26 @@ abstract class BaseLoadFragment<DB: ViewDataBinding>: BaseFragment<DB>() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mainPart = super.onCreateView(inflater, container, savedInstanceState)!!
-        val frame = FrameLayout(requireContext())
-        mixin = LayoutInflater.from(context).inflate(R.layout.part_load, frame, false)
-        frame.addView(mainPart)
-        frame.addView(mixin)
-        return frame
+        val rootView = super.onCreateView(inflater, container, savedInstanceState)!!
+
+        if(mainId == null) {
+            mainPart = rootView
+            val frame = FrameLayout(requireContext())
+            frame.addView(mainPart)
+            mixin = LayoutInflater.from(context).inflate(R.layout.part_load, frame, false)
+            frame.addView(mixin)
+            return frame
+        }
+
+        else {
+            Log.i("ABC", "Not null")
+            val frame = rootView.findViewById<FrameLayout>(mainId)
+            mainPart = frame.getChildAt(0)
+            mixin = LayoutInflater.from(context).inflate(R.layout.part_load, frame, false)
+            frame.addView(mixin)
+            return rootView
+        }
+
     }
 
     override fun init() {
@@ -46,7 +65,6 @@ abstract class BaseLoadFragment<DB: ViewDataBinding>: BaseFragment<DB>() {
 
         // Get views
         failurePart = mixin.findViewById(R.id.load_failure)
-        mainPart = binding.root
         touchInterceptor = mixin.findViewById(R.id.load_touch_interceptor)
         failureImage = mixin.findViewById(R.id.load_failure_image)
         failureMessage = mixin.findViewById(R.id.load_failure_message)
