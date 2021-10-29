@@ -28,6 +28,6 @@ val viewModelsModule = module {
     viewModel { SettingsViewModel(get()) }
     viewModel { DeleteViewModel(get()) }
     viewModel { JobsViewModel(get(), get(), get()) }
-    viewModel { JobViewModel() }
+    viewModel { JobViewModel(get()) }
 
 }
