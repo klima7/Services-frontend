@@ -20,10 +20,6 @@ abstract class BaseJobsListViewModel(
     private val getJobsUC: GetJobsUC,
 ): BaseLoadViewModel() {
 
-    sealed class Event: BaseEvent() {
-        object ShowRejectFailure: Event()
-    }
-
     private val allJobsIds = MutableLiveData<List<String>>()
     private val visibleJobsIds = MutableLiveData<Set<String>>()
 

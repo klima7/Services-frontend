@@ -8,26 +8,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/jobs_tabs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabMaxWidth="0dp"
-            app:tabGravity="fill"
-            app:tabMode="fixed">
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nowe" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Odrzucone" />
-
-        </com.google.android.material.tabs.TabLayout>
-
         <com.klima7.services.common.components.views.LoadRecycleView
             android:id="@+id/jobs_load_list"
             android:layout_width="match_parent"

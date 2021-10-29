@@ -1,9 +1,7 @@
 package com.klima7.services.expert.features.jobs
 
-import android.util.Log
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayout
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
@@ -21,9 +19,21 @@ class JobsFragment : BaseFragment<FragmentJobsBinding>(), TabLayout.OnTabSelecte
     override fun init() {
         super.init()
 
-        binding.jobsTabs.addOnTabSelectedListener(this)
         val navHostFragment = childFragmentManager.findFragmentById(R.id.jobs_nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
+
+        selectProperTab()
+
+        binding.jobsTabs.addOnTabSelectedListener(this)
+    }
+
+    private fun selectProperTab() {
+        val tabIndex = when (viewModel.selectedTab.value) {
+            JobsViewModel.Tab.New -> 0
+            JobsViewModel.Tab.Rejected -> 1
+            else -> 0
+        }
+        binding.jobsTabs.getTabAt(tabIndex)?.select()
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
