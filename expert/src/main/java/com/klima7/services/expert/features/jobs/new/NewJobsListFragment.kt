@@ -57,7 +57,7 @@ class NewJobsListFragment: BaseJobsListFragment() {
                             R.color.reject_job_background
                         )
                     )
-                    .addActionIcon(R.drawable.icon_job_reject_list)
+                    .addActionIcon(R.drawable.icon_jobs_rejected_swipe)
                     .create()
                     .decorate()
 

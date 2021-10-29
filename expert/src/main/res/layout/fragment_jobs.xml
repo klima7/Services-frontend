@@ -14,17 +14,20 @@
             android:layout_height="wrap_content"
             app:tabMaxWidth="0dp"
             app:tabGravity="fill"
-            app:tabMode="fixed">
+            app:tabMode="fixed"
+            app:tabInlineLabel="true">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nowe" />
+                android:text="Nowe"
+                android:icon="@drawable/icon_jobs_new" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Odrzucone" />
+                android:text="Odrzucone"
+                android:icon="@drawable/icon_jobs_rejected"/>
 
         </com.google.android.material.tabs.TabLayout>
 
