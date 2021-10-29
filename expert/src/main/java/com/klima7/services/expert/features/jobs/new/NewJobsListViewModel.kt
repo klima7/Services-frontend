@@ -1,4 +1,4 @@
-package com.klima7.services.expert.features.jobs.newjobs
+package com.klima7.services.expert.features.jobs.new
 
 import com.klima7.services.expert.features.jobs.base.BaseJobsListViewModel
 import com.klima7.services.expert.features.jobs.base.GetJobsUC

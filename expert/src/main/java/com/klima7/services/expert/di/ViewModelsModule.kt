@@ -6,7 +6,7 @@ import com.klima7.services.expert.features.home.HomeViewModel
 import com.klima7.services.expert.features.info.InfoViewModel
 import com.klima7.services.expert.features.job.JobViewModel
 import com.klima7.services.expert.features.jobs.JobsViewModel
-import com.klima7.services.expert.features.jobs.newjobs.NewJobsListViewModel
+import com.klima7.services.expert.features.jobs.new.NewJobsListViewModel
 import com.klima7.services.expert.features.jobs.rejected.RejectedJobsListViewModel
 import com.klima7.services.expert.features.services.ServicesViewModel
 import com.klima7.services.expert.features.services.category.ServicesCategoryViewModel

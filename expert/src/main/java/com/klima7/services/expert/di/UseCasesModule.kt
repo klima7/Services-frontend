@@ -4,7 +4,7 @@ import com.klima7.services.expert.usecases.GetCurrentExpertUC
 import com.klima7.services.expert.features.area.SetCurrentExpertWorkingAreaUC
 import com.klima7.services.expert.features.delete.DeleteExpertUC
 import com.klima7.services.expert.features.info.SetCurrentExpertInfoAndImageUC
-import com.klima7.services.expert.features.jobs.newjobs.GetNewJobsIdsUC
+import com.klima7.services.expert.features.jobs.new.GetNewJobsIdsUC
 import com.klima7.services.expert.features.jobs.base.GetJobsUC
 import com.klima7.services.expert.features.jobs.rejected.GetRejectedJobsIdsUC
 import com.klima7.services.expert.features.services.GetCategorisedAndMarkedServices
