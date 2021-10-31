@@ -35,6 +35,7 @@
                 android:id="@+id/job_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:job_job="@{viewmodel.job}"
                 />
 
         </com.klima7.services.common.components.views.LoadAreaView>

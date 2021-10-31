@@ -12,16 +12,6 @@ class JobFragment: BaseFragment<FragmentJobBinding>() {
 
     private lateinit var jobId: String
 
-    override fun init() {
-        super.init()
-
-        viewModel.job.observe(viewLifecycleOwner, { job ->
-            if(job != null) {
-                binding.jobView.setJob(job)
-            }
-        })
-    }
-
     override fun onFirstCreation() {
         super.onFirstCreation()
 

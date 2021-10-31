@@ -4,4 +4,8 @@
     <declare-styleable name="LoadArea">
     </declare-styleable>
 
+    <declare-styleable name="Job">
+        <attr format="boolean" name="job_short"/>
+    </declare-styleable>
+
 </resources>

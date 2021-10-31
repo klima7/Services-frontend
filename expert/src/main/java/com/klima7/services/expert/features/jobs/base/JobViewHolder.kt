@@ -1,14 +1,13 @@
 package com.klima7.services.expert.features.jobs.base
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.klima7.services.common.R
-import com.klima7.services.common.databinding.ElementCommentBinding
 import com.klima7.services.common.databinding.ElementJobBinding
 import com.klima7.services.common.models.Job
-import com.klima7.services.common.models.Rating
 
 class JobViewHolder private constructor(
     private val binding: ElementJobBinding,
@@ -28,17 +27,11 @@ class JobViewHolder private constructor(
         if(job == null)
             return
 
-        binding.apply {
-            jobTitle.text = job.serviceName
-            jobClientName.text = job.clientName
-            jobDescription.text = job.description
-            jobRealizationTime.text = job.realizationTime
-            jobCreationTime.text = "4 godziny temu" // TODO
-            binding.jobCard.setOnClickListener {
-                onJobListener.onJobClicked(job)
-            }
+        binding.job = job
+        binding.jobelemFrame.setOnClickListener {
+            onJobListener.onJobClicked(job)
+            Log.i("Bye", "Clicked")
         }
-
     }
 
 }

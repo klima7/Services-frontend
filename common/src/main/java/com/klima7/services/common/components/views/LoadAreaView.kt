@@ -34,7 +34,7 @@ import java.lang.IllegalStateException
         ),
     ]
 )
-class BindingMethods
+class LoadAreaBindingMethods
 
 class LoadAreaView : FrameLayout {
 
