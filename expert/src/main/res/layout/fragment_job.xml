@@ -14,11 +14,20 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@{viewmodel.title!=null ? viewmodel.title : @string/job_title_placeholder}"
+            app:subtitle="@{viewmodel.subtitle}"
+            style="@style/ToolBar"
+            />
+
         <com.klima7.services.common.components.views.LoadAreaView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:la_state="@{viewmodel.loadState}"
-            app:la_failure="@{viewmodel.failure}"
+            app:la_failure="@{viewmodel.loadFailure}"
             app:la_onRefresh="@{() -> viewmodel.refresh()}"
             >
 
