@@ -1,9 +1,9 @@
 package com.klima7.services.expert.features.services
 
+import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.platform.BaseLoadFragment
 import com.klima7.services.common.platform.BaseViewModel
-import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentServicesBinding
 import com.klima7.services.expert.features.services.multicategory.ServicesMultiCategoriesFragment

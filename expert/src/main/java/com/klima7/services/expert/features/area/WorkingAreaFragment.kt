@@ -5,11 +5,11 @@ import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.api.model.TypeFilter
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
-import com.klima7.services.common.models.Failure
 import com.klima7.services.common.components.areavisual.AreaVisualizationFragment
+import com.klima7.services.common.components.faildialog.FailureDialogFragment
+import com.klima7.services.common.models.Failure
 import com.klima7.services.common.platform.BaseLoadFragment
 import com.klima7.services.common.platform.BaseViewModel
-import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentAreaBinding
 import com.klima7.services.expert.features.area.ClearableAutocompleteSupportFragment.OnClearListener

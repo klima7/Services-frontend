@@ -1,6 +1,5 @@
 package com.klima7.services.expert.features.jobs.base
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
@@ -10,7 +9,6 @@ import androidx.paging.cachedIn
 import androidx.paging.filter
 import com.klima7.services.common.core.None
 import com.klima7.services.common.platform.BaseLoadViewModel
-import com.klima7.services.expert.usecases.RejectJobUC
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
@@ -29,7 +27,6 @@ abstract class BaseJobsListViewModel(
         .combine(visibleJobsIds.asFlow()) { pagingData, visibleList ->
             pagingData.filter { job ->
                 val result = visibleList.contains(job.id)
-                Log.i("Hello", "Checking ${job.id} -> $result")
                 result
             }
         }
@@ -54,7 +51,6 @@ abstract class BaseJobsListViewModel(
             viewModelScope,
             None(),
             { failure ->
-                Log.i("Hello", "getIds failure: $failure")
                 showFailure(failure)
             },
             { ids ->

@@ -13,7 +13,6 @@ import androidx.databinding.BindingMethod
 import com.klima7.services.common.R
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.ui.FailureDescription
-import java.lang.IllegalStateException
 
 @androidx.databinding.BindingMethods(
     value = [

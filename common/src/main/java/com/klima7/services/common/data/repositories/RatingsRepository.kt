@@ -5,13 +5,12 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.functions.FirebaseFunctions
+import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.converters.toDomain
 import com.klima7.services.common.data.entities.RatingEntity
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Rating
-import com.klima7.services.common.core.Outcome
 import kotlinx.coroutines.tasks.await
-import java.lang.Exception
 
 class RatingsRepository(
     private val firestore: FirebaseFirestore,

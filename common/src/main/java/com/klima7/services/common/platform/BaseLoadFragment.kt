@@ -1,7 +1,6 @@
 package com.klima7.services.common.platform
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,12 +9,10 @@ import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.IdRes
-import androidx.core.view.children
 import androidx.databinding.ViewDataBinding
 import com.klima7.services.common.R
-import com.klima7.services.common.ui.FailureDescription
 import com.klima7.services.common.extensions.observeOnce
+import com.klima7.services.common.ui.FailureDescription
 
 abstract class BaseLoadFragment<DB: ViewDataBinding>(
     private val mainId: Int? = null
@@ -50,7 +47,6 @@ abstract class BaseLoadFragment<DB: ViewDataBinding>(
         }
 
         else {
-            Log.i("ABC", "Not null")
             val frame = rootView.findViewById<FrameLayout>(mainId)
             mainPart = frame.getChildAt(0)
             mixin = LayoutInflater.from(context).inflate(R.layout.part_load, frame, false)

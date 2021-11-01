@@ -2,6 +2,7 @@ package com.klima7.services.common.data.repositories
 
 import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
+import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.converters.toDomain
 import com.klima7.services.common.data.entities.CategoryEntity
 import com.klima7.services.common.data.entities.ServiceEntity
@@ -9,7 +10,6 @@ import com.klima7.services.common.data.extensions.getCacheFirst
 import com.klima7.services.common.models.Category
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Service
-import com.klima7.services.common.core.Outcome
 import kotlinx.coroutines.tasks.await
 
 class ServicesRepository(

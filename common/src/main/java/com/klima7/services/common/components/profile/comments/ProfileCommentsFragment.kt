@@ -3,11 +3,11 @@ package com.klima7.services.common.components.profile.comments
 import android.content.Intent
 import androidx.core.os.bundleOf
 import com.klima7.services.common.R
+import com.klima7.services.common.components.comments.CommentsActivity
+import com.klima7.services.common.components.profile.ProfileViewModel
 import com.klima7.services.common.databinding.FragmentProfileCommentsBinding
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
-import com.klima7.services.common.components.comments.CommentsActivity
-import com.klima7.services.common.components.profile.ProfileViewModel
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

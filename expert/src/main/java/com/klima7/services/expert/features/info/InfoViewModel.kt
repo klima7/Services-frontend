@@ -4,14 +4,14 @@ import android.webkit.URLUtil
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
+import com.klima7.services.common.core.None
+import com.klima7.services.common.extensions.nullifyBlank
 import com.klima7.services.common.models.Expert
 import com.klima7.services.common.models.ExpertInfo
+import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.ProfileImage
-import com.klima7.services.common.core.None
 import com.klima7.services.common.platform.BaseLoadViewModel
 import com.klima7.services.common.platform.CombinedLiveData
-import com.klima7.services.common.extensions.nullifyBlank
-import com.klima7.services.common.models.Failure
 import com.klima7.services.expert.usecases.GetCurrentExpertUC
 
 class InfoViewModel(

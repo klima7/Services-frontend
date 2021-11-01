@@ -1,9 +1,9 @@
 package com.klima7.services.common.components.profile.contact
 
 import com.klima7.services.common.R
+import com.klima7.services.common.components.profile.ProfileViewModel
 import com.klima7.services.common.databinding.FragmentProfileContactBinding
 import com.klima7.services.common.platform.BaseFragment
-import com.klima7.services.common.components.profile.ProfileViewModel
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

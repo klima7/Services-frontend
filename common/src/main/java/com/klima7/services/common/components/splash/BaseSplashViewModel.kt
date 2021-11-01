@@ -1,8 +1,8 @@
 package com.klima7.services.common.components.splash
 
 import androidx.lifecycle.viewModelScope
-import com.klima7.services.common.models.UserState
 import com.klima7.services.common.core.None
+import com.klima7.services.common.models.UserState
 import com.klima7.services.common.platform.BaseLoadViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

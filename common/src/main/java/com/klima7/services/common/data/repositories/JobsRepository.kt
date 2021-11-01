@@ -17,7 +17,6 @@ class JobsRepository(
 ) {
 
     suspend fun getJob(id: String): Outcome<Failure, Job> {
-        Log.i("Hello", "Getting job $id")
         try {
             val snapshot = firestore
                 .collection("jobs")

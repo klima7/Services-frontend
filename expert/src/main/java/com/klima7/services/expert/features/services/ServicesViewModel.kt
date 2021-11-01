@@ -1,9 +1,9 @@
 package com.klima7.services.expert.features.services
 
 import androidx.lifecycle.viewModelScope
+import com.klima7.services.common.core.None
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Service
-import com.klima7.services.common.core.None
 import com.klima7.services.common.platform.BaseLoadViewModel
 
 class ServicesViewModel(

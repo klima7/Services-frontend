@@ -4,9 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.model.LatLng
+import com.klima7.services.common.core.None
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.WorkingArea
-import com.klima7.services.common.core.None
 import com.klima7.services.common.platform.BaseLoadViewModel
 import com.klima7.services.common.ui.toLatLng
 import com.klima7.services.expert.usecases.GetCurrentExpertUC

@@ -1,12 +1,12 @@
 package com.klima7.services.expert.usecases
 
+import com.klima7.services.common.core.BaseUC
+import com.klima7.services.common.core.None
+import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.repositories.AuthRepository
 import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.models.Expert
 import com.klima7.services.common.models.Failure
-import com.klima7.services.common.core.BaseUC
-import com.klima7.services.common.core.None
-import com.klima7.services.common.core.Outcome
 
 class GetCurrentExpertUC(
     private val authRepository: AuthRepository,

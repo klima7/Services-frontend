@@ -1,11 +1,11 @@
 package com.klima7.services.expert.features.info
 
-import com.klima7.services.common.data.repositories.ExpertsRepository
-import com.klima7.services.common.models.ExpertInfo
-import com.klima7.services.common.models.Failure
 import com.klima7.services.common.core.BaseUC
 import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
+import com.klima7.services.common.data.repositories.ExpertsRepository
+import com.klima7.services.common.models.ExpertInfo
+import com.klima7.services.common.models.Failure
 
 class SetCurrentExpertInfoAndImageUC(
     private val expertsRepository: ExpertsRepository

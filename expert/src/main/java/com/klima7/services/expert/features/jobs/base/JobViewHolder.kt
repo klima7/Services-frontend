@@ -1,6 +1,5 @@
 package com.klima7.services.expert.features.jobs.base
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -30,7 +29,6 @@ class JobViewHolder private constructor(
         binding.job = job
         binding.jobelemFrame.setOnClickListener {
             onJobListener.onJobClicked(job)
-            Log.i("Bye", "Clicked")
         }
     }
 

@@ -3,12 +3,12 @@ package com.klima7.services.common.components.profile.area
 import android.content.Intent
 import android.net.Uri
 import com.klima7.services.common.R
+import com.klima7.services.common.components.areavisual.AreaVisualizationFragment
+import com.klima7.services.common.components.profile.ProfileViewModel
 import com.klima7.services.common.databinding.FragmentProfileAreaBinding
 import com.klima7.services.common.models.Coordinates
-import com.klima7.services.common.components.areavisual.AreaVisualizationFragment
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
-import com.klima7.services.common.components.profile.ProfileViewModel
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

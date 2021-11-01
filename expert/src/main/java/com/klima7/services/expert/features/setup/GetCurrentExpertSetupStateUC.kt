@@ -1,10 +1,10 @@
 package com.klima7.services.expert.features.setup
 
-import com.klima7.services.common.models.Expert
-import com.klima7.services.common.models.Failure
 import com.klima7.services.common.core.BaseUC
 import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
+import com.klima7.services.common.models.Expert
+import com.klima7.services.common.models.Failure
 import com.klima7.services.expert.usecases.GetCurrentExpertUC
 
 class GetCurrentExpertSetupStateUC(

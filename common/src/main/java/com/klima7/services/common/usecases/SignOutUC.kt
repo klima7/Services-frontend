@@ -1,10 +1,10 @@
 package com.klima7.services.common.usecases
 
-import com.klima7.services.common.data.repositories.AuthRepository
-import com.klima7.services.common.models.Failure
 import com.klima7.services.common.core.BaseUC
 import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
+import com.klima7.services.common.data.repositories.AuthRepository
+import com.klima7.services.common.models.Failure
 
 class SignOutUC(
     private val authRepository: AuthRepository

@@ -9,7 +9,6 @@ import com.klima7.services.common.data.converters.toDomain
 import com.klima7.services.common.data.entities.ClientEntity
 import com.klima7.services.common.models.Client
 import com.klima7.services.common.models.ClientInfo
-import com.klima7.services.common.models.ExpertInfo
 import com.klima7.services.common.models.Failure
 import kotlinx.coroutines.tasks.await
 

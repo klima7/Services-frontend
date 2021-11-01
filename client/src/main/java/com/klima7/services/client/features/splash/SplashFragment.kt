@@ -1,7 +1,6 @@
 package com.klima7.services.client.features.splash
 
 import android.content.Intent
-import android.util.Log
 import com.klima7.services.client.R
 import com.klima7.services.client.features.home.HomeActivity
 import com.klima7.services.client.features.login.LoginActivity
@@ -15,13 +14,11 @@ class SplashFragment: BaseSplashFragment(R.string.app_subtitle) {
     override val viewModel: SplashViewModel by viewModel()
 
     override fun showLoginScreen() {
-        Log.i("Hello", "showLoginScreen")
         val intent = Intent(activity, LoginActivity::class.java)
         loginLauncher.launch(intent)
     }
 
     override fun showSetupScreen() {
-        Log.i("Hello", "showSetupScreen")
         val intent = Intent(activity, SetupActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
         startActivity(intent)
@@ -29,7 +26,6 @@ class SplashFragment: BaseSplashFragment(R.string.app_subtitle) {
     }
 
     override fun showHomeScreen() {
-        Log.i("Hello", "showHomeScreen")
         val intent = Intent(activity, HomeActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
         startActivity(intent)

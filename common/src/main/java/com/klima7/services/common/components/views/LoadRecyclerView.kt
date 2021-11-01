@@ -2,12 +2,10 @@ package com.klima7.services.common.components.views
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.databinding.BindingMethod
 import androidx.databinding.DataBindingUtil
@@ -18,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.ElementLoadListStateBinding
 import com.klima7.services.common.databinding.ViewLoadListBinding
-import java.util.*
 
 @androidx.databinding.BindingMethods(
     value = [
@@ -89,17 +86,14 @@ class LoadRecyclerView(context: Context, attrs: AttributeSet?) : FrameLayout(con
         adapter.registerAdapterDataObserver(object: RecyclerView.AdapterDataObserver() {
             override fun onItemRangeRemoved(positionStart: Int, itemCount: Int) {
                 super.onItemRangeRemoved(positionStart, itemCount)
-                Log.i("secret", "removed")
                 if(adapter.itemCount == 0) {
                     empty = true
-                    Log.i("secret", "Empty 100%")
                 }
                 updateView()
             }
 
             override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
                 super.onItemRangeInserted(positionStart, itemCount)
-                Log.i("secret", "inserted")
                 empty = false
                 updateView()
             }

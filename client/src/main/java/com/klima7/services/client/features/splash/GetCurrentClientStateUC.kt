@@ -6,7 +6,6 @@ import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.repositories.AuthRepository
 import com.klima7.services.common.data.repositories.ClientsRepository
 import com.klima7.services.common.models.Client
-import com.klima7.services.common.models.Expert
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.UserState
 

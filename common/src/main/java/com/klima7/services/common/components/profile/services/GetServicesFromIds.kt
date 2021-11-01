@@ -1,10 +1,10 @@
 package com.klima7.services.common.components.profile.services
 
+import com.klima7.services.common.core.BaseUC
+import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.repositories.ServicesRepository
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Service
-import com.klima7.services.common.core.BaseUC
-import com.klima7.services.common.core.Outcome
 
 class GetServicesFromIds(
     private val servicesRepository: ServicesRepository

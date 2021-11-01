@@ -1,9 +1,7 @@
 package com.klima7.services.common.components.views
 
 import android.content.Context
-import android.os.Parcelable
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.databinding.BindingMethod

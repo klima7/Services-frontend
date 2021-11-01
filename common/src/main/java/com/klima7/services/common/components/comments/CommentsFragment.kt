@@ -1,9 +1,6 @@
 package com.klima7.services.common.components.comments
 
-import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentCommentsBinding

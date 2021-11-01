@@ -1,8 +1,6 @@
 package com.klima7.services.expert.features.jobs.base
 
 import android.content.Intent
-import android.os.Bundle
-import android.util.Log
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -13,7 +11,6 @@ import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentJobsListBinding
 import com.klima7.services.expert.features.job.JobActivity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 

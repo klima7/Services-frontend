@@ -1,7 +1,10 @@
 package com.klima7.services.common.data.converters
 
 import com.klima7.services.common.data.entities.ExpertEntity
-import com.klima7.services.common.models.*
+import com.klima7.services.common.models.Expert
+import com.klima7.services.common.models.ExpertInfo
+import com.klima7.services.common.models.Location
+import com.klima7.services.common.models.WorkingArea
 
 fun ExpertEntity.toDomain(id: String, fromCache: Boolean): Expert {
     val info = ExpertInfo(info.name, info.company, info.description, info.phone, info.email, info.website)

@@ -1,6 +1,5 @@
 package com.klima7.services.common.components.profile.comments
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.components.comments.GetRatingsForExpertUC
@@ -38,11 +37,9 @@ class ProfileCommentsLatestViewModel(
             viewModelScope,
             GetRatingsForExpertUC.Params(expertUid, null, MAX_COMMENTS_COUNT),
             { failure ->
-                Log.i("abc", "Failure $failure")
                 showFailure(failure)
             },
             { ratings ->
-                Log.i("abc", "Success $ratings")
                 this.ratings.value = ratings
                 showMain()
             }
