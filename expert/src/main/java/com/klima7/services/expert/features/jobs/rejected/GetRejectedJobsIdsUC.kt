@@ -1,12 +1,13 @@
 package com.klima7.services.expert.features.jobs.rejected
 
-import com.klima7.services.common.core.None
-import com.klima7.services.common.data.repositories.JobsRepository
+import com.klima7.services.common.data.repositories.AuthRepository
+import com.klima7.services.common.data.repositories.JobsStatusRepository
 import com.klima7.services.expert.features.jobs.base.BaseGetJobsIdsUC
 
 class GetRejectedJobsIdsUC(
-    private val jobsRepository: JobsRepository
-): BaseGetJobsIdsUC() {
+    authRepository: AuthRepository,
+    private val jobsStatusRepository: JobsStatusRepository
+): BaseGetJobsIdsUC(authRepository) {
 
-    override suspend fun execute(params: None) = jobsRepository.getRejectedJobsIds()
+    override suspend fun getIdsPart(uid: String) = jobsStatusRepository.getRejectedJobsIds(uid)
 }

@@ -25,8 +25,8 @@ val useCasesModule = module {
     single { SetCurrentExpertInfoAndImageUC(get()) }
     single { DeleteExpertUC(get(), get()) }
     single { GetJobsUC(get()) }
-    single { GetNewJobsIdsUC(get()) }
-    single { GetRejectedJobsIdsUC(get()) }
+    single { GetNewJobsIdsUC(get(), get()) }
+    single { GetRejectedJobsIdsUC(get(), get()) }
     single { RejectJobUC(get()) }
 
 }
