@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.klima7.services.common.components.views.LoadRecycleView
+        <com.klima7.services.common.components.views.LoadRecyclerView
             android:id="@+id/comments_load_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

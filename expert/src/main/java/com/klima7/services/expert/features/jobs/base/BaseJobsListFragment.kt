@@ -44,6 +44,10 @@ abstract class BaseJobsListFragment : BaseLoadFragment<FragmentJobsListBinding>(
         }
     }
 
+    fun refresh() {
+        viewModel.refresh()
+    }
+
     override fun onJobClicked(job: Job) {
         val intent = Intent(requireContext(), JobActivity::class.java)
         val bundle = bundleOf("jobId" to job.id)

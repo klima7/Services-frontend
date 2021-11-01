@@ -7,6 +7,7 @@ import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentJobsBinding
+import com.klima7.services.expert.features.jobs.base.BaseJobsListFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -25,6 +26,12 @@ class JobsFragment : BaseFragment<FragmentJobsBinding>(), TabLayout.OnTabSelecte
         selectProperTab()
 
         binding.jobsTabs.addOnTabSelectedListener(this)
+
+        binding.jobsRefreshLayout.setOnRefreshListener {
+            binding.jobsRefreshLayout.isRefreshing = false
+            val fragment = navHostFragment?.childFragmentManager?.fragments?.get(0) as BaseJobsListFragment
+            fragment.refresh()
+        }
     }
 
     private fun selectProperTab() {

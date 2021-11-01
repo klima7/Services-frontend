@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.databinding.BindingMethod
 import androidx.databinding.DataBindingUtil
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
@@ -19,12 +20,23 @@ import com.klima7.services.common.databinding.ElementLoadListStateBinding
 import com.klima7.services.common.databinding.ViewLoadListBinding
 import java.util.*
 
+@androidx.databinding.BindingMethods(
+    value = [
+        BindingMethod(
+            type = LoadRecyclerView::class,
+            attribute = "lr_onRefresh",
+            method = "setOnRefreshListener"
+        ),
+    ]
+)
+class LoadRecyclerViewBindingMethods
 
-class LoadRecycleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
+class LoadRecyclerView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
 
     private var binding: ViewLoadListBinding
 
     private var mAdapter: PagingDataAdapter<*, *>? = null
+    private var onRefreshListener: OnRefreshListener? = null
 
     init {
         val inflater = LayoutInflater.from(context)
@@ -35,7 +47,7 @@ class LoadRecycleView(context: Context, attrs: AttributeSet?) : FrameLayout(cont
     private fun init() {
         binding.loadlistRefreshButton.setOnClickListener {
             mAdapter?.apply {
-                refresh()
+                onRefreshListener?.refresh()
             }
         }
     }
@@ -57,13 +69,17 @@ class LoadRecycleView(context: Context, attrs: AttributeSet?) : FrameLayout(cont
         binding.loadlistRecycler.layoutManager = value
     }
 
+    fun setOnRefreshListener(onRefreshListener: OnRefreshListener?) {
+        this.onRefreshListener = onRefreshListener
+    }
+
     private fun setAdapterHelper(adapter: PagingDataAdapter<*, *>) {
         this.mAdapter = adapter
         addLoadStateListener(adapter)
-        val a2 = adapter.withLoadStateFooter(
+        val wrapperAdapter = adapter.withLoadStateFooter(
             footer = SimpleLoadStateAdapter { adapter.retry() }
         )
-        binding.loadlistRecycler.adapter = a2
+        binding.loadlistRecycler.adapter = wrapperAdapter
     }
 
     private fun addLoadStateListener(adapter: PagingDataAdapter<*, *>) {
@@ -84,10 +100,10 @@ class LoadRecycleView(context: Context, attrs: AttributeSet?) : FrameLayout(cont
                     }
                     else -> null
                 }
-                errorState?.let {
-                    Log.e("secret", "error", it.error)
-                    Toast.makeText(context, it.error.message, Toast.LENGTH_LONG).show()
-                    when(it.error) {
+                errorState?.let { error ->
+                    Log.e("secret", "error", error.error)
+                    Toast.makeText(context, error.error.message, Toast.LENGTH_LONG).show()
+                    when(error.error) {
                         is NoSuchElementException -> Log.i("secret", "Empty list")
                         else -> Log.i("secret", "")
                     }
@@ -123,5 +139,9 @@ class LoadRecycleView(context: Context, attrs: AttributeSet?) : FrameLayout(cont
 
         class LoadStateViewHolder(val loadStateViewBinding: ElementLoadListStateBinding) :
             RecyclerView.ViewHolder(loadStateViewBinding.root)
+    }
+
+    interface OnRefreshListener {
+        fun refresh()
     }
 }
