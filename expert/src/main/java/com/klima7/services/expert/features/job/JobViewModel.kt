@@ -14,6 +14,10 @@ class JobViewModel(
     private val getJobUC: GetJobUC
 ): BaseViewModel() {
 
+    sealed class Event: BaseEvent() {
+        object GoBack: Event()
+    }
+
     private lateinit var jobId: String
     val job = MutableLiveData<Job>()
 
@@ -29,6 +33,10 @@ class JobViewModel(
 
     fun refresh() {
         loadContent()
+    }
+
+    fun backClicked() {
+        sendEvent(Event.GoBack)
     }
 
     private fun loadContent() {

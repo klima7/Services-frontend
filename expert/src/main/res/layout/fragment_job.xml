@@ -15,11 +15,12 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/job_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:title="@{viewmodel.title!=null ? viewmodel.title : @string/job_title_placeholder}"
             app:subtitle="@{viewmodel.subtitle}"
+            app:navigationIcon="@drawable/icon_arrow_back"
             style="@style/ToolBar"
             />
 
