@@ -13,7 +13,26 @@ class JobsStatusRepository(
 ) {
 
     suspend fun getJobStatus(expertId: String, jobId: String): Outcome<Failure, JobStatus> {
-        return Outcome.Failure(Failure.UnknownFailure)
+        return try {
+            val data = hashMapOf(
+                "expertId" to expertId,
+                "jobId" to jobId,
+            )
+            val res = functions
+                .getHttpsCallable("jobs-getJobStatus")
+                .call(data)
+                .await()
+            val statusNo = res?.data ?: return Outcome.Failure(Failure.ServerFailure)
+            return when(statusNo) {
+                0 -> Outcome.Success(JobStatus.NEW)
+                1 -> Outcome.Success(JobStatus.REJECTED)
+                2 -> Outcome.Success(JobStatus.ACCEPTED)
+                else -> Outcome.Failure(Failure.ServerFailure)
+            }
+        } catch(e: Exception) {
+            Log.e("Hello", "Error while getJobStatus", e)
+            Outcome.Failure(e.toDomain())
+        }
     }
 
     suspend fun getNewJobsIds(expertId: String): Outcome<Failure, List<String>> {
