@@ -32,12 +32,65 @@
             app:la_onRefresh="@{() -> viewmodel.refresh()}"
             >
 
-            <com.klima7.services.common.components.views.JobView
-                android:id="@+id/job_view"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:job_job="@{viewmodel.job}"
-                />
+                android:layout_height="match_parent"
+                >
+
+                <ScrollView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toTopOf="@+id/job_buttons"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.klima7.services.common.components.views.JobView
+                            android:id="@+id/job_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:job_job="@{viewmodel.job}" />
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+                <LinearLayout
+                    android:id="@+id/job_buttons"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <Button
+                        android:id="@+id/job_accept_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
+                        android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
+                        android:text="Akceptuj"
+                        android:background="@drawable/rounded_button" />
+
+                    <Button
+                        android:id="@+id/job_reject_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
+                        android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
+                        android:text="Odrzuć"
+                        android:theme="@style/Button.Red"
+                        android:background="@drawable/rounded_button_red" />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.klima7.services.common.components.views.LoadAreaView>
 

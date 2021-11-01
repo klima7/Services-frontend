@@ -105,7 +105,7 @@
             android:enabled="@{viewmodel.buttonEnabled}"
             android:text="Usuń konto"
             android:theme="@style/Button.Red"
-            android:background="@drawable/rounded_delete_button"
+            android:background="@drawable/rounded_button_red"
             android:onClick="@{()->viewmodel.deleteClicked()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
