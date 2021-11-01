@@ -13,6 +13,7 @@ import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentJobsListBinding
 import com.klima7.services.expert.features.job.JobActivity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 

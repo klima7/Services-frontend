@@ -59,7 +59,7 @@ abstract class BaseJobsListViewModel(
             },
             { ids ->
                 allJobsIds.value = ids
-                visibleJobsIds.value = ids.toMutableSet()
+                visibleJobsIds.value = ids.subList(0, 3).toMutableSet()
                 showMain()
             }
         )

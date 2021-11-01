@@ -38,6 +38,13 @@ class LoadRecyclerView(context: Context, attrs: AttributeSet?) : FrameLayout(con
     private var mAdapter: PagingDataAdapter<*, *>? = null
     private var onRefreshListener: OnRefreshListener? = null
 
+    private var empty = false
+    private var state = State.STANDARD
+
+    private enum class State {
+        LOAD, FAILURE, STANDARD
+    }
+
     init {
         val inflater = LayoutInflater.from(context)
         binding = DataBindingUtil.inflate(inflater, R.layout.view_load_list, this, true)
@@ -79,35 +86,55 @@ class LoadRecyclerView(context: Context, attrs: AttributeSet?) : FrameLayout(con
         val wrapperAdapter = adapter.withLoadStateFooter(
             footer = SimpleLoadStateAdapter { adapter.retry() }
         )
+        adapter.registerAdapterDataObserver(object: RecyclerView.AdapterDataObserver() {
+            override fun onItemRangeRemoved(positionStart: Int, itemCount: Int) {
+                super.onItemRangeRemoved(positionStart, itemCount)
+                Log.i("secret", "removed")
+                if(adapter.itemCount == 0) {
+                    empty = true
+                    Log.i("secret", "Empty 100%")
+                }
+                updateView()
+            }
+
+            override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+                super.onItemRangeInserted(positionStart, itemCount)
+                Log.i("secret", "inserted")
+                empty = false
+                updateView()
+            }
+        })
         binding.loadlistRecycler.adapter = wrapperAdapter
     }
 
     private fun addLoadStateListener(adapter: PagingDataAdapter<*, *>) {
         adapter.addLoadStateListener { loadState ->
+            state = when (loadState.refresh) {
+                is LoadState.Loading -> State.LOAD
+                is LoadState.Error -> State.FAILURE
+                else -> State.STANDARD
+            }
+            updateView()
+        }
+    }
 
-            if (loadState.refresh is LoadState.Loading) {
+    private fun updateView() {
+        if(state == State.STANDARD && empty) {
+            binding.loadlistEmpty.visibility = View.VISIBLE
+            binding.loadlistFailure.visibility = View.GONE
+            binding.loadlistSpinner.visibility = View.GONE
+        }
+        else {
+            binding.loadlistEmpty.visibility = View.GONE
+            if (state == State.STANDARD) {
+                binding.loadlistSpinner.visibility = View.GONE
+                binding.loadlistFailure.visibility = View.GONE
+            } else if (state == State.LOAD) {
                 binding.loadlistFailure.visibility = View.GONE
                 binding.loadlistSpinner.visibility = View.VISIBLE
-            }
-            else {
+            } else if (state == State.FAILURE) {
                 binding.loadlistSpinner.visibility = View.GONE
-                val errorState = when {
-                    loadState.append is LoadState.Error -> loadState.append as LoadState.Error
-                    loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
-                    loadState.refresh is LoadState.Error -> {
-                        binding.loadlistFailure.visibility = View.VISIBLE
-                        loadState.refresh as LoadState.Error
-                    }
-                    else -> null
-                }
-                errorState?.let { error ->
-                    Log.e("secret", "error", error.error)
-                    Toast.makeText(context, error.error.message, Toast.LENGTH_LONG).show()
-                    when(error.error) {
-                        is NoSuchElementException -> Log.i("secret", "Empty list")
-                        else -> Log.i("secret", "")
-                    }
-                }
+                binding.loadlistFailure.visibility = View.VISIBLE
             }
         }
     }
