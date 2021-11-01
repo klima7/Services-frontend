@@ -27,7 +27,10 @@ class JobViewBindingMethods
 
 class JobView : FrameLayout {
 
-    private val format = SimpleDateFormat("dd.MM.yyy HH:mm", Locale.US)
+    companion object {
+        private val format = SimpleDateFormat("dd.MM.yyy HH:mm", Locale.US)
+        private const val shortDescriptionLines = 3
+    }
 
     constructor(context: Context) : this(context, null, 0)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
@@ -64,7 +67,7 @@ class JobView : FrameLayout {
 
         binding.job = cJob
         binding.jobCreationTime.text = if(cJob != null) format.format(cJob.creationDate) else ""
-        binding.jobviewDescription.maxLines = 2
+        binding.jobviewDescription.maxLines = if(short) shortDescriptionLines else Int.MAX_VALUE
     }
 
 }
