@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.flatMapLatest
 
 abstract class BaseJobsListViewModel(
     private val getJobsIdsUC: BaseGetJobsIdsUC,
-    private val getJobsUC: GetJobsUC,
+    private val getCurrentExpertJobsUC: GetCurrentExpertJobsUC,
 ): BaseLoadViewModel() {
 
     private val allJobsIds = MutableLiveData<List<String>>()
@@ -25,8 +25,8 @@ abstract class BaseJobsListViewModel(
     val pagingDataFlow = allJobsIds.asFlow().flatMapLatest { list -> createPager(list).flow }
         .cachedIn(viewModelScope)
         .combine(visibleJobsIds.asFlow()) { pagingData, visibleList ->
-            pagingData.filter { job ->
-                val result = visibleList.contains(job.id)
+            pagingData.filter { expertJob ->
+                val result = visibleList.contains(expertJob.job.id)
                 result
             }
         }
@@ -42,7 +42,7 @@ abstract class BaseJobsListViewModel(
     private fun createPager(jobsIds: List<String>) = Pager(
         PagingConfig(pageSize = 5)
     ) {
-        JobsPagingSource(jobsIds, getJobsUC)
+        JobsPagingSource(jobsIds, getCurrentExpertJobsUC)
     }
 
     private fun getIds() {

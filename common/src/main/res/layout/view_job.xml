@@ -5,9 +5,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="job"
             type="com.klima7.services.common.models.Job" />
+        <variable
+            name="shorter"
+            type="Boolean" />
+        <variable
+            name="preferred"
+            type="Boolean" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -24,6 +31,31 @@
             android:orientation="vertical"
             android:paddingHorizontal="16dp"
             android:paddingVertical="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="5dp"
+                android:visibility="@{preferred ? View.VISIBLE : View.GONE}"
+                >
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/icon_star_filled"
+                    app:tint="@android:color/holo_red_light" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jesteś preferowanym wykonawcą!"
+                    android:textColor="@android:color/holo_red_light"
+                    android:textStyle="bold"
+                    />
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -75,6 +107,34 @@
                 tools:text="2 tygodnie"
                 android:text="@{job.realizationTime}"
                 />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="@{shorter ? View.GONE : View.VISIBLE}"
+                >
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="10dp"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lokalizacja:"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="2 tygodnie"
+                    android:text="@{job.location.name}"
+                    />
+
+            </LinearLayout>
 
             <Space
                 android:layout_width="0dp"

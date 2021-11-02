@@ -4,8 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.components.views.LoadAreaView
+import com.klima7.services.common.models.ExpertJob
 import com.klima7.services.common.models.Failure
-import com.klima7.services.common.models.Job
 import com.klima7.services.common.platform.BaseViewModel
 
 class JobViewModel(
@@ -17,12 +17,12 @@ class JobViewModel(
     }
 
     private lateinit var jobId: String
-    val job = MutableLiveData<Job>()
+    val expertJob = MutableLiveData<ExpertJob>()
 
     val loadState = MutableLiveData(LoadAreaView.State.LOAD)
     val loadFailure = MutableLiveData<Failure>()
-    val title = job.map { job -> job.serviceName }
-    val subtitle = job.map { job -> job.clientName }
+    val title = expertJob.map { expertJob -> expertJob.job.serviceName }
+    val subtitle = expertJob.map { expertJob -> expertJob.job.clientName }
 
     fun start(jobId: String) {
         this.jobId = jobId
@@ -47,7 +47,7 @@ class JobViewModel(
                 loadState.value = LoadAreaView.State.FAILURE
             },
             { expertJob ->
-                this.job.value = expertJob.job
+                this.expertJob.value = expertJob
                 loadState.value = LoadAreaView.State.MAIN
             }
         )

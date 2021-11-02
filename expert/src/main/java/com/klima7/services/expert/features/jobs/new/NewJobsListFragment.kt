@@ -32,9 +32,9 @@ class NewJobsListFragment: BaseJobsListFragment() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.absoluteAdapterPosition
-                val job = jobsAdapter.getJob(position)
-                if (job != null) {
-                    viewModel.jobSwiped(job.id)
+                val expertJob = jobsAdapter.getExpertJob(position)
+                if (expertJob != null) {
+                    viewModel.jobSwiped(expertJob.job.id)
                 }
             }
 

@@ -5,6 +5,7 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.klima7.services.common.models.ExpertJob
 import com.klima7.services.common.models.Job
 import com.klima7.services.common.platform.BaseLoadFragment
 import com.klima7.services.expert.R
@@ -46,9 +47,9 @@ abstract class BaseJobsListFragment : BaseLoadFragment<FragmentJobsListBinding>(
         viewModel.refresh()
     }
 
-    override fun onJobClicked(job: Job) {
+    override fun onJobClicked(expertJob: ExpertJob) {
         val intent = Intent(requireContext(), JobActivity::class.java)
-        val bundle = bundleOf("jobId" to job.id)
+        val bundle = bundleOf("jobId" to expertJob.job.id)
         intent.putExtras(bundle)
         startActivity(intent)
     }

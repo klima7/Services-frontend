@@ -3,18 +3,19 @@ package com.klima7.services.expert.features.jobs.base
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import com.klima7.services.common.models.ExpertJob
 import com.klima7.services.common.models.Job
 
 class JobsAdapter(
     private val onJobListener: OnJobListener
-): PagingDataAdapter<Job, JobViewHolder>(JobComparator) {
+): PagingDataAdapter<ExpertJob, JobViewHolder>(JobComparator) {
 
-    object JobComparator: DiffUtil.ItemCallback<Job>() {
-        override fun areItemsTheSame(oldItem: Job, newItem: Job): Boolean {
-            return oldItem.id == newItem.id
+    object JobComparator: DiffUtil.ItemCallback<ExpertJob>() {
+        override fun areItemsTheSame(oldItem: ExpertJob, newItem: ExpertJob): Boolean {
+            return oldItem.job.id == newItem.job.id
         }
 
-        override fun areContentsTheSame(oldItem: Job, newItem: Job): Boolean {
+        override fun areContentsTheSame(oldItem: ExpertJob, newItem: ExpertJob): Boolean {
             return oldItem == newItem
         }
     }
@@ -27,12 +28,12 @@ class JobsAdapter(
         holder.bind(getItem(position))
     }
 
-    fun getJob(position: Int): Job? {
+    fun getExpertJob(position: Int): ExpertJob? {
         return getItem(position)
     }
 
     interface OnJobListener {
-        fun onJobClicked(job: Job);
+        fun onJobClicked(expertJob: ExpertJob);
     }
 
 }

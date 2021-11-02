@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.ElementJobBinding
-import com.klima7.services.common.models.Job
+import com.klima7.services.common.models.ExpertJob
 
 class JobViewHolder private constructor(
     private val binding: ElementJobBinding,
@@ -22,13 +22,14 @@ class JobViewHolder private constructor(
         }
     }
 
-    fun bind(job: Job?) {
-        if(job == null)
+    fun bind(expertJob: ExpertJob?) {
+        if(expertJob == null)
             return
 
-        binding.job = job
+        binding.job = expertJob.job
+        binding.preferred = expertJob.isPreferred
         binding.jobelemFrame.setOnClickListener {
-            onJobListener.onJobClicked(job)
+            onJobListener.onJobClicked(expertJob)
         }
     }
 

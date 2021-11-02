@@ -4,8 +4,11 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import androidx.databinding.BindingAdapter
 import androidx.databinding.BindingMethod
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.InverseBindingListener
+import com.google.android.material.slider.Slider
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.ViewJobBinding
 import com.klima7.services.common.models.Job
@@ -22,6 +25,11 @@ import java.util.*
     ]
 )
 class JobViewBindingMethods
+
+@BindingAdapter( "job_preferred")
+fun setPreferred(jobView: JobView, preferred: Boolean?) {
+    jobView.setPreferred(preferred ?: false)
+}
 
 class JobView : FrameLayout {
 
@@ -40,6 +48,7 @@ class JobView : FrameLayout {
     private var binding: ViewJobBinding
     private var job: Job? = null
     private var short = false
+    private var preferred = false
 
     init {
         val inflater = LayoutInflater.from(context)
@@ -60,10 +69,19 @@ class JobView : FrameLayout {
         requestLayout()
     }
 
+    fun setPreferred(preferred: Boolean) {
+        this.preferred = preferred
+        refreshView()
+        invalidate()
+        requestLayout()
+    }
+
     private fun refreshView() {
         val cJob = job
 
         binding.job = cJob
+        binding.shorter = short
+        binding.preferred = preferred
         binding.jobCreationTime.text = if(cJob != null) format.format(cJob.creationDate) else ""
         binding.jobviewDescription.maxLines = if(short) shortDescriptionLines else Int.MAX_VALUE
     }
