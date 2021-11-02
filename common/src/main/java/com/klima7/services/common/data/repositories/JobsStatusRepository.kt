@@ -7,6 +7,7 @@ import com.klima7.services.common.data.converters.toDomain
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.JobStatus
 import kotlinx.coroutines.tasks.await
+import java.util.*
 
 class JobsStatusRepository(
     private val functions: FirebaseFunctions
@@ -22,7 +23,9 @@ class JobsStatusRepository(
                 .getHttpsCallable("jobs-getJobStatus")
                 .call(data)
                 .await()
-            val statusNo = res?.data ?: return Outcome.Failure(Failure.ServerFailure)
+            Log.i("Hello", "res: ${res.data}")
+            val response = res?.data ?: return Outcome.Failure(Failure.ServerFailure)
+            val statusNo = (response as Map<*, *>)["status"]
             return when(statusNo) {
                 0 -> Outcome.Success(JobStatus.NEW)
                 1 -> Outcome.Success(JobStatus.REJECTED)

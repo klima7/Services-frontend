@@ -3,6 +3,7 @@ package com.klima7.services.expert.di
 import com.klima7.services.expert.features.area.SetCurrentExpertWorkingAreaUC
 import com.klima7.services.expert.features.delete.DeleteExpertUC
 import com.klima7.services.expert.features.info.SetCurrentExpertInfoAndImageUC
+import com.klima7.services.expert.features.job.GetCurrentExpertJobUC
 import com.klima7.services.expert.features.jobs.base.GetJobsUC
 import com.klima7.services.expert.features.jobs.new.GetNewJobsIdsUC
 import com.klima7.services.expert.features.jobs.rejected.GetRejectedJobsIdsUC
@@ -28,5 +29,6 @@ val useCasesModule = module {
     single { GetNewJobsIdsUC(get(), get()) }
     single { GetRejectedJobsIdsUC(get(), get()) }
     single { RejectJobUC(get()) }
+    single { GetCurrentExpertJobUC(get(), get(), get()) }
 
 }

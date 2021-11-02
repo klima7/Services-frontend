@@ -7,10 +7,9 @@ import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Job
 import com.klima7.services.common.platform.BaseViewModel
-import com.klima7.services.common.usecases.GetJobUC
 
 class JobViewModel(
-    private val getJobUC: GetJobUC
+    private val getCurrentExpertJobUC: GetCurrentExpertJobUC
 ): BaseViewModel() {
 
     sealed class Event: BaseEvent() {
@@ -40,15 +39,15 @@ class JobViewModel(
 
     private fun loadContent() {
         loadState.value = LoadAreaView.State.LOAD
-        getJobUC.start(
+        getCurrentExpertJobUC.start(
             viewModelScope,
-            GetJobUC.Params(jobId),
+            GetCurrentExpertJobUC.Params(jobId),
             { failure ->
                 loadFailure.value = failure
                 loadState.value = LoadAreaView.State.FAILURE
             },
-            { job ->
-                this.job.value = job
+            { expertJob ->
+                this.job.value = expertJob.job
                 loadState.value = LoadAreaView.State.MAIN
             }
         )
