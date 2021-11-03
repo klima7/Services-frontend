@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_jobs"
+    app:startDestination="@id/currentOffersListFragment">
+    <fragment
+        android:id="@+id/currentOffersListFragment"
+        android:name="com.klima7.services.expert.features.offers.current.CurrentOffersListFragment"
+        android:label="CurrentOffersListFragment" />
+    <fragment
+        android:id="@+id/archiveOffersListFragment"
+        android:name="com.klima7.services.expert.features.offers.archive.ArchiveOffersListFragment"
+        android:label="ArchiveOffersListFragment" />
+</navigation>
