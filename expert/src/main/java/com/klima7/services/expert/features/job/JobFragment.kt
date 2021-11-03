@@ -33,6 +33,7 @@ class JobFragment: BaseFragment<FragmentJobBinding>() {
     override fun init() {
         super.init()
         binding.jobToolbar.setNavigationOnClickListener { viewModel.backClicked() }
+        setResult(RESULT_STATE_NOOP)
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
@@ -45,13 +46,15 @@ class JobFragment: BaseFragment<FragmentJobBinding>() {
     }
 
     private fun finishWithResult(result: String) {
+        setResult(result)
+        requireActivity().finish()
+    }
+
+    private fun setResult(result: String) {
         val intent = Intent()
         intent.putExtra(RESULT_STATE_KEY, result)
         intent.putExtra(RESULT_JOB_KEY, viewModel.jobId)
-        requireActivity().apply {
-            setResult(Activity.RESULT_OK, intent)
-            finish()
-        }
+        requireActivity().setResult(Activity.RESULT_OK, intent)
     }
 
 }
