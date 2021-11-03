@@ -39,6 +39,10 @@ abstract class BaseJobsListViewModel(
         getIds()
     }
 
+    fun jobChanged(jobId: String) {
+        hideJob(jobId)
+    }
+
     private fun createPager(jobsIds: List<String>) = Pager(
         PagingConfig(pageSize = 5)
     ) {

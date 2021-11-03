@@ -32,6 +32,6 @@ val viewModelsModule = module {
     viewModel { JobsViewModel() }
     viewModel { NewJobsListViewModel(get(), get(), get()) }
     viewModel { RejectedJobsListViewModel(get(), get()) }
-    viewModel { JobViewModel(get()) }
+    viewModel { JobViewModel(get(), get(), get()) }
 
 }

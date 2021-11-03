@@ -4,6 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="viewmodel"
             type="com.klima7.services.expert.features.job.JobViewModel" />
@@ -77,7 +78,8 @@
                         android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
                         android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
                         android:text="Akceptuj"
-                        android:background="@drawable/rounded_button" />
+                        android:background="@drawable/rounded_button"
+                        android:onClick="@{()->viewmodel.acceptClicked()}" />
 
                     <Button
                         android:id="@+id/job_reject_button"
@@ -87,7 +89,9 @@
                         android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
                         android:text="Odrzuć"
                         android:theme="@style/Button.Red"
-                        android:background="@drawable/rounded_button_red" />
+                        android:background="@drawable/rounded_button_red"
+                        android:onClick="@{()->viewmodel.rejectClicked()}"
+                        android:visibility="@{viewmodel.rejectButtonVisible ? View.VISIBLE : View.GONE}" />
 
                 </LinearLayout>
 

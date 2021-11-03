@@ -77,6 +77,8 @@ class LoadAreaView : FrameLayout {
             goToViewStateAnimate(newViewState)
         }
 
+        touchInterceptor.visibility = if(state == State.PENDING) View.VISIBLE else View.GONE
+
         state = newState
     }
 
