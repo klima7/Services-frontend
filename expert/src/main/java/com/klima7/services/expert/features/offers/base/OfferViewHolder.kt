@@ -23,7 +23,7 @@ class OfferViewHolder private constructor(val binding: ElementOfferBinding):
     fun bind(offer: Offer?) {
         if(offer == null)
             return
-        binding.offerelemText.text = offer.id
+        binding.offer = offer
     }
 
 }

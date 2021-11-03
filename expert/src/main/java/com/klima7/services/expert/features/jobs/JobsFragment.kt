@@ -29,7 +29,7 @@ class JobsFragment : BaseFragment<FragmentJobsBinding>(), TabLayout.OnTabSelecte
 
         binding.jobsRefreshLayout.setOnRefreshListener {
             binding.jobsRefreshLayout.isRefreshing = false
-            val fragment = navHostFragment?.childFragmentManager?.fragments?.get(0) as BaseJobsListFragment
+            val fragment = navHostFragment.childFragmentManager.fragments.get(0) as BaseJobsListFragment
             fragment.refresh()
         }
     }
