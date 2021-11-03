@@ -1,9 +1,15 @@
 package com.klima7.services.expert.features.offers
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.klima7.services.common.data.repositories.OffersRepository
 import com.klima7.services.common.platform.BaseViewModel
+import kotlinx.coroutines.launch
 
-class OffersViewModel: BaseViewModel() {
+class OffersViewModel(
+    private val offersRepository: OffersRepository
+): BaseViewModel() {
 
     sealed class Event: BaseEvent() {
         object ShowCurrentTab: Event()

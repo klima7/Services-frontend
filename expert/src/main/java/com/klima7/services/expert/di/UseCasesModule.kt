@@ -8,6 +8,10 @@ import com.klima7.services.expert.features.job.GetCurrentExpertJobUC
 import com.klima7.services.expert.features.jobs.base.GetCurrentExpertJobsUC
 import com.klima7.services.expert.features.jobs.new.GetNewJobsIdsUC
 import com.klima7.services.expert.features.jobs.rejected.GetRejectedJobsIdsUC
+import com.klima7.services.expert.features.offers.archive.GetArchiveOffersForCurrentExpertUC
+import com.klima7.services.expert.features.offers.archive.MoveOfferToCurrentUC
+import com.klima7.services.expert.features.offers.current.GetCurrentOffersForCurrentExpertUC
+import com.klima7.services.expert.features.offers.current.MoveOfferToArchivedUC
 import com.klima7.services.expert.features.services.GetCategorisedAndMarkedServices
 import com.klima7.services.expert.features.services.SetCurrentExpertServices
 import com.klima7.services.expert.features.setup.GetCurrentExpertSetupStateUC
@@ -32,5 +36,9 @@ val useCasesModule = module {
     single { RejectJobUC(get()) }
     single { GetCurrentExpertJobUC(get(), get(), get()) }
     single { AcceptJobUC(get()) }
+    single { GetCurrentOffersForCurrentExpertUC(get(), get()) }
+    single { GetArchiveOffersForCurrentExpertUC(get(), get()) }
+    single { MoveOfferToCurrentUC(get()) }
+    single { MoveOfferToArchivedUC(get()) }
 
 }

@@ -1,6 +1,10 @@
 package com.klima7.services.expert.features.offers.archive
 
-import androidx.fragment.app.Fragment
-import com.klima7.services.expert.R
+import com.klima7.services.expert.features.offers.base.BaseOffersListFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ArchiveOffersListFragment: Fragment(R.layout.fragment_offers2)
+class ArchiveOffersListFragment: BaseOffersListFragment() {
+
+    override val viewModel: ArchiveOffersListViewModel by viewModel()
+
+}
