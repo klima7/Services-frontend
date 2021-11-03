@@ -13,4 +13,10 @@
     <string name="area_not_specified">nieokreślony</string>
     <string name="confirm">Potwierdzam</string>
 
+    <!-- Offer statuses -->
+    <string name="offer_status_new">nowa</string>
+    <string name="offer_status_rejected">odrzucono</string>
+    <string name="offer_status_in_realization">w realizacji</string>
+    <string name="offer_status_done">wykonano</string>
+
 </resources>

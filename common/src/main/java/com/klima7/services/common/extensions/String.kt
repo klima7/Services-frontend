@@ -5,3 +5,10 @@ fun String?.nullifyBlank(): String? {
         if(isBlank()) null else it
     }
 }
+
+fun String.uppercaseFirst(): String {
+    if(isEmpty())
+        return this
+    val first = this[0].uppercaseChar()
+    return first + this.substring(1)
+}
