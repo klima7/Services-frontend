@@ -35,7 +35,7 @@ class LoadRecyclerView(context: Context, attrs: AttributeSet?) : FrameLayout(con
     private var mAdapter: PagingDataAdapter<*, *>? = null
     private var onRefreshListener: OnRefreshListener? = null
 
-    private var empty = false
+    private var empty = true
     private var state = State.STANDARD
 
     private enum class State {
