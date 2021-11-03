@@ -30,6 +30,7 @@ class OffersAdapter(
 
     interface OnOfferListener {
         fun onOfferClicked(offer: Offer)
+        fun onShowJobClicked(offer: Offer)
     }
 
 }

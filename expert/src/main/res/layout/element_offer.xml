@@ -49,25 +49,45 @@
                     tools:text="Projekt instalacji elektrycznej"
                     />
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
                     >
 
-                    <TextView
+                    <LinearLayout
+                        android:id="@+id/linearLayout3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Status: " />
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Status: " />
+
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="W realizacji" />
+
+                    </LinearLayout>
 
                     <com.google.android.material.chip.Chip
+                        android:id="@+id/offerelem_show_job_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="W realizacji"
-                        />
+                        android:text="Pokaż zlecenie"
+                        app:chipIcon="@drawable/icon_job"
+                        app:iconStartPadding="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
 

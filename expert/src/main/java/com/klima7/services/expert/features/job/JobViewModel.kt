@@ -25,6 +25,7 @@ class JobViewModel(
     lateinit var jobId: String
     val expertJob = MutableLiveData<ExpertJob>()
     val rejectButtonVisible = expertJob.map { it.status == JobStatus.NEW }
+    val acceptButtonVisible = expertJob.map { it.status != JobStatus.ACCEPTED }
 
     val loadState = MutableLiveData(LoadAreaView.State.LOAD)
     val loadFailure = MutableLiveData<Failure>()

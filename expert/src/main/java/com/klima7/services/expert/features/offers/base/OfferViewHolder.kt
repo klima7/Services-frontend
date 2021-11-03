@@ -29,6 +29,9 @@ class OfferViewHolder private constructor(
         binding.offerelemFrame.setOnClickListener {
             onOfferListener.onOfferClicked(offer)
         }
+        binding.offerelemShowJobButton.setOnClickListener {
+            onOfferListener.onShowJobClicked(offer)
+        }
     }
 
 }

@@ -79,7 +79,8 @@
                         android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
                         android:text="Akceptuj"
                         android:background="@drawable/rounded_button"
-                        android:onClick="@{()->viewmodel.acceptClicked()}" />
+                        android:onClick="@{()->viewmodel.acceptClicked()}"
+                        android:visibility="@{viewmodel.acceptButtonVisible ? View.VISIBLE : View.GONE}"/>
 
                     <Button
                         android:id="@+id/job_reject_button"
