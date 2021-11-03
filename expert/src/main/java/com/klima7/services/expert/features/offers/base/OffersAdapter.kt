@@ -28,6 +28,10 @@ class OffersAdapter(
         holder.bind(getItem(position))
     }
 
+    fun getOffer(position: Int): Offer? {
+        return getItem(position)
+    }
+
     interface OnOfferListener {
         fun onOfferClicked(offer: Offer)
         fun onShowJobClicked(offer: Offer)

@@ -54,7 +54,7 @@ class NewJobsListFragment: BaseJobsListFragment() {
                     .addBackgroundColor(
                         ContextCompat.getColor(
                             requireContext(),
-                            R.color.reject_job_background
+                            R.color.swipe_reject_job_background
                         )
                     )
                     .addActionIcon(R.drawable.icon_jobs_rejected_swipe)

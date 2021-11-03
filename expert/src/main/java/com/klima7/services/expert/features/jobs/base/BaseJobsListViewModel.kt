@@ -25,10 +25,7 @@ abstract class BaseJobsListViewModel(
     val pagingDataFlow = allJobsIds.asFlow().flatMapLatest { list -> createPager(list).flow }
         .cachedIn(viewModelScope)
         .combine(visibleJobsIds.asFlow()) { pagingData, visibleList ->
-            pagingData.filter { expertJob ->
-                val result = visibleList.contains(expertJob.job.id)
-                result
-            }
+            pagingData.filter { expertJob -> visibleList.contains(expertJob.job.id) }
         }
 
     fun start() {
