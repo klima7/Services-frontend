@@ -9,6 +9,7 @@ data class Offer(
     val ratingId: String?,
     val status: OfferStatus,
     val archived: Boolean,
+    val jobId: String,
 
     val clientReadTime: Date,
     val expertReadTime: Date,

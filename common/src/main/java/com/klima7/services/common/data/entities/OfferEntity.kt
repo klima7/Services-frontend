@@ -8,6 +8,7 @@ data class OfferEntity(
     var ratingId: String? = null,
     var status: Int = 0,
     var archived: Boolean = false,
+    var jobId: String = "",
 
     var clientReadTime: Timestamp = Timestamp.now(),
     var expertReadTime: Timestamp = Timestamp.now(),
