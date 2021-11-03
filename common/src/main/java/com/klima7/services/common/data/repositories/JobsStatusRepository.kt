@@ -23,7 +23,6 @@ class JobsStatusRepository(
                 .getHttpsCallable("jobs-getJobStatus")
                 .call(data)
                 .await()
-            Log.i("Hello", "res: ${res.data}")
             val response = res?.data ?: return Outcome.Failure(Failure.ServerFailure)
             val statusNo = (response as Map<*, *>)["status"]
             return when(statusNo) {

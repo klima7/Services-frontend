@@ -10,6 +10,7 @@ import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentOffersListBinding
 import com.klima7.services.expert.features.job.JobActivity
+import com.klima7.services.expert.features.offer.OfferActivity
 import kotlinx.coroutines.launch
 
 abstract class BaseOffersListFragment: BaseFragment<FragmentOffersListBinding>(),
@@ -35,11 +36,13 @@ abstract class BaseOffersListFragment: BaseFragment<FragmentOffersListBinding>()
     }
 
     override fun onOfferClicked(offer: Offer) {
-        Log.i("Hello", "Offer clicked $offer")
+        val intent = Intent(requireContext(), OfferActivity::class.java)
+        val bundle = bundleOf("offerId" to offer.id)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 
     override fun onShowJobClicked(offer: Offer) {
-        Log.i("Hello", "Show job clicked $offer")
         val intent = Intent(requireContext(), JobActivity::class.java)
         val bundle = bundleOf("jobId" to offer.jobId)
         intent.putExtras(bundle)
