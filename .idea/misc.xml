@@ -92,7 +92,10 @@
         <entry key="..\:/PI/src/frontend/expert/src/main/res/drawable/icon.xml" value="0.1935185185185185" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/drawable/icon_foreground.xml" value="0.1935185185185185" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/drawable/icon_jobs_rejected.xml" value="0.175" />
+        <entry key="..\:/PI/src/frontend/expert/src/main/res/drawable/icon_jobs_rejected_swipe.xml" value="0.24166666666666667" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/drawable/icon_jobs_rejected_white.xml" value="0.175" />
+        <entry key="..\:/PI/src/frontend/expert/src/main/res/drawable/icon_offers_archive.xml" value="0.24166666666666667" />
+        <entry key="..\:/PI/src/frontend/expert/src/main/res/drawable/icon_offers_current.xml" value="0.24166666666666667" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/drawable/logo.xml" value="0.18425925925925926" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/drawable/shape_icon_background.xml" value="0.1935185185185185" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout-land/fragment_login.xml" value="0.176" />
