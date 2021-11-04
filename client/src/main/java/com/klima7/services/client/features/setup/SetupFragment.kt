@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContracts
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentSetupBinding
+import com.klima7.services.client.features.home.HomeActivity
 import com.klima7.services.client.features.info.InfoActivity
 import com.klima7.services.common.platform.BaseLoadFragment
 import com.klima7.services.common.platform.BaseViewModel
@@ -35,10 +36,10 @@ class SetupFragment: BaseLoadFragment<FragmentSetupBinding>() {
     }
 
     private fun showHomeScreen() {
-//        val intent = Intent(activity, HomeActivity::class.java)
-//        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
-//        startActivity(intent)
-//        requireActivity().finish()
+        val intent = Intent(activity, HomeActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
+        startActivity(intent)
+        requireActivity().finish()
     }
 
     private fun showInfoScreen() {
@@ -47,7 +48,7 @@ class SetupFragment: BaseLoadFragment<FragmentSetupBinding>() {
     }
 
     private fun onConfigDone() {
-//        viewModel.configDone()
+        viewModel.configDone()
     }
 
 }
