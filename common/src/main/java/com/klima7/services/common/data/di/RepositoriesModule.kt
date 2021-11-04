@@ -12,6 +12,6 @@ val reposModule = module {
     single { RatingsRepository(get(), get()) }
     single { JobsRepository(get(), get()) }
     single { JobsStatusRepository(get()) }
-    single { OffersRepository(get()) }
+    single { OffersRepository(get(), get()) }
 
 }

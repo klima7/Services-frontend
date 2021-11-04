@@ -4,6 +4,8 @@ import android.util.Log
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.google.firebase.functions.FirebaseFunctions
+import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.converters.toDomain
 import com.klima7.services.common.data.entities.OfferEntity
@@ -13,6 +15,7 @@ import kotlinx.coroutines.tasks.await
 
 class OffersRepository(
     private val firestore: FirebaseFirestore,
+    private val functions: FirebaseFunctions,
 ) {
 
     suspend fun getOffersForExpert(expertId: String, archived: Boolean, afterId: String?, count: Int):
@@ -54,4 +57,20 @@ class OffersRepository(
         }
     }
 
+    suspend fun setOfferArchived(offerId: String, archived: Boolean): Outcome<Failure, None> {
+        val data = hashMapOf(
+            "offerId" to offerId,
+            "archived" to archived
+        )
+        try {
+            functions
+                .getHttpsCallable("offers-setOfferArchived")
+                .call(data)
+                .await()
+        } catch(e: Exception) {
+            Log.e("Hello", "Error while acceptJob", e)
+            Outcome.Failure(e.toDomain())
+        }
+        return Outcome.Success(None())
+    }
 }
