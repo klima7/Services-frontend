@@ -9,10 +9,11 @@
             type="com.klima7.services.expert.features.offers.base.BaseOffersListViewModel" />
     </data>
 
-    <LinearLayout
+    <com.klima7.services.common.components.views.LoadAreaView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        app:la_state="@{viewmodel.loadState}"
+        >
 
         <com.klima7.services.common.components.views.LoadRecyclerView
             android:id="@+id/offers_load_list"
@@ -21,6 +22,7 @@
             app:lr_onRefresh="@{()->viewmodel.refresh()}"
             />
 
-    </LinearLayout>
+    </com.klima7.services.common.components.views.LoadAreaView>
+
 
 </layout>

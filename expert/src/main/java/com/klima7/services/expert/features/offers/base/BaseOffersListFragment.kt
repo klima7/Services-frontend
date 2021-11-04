@@ -105,7 +105,7 @@ abstract class BaseOffersListFragment(
             override fun onChildDraw(
                 c: Canvas,
                 recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
+                viewHolder: ViewHolder,
                 dX: Float,
                 dY: Float,
                 actionState: Int,
