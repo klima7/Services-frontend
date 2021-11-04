@@ -1,6 +1,7 @@
 package com.klima7.services.expert.features.services.category
 
 import android.content.Context
+import android.os.Bundle
 import com.klima7.services.common.models.Service
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.expert.R
@@ -28,8 +29,8 @@ class ServicesCategoryFragment: BaseFragment<FragmentServicesCategoryBinding>(),
             binding.servicesCategoryExpandable.expand()
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         val constPendingServices = pendingSelectableServices
         if(constPendingServices != null)
             viewModel.setServices(constPendingServices)
