@@ -32,6 +32,10 @@ class JobsFragment : BaseFragment<FragmentJobsBinding>(), TabLayout.OnTabSelecte
             val fragment = navHostFragment.childFragmentManager.fragments.get(0) as BaseJobsListFragment
             fragment.refresh()
         }
+
+        viewModel.refreshEnabled.observe(viewLifecycleOwner) { refreshEnabled ->
+            binding.jobsRefreshLayout.isEnabled = refreshEnabled
+        }
     }
 
     private fun selectProperTab() {

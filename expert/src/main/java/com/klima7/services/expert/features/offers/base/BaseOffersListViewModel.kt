@@ -17,6 +17,10 @@ abstract class BaseOffersListViewModel(
     private val moveOfferUC: MoveOfferUC,
 ): BaseViewModel() {
 
+    sealed class Event: BaseEvent() {
+        object Refresh: Event()
+    }
+
     private val hiddenOffersIds = MutableLiveData(setOf<String>())
     private val pager = createPager()
     val pagingDataFlow = pager.flow
@@ -32,7 +36,7 @@ abstract class BaseOffersListViewModel(
     }
 
     fun refresh() {
-
+        sendEvent(Event.Refresh)
     }
 
     fun offerSwiped(offerId: String) {

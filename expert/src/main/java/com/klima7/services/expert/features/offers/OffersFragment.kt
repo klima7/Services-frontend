@@ -7,8 +7,8 @@ import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentOffersBinding
+import com.klima7.services.expert.features.offers.base.BaseOffersListFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 class OffersFragment : BaseFragment<FragmentOffersBinding>(), TabLayout.OnTabSelectedListener {
 
@@ -28,8 +28,12 @@ class OffersFragment : BaseFragment<FragmentOffersBinding>(), TabLayout.OnTabSel
 
         binding.offersRefreshLayout.setOnRefreshListener {
             binding.offersRefreshLayout.isRefreshing = false
-//            val fragment = navHostFragment?.childFragmentManager?.fragments?.get(0) as BaseJobsListFragment
-//            fragment.refresh()
+            val fragment = navHostFragment.childFragmentManager.fragments[0] as BaseOffersListFragment
+            fragment.refresh()
+        }
+
+        viewModel.refreshEnabled.observe(viewLifecycleOwner) { refreshEnabled ->
+            binding.offersRefreshLayout.isEnabled = refreshEnabled
         }
     }
 

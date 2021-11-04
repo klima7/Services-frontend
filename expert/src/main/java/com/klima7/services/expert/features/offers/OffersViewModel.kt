@@ -1,11 +1,8 @@
 package com.klima7.services.expert.features.offers
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.data.repositories.OffersRepository
 import com.klima7.services.common.platform.BaseViewModel
-import kotlinx.coroutines.launch
 
 class OffersViewModel(
     private val offersRepository: OffersRepository
@@ -19,6 +16,7 @@ class OffersViewModel(
     enum class Tab { Current, Archive }
 
     val selectedTab = MutableLiveData(Tab.Current)
+    val refreshEnabled = MutableLiveData(true)
 
     fun currentTabSelected() {
         sendEvent(Event.ShowCurrentTab)
@@ -28,6 +26,10 @@ class OffersViewModel(
     fun archiveTabSelected() {
         sendEvent(Event.ShowArchiveTab)
         selectedTab.value = Tab.Archive
+    }
+
+    fun setRefreshEnabled(isEnabled: Boolean) {
+        refreshEnabled.value = isEnabled
     }
 
 }

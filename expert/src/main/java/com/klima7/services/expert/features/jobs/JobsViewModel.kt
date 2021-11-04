@@ -13,6 +13,7 @@ class JobsViewModel: BaseViewModel() {
     enum class Tab { New, Rejected }
 
     val selectedTab = MutableLiveData(Tab.New)
+    val refreshEnabled = MutableLiveData(true)
 
     fun newTabSelected() {
         sendEvent(Event.ShowNewTab)
@@ -22,6 +23,10 @@ class JobsViewModel: BaseViewModel() {
     fun rejectedTabSelected() {
         sendEvent(Event.ShowRejectedTab)
         selectedTab.value = Tab.Rejected
+    }
+
+    fun setRefreshEnabled(isEnabled: Boolean) {
+        refreshEnabled.value = isEnabled
     }
 
 }

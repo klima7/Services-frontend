@@ -1,18 +1,24 @@
 package com.klima7.services.expert.features.jobs.new
 
 import android.graphics.Canvas
+import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.klima7.services.expert.R
+import com.klima7.services.expert.features.jobs.JobsViewModel
 import com.klima7.services.expert.features.jobs.base.BaseJobsListFragment
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NewJobsListFragment: BaseJobsListFragment() {
 
     override val viewModel: NewJobsListViewModel by viewModel()
+    private val parentViewModel: JobsViewModel by lazy {
+        requireParentFragment().requireParentFragment().getViewModel()
+    }
 
     @ExperimentalCoroutinesApi
     override fun init() {
@@ -70,6 +76,12 @@ class NewJobsListFragment: BaseJobsListFragment() {
                     actionState,
                     isCurrentlyActive
                 )
+            }
+
+            override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
+                super.onSelectedChanged(viewHolder, actionState)
+                val swiping = actionState == ItemTouchHelper.ACTION_STATE_SWIPE
+                parentViewModel.setRefreshEnabled(!swiping)
             }
         }
 
