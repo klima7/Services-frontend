@@ -1,19 +1,29 @@
 package com.klima7.services.expert.features.jobs.new
 
 import android.graphics.Canvas
+import android.os.Bundle
 import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.klima7.services.common.components.faildialog.FailureDialogFragment
+import com.klima7.services.common.models.Failure
+import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.features.jobs.JobsViewModel
 import com.klima7.services.expert.features.jobs.base.BaseJobsListFragment
+import com.klima7.services.expert.features.offers.base.BaseOffersListFragment
+import com.klima7.services.expert.features.services.ServicesFragment
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NewJobsListFragment: BaseJobsListFragment() {
+
+    companion object {
+        const val DIALOG_REJECT_FAILURE_KEY = "DIALOG_REJECT_FAILURE_KEY"
+    }
 
     override val viewModel: NewJobsListViewModel by viewModel()
     private val parentViewModel: JobsViewModel by lazy {
@@ -24,6 +34,27 @@ class NewJobsListFragment: BaseJobsListFragment() {
     override fun init() {
         super.init()
         attachItemTouchHelper(ItemTouchHelper(itemTouchHelperCallback))
+
+        childFragmentManager.setFragmentResultListener(DIALOG_REJECT_FAILURE_KEY, viewLifecycleOwner) { _: String, bundle: Bundle ->
+            val result = bundle.get(FailureDialogFragment.BUNDLE_KEY)
+            if(result == FailureDialogFragment.Result.RETRY) {
+                viewModel.retryReject()
+            }
+        }
+    }
+
+    override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
+        super.handleEvent(event)
+        when(event) {
+            is NewJobsListViewModel.Event.ShowRejectFailure -> showRejectFailure(event.failure)
+        }
+    }
+
+    private fun showRejectFailure(failure: Failure) {
+        val dialog = FailureDialogFragment.createRetry(
+            DIALOG_REJECT_FAILURE_KEY,
+            "Odrzucenie oferty nieudane.", failure)
+        dialog.show(childFragmentManager, ServicesFragment.SAVE_FAILURE_KEY)
     }
 
     private val itemTouchHelperCallback =

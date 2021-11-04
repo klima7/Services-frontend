@@ -1,6 +1,5 @@
 package com.klima7.services.expert.features.offers.base
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
@@ -11,9 +10,7 @@ import androidx.paging.filter
 import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.platform.BaseViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.launch
 
 abstract class BaseOffersListViewModel(
     private val getOffersForCurrentExpertUC: GetOffersForCurrentExpertUC,
