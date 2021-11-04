@@ -37,6 +37,7 @@ abstract class BaseOffersListViewModel(
 
     fun refresh() {
         sendEvent(Event.Refresh)
+        hiddenOffersIds.value = setOf()
     }
 
     fun offerSwiped(offerId: String) {
