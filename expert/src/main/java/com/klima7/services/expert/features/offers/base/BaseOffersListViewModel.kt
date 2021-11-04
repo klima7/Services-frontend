@@ -9,6 +9,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import androidx.paging.filter
 import com.klima7.services.common.components.views.LoadAreaView
+import com.klima7.services.common.models.Failure
 import com.klima7.services.common.platform.BaseViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.combine
@@ -21,9 +22,11 @@ abstract class BaseOffersListViewModel(
 
     sealed class Event: BaseEvent() {
         object Refresh: Event()
+        class ShowMoveFailure(val failure: Failure): Event()
     }
 
     val loadState = MutableLiveData(LoadAreaView.State.MAIN)
+    private var lastMovedOfferId: String? = null
 
     private val hiddenOffersIds = MutableLiveData(setOf<String>())
     private val pager = createPager()
@@ -49,19 +52,27 @@ abstract class BaseOffersListViewModel(
     }
 
     private fun moveOffer(offerId: String) {
+        lastMovedOfferId = offerId
         hideOffer(offerId)
         loadState.value = LoadAreaView.State.PENDING
         moveOfferUC.start(
             viewModelScope,
             MoveOfferUC.Params(offerId),
-            {
+            { failure ->
                 loadState.value = LoadAreaView.State.MAIN
+                sendEvent(Event.ShowMoveFailure(failure))
                 showOffer(offerId)
             },
             {
                 loadState.value = LoadAreaView.State.MAIN
             }
         )
+    }
+
+    fun retryMoveOffer() {
+        lastMovedOfferId?.let { id ->
+            moveOffer(id)
+        }
     }
 
     private fun hideOffer(offerId: String) {

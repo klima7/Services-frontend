@@ -62,15 +62,15 @@ class OffersRepository(
             "offerId" to offerId,
             "archived" to archived
         )
-        try {
+        return try {
             functions
                 .getHttpsCallable("offers-setOfferArchived")
                 .call(data)
                 .await()
+            Outcome.Success(None())
         } catch(e: Exception) {
-            Log.e("Hello", "Error while acceptJob", e)
+            Log.e("Hello", "Error while setOfferArchived", e)
             Outcome.Failure(e.toDomain())
         }
-        return Outcome.Success(None())
     }
 }

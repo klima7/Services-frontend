@@ -4,4 +4,7 @@
     <string name="delete_title">Usuwanie konta wykonawcy</string>
     <string name="delete_text">Czy jesteś pewien, że chcesz usunąć konto wykonawcy? Operacja ta jest nieodwracalna.</string>
     <string name="job_title_placeholder">Zlecenie</string>
+
+    <string name="move_offer_to_archive_failure_msg">Przeniesienie oferty do archiwum nieudane.</string>
+    <string name="move_offer_to_current_failure_msg">Przeniesienie oferty do aktualnych nieudane.</string>
 </resources>

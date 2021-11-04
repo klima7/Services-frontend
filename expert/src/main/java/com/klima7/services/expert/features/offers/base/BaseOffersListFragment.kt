@@ -2,6 +2,7 @@ package com.klima7.services.expert.features.offers.base
 
 import android.content.Intent
 import android.graphics.Canvas
+import android.os.Bundle
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
@@ -9,6 +10,8 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.klima7.services.common.components.faildialog.FailureDialogFragment
+import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Offer
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
@@ -17,6 +20,7 @@ import com.klima7.services.expert.databinding.FragmentOffersListBinding
 import com.klima7.services.expert.features.job.JobActivity
 import com.klima7.services.expert.features.offer.OfferActivity
 import com.klima7.services.expert.features.offers.OffersViewModel
+import com.klima7.services.expert.features.services.ServicesFragment
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -26,8 +30,13 @@ import org.koin.androidx.viewmodel.ext.android.getViewModel
 abstract class BaseOffersListFragment(
     private val swipeColorResource: Int,
     private val swipeIconResource: Int,
+    private val moveFailureMessageResource: Int,
 ): BaseFragment<FragmentOffersListBinding>(),
     OffersAdapter.OnOfferListener {
+
+    companion object {
+        const val DIALOG_MOVE_FAILURE_KEY = "DIALOG_MOVE_FAILURE_KEY"
+    }
 
     override val layoutId = R.layout.fragment_offers_list
     abstract override val viewModel: BaseOffersListViewModel
@@ -39,6 +48,13 @@ abstract class BaseOffersListFragment(
 
     override fun init() {
         super.init()
+
+        childFragmentManager.setFragmentResultListener(DIALOG_MOVE_FAILURE_KEY, viewLifecycleOwner) { _: String, bundle: Bundle ->
+            val result = bundle.get(FailureDialogFragment.BUNDLE_KEY)
+            if(result == FailureDialogFragment.Result.RETRY) {
+                viewModel.retryMoveOffer()
+            }
+        }
 
         offersAdapter = OffersAdapter(this)
         binding.offersLoadList.apply {
@@ -77,6 +93,7 @@ abstract class BaseOffersListFragment(
         super.handleEvent(event)
         when(event) {
             BaseOffersListViewModel.Event.Refresh -> performRefresh()
+            is BaseOffersListViewModel.Event.ShowMoveFailure -> showMoveFailure(event.failure)
         }
     }
 
@@ -84,17 +101,24 @@ abstract class BaseOffersListFragment(
         offersAdapter.refresh()
     }
 
+    private fun showMoveFailure(failure: Failure) {
+        val dialog = FailureDialogFragment.createRetry(
+            DIALOG_MOVE_FAILURE_KEY,
+            resources.getString(moveFailureMessageResource), failure)
+        dialog.show(childFragmentManager, ServicesFragment.SAVE_FAILURE_KEY)
+    }
+
     private val itemTouchHelperCallback =
         object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
             override fun onMove(
                 recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
+                viewHolder: ViewHolder,
+                target: ViewHolder
             ): Boolean {
                 return false
             }
 
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            override fun onSwiped(viewHolder: ViewHolder, direction: Int) {
                 val position = viewHolder.absoluteAdapterPosition
                 val offer = offersAdapter.getOffer(position)
                 if (offer != null) {
