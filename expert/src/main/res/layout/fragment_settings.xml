@@ -35,39 +35,44 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <include
-                    layout="@layout/part_settings_tile"
-                    app:title="@{`Zmiana profilu`}"
-                    app:image="@{com.klima7.services.common.R.drawable.icon_profile}"
-                    app:action="@{() -> viewmodel.profileClicked()}"
+                <com.klima7.services.common.components.views.SettingsTileView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:settingstile_title="Zmiana profilu"
+                    app:settingstile_icon="@drawable/icon_profile"
+                    app:settingstile_action="@{() -> viewmodel.profileClicked()}"
                     />
 
-                <include
-                    layout="@layout/part_settings_tile"
-                    app:title="@{`Zmiana świadczonych usług`}"
-                    app:image="@{com.klima7.services.expert.R.drawable.icon_service}"
-                    app:action="@{() -> viewmodel.servicesClicked()}"
+                <com.klima7.services.common.components.views.SettingsTileView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:settingstile_title="Zmiana świadczonych usług"
+                    app:settingstile_icon="@drawable/icon_service"
+                    app:settingstile_action="@{() -> viewmodel.servicesClicked()}"
                     />
 
-                <include
-                    layout="@layout/part_settings_tile"
-                    app:title="@{`Zmiana lokalizacji`}"
-                    app:image="@{com.klima7.services.expert.R.drawable.icon_location}"
-                    app:action="@{() -> viewmodel.locationClicked()}"
+                <com.klima7.services.common.components.views.SettingsTileView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:settingstile_title="Zmiana lokalizacji"
+                    app:settingstile_icon="@drawable/icon_location"
+                    app:settingstile_action="@{() -> viewmodel.locationClicked()}"
                     />
 
-                <include
-                    layout="@layout/part_settings_tile"
-                    app:title="@{`Usuń konto wykonawcy`}"
-                    app:image="@{com.klima7.services.common.R.drawable.icon_delete_account}"
-                    app:action="@{() -> viewmodel.deleteClicked()}"
+                <com.klima7.services.common.components.views.SettingsTileView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:settingstile_title="Usuń konto wykonawcy"
+                    app:settingstile_icon="@drawable/icon_delete_account"
+                    app:settingstile_action="@{() -> viewmodel.deleteClicked()}"
                     />
 
-                <include
-                    layout="@layout/part_settings_tile"
-                    app:title="@{`Wyloguj się`}"
-                    app:image="@{com.klima7.services.common.R.drawable.icon_logout}"
-                    app:action="@{() -> viewmodel.signOutClicked()}"
+                <com.klima7.services.common.components.views.SettingsTileView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:settingstile_title="Wyloguj się"
+                    app:settingstile_icon="@drawable/icon_logout"
+                    app:settingstile_action="@{() -> viewmodel.signOutClicked()}"
                     />
 
             </LinearLayout>
