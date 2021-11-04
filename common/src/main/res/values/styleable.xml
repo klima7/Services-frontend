@@ -8,4 +8,9 @@
         <attr format="boolean" name="job_short"/>
     </declare-styleable>
 
+    <declare-styleable name="SettingsTile">
+        <attr format="string" name="settingstile_title"/>
+        <attr format="reference|color" name="settingstile_icon" />
+    </declare-styleable>
+
 </resources>
