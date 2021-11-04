@@ -1,11 +1,13 @@
 package com.klima7.services.expert.features.services
 
+import android.os.Bundle
 import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.platform.BaseLoadFragment
 import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentServicesBinding
+import com.klima7.services.expert.features.jobs.new.NewJobsListFragment
 import com.klima7.services.expert.features.services.multicategory.ServicesMultiCategoriesFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -27,6 +29,13 @@ class ServicesFragment: BaseLoadFragment<FragmentServicesBinding>() {
     override fun init() {
         super.init()
         binding.servicesSaveButton.setOnClickListener { saveButtonClicked() }
+
+        childFragmentManager.setFragmentResultListener(SAVE_FAILURE_KEY, viewLifecycleOwner) { _: String, bundle: Bundle ->
+            val result = bundle.get(FailureDialogFragment.BUNDLE_KEY)
+            if(result == FailureDialogFragment.Result.RETRY) {
+                viewModel.retrySave()
+            }
+        }
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {

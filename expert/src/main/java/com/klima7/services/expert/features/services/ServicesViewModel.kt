@@ -17,6 +17,8 @@ class ServicesViewModel(
         object Finish: Event()
     }
 
+    private var lastServices: List<Service>? = null
+
     fun started() {
         loadContent()
     }
@@ -26,7 +28,14 @@ class ServicesViewModel(
     }
 
     fun saveClicked(services: List<Service>) {
+        lastServices = services
         save(services)
+    }
+
+    fun retrySave() {
+        lastServices?.let { services ->
+            save(services)
+        }
     }
 
     private fun loadContent() {
