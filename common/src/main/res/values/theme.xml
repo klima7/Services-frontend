@@ -3,7 +3,7 @@
     <style name="Theme.Common" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
         <!-- Status bar color -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryDark</item>
 
         <!-- Activity background -->
         <item name = "android:windowBackground">@color/white</item>
