@@ -5,15 +5,16 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import com.klima7.services.common.platform.BaseLoadViewModel
+import com.klima7.services.common.platform.BaseViewModel
 
 class JobsViewModel(
     private val getCurrentClientJobsUC: GetCurrentClientJobsUC
-): BaseLoadViewModel() {
+): BaseViewModel() {
 
     private val pager = createPager()
     val pagingDataFlow = pager.flow.cachedIn(viewModelScope)
 
-    override fun refresh() {
+    fun refresh() {
         // TODO: refresh
     }
 

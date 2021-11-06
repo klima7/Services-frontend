@@ -6,13 +6,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentJobsBinding
 import com.klima7.services.common.models.Job
-import com.klima7.services.common.platform.BaseLoadFragment
+import com.klima7.services.common.platform.BaseFragment
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class JobsFragment : BaseLoadFragment<FragmentJobsBinding>(), JobsAdapter.OnJobListener {
+class JobsFragment : BaseFragment<FragmentJobsBinding>(), JobsAdapter.OnJobListener {
 
     override val layoutId = R.layout.fragment_jobs
     override val viewModel: JobsViewModel by viewModel()

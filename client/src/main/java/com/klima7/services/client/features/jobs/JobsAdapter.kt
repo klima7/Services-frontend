@@ -27,10 +27,6 @@ class JobsAdapter(
         holder.bind(getItem(position))
     }
 
-    fun getJob(position: Int): Job? {
-        return getItem(position)
-    }
-
     interface OnJobListener {
         fun onJobClicked(job: Job);
     }
