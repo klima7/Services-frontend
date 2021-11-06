@@ -3,6 +3,7 @@ package com.klima7.services.client.di
 import com.klima7.services.client.features.delete.DeleteViewModel
 import com.klima7.services.client.features.home.HomeViewModel
 import com.klima7.services.client.features.info.InfoViewModel
+import com.klima7.services.client.features.jobs.JobsViewModel
 import com.klima7.services.client.features.settings.SettingsViewModel
 import com.klima7.services.client.features.setup.SetupViewModel
 import com.klima7.services.client.features.splash.SplashViewModel
@@ -17,5 +18,6 @@ val viewModelsModule = module {
     viewModel { HomeViewModel() }
     viewModel { DeleteViewModel(get()) }
     viewModel { SettingsViewModel(get()) }
+    viewModel { JobsViewModel(get()) }
 
 }
