@@ -15,6 +15,6 @@ val useCasesModule = module {
     single { GetCurrentClientSetupStateUC(get()) }
     single { SetCurrentClientInfoUC(get()) }
     single { DeleteClientUC(get(), get()) }
-    single { GetCurrentClientJobsUC() }
+    single { GetCurrentClientJobsUC(get(), get()) }
 
 }
