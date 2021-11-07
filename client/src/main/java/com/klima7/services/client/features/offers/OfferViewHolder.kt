@@ -24,9 +24,9 @@ class OfferViewHolder private constructor(
     }
 
     fun bind(offerWithExpert: OfferWithExpert?) {
-        Log.i("Hello", "Binding to $offerWithExpert")
         if(offerWithExpert == null)
             return
+        binding.offerWithExpert = offerWithExpert
     }
 
 }

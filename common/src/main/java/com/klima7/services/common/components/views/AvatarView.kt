@@ -6,12 +6,24 @@ import android.os.Parcelable
 import android.util.AttributeSet
 import android.widget.FrameLayout
 import android.widget.ImageView
+import androidx.databinding.BindingMethod
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.signature.ObjectKey
 import com.klima7.services.common.R
 import com.klima7.services.common.data.di.EMULATE
 import com.klima7.services.common.models.ProfileImage
+
+@androidx.databinding.BindingMethods(
+    value = [
+        BindingMethod(
+            type = AvatarView::class,
+            attribute = "avatar_profile_image",
+            method = "setProfileImage"
+        ),
+    ]
+)
+class AvatarViewBindingMethods
 
 class AvatarView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
 
