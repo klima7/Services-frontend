@@ -29,6 +29,7 @@
         <activity android:name=".features.delete.DeleteActivity" />
         <activity android:name=".features.settings.SettingsActivity" />
         <activity android:name=".features.offers.OffersActivity" />
+        <activity android:name=".features.job.JobActivity" />
 
     </application>
 

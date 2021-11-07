@@ -1,8 +1,11 @@
 package com.klima7.services.client.features.offers
 
+import android.content.Intent
 import android.util.Log
+import androidx.core.os.bundleOf
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentOffersBinding
+import com.klima7.services.client.features.job.JobActivity
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -39,6 +42,9 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>() {
     }
 
     private fun showJobDetails(jobId: String) {
-        Log.i("Hello", "Showing job details: $jobId")
+        val intent = Intent(requireContext(), JobActivity::class.java)
+        val bundle = bundleOf("jobId" to jobId)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 }

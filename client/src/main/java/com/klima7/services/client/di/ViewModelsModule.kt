@@ -3,6 +3,7 @@ package com.klima7.services.client.di
 import com.klima7.services.client.features.delete.DeleteViewModel
 import com.klima7.services.client.features.home.HomeViewModel
 import com.klima7.services.client.features.info.InfoViewModel
+import com.klima7.services.client.features.job.JobViewModel
 import com.klima7.services.client.features.jobs.JobsViewModel
 import com.klima7.services.client.features.offers.OffersViewModel
 import com.klima7.services.client.features.settings.SettingsViewModel
@@ -21,5 +22,6 @@ val viewModelsModule = module {
     viewModel { SettingsViewModel(get()) }
     viewModel { JobsViewModel(get()) }
     viewModel { OffersViewModel(get()) }
+    viewModel { JobViewModel(get()) }
 
 }

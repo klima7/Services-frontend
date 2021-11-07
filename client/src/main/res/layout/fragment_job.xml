@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewmodel"
+            type="com.klima7.services.client.features.job.JobViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/job_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Szczegóły zlecenia"
+            app:subtitle="@{viewmodel.subtitle}"
+            app:navigationIcon="@drawable/icon_arrow_back"
+            style="@style/ToolBar"
+            />
+
+        <com.klima7.services.common.components.views.LoadAreaView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:la_state="@{viewmodel.loadState}"
+            app:la_failure="@{viewmodel.loadFailure}"
+            app:la_onRefresh="@{() -> viewmodel.refresh()}"
+            >
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.klima7.services.common.components.views.JobView
+                        android:id="@+id/job_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:job_job="@{viewmodel.job}"
+                        app:job_hide_client="true"
+                        />
+
+                </LinearLayout>
+
+            </ScrollView>
+
+
+        </com.klima7.services.common.components.views.LoadAreaView>
+
+    </LinearLayout>
+
+</layout>
