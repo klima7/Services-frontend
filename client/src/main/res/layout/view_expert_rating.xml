@@ -10,56 +10,54 @@
             type="com.klima7.services.common.models.Expert" />
     </data>
 
-    <FrameLayout
+
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <com.klima7.services.common.components.views.AvatarView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:avatar_profile_image="@{expert.profileImage}"
+            />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
             >
 
-            <com.klima7.services.common.components.views.AvatarView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                app:avatar_profile_image="@{expert.profileImage}"
-                />
-
-            <LinearLayout
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                >
+                android:text="@{expert.info.name}"
+                tools:text="Lucjan Zawadzki"
+                android:textStyle="bold"
+                android:textSize="19sp"
+                android:layout_marginLeft="3dp"
+                />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{expert.info.name}"
-                    tools:text="Lucjan Zawadzki"
-                    android:layout_marginLeft="3dp"
-                    />
-
-                <com.willy.ratingbar.BaseRatingBar
-                    android:id="@+id/expertratingview_rating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srb_drawableEmpty="@drawable/icon_star_empty"
-                    app:srb_drawableFilled="@drawable/icon_star_filled"
-                    app:srb_isIndicator="true"
-                    app:srb_numStars="5"
-                    app:srb_scrollable="true"
-                    app:srb_starHeight="25dp"
-                    app:srb_starPadding="1dp"
-                    app:srb_starWidth="25dp"
-                    app:srb_stepSize="0.01" />
-
-            </LinearLayout>
+            <com.willy.ratingbar.BaseRatingBar
+                android:id="@+id/expertratingview_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srb_drawableEmpty="@drawable/icon_star_empty"
+                app:srb_drawableFilled="@drawable/icon_star_filled"
+                app:srb_isIndicator="true"
+                app:srb_numStars="5"
+                app:srb_scrollable="true"
+                app:srb_starHeight="30dp"
+                app:srb_starWidth="30dp"
+                app:srb_starPadding="1dp"
+                app:srb_stepSize="0.01" />
 
         </LinearLayout>
 
-    </FrameLayout>
+    </LinearLayout>
+
 
 </layout>

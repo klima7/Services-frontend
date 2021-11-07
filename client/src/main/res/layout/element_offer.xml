@@ -9,20 +9,48 @@
             type="com.klima7.services.common.models.OfferWithExpert" />
     </data>
 
-    <FrameLayout
-        android:id="@+id/jobelem_frame"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/job_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:layout_marginHorizontal="8dp"
+        app:cardElevation="8dp"
         android:foreground="?android:attr/selectableItemBackground"
         android:clickable="true"
-        android:focusable="true">
+        android:focusable="true"
+        >
 
-        <com.klima7.services.client.features.offers.ExpertRatingView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:expertrating_expert="@{offerWithExpert.expert}"
-            />
+            android:orientation="vertical"
+            android:padding="16dp"
+            >
 
-    </FrameLayout>
+            <com.klima7.services.client.features.offers.ExpertRatingView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:expertrating_expert="@{offerWithExpert.expert}"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Tak, jeżli posiada Pan już część materiałów, to oczywiście koszt może być mniejszy."
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3 godziny temu"
+                android:textColor="@color/quantum_grey600"
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
 
 </layout>
