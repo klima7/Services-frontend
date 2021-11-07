@@ -14,12 +14,20 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.klima7.services.common.components.views.LoadRecyclerView
-            android:id="@+id/jobs_load_list"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/jobs_refresh_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:lr_onRefresh="@{()->viewmodel.refresh()}"
-            />
+            android:layout_height="wrap_content"
+            >
+
+            <com.klima7.services.common.components.views.LoadRecyclerView
+                android:id="@+id/jobs_load_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:lr_onRefresh="@{()->viewmodel.refresh()}"
+                />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </LinearLayout>
 

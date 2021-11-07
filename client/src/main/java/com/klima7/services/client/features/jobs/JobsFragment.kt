@@ -29,6 +29,12 @@ class JobsFragment : BaseFragment<FragmentJobsBinding>(), JobsAdapter.OnJobListe
         binding.jobsLoadList.adapter = jobsAdapter
         binding.jobsLoadList.layoutManager = LinearLayoutManager(requireContext())
 
+        binding.jobsRefreshLayout.setOnRefreshListener {
+            binding.jobsRefreshLayout.isRefreshing = false
+            viewModel.refresh()
+            jobsAdapter.refresh()
+        }
+
         lifecycleScope.launch {
             viewModel.pagingDataFlow.collectLatest { pagingData ->
                 jobsAdapter.submitData(pagingData)
