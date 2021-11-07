@@ -7,10 +7,13 @@
         <variable
             name="offerWithExpert"
             type="com.klima7.services.common.models.OfferWithExpert" />
+        <variable
+            name="status"
+            type="String" />
     </data>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/job_card"
+        android:id="@+id/offer_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="8dp"
@@ -35,10 +38,17 @@
                 />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Tak, jeżli posiada Pan już część materiałów, to oczywiście koszt może być mniejszy."
+                android:text="Ostatnia wiadomość: "
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ekspert: Tak, jeżli posiada Pan już część materiałów, to oczywiście koszt może być mniejszy."
                 />
 
             <TextView
@@ -47,6 +57,31 @@
                 android:text="3 godziny temu"
                 android:textColor="@color/quantum_grey600"
                 />
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status oferty: "
+                    android:textStyle="bold"
+                    />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{status}"
+                    tools:text="W realizacji"
+                    android:clickable="false"
+                    />
+
+            </LinearLayout>
 
         </LinearLayout>
 

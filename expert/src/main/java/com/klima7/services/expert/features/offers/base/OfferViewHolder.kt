@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.klima7.services.common.extensions.uppercaseFirst
 import com.klima7.services.common.models.Offer
 import com.klima7.services.common.models.OfferStatus
+import com.klima7.services.common.ui.OfferStatusStringifier
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.ElementOfferBinding
 
@@ -37,17 +38,7 @@ class OfferViewHolder private constructor(
         binding.offerelemShowJobButton.setOnClickListener {
             onOfferListener.onShowJobClicked(offer)
         }
-        binding.status = stringifyOfferStatus(offer.status).uppercaseFirst()
-    }
-
-    private fun stringifyOfferStatus(status: OfferStatus): String {
-        val resourceId = when(status) {
-            OfferStatus.NEW -> R.string.offer_status_new
-            OfferStatus.REJECTED -> R.string.offer_status_rejected
-            OfferStatus.IN_REALIZATION -> R.string.offer_status_in_realization
-            OfferStatus.DONE -> R.string.offer_status_done
-        }
-        return context.resources.getString(resourceId)
+        binding.status = OfferStatusStringifier.stringify(context, offer.status).uppercaseFirst()
     }
 
 }
