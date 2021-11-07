@@ -6,6 +6,7 @@ import com.klima7.services.client.features.jobs.GetCurrentClientJobsUC
 import com.klima7.services.client.features.setup.GetCurrentClientSetupStateUC
 import com.klima7.services.client.features.splash.GetCurrentClientStateUC
 import com.klima7.services.client.usecases.GetCurrentClientUC
+import com.klima7.services.client.usecases.GetJobUC
 import org.koin.dsl.module
 
 val useCasesModule = module {
@@ -16,5 +17,6 @@ val useCasesModule = module {
     single { SetCurrentClientInfoUC(get()) }
     single { DeleteClientUC(get(), get()) }
     single { GetCurrentClientJobsUC(get(), get()) }
+    single { GetJobUC(get()) }
 
 }

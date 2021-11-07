@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:title="Zlecenie"
-            app:subtitle="Projektowanie instalacji elektrycznej"
+            app:subtitle="@{viewmodel.subtitle}"
             app:navigationIcon="@drawable/icon_arrow_back"
             app:menu="@menu/offers_toolbar"
             style="@style/ToolBar"

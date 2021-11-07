@@ -38,6 +38,8 @@ class JobsFragment : BaseFragment<FragmentJobsBinding>(), JobsAdapter.OnJobListe
 
     override fun onJobClicked(job: Job) {
         val intent = Intent(requireContext(), OffersActivity::class.java)
+        val bundle = bundleOf("jobId" to job.id)
+        intent.putExtras(bundle)
         startActivity(intent)
     }
 
