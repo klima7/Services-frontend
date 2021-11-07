@@ -10,7 +10,8 @@ import com.klima7.services.common.models.Job
 import com.klima7.services.common.platform.BaseViewModel
 
 class OffersViewModel(
-    private val getJobUC: GetJobUC
+    private val getJobUC: GetJobUC,
+    private val getOffersWithExpertForJobUC: GetOffersWithExpertForJobUC
 ): BaseViewModel() {
 
     sealed class Event: BaseEvent() {

@@ -8,6 +8,7 @@ import com.google.firebase.functions.FirebaseFunctions
 import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.converters.toDomain
+import com.klima7.services.common.data.entities.JobEntity
 import com.klima7.services.common.data.entities.OfferEntity
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Offer
@@ -53,6 +54,24 @@ class OffersRepository(
         }
         catch(e: Exception) {
             Log.e("Hello", "Error during getOffersForExpert", e)
+            Outcome.Failure(e.toDomain())
+        }
+    }
+
+    suspend fun getOffersForJob(jobId: String): Outcome<Failure, List<Offer>> {
+        return try {
+            val snapshot = firestore
+                .collection("offers")
+                .whereEqualTo("jobId", jobId)
+                .get()
+                .await()
+
+            val offers: List<Offer> = snapshot.documents.map { document ->
+                Pair(document.id, document.toObject(OfferEntity::class.java))
+            }.filter { it.second != null }.map { it.second!!.toDomain(it.first) }
+            Outcome.Success(offers)
+        } catch(e: Exception) {
+            Log.e("Hello", "Error during getOffersForJob", e)
             Outcome.Failure(e.toDomain())
         }
     }

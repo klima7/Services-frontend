@@ -5,12 +5,14 @@ import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.client.usecases.GetJobUC
 import com.klima7.services.common.components.views.LoadAreaView
+import com.klima7.services.common.data.repositories.OffersRepository
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Job
 import com.klima7.services.common.platform.BaseViewModel
 
 class JobViewModel(
-    private val getJobUC: GetJobUC
+    private val getJobUC: GetJobUC,
+    private val offersRepository: OffersRepository
 ): BaseViewModel() {
 
     sealed class Event: BaseEvent() {

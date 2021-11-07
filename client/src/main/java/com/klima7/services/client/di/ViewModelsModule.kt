@@ -21,7 +21,7 @@ val viewModelsModule = module {
     viewModel { DeleteViewModel(get()) }
     viewModel { SettingsViewModel(get()) }
     viewModel { JobsViewModel(get()) }
-    viewModel { OffersViewModel(get()) }
-    viewModel { JobViewModel(get()) }
+    viewModel { OffersViewModel(get(), get()) }
+    viewModel { JobViewModel(get(), get()) }
 
 }
