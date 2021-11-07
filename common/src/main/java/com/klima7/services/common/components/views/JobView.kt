@@ -48,6 +48,7 @@ class JobView : FrameLayout {
     private var binding: ViewJobBinding
     private var job: Job? = null
     private var short = false
+    private var hideClient = false
     private var preferred = false
 
     init {
@@ -59,6 +60,7 @@ class JobView : FrameLayout {
     private fun initTypedArray(attrs: AttributeSet) {
         val ta = context.theme.obtainStyledAttributes(attrs, R.styleable.Job, 0, 0)
         short = ta.getBoolean(R.styleable.Job_job_short, short)
+        hideClient = ta.getBoolean(R.styleable.Job_job_hide_client, hideClient)
         ta.recycle()
     }
 
@@ -82,6 +84,7 @@ class JobView : FrameLayout {
         binding.job = cJob
         binding.shorter = short
         binding.preferred = preferred
+        binding.hideClient = hideClient
         binding.jobCreationTime.text = if(cJob != null) format.format(cJob.creationDate) else ""
         binding.jobviewDescription.maxLines = if(short) shortDescriptionLines else Int.MAX_VALUE
     }

@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.klima7.services.common.R
-import com.klima7.services.common.databinding.ElementJobBinding
+import com.klima7.services.expert.R
+import com.klima7.services.expert.databinding.ElementJobBinding
 import com.klima7.services.common.models.ExpertJob
 
 class JobViewHolder private constructor(
