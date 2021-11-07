@@ -3,14 +3,16 @@ package com.klima7.services.client.features.offers
 import android.content.Intent
 import android.util.Log
 import androidx.core.os.bundleOf
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentOffersBinding
 import com.klima7.services.client.features.job.JobActivity
+import com.klima7.services.common.models.OfferWithExpert
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class OffersFragment: BaseFragment<FragmentOffersBinding>() {
+class OffersFragment: BaseFragment<FragmentOffersBinding>(), OffersAdapter.OnOfferListener {
 
     override val layoutId = R.layout.fragment_offers
     override val viewModel: OffersViewModel by viewModel()
@@ -25,6 +27,7 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>() {
 
     override fun init() {
         super.init()
+
         binding.offersToolbar.apply {
             setNavigationOnClickListener { requireActivity().onBackPressed() }
             setOnMenuItemClickListener {
@@ -32,6 +35,19 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>() {
                 true
             }
         }
+
+        val offersAdapter = OffersAdapter(this)
+        binding.offersRecycler.apply {
+            adapter = offersAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+        viewModel.offersWithExperts.observe(viewLifecycleOwner) { offers ->
+            offersAdapter.setOffers(offers)
+        }
+    }
+
+    override fun onOfferClicked(offerWithExpert: OfferWithExpert) {
+        Log.i("Hello", "Offer clicked")
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
