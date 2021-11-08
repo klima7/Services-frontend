@@ -32,7 +32,7 @@ class OfferViewHolder private constructor(
         if(offer == null)
             return
         binding.offer = offer
-        binding.offerelemFrame.setOnClickListener {
+        binding.offerCard.setOnClickListener {
             onOfferListener.onOfferClicked(offer)
         }
         binding.offerelemShowJobButton.setOnClickListener {
