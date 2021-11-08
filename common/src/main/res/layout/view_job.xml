@@ -25,100 +25,100 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        app:cardPreventCornerOverlap="false"
         app:cardElevation="8dp"
-        app:cardCornerRadius="16dp">
+        app:cardCornerRadius="16dp"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="100dp"
             android:orientation="vertical"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp">
+            >
 
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="5dp"
-                android:visibility="@{preferred ? View.VISIBLE : View.GONE}"
+                app:cardBackgroundColor="@color/quantum_grey400"
+                app:cardCornerRadius="16dp"
                 >
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/icon_star_filled"
-                    app:tint="@android:color/holo_red_light" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Jesteś preferowanym wykonawcą!"
-                    android:textColor="@android:color/holo_red_light"
-                    android:textStyle="bold"
-                    />
+                    android:orientation="vertical"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="4dp"
+                    >
 
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="Malowanie mieszkania"
+                        android:text="@{job.serviceName}"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="Malowanie mieszkania"
-                android:text="@{job.serviceName}"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="Ryszard Stępień"
+                        android:text="@{job.clientName}"
+                        android:visibility="@{hideClient ? View.GONE : View.VISIBLE}"
+                        />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="Ryszard Stępień"
-                android:text="@{job.clientName}"
-                android:textColor="@android:color/darker_gray"
-                android:visibility="@{hideClient ? View.GONE : View.VISIBLE}"
-                />
+                </LinearLayout>
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="10dp"
-                />
-
-            <TextView
-                android:id="@+id/jobview_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="Witam, do złożenia jest zestaw mebli z Ikei. Składa się on z 15 elementów"
-                android:text="@{job.description}"
-                android:scrollHorizontally="true"
-                android:ellipsize="end"
-                />
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="10dp"
-                />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Czas na realizację:"
-                android:textStyle="bold"
-                />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="2 tygodnie"
-                android:text="@{job.realizationTime}"
-                />
+            </com.google.android.material.card.MaterialCardView>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="@{shorter ? View.GONE : View.VISIBLE}"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginVertical="8dp"
                 >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:visibility="@{preferred ? View.VISIBLE : View.GONE}"
+                    >
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/icon_star_filled"
+                        app:tint="@android:color/holo_red_light" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jesteś preferowanym wykonawcą!"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textStyle="bold"
+                        />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="10dp"
+                    />
+
+                <TextView
+                    android:id="@+id/jobview_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Witam, do złożenia jest zestaw mebli z Ikei. Składa się on z 15 elementów"
+                    android:text="@{job.description}"
+                    android:scrollHorizontally="true"
+                    android:ellipsize="end"
+                    />
 
                 <Space
                     android:layout_width="0dp"
@@ -128,7 +128,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Lokalizacja:"
+                    android:text="Czas na realizację:"
                     android:textStyle="bold"
                     />
 
@@ -136,23 +136,51 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:text="2 tygodnie"
-                    android:text="@{job.location.name}"
+                    android:text="@{job.realizationTime}"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="@{shorter ? View.GONE : View.VISIBLE}"
+                    >
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="10dp"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Lokalizacja:"
+                        android:textStyle="bold"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="2 tygodnie"
+                        android:text="@{job.location.name}"
+                        />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="10dp"
+                    />
+
+                <TextView
+                    android:id="@+id/job_creation_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="3 dni temu"
+                    android:textColor="@android:color/darker_gray"
                     />
 
             </LinearLayout>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="10dp"
-                />
-
-            <TextView
-                android:id="@+id/job_creation_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="3 dni temu"
-                android:textColor="@android:color/darker_gray"
-                />
 
         </LinearLayout>
 
