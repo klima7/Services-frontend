@@ -15,8 +15,8 @@ class CommentsFragment: BaseFragment<FragmentCommentsBinding>() {
 
     override fun onFirstCreation() {
         super.onFirstCreation()
-        val expertId = arguments?.getString("expertId")
-        viewModel.start(expertId!!)
+        val expertId = arguments?.getString("expertUid") ?: throw Error("expertUid argument not supplied")
+        viewModel.start(expertId)
     }
 
     override fun init() {

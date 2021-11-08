@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="description"
-            type="String" />
+            name="viewmodel"
+            type="com.klima7.services.common.components.profile.description.ProfileDescriptionViewModel" />
     </data>
 
     <LinearLayout
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:text="@{description != null ? description : `Brak opisu`}"
+            android:text="@{viewmodel.description != null ? viewmodel.description : `Brak opisu`}"
             android:layout_marginHorizontal="16dp"
             />
 

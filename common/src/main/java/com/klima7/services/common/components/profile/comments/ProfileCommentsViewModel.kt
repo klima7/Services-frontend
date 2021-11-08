@@ -2,23 +2,27 @@ package com.klima7.services.common.components.profile.comments
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
+import com.klima7.services.common.models.Expert
 import com.klima7.services.common.platform.BaseViewModel
 
 class ProfileCommentsViewModel: BaseViewModel() {
 
-    val commentsCount = MutableLiveData(0)
-    val showMoreVisible = commentsCount.map { it != 0 }
+    val expert = MutableLiveData<Expert>()
+    val commentsCount = expert.map { expert -> expert.commentsCount }
+    val showMoreVisible = commentsCount.map { commentsCount -> commentsCount != 0 }
 
     sealed class Event: BaseEvent() {
-        object ShowCommentsScreen: Event()
+        data class ShowCommentsScreen(val expertUid: String): Event()
+    }
+
+    fun setExpert(expert: Expert) {
+        this.expert.value = expert
     }
 
     fun showAllCommentsClicked() {
-        sendEvent(Event.ShowCommentsScreen)
-    }
-
-    fun setCommentsCount(commentsCount: Int) {
-        this.commentsCount.value = commentsCount
+        expert.value?.uid?.let {
+            sendEvent(Event.ShowCommentsScreen(it))
+        }
     }
 
 }
