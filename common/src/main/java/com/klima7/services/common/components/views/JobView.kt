@@ -7,8 +7,6 @@ import android.widget.FrameLayout
 import androidx.databinding.BindingAdapter
 import androidx.databinding.BindingMethod
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.InverseBindingListener
-import com.google.android.material.slider.Slider
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.ViewJobBinding
 import com.klima7.services.common.models.Job
@@ -47,6 +45,7 @@ class JobView : FrameLayout {
 
     private var binding: ViewJobBinding
     private var job: Job? = null
+    private var clickListener: (() -> Unit)? = null
     private var short = false
     private var hideClient = false
     private var preferred = false
@@ -78,6 +77,10 @@ class JobView : FrameLayout {
         requestLayout()
     }
 
+    fun setClickListener(clickListener: (() -> Unit)?) {
+        this.clickListener = clickListener
+    }
+
     private fun refreshView() {
         val cJob = job
 
@@ -87,6 +90,9 @@ class JobView : FrameLayout {
         binding.hideClient = hideClient
         binding.jobCreationTime.text = if(cJob != null) format.format(cJob.creationDate) else ""
         binding.jobviewDescription.maxLines = if(short) shortDescriptionLines else Int.MAX_VALUE
+        if(clickListener != null) {
+            binding.jobCard.setOnClickListener { clickListener?.invoke() }
+        }
     }
 
 }

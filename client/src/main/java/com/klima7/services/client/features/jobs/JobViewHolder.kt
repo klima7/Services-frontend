@@ -27,7 +27,7 @@ class JobViewHolder private constructor(
             return
 
         binding.job = job
-        binding.jobelemFrame.setOnClickListener {
+        binding.jobelemJob.setClickListener {
             onJobListener.onJobClicked(job)
         }
     }

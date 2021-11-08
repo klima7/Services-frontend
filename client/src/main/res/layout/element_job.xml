@@ -12,23 +12,14 @@
             type="Boolean" />
     </data>
 
-    <FrameLayout
-        android:id="@+id/jobelem_frame"
+    <com.klima7.services.common.components.views.JobView
+        android:id="@+id/jobelem_job"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:clickable="true"
-        android:focusable="true">
-
-        <com.klima7.services.common.components.views.JobView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:job_job="@{job}"
-            app:job_preferred="@{preferred}"
-            app:job_hide_client="true"
-            app:job_short="true"
-            />
-
-    </FrameLayout>
+        app:job_job="@{job}"
+        app:job_preferred="@{preferred}"
+        app:job_hide_client="true"
+        app:job_short="true"
+        />
 
 </layout>
