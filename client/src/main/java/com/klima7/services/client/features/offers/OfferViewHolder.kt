@@ -32,8 +32,13 @@ class OfferViewHolder private constructor(
             return
         binding.offerWithExpert = offerWithExpert
         binding.status = OfferStatusStringifier.stringify(context, offerWithExpert.offer.status).uppercaseFirst()
-        binding.offerCard.setOnClickListener {
-            onOfferListener.onOfferClicked(offerWithExpert)
+
+        binding.offerelemExpertCard.setOnClickListener {
+            onOfferListener.onOfferExpertClicked(offerWithExpert)
+        }
+
+        binding.offerelemContentCard.setOnClickListener {
+            onOfferListener.onOfferContentClicked(offerWithExpert)
         }
     }
 

@@ -32,7 +32,8 @@ class OffersAdapter(
     }
 
     interface OnOfferListener {
-        fun onOfferClicked(offerWithExpert: OfferWithExpert);
+        fun onOfferContentClicked(offerWithExpert: OfferWithExpert);
+        fun onOfferExpertClicked(offerWithExpert: OfferWithExpert);
     }
 
 }

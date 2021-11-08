@@ -52,7 +52,11 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OffersAdapter.OnOff
         }
     }
 
-    override fun onOfferClicked(offerWithExpert: OfferWithExpert) {
+    override fun onOfferContentClicked(offerWithExpert: OfferWithExpert) {
+        Log.i("Hello", "Offer offer content clicked")
+    }
+
+    override fun onOfferExpertClicked(offerWithExpert: OfferWithExpert) {
         val intent = Intent(requireContext(), ProfileActivity::class.java)
         val bundle = bundleOf("expertUid" to offerWithExpert.expert.uid)
         intent.putExtras(bundle)
