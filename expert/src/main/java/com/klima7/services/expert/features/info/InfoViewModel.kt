@@ -1,5 +1,6 @@
 package com.klima7.services.expert.features.info
 
+import android.util.Log
 import android.webkit.URLUtil
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -17,9 +18,8 @@ class InfoViewModel(
     private val setCurrentExpertInfoAndImageUC: SetCurrentExpertInfoAndImageUC
 ): BaseLoadViewModel() {
 
-    private var profileImageUrlToSave: ProfileImageUrl? = null
-
-    val expert = MutableLiveData<Expert>()
+    private var profileImageUrlToSave = MutableLiveData<ProfileImageUrl?>(null)
+    val expert = MutableLiveData<Expert?>(null)
 
     val name = MutableLiveData("")
     val company = MutableLiveData("")
@@ -52,7 +52,10 @@ class InfoViewModel(
         enabled
     }
 
-    val deleteImageVisible = expert.map { expert -> expert.profileImage != null }
+    val restoreImageVisible = profileImageUrlToSave.map { it != null }
+    val deleteImageVisible = CombinedLiveData(expert, restoreImageVisible) {
+        expert.value?.profileImage != null && restoreImageVisible.value == false
+    }
 
     sealed class Event: BaseEvent() {
         object FinishInfo: Event()
@@ -81,12 +84,17 @@ class InfoViewModel(
     }
 
     fun deleteProfileImageClicked() {
-        profileImageUrlToSave = ProfileImageUrl(null)
+        profileImageUrlToSave.value = ProfileImageUrl(null)
         avatar.value = null
     }
 
+    fun restoreProfileImageClicked() {
+        profileImageUrlToSave.value = null
+        avatar.value = expert.value?.profileImage
+    }
+
     fun profileImageSelected(url: String) {
-        profileImageUrlToSave = ProfileImageUrl(url)
+        profileImageUrlToSave.value = ProfileImageUrl(url)
         avatar.value = ProfileImage(url)
     }
 
@@ -141,7 +149,7 @@ class InfoViewModel(
                     email.value.nullifyBlank(),
                     website.value.nullifyBlank()
                 ),
-                profileImageUrlToSave
+                profileImageUrlToSave.value
             ),
             { failure ->
                 sendEvent(Event.ShowSaveFailure(failure))

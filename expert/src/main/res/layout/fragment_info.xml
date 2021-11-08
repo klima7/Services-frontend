@@ -62,6 +62,7 @@
                                 android:background="@drawable/rounded_button"
                                 android:onClick="@{() -> viewmodel.changeProfileImageClicked()}"
                                 android:text="Zmień zdjęcie"
+                                android:paddingHorizontal="35dp"
                                 />
 
                         </TableRow>
@@ -78,6 +79,21 @@
                                 android:background="@drawable/rounded_button"
                                 android:onClick="@{() -> viewmodel.deleteProfileImageClicked()}"
                                 android:text="Usuń zdjęcie" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="@{viewmodel.restoreImageVisible ? View.VISIBLE : View.GONE}">
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:background="@drawable/rounded_button"
+                                android:onClick="@{() -> viewmodel.restoreProfileImageClicked()}"
+                                android:text="Przywróć zdjęcie" />
 
                         </TableRow>
 
