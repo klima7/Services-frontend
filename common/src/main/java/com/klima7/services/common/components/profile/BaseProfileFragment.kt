@@ -8,14 +8,14 @@ import com.klima7.services.common.components.profile.description.ProfileDescript
 import com.klima7.services.common.components.profile.header.ProfileHeaderViewModel
 import com.klima7.services.common.components.profile.rating.ProfileRatingViewModel
 import com.klima7.services.common.components.profile.services.ProfileServicesViewModel
-import com.klima7.services.common.databinding.FragmentProfileBinding
+import com.klima7.services.common.databinding.FragmentBaseProfileBinding
 import com.klima7.services.common.models.Expert
 import com.klima7.services.common.platform.BaseLoadFragment
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
-abstract class BaseProfileFragment: BaseLoadFragment<FragmentProfileBinding>() {
+abstract class BaseProfileFragment: BaseLoadFragment<FragmentBaseProfileBinding>() {
 
-    override val layoutId = R.layout.fragment_profile
+    override val layoutId = R.layout.fragment_base_profile
     abstract override val viewModel: BaseProfileViewModel
 
     override fun init() {

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewmodel"
+            type="com.klima7.services.client.features.profile.ProfileViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/profile_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Profil wykonawcy"
+            app:subtitle="Marcin Klimkiewicz"
+            app:navigationIcon="@drawable/icon_arrow_back"
+            style="@style/ToolBar"
+            />
+
+        <fragment
+            android:id="@+id/profile_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.klima7.services.client.features.profile.ProfileContentFragment"
+            />
+
+    </LinearLayout>
+
+</layout>

@@ -3,6 +3,11 @@
     package="com.klima7.services.common">
 
     <application>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
         <activity android:name=".components.comments.CommentsActivity" />
     </application>
 

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentOffersBinding
 import com.klima7.services.client.features.job.JobActivity
+import com.klima7.services.client.features.profile.ProfileActivity
 import com.klima7.services.common.models.OfferWithExpert
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
@@ -52,7 +53,10 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OffersAdapter.OnOff
     }
 
     override fun onOfferClicked(offerWithExpert: OfferWithExpert) {
-        Log.i("Hello", "Offer clicked")
+        val intent = Intent(requireContext(), ProfileActivity::class.java)
+        val bundle = bundleOf("expertUid" to offerWithExpert.expert.uid)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {

@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.klima7.services.expert">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <application
         android:name="com.klima7.services.expert.ExpertApp"
         android:allowBackup="false"
@@ -13,10 +11,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Expert"
         android:usesCleartextTraffic="true">
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
 
         <activity
             android:name=".features.splash.SplashActivity"
