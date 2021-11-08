@@ -66,13 +66,21 @@ class AvatarView(context: Context, attrs: AttributeSet?) : FrameLayout(context, 
     }
 
     private fun refreshView() {
-        val constProfileImage = profileImage ?: return
-
-        val fixedUri = if(EMULATE) constProfileImage.url.replace("localhost", "10.0.2.2") else constProfileImage.url
         val image = findViewById<ImageView>(R.id.avatarview_image)
 
-        Glide.with(this).clear(image)
+        val constProfileImage = profileImage
+        if(constProfileImage == null) {
+            Glide.with(this).clear(image)
+            Glide.with(this)
+                .load(R.drawable.avatar_placeholder)
+                .transition(DrawableTransitionOptions.withCrossFade(resources.getInteger(R.integer.avatar_fade_time)))
+                .into(image)
+            return
+        }
 
+        val fixedUri = if(EMULATE) constProfileImage.url.replace("localhost", "10.0.2.2") else constProfileImage.url
+
+        Glide.with(this).clear(image)
         Glide.with(this)
             .load(fixedUri)
             .transition(DrawableTransitionOptions.withCrossFade(resources.getInteger(R.integer.avatar_fade_time)))

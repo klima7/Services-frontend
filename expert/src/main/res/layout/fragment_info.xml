@@ -46,16 +46,42 @@
                         android:layout_width="16dp"
                         android:layout_height="0dp" />
 
-                    <Button
-                        android:id="@+id/button3"
+                    <TableLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/rounded_button"
-                        android:onClick="@{() -> viewmodel.changeProfileImageClicked()}"
-                        android:text="Zmień zdjęcie"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        >
+
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" >
+
+                            <Button
+                                android:id="@+id/button3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/rounded_button"
+                                android:onClick="@{() -> viewmodel.changeProfileImageClicked()}"
+                                android:text="Zmień zdjęcie"
+                                />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="@{viewmodel.deleteImageVisible ? View.VISIBLE : View.GONE}">
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:background="@drawable/rounded_button"
+                                android:onClick="@{() -> viewmodel.deleteProfileImageClicked()}"
+                                android:text="Usuń zdjęcie" />
+
+                        </TableRow>
+
+                    </TableLayout>
 
                 </LinearLayout>
 

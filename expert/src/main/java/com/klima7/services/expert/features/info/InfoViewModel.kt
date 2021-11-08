@@ -3,13 +3,11 @@ package com.klima7.services.expert.features.info
 import android.webkit.URLUtil
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.core.None
 import com.klima7.services.common.extensions.nullifyBlank
-import com.klima7.services.common.models.Expert
-import com.klima7.services.common.models.ExpertInfo
-import com.klima7.services.common.models.Failure
-import com.klima7.services.common.models.ProfileImage
+import com.klima7.services.common.models.*
 import com.klima7.services.common.platform.BaseLoadViewModel
 import com.klima7.services.common.platform.CombinedLiveData
 import com.klima7.services.expert.usecases.GetCurrentExpertUC
@@ -19,7 +17,9 @@ class InfoViewModel(
     private val setCurrentExpertInfoAndImageUC: SetCurrentExpertInfoAndImageUC
 ): BaseLoadViewModel() {
 
-    private var profileImageUrlToSave: String? = null
+    private var profileImageUrlToSave: ProfileImageUrl? = null
+
+    val expert = MutableLiveData<Expert>()
 
     val name = MutableLiveData("")
     val company = MutableLiveData("")
@@ -52,6 +52,8 @@ class InfoViewModel(
         enabled
     }
 
+    val deleteImageVisible = expert.map { expert -> expert.profileImage != null }
+
     sealed class Event: BaseEvent() {
         object FinishInfo: Event()
         object StartProfileImagePicker: Event()
@@ -78,9 +80,14 @@ class InfoViewModel(
         sendEvent(Event.StartProfileImagePicker)
     }
 
-    fun profileImageSelected(uri: String) {
-        profileImageUrlToSave = uri
-        avatar.value = ProfileImage(uri, 0)
+    fun deleteProfileImageClicked() {
+        profileImageUrlToSave = ProfileImageUrl(null)
+        avatar.value = null
+    }
+
+    fun profileImageSelected(url: String) {
+        profileImageUrlToSave = ProfileImageUrl(url)
+        avatar.value = ProfileImage(url)
     }
 
     private fun loadContent() {
@@ -92,6 +99,7 @@ class InfoViewModel(
                 showFailure(failure)
             },
             { expert ->
+                this.expert.value = expert
                 setFields(expert)
                 setProfileImage(expert)
                 showMain()

@@ -91,6 +91,23 @@ class ExpertsRepository(
         }
     }
 
+    suspend fun clearProfileImage(): Outcome<Failure, None> {
+        return try {
+            val uid = auth.currentUser?.uid
+            if(uid == null)
+                Outcome.Failure(Failure.PermissionFailure)
+            storage.reference
+                .child("profile_images")
+                .child("$uid.png")
+                .delete()
+                .await()
+            Outcome.Success(None())
+        } catch(e: Exception) {
+            Log.e("Hello", "Error while clearProfileImage", e)
+            Outcome.Failure(e.toDomain())
+        }
+    }
+
     suspend fun setServicesIds(services: List<String>): Outcome<Failure, None> {
         return try {
             val data = hashMapOf(

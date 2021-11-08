@@ -6,6 +6,7 @@ import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.models.ExpertInfo
 import com.klima7.services.common.models.Failure
+import com.klima7.services.common.models.ProfileImageUrl
 
 class SetCurrentExpertInfoAndImageUC(
     private val expertsRepository: ExpertsRepository
@@ -16,13 +17,18 @@ class SetCurrentExpertInfoAndImageUC(
         if(infoOutcome.isFailure) {
             return infoOutcome
         }
-        return if(params.profileImageUrl != null) {
-            expertsRepository.setProfileImage(params.profileImageUrl)
+        else if(params.profileImageUrl != null) {
+            val url = params.profileImageUrl.profileImageUrl
+            return if(url != null) {
+                expertsRepository.setProfileImage(url)
+            } else {
+                expertsRepository.clearProfileImage()
+            }
         } else {
-            Outcome.Success(None())
+            return Outcome.Success(None())
         }
     }
 
-    data class Params(val info: ExpertInfo, val profileImageUrl: String?)
+    data class Params(val info: ExpertInfo, val profileImageUrl: ProfileImageUrl?)
 
 }
