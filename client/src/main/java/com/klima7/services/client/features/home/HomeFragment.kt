@@ -1,6 +1,7 @@
 package com.klima7.services.client.features.home
 
 import android.content.Intent
+import android.util.Log
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -25,6 +26,9 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
         val destinations = setOf(R.id.jobsFragment, R.id.searchFragment)
         val appBarConfiguration = AppBarConfiguration.Builder(destinations).build()
         binding.homeToolbar.setupWithNavController(navController, appBarConfiguration)
+
+        // Do nothing on selecting same item
+        binding.homeBottomNav.setOnItemReselectedListener {}
 
         binding.homeToolbar.inflateMenu(R.menu.menu_home_toolbar)
         binding.homeToolbar.setOnMenuItemClickListener {

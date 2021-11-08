@@ -25,6 +25,9 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
         val appBarConfiguration = AppBarConfiguration.Builder(destinations).build()
         binding.homeToolbar.setupWithNavController(navController, appBarConfiguration)
 
+        // Do nothing on selecting same item
+        binding.homeBottomNav.setOnItemReselectedListener {}
+
         binding.homeToolbar.inflateMenu(R.menu.menu_home_toolbar)
         binding.homeToolbar.setOnMenuItemClickListener {
             viewModel.settingsIconClicked()
