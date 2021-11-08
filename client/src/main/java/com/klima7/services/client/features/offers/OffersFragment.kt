@@ -44,6 +44,11 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OffersAdapter.OnOff
         viewModel.offersWithExperts.observe(viewLifecycleOwner) { offers ->
             offersAdapter.setOffers(offers)
         }
+
+        binding.offersRefreshLayout.setOnRefreshListener {
+            binding.offersRefreshLayout.isRefreshing = false
+            viewModel.refresh()
+        }
     }
 
     override fun onOfferClicked(offerWithExpert: OfferWithExpert) {

@@ -11,11 +11,15 @@ class JobsViewModel(
     private val getCurrentClientJobsUC: GetCurrentClientJobsUC
 ): BaseViewModel() {
 
+    sealed class Event: BaseEvent() {
+        object RefreshJobs: Event()
+    }
+
     private val pager = createPager()
     val pagingDataFlow = pager.flow.cachedIn(viewModelScope)
 
     fun refresh() {
-        // TODO: refresh
+        sendEvent(Event.RefreshJobs)
     }
 
     private fun createPager() = Pager(

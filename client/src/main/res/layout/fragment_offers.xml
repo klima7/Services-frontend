@@ -34,11 +34,19 @@
             app:la_onRefresh="@{() -> viewmodel.refresh()}"
             >
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/offers_recycler"
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/offers_refresh_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                />
+                android:layout_height="wrap_content"
+                >
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/offers_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         </com.klima7.services.common.components.views.LoadAreaView>
 
