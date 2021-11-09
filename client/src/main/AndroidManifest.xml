@@ -31,6 +31,7 @@
         <activity android:name=".features.offers.OffersActivity" />
         <activity android:name=".features.job.JobActivity" />
         <activity android:name=".features.profile.ProfileActivity" />
+        <activity android:name=".features.offer.OfferActivity" />
 
     </application>
 
