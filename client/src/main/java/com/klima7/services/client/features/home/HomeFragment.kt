@@ -2,12 +2,14 @@ package com.klima7.services.client.features.home
 
 import android.content.Intent
 import android.util.Log
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentHomeBinding
 import com.klima7.services.client.features.delete.DeleteActivity
+import com.klima7.services.client.features.offer.OfferActivity
 import com.klima7.services.client.features.settings.SettingsActivity
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
@@ -32,7 +34,8 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
 
         binding.homeToolbar.inflateMenu(R.menu.menu_home_toolbar)
         binding.homeToolbar.setOnMenuItemClickListener {
-            viewModel.settingsIconClicked()
+            _temp_start_offer("offer1")
+//            viewModel.settingsIconClicked()
             true
         }
     }
@@ -46,6 +49,13 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
 
     private fun showSettingsScreen() {
         val intent = Intent(activity, SettingsActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun _temp_start_offer(offerId: String) {
+        val intent = Intent(requireContext(), OfferActivity::class.java)
+        val bundle = bundleOf("offerId" to offerId)
+        intent.putExtras(bundle)
         startActivity(intent)
     }
 }
