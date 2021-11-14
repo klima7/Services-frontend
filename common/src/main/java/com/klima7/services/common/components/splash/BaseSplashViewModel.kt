@@ -20,7 +20,7 @@ open class BaseSplashViewModel(
     fun started() {
         showMain()
         viewModelScope.launch {
-            delay(2000)
+//            delay(2000)
             proceed()
         }
     }

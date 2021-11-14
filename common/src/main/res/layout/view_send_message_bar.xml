@@ -44,7 +44,9 @@
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:maxLines="3"
-                    android:padding="8dp" />
+                    android:padding="8dp"
+                    android:textCursorDrawable="@drawable/message_cursor"
+                    />
 
             </FrameLayout>
 
@@ -59,10 +61,12 @@
                     android:background="@android:color/transparent"
                     android:maxLines="3"
                     android:padding="8dp"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
 
                 <ImageButton
                     android:id="@+id/job_send_button"
