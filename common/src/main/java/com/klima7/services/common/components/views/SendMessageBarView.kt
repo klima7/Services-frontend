@@ -17,17 +17,45 @@ class SendMessageBarView: FrameLayout {
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
     private var binding: ViewSendMessageBarBinding
+    private var listener: Listener? = null
 
     init {
         val inflater = LayoutInflater.from(context)
         binding = DataBindingUtil.inflate(inflater, R.layout.view_send_message_bar, this, true)
 
-        binding.msgbarSendButton.isEnabled = false
-        binding.msgbarText.addTextChangedListener {
+        binding.msgbarSendButton.apply {
+            isEnabled = false
+            setOnClickListener { listener?.onSendMessageClicked(this@SendMessageBarView) }
+        }
+
+        binding.msgbarImageIcon.setOnClickListener {
+            listener?.onSelectImageClicked(this)
+        }
+
+        binding.msgbarText.addTextChangedListener { it ->
             val empty = it.isNullOrBlank()
             binding.msgbarImageIcon.visibility = if(empty) View.VISIBLE else View.GONE
             binding.msgbarSendButton.isEnabled = !empty
         }
+    }
+
+    var text: String
+        get() = binding.msgbarText.text.toString()
+        set(value) {
+            binding.msgbarText.setText(value)
+        }
+
+    fun clear() {
+        text = ""
+    }
+
+    fun setListener(listener: Listener?) {
+        this.listener = listener
+    }
+
+    interface Listener {
+        fun onSendMessageClicked(smb: SendMessageBarView)
+        fun onSelectImageClicked(smb: SendMessageBarView)
     }
 
 }

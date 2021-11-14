@@ -31,12 +31,12 @@
             android:id="@+id/offer_recycler"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/sendMessageBarView"
+            app:layout_constraintBottom_toTopOf="@+id/offer_send_message_bar"
             app:layout_constraintTop_toBottomOf="@+id/offer_toolbar" />
 
 
         <com.klima7.services.common.components.views.SendMessageBarView
-            android:id="@+id/sendMessageBarView"
+            android:id="@+id/offer_send_message_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
