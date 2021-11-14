@@ -22,8 +22,11 @@ class SendMessageBarView: FrameLayout {
         val inflater = LayoutInflater.from(context)
         binding = DataBindingUtil.inflate(inflater, R.layout.view_send_message_bar, this, true)
 
-        binding.msgbarText.addTextChangedListener { it ->
-            binding.msgbarImageIcon.visibility = if(it.isNullOrBlank()) View.VISIBLE else View.GONE
+        binding.msgbarSendButton.isEnabled = false
+        binding.msgbarText.addTextChangedListener {
+            val empty = it.isNullOrBlank()
+            binding.msgbarImageIcon.visibility = if(empty) View.VISIBLE else View.GONE
+            binding.msgbarSendButton.isEnabled = !empty
         }
     }
 

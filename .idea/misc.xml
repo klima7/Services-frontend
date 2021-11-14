@@ -30,6 +30,8 @@
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/icon_job_reject_list.xml" value="0.19375" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/icon_person.xml" value="0.17037037037037037" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/icon_refresh.xml" value="0.2351851851851852" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/icon_send.xml" value="0.22037037037037038" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/icon_send_disabled.xml" value="0.22037037037037038" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/icon_star_empty.xml" value="0.27314814814814814" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/icon_star_filled.xml" value="0.27314814814814814" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/input_layout.xml" value="0.12037037037037036" />
@@ -43,8 +45,11 @@
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/selector_bottomnav.xml" value="0.17037037037037037" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/selector_refresh_button.xml" value="0.25925925925925924" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/selector_rounded_button.xml" value="0.19722222222222222" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/selector_send_button.xml" value="0.22037037037037038" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/send_button_background.xml" value="0.22037037037037038" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/send_button_background_disabled.xml" value="0.22037037037037038" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/send_message_background.xml" value="0.22037037037037038" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/send_text_background.xml" value="0.22037037037037038" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/shape_bottomnav_background.xml" value="0.17037037037037037" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/shape_dialog_background.xml" value="0.20185185185185187" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/shape_gray_background.xml" value="0.19444444444444445" />
