@@ -1,6 +1,7 @@
 package com.klima7.services.client.features.offer
 
 import android.util.Log
+import android.widget.ArrayAdapter
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentOfferBinding
 import com.klima7.services.common.components.views.SendMessageBarView
@@ -18,6 +19,11 @@ class OfferFragment: BaseFragment<FragmentOfferBinding>(), SendMessageBarView.Li
         toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
 
         binding.offerSendMessageBar.setListener(this)
+
+        val list = listOf("Jan Kowalski", "Piotr Duda", "Julia Marciniak", "Juliusz Słowacka")
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, list)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.offerExpertsSpinner.adapter = adapter
     }
 
     override fun onSendMessageClicked(smb: SendMessageBarView) {

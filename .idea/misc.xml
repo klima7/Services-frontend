@@ -37,6 +37,7 @@
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/input_layout.xml" value="0.12037037037037036" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/logo.xml" value="0.21666666666666667" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/message_cursor.xml" value="0.22037037037037038" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/offer_chips_background.xml" value="0.21481481481481482" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/refresh_button.xml" value="0.19907407407407407" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/refresh_button_ripple.xml" value="0.18703703703703703" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/refresh_button_selector.xml" value="0.18703703703703703" />
@@ -110,6 +111,7 @@
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/view_rating.xml" value="0.40433925049309666" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/view_send_message_bar.xml" value="0.19635416666666666" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/view_settings_tile.xml" value="0.225" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/menu/menu_offer.xml" value="0.275" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/drawable/icon.xml" value="0.1935185185185185" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/drawable/icon_foreground.xml" value="0.1935185185185185" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/drawable/icon_jobs_rejected.xml" value="0.175" />
