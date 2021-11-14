@@ -18,7 +18,7 @@ class OfferFragment: BaseFragment<FragmentOfferBinding>(), SendMessageBarView.Li
         toolbar.setNavigationIcon(R.drawable.icon_arrow_back)
         toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
 
-        binding.offerSendMessageBar.setListener(this)
+//        binding.offerSendMessageBar.setListener(this)
 
         val list = listOf("Jan Kowalski", "Piotr Duda", "Julia Marciniak", "Juliusz Słowacka")
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, list)
