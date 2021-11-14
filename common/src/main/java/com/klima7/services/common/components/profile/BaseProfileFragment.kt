@@ -21,6 +21,13 @@ abstract class BaseProfileFragment: BaseLoadFragment<FragmentBaseProfileBinding>
     override fun init() {
         super.init()
 
+        binding.profileRefreshLayout.apply {
+            setOnRefreshListener {
+                isRefreshing = false
+                viewModel.refresh()
+            }
+        }
+
         viewModel.expert.observe(viewLifecycleOwner) { expert ->
             updateExpert(expert)
         }
