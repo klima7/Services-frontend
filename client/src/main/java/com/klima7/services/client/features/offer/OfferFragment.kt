@@ -4,7 +4,9 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentOfferBinding
+import com.klima7.services.common.components.msgsend.SendMessageFragment
 import com.klima7.services.common.components.views.SendMessageBarView
+import com.klima7.services.common.models.MessageSender
 import com.klima7.services.common.platform.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -18,12 +20,17 @@ class OfferFragment: BaseFragment<FragmentOfferBinding>(), SendMessageBarView.Li
         toolbar.setNavigationIcon(R.drawable.icon_arrow_back)
         toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
 
-//        binding.offerSendMessageBar.setListener(this)
-
         val list = listOf("Jan Kowalski", "Piotr Duda", "Julia Marciniak", "Juliusz Słowacka")
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, list)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.offerExpertsSpinner.adapter = adapter
+    }
+
+    override fun onFirstCreation() {
+        super.onFirstCreation()
+
+        val sendFragment = childFragmentManager.findFragmentById(R.id.offer_send_fragment) as SendMessageFragment
+        sendFragment.initialize(MessageSender.CLIENT, "offer10")
     }
 
     override fun onSendMessageClicked(smb: SendMessageBarView) {

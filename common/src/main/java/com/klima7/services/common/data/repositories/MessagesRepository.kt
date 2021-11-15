@@ -25,7 +25,7 @@ class MessagesRepository(
         throw NotImplementedError()
     }
 
-    suspend fun sendTextMessage(offerId: String, message: String, sender: MessageSender): Outcome<Failure, None> {
+    suspend fun sendTextMessage(offerId: String, sender: MessageSender, message: String): Outcome<Failure, None> {
         try {
             val data = hashMapOf(
                 "author" to if(sender==MessageSender.EXPERT) "expert" else "client",
