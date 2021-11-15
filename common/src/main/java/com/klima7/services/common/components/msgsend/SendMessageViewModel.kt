@@ -2,6 +2,7 @@ package com.klima7.services.common.components.msgsend
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope
+import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.MessageSender
 import com.klima7.services.common.platform.BaseViewModel
 
@@ -12,6 +13,12 @@ class SendMessageViewModel(
 
     private var sender: MessageSender? = null
     private var offerId: String? = null
+
+    private var lastImagePath: String? = null
+
+    sealed class Event: BaseEvent() {
+        data class ShowSendImageFailure(val failure: Failure): Event()
+    }
 
     fun setSender(sender: MessageSender) {
         this.sender = sender
@@ -26,7 +33,14 @@ class SendMessageViewModel(
     }
 
     fun imageSelected(imagePath: String) {
+        lastImagePath = imagePath
         sendImage(imagePath)
+    }
+
+    fun retrySendImage() {
+        lastImagePath?.let {
+            sendImage(it)
+        }
     }
 
     private fun sendMessage(message: String) {
@@ -41,11 +55,10 @@ class SendMessageViewModel(
             viewModelScope,
             SendTextMessageUC.Params(fOfferId, fSender, message),
             { failure ->
-                Log.i("Hello", "Send message failure: $failure")
+                // Always should success
+                Log.e("Hello", "Send text message failure: $failure")
             },
-            {
-                Log.i("Hello", "Send message success")
-            }
+            {}
         )
     }
 
@@ -61,10 +74,10 @@ class SendMessageViewModel(
             viewModelScope,
             SendImageMessageUC.Params(fOfferId, fSender, imagePath),
             { failure ->
-                Log.i("Hello", "Send image failure: $failure")
+                sendEvent(Event.ShowSendImageFailure(failure))
             },
             {
-                Log.i("Hello", "Send image success")
+                // Do nothing
             }
         )
     }

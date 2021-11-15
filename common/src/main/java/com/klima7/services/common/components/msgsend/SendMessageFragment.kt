@@ -12,13 +12,21 @@ import com.klima7.services.common.platform.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 import android.content.Intent
+import android.os.Bundle
 import android.provider.MediaStore
+import com.klima7.services.common.components.faildialog.FailureDialogFragment
+import com.klima7.services.common.models.Failure
+import com.klima7.services.common.platform.BaseViewModel
 
 
 class SendMessageFragment: BaseFragment<FragmentSendMessageBinding>(), SendMessageBarView.Listener {
 
     override val layoutId = R.layout.fragment_send_message
     override val viewModel: SendMessageViewModel by viewModel()
+
+    companion object {
+        const val SEND_IMAGE_FAILURE_DIALOG_KEY = "SEND_IMAGE_FAILURE_DIALOG_KEY"
+    }
 
     private val imagePickerLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -28,7 +36,15 @@ class SendMessageFragment: BaseFragment<FragmentSendMessageBinding>(), SendMessa
 
     override fun init() {
         super.init()
+
         binding.msgsendSendMessageBar.setListener(this)
+
+        childFragmentManager.setFragmentResultListener(SEND_IMAGE_FAILURE_DIALOG_KEY, viewLifecycleOwner) { _: String, bundle: Bundle ->
+            val result = bundle.get(FailureDialogFragment.BUNDLE_KEY)
+            if(result == FailureDialogFragment.Result.RETRY) {
+                viewModel.retrySendImage()
+            }
+        }
     }
 
     fun initialize(sender: MessageSender, offerId: String) {
@@ -45,13 +61,11 @@ class SendMessageFragment: BaseFragment<FragmentSendMessageBinding>(), SendMessa
     }
 
     override fun onSendMessageClicked(smb: SendMessageBarView) {
-        Log.i("Hello", "Send message")
         viewModel.sendMessageClicked(smb.text)
         smb.clear()
     }
 
     override fun onSelectImageClicked(smb: SendMessageBarView) {
-        Log.i("Hello", "Select image")
         pickImage()
     }
 
@@ -68,5 +82,19 @@ class SendMessageFragment: BaseFragment<FragmentSendMessageBinding>(), SendMessa
             val imagePath = activityResult.data?.data?.toString() ?: return
             viewModel.imageSelected(imagePath)
         }
+    }
+
+    override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
+        super.handleEvent(event)
+        when(event) {
+            is SendMessageViewModel.Event.ShowSendImageFailure -> showSendImageFailure(event.failure)
+        }
+    }
+
+    private fun showSendImageFailure(failure: Failure) {
+        val dialog = FailureDialogFragment.createRetry(
+            SEND_IMAGE_FAILURE_DIALOG_KEY,
+            "Wysyłanie obrazu nieudane.", failure)
+        dialog.show(childFragmentManager, "FailureDialogFragment")
     }
 }

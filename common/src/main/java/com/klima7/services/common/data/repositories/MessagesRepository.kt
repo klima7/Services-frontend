@@ -12,10 +12,13 @@ import com.klima7.services.common.data.converters.toDomain
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Message
 import com.klima7.services.common.models.MessageSender
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.tasks.await
 import java.lang.Exception
 import java.util.*
+import kotlin.coroutines.resume
 
 class MessagesRepository(
     private val auth: FirebaseAuth,
@@ -52,21 +55,36 @@ class MessagesRepository(
         }
     }
 
-    suspend fun sendImageMessage(offerId: String, sender: MessageSender, imagePath: String): Outcome<Failure, None> {
-        return try {
-            val uid = auth.currentUser?.uid ?: return Outcome.Failure(Failure.PermissionFailure)
-            val uuid = UUID.randomUUID().toString()
-            storage.reference
-                .child("chats_images")
-                .child(offerId)
-                .child(uid)
-                .child("${uuid}.png")
-                .putFile(Uri.parse(imagePath))
-                .await()
-            Outcome.Success(None())
-        } catch(e: Exception) {
-            Log.e("Hello", "Error while sendImageMessage", e)
-            Outcome.Failure(e.toDomain())
+    @ExperimentalCoroutinesApi
+    suspend fun sendImageMessage(offerId: String, sender: MessageSender, imagePath: String):
+            Outcome<Failure, None> = suspendCancellableCoroutine { continuation ->
+
+        val uid = auth.currentUser?.uid
+        if(uid == null) {
+            continuation.resume(Outcome.Failure(Failure.InternetFailure))
+        }
+
+        val uuid = UUID.randomUUID().toString()
+
+        val task = storage.reference
+            .child("chats_images")
+            .child(offerId)
+            .child(uid!!)
+            .child("${uuid}.png")
+            .putFile(Uri.parse(imagePath))
+            .addOnSuccessListener {
+                continuation.resume(Outcome.Success(None()))
+            }
+            .addOnFailureListener { e ->
+                continuation.resume(Outcome.Failure(e.toDomain()))
+            }
+            .addOnCanceledListener {
+                continuation.resume(Outcome.Failure(Failure.InternetFailure))
+            }
+
+        Log.i("Hello", "invokeOnCancellation setup")
+        continuation.invokeOnCancellation {
+            task.cancel()
         }
     }
 
