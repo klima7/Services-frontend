@@ -35,7 +35,7 @@ class MessageViewerFragment: BaseFragment<FragmentMessageViewerBinding>() {
             for(message in newMessages) {
                 when(message) {
                     is TextMessage -> {
-                        val messageItem = TextMessageItem(message, "http://localhost:9199/v0/b/services-a7389.appspot.com/o/profile_images%2FGVUPHpMgt36NtVg9vsClFSaaOQQ7.png?alt=media&token=818d7026-6b4c-47bb-a859-ac1a47a8a3b4")
+                        val messageItem = TextMessageItem(message)
                         group.add(messageItem)
                     }
                 }

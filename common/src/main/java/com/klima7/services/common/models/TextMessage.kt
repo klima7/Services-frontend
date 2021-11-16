@@ -5,7 +5,8 @@ import java.util.*
 class TextMessage(
     author: MessageAuthor,
     sendTime: Date,
-    val text: String
+    val text: String,
+    val pending: Boolean,
 ): Message(author, sendTime) {
 
     override fun equals(other: Any?): Boolean {
@@ -16,6 +17,7 @@ class TextMessage(
         other as TextMessage
 
         if (text != other.text) return false
+        if (pending != other.pending) return false
 
         return true
     }
@@ -23,12 +25,12 @@ class TextMessage(
     override fun hashCode(): Int {
         var result = super.hashCode()
         result = 31 * result + text.hashCode()
+        result = 31 * result + pending.hashCode()
         return result
     }
 
     override fun toString(): String {
-        return "TextMessage(text='$text') ${super.toString()}"
+        return "TextMessage(text='$text', pending=$pending) ${super.toString()}"
     }
-
 
 }

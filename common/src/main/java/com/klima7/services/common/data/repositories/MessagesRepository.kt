@@ -5,6 +5,7 @@ import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.MetadataChanges
 import com.google.firebase.firestore.Query
 import com.google.firebase.storage.FirebaseStorage
 import com.klima7.services.common.core.None
@@ -40,12 +41,12 @@ class MessagesRepository(
             .orderBy("time", Query.Direction.ASCENDING)
 
         Log.i("Hello", "Starting subscription")
-        val subscription = query.addSnapshotListener { querySnap, _ ->
+        val subscription = query.addSnapshotListener(MetadataChanges.INCLUDE) { querySnap, _ ->
             if(querySnap != null) {
                 val messages = mutableListOf<Message>()
                 for(documentSnap in querySnap.documents) {
                     val entity = documentSnap.toObject(MessageEntity::class.java)
-                    val message = entity?.toDomain()
+                    val message = entity?.toDomain(documentSnap.metadata.hasPendingWrites())
                     if(message != null) {
                         messages.add(message)
                     }
