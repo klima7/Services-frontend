@@ -2,13 +2,17 @@ package com.klima7.services.common.components.msgsend
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope
+import com.klima7.services.common.data.repositories.MessagesRepository
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.MessageSender
 import com.klima7.services.common.platform.BaseViewModel
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class SendMessageViewModel(
     private val sendTextMessageUC: SendTextMessageUC,
     private val sendImageMessageUC: SendImageMessageUC,
+    private val messagesRepository: MessagesRepository
 ): BaseViewModel() {
 
     private var sender: MessageSender? = null
@@ -18,6 +22,14 @@ class SendMessageViewModel(
 
     sealed class Event: BaseEvent() {
         data class ShowSendImageFailure(val failure: Failure): Event()
+    }
+
+    init {
+        viewModelScope.launch {
+            messagesRepository.getMessages("offer10").collect {
+                Log.i("Hello", "Collecting messages: $it")
+            }
+        }
     }
 
     fun setSender(sender: MessageSender) {
