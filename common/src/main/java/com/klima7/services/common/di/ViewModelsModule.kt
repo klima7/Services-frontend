@@ -32,6 +32,6 @@ val viewModelsModule = module {
     viewModel { ProfileAreaViewModel() }
     viewModel { LoginViewModel() }
     viewModel { SendMessageViewModel(get(), get(), get()) }
-    viewModel { MessageViewerViewModel() }
+    viewModel { MessageViewerViewModel(get()) }
 
 }

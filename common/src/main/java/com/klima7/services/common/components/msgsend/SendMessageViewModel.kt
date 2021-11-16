@@ -6,9 +6,11 @@ import com.klima7.services.common.data.repositories.MessagesRepository
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.MessageSender
 import com.klima7.services.common.platform.BaseViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+@ExperimentalCoroutinesApi
 class SendMessageViewModel(
     private val sendTextMessageUC: SendTextMessageUC,
     private val sendImageMessageUC: SendImageMessageUC,

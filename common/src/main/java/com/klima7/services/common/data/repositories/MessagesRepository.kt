@@ -37,7 +37,7 @@ class MessagesRepository(
             .collection("offers")
             .document(offerId)
             .collection("messages")
-            .orderBy("time", Query.Direction.DESCENDING)
+            .orderBy("time", Query.Direction.ASCENDING)
 
         Log.i("Hello", "Starting subscription")
         val subscription = query.addSnapshotListener { querySnap, _ ->
