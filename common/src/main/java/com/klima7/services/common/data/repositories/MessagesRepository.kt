@@ -5,15 +5,19 @@ import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.storage.FirebaseStorage
 import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.converters.toDomain
+import com.klima7.services.common.data.entities.MessageEntity
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Message
 import com.klima7.services.common.models.MessageSender
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.tasks.await
 import java.lang.Exception
@@ -26,8 +30,34 @@ class MessagesRepository(
     private val storage: FirebaseStorage,
 ) {
 
-    suspend fun getMessages(offerId: String): Flow<List<Message>> {
-        throw NotImplementedError()
+    @ExperimentalCoroutinesApi
+    suspend fun getMessages(offerId: String): Flow<List<Message>> = callbackFlow {
+
+        val query = firestore
+            .collection("offers")
+            .document(offerId)
+            .collection("messages")
+            .orderBy("time", Query.Direction.DESCENDING)
+
+        Log.i("Hello", "Starting subscription")
+        val subscription = query.addSnapshotListener { querySnap, _ ->
+            if(querySnap != null) {
+                val messages = mutableListOf<Message>()
+                for(documentSnap in querySnap.documents) {
+                    val entity = documentSnap.toObject(MessageEntity::class.java)
+                    val message = entity?.toDomain()
+                    if(message != null) {
+                        messages.add(message)
+                    }
+                }
+                trySend(messages.toList())
+            }
+        }
+
+        awaitClose {
+            Log.i("Hello", "Removing subscription")
+            subscription.remove()
+        }
     }
 
     suspend fun getLastMessage(offerId: String): Outcome<Failure, Message> {
@@ -38,7 +68,7 @@ class MessagesRepository(
         try {
             val data = hashMapOf(
                 "author" to if(sender==MessageSender.EXPERT) "expert" else "client",
-                "data" to message,
+                "message" to message,
                 "time" to FieldValue.serverTimestamp(),
                 "type" to 0
             )
