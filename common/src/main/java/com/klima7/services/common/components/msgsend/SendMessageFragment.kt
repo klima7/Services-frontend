@@ -17,8 +17,10 @@ import android.provider.MediaStore
 import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.platform.BaseViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 
+@ExperimentalCoroutinesApi
 class SendMessageFragment: BaseFragment<FragmentSendMessageBinding>(), SendMessageBarView.Listener {
 
     override val layoutId = R.layout.fragment_send_message

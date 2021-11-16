@@ -4,6 +4,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentMessageViewerBinding
+import com.klima7.services.common.models.ImageMessage
 import com.klima7.services.common.models.TextMessage
 import com.klima7.services.common.platform.BaseFragment
 import com.xwray.groupie.GroupieAdapter
@@ -36,6 +37,10 @@ class MessageViewerFragment: BaseFragment<FragmentMessageViewerBinding>() {
                 when(message) {
                     is TextMessage -> {
                         val messageItem = TextMessageItem(message)
+                        group.add(messageItem)
+                    }
+                    is ImageMessage -> {
+                        val messageItem = ImageMessageItem(message)
                         group.add(messageItem)
                     }
                 }
