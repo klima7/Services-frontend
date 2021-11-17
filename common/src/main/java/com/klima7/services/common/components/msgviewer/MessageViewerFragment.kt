@@ -14,6 +14,7 @@ import com.klima7.services.common.models.Message
 import com.klima7.services.common.models.Role
 import com.klima7.services.common.models.TextMessage
 import com.klima7.services.common.platform.BaseFragment
+import com.xwray.groupie.Group
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.groupiex.plusAssign
@@ -44,7 +45,7 @@ class MessageViewerFragment:
 
         adapter += messagesSection
 
-        viewModel.messages.observe(viewLifecycleOwner) { newMessages ->
+        viewModel.messagesItems.observe(viewLifecycleOwner) { newMessages ->
             updateMessages(newMessages)
         }
 
@@ -63,24 +64,13 @@ class MessageViewerFragment:
         val offerId = arguments?.getString("offerId") ?: throw Error("offerId not supplied")
         val role = arguments?.getSerializable("role") as? Role  ?: throw Error("role not supplied")
 
-        viewModel.start(offerId)
+        viewModel.start(offerId, role)
     }
 
-    private fun updateMessages(newMessages: List<Message>) {
+    private fun updateMessages(newMessages: List<Group>) {
         val newMessagesSection = Section()
         val isBottom = isOnBottom()
-        for (message in newMessages) {
-            when (message) {
-                is TextMessage -> {
-                    val messageItem = TextMessageItem(message, Side.RIGHT)
-                    newMessagesSection.add(messageItem)
-                }
-                is ImageMessage -> {
-                    val messageItem = ImageMessageItem(message, Side.RIGHT)
-                    newMessagesSection.add(messageItem)
-                }
-            }
-        }
+        newMessagesSection.addAll(newMessages)
         messagesSection.replaceAll(listOf(newMessagesSection))
         if (isBottom) {
             binding.msgviewerRecycler.scrollToPosition(adapter.itemCount - 1)
