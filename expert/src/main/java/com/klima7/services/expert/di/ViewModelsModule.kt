@@ -8,6 +8,7 @@ import com.klima7.services.expert.features.job.JobViewModel
 import com.klima7.services.expert.features.jobs.JobsViewModel
 import com.klima7.services.expert.features.jobs.new.NewJobsListViewModel
 import com.klima7.services.expert.features.jobs.rejected.RejectedJobsListViewModel
+import com.klima7.services.expert.features.offer.OfferViewModel
 import com.klima7.services.expert.features.offers.OffersViewModel
 import com.klima7.services.expert.features.offers.archive.ArchiveOffersListViewModel
 import com.klima7.services.expert.features.offers.current.CurrentOffersListViewModel
@@ -41,5 +42,6 @@ val viewModelsModule = module {
     viewModel { CurrentOffersListViewModel(get(), get()) }
     viewModel { ArchiveOffersListViewModel(get(), get()) }
     viewModel { ProfileViewModel(get()) }
+    viewModel { OfferViewModel() }
 
 }
