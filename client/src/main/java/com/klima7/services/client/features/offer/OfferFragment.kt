@@ -32,8 +32,10 @@ class OfferFragment: BaseFragment<FragmentOfferBinding>(), SendMessageBarView.Li
     override fun onFirstCreation() {
         super.onFirstCreation()
 
-        val messageViewerFragment = MessageViewerFragment.newInstance("offer10", Role.CLIENT)
-        val sendMessageFragment = SendMessageFragment.newInstance("offer10", Role.CLIENT)
+        val offerId = arguments?.getString("offerId") ?: throw Error("offerId not supplied")
+
+        val messageViewerFragment = MessageViewerFragment.newInstance(offerId, Role.CLIENT)
+        val sendMessageFragment = SendMessageFragment.newInstance(offerId, Role.CLIENT)
 
         childFragmentManager
             .beginTransaction()

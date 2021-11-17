@@ -34,7 +34,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
 
         binding.homeToolbar.inflateMenu(R.menu.menu_home_toolbar)
         binding.homeToolbar.setOnMenuItemClickListener {
-            _temp_start_offer("offer1")
+            _temp_start_offer("offer10")
 //            viewModel.settingsIconClicked()
             true
         }
