@@ -34,12 +34,9 @@ class SendMessageViewModel(
         }
     }
 
-    fun setSender(sender: Role) {
-        this.sender = sender
-    }
-
-    fun setOffer(offerId: String) {
+    fun start(offerId: String, sender: Role) {
         this.offerId = offerId
+        this.sender = sender
     }
 
     fun sendMessageClicked(message: String) {

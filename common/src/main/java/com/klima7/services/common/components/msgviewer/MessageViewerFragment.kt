@@ -20,7 +20,8 @@ import com.xwray.groupie.groupiex.plusAssign
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MessageViewerFragment private constructor():
+@ExperimentalCoroutinesApi
+class MessageViewerFragment:
     BaseFragment<FragmentMessageViewerBinding>(), View.OnLayoutChangeListener{
 
     override val layoutId = R.layout.fragment_message_viewer
@@ -32,12 +33,8 @@ class MessageViewerFragment private constructor():
     private lateinit var recycler: RecyclerView
     private lateinit var scrollButton: FloatingActionButton
 
-    @ExperimentalCoroutinesApi
     override fun init() {
         super.init()
-
-        val offerId = arguments?.getString("offerId") ?: throw Error("offerId not supplied")
-        val role = arguments?.getSerializable("role") as? Role  ?: throw Error("role not supplied")
 
         recycler = binding.msgviewerRecycler
         scrollButton = binding.msgviewerScrollButton
@@ -58,6 +55,13 @@ class MessageViewerFragment private constructor():
         }
 
         binding.msgviewerRecycler.addOnScrollListener(ScrollListener())
+    }
+
+    override fun onFirstCreation() {
+        super.onFirstCreation()
+
+        val offerId = arguments?.getString("offerId") ?: throw Error("offerId not supplied")
+        val role = arguments?.getSerializable("role") as? Role  ?: throw Error("role not supplied")
 
         viewModel.start(offerId)
     }

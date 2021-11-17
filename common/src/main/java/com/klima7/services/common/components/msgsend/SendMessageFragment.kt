@@ -14,20 +14,31 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore
+import androidx.core.os.bundleOf
 import com.klima7.services.common.components.faildialog.FailureDialogFragment
+import com.klima7.services.common.components.msgviewer.MessageViewerFragment
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.platform.BaseViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 
 @ExperimentalCoroutinesApi
-class SendMessageFragment: BaseFragment<FragmentSendMessageBinding>(), SendMessageBarView.Listener {
+class SendMessageFragment:
+    BaseFragment<FragmentSendMessageBinding>(), SendMessageBarView.Listener {
 
     override val layoutId = R.layout.fragment_send_message
     override val viewModel: SendMessageViewModel by viewModel()
 
     companion object {
         const val SEND_IMAGE_FAILURE_DIALOG_KEY = "SEND_IMAGE_FAILURE_DIALOG_KEY"
+
+        fun newInstance(offerId: String, role: Role) =
+            SendMessageFragment().apply {
+                arguments = bundleOf(
+                    "offerId" to offerId,
+                    "role" to role
+                )
+            }
     }
 
     private val imagePickerLauncher = registerForActivityResult(
@@ -49,17 +60,13 @@ class SendMessageFragment: BaseFragment<FragmentSendMessageBinding>(), SendMessa
         }
     }
 
-    fun initialize(sender: Role, offerId: String) {
-        setSender(sender)
-        setOffer(offerId)
-    }
+    override fun onFirstCreation() {
+        super.onFirstCreation()
 
-    fun setSender(sender: Role) {
-        viewModel.setSender(sender)
-    }
+        val offerId = arguments?.getString("offerId") ?: throw Error("offerId not supplied")
+        val role = arguments?.getSerializable("role") as? Role  ?: throw Error("role not supplied")
 
-    fun setOffer(offerId: String) {
-        viewModel.setOffer(offerId)
+        viewModel.start(offerId, role)
     }
 
     override fun onSendMessageClicked(smb: SendMessageBarView) {
@@ -99,4 +106,5 @@ class SendMessageFragment: BaseFragment<FragmentSendMessageBinding>(), SendMessa
             "Wysyłanie obrazu nieudane.", failure)
         dialog.show(childFragmentManager, "FailureDialogFragment")
     }
+
 }
