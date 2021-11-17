@@ -30,7 +30,7 @@ class OfferFragment: BaseFragment<FragmentOfferBinding>(), SendMessageBarView.Li
         super.onFirstCreation()
 
         val sendFragment = childFragmentManager.findFragmentById(R.id.offer_send_fragment) as SendMessageFragment
-        sendFragment.initialize(MessageSender.CLIENT, "offer11")
+        sendFragment.initialize(MessageSender.CLIENT, "offer10")
     }
 
     override fun onSendMessageClicked(smb: SendMessageBarView) {

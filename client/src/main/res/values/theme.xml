@@ -13,6 +13,10 @@
         <item name="colorSecondaryVariant">#005A01</item>
         <item name="colorOnSecondary">@color/white</item>
 
+
+        <item name="messageCloudColor">#1A7900</item>
+        <item name="messageCloudTextColor">#FFFFFF</item>
+
     </style>
 
     <style name="Theme.Client.Background" parent="Theme.Client">

@@ -12,7 +12,6 @@ import com.xwray.groupie.databinding.BindableItem
 
 class TextMessageItem(
     private val message: TextMessage,
-    private val color: Int,
     private val side: Side,
     ) : BindableItem<ElementTextMessageBinding>() {
 
@@ -20,7 +19,6 @@ class TextMessageItem(
         binding.apply {
             msgtextText.text = message.text;
             msgtextPending.visibility = if(message.pending) View.VISIBLE else View.GONE
-            msgtextCard.setCardBackgroundColor(color)
 
             if(side == Side.LEFT) {
                 msgtextContainer.gravity = Gravity.LEFT

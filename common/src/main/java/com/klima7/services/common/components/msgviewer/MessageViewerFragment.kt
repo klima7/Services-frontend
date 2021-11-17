@@ -53,7 +53,7 @@ class MessageViewerFragment: BaseFragment<FragmentMessageViewerBinding>(), View.
 
         binding.msgviewerRecycler.addOnScrollListener(ScrollListener())
 
-        viewModel.start("offer11")
+        viewModel.start("offer10")
     }
 
     private fun updateMessages(newMessages: List<Message>) {
@@ -62,11 +62,7 @@ class MessageViewerFragment: BaseFragment<FragmentMessageViewerBinding>(), View.
         for (message in newMessages) {
             when (message) {
                 is TextMessage -> {
-                    val messageItem = TextMessageItem(
-                        message,
-                        resources.getColor(R.color.quantum_lightblue400, null),
-                        Side.RIGHT
-                    )
+                    val messageItem = TextMessageItem(message, Side.RIGHT)
                     newMessagesSection.add(messageItem)
                 }
                 is ImageMessage -> {

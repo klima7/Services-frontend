@@ -24,10 +24,12 @@
             android:id="@+id/msgviewer_scroll_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="bottom|center"
             android:layout_margin="16dp"
             app:srcCompat="@drawable/icon_new_messages"
             android:visibility="invisible"
+            android:backgroundTint="#B5B5B5"
+            app:layout_anchorGravity="bottom|center"
             />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
