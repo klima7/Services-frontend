@@ -5,7 +5,7 @@ import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.repositories.MessagesRepository
 import com.klima7.services.common.models.Failure
-import com.klima7.services.common.models.MessageSender
+import com.klima7.services.common.models.Role
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.withTimeout
 import kotlin.Exception
@@ -16,7 +16,7 @@ class SendImageMessageUC(
     private val messagesRepository: MessagesRepository
 ): BaseUC<SendImageMessageUC.Params, None>() {
 
-    data class Params(val offerId: String, val sender: MessageSender, val imagePath: String)
+    data class Params(val offerId: String, val sender: Role, val imagePath: String)
 
     @ExperimentalCoroutinesApi
     @ExperimentalTime

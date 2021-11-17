@@ -7,7 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.klima7.services.common.R
 import com.klima7.services.common.components.views.SendMessageBarView
 import com.klima7.services.common.databinding.FragmentSendMessageBinding
-import com.klima7.services.common.models.MessageSender
+import com.klima7.services.common.models.Role
 import com.klima7.services.common.platform.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -49,12 +49,12 @@ class SendMessageFragment: BaseFragment<FragmentSendMessageBinding>(), SendMessa
         }
     }
 
-    fun initialize(sender: MessageSender, offerId: String) {
+    fun initialize(sender: Role, offerId: String) {
         setSender(sender)
         setOffer(offerId)
     }
 
-    fun setSender(sender: MessageSender) {
+    fun setSender(sender: Role) {
         viewModel.setSender(sender)
     }
 

@@ -14,7 +14,7 @@ import com.klima7.services.common.data.converters.toDomain
 import com.klima7.services.common.data.entities.MessageEntity
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Message
-import com.klima7.services.common.models.MessageSender
+import com.klima7.services.common.models.Role
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -63,10 +63,10 @@ class MessagesRepository(
         throw NotImplementedError()
     }
 
-    suspend fun sendTextMessage(offerId: String, sender: MessageSender, message: String): Outcome<Failure, None> {
+    suspend fun sendTextMessage(offerId: String, sender: Role, message: String): Outcome<Failure, None> {
         try {
             val data = hashMapOf(
-                "author" to if(sender==MessageSender.EXPERT) "expert" else "client",
+                "author" to if(sender==Role.EXPERT) "expert" else "client",
                 "message" to message,
                 "time" to FieldValue.serverTimestamp(),
                 "type" to 0
@@ -85,7 +85,7 @@ class MessagesRepository(
     }
 
     @ExperimentalCoroutinesApi
-    suspend fun sendImageMessage(offerId: String, sender: MessageSender, imagePath: String):
+    suspend fun sendImageMessage(offerId: String, sender: Role, imagePath: String):
             Outcome<Failure, None> = suspendCancellableCoroutine { continuation ->
 
         val uid = auth.currentUser?.uid

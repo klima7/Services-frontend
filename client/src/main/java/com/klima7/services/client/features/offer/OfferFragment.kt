@@ -6,7 +6,7 @@ import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentOfferBinding
 import com.klima7.services.common.components.msgsend.SendMessageFragment
 import com.klima7.services.common.components.views.SendMessageBarView
-import com.klima7.services.common.models.MessageSender
+import com.klima7.services.common.models.Role
 import com.klima7.services.common.platform.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -30,7 +30,7 @@ class OfferFragment: BaseFragment<FragmentOfferBinding>(), SendMessageBarView.Li
         super.onFirstCreation()
 
         val sendFragment = childFragmentManager.findFragmentById(R.id.offer_send_fragment) as SendMessageFragment
-        sendFragment.initialize(MessageSender.CLIENT, "offer10")
+        sendFragment.initialize(Role.CLIENT, "offer10")
     }
 
     override fun onSendMessageClicked(smb: SendMessageBarView) {

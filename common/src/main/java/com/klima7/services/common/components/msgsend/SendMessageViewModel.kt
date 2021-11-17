@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.data.repositories.MessagesRepository
 import com.klima7.services.common.models.Failure
-import com.klima7.services.common.models.MessageSender
+import com.klima7.services.common.models.Role
 import com.klima7.services.common.platform.BaseViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
@@ -17,7 +17,7 @@ class SendMessageViewModel(
     private val messagesRepository: MessagesRepository
 ): BaseViewModel() {
 
-    private var sender: MessageSender? = null
+    private var sender: Role? = null
     private var offerId: String? = null
 
     private var lastImagePath: String? = null
@@ -34,7 +34,7 @@ class SendMessageViewModel(
         }
     }
 
-    fun setSender(sender: MessageSender) {
+    fun setSender(sender: Role) {
         this.sender = sender
     }
 
