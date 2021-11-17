@@ -12,7 +12,6 @@ import com.xwray.groupie.databinding.BindableItem
 
 
 class ImageMessageItem(
-    private val context: Context,
     private val message: ImageMessage,
     ) : BindableItem<ElementImageMessageBinding>() {
 
@@ -20,8 +19,8 @@ class ImageMessageItem(
         val image = binding.msgimageImage
         val fixedUrl = if(EMULATE) message.imageUrl.replace("localhost", "10.0.2.2") else message.imageUrl
 
-        Glide.with(context).clear(image)
-        Glide.with(context)
+        Glide.with(image.context).clear(image)
+        Glide.with(image.context)
             .load(fixedUrl)
 //            .transition(DrawableTransitionOptions.withCrossFade(resources.getInteger(R.integer.avatar_fade_time)))
             .placeholder(R.drawable.avatar_placeholder)

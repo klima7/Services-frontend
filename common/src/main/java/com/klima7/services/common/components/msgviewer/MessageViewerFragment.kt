@@ -1,6 +1,5 @@
 package com.klima7.services.common.components.msgviewer
 
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentMessageViewerBinding
@@ -11,8 +10,6 @@ import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.groupiex.plusAssign
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MessageViewerFragment: BaseFragment<FragmentMessageViewerBinding>() {
@@ -36,11 +33,11 @@ class MessageViewerFragment: BaseFragment<FragmentMessageViewerBinding>() {
             for(message in newMessages) {
                 when(message) {
                     is TextMessage -> {
-                        val messageItem = TextMessageItem(message)
+                        val messageItem = TextMessageItem(message, resources.getColor(R.color.quantum_lightblue400, null), Side.RIGHT)
                         group.add(messageItem)
                     }
                     is ImageMessage -> {
-                        val messageItem = ImageMessageItem(requireContext(), message)
+                        val messageItem = ImageMessageItem(message)
                         group.add(messageItem)
                     }
                 }
@@ -49,18 +46,5 @@ class MessageViewerFragment: BaseFragment<FragmentMessageViewerBinding>() {
         }
 
         viewModel.start("offer10")
-
-//        for(i in 0..15) {
-//            messages += TextMessageItem()
-//        }
-//
-//        lifecycleScope.launch {
-//            val newMessages = Section()
-//            delay(4000)
-//            for(i in 0..1000) {
-//                newMessages += TextMessageItem()
-//            }
-//            adapter.replaceAll(listOf(newMessages))
-//        }
     }
 }
