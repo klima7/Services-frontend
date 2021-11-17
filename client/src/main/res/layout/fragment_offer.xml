@@ -73,13 +73,13 @@
 
         </LinearLayout>
 
-        <fragment
-            android:id="@+id/offer_message_viewer"
-            android:name="com.klima7.services.common.components.msgviewer.MessageViewerFragment"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/offer_chat_container"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
             app:layout_constraintBottom_toTopOf="@+id/offer_send_fragment"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
+            />
 
         <fragment
             android:id="@+id/offer_send_fragment"

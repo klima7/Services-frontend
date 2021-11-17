@@ -5,9 +5,11 @@ import android.widget.ArrayAdapter
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentOfferBinding
 import com.klima7.services.common.components.msgsend.SendMessageFragment
+import com.klima7.services.common.components.msgviewer.MessageViewerFragment
 import com.klima7.services.common.components.views.SendMessageBarView
 import com.klima7.services.common.models.Role
 import com.klima7.services.common.platform.BaseFragment
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OfferFragment: BaseFragment<FragmentOfferBinding>(), SendMessageBarView.Listener {
@@ -26,8 +28,15 @@ class OfferFragment: BaseFragment<FragmentOfferBinding>(), SendMessageBarView.Li
         binding.offerExpertsSpinner.adapter = adapter
     }
 
+    @ExperimentalCoroutinesApi
     override fun onFirstCreation() {
         super.onFirstCreation()
+
+        val messageViewerFragment = MessageViewerFragment.newInstance("offer10", Role.CLIENT)
+        childFragmentManager
+            .beginTransaction()
+            .add(R.id.offer_chat_container, messageViewerFragment)
+            .commit()
 
         val sendFragment = childFragmentManager.findFragmentById(R.id.offer_send_fragment) as SendMessageFragment
         sendFragment.initialize(Role.CLIENT, "offer10")

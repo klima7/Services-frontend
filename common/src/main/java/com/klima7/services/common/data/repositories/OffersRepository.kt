@@ -92,4 +92,5 @@ class OffersRepository(
             Outcome.Failure(e.toDomain())
         }
     }
+
 }

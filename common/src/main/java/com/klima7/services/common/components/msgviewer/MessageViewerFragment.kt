@@ -3,6 +3,7 @@ package com.klima7.services.common.components.msgviewer
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -10,6 +11,7 @@ import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentMessageViewerBinding
 import com.klima7.services.common.models.ImageMessage
 import com.klima7.services.common.models.Message
+import com.klima7.services.common.models.Role
 import com.klima7.services.common.models.TextMessage
 import com.klima7.services.common.platform.BaseFragment
 import com.xwray.groupie.GroupieAdapter
@@ -18,7 +20,8 @@ import com.xwray.groupie.groupiex.plusAssign
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MessageViewerFragment: BaseFragment<FragmentMessageViewerBinding>(), View.OnLayoutChangeListener{
+class MessageViewerFragment private constructor():
+    BaseFragment<FragmentMessageViewerBinding>(), View.OnLayoutChangeListener{
 
     override val layoutId = R.layout.fragment_message_viewer
     override val viewModel: MessageViewerViewModel by viewModel()
@@ -32,6 +35,9 @@ class MessageViewerFragment: BaseFragment<FragmentMessageViewerBinding>(), View.
     @ExperimentalCoroutinesApi
     override fun init() {
         super.init()
+
+        val offerId = arguments?.getString("offerId") ?: throw Error("offerId not supplied")
+        val role = arguments?.getSerializable("role") as? Role  ?: throw Error("role not supplied")
 
         recycler = binding.msgviewerRecycler
         scrollButton = binding.msgviewerScrollButton
@@ -53,7 +59,7 @@ class MessageViewerFragment: BaseFragment<FragmentMessageViewerBinding>(), View.
 
         binding.msgviewerRecycler.addOnScrollListener(ScrollListener())
 
-        viewModel.start("offer10")
+        viewModel.start(offerId)
     }
 
     private fun updateMessages(newMessages: List<Message>) {
@@ -114,6 +120,16 @@ class MessageViewerFragment: BaseFragment<FragmentMessageViewerBinding>(), View.
                 scrollButton.show()
             }
         }
+    }
+
+    companion object {
+        fun newInstance(offerId: String, role: Role) =
+            MessageViewerFragment().apply {
+                arguments = bundleOf(
+                    "offerId" to offerId,
+                    "role" to role
+                )
+            }
     }
 
 }
