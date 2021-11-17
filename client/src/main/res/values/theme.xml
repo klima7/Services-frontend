@@ -14,8 +14,8 @@
         <item name="colorOnSecondary">@color/white</item>
 
 
-        <item name="messageCloudColor">#1A7900</item>
-        <item name="messageCloudTextColor">#FFFFFF</item>
+        <item name="messageCloudColor">#51DC2A</item>
+        <item name="messageCloudTextColor">#000000</item>
 
     </style>
 

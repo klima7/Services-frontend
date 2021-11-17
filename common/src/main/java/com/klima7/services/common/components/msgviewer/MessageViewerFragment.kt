@@ -66,7 +66,7 @@ class MessageViewerFragment: BaseFragment<FragmentMessageViewerBinding>(), View.
                     newMessagesSection.add(messageItem)
                 }
                 is ImageMessage -> {
-                    val messageItem = ImageMessageItem(message)
+                    val messageItem = ImageMessageItem(message, Side.RIGHT)
                     newMessagesSection.add(messageItem)
                 }
             }
