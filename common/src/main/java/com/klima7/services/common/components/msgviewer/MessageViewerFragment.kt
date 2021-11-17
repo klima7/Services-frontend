@@ -40,7 +40,7 @@ class MessageViewerFragment: BaseFragment<FragmentMessageViewerBinding>() {
                         group.add(messageItem)
                     }
                     is ImageMessage -> {
-                        val messageItem = ImageMessageItem(message)
+                        val messageItem = ImageMessageItem(requireContext(), message)
                         group.add(messageItem)
                     }
                 }
