@@ -21,12 +21,14 @@
         />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floating_action_button"
+            android:id="@+id/msgviewer_scroll_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
             android:layout_margin="16dp"
-            app:srcCompat="@drawable/icon_new_messages"/>
+            app:srcCompat="@drawable/icon_new_messages"
+            android:visibility="invisible"
+            />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

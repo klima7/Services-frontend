@@ -40,7 +40,6 @@ class MessagesRepository(
             .collection("messages")
             .orderBy("time", Query.Direction.ASCENDING)
 
-        Log.i("Hello", "Starting subscription")
         val subscription = query.addSnapshotListener(MetadataChanges.INCLUDE) { querySnap, _ ->
             if(querySnap != null) {
                 val messages = mutableListOf<Message>()
@@ -56,7 +55,6 @@ class MessagesRepository(
         }
 
         awaitClose {
-            Log.i("Hello", "Removing subscription")
             subscription.remove()
         }
     }
