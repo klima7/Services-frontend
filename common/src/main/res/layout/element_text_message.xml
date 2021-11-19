@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="cardColor"
+            type="Integer" />
+    </data>
+
     <LinearLayout
         android:id="@+id/msgtext_container"
         android:layout_width="match_parent"
@@ -19,7 +25,7 @@
             app:contentPaddingLeft="14dp"
             app:contentPaddingRight="14dp"
             app:cardCornerRadius="16dp"
-            app:cardBackgroundColor="?messageCloudColor"
+            app:cardBackgroundColor="@{cardColor}"
             >
 
             <LinearLayout

@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="cardColor"
+            type="Integer" />
+    </data>
+
     <LinearLayout
         android:id="@+id/msgimage_container"
         android:layout_width="match_parent"
@@ -12,11 +18,12 @@
         >
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/msgimage_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cardCornerRadius="16dp"
             app:contentPadding="4dp"
-            app:cardBackgroundColor="?messageCloudColor"
+            app:cardBackgroundColor="@{cardColor}"
             >
 
         <com.google.android.material.card.MaterialCardView
