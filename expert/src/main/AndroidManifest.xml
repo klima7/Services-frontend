@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.klima7.services.expert">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <queries>
+        <provider android:authorities="com.facebook.katana.provider.PlatformProvider" /> <!-- allows app to access Facebook app features -->
+        <provider android:authorities="com.facebook.orca.provider.PlatformProvider" /> <!-- allows sharing to Messenger app -->
+    </queries>
+
     <application
         android:name="com.klima7.services.expert.ExpertApp"
         android:allowBackup="false"
