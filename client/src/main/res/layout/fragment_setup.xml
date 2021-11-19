@@ -65,6 +65,7 @@
             android:background="@drawable/rounded_button"
             android:onClick="@{() -> viewmodel.continueClicked()}"
             android:text="Kontynuuj"
+            android:enabled="@{viewmodel.continueButtonEnabled}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

@@ -1,6 +1,7 @@
 package com.klima7.services.client.features.setup
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.core.None
 import com.klima7.services.common.platform.BaseLoadViewModel
@@ -10,6 +11,7 @@ class SetupViewModel(
 ): BaseLoadViewModel() {
 
     val setupState = MutableLiveData<ClientSetupState>()
+    val continueButtonEnabled = setupState.map { it.infoSetup }
 
     sealed class Event: BaseEvent() {
         object ShowHomeScreen: Event()
