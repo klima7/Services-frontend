@@ -5,9 +5,11 @@ import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.core.None
 import com.klima7.services.common.platform.BaseLoadViewModel
+import com.klima7.services.common.usecases.SignOutUC
 
 class SetupViewModel(
-    private val getCurrentExpertSetupStateUC: GetCurrentExpertSetupStateUC
+    private val getCurrentExpertSetupStateUC: GetCurrentExpertSetupStateUC,
+    private val signOutUC: SignOutUC,
 ): BaseLoadViewModel() {
 
     val setupState = MutableLiveData<ExpertSetupState>()
@@ -18,6 +20,7 @@ class SetupViewModel(
         object ShowInfoScreen: Event()
         object ShowServicesScreen: Event()
         object ShowWorkingAreaScreen: Event()
+        object ShowSplashScreen: Event()
     }
 
     fun started() {
@@ -46,6 +49,22 @@ class SetupViewModel(
 
     fun locationClicked() {
         sendEvent(Event.ShowWorkingAreaScreen)
+    }
+
+    fun logoutClicked() {
+        signOut()
+    }
+
+    private fun signOut() {
+        signOutUC.start(
+            viewModelScope,
+            None(),
+            {
+                // Do nothing - in current implementation sign out failure is impossible
+            }, {
+                sendEvent(Event.ShowSplashScreen)
+            }
+        )
     }
 
     private fun loadContent() {

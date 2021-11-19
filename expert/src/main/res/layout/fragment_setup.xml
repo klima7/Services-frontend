@@ -70,19 +70,40 @@
 
         </ScrollView>
 
-        <Button
+        <LinearLayout
             android:id="@+id/button2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
-            android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
-            android:background="@drawable/rounded_button"
-            android:onClick="@{() -> viewmodel.continueClicked()}"
-            android:text="Kontynuuj"
-            android:enabled="@{viewmodel.continueButtonEnabled}"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            >
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
+                android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
+                android:background="@drawable/rounded_button"
+                android:onClick="@{()->viewmodel.continueClicked()}"
+                android:text="Kontynuuj"
+                android:enabled="@{viewmodel.continueButtonEnabled}"
+                />
+
+            <Button
+                android:id="@+id/delete_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
+                android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
+                android:text="Wyloguj się"
+                android:theme="@style/Button.Red"
+                android:background="@drawable/rounded_button_red"
+                android:onClick="@{()->viewmodel.logoutClicked()}"
+                />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

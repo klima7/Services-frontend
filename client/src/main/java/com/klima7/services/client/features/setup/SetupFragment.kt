@@ -6,6 +6,7 @@ import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentSetupBinding
 import com.klima7.services.client.features.home.HomeActivity
 import com.klima7.services.client.features.info.InfoActivity
+import com.klima7.services.client.features.splash.SplashActivity
 import com.klima7.services.common.platform.BaseLoadFragment
 import com.klima7.services.common.platform.BaseViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -32,6 +33,7 @@ class SetupFragment: BaseLoadFragment<FragmentSetupBinding>() {
         when(event) {
             SetupViewModel.Event.ShowHomeScreen -> showHomeScreen()
             SetupViewModel.Event.ShowInfoScreen -> showInfoScreen()
+            SetupViewModel.Event.ShowSplashScreen -> showSplashScreen()
         }
     }
 
@@ -45,6 +47,13 @@ class SetupFragment: BaseLoadFragment<FragmentSetupBinding>() {
     private fun showInfoScreen() {
         val intent = Intent(activity, InfoActivity::class.java)
         configLauncher.launch(intent)
+    }
+
+    private fun showSplashScreen() {
+        val intent = Intent(activity, SplashActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
+        startActivity(intent)
+        requireActivity().finish()
     }
 
     private fun onConfigDone() {
