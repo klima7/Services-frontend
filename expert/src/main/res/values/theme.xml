@@ -25,4 +25,12 @@
 
     </style>
 
+    <style name="LoginTheme" parent="FirebaseUI">
+        <item name="colorPrimary">#2731E3</item>
+        <item name="colorPrimaryVariant">#98A9FF</item>
+        <item name="colorAccent">@android:color/black</item>
+        <item name="android:colorBackground">@color/icon_background</item>
+        <item name="colorPrimaryDark">#0009B5</item>
+    </style>
+
 </resources>

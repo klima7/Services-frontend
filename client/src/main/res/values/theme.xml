@@ -21,8 +21,16 @@
 
     <style name="Theme.Client.Background" parent="Theme.Client">
 
-        <item name = "android:windowBackground">@color/icon_background</item>
+        <item name="android:windowBackground">@color/icon_background</item>
 
+    </style>
+
+    <style name="LoginTheme" parent="FirebaseUI">
+        <item name="colorPrimary">#1A7900</item>
+        <item name="colorPrimaryVariant">#73E454</item>
+        <item name="colorAccent">@android:color/black</item>
+        <item name="android:colorBackground">@color/icon_background</item>
+        <item name="colorPrimaryDark">#005A01</item>
     </style>
 
 </resources>

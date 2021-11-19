@@ -49,6 +49,8 @@ open class BaseLoginFragment(
             .setAvailableProviders(viewModel.providers)
             .setLogo(R.drawable.logo)
             .setTheme(R.style.LoginTheme)
+            .setAlwaysShowSignInMethodScreen(true)
+            .setIsSmartLockEnabled(false)
             .build()
 
         signInLauncher.launch(signInIntent)
