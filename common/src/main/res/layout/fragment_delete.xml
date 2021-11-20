@@ -19,7 +19,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             style="@style/ToolBar"
-            android:backgroundTint="#FF4848"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -82,15 +81,15 @@
 
                 <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/lav_actionBar"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
                     android:layout_marginTop="32dp"
                     android:layout_gravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:lottie_autoPlay="true"
                     app:lottie_fileName="lottie_delete.json"
                     app:lottie_loop="false"
-                    app:lottie_speed="0.4"/>
+                    app:lottie_speed="1"/>
 
             </LinearLayout>
 
