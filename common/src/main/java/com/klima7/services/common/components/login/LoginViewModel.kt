@@ -12,7 +12,7 @@ class LoginViewModel: BaseViewModel() {
     }
 
     val providers = arrayListOf(
-        AuthUI.IdpConfig.EmailBuilder().build(),
+        AuthUI.IdpConfig.EmailBuilder().setRequireName(false).build(),
         AuthUI.IdpConfig.GoogleBuilder().build(),
         AuthUI.IdpConfig.FacebookBuilder().build(),
     )
