@@ -9,6 +9,7 @@ import com.klima7.services.common.R
 import com.klima7.services.common.data.di.EMULATE
 import com.klima7.services.common.databinding.ElementImageMessageBinding
 import com.klima7.services.common.models.ImageMessage
+import com.klima7.services.common.ui.UrlUtils
 import com.klima7.services.common.ui.convertDpToPixel
 import com.xwray.groupie.databinding.BindableItem
 
@@ -33,7 +34,7 @@ class ImageMessageItem(
         }
 
         val image = binding.msgimageImage
-        val fixedUrl = if(EMULATE) message.imageUrl.replace("localhost", "10.0.2.2") else message.imageUrl
+        val fixedUrl = UrlUtils.fixUrlForEmulator(message.imageUrl)
 
         Glide.with(image.context).clear(image)
         Glide.with(image.context)

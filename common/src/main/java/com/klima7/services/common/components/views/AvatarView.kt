@@ -13,6 +13,7 @@ import com.bumptech.glide.signature.ObjectKey
 import com.klima7.services.common.R
 import com.klima7.services.common.data.di.EMULATE
 import com.klima7.services.common.models.ProfileImage
+import com.klima7.services.common.ui.UrlUtils
 
 @androidx.databinding.BindingMethods(
     value = [
@@ -78,7 +79,7 @@ class AvatarView(context: Context, attrs: AttributeSet?) : FrameLayout(context, 
             return
         }
 
-        val fixedUri = if(EMULATE) constProfileImage.url.replace("localhost", "10.0.2.2") else constProfileImage.url
+        val fixedUri = UrlUtils.fixUrlForEmulator(constProfileImage.url)
 
         Glide.with(this).clear(image)
         Glide.with(this)
