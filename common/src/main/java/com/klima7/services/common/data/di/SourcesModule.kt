@@ -8,7 +8,7 @@ import com.google.firebase.storage.ktx.storage
 import com.klima7.services.common.BuildConfig
 import org.koin.dsl.module
 
-const val EMULATE = BuildConfig.BUILD_TYPE == "emulated"
+const val EMULATE = BuildConfig.EMULATE
 const val EMULATOR_HOST = "10.0.2.2"
 
 val sourcesModule = module {
