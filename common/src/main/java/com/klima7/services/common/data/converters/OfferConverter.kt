@@ -12,7 +12,7 @@ fun OfferEntity.toDomain(id: String): Offer {
         3 -> OfferStatus.DONE
         else -> OfferStatus.NEW
     }
-    return Offer(id, creationTime.toDate(), isPreferred, ratingId, offerStatus, archived, jobId,
+    return Offer(id, creationTime.toDate(), ratingId, offerStatus, archived, jobId,
         clientReadTime.toDate(), expertReadTime.toDate(), serviceId, serviceName, clientId,
         clientName, expertId, expertName)
 }

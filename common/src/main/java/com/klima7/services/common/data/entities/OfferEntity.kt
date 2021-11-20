@@ -4,7 +4,6 @@ import com.google.firebase.Timestamp
 
 data class OfferEntity(
     var creationTime: Timestamp = Timestamp.now(),
-    var isPreferred: Boolean = false,
     var ratingId: String? = null,
     var status: Int = 0,
     var archived: Boolean = false,

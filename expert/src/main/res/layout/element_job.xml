@@ -7,9 +7,6 @@
         <variable
             name="job"
             type="com.klima7.services.common.models.Job" />
-        <variable
-            name="preferred"
-            type="Boolean" />
     </data>
 
     <com.klima7.services.common.components.views.JobView
@@ -17,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:job_job="@{job}"
-        app:job_preferred="@{preferred}"
         app:job_short="true"
         />
 

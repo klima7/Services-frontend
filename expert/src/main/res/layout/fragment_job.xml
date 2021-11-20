@@ -55,8 +55,7 @@
                             android:id="@+id/job_view"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:job_job="@{viewmodel.expertJob.job}"
-                            app:job_preferred="@{viewmodel.expertJob.isPreferred}"/>
+                            app:job_job="@{viewmodel.expertJob.job}" />
 
                     </LinearLayout>
 

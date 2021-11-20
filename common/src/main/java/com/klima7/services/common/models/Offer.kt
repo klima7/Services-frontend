@@ -5,7 +5,6 @@ import java.util.*
 data class Offer(
     val id: String,
     val creationTime: Date,
-    val isPreferred: Boolean,
     val ratingId: String?,
     val status: OfferStatus,
     val archived: Boolean,

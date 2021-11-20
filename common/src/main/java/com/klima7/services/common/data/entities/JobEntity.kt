@@ -9,7 +9,6 @@ data class JobEntity(
     var creation: Timestamp = Timestamp.now(),
     var description: String = "",
     var location: LocationEntity? = null,
-    var preferredExpertsIds: List<String> = listOf(),
     var realizationTime: String = "",
     var serviceName: String = "",
     var serviceId: String = ""

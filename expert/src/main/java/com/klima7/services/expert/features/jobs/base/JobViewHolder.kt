@@ -27,7 +27,6 @@ class JobViewHolder private constructor(
             return
 
         binding.job = expertJob.job
-        binding.preferred = expertJob.isPreferred
         binding.jobelemJob.setClickListener {
             onJobListener.onJobClicked(expertJob)
         }

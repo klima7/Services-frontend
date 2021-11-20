@@ -45,13 +45,12 @@ class GetCurrentExpertJobUC(
         return jobsStatusRepository.getJobStatus(uid, jobId).foldS({ failure ->
             Outcome.Failure(failure)
         }, { status ->
-            combineParts(job, status, uid)
+            combineParts(job, status)
         })
     }
 
-    private fun combineParts(job: Job, status: JobStatus, uid: String): Outcome<Failure, ExpertJob> {
-        val isPreferred = job.preferredExpertsIds.contains(uid)
-        val result = ExpertJob(job, status, isPreferred)
+    private fun combineParts(job: Job, status: JobStatus): Outcome<Failure, ExpertJob> {
+        val result = ExpertJob(job, status)
         return Outcome.Success(result)
     }
 }

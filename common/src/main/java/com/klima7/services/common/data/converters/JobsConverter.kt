@@ -12,7 +12,6 @@ fun JobEntity.toDomain(id: String): Job {
         creation.toDate(),
         description,
         location?.toDomain(),
-        preferredExpertsIds,
         realizationTime,
         serviceName,
         serviceId

@@ -24,11 +24,6 @@ import java.util.*
 )
 class JobViewBindingMethods
 
-@BindingAdapter( "job_preferred")
-fun setPreferred(jobView: JobView, preferred: Boolean?) {
-    jobView.setPreferred(preferred ?: false)
-}
-
 class JobView : FrameLayout {
 
     companion object {
@@ -48,7 +43,6 @@ class JobView : FrameLayout {
     private var clickListener: (() -> Unit)? = null
     private var short = false
     private var hideClient = false
-    private var preferred = false
 
     init {
         val inflater = LayoutInflater.from(context)
@@ -70,13 +64,6 @@ class JobView : FrameLayout {
         requestLayout()
     }
 
-    fun setPreferred(preferred: Boolean) {
-        this.preferred = preferred
-        refreshView()
-        invalidate()
-        requestLayout()
-    }
-
     fun setClickListener(clickListener: (() -> Unit)?) {
         this.clickListener = clickListener
     }
@@ -86,7 +73,6 @@ class JobView : FrameLayout {
 
         binding.job = cJob
         binding.shorter = short
-        binding.preferred = preferred
         binding.hideClient = hideClient
         binding.jobCreationTime.text = if(cJob != null) format.format(cJob.creationDate) else ""
         binding.jobviewDescription.maxLines = if(short) shortDescriptionLines else Int.MAX_VALUE

@@ -9,7 +9,6 @@ data class Job(
     val creationDate: Date,
     val description: String,
     val location: Location?,
-    val preferredExpertsIds: List<String>,
     val realizationTime: String,
     val serviceName: String,
     val serviceId: String,
