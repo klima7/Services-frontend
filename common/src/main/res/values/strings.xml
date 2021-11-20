@@ -19,4 +19,7 @@
     <string name="offer_status_in_realization">w realizacji</string>
     <string name="offer_status_done">wykonano</string>
 
+    <!-- Credits -->
+    <string name="credit_pin">"Icon made by Pixel perfect from www.flaticon.com"</string>
+
 </resources>

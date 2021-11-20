@@ -41,7 +41,7 @@ class MessageViewerFragment:
         scrollButton = binding.msgviewerScrollButton
 
         recycler.adapter = adapter
-        binding.msgviewerRecycler.layoutManager = LinearLayoutManager(requireContext())
+        recycler.layoutManager = LinearLayoutManager(requireContext())
 
         adapter += messagesSection
 
