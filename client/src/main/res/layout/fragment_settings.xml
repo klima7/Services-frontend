@@ -54,6 +54,14 @@
                 <com.klima7.services.common.components.views.SettingsTileView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:settingstile_title="Podziękowania"
+                    app:settingstile_icon="@drawable/icon_heart"
+                    app:settingstile_action="@{() -> viewmodel.creditsClicked()}"
+                    />
+
+                <com.klima7.services.common.components.views.SettingsTileView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     app:settingstile_title="Wyloguj się"
                     app:settingstile_icon="@drawable/icon_logout"
                     app:settingstile_action="@{() -> viewmodel.signOutClicked()}"

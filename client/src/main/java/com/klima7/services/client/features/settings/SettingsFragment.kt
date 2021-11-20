@@ -3,6 +3,7 @@ package com.klima7.services.client.features.settings
 import android.content.Intent
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentSettingsBinding
+import com.klima7.services.client.features.credits.CreditsActivity
 import com.klima7.services.client.features.delete.DeleteActivity
 import com.klima7.services.client.features.info.InfoActivity
 import com.klima7.services.client.features.splash.SplashActivity
@@ -28,6 +29,7 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>() {
             SettingsViewModel.Event.ShowInfoScreen -> showInfoScreen()
             SettingsViewModel.Event.ShowDeleteScreen -> showDeleteScreen()
             SettingsViewModel.Event.ShowSplashScreen -> showSplashScreen()
+            SettingsViewModel.Event.ShowCreditsScreen -> showCreditsScreen()
         }
     }
 
@@ -46,5 +48,10 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>() {
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
         startActivity(intent)
         requireActivity().finish()
+    }
+
+    private fun showCreditsScreen() {
+        val intent = Intent(activity, CreditsActivity::class.java)
+        startActivity(intent)
     }
 }

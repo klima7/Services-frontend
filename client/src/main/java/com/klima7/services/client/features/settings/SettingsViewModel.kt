@@ -13,6 +13,7 @@ class SettingsViewModel(
         object ShowInfoScreen: Event()
         object ShowSplashScreen: Event()
         object ShowDeleteScreen: Event()
+        object ShowCreditsScreen: Event()
     }
 
     fun profileClicked() {
@@ -21,6 +22,10 @@ class SettingsViewModel(
 
     fun deleteClicked() {
         sendEvent(Event.ShowDeleteScreen)
+    }
+
+    fun creditsClicked() {
+        sendEvent(Event.ShowCreditsScreen)
     }
 
     fun signOutClicked() {
