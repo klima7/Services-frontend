@@ -4,7 +4,7 @@ import com.klima7.services.common.components.settings.BaseSettingsViewModel
 import com.klima7.services.common.usecases.SignOutUC
 
 class SettingsViewModel(
-    private val signOutUC: SignOutUC
+    signOutUC: SignOutUC
 ): BaseSettingsViewModel(signOutUC) {
 
     sealed class Event: BaseEvent() {

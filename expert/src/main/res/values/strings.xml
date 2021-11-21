@@ -7,4 +7,11 @@
 
     <string name="move_offer_to_archive_failure_msg">Przeniesienie oferty do archiwum nieudane.</string>
     <string name="move_offer_to_current_failure_msg">Przeniesienie oferty do aktualnych nieudane.</string>
+
+    <!-- Settings screen -->
+    <string name="settings_profile">Zmiana profilu</string>
+    <string name="settings_services">Zmiana świadczonych usług</string>
+    <string name="settings_location">Zmiana lokalizacji</string>
+    <string name="settings_delete">Usuń konto wykonawcy</string>
+
 </resources>

@@ -1,10 +1,10 @@
 package com.klima7.services.expert.features.settings
 
 import android.content.Intent
-import com.klima7.services.common.platform.BaseFragment
+import com.klima7.services.common.components.settings.BaseSettingsFragment
+import com.klima7.services.common.components.settings.SettingsOption
 import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.expert.R
-import com.klima7.services.expert.databinding.FragmentSettingsBinding
 import com.klima7.services.expert.features.area.WorkingAreaActivity
 import com.klima7.services.expert.features.delete.DeleteActivity
 import com.klima7.services.expert.features.info.InfoActivity
@@ -12,16 +12,18 @@ import com.klima7.services.expert.features.services.ServicesActivity
 import com.klima7.services.expert.features.splash.SplashActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SettingsFragment: BaseFragment<FragmentSettingsBinding>() {
+class SettingsFragment: BaseSettingsFragment() {
 
     override val layoutId = R.layout.fragment_settings
     override val viewModel: SettingsViewModel by viewModel()
 
-    override fun init() {
-        val toolbar = binding.settingsToolbar
-        toolbar.title = "Ustawienia"
-        toolbar.setNavigationIcon(R.drawable.icon_arrow_back)
-        toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
+    override fun getSpecificSettingsOptions(): List<SettingsOption> {
+        return listOf(
+            SettingsOption(R.drawable.icon_profile, R.string.settings_profile, SettingsViewModel.Event.ShowInfoScreen),
+            SettingsOption(R.drawable.icon_service, R.string.settings_services, SettingsViewModel.Event.ShowServicesScreen),
+            SettingsOption(R.drawable.icon_location, R.string.settings_location, SettingsViewModel.Event.ShowWorkingAreaScreen),
+            SettingsOption(R.drawable.icon_delete_account, R.string.settings_delete, SettingsViewModel.Event.ShowDeleteScreen),
+        )
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
@@ -31,7 +33,6 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>() {
             SettingsViewModel.Event.ShowWorkingAreaScreen -> showLocationScreen()
             SettingsViewModel.Event.ShowServicesScreen -> showServicesScreen()
             SettingsViewModel.Event.ShowDeleteScreen -> showDeleteScreen()
-            SettingsViewModel.Event.ShowSplashScreen -> showSplashScreen()
         }
     }
 
@@ -55,7 +56,11 @@ class SettingsFragment: BaseFragment<FragmentSettingsBinding>() {
         startActivity(intent)
     }
 
-    private fun showSplashScreen() {
+    override fun showCreditsScreen() {
+        TODO("Not yet implemented")
+    }
+
+    override fun showSplashScreen() {
         val intent = Intent(activity, SplashActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
         startActivity(intent)
