@@ -3,17 +3,30 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="16dp"
+        >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Aplikacja wymaga logowania"
-            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textSize="16sp"
             />
 
-    </FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Jeżeli korzystasz już z aplikacji dla klientów możesz zalogować się tutaj korzystając z tych samych danych"
+            android:textAlignment="center"
+            />
+
+    </LinearLayout>
 
 </layout>
