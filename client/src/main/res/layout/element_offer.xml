@@ -36,7 +36,7 @@
                 android:id="@+id/offerelem_expert_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/quantum_grey400"
+                app:cardBackgroundColor="#4FC3F7"
                 app:cardCornerRadius="35dp"
                 >
 
