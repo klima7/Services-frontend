@@ -2,6 +2,7 @@ package com.klima7.services.common.components.login
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
@@ -13,7 +14,7 @@ import com.klima7.services.common.platform.BaseViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-open class BaseLoginFragment(
+abstract class BaseLoginFragment(
     private val subtitle: Int
 ): BaseFragment<FragmentLoginBinding>() {
 
@@ -41,6 +42,15 @@ open class BaseLoginFragment(
                 viewModel.retryLoginClicked()
             }
         }
+    }
+
+    override fun onFirstCreation() {
+        super.onFirstCreation()
+
+        childFragmentManager
+            .beginTransaction()
+            .add(R.id.login_decoration_holder, createDecorationFragment())
+            .commit()
     }
 
     private fun signIn() {
@@ -91,4 +101,6 @@ open class BaseLoginFragment(
         )
         dialog.show(childFragmentManager, "FailureDialogFragment")
     }
+
+    protected abstract fun createDecorationFragment(): Fragment
 }
