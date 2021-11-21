@@ -72,7 +72,6 @@
                     android:layout_height="wrap_content"
                     app:settingstile_title="Wyloguj się"
                     app:settingstile_icon="@drawable/icon_logout"
-                    app:settingstile_action="@{() -> viewmodel.signOutClicked()}"
                     />
 
             </LinearLayout>

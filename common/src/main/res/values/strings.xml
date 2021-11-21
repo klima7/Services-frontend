@@ -19,6 +19,10 @@
     <string name="offer_status_in_realization">w realizacji</string>
     <string name="offer_status_done">wykonano</string>
 
+    <!-- Settings screen -->
+    <string name="settings_credits">Podziękowania</string>
+    <string name="settings_logout">Wyloguj się</string>
+
     <!-- Credits -->
     <string name="credit_pin">"Icon made by Pixel perfect from www.flaticon.com"</string>
 

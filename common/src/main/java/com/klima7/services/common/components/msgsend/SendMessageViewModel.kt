@@ -26,14 +26,6 @@ class SendMessageViewModel(
         data class ShowSendImageFailure(val failure: Failure): Event()
     }
 
-    init {
-        viewModelScope.launch {
-            messagesRepository.getMessages("offer10").collect {
-                Log.i("Hello", "Collecting messages: $it")
-            }
-        }
-    }
-
     fun start(offerId: String, sender: Role) {
         this.offerId = offerId
         this.sender = sender

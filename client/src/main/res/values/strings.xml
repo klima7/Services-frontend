@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Usługi</string>
-    <string name="app_subtitle"></string>
+    <string name="app_subtitle"> </string>
     <string name="delete_title">Usuwanie konta klienta</string>
     <string name="delete_text">Czy jesteś pewien, że chcesz usunąć konto klienta? Operacja ta jest nieodwracalna.</string>
+
+    <!-- Settings screen -->
+    <string name="settings_profile">Zmiana profilu</string>
+    <string name="settings_delete">Usuń konto klienta</string>
+
 </resources>
