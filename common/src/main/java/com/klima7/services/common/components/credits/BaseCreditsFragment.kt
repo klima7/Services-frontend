@@ -1,7 +1,6 @@
 package com.klima7.services.common.components.credits
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentCreditsBinding
 import com.klima7.services.common.platform.BaseFragment
@@ -12,7 +11,7 @@ import com.xwray.groupie.groupiex.plusAssign
 abstract class BaseCreditsFragment: BaseFragment<FragmentCreditsBinding>() {
 
     override val layoutId = R.layout.fragment_credits
-    abstract override val viewModel: BaseCreditsViewModel
+    override val viewModel = BaseViewModel()
 
     private val adapter = GroupieAdapter()
 
@@ -31,5 +30,15 @@ abstract class BaseCreditsFragment: BaseFragment<FragmentCreditsBinding>() {
         }
     }
 
-    abstract fun getCredits(): List<Credit>
+    private fun getCredits(): List<Credit> {
+        return getCommonCredits() + getSpecificCredits()
+    }
+
+    private fun getCommonCredits(): List<Credit> {
+        return listOf(
+            Credit(R.drawable.pin, R.string.credit_pin),
+        )
+    }
+
+    abstract fun getSpecificCredits(): List<Credit>
 }
