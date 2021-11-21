@@ -6,6 +6,7 @@ import com.klima7.services.common.components.settings.SettingsOption
 import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.features.area.WorkingAreaActivity
+import com.klima7.services.expert.features.credits.CreditsActivity
 import com.klima7.services.expert.features.delete.DeleteActivity
 import com.klima7.services.expert.features.info.InfoActivity
 import com.klima7.services.expert.features.services.ServicesActivity
@@ -57,7 +58,8 @@ class SettingsFragment: BaseSettingsFragment() {
     }
 
     override fun showCreditsScreen() {
-        TODO("Not yet implemented")
+        val intent = Intent(activity, CreditsActivity::class.java)
+        startActivity(intent)
     }
 
     override fun showSplashScreen() {
