@@ -21,11 +21,6 @@ class OfferFragment: BaseFragment<FragmentOfferBinding>(), SendMessageBarView.Li
         val toolbar = binding.offerToolbar
         toolbar.setNavigationIcon(R.drawable.icon_arrow_back)
         toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
-
-        val list = listOf("Jan Kowalski", "Piotr Duda", "Julia Marciniak", "Juliusz Słowacka")
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, list)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.offerExpertsSpinner.adapter = adapter
     }
 
     @ExperimentalCoroutinesApi
@@ -42,6 +37,8 @@ class OfferFragment: BaseFragment<FragmentOfferBinding>(), SendMessageBarView.Li
             .add(R.id.offer_chat_container, messageViewerFragment)
             .add(R.id.offer_msgsend_container, sendMessageFragment)
             .commit()
+
+        viewModel.start(offerId)
     }
 
     override fun onSendMessageClicked(smb: SendMessageBarView) {

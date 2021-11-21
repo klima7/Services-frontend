@@ -1,10 +1,11 @@
 package com.klima7.services.client.features.profile
 
 import androidx.lifecycle.viewModelScope
+import com.klima7.services.client.usecases.GetExpertUC
 import com.klima7.services.common.components.profile.BaseProfileViewModel
 
 class ProfileContentViewModel(
-    private val getExpertByUidUC: GetExpertByUidUC
+    private val getExpertUC: GetExpertUC
 ): BaseProfileViewModel() {
 
     private lateinit var expertUid: String
@@ -16,9 +17,9 @@ class ProfileContentViewModel(
 
     override fun loadContent() {
         showLoading()
-        getExpertByUidUC.start(
+        getExpertUC.start(
             viewModelScope,
-            GetExpertByUidUC.Params(expertUid),
+            GetExpertUC.Params(expertUid),
             { failure ->
                 showFailure(failure)
             },

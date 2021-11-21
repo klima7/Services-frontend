@@ -1,4 +1,4 @@
-package com.klima7.services.client.features.profile
+package com.klima7.services.client.usecases
 
 import com.klima7.services.common.core.BaseUC
 import com.klima7.services.common.core.Outcome
@@ -6,9 +6,9 @@ import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.models.Expert
 import com.klima7.services.common.models.Failure
 
-class GetExpertByUidUC(
+class GetExpertUC(
     private val expertsRepository: ExpertsRepository
-): BaseUC<GetExpertByUidUC.Params, Expert>() {
+): BaseUC<GetExpertUC.Params, Expert>() {
 
     data class Params(val uid: String)
 

@@ -3,15 +3,20 @@ package com.klima7.services.common.data.repositories
 import android.util.Log
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.MetadataChanges
 import com.google.firebase.firestore.Query
 import com.google.firebase.functions.FirebaseFunctions
 import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.converters.toDomain
-import com.klima7.services.common.data.entities.JobEntity
+import com.klima7.services.common.data.entities.MessageEntity
 import com.klima7.services.common.data.entities.OfferEntity
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Offer
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
 
 class OffersRepository(
@@ -73,6 +78,27 @@ class OffersRepository(
         } catch(e: Exception) {
             Log.e("Hello", "Error during getOffersForJob", e)
             Outcome.Failure(e.toDomain())
+        }
+    }
+
+    @ExperimentalCoroutinesApi
+    suspend fun getOfferStream(offerId: String): Flow<Offer> = callbackFlow {
+        val query = firestore
+            .collection("offers")
+            .document(offerId)
+
+        val subscription = query.addSnapshotListener(MetadataChanges.INCLUDE) { docSnapshot, _ ->
+            if(docSnapshot != null) {
+                val entity = docSnapshot.toObject(OfferEntity::class.java)
+                val offer = entity?.toDomain(docSnapshot.id)
+                if(offer != null) {
+                    trySend(offer)
+                }
+            }
+        }
+
+        awaitClose {
+            subscription.remove()
         }
     }
 

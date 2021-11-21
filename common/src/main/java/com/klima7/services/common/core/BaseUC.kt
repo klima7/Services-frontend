@@ -23,7 +23,7 @@ abstract class BaseUC<P, R> {
         return outcome
     }
 
-    fun start(scope: CoroutineScope, params: P, onFailure: (Failure)->Unit, onSuccess: (R)->Unit) {
+    fun start(scope: CoroutineScope, params: P, onFailure: suspend (Failure)->Unit, onSuccess: suspend (R)->Unit) {
         scope.launch {
             run(params).foldS({ failure ->
                 onFailure(failure)
