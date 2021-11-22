@@ -1,7 +1,6 @@
 package com.klima7.services.client.features.offers
 
 import android.content.Intent
-import android.util.Log
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.client.R
@@ -12,14 +11,16 @@ import com.klima7.services.client.features.profile.ProfileActivity
 import com.klima7.services.common.models.OfferWithExpert
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
+import com.xwray.groupie.GroupieAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class OffersFragment: BaseFragment<FragmentOffersBinding>(), OffersAdapter.OnOfferListener {
+class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem.Listener {
 
     override val layoutId = R.layout.fragment_offers
     override val viewModel: OffersViewModel by viewModel()
 
     lateinit var jobId: String
+    private val offersAdapter = GroupieAdapter()
 
     override fun onFirstCreation() {
         super.onFirstCreation()
@@ -38,14 +39,12 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OffersAdapter.OnOff
             }
         }
 
-        val offersAdapter = OffersAdapter(this)
         binding.offersRecycler.apply {
             adapter = offersAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
-        viewModel.offersWithExperts.observe(viewLifecycleOwner) { offers ->
-            offersAdapter.setOffers(offers)
-        }
+
+        viewModel.offersWithExperts.observe(viewLifecycleOwner, this::updateOffers)
 
         binding.offersRefreshLayout.setOnRefreshListener {
             binding.offersRefreshLayout.isRefreshing = false
@@ -53,14 +52,23 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OffersAdapter.OnOff
         }
     }
 
-    override fun onOfferContentClicked(offerWithExpert: OfferWithExpert) {
+    private fun updateOffers(offers: List<OfferWithExpert>) {
+        offersAdapter.clear()
+
+        for(offer in offers) {
+            val item = OfferWithExpertItem(offer, this)
+            offersAdapter.add(item)
+        }
+    }
+
+    override fun offerContentClicked(offerWithExpert: OfferWithExpert) {
         val intent = Intent(requireContext(), OfferActivity::class.java)
         val bundle = bundleOf("offerId" to offerWithExpert.offer.id)
         intent.putExtras(bundle)
         startActivity(intent)
     }
 
-    override fun onOfferExpertClicked(offerWithExpert: OfferWithExpert) {
+    override fun offerExpertClicked(offerWithExpert: OfferWithExpert) {
         val intent = Intent(requireContext(), ProfileActivity::class.java)
         val bundle = bundleOf("expertUid" to offerWithExpert.expert.uid)
         intent.putExtras(bundle)
