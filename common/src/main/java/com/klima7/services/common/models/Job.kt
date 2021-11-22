@@ -12,4 +12,5 @@ data class Job(
     val realizationTime: String,
     val serviceName: String,
     val serviceId: String,
+    val active: Boolean,
 )

@@ -14,7 +14,8 @@ fun JobEntity.toDomain(id: String): Job {
         location?.toDomain(),
         realizationTime,
         serviceName,
-        serviceId
+        serviceId,
+        active
     )
 }
 

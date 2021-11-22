@@ -59,6 +59,10 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
             val item = OfferWithExpertItem(offer, this)
             offersAdapter.add(item)
         }
+
+        if(offers.isEmpty()) {
+            offersAdapter.add(NoOffersItem())
+        }
     }
 
     override fun offerContentClicked(offerWithExpert: OfferWithExpert) {

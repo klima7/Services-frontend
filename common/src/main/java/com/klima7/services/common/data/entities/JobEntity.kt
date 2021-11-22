@@ -11,7 +11,8 @@ data class JobEntity(
     var location: LocationEntity? = null,
     var realizationTime: String = "",
     var serviceName: String = "",
-    var serviceId: String = ""
+    var serviceId: String = "",
+    var active: Boolean = false,
 ) {
 
     data class LocationEntity(
