@@ -1,7 +1,7 @@
 package com.klima7.services.client.features.offers
 
 import android.content.Intent
-import android.util.Log
+import android.os.Bundle
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.client.R
@@ -9,6 +9,8 @@ import com.klima7.services.client.databinding.FragmentOffersBinding
 import com.klima7.services.client.features.job.JobActivity
 import com.klima7.services.client.features.offer.OfferActivity
 import com.klima7.services.client.features.profile.ProfileActivity
+import com.klima7.services.common.components.faildialog.FailureDialogFragment
+import com.klima7.services.common.components.yesnodialog.YesNoDialogFragment
 import com.klima7.services.common.models.OfferWithExpert
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
@@ -16,7 +18,12 @@ import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem.Listener {
+class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem.Listener,
+    JobActiveItem.Listener {
+
+    companion object {
+        const val FINISH_JOB_DIALOG_KEY = "FINISH_JOB_DIALOG_KEY"
+    }
 
     override val layoutId = R.layout.fragment_offers
     override val viewModel: OffersViewModel by viewModel()
@@ -36,8 +43,12 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
     override fun init() {
         super.init()
 
-        groupieAdapter.add(activeSection)
-        groupieAdapter.add(offersSection)
+        childFragmentManager.setFragmentResultListener(FINISH_JOB_DIALOG_KEY, viewLifecycleOwner) { _: String, bundle: Bundle ->
+            val result = bundle.get(YesNoDialogFragment.BUNDLE_KEY)
+            if(result == YesNoDialogFragment.Result.YES) {
+                viewModel.finishJobConfirmed()
+            }
+        }
 
         binding.offersToolbar.apply {
             setNavigationOnClickListener { requireActivity().onBackPressed() }
@@ -46,6 +57,9 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
                 true
             }
         }
+
+        groupieAdapter.add(activeSection)
+        groupieAdapter.add(offersSection)
 
         binding.offersRecycler.apply {
             adapter = groupieAdapter
@@ -73,7 +87,7 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
     private fun updateActive(offerActive: Boolean) {
         activeSection.clear()
         if(offerActive) {
-            activeSection.add(JobActiveItem())
+            activeSection.add(JobActiveItem(this))
         }
         else {
             activeSection.add(JobFinishedItem())
@@ -94,6 +108,10 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
         startActivity(intent)
     }
 
+    override fun finishJobClicked() {
+        showFinishQueryDialog()
+    }
+
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
         super.handleEvent(event)
         when(event) {
@@ -106,5 +124,12 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
         val bundle = bundleOf("jobId" to jobId)
         intent.putExtras(bundle)
         startActivity(intent)
+    }
+
+    private fun showFinishQueryDialog() {
+        val dialog = YesNoDialogFragment.create(
+            FINISH_JOB_DIALOG_KEY,
+            "Czy na pewno chcesz zamknąć zlecenie?",)
+        dialog.show(childFragmentManager, "YesNoDialogFragment")
     }
 }

@@ -5,11 +5,19 @@ import com.klima7.services.client.databinding.ElementJobActiveBinding
 import com.xwray.groupie.databinding.BindableItem
 
 
-class JobActiveItem : BindableItem<ElementJobActiveBinding>() {
+class JobActiveItem(
+    private val listener: Listener
+): BindableItem<ElementJobActiveBinding>() {
 
-    override fun bind(binding: ElementJobActiveBinding, position: Int) { }
+    override fun bind(binding: ElementJobActiveBinding, position: Int) {
+        binding.elemjobactiveFinish.setOnClickListener {
+            listener.finishJobClicked()
+        }
+    }
 
     override fun getLayout() = R.layout.element_job_active
 
-
+    interface Listener {
+        fun finishJobClicked()
+    }
 }

@@ -14,6 +14,7 @@ import com.klima7.services.common.components.profile.description.ProfileDescript
 import com.klima7.services.common.components.profile.header.ProfileHeaderViewModel
 import com.klima7.services.common.components.profile.rating.ProfileRatingViewModel
 import com.klima7.services.common.components.profile.services.ProfileServicesViewModel
+import com.klima7.services.common.components.yesnodialog.YesNoDialogViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -21,6 +22,7 @@ import org.koin.dsl.module
 val viewModelsModule = module {
 
     viewModel { FailureDialogViewModel() }
+    viewModel { YesNoDialogViewModel() }
     viewModel { ProfileServicesViewModel(get()) }
     viewModel { AreaVisualizationViewModel() }
     viewModel { ProfileContactViewModel() }

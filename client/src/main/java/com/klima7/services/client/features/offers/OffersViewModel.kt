@@ -1,5 +1,6 @@
 package com.klima7.services.client.features.offers
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
@@ -39,6 +40,10 @@ class OffersViewModel(
 
     fun showDetailsClicked() {
         sendEvent(Event.ShowJobDetails(jobId))
+    }
+
+    fun finishJobConfirmed() {
+        Log.i("Hello", "Finishing job")
     }
 
     private fun loadContent() {
