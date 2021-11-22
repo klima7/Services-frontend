@@ -11,6 +11,7 @@ import com.klima7.services.client.features.offer.OfferActivity
 import com.klima7.services.client.features.profile.ProfileActivity
 import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.common.components.yesnodialog.YesNoDialogFragment
+import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.OfferWithExpert
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
@@ -22,7 +23,8 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
     JobActiveItem.Listener {
 
     companion object {
-        const val FINISH_JOB_DIALOG_KEY = "FINISH_JOB_DIALOG_KEY"
+        const val FINISH_JOB_ENSURE_DIALOG_KEY = "FINISH_JOB_ENSURE_DIALOG_KEY"
+        const val FINISH_JOB_FAILURE_DIALOG_KEY = "FINISH_JOB_FAILURE_DIALOG_KEY"
     }
 
     override val layoutId = R.layout.fragment_offers
@@ -43,7 +45,14 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
     override fun init() {
         super.init()
 
-        childFragmentManager.setFragmentResultListener(FINISH_JOB_DIALOG_KEY, viewLifecycleOwner) { _: String, bundle: Bundle ->
+        childFragmentManager.setFragmentResultListener(FINISH_JOB_FAILURE_DIALOG_KEY, viewLifecycleOwner) { _: String, bundle: Bundle ->
+            val result = bundle.get(YesNoDialogFragment.BUNDLE_KEY)
+            if(result == FailureDialogFragment.Result.RETRY) {
+                viewModel.retryFinishJob()
+            }
+        }
+
+        childFragmentManager.setFragmentResultListener(FINISH_JOB_ENSURE_DIALOG_KEY, viewLifecycleOwner) { _: String, bundle: Bundle ->
             val result = bundle.get(YesNoDialogFragment.BUNDLE_KEY)
             if(result == YesNoDialogFragment.Result.YES) {
                 viewModel.finishJobConfirmed()
@@ -116,6 +125,7 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
         super.handleEvent(event)
         when(event) {
             is OffersViewModel.Event.ShowJobDetails -> showJobDetails(event.jobId)
+            is OffersViewModel.Event.ShowFinishJobFailure -> showFinishJobFailure(event.failure)
         }
     }
 
@@ -128,8 +138,15 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
 
     private fun showFinishQueryDialog() {
         val dialog = YesNoDialogFragment.create(
-            FINISH_JOB_DIALOG_KEY,
+            FINISH_JOB_ENSURE_DIALOG_KEY,
             "Czy na pewno chcesz zamknąć zlecenie?",)
         dialog.show(childFragmentManager, "YesNoDialogFragment")
+    }
+
+    private fun showFinishJobFailure(failure: Failure) {
+        val dialog = FailureDialogFragment.createRetry(
+            FINISH_JOB_FAILURE_DIALOG_KEY,
+            "Zamknięcie zlecenia się nie powiodło.", failure)
+        dialog.show(childFragmentManager, "FailureDialogFragment")
     }
 }

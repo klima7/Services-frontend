@@ -4,11 +4,12 @@ import com.klima7.services.client.features.delete.DeleteClientUC
 import com.klima7.services.client.features.info.SetCurrentClientInfoUC
 import com.klima7.services.client.features.jobs.GetCurrentClientJobsUC
 import com.klima7.services.client.features.offer.GetOfferStreamUC
+import com.klima7.services.client.features.offers.FinishJobUC
 import com.klima7.services.client.features.offers.GetOffersWithExpertForJobUC
-import com.klima7.services.client.usecases.GetExpertUC
 import com.klima7.services.client.features.setup.GetCurrentClientSetupStateUC
 import com.klima7.services.client.features.splash.GetCurrentClientStateUC
 import com.klima7.services.client.usecases.GetCurrentClientUC
+import com.klima7.services.client.usecases.GetExpertUC
 import com.klima7.services.client.usecases.GetJobUC
 import org.koin.dsl.module
 
@@ -24,5 +25,6 @@ val useCasesModule = module {
     single { GetOffersWithExpertForJobUC(get(), get()) }
     single { GetExpertUC(get()) }
     single { GetOfferStreamUC(get()) }
+    single { FinishJobUC(get()) }
 
 }

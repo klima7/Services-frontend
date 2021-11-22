@@ -13,11 +13,13 @@ import com.klima7.services.common.platform.BaseViewModel
 
 class OffersViewModel(
     private val getJobUC: GetJobUC,
-    private val getOffersWithExpertForJobUC: GetOffersWithExpertForJobUC
+    private val getOffersWithExpertForJobUC: GetOffersWithExpertForJobUC,
+    private val finishJobUC: FinishJobUC,
 ): BaseViewModel() {
 
     sealed class Event: BaseEvent() {
         data class ShowJobDetails(val jobId: String): Event()
+        data class ShowFinishJobFailure(val failure: Failure): Event()
     }
 
     private lateinit var jobId: String
@@ -43,13 +45,15 @@ class OffersViewModel(
     }
 
     fun finishJobConfirmed() {
-        Log.i("Hello", "Finishing job")
+        finishJob()
+    }
+
+    fun retryFinishJob() {
+        finishJob()
     }
 
     private fun loadContent() {
-        if(job.value == null) {
-            loadJob()
-        }
+        loadJob()
         loadOffers()
     }
 
@@ -76,6 +80,21 @@ class OffersViewModel(
             { offersWithExperts ->
                 loadState.value = LoadAreaView.State.MAIN
                 this.offersWithExperts.value = offersWithExperts
+            }
+        )
+    }
+
+    private fun finishJob() {
+        loadState.value = LoadAreaView.State.PENDING
+        finishJobUC.start(
+            viewModelScope,
+            FinishJobUC.Params(jobId),
+            { failure ->
+                loadState.value = LoadAreaView.State.MAIN
+                sendEvent(Event.ShowFinishJobFailure(failure))
+            }, {
+                loadState.value = LoadAreaView.State.MAIN
+                refresh()
             }
         )
     }

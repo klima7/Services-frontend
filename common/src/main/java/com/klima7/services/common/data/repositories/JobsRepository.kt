@@ -104,4 +104,20 @@ class JobsRepository(
         }
     }
 
+    suspend fun finishJob(jobId: String): Outcome<Failure, None> {
+        val data = hashMapOf(
+            "id" to jobId
+        )
+        try {
+            functions
+                .getHttpsCallable("jobs-finish")
+                .call(data)
+                .await()
+        } catch(e: Exception) {
+            Log.e("Hello", "Error while finishJob", e)
+            return Outcome.Failure(e.toDomain())
+        }
+        return Outcome.Success(None())
+    }
+
 }
