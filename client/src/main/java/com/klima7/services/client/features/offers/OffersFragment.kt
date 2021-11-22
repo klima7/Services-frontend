@@ -1,6 +1,7 @@
 package com.klima7.services.client.features.offers
 
 import android.content.Intent
+import android.util.Log
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.client.R
@@ -12,6 +13,7 @@ import com.klima7.services.common.models.OfferWithExpert
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
 import com.xwray.groupie.GroupieAdapter
+import com.xwray.groupie.Section
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem.Listener {
@@ -20,7 +22,10 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
     override val viewModel: OffersViewModel by viewModel()
 
     lateinit var jobId: String
-    private val offersAdapter = GroupieAdapter()
+
+    private val groupieAdapter = GroupieAdapter()
+    private val activeSection = Section()
+    private val offersSection = Section()
 
     override fun onFirstCreation() {
         super.onFirstCreation()
@@ -31,6 +36,9 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
     override fun init() {
         super.init()
 
+        groupieAdapter.add(activeSection)
+        groupieAdapter.add(offersSection)
+
         binding.offersToolbar.apply {
             setNavigationOnClickListener { requireActivity().onBackPressed() }
             setOnMenuItemClickListener {
@@ -40,11 +48,13 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
         }
 
         binding.offersRecycler.apply {
-            adapter = offersAdapter
+            adapter = groupieAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
 
         viewModel.offersWithExperts.observe(viewLifecycleOwner, this::updateOffers)
+
+        viewModel.isJobActive.observe(viewLifecycleOwner, this::updateActive)
 
         binding.offersRefreshLayout.setOnRefreshListener {
             binding.offersRefreshLayout.isRefreshing = false
@@ -53,15 +63,20 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
     }
 
     private fun updateOffers(offers: List<OfferWithExpert>) {
-        offersAdapter.clear()
-
+        offersSection.clear()
         for(offer in offers) {
             val item = OfferWithExpertItem(offer, this)
-            offersAdapter.add(item)
+            offersSection.add(item)
         }
+    }
 
-        if(offers.isEmpty()) {
-            offersAdapter.add(NoOffersItem())
+    private fun updateActive(offerActive: Boolean) {
+        activeSection.clear()
+        if(offerActive) {
+            activeSection.add(JobActiveItem())
+        }
+        else {
+            activeSection.add(JobFinishedItem())
         }
     }
 

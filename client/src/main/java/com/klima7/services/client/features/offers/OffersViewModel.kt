@@ -1,6 +1,5 @@
 package com.klima7.services.client.features.offers
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
@@ -24,6 +23,7 @@ class OffersViewModel(
     val job = MutableLiveData<Job?>(null)
     val offersWithExperts = MutableLiveData<List<OfferWithExpert>>()
     val subtitle = job.map { job -> job?.serviceName ?: "" }
+    val isJobActive = job.map { it?.active ?: false }
 
     val loadState = MutableLiveData(LoadAreaView.State.MAIN)
     val loadFailure = MutableLiveData<Failure>()
