@@ -11,6 +11,7 @@ import com.klima7.services.client.features.offers.OffersActivity
 import com.klima7.services.common.models.Job
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -43,20 +44,25 @@ class JobsFragment : BaseFragment<FragmentJobsBinding>(), JobsAdapter.OnJobListe
     }
 
     override fun onJobClicked(job: Job) {
-        val intent = Intent(requireContext(), OffersActivity::class.java)
-        val bundle = bundleOf("jobId" to job.id)
-        intent.putExtras(bundle)
-        startActivity(intent)
+        viewModel.jobClicked(job.id)
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
         super.handleEvent(event)
         when(event) {
             JobsViewModel.Event.RefreshJobs -> refreshJobs()
+            is JobsViewModel.Event.ShowOffersScreen -> showOffersScreen(event.jobId)
         }
     }
 
     private fun refreshJobs() {
         jobsAdapter.refresh()
+    }
+
+    private fun showOffersScreen(jobId: String) {
+        val intent = Intent(requireContext(), OffersActivity::class.java)
+        val bundle = bundleOf("jobId" to jobId)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 }

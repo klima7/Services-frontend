@@ -12,6 +12,7 @@ class JobsViewModel(
 ): BaseViewModel() {
 
     sealed class Event: BaseEvent() {
+        data class ShowOffersScreen(val jobId: String): Event()
         object RefreshJobs: Event()
     }
 
@@ -20,6 +21,10 @@ class JobsViewModel(
 
     fun refresh() {
         sendEvent(Event.RefreshJobs)
+    }
+
+    fun jobClicked(jobId: String) {
+        sendEvent(Event.ShowOffersScreen(jobId))
     }
 
     private fun createPager() = Pager(
