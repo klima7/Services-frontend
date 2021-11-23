@@ -55,6 +55,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
 
     private fun _startAddComm() {
         val intent = Intent(activity, AddCommActivity::class.java)
+        intent.putExtra("offerId", "offer1")
         startActivity(intent)
     }
 

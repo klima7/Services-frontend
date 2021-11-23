@@ -1,5 +1,6 @@
 package com.klima7.services.client.di
 
+import com.klima7.services.client.features.addcomm.GetOfferWithExpertUC
 import com.klima7.services.client.features.delete.DeleteClientUC
 import com.klima7.services.client.features.info.SetCurrentClientInfoUC
 import com.klima7.services.client.features.jobs.GetCurrentClientJobsUC
@@ -26,5 +27,6 @@ val useCasesModule = module {
     single { GetExpertUC(get()) }
     single { GetOfferStreamUC(get()) }
     single { FinishJobUC(get()) }
+    single { GetOfferWithExpertUC(get(), get()) }
 
 }

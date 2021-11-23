@@ -9,10 +9,11 @@
             type="com.klima7.services.client.features.addcomm.AddCommViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:visibility="visible">
+        android:orientation="vertical"
+        >
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/addcomm_toolbar"
@@ -23,34 +24,59 @@
             app:navigationIcon="@drawable/icon_arrow_back"
             app:title="Dodawanie komentarza" />
 
-        <ScrollView
-            android:id="@+id/scrollView2"
+        <com.klima7.services.common.components.views.LoadAreaView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/button4"
-            app:layout_constraintTop_toBottomOf="@+id/addcomm_toolbar">
+            android:layout_height="match_parent"
+            app:la_state="@{viewmodel.loadState}"
+            app:la_failure="@{viewmodel.loadFailure}"
+            app:la_onRefresh="@{() -> viewmodel.refresh()}"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="8dp">
+                >
+
+                <ScrollView
+                    android:id="@+id/scrollView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <com.klima7.services.common.components.views.AvatarView
+                            android:id="@+id/addcomm_avatar"
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:layout_gravity="center_horizontal"
+                            app:avatar_profile_image="@{viewmodel.profileImage}"
+                            />
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
+                    android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
+                    android:background="@drawable/rounded_button"
+                    android:text="Dodaj komentarz"
+                    />
 
             </LinearLayout>
 
-        </ScrollView>
+        </com.klima7.services.common.components.views.LoadAreaView>
 
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
-            android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
-            android:background="@drawable/rounded_button"
-            android:text="Kontynuuj"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_editor_absoluteX="8dp" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </layout>
