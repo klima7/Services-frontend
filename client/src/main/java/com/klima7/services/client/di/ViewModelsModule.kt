@@ -1,5 +1,6 @@
 package com.klima7.services.client.di
 
+import com.klima7.services.client.features.addcomm.AddCommViewModel
 import com.klima7.services.client.features.delete.DeleteViewModel
 import com.klima7.services.client.features.home.HomeViewModel
 import com.klima7.services.client.features.info.InfoViewModel
@@ -29,5 +30,6 @@ val viewModelsModule = module {
     viewModel { ProfileViewModel() }
     viewModel { ProfileContentViewModel(get()) }
     viewModel { OfferViewModel(get(), get()) }
+    viewModel { AddCommViewModel() }
 
 }

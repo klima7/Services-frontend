@@ -8,6 +8,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentHomeBinding
+import com.klima7.services.client.features.addcomm.AddCommActivity
 import com.klima7.services.client.features.delete.DeleteActivity
 import com.klima7.services.client.features.offer.OfferActivity
 import com.klima7.services.client.features.settings.SettingsActivity
@@ -34,7 +35,8 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
 
         binding.homeToolbar.inflateMenu(R.menu.menu_home_toolbar)
         binding.homeToolbar.setOnMenuItemClickListener {
-            viewModel.settingsIconClicked()
+            _startAddComm()
+//            viewModel.settingsIconClicked()
             true
         }
     }
@@ -51,10 +53,9 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
         startActivity(intent)
     }
 
-    private fun _temp_start_offer(offerId: String) {
-        val intent = Intent(requireContext(), OfferActivity::class.java)
-        val bundle = bundleOf("offerId" to offerId)
-        intent.putExtras(bundle)
+    private fun _startAddComm() {
+        val intent = Intent(activity, AddCommActivity::class.java)
         startActivity(intent)
     }
+
 }
