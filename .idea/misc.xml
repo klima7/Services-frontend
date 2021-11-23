@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/PI/src/frontend/client/src/main/res/drawable/active_offer.xml" value="0.21302083333333333" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/drawable/icon_foreground.xml" value="0.1638888888888889" />
+        <entry key="..\:/PI/src/frontend/client/src/main/res/drawable/icon_search.xml" value="0.21481481481481482" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/drawable/logo.xml" value="0.1935185185185185" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/activity_main.xml" value="0.16893115942028986" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/element_job.xml" value="0.21822916666666667" />
@@ -28,6 +29,7 @@
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/fragment_splash.xml" value="0.1" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/fragment_splash_decoration.xml" value="0.2171875" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/view_expert_rating.xml" value="0.4" />
+        <entry key="..\:/PI/src/frontend/client/src/main/res/menu/home_bottom.xml" value="0.27076923076923076" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/menu/menu_home_bottom.xml" value="0.19074074074074074" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/menu/offer.xml" value="0.27076923076923076" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/avatar_failure.xml" value="0.21944444444444444" />
@@ -37,6 +39,7 @@
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/icon_description.xml" value="0.17037037037037037" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/icon_error.xml" value="0.2074074074074074" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/icon_heart.xml" value="0.16875" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/icon_job.xml" value="0.21481481481481482" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/icon_job_reject_list.xml" value="0.19375" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/icon_person.xml" value="0.17037037037037037" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/icon_refresh.xml" value="0.2351851851851852" />

@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/searchFragment"
-        android:title="Eksperci"
-        android:icon="@drawable/icon_search" />
+        android:title="Nowe zlecenie"
+        android:icon="@drawable/icon_new_job" />
 
 </menu>
