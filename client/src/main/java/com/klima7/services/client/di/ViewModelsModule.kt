@@ -6,6 +6,7 @@ import com.klima7.services.client.features.home.HomeViewModel
 import com.klima7.services.client.features.info.InfoViewModel
 import com.klima7.services.client.features.job.JobViewModel
 import com.klima7.services.client.features.jobs.JobsViewModel
+import com.klima7.services.client.features.newjob.category.CategoryViewModel
 import com.klima7.services.client.features.offer.OfferViewModel
 import com.klima7.services.client.features.offers.OffersViewModel
 import com.klima7.services.client.features.profile.ProfileContentViewModel
@@ -31,5 +32,6 @@ val viewModelsModule = module {
     viewModel { ProfileContentViewModel(get()) }
     viewModel { OfferViewModel(get(), get()) }
     viewModel { AddCommViewModel(get(), get()) }
+    viewModel { CategoryViewModel() }
 
 }
