@@ -57,7 +57,7 @@ class RatingsRepository(
         }
     }
 
-    suspend fun addRating(offerId: String, rating: Double, comment: String): Outcome<Failure, None> {
+    suspend fun addRating(offerId: String, rating: Double, comment: String?): Outcome<Failure, None> {
         return try {
             val data = hashMapOf(
                 "offerId" to offerId,

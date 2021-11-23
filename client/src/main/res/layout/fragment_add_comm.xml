@@ -120,7 +120,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Komentarz"
-                            style="@style/TextInputLayoutStyle">
+                            app:counterEnabled="true"
+                            app:counterMaxLength="250"
+                            style="@style/TextInputLayoutStyle"
+                            >
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/shipper_field"
@@ -133,6 +136,7 @@
                                 android:padding="25dp"
                                 android:scrollbarStyle="insideInset"
                                 android:scrollbars="vertical"
+                                android:text="@={viewmodel.comment}"
                                 />
 
                         </com.google.android.material.textfield.TextInputLayout>
@@ -160,6 +164,8 @@
                     android:layout_marginTop="2dp"
                     android:background="@drawable/rounded_button"
                     android:text="Dodaj komentarz"
+                    android:onClick="@{()->viewmodel.addCommentClicked()}"
+                    android:enabled="@{viewmodel.addButtonActive}"
                     />
 
             </LinearLayout>

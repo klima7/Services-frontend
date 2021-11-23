@@ -10,7 +10,9 @@ open class BaseViewModel: ViewModel() {
 
     val TAG: String = this::class.java.simpleName
 
-    abstract class BaseEvent
+    open class BaseEvent {
+        object FinishActivity: BaseEvent()
+    }
 
     private val eventChannel = Channel<BaseEvent>()
     val eventFlow = eventChannel.receiveAsFlow()

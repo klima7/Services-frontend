@@ -8,7 +8,7 @@ class AddRatingUC(
     private val ratingsRepository: RatingsRepository
 ): BaseUC<AddRatingUC.Params, None>() {
 
-    data class Params(val offerId: String, val rating: Double, val comment: String)
+    data class Params(val offerId: String, val rating: Double, val comment: String?)
 
     override suspend fun execute(params: Params) =
         ratingsRepository.addRating(params.offerId, params.rating, params.comment)

@@ -51,7 +51,11 @@ abstract class BaseFragment<DB: ViewDataBinding>: Fragment() {
         }
     }
 
-    open suspend fun handleEvent(event: BaseViewModel.BaseEvent) {}
+    open suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
+        when(event) {
+            BaseViewModel.BaseEvent.FinishActivity -> finishActivity()
+        }
+    }
 
     open fun init() {}
 
@@ -59,5 +63,9 @@ abstract class BaseFragment<DB: ViewDataBinding>: Fragment() {
 
     fun showShortToast(text: String) {
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
+    }
+
+    protected fun finishActivity() {
+        requireActivity().finish()
     }
 }
