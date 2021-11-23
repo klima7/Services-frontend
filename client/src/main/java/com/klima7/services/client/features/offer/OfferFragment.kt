@@ -1,14 +1,18 @@
 package com.klima7.services.client.features.offer
 
+import android.content.Intent
 import android.util.Log
+import android.view.MenuItem
 import android.widget.ArrayAdapter
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentOfferBinding
+import com.klima7.services.client.features.addcomm.AddCommActivity
 import com.klima7.services.common.components.msgsend.SendMessageFragment
 import com.klima7.services.common.components.msgviewer.MessageViewerFragment
 import com.klima7.services.common.components.views.SendMessageBarView
 import com.klima7.services.common.models.Role
 import com.klima7.services.common.platform.BaseFragment
+import com.klima7.services.common.platform.BaseViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -19,8 +23,12 @@ class OfferFragment: BaseFragment<FragmentOfferBinding>(), SendMessageBarView.Li
 
     override fun init() {
         val toolbar = binding.offerToolbar
-        toolbar.setNavigationIcon(R.drawable.icon_arrow_back)
         toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
+        toolbar.inflateMenu(R.menu.offer)
+        toolbar.setOnMenuItemClickListener { item ->
+            menuItemClicked(item)
+            true
+        }
     }
 
     @ExperimentalCoroutinesApi
@@ -41,11 +49,28 @@ class OfferFragment: BaseFragment<FragmentOfferBinding>(), SendMessageBarView.Li
         viewModel.start(offerId)
     }
 
+    private fun menuItemClicked(item: MenuItem) {
+        viewModel.addCommentClicked()
+    }
+
     override fun onSendMessageClicked(smb: SendMessageBarView) {
         Log.i("Hello", "Send message clicked")
     }
 
     override fun onSelectImageClicked(smb: SendMessageBarView) {
         Log.i("Hello", "Select image clicked")
+    }
+
+    override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
+        super.handleEvent(event)
+        when(event) {
+            is OfferViewModel.Event.ShowAddCommentScreen -> showAddCommentScreen(event.offerId)
+        }
+    }
+
+    private fun showAddCommentScreen(offerId: String) {
+        val intent = Intent(activity, AddCommActivity::class.java)
+        intent.putExtra("offerId", offerId)
+        startActivity(intent)
     }
 }

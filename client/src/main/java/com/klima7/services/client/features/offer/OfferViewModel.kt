@@ -15,6 +15,11 @@ class OfferViewModel(
     private val getOfferStreamUC: GetOfferStreamUC
 ): BaseViewModel() {
 
+    sealed class Event: BaseEvent() {
+        data class ShowAddCommentScreen(val offerId: String): Event()
+    }
+
+    private lateinit var offerId: String
     private val expert = MutableLiveData<Expert>()
     private val offer = MutableLiveData<Offer>()
 
@@ -22,7 +27,12 @@ class OfferViewModel(
     val serviceName = offer.map { it.serviceName }
 
     fun start(offerId: String) {
+        this.offerId = offerId
         startOfferStream(offerId)
+    }
+
+    fun addCommentClicked() {
+        sendEvent(Event.ShowAddCommentScreen(offerId))
     }
 
     private fun startOfferStream(offerId: String) {

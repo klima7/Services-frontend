@@ -35,8 +35,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
 
         binding.homeToolbar.inflateMenu(R.menu.menu_home_toolbar)
         binding.homeToolbar.setOnMenuItemClickListener {
-            _startAddComm()
-//            viewModel.settingsIconClicked()
+            viewModel.settingsIconClicked()
             true
         }
     }
@@ -50,12 +49,6 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>() {
 
     private fun showSettingsScreen() {
         val intent = Intent(activity, SettingsActivity::class.java)
-        startActivity(intent)
-    }
-
-    private fun _startAddComm() {
-        val intent = Intent(activity, AddCommActivity::class.java)
-        intent.putExtra("offerId", "offer1")
         startActivity(intent)
     }
 

@@ -32,6 +32,7 @@
                 android:layout_height="wrap_content"
                 app:title="@{viewmodel.expertName!=null ? viewmodel.expertName : `...`}"
                 app:subtitle="@{viewmodel.serviceName!=null ? viewmodel.serviceName : `...`}"
+                app:navigationIcon="@drawable/icon_arrow_back"
                 />
 
             <LinearLayout
