@@ -1,7 +1,9 @@
 package com.klima7.services.common.components.settings
 
+import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.common.R
+import com.klima7.services.common.components.yesnodialog.YesNoDialogFragment
 import com.klima7.services.common.databinding.FragmentSettingsBinding
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
@@ -12,12 +14,23 @@ abstract class BaseSettingsFragment:
     BaseFragment<FragmentSettingsBinding>(),
     SettingsOptionItem.OnClickListener {
 
+    companion object {
+        const val LOGOUT_QUERY_DIALOG_KEY = "LOGOUT_QUERY_DIALOG_KEY"
+    }
+
     override val layoutId = R.layout.fragment_settings
     abstract override val viewModel: BaseSettingsViewModel
 
     private val adapter = GroupieAdapter()
 
     override fun init() {
+        childFragmentManager.setFragmentResultListener(LOGOUT_QUERY_DIALOG_KEY, viewLifecycleOwner) { _: String, bundle: Bundle ->
+            val result = bundle.get(YesNoDialogFragment.BUNDLE_KEY)
+            if(result == YesNoDialogFragment.Result.YES) {
+                viewModel.logoutConfirmed()
+            }
+        }
+
         binding.settingsToolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
 
         val recycler = binding.settingsRecycler
@@ -49,9 +62,17 @@ abstract class BaseSettingsFragment:
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
         super.handleEvent(event)
         when(event) {
+            BaseSettingsViewModel.Event.ShowLogoutQuery -> showLogoutQuery()
             BaseSettingsViewModel.Event.ShowSplashScreen -> showSplashScreen()
             BaseSettingsViewModel.Event.ShowCreditsScreen -> showCreditsScreen()
         }
+    }
+
+    private fun showLogoutQuery() {
+        val dialog = YesNoDialogFragment.create(
+            LOGOUT_QUERY_DIALOG_KEY,
+            "Czy na pewno chcesz się wylogować?")
+        dialog.show(childFragmentManager, "YesNoDialogFragment")
     }
 
     abstract fun showSplashScreen()

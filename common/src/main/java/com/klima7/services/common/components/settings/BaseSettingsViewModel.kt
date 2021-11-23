@@ -12,15 +12,20 @@ open class BaseSettingsViewModel(
     sealed class Event: BaseEvent() {
         object ShowSplashScreen: Event()
         object ShowCreditsScreen: Event()
+        object ShowLogoutQuery: Event()
     }
 
     fun settingsOptionClicked(settingsOption: SettingsOption) {
         if(settingsOption.event == Event.ShowSplashScreen) {
-            signOut()
+            sendEvent(Event.ShowLogoutQuery)
         }
         else {
             sendEvent(settingsOption.event)
         }
+    }
+
+    fun logoutConfirmed() {
+        signOut()
     }
 
     private fun signOut() {
