@@ -24,6 +24,6 @@
     <string name="settings_logout">Wyloguj się</string>
 
     <!-- Credits -->
-    <string name="credit_pin">"Icon made by Pixel perfect from www.flaticon.com"</string>
+    <string name="credit_pin_red">"Icon made by Pixel perfect from www.flaticon.com"</string>
 
 </resources>

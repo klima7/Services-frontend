@@ -8,4 +8,7 @@
     <string name="settings_profile">Zmiana profilu</string>
     <string name="settings_delete">Usuń konto klienta</string>
 
+    <!-- Credits -->
+    <string name="credit_pin_green">"Icon made by Pixel perfect from www.flaticon.com"</string>
+
 </resources>
