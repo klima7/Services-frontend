@@ -30,6 +30,6 @@ val viewModelsModule = module {
     viewModel { ProfileViewModel() }
     viewModel { ProfileContentViewModel(get()) }
     viewModel { OfferViewModel(get(), get()) }
-    viewModel { AddCommViewModel(get()) }
+    viewModel { AddCommViewModel(get(), get()) }
 
 }

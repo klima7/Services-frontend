@@ -5,6 +5,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.functions.FirebaseFunctions
+import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.converters.toDomain
 import com.klima7.services.common.data.entities.RatingEntity
@@ -56,6 +57,23 @@ class RatingsRepository(
         }
     }
 
-    // addRating
+    suspend fun addRating(offerId: String, rating: Double, comment: String): Outcome<Failure, None> {
+        return try {
+            val data = hashMapOf(
+                "offerId" to offerId,
+                "rating" to rating,
+                "comment" to comment
+            )
+
+            functions
+                .getHttpsCallable("ratings-add")
+                .call(data)
+                .await()
+            Outcome.Success(None())
+        } catch(e: Exception) {
+            Log.e("Hello", "Error while addRating", e)
+            Outcome.Failure(e.toDomain())
+        }
+    }
 
 }

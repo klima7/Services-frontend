@@ -11,7 +11,8 @@ import com.klima7.services.common.models.Offer
 import com.klima7.services.common.platform.BaseViewModel
 
 class AddCommViewModel(
-    private val getOfferWithExpertUC: GetOfferWithExpertUC
+    private val getOfferWithExpertUC: GetOfferWithExpertUC,
+    private val addRatingUC: AddRatingUC,
 ): BaseViewModel() {
 
     private lateinit var offerId: String
