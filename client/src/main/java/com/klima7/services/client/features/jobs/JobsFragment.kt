@@ -2,12 +2,15 @@ package com.klima7.services.client.features.jobs
 
 import android.content.Intent
 import android.util.Log
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentJobsBinding
 import com.klima7.services.client.features.offers.OffersActivity
+import com.klima7.services.client.features.offers.OffersFragment
 import com.klima7.services.common.models.Job
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
@@ -23,6 +26,12 @@ class JobsFragment : BaseFragment<FragmentJobsBinding>(), JobsAdapter.OnJobListe
     override val viewModel: JobsViewModel by viewModel()
 
     lateinit var jobsAdapter: JobsAdapter
+
+    private val offersScreenLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        this.onOffersScreenFinish(result)
+    }
 
     override fun init() {
         super.init()
@@ -63,6 +72,14 @@ class JobsFragment : BaseFragment<FragmentJobsBinding>(), JobsAdapter.OnJobListe
         val intent = Intent(requireContext(), OffersActivity::class.java)
         val bundle = bundleOf("jobId" to jobId)
         intent.putExtras(bundle)
-        startActivity(intent)
+        offersScreenLauncher.launch(intent)
+    }
+
+    private fun onOffersScreenFinish(result: ActivityResult) {
+        val intent = result.data
+        val wasFinished = intent?.getBooleanExtra(OffersFragment.RESULT_FINISHED, false) ?: false
+        if(wasFinished) {
+            jobsAdapter.refresh()
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.klima7.services.client.features.offers
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.core.os.bundleOf
@@ -23,6 +24,7 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
     JobActiveItem.Listener {
 
     companion object {
+        const val RESULT_FINISHED = "FINISHED"
         const val FINISH_JOB_ENSURE_DIALOG_KEY = "FINISH_JOB_ENSURE_DIALOG_KEY"
         const val FINISH_JOB_FAILURE_DIALOG_KEY = "FINISH_JOB_FAILURE_DIALOG_KEY"
     }
@@ -79,6 +81,8 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
 
         viewModel.isJobActive.observe(viewLifecycleOwner, this::updateActive)
 
+        viewModel.wasFinished.observe(viewLifecycleOwner, this::updateResult)
+
         binding.offersRefreshLayout.setOnRefreshListener {
             binding.offersRefreshLayout.isRefreshing = false
             viewModel.refresh()
@@ -91,6 +95,12 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
             val item = OfferWithExpertItem(offer, this)
             offersSection.add(item)
         }
+    }
+
+    private fun updateResult(wasFinished: Boolean) {
+        val intent = Intent()
+        intent.putExtra(RESULT_FINISHED, wasFinished)
+        requireActivity().setResult(Activity.RESULT_OK, intent)
     }
 
     private fun updateActive(offerActive: Boolean) {

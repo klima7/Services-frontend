@@ -23,6 +23,8 @@ class OffersViewModel(
     }
 
     private lateinit var jobId: String
+    val wasFinished = MutableLiveData(false)
+
     val job = MutableLiveData<Job?>(null)
     val offersWithExperts = MutableLiveData<List<OfferWithExpert>>()
     val subtitle = job.map { job -> job?.serviceName ?: "" }
@@ -94,6 +96,7 @@ class OffersViewModel(
                 sendEvent(Event.ShowFinishJobFailure(failure))
             }, {
                 loadState.value = LoadAreaView.State.MAIN
+                wasFinished.value = true
                 refresh()
             }
         )
