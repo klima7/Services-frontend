@@ -19,6 +19,7 @@ class AddCommFragment: BaseFragment<FragmentAddCommBinding>() {
 
     override fun init() {
         binding.addcommToolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
+//        binding.addcommRatingBar.setRating(4.0f)
     }
 
 }

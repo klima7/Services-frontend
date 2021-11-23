@@ -18,6 +18,9 @@ class AddCommViewModel(
     val offer = MutableLiveData<Offer>()
     val expert = MutableLiveData<Expert>()
     val profileImage = expert.map { it.profileImage }
+    val name = expert.map { it.info.name }
+    val serviceName = offer.map { it.serviceName }
+    val rating = MutableLiveData(0.0f)
 
     val loadState = MutableLiveData(LoadAreaView.State.LOAD)
     val loadFailure = MutableLiveData<Failure>()
