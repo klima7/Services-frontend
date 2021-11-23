@@ -9,7 +9,7 @@ import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Service
 import com.klima7.services.expert.usecases.GetCurrentExpertUC
 
-class GetCategorisedAndMarkedServices(
+class GetCategorisedAndMarkedServicesUC(
     private val servicesRepository: ServicesRepository,
     private val getCurrentExpertUC: GetCurrentExpertUC,
 ): BaseUC<None, List<CategorizedSelectableServices>>() {

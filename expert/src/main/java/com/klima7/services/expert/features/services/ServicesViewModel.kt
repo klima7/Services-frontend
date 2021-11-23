@@ -7,8 +7,8 @@ import com.klima7.services.common.models.Service
 import com.klima7.services.common.platform.BaseLoadViewModel
 
 class ServicesViewModel(
-    private val getCategorisedAndMarkedServices: GetCategorisedAndMarkedServices,
-    private val setCurrentExpertServices: SetCurrentExpertServices
+    private val getCategorisedAndMarkedServices: GetCategorisedAndMarkedServicesUC,
+    private val setCurrentExpertServicesUC: SetCurrentExpertServicesUC
 ): BaseLoadViewModel() {
 
     sealed class Event: BaseEvent() {
@@ -59,9 +59,9 @@ class ServicesViewModel(
 
     private fun save(services: List<Service>) {
         showPending()
-        setCurrentExpertServices.start(
+        setCurrentExpertServicesUC.start(
             viewModelScope,
-            SetCurrentExpertServices.Params(services),
+            SetCurrentExpertServicesUC.Params(services),
             { failure ->
                 showMain()
                 sendEvent(Event.ShowSaveFailure(failure))

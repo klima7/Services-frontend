@@ -7,9 +7,9 @@ import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Service
 
-class SetCurrentExpertServices(
+class SetCurrentExpertServicesUC(
     private val expertsRepository: ExpertsRepository
-): BaseUC<SetCurrentExpertServices.Params, None>() {
+): BaseUC<SetCurrentExpertServicesUC.Params, None>() {
 
     override suspend fun execute(params: Params): Outcome<Failure, None> {
         val servicesIds = params.services.map { it.id }
