@@ -16,6 +16,7 @@
         app:job_job="@{job}"
         app:job_hide_client="true"
         app:job_short="true"
+        app:job_show_active="@{true}"
         />
 
 </layout>

@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/PI/src/frontend/client/src/main/res/drawable/active_offer.xml" value="0.21302083333333333" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/drawable/icon_foreground.xml" value="0.1638888888888889" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/drawable/logo.xml" value="0.1935185185185185" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/activity_main.xml" value="0.16893115942028986" />

@@ -20,6 +20,11 @@ import java.util.*
             attribute = "job_job",
             method = "setJob"
         ),
+        BindingMethod(
+            type = JobView::class,
+            attribute = "job_show_active",
+            method = "setShowActive"
+        ),
     ]
 )
 class JobViewBindingMethods
@@ -40,6 +45,7 @@ class JobView : FrameLayout {
 
     private var binding: ViewJobBinding
     private var job: Job? = null
+    private var showActive = false
     private var clickListener: (() -> Unit)? = null
     private var short = false
     private var hideClient = false
@@ -64,6 +70,13 @@ class JobView : FrameLayout {
         requestLayout()
     }
 
+    fun setShowActive(showActive: Boolean) {
+        this.showActive = showActive
+        refreshView()
+        invalidate()
+        requestLayout()
+    }
+
     fun setClickListener(clickListener: (() -> Unit)?) {
         this.clickListener = clickListener
     }
@@ -71,13 +84,23 @@ class JobView : FrameLayout {
     private fun refreshView() {
         val cJob = job
 
-        binding.job = cJob
-        binding.shorter = short
-        binding.hideClient = hideClient
-        binding.jobCreationTime.text = if(cJob != null) format.format(cJob.creationDate) else ""
-        binding.jobviewDescription.maxLines = if(short) shortDescriptionLines else Int.MAX_VALUE
-        if(clickListener != null) {
-            binding.jobCard.setOnClickListener { clickListener?.invoke() }
+        val pinRes = if(!showActive || showActive && job?.active == false) {
+            R.drawable.pin_red
+        }
+        else {
+            R.drawable.pin_green
+        }
+
+        binding.apply {
+            job = cJob
+            shorter = short
+            hideClient = hideClient
+            jobCreationTime.text = if(cJob != null) format.format(cJob.creationDate) else ""
+            jobviewDescription.maxLines = if(short) shortDescriptionLines else Int.MAX_VALUE
+            if(clickListener != null) {
+                jobCard.setOnClickListener { clickListener?.invoke() }
+            }
+            jobPin.setImageResource(pinRes)
         }
     }
 
