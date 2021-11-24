@@ -94,4 +94,9 @@ class LocationFragment: BaseFragment<FragmentLocationBinding>(), LastLocationIte
         val intent = Intent(activity, JobDetailsActivity::class.java)
         startActivity(intent)
     }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.refresh()
+    }
 }
