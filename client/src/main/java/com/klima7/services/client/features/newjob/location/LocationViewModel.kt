@@ -15,6 +15,10 @@ class LocationViewModel(
     private val addLastLocationUC: AddLastLocationUC,
 ): BaseViewModel() {
 
+    sealed class Event: BaseEvent() {
+        class ShowJobDetailsScreen: Event();
+    }
+
     private lateinit var serviceId: String
     val serviceName = MutableLiveData<String>()
 
@@ -40,6 +44,7 @@ class LocationViewModel(
     fun locationSelected(placeId: String, placeName: String) {
         Log.i("Hello", "Location selected; name: $placeName; id: $placeId")
         addLastLocation(placeId, placeName)
+        sendEvent(Event.ShowJobDetailsScreen())
     }
 
     private fun loadLastLocations() {

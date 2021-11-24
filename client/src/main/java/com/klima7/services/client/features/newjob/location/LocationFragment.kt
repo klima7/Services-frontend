@@ -1,5 +1,6 @@
 package com.klima7.services.client.features.newjob.location
 
+import android.content.Intent
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.common.api.Status
@@ -9,8 +10,11 @@ import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentLocationBinding
+import com.klima7.services.client.features.newjob.jobdetails.JobDetailsActivity
 import com.klima7.services.common.models.LastLocation
+import com.klima7.services.common.models.Service
 import com.klima7.services.common.platform.BaseFragment
+import com.klima7.services.common.platform.BaseViewModel
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.groupiex.plusAssign
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -77,5 +81,17 @@ class LocationFragment: BaseFragment<FragmentLocationBinding>(), LastLocationIte
     override fun onLastLocationClicked(location: LastLocation) {
         viewModel.locationSelected(location.placeId, location.placeName)
         Log.i("Hello", "Last location clicked $location")
+    }
+
+    override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
+        super.handleEvent(event)
+        when(event) {
+            is LocationViewModel.Event.ShowJobDetailsScreen -> showJobDetailsScreen()
+        }
+    }
+
+    private fun showJobDetailsScreen() {
+        val intent = Intent(activity, JobDetailsActivity::class.java)
+        startActivity(intent)
     }
 }

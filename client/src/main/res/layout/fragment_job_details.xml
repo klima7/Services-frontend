@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.klima7.services.client.features.newjob.jobdetails.JobDetailsViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/service_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Nowe zlecenie"
+            app:subtitle="..."
+            app:navigationIcon="@drawable/icon_arrow_back"
+            style="@style/ToolBar" />
+
+        <com.klima7.services.common.components.views.LoadAreaView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:la_state="@{viewmodel.loadState}"
+            app:la_failure="@{viewmodel.loadFailure}"
+            app:la_onRefresh="@{() -> viewmodel.refresh()}"
+            >
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
+
+                    <com.klima7.services.client.ui.NewJobProgressView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:njp_position="3"
+                        app:njp_message="Uzupełnij szczegóły oferty"
+                        />
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </com.klima7.services.common.components.views.LoadAreaView>
+
+    </LinearLayout>
+
+</layout>
