@@ -1,5 +1,6 @@
 package com.klima7.services.client.features.newjob.location
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.models.Failure
@@ -21,6 +22,11 @@ class LocationViewModel: BaseViewModel() {
     }
 
     fun refresh() {
+
+    }
+
+    fun locationSelected(placeId: String, placeName: String) {
+        Log.i("Hello", "Location selected; name: $placeName; id: $placeId")
     }
 
 }

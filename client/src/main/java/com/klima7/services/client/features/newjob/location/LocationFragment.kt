@@ -1,9 +1,11 @@
 package com.klima7.services.client.features.newjob.location
 
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.api.model.TypeFilter
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentLocationBinding
 import com.klima7.services.common.platform.BaseFragment
@@ -35,8 +37,6 @@ class LocationFragment: BaseFragment<FragmentLocationBinding>() {
             adapter = groupieAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
-
-//        groupieAdapter += ProgressItem(2, "Wybierz lokalizację")
     }
 
     private fun configureAutocomplete() {
@@ -48,6 +48,18 @@ class LocationFragment: BaseFragment<FragmentLocationBinding>() {
         autocompleteFragment.setTypeFilter(TypeFilter.CITIES)
         autocompleteFragment.setCountries("pl")
 
+        autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
+            override fun onPlaceSelected(place: Place) {
+                val constId = place.id
+                val constName = place.name
+                val constCoords = place.latLng
+                if(constId != null && constName != null && constCoords != null) {
+                    viewModel.locationSelected(constId, constName)
+                }
+            }
+
+            override fun onError(status: Status) {}
+        })
     }
 
 }
