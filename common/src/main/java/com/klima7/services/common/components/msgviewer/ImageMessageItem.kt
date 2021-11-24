@@ -6,7 +6,6 @@ import android.util.TypedValue
 import android.view.Gravity
 import com.bumptech.glide.Glide
 import com.klima7.services.common.R
-import com.klima7.services.common.data.di.EMULATE
 import com.klima7.services.common.databinding.ElementImageMessageBinding
 import com.klima7.services.common.models.ImageMessage
 import com.klima7.services.common.ui.UrlUtils

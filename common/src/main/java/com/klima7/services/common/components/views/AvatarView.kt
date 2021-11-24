@@ -11,7 +11,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.signature.ObjectKey
 import com.klima7.services.common.R
-import com.klima7.services.common.data.di.EMULATE
 import com.klima7.services.common.models.ProfileImage
 import com.klima7.services.common.ui.UrlUtils
 

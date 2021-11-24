@@ -1,9 +1,7 @@
 package com.klima7.services.common.components.credits
 
 import com.klima7.services.common.R
-import com.klima7.services.common.databinding.ElementCommentBinding
 import com.klima7.services.common.databinding.ElementCreditBinding
-import com.klima7.services.common.databinding.ElementCreditsHeadingBinding
 import com.xwray.groupie.databinding.BindableItem
 
 

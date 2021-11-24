@@ -15,7 +15,6 @@ import com.klima7.services.common.components.profile.header.ProfileHeaderViewMod
 import com.klima7.services.common.components.profile.rating.ProfileRatingViewModel
 import com.klima7.services.common.components.profile.services.ProfileServicesViewModel
 import com.klima7.services.common.components.yesnodialog.YesNoDialogViewModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

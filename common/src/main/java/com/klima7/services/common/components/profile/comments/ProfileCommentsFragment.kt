@@ -4,8 +4,6 @@ import android.content.Intent
 import androidx.core.os.bundleOf
 import com.klima7.services.common.R
 import com.klima7.services.common.components.comments.CommentsActivity
-import com.klima7.services.common.components.profile.BaseProfileViewModel
-import com.klima7.services.common.components.profile.header.ProfileHeaderViewModel
 import com.klima7.services.common.databinding.FragmentProfileCommentsBinding
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel

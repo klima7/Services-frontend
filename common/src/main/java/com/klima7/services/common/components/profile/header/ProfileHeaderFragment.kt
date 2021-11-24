@@ -1,10 +1,8 @@
 package com.klima7.services.common.components.profile.header
 
 import com.klima7.services.common.R
-import com.klima7.services.common.components.profile.BaseProfileViewModel
 import com.klima7.services.common.databinding.FragmentProfileHeaderBinding
 import com.klima7.services.common.platform.BaseFragment
-import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfileHeaderFragment: BaseFragment<FragmentProfileHeaderBinding>() {

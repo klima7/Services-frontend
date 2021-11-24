@@ -5,14 +5,14 @@ import org.koin.dsl.module
 
 val reposModule = module {
 
-    single { ExpertsRepository(get(), get(), get(), get()) }
-    single { ClientsRepository(get(), get()) }
+    single { ExpertsRepository(get()) }
+    single { ClientsRepository(get()) }
     single { AuthRepository(get()) }
     single { ServicesRepository(get()) }
-    single { RatingsRepository(get(), get()) }
-    single { JobsRepository(get(), get()) }
+    single { RatingsRepository(get()) }
+    single { JobsRepository(get()) }
     single { JobsStatusRepository(get()) }
-    single { OffersRepository(get(), get()) }
-    single { MessagesRepository(get(), get(), get()) }
+    single { OffersRepository(get()) }
+    single { MessagesRepository(get()) }
 
 }

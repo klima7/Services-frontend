@@ -1,25 +1,22 @@
 package com.klima7.services.common.components.msgsend
 
 import android.app.Activity
-import android.util.Log
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
-import com.klima7.services.common.R
-import com.klima7.services.common.components.views.SendMessageBarView
-import com.klima7.services.common.databinding.FragmentSendMessageBinding
-import com.klima7.services.common.models.Role
-import com.klima7.services.common.platform.BaseFragment
-import org.koin.androidx.viewmodel.ext.android.viewModel
-
 import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
+import com.klima7.services.common.R
 import com.klima7.services.common.components.faildialog.FailureDialogFragment
-import com.klima7.services.common.components.msgviewer.MessageViewerFragment
+import com.klima7.services.common.components.views.SendMessageBarView
+import com.klima7.services.common.databinding.FragmentSendMessageBinding
 import com.klima7.services.common.models.Failure
+import com.klima7.services.common.models.Role
+import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 @ExperimentalCoroutinesApi

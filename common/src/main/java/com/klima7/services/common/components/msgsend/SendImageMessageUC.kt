@@ -8,7 +8,6 @@ import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Role
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.withTimeout
-import kotlin.Exception
 import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
 

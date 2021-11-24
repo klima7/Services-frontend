@@ -1,9 +1,6 @@
 package com.klima7.services.common.components.settings
 
 import com.klima7.services.common.R
-import com.klima7.services.common.databinding.ElementCommentBinding
-import com.klima7.services.common.databinding.ElementCreditBinding
-import com.klima7.services.common.databinding.ElementCreditsHeadingBinding
 import com.klima7.services.common.databinding.ElementSettingsOptionBinding
 import com.xwray.groupie.databinding.BindableItem
 

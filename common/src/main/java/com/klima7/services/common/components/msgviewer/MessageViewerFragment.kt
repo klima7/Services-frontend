@@ -9,10 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentMessageViewerBinding
-import com.klima7.services.common.models.ImageMessage
-import com.klima7.services.common.models.Message
 import com.klima7.services.common.models.Role
-import com.klima7.services.common.models.TextMessage
 import com.klima7.services.common.platform.BaseFragment
 import com.xwray.groupie.Group
 import com.xwray.groupie.GroupieAdapter
