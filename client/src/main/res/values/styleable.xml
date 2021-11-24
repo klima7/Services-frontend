@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="NewJobProgress">
+        <attr format="integer" name="njp_position" />
+        <attr format="string" name="njp_message" />
+    </declare-styleable>
+
+</resources>
