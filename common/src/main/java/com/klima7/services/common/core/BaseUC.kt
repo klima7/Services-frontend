@@ -5,6 +5,7 @@ import com.klima7.services.common.models.Failure
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlin.coroutines.CoroutineContext
 
 abstract class BaseUC<P, R>(
@@ -27,12 +28,17 @@ abstract class BaseUC<P, R>(
         return outcome
     }
 
-    fun start(scope: CoroutineScope, params: P, onFailure: suspend (Failure)->Unit, onSuccess: suspend (R)->Unit) {
+    fun start(scope: CoroutineScope, params: P, onFailure: suspend (Failure)->Unit,
+              onSuccess: suspend (R)->Unit) {
         scope.launch(context) {
             run(params).foldS({ failure ->
-                onFailure(failure)
+                withContext(Dispatchers.Main) {
+                    onFailure(failure)
+                }
             }, { result ->
-                onSuccess(result)
+                withContext(Dispatchers.Main) {
+                    onSuccess(result)
+                }
             })
         }
     }

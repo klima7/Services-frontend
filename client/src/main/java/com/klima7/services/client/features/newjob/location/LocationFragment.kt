@@ -1,5 +1,6 @@
 package com.klima7.services.client.features.newjob.location
 
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.model.Place
@@ -8,12 +9,14 @@ import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentLocationBinding
+import com.klima7.services.common.models.LastLocation
 import com.klima7.services.common.platform.BaseFragment
 import com.xwray.groupie.GroupieAdapter
+import com.xwray.groupie.groupiex.plusAssign
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class LocationFragment: BaseFragment<FragmentLocationBinding>() {
+class LocationFragment: BaseFragment<FragmentLocationBinding>(), LastLocationItem.Listener {
 
     override val layoutId = R.layout.fragment_location
     override val viewModel: LocationViewModel by viewModel()
@@ -37,6 +40,8 @@ class LocationFragment: BaseFragment<FragmentLocationBinding>() {
             adapter = groupieAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
+
+        viewModel.lastLocations.observe(viewLifecycleOwner, this::updateLastLocations)
     }
 
     private fun configureAutocomplete() {
@@ -62,4 +67,15 @@ class LocationFragment: BaseFragment<FragmentLocationBinding>() {
         })
     }
 
+    private fun updateLastLocations(locations: List<LastLocation>) {
+        groupieAdapter.clear()
+        locations.forEach { location ->
+            groupieAdapter += LastLocationItem(location, this)
+        }
+    }
+
+    override fun onLastLocationClicked(location: LastLocation) {
+        viewModel.locationSelected(location.placeId, location.placeName)
+        Log.i("Hello", "Last location clicked $location")
+    }
 }

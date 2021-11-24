@@ -36,6 +36,6 @@ val viewModelsModule = module {
     viewModel { AddCommViewModel(get(), get()) }
     viewModel { CategoryViewModel(get()) }
     viewModel { ServiceViewModel(get()) }
-    viewModel { LocationViewModel(get()) }
+    viewModel { LocationViewModel(get(), get()) }
 
 }
