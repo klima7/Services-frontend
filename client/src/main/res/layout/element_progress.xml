@@ -23,6 +23,11 @@
             android:textAlignment="center"
             />
 
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            />
+
     </LinearLayout>
 
 </layout>
