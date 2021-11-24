@@ -12,7 +12,7 @@ interface LastLocationDao {
     @Query("SELECT * FROM LastLocationEntity ORDER BY time DESC LIMIT :limit")
     fun getLast(limit: Int): List<LastLocationEntity>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(location: LastLocationEntity)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertOrUpdate(location: LastLocationEntity)
 
 }

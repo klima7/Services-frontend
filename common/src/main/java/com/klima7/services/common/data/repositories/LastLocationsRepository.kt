@@ -15,9 +15,9 @@ class LastLocationsRepository(
 
     private val lastLocationsDao = room.lastLocationDao()
 
-    fun addLocation(location: LastLocation): Outcome<Failure, None> {
+    fun addLocationOrUpdate(location: LastLocation): Outcome<Failure, None> {
         return try {
-            lastLocationsDao.insert(location.toRoomEntity())
+            lastLocationsDao.insertOrUpdate(location.toRoomEntity())
             return Outcome.Success(None())
         } catch(e: Exception) {
             Outcome.Failure(Failure.UnknownFailure)

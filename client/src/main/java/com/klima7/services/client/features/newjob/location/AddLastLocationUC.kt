@@ -17,6 +17,6 @@ class AddLastLocationUC(
 
     override suspend fun execute(params: Params): Outcome<Failure, None> {
         val location = LastLocation(params.placeId, params.placeName, Date())
-        return lastLocationsRepository.addLocation(location)
+        return lastLocationsRepository.addLocationOrUpdate(location)
     }
 }
