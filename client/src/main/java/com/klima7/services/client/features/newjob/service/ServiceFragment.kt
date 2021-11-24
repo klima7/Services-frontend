@@ -14,7 +14,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.xwray.groupie.groupiex.plusAssign
 
 
-class ServiceFragment: BaseFragment<FragmentServiceBinding>() {
+class ServiceFragment: BaseFragment<FragmentServiceBinding>(), ServiceItem.Listener {
 
     override val layoutId = R.layout.fragment_service
     override val viewModel: ServiceViewModel by viewModel()
@@ -43,11 +43,13 @@ class ServiceFragment: BaseFragment<FragmentServiceBinding>() {
     }
 
     private fun updateServices(services: List<Service>) {
-        Log.i("Hello", "Services received: $services")
-
         servicesSection.clear()
         services.forEach { service ->
-//            servicesSection += CategoryItem(category, this)
+            servicesSection += ServiceItem(service, this)
         }
+    }
+
+    override fun onServiceClicked(service: Service) {
+        Log.i("Hello", "Service clicked: $service")
     }
 }
