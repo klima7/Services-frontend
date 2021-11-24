@@ -32,19 +32,33 @@
             app:la_onRefresh="@{() -> viewmodel.refresh()}"
             >
 
-            <LinearLayout
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
                 >
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/location_recycler"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    />
+                    android:orientation="vertical"
+                    >
 
-            </LinearLayout>
+                    <androidx.fragment.app.FragmentContainerView
+                        android:id="@+id/location_autocomplete_fragment"
+                        android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/location_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
 
         </com.klima7.services.common.components.views.LoadAreaView>
 
