@@ -14,5 +14,6 @@ val reposModule = module {
     single { JobsStatusRepository(get()) }
     single { OffersRepository(get()) }
     single { MessagesRepository(get()) }
+    single { LastLocationsRepository(get()) }
 
 }

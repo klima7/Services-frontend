@@ -2,11 +2,15 @@ package com.klima7.services.client.features.newjob.location
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.models.Failure
+import com.klima7.services.common.models.LastLocation
 import com.klima7.services.common.platform.BaseViewModel
 
-class LocationViewModel: BaseViewModel() {
+class LocationViewModel(
+    private val addLastLocationUC: AddLastLocationUC,
+): BaseViewModel() {
 
     private lateinit var serviceId: String
     val serviceName = MutableLiveData<String>()
@@ -27,6 +31,18 @@ class LocationViewModel: BaseViewModel() {
 
     fun locationSelected(placeId: String, placeName: String) {
         Log.i("Hello", "Location selected; name: $placeName; id: $placeId")
+        addLastLocation(placeId, placeName)
+    }
+
+    private fun addLastLocation(placeId: String, placeName: String) {
+        addLastLocationUC.start(
+            viewModelScope,
+            AddLastLocationUC.Params(placeId, placeName),
+            { },
+            {
+                Log.i("Hello", "Add last location success!")
+            }
+        )
     }
 
 }

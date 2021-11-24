@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class LastLocationEntity(
-    @PrimaryKey val id: String,
+    @PrimaryKey
     val placeId: String,
     val placeName: String,
     val time: Long

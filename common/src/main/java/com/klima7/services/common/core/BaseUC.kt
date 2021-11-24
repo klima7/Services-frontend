@@ -3,9 +3,13 @@ package com.klima7.services.common.core
 import android.util.Log
 import com.klima7.services.common.models.Failure
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-abstract class BaseUC<P, R> {
+abstract class BaseUC<P, R>(
+    private val context: CoroutineContext = Dispatchers.Main
+) {
 
     val UC_NAME: String = this::class.java.simpleName
     val TAG: String = "usecase-$UC_NAME"
@@ -24,7 +28,7 @@ abstract class BaseUC<P, R> {
     }
 
     fun start(scope: CoroutineScope, params: P, onFailure: suspend (Failure)->Unit, onSuccess: suspend (R)->Unit) {
-        scope.launch {
+        scope.launch(context) {
             run(params).foldS({ failure ->
                 onFailure(failure)
             }, { result ->
