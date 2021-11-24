@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentCategoryBinding
-import com.klima7.services.client.ui.ProgressItem
 import com.klima7.services.client.features.newjob.service.ServiceActivity
 import com.klima7.services.common.models.Category
 import com.klima7.services.common.platform.BaseFragment
@@ -31,7 +30,6 @@ class CategoryFragment: BaseFragment<FragmentCategoryBinding>(), CategoryItem.Li
             layoutManager = LinearLayoutManager(requireContext())
         }
 
-        groupieAdapter += ProgressItem(0, "Wybierz kategorię usługi")
         groupieAdapter += categoriesSection
 
         viewModel.categories.observe(viewLifecycleOwner, this::updateCategories)

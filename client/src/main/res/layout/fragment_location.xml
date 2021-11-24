@@ -43,6 +43,13 @@
                     android:orientation="vertical"
                     >
 
+                    <com.klima7.services.client.ui.NewJobProgressView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:njp_position="2"
+                        app:njp_message="Wybierz lokalizację"
+                        />
+
                     <androidx.fragment.app.FragmentContainerView
                         android:id="@+id/location_autocomplete_fragment"
                         android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"

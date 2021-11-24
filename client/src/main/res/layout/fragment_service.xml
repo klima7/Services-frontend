@@ -32,19 +32,33 @@
             app:la_onRefresh="@{() -> viewmodel.refresh()}"
             >
 
-            <LinearLayout
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
                 >
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/service_recycler"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    />
+                    android:orientation="vertical"
+                    >
 
-            </LinearLayout>
+                    <com.klima7.services.client.ui.NewJobProgressView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:njp_position="1"
+                        app:njp_message="Wybierz usługę"
+                        />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/service_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
 
         </com.klima7.services.common.components.views.LoadAreaView>
 

@@ -1,19 +1,13 @@
 package com.klima7.services.client.features.newjob.location
 
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.api.model.TypeFilter
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
-import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentLocationBinding
-import com.klima7.services.client.databinding.FragmentServiceBinding
-import com.klima7.services.client.ui.ProgressItem
 import com.klima7.services.common.platform.BaseFragment
 import com.xwray.groupie.GroupieAdapter
-import com.xwray.groupie.groupiex.plusAssign
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

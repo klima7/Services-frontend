@@ -6,13 +6,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentServiceBinding
 import com.klima7.services.client.features.newjob.location.LocationActivity
-import com.klima7.services.client.ui.ProgressItem
 import com.klima7.services.common.models.Service
 import com.klima7.services.common.platform.BaseFragment
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.xwray.groupie.groupiex.plusAssign
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class ServiceFragment: BaseFragment<FragmentServiceBinding>(), ServiceItem.Listener {
@@ -40,7 +39,6 @@ class ServiceFragment: BaseFragment<FragmentServiceBinding>(), ServiceItem.Liste
             layoutManager = LinearLayoutManager(requireContext())
         }
 
-        groupieAdapter += ProgressItem(1, "Wybierz usługę")
         groupieAdapter += servicesSection
 
         viewModel.services.observe(viewLifecycleOwner, this::updateServices)
