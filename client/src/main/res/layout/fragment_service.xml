@@ -9,28 +9,44 @@
             type="com.klima7.services.client.features.newjob.service.ServiceViewModel" />
     </data>
 
-    <com.klima7.services.common.components.views.LoadAreaView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:la_state="@{viewmodel.loadState}"
-        app:la_failure="@{viewmodel.loadFailure}"
-        app:la_onRefresh="@{() -> viewmodel.refresh()}"
+        android:orientation="vertical"
         >
 
-        <LinearLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/service_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="..."
+            app:navigationIcon="@drawable/icon_arrow_back"
+            style="@style/ToolBar" />
+
+        <com.klima7.services.common.components.views.LoadAreaView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
+            app:la_state="@{viewmodel.loadState}"
+            app:la_failure="@{viewmodel.loadFailure}"
+            app:la_onRefresh="@{() -> viewmodel.refresh()}"
             >
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/service_recycler"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                />
+                android:orientation="vertical"
+                >
 
-        </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/service_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
 
-    </com.klima7.services.common.components.views.LoadAreaView>
+            </LinearLayout>
+
+        </com.klima7.services.common.components.views.LoadAreaView>
+
+    </LinearLayout>
 
 </layout>

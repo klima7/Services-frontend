@@ -31,6 +31,8 @@ class ServiceFragment: BaseFragment<FragmentServiceBinding>(), ServiceItem.Liste
     override fun init() {
         super.init()
 
+        binding.serviceToolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
+
         binding.serviceRecycler.apply {
             adapter = groupieAdapter
             layoutManager = LinearLayoutManager(requireContext())
