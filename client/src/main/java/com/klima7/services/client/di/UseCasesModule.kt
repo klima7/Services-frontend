@@ -6,6 +6,7 @@ import com.klima7.services.client.features.delete.DeleteClientUC
 import com.klima7.services.client.features.info.SetCurrentClientInfoUC
 import com.klima7.services.client.features.jobs.GetCurrentClientJobsUC
 import com.klima7.services.client.features.newjob.category.GetAllCategoriesUC
+import com.klima7.services.client.features.newjob.service.GetServicesFromCategoryUC
 import com.klima7.services.client.features.offer.GetOfferStreamUC
 import com.klima7.services.client.features.offers.FinishJobUC
 import com.klima7.services.client.features.offers.GetOffersWithExpertForJobUC
@@ -32,5 +33,6 @@ val useCasesModule = module {
     single { GetOfferWithExpertUC(get(), get()) }
     single { AddRatingUC(get()) }
     single { GetAllCategoriesUC(get()) }
+    single { GetServicesFromCategoryUC(get()) }
 
 }

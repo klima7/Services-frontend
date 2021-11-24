@@ -3,10 +3,10 @@ package com.klima7.services.client.features.newjob.service
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.client.R
-import com.klima7.services.client.databinding.FragmentCategoryBinding
 import com.klima7.services.client.databinding.FragmentServiceBinding
 import com.klima7.services.client.features.newjob.ProgressItem
-import com.klima7.services.common.models.Category
+import com.klima7.services.client.features.newjob.category.CategoryItem
+import com.klima7.services.common.models.Service
 import com.klima7.services.common.platform.BaseFragment
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
@@ -20,28 +20,34 @@ class ServiceFragment: BaseFragment<FragmentServiceBinding>() {
     override val viewModel: ServiceViewModel by viewModel()
 
     private val groupieAdapter = GroupieAdapter()
-    private val categoriesSection = Section()
+    private val servicesSection = Section()
+
+    override fun onFirstCreation() {
+        super.onFirstCreation()
+        val categoryId = arguments?.getString("categoryId") ?: throw Error("categoryId argument not supplied")
+        viewModel.start(categoryId)
+    }
 
     override fun init() {
         super.init()
 
-        binding.categoryRecycler.apply {
+        binding.serviceRecycler.apply {
             adapter = groupieAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
 
         groupieAdapter += ProgressItem(1, "Wybierz usługę")
-        groupieAdapter += categoriesSection
+        groupieAdapter += servicesSection
 
-        viewModel.categories.observe(viewLifecycleOwner, this::updateCategories)
+        viewModel.services.observe(viewLifecycleOwner, this::updateServices)
     }
 
-    private fun updateCategories(categories: List<Category>) {
-        Log.i("Hello", "Categories received: $categories")
+    private fun updateServices(services: List<Service>) {
+        Log.i("Hello", "Services received: $services")
 
-        categoriesSection.clear()
-        categories.forEach { category ->
-//            categoriesSection += CategoryItem(category, this)
+        servicesSection.clear()
+        services.forEach { service ->
+//            servicesSection += CategoryItem(category, this)
         }
     }
 }

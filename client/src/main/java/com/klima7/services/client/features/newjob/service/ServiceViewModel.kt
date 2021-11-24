@@ -4,39 +4,43 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.core.None
-import com.klima7.services.common.models.Category
 import com.klima7.services.common.models.Failure
+import com.klima7.services.common.models.Service
 import com.klima7.services.common.platform.BaseViewModel
 
-class ServiceViewModel: BaseViewModel() {
+class ServiceViewModel(
+    private val getServicesFromCategoryUC: GetServicesFromCategoryUC,
+): BaseViewModel() {
 
-    val categories = MutableLiveData<List<Category>>()
+    private lateinit var categoryId: String
+    val services = MutableLiveData<List<Service>>()
 
     val loadState = MutableLiveData(LoadAreaView.State.LOAD)
     val loadFailure = MutableLiveData<Failure>()
 
-    init {
-//        loadCategories()
+    fun start(categoryId: String) {
+        this.categoryId = categoryId
+        loadServices(categoryId)
     }
 
     fun refresh() {
-//        loadCategories()
+        loadServices(categoryId)
     }
 
-//    private fun loadCategories() {
-//        loadState.value = LoadAreaView.State.LOAD
-//        getAllCategoriesUC.start(
-//            viewModelScope,
-//            None(),
-//            { failure ->
-//                loadFailure.value = failure
-//                loadState.value = LoadAreaView.State.FAILURE
-//            },
-//            { categories ->
-//                loadState.value = LoadAreaView.State.MAIN
-//                this.categories.value = categories
-//            }
-//        )
-//    }
+    private fun loadServices(categoryId: String) {
+        loadState.value = LoadAreaView.State.LOAD
+        getServicesFromCategoryUC.start(
+            viewModelScope,
+            GetServicesFromCategoryUC.Params(categoryId),
+            { failure ->
+                loadFailure.value = failure
+                loadState.value = LoadAreaView.State.FAILURE
+            },
+            { services ->
+                loadState.value = LoadAreaView.State.MAIN
+                this.services.value = services
+            }
+        )
+    }
 
 }

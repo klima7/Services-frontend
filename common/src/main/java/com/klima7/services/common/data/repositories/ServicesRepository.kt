@@ -82,4 +82,21 @@ class ServicesRepository(
         }
     }
 
+    suspend fun getServicesFromCategory(categoryId: String): Outcome<Failure, List<Service>> {
+        return try {
+            val snapshot = firestore
+                .collection("services")
+                .whereEqualTo("categoryId", categoryId)
+                .get()
+                .await()
+            val services: List<Service> = snapshot.documents.map { document ->
+                Pair(document.id, document.toObject(ServiceEntity::class.java))
+            }.filter { it.second != null }.map { it.second!!.toDomain(it.first) }
+            Outcome.Success(services)
+        } catch(e: Exception) {
+            Log.e("Hello", "Error during getServicesFromCategory", e)
+            Outcome.Failure(e.toDomain())
+        }
+    }
+
 }

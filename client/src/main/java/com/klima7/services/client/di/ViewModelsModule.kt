@@ -34,6 +34,6 @@ val viewModelsModule = module {
     viewModel { OfferViewModel(get(), get()) }
     viewModel { AddCommViewModel(get(), get()) }
     viewModel { CategoryViewModel(get()) }
-    viewModel { ServiceViewModel() }
+    viewModel { ServiceViewModel(get()) }
 
 }
