@@ -1,11 +1,14 @@
 package com.klima7.services.common.data.di
 
+import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.functions.ktx.functions
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.klima7.services.common.BuildConfig
+import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
 const val EMULATE = BuildConfig.EMULATE
@@ -35,6 +38,13 @@ val sourcesModule = module {
         if(EMULATE)
             Firebase.storage.useEmulator(EMULATOR_HOST, 9199)
         Firebase.storage
+    }
+
+    single {
+        Room.databaseBuilder(
+            androidApplication(),
+            RoomDatabase::class.java, "database"
+        ).build()
     }
 
 }
