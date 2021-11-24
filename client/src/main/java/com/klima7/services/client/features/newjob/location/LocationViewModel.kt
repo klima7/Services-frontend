@@ -10,6 +10,8 @@ class LocationViewModel: BaseViewModel() {
     private lateinit var serviceId: String
     val serviceName = MutableLiveData<String>()
 
+    val lastLocationsVisible = MutableLiveData(true)
+
     val loadState = MutableLiveData(LoadAreaView.State.MAIN)
     val loadFailure = MutableLiveData<Failure>()
 
