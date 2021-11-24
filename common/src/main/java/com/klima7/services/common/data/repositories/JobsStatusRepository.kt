@@ -3,11 +3,10 @@ package com.klima7.services.common.data.repositories
 import android.util.Log
 import com.google.firebase.functions.FirebaseFunctions
 import com.klima7.services.common.core.Outcome
-import com.klima7.services.common.data.converters.toDomain
+import com.klima7.services.common.data.sources.firebase.utils.toDomain
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.JobStatus
 import kotlinx.coroutines.tasks.await
-import java.util.*
 
 class JobsStatusRepository(
     private val functions: FirebaseFunctions

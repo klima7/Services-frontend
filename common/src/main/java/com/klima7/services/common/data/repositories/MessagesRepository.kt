@@ -10,8 +10,9 @@ import com.google.firebase.firestore.Query
 import com.google.firebase.storage.FirebaseStorage
 import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
-import com.klima7.services.common.data.converters.toDomain
-import com.klima7.services.common.data.entities.MessageEntity
+import com.klima7.services.common.data.sources.firebase.converters.toDomain
+import com.klima7.services.common.data.sources.firebase.entities.MessageEntity
+import com.klima7.services.common.data.sources.firebase.utils.toDomain
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Message
 import com.klima7.services.common.models.Role
@@ -21,7 +22,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.tasks.await
-import java.lang.Exception
 import java.util.*
 import kotlin.coroutines.resume
 

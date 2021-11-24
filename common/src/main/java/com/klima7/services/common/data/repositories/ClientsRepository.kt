@@ -5,8 +5,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.functions.FirebaseFunctions
 import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
-import com.klima7.services.common.data.converters.toDomain
-import com.klima7.services.common.data.entities.ClientEntity
+import com.klima7.services.common.data.sources.firebase.converters.toDomain
+import com.klima7.services.common.data.sources.firebase.utils.toDomain
+import com.klima7.services.common.data.sources.firebase.entities.ClientEntity
 import com.klima7.services.common.models.Client
 import com.klima7.services.common.models.ClientInfo
 import com.klima7.services.common.models.Failure

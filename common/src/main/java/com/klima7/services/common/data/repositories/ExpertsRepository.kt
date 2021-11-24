@@ -8,8 +8,9 @@ import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.storage.FirebaseStorage
 import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
-import com.klima7.services.common.data.converters.toDomain
-import com.klima7.services.common.data.entities.ExpertEntity
+import com.klima7.services.common.data.sources.firebase.converters.toDomain
+import com.klima7.services.common.data.sources.firebase.entities.ExpertEntity
+import com.klima7.services.common.data.sources.firebase.utils.toDomain
 import com.klima7.services.common.models.Expert
 import com.klima7.services.common.models.ExpertInfo
 import com.klima7.services.common.models.Failure

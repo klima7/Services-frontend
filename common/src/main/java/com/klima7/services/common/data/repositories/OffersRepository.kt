@@ -8,8 +8,9 @@ import com.google.firebase.firestore.Query
 import com.google.firebase.functions.FirebaseFunctions
 import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
-import com.klima7.services.common.data.converters.toDomain
-import com.klima7.services.common.data.entities.OfferEntity
+import com.klima7.services.common.data.sources.firebase.utils.toDomain
+import com.klima7.services.common.data.sources.firebase.entities.OfferEntity
+import com.klima7.services.common.data.sources.firebase.converters.toDomain
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Offer
 import kotlinx.coroutines.ExperimentalCoroutinesApi

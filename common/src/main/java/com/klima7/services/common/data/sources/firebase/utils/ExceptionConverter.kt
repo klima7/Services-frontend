@@ -1,4 +1,4 @@
-package com.klima7.services.common.data.converters
+package com.klima7.services.common.data.sources.firebase.utils
 
 import com.google.firebase.FirebaseException
 import com.google.firebase.firestore.FirebaseFirestoreException

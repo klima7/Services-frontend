@@ -1,6 +1,6 @@
-package com.klima7.services.common.data.converters
+package com.klima7.services.common.data.sources.firebase.converters
 
-import com.klima7.services.common.data.entities.JobEntity
+import com.klima7.services.common.data.sources.firebase.entities.JobEntity
 import com.klima7.services.common.models.Job
 import com.klima7.services.common.models.Location
 

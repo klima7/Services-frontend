@@ -6,12 +6,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.functions.FirebaseFunctions
 import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
-import com.klima7.services.common.data.converters.toDomain
-import com.klima7.services.common.data.entities.JobEntity
-import com.klima7.services.common.data.entities.OfferEntity
+import com.klima7.services.common.data.sources.firebase.converters.toDomain
+import com.klima7.services.common.data.sources.firebase.entities.JobEntity
+import com.klima7.services.common.data.sources.firebase.utils.toDomain
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Job
-import com.klima7.services.common.models.Offer
 import kotlinx.coroutines.tasks.await
 
 class JobsRepository(

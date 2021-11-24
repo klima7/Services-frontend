@@ -1,4 +1,4 @@
-package com.klima7.services.common.data.entities
+package com.klima7.services.common.data.sources.firebase.entities
 
 data class ServiceEntity(
     var name: String = "",

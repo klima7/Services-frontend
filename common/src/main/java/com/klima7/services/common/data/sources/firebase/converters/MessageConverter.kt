@@ -1,6 +1,6 @@
-package com.klima7.services.common.data.converters
+package com.klima7.services.common.data.sources.firebase.converters
 
-import com.klima7.services.common.data.entities.MessageEntity
+import com.klima7.services.common.data.sources.firebase.entities.MessageEntity
 import com.klima7.services.common.models.ImageMessage
 import com.klima7.services.common.models.Message
 import com.klima7.services.common.models.MessageAuthor

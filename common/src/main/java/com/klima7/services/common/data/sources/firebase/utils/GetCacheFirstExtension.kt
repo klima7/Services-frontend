@@ -1,4 +1,4 @@
-package com.klima7.services.common.data.extensions
+package com.klima7.services.common.data.sources.firebase.utils
 
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource

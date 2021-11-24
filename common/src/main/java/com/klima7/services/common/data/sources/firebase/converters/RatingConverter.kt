@@ -1,6 +1,6 @@
-package com.klima7.services.common.data.converters
+package com.klima7.services.common.data.sources.firebase.converters
 
-import com.klima7.services.common.data.entities.RatingEntity
+import com.klima7.services.common.data.sources.firebase.entities.RatingEntity
 import com.klima7.services.common.models.Rating
 
 fun RatingEntity.toDomain(id: String): Rating {

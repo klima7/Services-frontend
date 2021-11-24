@@ -1,6 +1,6 @@
-package com.klima7.services.common.data.converters
+package com.klima7.services.common.data.sources.firebase.converters
 
-import com.klima7.services.common.data.entities.ExpertEntity
+import com.klima7.services.common.data.sources.firebase.entities.ExpertEntity
 import com.klima7.services.common.models.Expert
 import com.klima7.services.common.models.ExpertInfo
 import com.klima7.services.common.models.Location

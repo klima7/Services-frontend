@@ -1,6 +1,6 @@
-package com.klima7.services.common.data.converters
+package com.klima7.services.common.data.sources.firebase.converters
 
-import com.klima7.services.common.data.entities.ClientEntity
+import com.klima7.services.common.data.sources.firebase.entities.ClientEntity
 import com.klima7.services.common.models.Client
 import com.klima7.services.common.models.ClientInfo
 

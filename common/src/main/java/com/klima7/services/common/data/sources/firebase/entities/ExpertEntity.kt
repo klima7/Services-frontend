@@ -1,4 +1,4 @@
-package com.klima7.services.common.data.entities
+package com.klima7.services.common.data.sources.firebase.entities
 
 import com.google.firebase.firestore.GeoPoint
 

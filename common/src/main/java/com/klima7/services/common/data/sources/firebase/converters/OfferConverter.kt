@@ -1,6 +1,6 @@
-package com.klima7.services.common.data.converters
+package com.klima7.services.common.data.sources.firebase.converters
 
-import com.klima7.services.common.data.entities.OfferEntity
+import com.klima7.services.common.data.sources.firebase.entities.OfferEntity
 import com.klima7.services.common.models.Offer
 import com.klima7.services.common.models.OfferStatus
 
