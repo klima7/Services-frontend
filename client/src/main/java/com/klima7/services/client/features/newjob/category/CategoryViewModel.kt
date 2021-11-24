@@ -12,8 +12,6 @@ class CategoryViewModel(
     private val getAllCategoriesUC: GetAllCategoriesUC,
 ): BaseViewModel() {
 
-
-
     val categories = MutableLiveData<List<Category>>()
 
     val loadState = MutableLiveData(LoadAreaView.State.LOAD)

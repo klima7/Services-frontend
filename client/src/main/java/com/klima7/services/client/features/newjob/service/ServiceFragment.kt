@@ -1,24 +1,23 @@
-package com.klima7.services.client.features.newjob.category
+package com.klima7.services.client.features.newjob.service
 
-import android.content.Intent
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentCategoryBinding
+import com.klima7.services.client.databinding.FragmentServiceBinding
 import com.klima7.services.client.features.newjob.ProgressItem
-import com.klima7.services.client.features.newjob.service.ServiceActivity
 import com.klima7.services.common.models.Category
 import com.klima7.services.common.platform.BaseFragment
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
-import com.xwray.groupie.groupiex.plusAssign
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.xwray.groupie.groupiex.plusAssign
 
 
-class CategoryFragment: BaseFragment<FragmentCategoryBinding>(), CategoryItem.Listener {
+class ServiceFragment: BaseFragment<FragmentServiceBinding>() {
 
-    override val layoutId = R.layout.fragment_category
-    override val viewModel: CategoryViewModel by viewModel()
+    override val layoutId = R.layout.fragment_service
+    override val viewModel: ServiceViewModel by viewModel()
 
     private val groupieAdapter = GroupieAdapter()
     private val categoriesSection = Section()
@@ -31,7 +30,7 @@ class CategoryFragment: BaseFragment<FragmentCategoryBinding>(), CategoryItem.Li
             layoutManager = LinearLayoutManager(requireContext())
         }
 
-        groupieAdapter += ProgressItem(0, "Wybierz kategorię usługi")
+        groupieAdapter += ProgressItem(1, "Wybierz usługę")
         groupieAdapter += categoriesSection
 
         viewModel.categories.observe(viewLifecycleOwner, this::updateCategories)
@@ -42,17 +41,7 @@ class CategoryFragment: BaseFragment<FragmentCategoryBinding>(), CategoryItem.Li
 
         categoriesSection.clear()
         categories.forEach { category ->
-            categoriesSection += CategoryItem(category, this)
+//            categoriesSection += CategoryItem(category, this)
         }
-    }
-
-    override fun onCategoryClicked(category: Category) {
-        showServiceScreen(category.id)
-    }
-
-    private fun showServiceScreen(categoryId: String) {
-        val intent = Intent(activity, ServiceActivity::class.java)
-        intent.putExtra("categoryId", categoryId)
-        startActivity(intent)
     }
 }

@@ -36,6 +36,7 @@
         <activity android:name=".features.offer.OfferActivity" />
         <activity android:name=".features.credits.CreditsActivity" />
         <activity android:name=".features.addcomm.AddCommActivity" />
+        <activity android:name=".features.newjob.service.ServiceActivity" />
 
     </application>
 
