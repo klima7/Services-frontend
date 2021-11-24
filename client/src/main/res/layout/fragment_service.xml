@@ -19,7 +19,8 @@
             android:id="@+id/service_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="..."
+            app:title="Nowe zlecenie"
+            app:subtitle="@{viewmodel.categoryName!=null ? viewmodel.categoryName : `...`}"
             app:navigationIcon="@drawable/icon_arrow_back"
             style="@style/ToolBar" />
 

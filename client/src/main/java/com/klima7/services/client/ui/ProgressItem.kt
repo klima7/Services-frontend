@@ -1,4 +1,4 @@
-package com.klima7.services.client.features.newjob
+package com.klima7.services.client.ui
 
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.ElementProgressBinding

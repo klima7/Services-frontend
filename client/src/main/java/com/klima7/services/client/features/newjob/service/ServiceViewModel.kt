@@ -13,13 +13,15 @@ class ServiceViewModel(
 ): BaseViewModel() {
 
     private lateinit var categoryId: String
+    val categoryName = MutableLiveData<String>()
     val services = MutableLiveData<List<Service>>()
 
     val loadState = MutableLiveData(LoadAreaView.State.LOAD)
     val loadFailure = MutableLiveData<Failure>()
 
-    fun start(categoryId: String) {
+    fun start(categoryId: String, categoryName: String) {
         this.categoryId = categoryId
+        this.categoryName.value = categoryName
         loadServices(categoryId)
     }
 

@@ -4,8 +4,7 @@ import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentServiceBinding
-import com.klima7.services.client.features.newjob.ProgressItem
-import com.klima7.services.client.features.newjob.category.CategoryItem
+import com.klima7.services.client.ui.ProgressItem
 import com.klima7.services.common.models.Service
 import com.klima7.services.common.platform.BaseFragment
 import com.xwray.groupie.GroupieAdapter
@@ -25,7 +24,8 @@ class ServiceFragment: BaseFragment<FragmentServiceBinding>(), ServiceItem.Liste
     override fun onFirstCreation() {
         super.onFirstCreation()
         val categoryId = arguments?.getString("categoryId") ?: throw Error("categoryId argument not supplied")
-        viewModel.start(categoryId)
+        val categoryName = arguments?.getString("categoryName") ?: throw Error("categoryName argument not supplied")
+        viewModel.start(categoryId, categoryName)
     }
 
     override fun init() {
