@@ -2,9 +2,9 @@ package com.klima7.services.common.data.repositories
 
 import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
-import com.klima7.services.common.data.sources.room.RoomSource
-import com.klima7.services.common.data.sources.room.converters.toDomain
-import com.klima7.services.common.data.sources.room.converters.toRoomEntity
+import com.klima7.services.common.data.room.RoomSource
+import com.klima7.services.common.data.room.converters.toDomain
+import com.klima7.services.common.data.room.converters.toRoomEntity
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.LastLocation
 import java.lang.Exception

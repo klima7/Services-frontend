@@ -2,7 +2,7 @@ package com.klima7.services.common.data.repositories
 
 import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
-import com.klima7.services.common.data.sources.firebase.FirebaseSource
+import com.klima7.services.common.data.firebase.FirebaseSource
 import com.klima7.services.common.models.Failure
 
 class AuthRepository(
