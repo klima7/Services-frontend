@@ -1,9 +1,11 @@
 package com.klima7.services.client.features.newjob.service
 
+import android.content.Intent
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentServiceBinding
+import com.klima7.services.client.features.newjob.location.LocationActivity
 import com.klima7.services.client.ui.ProgressItem
 import com.klima7.services.common.models.Service
 import com.klima7.services.common.platform.BaseFragment
@@ -53,5 +55,13 @@ class ServiceFragment: BaseFragment<FragmentServiceBinding>(), ServiceItem.Liste
 
     override fun onServiceClicked(service: Service) {
         Log.i("Hello", "Service clicked: $service")
+        showLocationScreen(service)
+    }
+
+    private fun showLocationScreen(service: Service) {
+        val intent = Intent(activity, LocationActivity::class.java)
+        intent.putExtra("serviceId", service.id)
+        intent.putExtra("serviceName", service.name)
+        startActivity(intent)
     }
 }
