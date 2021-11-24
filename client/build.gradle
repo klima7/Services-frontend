@@ -41,5 +41,6 @@ android {
 }
 
 dependencies {
+    implementation "com.anton46:stepsview:0.0.2"
     implementation project(path: ':common')
 }
