@@ -61,17 +61,6 @@ class NewJobFragment: BaseFragment<FragmentNewJobBinding>() {
 
     }
 
-    private fun updateScreen(newScreen: NewJobViewModel.Screen) {
-        val currentId = navController.currentDestination?.id
-        Log.i("Hello", "Updating screen to $newScreen")
-        val nextId = when(newScreen) {
-            NewJobViewModel.Screen.SERVICE -> R.id.serviceFragment
-            NewJobViewModel.Screen.LOCATION -> R.id.locationFragment
-            NewJobViewModel.Screen.DETAILS -> R.id.jobDetailsFragment
-        }
-        navController.navigate(nextId)
-    }
-
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
         super.handleEvent(event)
         when(event) {
@@ -83,7 +72,8 @@ class NewJobFragment: BaseFragment<FragmentNewJobBinding>() {
         val destination = when(screen) {
             NewJobViewModel.Screen.SERVICE -> R.id.serviceFragment
             NewJobViewModel.Screen.LOCATION -> R.id.locationFragment
-            NewJobViewModel.Screen.DETAILS -> R.id.jobDetailsFragment
+            NewJobViewModel.Screen.JOB_DETAILS -> R.id.jobDetailsFragment
+            NewJobViewModel.Screen.JOB_CREATED -> R.id.jobCreatedFragment2
         }
 
         val animation = when(direction) {

@@ -113,6 +113,7 @@
                 android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
                 android:text="Utwórz zlecenie"
                 android:background="@drawable/rounded_button"
+                android:onClick="@{()->viewmodel.createJobClicked()}"
                 />
 
         </LinearLayout>

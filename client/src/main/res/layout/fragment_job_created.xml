@@ -18,12 +18,34 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:gravity="center_horizontal"
             >
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lav_actionBar"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="lottie_job_created.json"
+                app:lottie_loop="false"
+                app:lottie_speed="1"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Job created"
+                android:text="Stworzono zlecenie!"
+                android:textAlignment="center"
+                android:textSize="25sp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pozostaje czekać"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="#555555"
                 />
 
         </LinearLayout>

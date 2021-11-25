@@ -2,19 +2,15 @@ package com.klima7.services.client.features.newjob.newjob
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
-import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.models.Category
-import com.klima7.services.common.models.Service
 import com.klima7.services.common.models.SimpleLocation
 import com.klima7.services.common.models.SimpleService
 import com.klima7.services.common.platform.BaseViewModel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class NewJobViewModel: BaseViewModel() {
 
     enum class Screen {
-        SERVICE, LOCATION, DETAILS
+        SERVICE, LOCATION, JOB_DETAILS, JOB_CREATED
     }
 
     enum class Direction {
@@ -22,7 +18,7 @@ class NewJobViewModel: BaseViewModel() {
     }
 
     companion object {
-        val screensOrder = listOf(Screen.SERVICE, Screen.LOCATION, Screen.DETAILS)
+        val screensOrder = listOf(Screen.SERVICE, Screen.LOCATION, Screen.JOB_DETAILS, Screen.JOB_CREATED)
     }
 
     sealed class Event: BaseEvent() {
@@ -74,15 +70,21 @@ class NewJobViewModel: BaseViewModel() {
     }
 
     fun showDetailsScreen() {
-        this.screen.value = Screen.DETAILS
-        sendEvent(Event.Navigate(Screen.DETAILS, Direction.FORTH))
+        this.screen.value = Screen.JOB_DETAILS
+        sendEvent(Event.Navigate(Screen.JOB_DETAILS, Direction.FORTH))
+    }
+
+    fun showCreatedScreen() {
+        this.screen.value = Screen.JOB_CREATED
+        sendEvent(Event.Navigate(Screen.JOB_CREATED, Direction.FORTH))
     }
 
     private fun getProgressPosition(screen: Screen): Int {
         return when(screen) {
             Screen.SERVICE -> 1
             Screen.LOCATION -> 2
-            Screen.DETAILS -> 3
+            Screen.JOB_DETAILS -> 3
+            Screen.JOB_CREATED -> 3
         }
     }
 

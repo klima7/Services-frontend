@@ -10,6 +10,10 @@ import com.klima7.services.common.platform.BaseViewModel
 
 class JobDetailsViewModel: BaseViewModel() {
 
+    sealed class Event: BaseEvent() {
+        object ShowJobCreatedScreen: Event()
+    }
+
     val description = MutableLiveData<String>()
     val realizationTime = MutableLiveData<String>()
 
@@ -22,6 +26,10 @@ class JobDetailsViewModel: BaseViewModel() {
 
     fun refresh() {
 
+    }
+
+    fun createJobClicked() {
+        sendEvent(Event.ShowJobCreatedScreen)
     }
 
 }
