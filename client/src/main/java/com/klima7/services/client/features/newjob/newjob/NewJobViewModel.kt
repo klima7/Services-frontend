@@ -2,6 +2,7 @@ package com.klima7.services.client.features.newjob.newjob
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
+import com.klima7.services.client.features.newjob.jobcreated.JobCreatedViewModel
 import com.klima7.services.common.models.Category
 import com.klima7.services.common.models.SimpleLocation
 import com.klima7.services.common.models.SimpleService
@@ -23,10 +24,11 @@ class NewJobViewModel: BaseViewModel() {
 
     sealed class Event: BaseEvent() {
         data class Navigate(val screen: Screen, val direction: Direction): Event()
+        object ShowJobsScreen: Event()
     }
 
     val subtitle = MutableLiveData<String>()
-    val screen = MutableLiveData<Screen>()
+    private val screen = MutableLiveData<Screen>()
     val progressPosition = screen.map(this::getProgressPosition)
 
     val category = MutableLiveData<Category>()
@@ -45,6 +47,11 @@ class NewJobViewModel: BaseViewModel() {
 
     fun backClicked() {
         val cScreen = screen.value ?: return
+
+        if(cScreen == Screen.JOB_CREATED) {
+            showJobsScreen()
+        }
+
         val pos = screensOrder.indexOf(cScreen)
         if(pos == 0) {
             sendEvent(BaseEvent.FinishActivity)
@@ -77,6 +84,10 @@ class NewJobViewModel: BaseViewModel() {
     fun showCreatedScreen() {
         this.screen.value = Screen.JOB_CREATED
         sendEvent(Event.Navigate(Screen.JOB_CREATED, Direction.FORTH))
+    }
+
+    fun showJobsScreen() {
+        sendEvent(Event.ShowJobsScreen)
     }
 
     private fun getProgressPosition(screen: Screen): Int {

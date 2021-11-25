@@ -1,11 +1,13 @@
 package com.klima7.services.client.features.newjob.newjob
 
+import android.content.Intent
 import android.util.Log
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentNewJobBinding
+import com.klima7.services.client.features.home.HomeActivity
 import com.klima7.services.common.platform.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.klima7.services.common.models.Category
@@ -49,22 +51,11 @@ class NewJobFragment: BaseFragment<FragmentNewJobBinding>() {
         viewModel.backClicked()
     }
 
-    fun showServiceScreen(category: Category) {
-
-    }
-
-    fun showLocationScreen(service: SimpleService) {
-
-    }
-
-    fun showDescriptionScreen(service: SimpleService) {
-
-    }
-
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
         super.handleEvent(event)
         when(event) {
             is NewJobViewModel.Event.Navigate -> navigate(event.screen, event.direction)
+            is NewJobViewModel.Event.ShowJobsScreen -> showJobsScreen()
         }
     }
 
@@ -92,5 +83,12 @@ class NewJobFragment: BaseFragment<FragmentNewJobBinding>() {
             .build()
 
         navController.navigate(destination, null, options)
+    }
+
+    private fun showJobsScreen() {
+        val intent = Intent(activity, HomeActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        requireActivity().finish()
     }
 }

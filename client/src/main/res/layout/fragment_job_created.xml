@@ -21,6 +21,11 @@
             android:gravity="center_horizontal"
             >
 
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="32dp" />
+
+
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/lav_actionBar"
                 android:layout_width="200dp"
@@ -47,6 +52,10 @@
                 android:textSize="20sp"
                 android:textColor="#555555"
                 />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="32dp" />
 
         </LinearLayout>
 
