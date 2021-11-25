@@ -7,6 +7,10 @@ import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentNewJobBinding
 import com.klima7.services.common.platform.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import androidx.activity.OnBackPressedCallback
+
+
+
 
 
 class NewJobFragment: BaseFragment<FragmentNewJobBinding>() {
@@ -33,8 +37,8 @@ class NewJobFragment: BaseFragment<FragmentNewJobBinding>() {
         viewModel.screen.observe(viewLifecycleOwner, this::updateScreen)
     }
 
-    private fun backButtonClicked() {
-        requireActivity().onBackPressed()
+    fun backButtonClicked() {
+        viewModel.backClicked()
     }
 
     private fun updateScreen(newScreen: NewJobViewModel.Screen) {

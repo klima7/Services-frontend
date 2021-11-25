@@ -33,10 +33,17 @@ class NewJobViewModel: BaseViewModel() {
             screen.value = Screen.LOCATION
             delay(2000)
             screen.value = Screen.DETAILS
-            delay(2000)
-            screen.value = Screen.SERVICE
-            delay(2000)
-            screen.value = Screen.DETAILS
+        }
+    }
+
+    fun backClicked() {
+        val cScreen = screen.value ?: return
+        val pos = screensOrder.indexOf(cScreen)
+        if(pos == 0) {
+            sendEvent(BaseEvent.FinishActivity)
+        }
+        else {
+            screen.value = screensOrder[pos-1]
         }
     }
 
