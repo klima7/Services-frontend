@@ -36,8 +36,6 @@ class CategoryFragment: BaseFragment<FragmentCategoryBinding>(), CategoryItem.Li
     }
 
     private fun updateCategories(categories: List<Category>) {
-        Log.i("Hello", "Categories received: $categories")
-
         categoriesSection.clear()
         categories.forEach { category ->
             categoriesSection += CategoryItem(category, this)
@@ -49,11 +47,6 @@ class CategoryFragment: BaseFragment<FragmentCategoryBinding>(), CategoryItem.Li
     }
 
     private fun showServiceScreen(category: Category) {
-//        val intent = Intent(activity, ServiceActivity::class.java)
-//        intent.putExtra("categoryId", category.id)
-//        intent.putExtra("categoryName", category.name)
-//        startActivity(intent)
-
         val intent = Intent(activity, NewJobActivity::class.java)
         intent.putExtra("categoryId", category.id)
         intent.putExtra("categoryName", category.name)

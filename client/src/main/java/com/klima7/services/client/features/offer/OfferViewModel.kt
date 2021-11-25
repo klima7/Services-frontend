@@ -58,7 +58,7 @@ class OfferViewModel(
             viewModelScope,
             GetExpertUC.Params(expertId),
             {
-                Log.i("Hello", "Error: unable to get expert")
+                // TODO: Do something
             },
             { expert ->
                 this.expert.value = expert

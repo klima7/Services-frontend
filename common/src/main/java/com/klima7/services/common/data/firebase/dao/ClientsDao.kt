@@ -39,7 +39,6 @@ class ClientsDao(
                 .get()
                 .await()
             val clientEntity = snapshot.toObject(ClientEntity::class.java)
-            Log.i("Hello", "$clientEntity")
             val client = clientEntity?.toDomain(uid, snapshot.metadata.isFromCache)
                 ?: return Outcome.Failure(Failure.NotFoundFailure)
             return Outcome.Success(client)

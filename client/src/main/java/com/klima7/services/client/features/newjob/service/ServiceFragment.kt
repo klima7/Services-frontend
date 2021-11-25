@@ -50,7 +50,6 @@ class ServiceFragment: BaseFragment<FragmentServiceBinding>(), ServiceItem.Liste
     }
 
     override fun onServiceClicked(service: Service) {
-        Log.i("Hello", "Service clicked: $service")
         showLocationScreen(service.toSimpleService())
     }
 

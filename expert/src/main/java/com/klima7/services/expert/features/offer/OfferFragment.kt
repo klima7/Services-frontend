@@ -27,7 +27,6 @@ class OfferFragment: BaseFragment<FragmentOfferBinding>(), SendMessageBarView.Li
         super.onFirstCreation()
 
         val offerId = arguments?.getString("offerId") ?: throw Error("offerId not supplied")
-        Log.i("Hello", "offerId: $offerId")
 
         val messageViewerFragment = MessageViewerFragment.newInstance(offerId, Role.EXPERT)
         val sendMessageFragment = SendMessageFragment.newInstance(offerId, Role.EXPERT)
@@ -40,10 +39,8 @@ class OfferFragment: BaseFragment<FragmentOfferBinding>(), SendMessageBarView.Li
     }
 
     override fun onSendMessageClicked(smb: SendMessageBarView) {
-        Log.i("Hello", "Send message clicked")
     }
 
     override fun onSelectImageClicked(smb: SendMessageBarView) {
-        Log.i("Hello", "Select image clicked")
     }
 }

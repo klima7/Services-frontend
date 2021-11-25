@@ -59,7 +59,6 @@ class LocationViewModel(
             { lastLocations ->
                 loadState.value = LoadAreaView.State.MAIN
                 this.lastLocations.value = lastLocations
-                Log.i("Hello", "Last locations received: $lastLocations")
             }
         )
     }
@@ -69,9 +68,7 @@ class LocationViewModel(
             viewModelScope,
             AddLastLocationUC.Params(location),
             { },
-            {
-                Log.i("Hello", "Add last location success!")
-            }
+            { }
         )
     }
 

@@ -111,7 +111,6 @@ class MessagesDao(
                 continuation.resume(Outcome.Failure(Failure.InternetFailure))
             }
 
-        Log.i("Hello", "invokeOnCancellation setup")
         continuation.invokeOnCancellation {
             task.cancel()
         }
