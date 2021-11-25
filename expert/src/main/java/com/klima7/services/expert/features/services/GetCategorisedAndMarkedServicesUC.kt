@@ -1,5 +1,6 @@
 package com.klima7.services.expert.features.services
 
+import android.util.Log
 import com.klima7.services.common.core.BaseUC
 import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
@@ -43,12 +44,15 @@ class GetCategorisedAndMarkedServicesUC(
     }
 
     private fun groupServicesPart(selected: Set<String>, services: List<Service>, categories: List<Category>): Outcome<Failure, List<CategorizedSelectableServices>> {
+        Log.i("Hello", "services: $services")
+        Log.i("Hello", "categories: $categories")
         val result = mutableListOf<CategorizedSelectableServices>()
         categories.forEach { category ->
-            val servicesOfCategory = services.filter { service -> service.name == category.id }
+            val servicesOfCategory = services.filter { service -> service.categoryId == category.id }
             val tmp = servicesOfCategory.map { SelectableService(it, selected.contains(it.id)) }
             result.add(CategorizedSelectableServices(category, tmp))
         }
+        Log.i("Hello", "Result: $result")
         return Outcome.Success(result)
     }
 }
