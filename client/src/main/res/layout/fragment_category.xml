@@ -30,7 +30,20 @@
 
                 <Space
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="15dp"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:text="Wybierz kategorię:"
+                    android:textSize="30sp"
+                    />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="15dp"
                     />
 
                 <androidx.recyclerview.widget.RecyclerView
