@@ -1,4 +1,4 @@
-package com.klima7.services.client.features.newjob.category
+package com.klima7.services.client.features.category
 
 import com.klima7.services.common.core.BaseUC
 import com.klima7.services.common.core.None

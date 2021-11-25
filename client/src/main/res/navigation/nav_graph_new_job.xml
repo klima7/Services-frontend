@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_home"
+    app:startDestination="@id/serviceFragment">
+    <fragment
+        android:id="@+id/serviceFragment"
+        android:name="com.klima7.services.client.features.newjob.service.ServiceFragment"
+        android:label="ServiceFragment" />
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="com.klima7.services.client.features.newjob.location.LocationFragment"
+        android:label="LocationFragment" />
+    <fragment
+        android:id="@+id/jobDetailsFragment"
+        android:name="com.klima7.services.client.features.newjob.jobdetails.JobDetailsFragment"
+        android:label="JobDetailsFragment" />
+</navigation>

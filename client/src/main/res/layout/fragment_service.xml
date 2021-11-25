@@ -9,21 +9,6 @@
             type="com.klima7.services.client.features.newjob.service.ServiceViewModel" />
     </data>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/service_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:title="Nowe zlecenie"
-            app:subtitle="@{viewmodel.categoryName!=null ? viewmodel.categoryName : `...`}"
-            app:navigationIcon="@drawable/icon_arrow_back"
-            style="@style/ToolBar" />
-
         <com.klima7.services.common.components.views.LoadAreaView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -32,36 +17,20 @@
             app:la_onRefresh="@{() -> viewmodel.refresh()}"
             >
 
-            <androidx.core.widget.NestedScrollView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:orientation="vertical"
                 >
 
-                <LinearLayout
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/service_recycler"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    >
+                    />
 
-                    <com.klima7.services.client.ui.NewJobProgressView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:njp_position="1"
-                        app:njp_message="Wybierz usługę"
-                        />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/service_recycler"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        />
-
-                </LinearLayout>
-
-            </androidx.core.widget.NestedScrollView>
+            </LinearLayout>
 
         </com.klima7.services.common.components.views.LoadAreaView>
-
-    </LinearLayout>
 
 </layout>

@@ -6,11 +6,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentServiceBinding
 import com.klima7.services.client.features.newjob.location.LocationActivity
+import com.klima7.services.client.features.newjob.newjob.NewJobFragment
+import com.klima7.services.client.features.newjob.newjob.NewJobViewModel
 import com.klima7.services.common.models.Service
 import com.klima7.services.common.platform.BaseFragment
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.groupiex.plusAssign
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -19,20 +22,22 @@ class ServiceFragment: BaseFragment<FragmentServiceBinding>(), ServiceItem.Liste
     override val layoutId = R.layout.fragment_service
     override val viewModel: ServiceViewModel by viewModel()
 
+    private val parentViewModel: NewJobViewModel by lazy {
+        requireParentFragment().requireParentFragment().getViewModel()
+    }
+
     private val groupieAdapter = GroupieAdapter()
     private val servicesSection = Section()
 
     override fun onFirstCreation() {
         super.onFirstCreation()
-        val categoryId = arguments?.getString("categoryId") ?: throw Error("categoryId argument not supplied")
-        val categoryName = arguments?.getString("categoryName") ?: throw Error("categoryName argument not supplied")
-        viewModel.start(categoryId, categoryName)
+//        val categoryId = arguments?.getString("categoryId") ?: throw Error("categoryId argument not supplied")
+//        val categoryName = arguments?.getString("categoryName") ?: throw Error("categoryName argument not supplied")
+//        viewModel.start(categoryId, categoryName)
     }
 
     override fun init() {
         super.init()
-
-        binding.serviceToolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
 
         binding.serviceRecycler.apply {
             adapter = groupieAdapter

@@ -39,6 +39,7 @@
         <activity android:name=".features.newjob.service.ServiceActivity" />
         <activity android:name=".features.newjob.location.LocationActivity" />
         <activity android:name=".features.newjob.jobdetails.JobDetailsActivity" />
+        <activity android:name=".features.newjob.newjob.NewJobActivity" />
 
     </application>
 

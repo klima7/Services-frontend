@@ -1,4 +1,4 @@
-package com.klima7.services.client.features.newjob.category
+package com.klima7.services.client.features.category
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope

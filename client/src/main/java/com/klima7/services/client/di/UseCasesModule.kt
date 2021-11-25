@@ -5,7 +5,7 @@ import com.klima7.services.client.features.addcomm.GetOfferWithExpertUC
 import com.klima7.services.client.features.delete.DeleteClientUC
 import com.klima7.services.client.features.info.SetCurrentClientInfoUC
 import com.klima7.services.client.features.jobs.GetCurrentClientJobsUC
-import com.klima7.services.client.features.newjob.category.GetAllCategoriesUC
+import com.klima7.services.client.features.category.GetAllCategoriesUC
 import com.klima7.services.client.features.newjob.location.AddLastLocationUC
 import com.klima7.services.client.features.newjob.location.GetLastLocationsUC
 import com.klima7.services.client.features.newjob.service.GetServicesFromCategoryUC

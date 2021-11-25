@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.klima7.services.client.features.newjob.category.CategoryViewModel" />
+            type="com.klima7.services.client.features.category.CategoryViewModel" />
     </data>
 
     <com.klima7.services.common.components.views.LoadAreaView
@@ -28,11 +28,9 @@
                 android:orientation="vertical"
                 >
 
-                <com.klima7.services.client.ui.NewJobProgressView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:njp_position="0"
-                    app:njp_message="Wybierz kategorię usługi"
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
                     />
 
                 <androidx.recyclerview.widget.RecyclerView

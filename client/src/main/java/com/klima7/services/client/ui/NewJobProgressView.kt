@@ -4,9 +4,22 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import androidx.databinding.BindingMethod
 import androidx.databinding.DataBindingUtil
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.ViewNewJobProgressBinding
+import com.klima7.services.common.components.views.AvatarView
+
+@androidx.databinding.BindingMethods(
+    value = [
+        BindingMethod(
+            type = NewJobProgressView::class,
+            attribute = "njp_position",
+            method = "setPosition"
+        ),
+    ]
+)
+class NewJobProgressBindingMethods
 
 class NewJobProgressView : FrameLayout {
 
@@ -32,6 +45,11 @@ class NewJobProgressView : FrameLayout {
         position = ta.getInt(R.styleable.NewJobProgress_njp_position, 0)
         message = ta.getString(R.styleable.NewJobProgress_njp_message)
         ta.recycle()
+    }
+
+    fun setPosition(position: Int) {
+        this.position = position
+        refreshView()
     }
 
     private fun refreshView() {

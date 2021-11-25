@@ -1,10 +1,11 @@
-package com.klima7.services.client.features.newjob.category
+package com.klima7.services.client.features.category
 
 import android.content.Intent
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentCategoryBinding
+import com.klima7.services.client.features.newjob.newjob.NewJobActivity
 import com.klima7.services.client.features.newjob.service.ServiceActivity
 import com.klima7.services.common.models.Category
 import com.klima7.services.common.platform.BaseFragment
@@ -49,9 +50,12 @@ class CategoryFragment: BaseFragment<FragmentCategoryBinding>(), CategoryItem.Li
     }
 
     private fun showServiceScreen(category: Category) {
-        val intent = Intent(activity, ServiceActivity::class.java)
-        intent.putExtra("categoryId", category.id)
-        intent.putExtra("categoryName", category.name)
+//        val intent = Intent(activity, ServiceActivity::class.java)
+//        intent.putExtra("categoryId", category.id)
+//        intent.putExtra("categoryName", category.name)
+//        startActivity(intent)
+
+        val intent = Intent(activity, NewJobActivity::class.java)
         startActivity(intent)
     }
 }
