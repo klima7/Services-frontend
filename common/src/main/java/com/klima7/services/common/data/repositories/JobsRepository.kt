@@ -30,4 +30,9 @@ class JobsRepository(
         return firebase.jobsDao.finishJob(jobId)
     }
 
+    suspend fun createJob(serviceId: String, placeId: String, description: String,
+                          realizationTime: String): Outcome<Failure, None> {
+        return firebase.jobsDao.createJob(serviceId, placeId, description, realizationTime)
+    }
+
 }

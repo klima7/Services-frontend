@@ -46,7 +46,7 @@ class JobsDao(
                 .await()
         } catch(e: Exception) {
             Log.e("Hello", "Error while acceptJob", e)
-            Outcome.Failure(e.toDomain())
+            return Outcome.Failure(e.toDomain())
         }
         return Outcome.Success(None())
     }
@@ -99,7 +99,7 @@ class JobsDao(
         }
         catch(e: Exception) {
             Log.e("Hello", "Error during getClientJobs", e)
-            Outcome.Failure(e.toDomain())
+            return Outcome.Failure(e.toDomain())
         }
     }
 
@@ -114,6 +114,26 @@ class JobsDao(
                 .await()
         } catch(e: Exception) {
             Log.e("Hello", "Error while finishJob", e)
+            return Outcome.Failure(e.toDomain())
+        }
+        return Outcome.Success(None())
+    }
+
+    suspend fun createJob(serviceId: String, placeId: String, description: String,
+                          realizationTime: String): Outcome<Failure, None> {
+        val data = hashMapOf(
+            "serviceId" to serviceId,
+            "placeId" to placeId,
+            "description" to description,
+            "realizationTime" to realizationTime,
+        )
+        try {
+            functions
+                .getHttpsCallable("jobs-create")
+                .call(data)
+                .await()
+        } catch(e: Exception) {
+            Log.e("Hello", "Error while createJob", e)
             return Outcome.Failure(e.toDomain())
         }
         return Outcome.Success(None())

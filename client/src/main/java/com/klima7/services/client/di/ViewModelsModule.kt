@@ -40,7 +40,7 @@ val viewModelsModule = module {
     viewModel { NewJobViewModel(get()) }
     viewModel { ServiceViewModel(get()) }
     viewModel { LocationViewModel(get(), get()) }
-    viewModel { JobDetailsViewModel() }
+    viewModel { JobDetailsViewModel(get()) }
     viewModel { JobSetupViewModel() }
     viewModel { JobCreatedViewModel() }
 

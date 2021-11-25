@@ -20,7 +20,9 @@ class JobDetailsFragment: BaseFragment<FragmentJobDetailsBinding>() {
 
     override fun onFirstCreation() {
         super.onFirstCreation()
-        viewModel.start()
+        val service = parentViewModel.service.value!!
+        val location = parentViewModel.location.value!!
+        viewModel.start(service, location)
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {

@@ -6,6 +6,7 @@ import com.klima7.services.client.features.newjob.GetAllCategoriesUC
 import com.klima7.services.client.features.delete.DeleteClientUC
 import com.klima7.services.client.features.info.SetCurrentClientInfoUC
 import com.klima7.services.client.features.jobs.GetCurrentClientJobsUC
+import com.klima7.services.client.features.jobsetup.details.CreateJobUC
 import com.klima7.services.client.features.jobsetup.location.AddLastLocationUC
 import com.klima7.services.client.features.jobsetup.location.GetLastLocationsUC
 import com.klima7.services.client.features.jobsetup.service.GetServicesFromCategoryUC
@@ -38,5 +39,6 @@ val useCasesModule = module {
     single { GetServicesFromCategoryUC(get()) }
     single { AddLastLocationUC(get()) }
     single { GetLastLocationsUC(get()) }
+    single { CreateJobUC(get()) }
 
 }
