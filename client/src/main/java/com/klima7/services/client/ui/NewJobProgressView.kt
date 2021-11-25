@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.databinding.BindingMethod
 import androidx.databinding.DataBindingUtil
+import com.anton46.stepsview.StepsView
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.ViewNewJobProgressBinding
 import com.klima7.services.common.components.views.AvatarView
@@ -53,14 +54,22 @@ class NewJobProgressView : FrameLayout {
     }
 
     private fun refreshView() {
-        binding.message = message
-        binding.viewprogressStepview
+        val holder = binding.viewprogressHolder
+        val context = holder.context
+        val stepsView = StepsView(context)
+
+        stepsView
             .setLabels(listOf("Kategoria", "Usługa", "Lokalizacja", "Opis").toTypedArray())
             .setBarColorIndicator(context.resources.getColor(R.color.material_blue_grey_800, null))
             .setProgressColorIndicator(context.resources.getColor(R.color.quantum_googgreen500, null))
             .setLabelColorIndicator(context.resources.getColor(R.color.black, null))
             .setCompletedPosition(position)
-            .drawView();
+            .drawView()
+
+        holder.removeAllViews()
+        holder.addView(stepsView)
+
+        binding.message = message
     }
 
 }

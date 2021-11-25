@@ -9,129 +9,97 @@
             type="com.klima7.services.client.features.newjob.jobdetails.JobDetailsViewModel" />
     </data>
 
-    <LinearLayout
+    <com.klima7.services.common.components.views.LoadAreaView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        app:la_state="@{viewmodel.loadState}"
+        app:la_failure="@{viewmodel.loadFailure}"
+        app:la_onRefresh="@{() -> viewmodel.refresh()}"
         >
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/service_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:title="Nowe zlecenie"
-            app:subtitle="Składanie mebli"
-            app:navigationIcon="@drawable/icon_arrow_back"
-            style="@style/ToolBar" />
-
-        <com.klima7.services.common.components.views.LoadAreaView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:la_state="@{viewmodel.loadState}"
-            app:la_failure="@{viewmodel.loadFailure}"
-            app:la_onRefresh="@{() -> viewmodel.refresh()}"
+            android:orientation="vertical"
             >
 
-            <LinearLayout
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 >
 
-                <androidx.core.widget.NestedScrollView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="16dp"
                     >
 
-                    <LinearLayout
+                    <!-- Description -->
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        >
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:hint="Opis"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="500"
+                        style="@style/TextInputLayoutStyle">
 
-                        <com.klima7.services.client.ui.NewJobProgressView
+                        <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:njp_position="3"
-                            app:njp_message="Uzupełnij szczegóły oferty"
-                            />
+                            android:layout_height="150dp"
+                            android:gravity="top"
+                            android:inputType="textMultiLine"
+                            android:maxLength="500"
+                            android:overScrollMode="always"
+                            android:padding="25dp"
+                            android:scrollbarStyle="insideInset"
+                            android:scrollbars="vertical"
+                            android:text="@={viewmodel.description}" />
 
-                        <LinearLayout
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Description -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:hint="Czas realizacji"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="200"
+                        style="@style/TextInputLayoutStyle">
+
+                        <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginHorizontal="16dp"
-                            >
+                            android:layout_height="100dp"
+                            android:gravity="top"
+                            android:inputType="textMultiLine"
+                            android:maxLength="500"
+                            android:overScrollMode="always"
+                            android:padding="25dp"
+                            android:scrollbarStyle="insideInset"
+                            android:scrollbars="vertical"
+                            android:text="@={viewmodel.realizationTime}" />
 
-                            <!-- Description -->
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="8dp"
-                                android:hint="Opis"
-                                app:counterEnabled="true"
-                                app:counterMaxLength="500"
-                                style="@style/TextInputLayoutStyle">
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="150dp"
-                                    android:gravity="top"
-                                    android:inputType="textMultiLine"
-                                    android:maxLength="500"
-                                    android:overScrollMode="always"
-                                    android:padding="25dp"
-                                    android:scrollbarStyle="insideInset"
-                                    android:scrollbars="vertical"
-                                    android:text="@={viewmodel.description}" />
+                </LinearLayout>
 
-                            </com.google.android.material.textfield.TextInputLayout>
+            </androidx.core.widget.NestedScrollView>
 
-                            <!-- Description -->
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="8dp"
-                                android:hint="Czas realizacji"
-                                app:counterEnabled="true"
-                                app:counterMaxLength="200"
-                                style="@style/TextInputLayoutStyle">
+            <Button
+                android:id="@+id/jobdetails_send"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
+                android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
+                android:text="Utwórz zlecenie"
+                android:background="@drawable/rounded_button"
+                />
 
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="100dp"
-                                    android:gravity="top"
-                                    android:inputType="textMultiLine"
-                                    android:maxLength="500"
-                                    android:overScrollMode="always"
-                                    android:padding="25dp"
-                                    android:scrollbarStyle="insideInset"
-                                    android:scrollbars="vertical"
-                                    android:text="@={viewmodel.realizationTime}" />
+        </LinearLayout>
 
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </androidx.core.widget.NestedScrollView>
-
-                <Button
-                    android:id="@+id/jobdetails_send"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
-                    android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
-                    android:text="Utwórz zlecenie"
-                    android:background="@drawable/rounded_button"
-                    />
-
-            </LinearLayout>
-
-        </com.klima7.services.common.components.views.LoadAreaView>
-
-    </LinearLayout>
+    </com.klima7.services.common.components.views.LoadAreaView>
 
 </layout>

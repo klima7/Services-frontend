@@ -17,12 +17,19 @@
         android:orientation="vertical"
         >
 
-        <com.anton46.stepsview.StepsView
-            android:id="@+id/viewprogress_stepview"
+        <FrameLayout
+            android:id="@+id/viewprogress_holder"
             android:layout_width="match_parent"
-            android:paddingHorizontal="10dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
             />
+
+<!--        <com.anton46.stepsview.StepsView-->
+<!--            android:id="@+id/viewprogress_stepview"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:paddingHorizontal="10dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            />-->
 
         <TextView
             android:id="@+id/viewprogress_text"
