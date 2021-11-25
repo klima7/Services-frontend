@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.platform.BaseViewModel
+import com.klima7.services.common.platform.CombinedLiveData
 
 class JobDetailsViewModel: BaseViewModel() {
 
@@ -13,6 +14,9 @@ class JobDetailsViewModel: BaseViewModel() {
 
     val description = MutableLiveData<String>()
     val realizationTime = MutableLiveData<String>()
+    val createButtonEnabled = CombinedLiveData(description, realizationTime) {
+        !description.value.isNullOrBlank() && !realizationTime.value.isNullOrBlank()
+    }
 
     val loadState = MutableLiveData(LoadAreaView.State.MAIN)
     val loadFailure = MutableLiveData<Failure>()

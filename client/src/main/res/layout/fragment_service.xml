@@ -9,12 +9,17 @@
             type="com.klima7.services.client.features.jobsetup.service.ServiceViewModel" />
     </data>
 
-        <com.klima7.services.common.components.views.LoadAreaView
+    <com.klima7.services.common.components.views.LoadAreaView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:la_state="@{viewmodel.loadState}"
+        app:la_failure="@{viewmodel.loadFailure}"
+        app:la_onRefresh="@{() -> viewmodel.refresh()}"
+        >
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:la_state="@{viewmodel.loadState}"
-            app:la_failure="@{viewmodel.loadFailure}"
-            app:la_onRefresh="@{() -> viewmodel.refresh()}"
+            android:layout_height="wrap_content"
             >
 
             <LinearLayout
@@ -49,6 +54,8 @@
 
             </LinearLayout>
 
-        </com.klima7.services.common.components.views.LoadAreaView>
+        </androidx.core.widget.NestedScrollView>
+
+    </com.klima7.services.common.components.views.LoadAreaView>
 
 </layout>

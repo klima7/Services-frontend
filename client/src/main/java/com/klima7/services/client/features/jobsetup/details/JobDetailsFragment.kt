@@ -20,10 +20,6 @@ class JobDetailsFragment: BaseFragment<FragmentJobDetailsBinding>() {
 
     override fun onFirstCreation() {
         super.onFirstCreation()
-//        val serviceId = arguments?.getString("serviceId") ?: throw Error("serviceId argument not supplied")
-//        val serviceName = arguments?.getString("serviceName") ?: throw Error("serviceName argument not supplied")
-//        val locationId = arguments?.getString("locationId") ?: throw Error("locationId argument not supplied")
-//        val locationName = arguments?.getString("locationName") ?: throw Error("locationName argument not supplied")
         viewModel.start()
     }
 
@@ -34,7 +30,7 @@ class JobDetailsFragment: BaseFragment<FragmentJobDetailsBinding>() {
         }
     }
 
-    fun showJobCreatedScreen() {
+    private fun showJobCreatedScreen() {
         parentViewModel.showCreatedScreen()
     }
 

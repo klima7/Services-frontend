@@ -84,7 +84,7 @@
                         android:layout_marginBottom="8dp"
                         android:hint="Czas realizacji"
                         app:counterEnabled="true"
-                        app:counterMaxLength="200"
+                        app:counterMaxLength="100"
                         style="@style/TextInputLayoutStyle">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -111,9 +111,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
                 android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
-                android:text="Utwórz zlecenie"
+                android:text="Stwórz zlecenie"
                 android:background="@drawable/rounded_button"
                 android:onClick="@{()->viewmodel.createJobClicked()}"
+                android:enabled="@{viewmodel.createButtonEnabled}"
                 />
 
         </LinearLayout>
