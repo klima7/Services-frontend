@@ -33,9 +33,6 @@ class LocationFragment: BaseFragment<FragmentLocationBinding>(), LastLocationIte
     override fun onFirstCreation() {
         super.onFirstCreation()
         configureAutocomplete()
-//        val serviceId = arguments?.getString("serviceId") ?: throw Error("serviceId argument not supplied")
-//        val serviceName = arguments?.getString("serviceName") ?: throw Error("serviceName argument not supplied")
-//        viewModel.start(serviceId, serviceName)
     }
 
     override fun init() {

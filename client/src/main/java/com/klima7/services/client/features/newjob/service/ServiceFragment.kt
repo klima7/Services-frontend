@@ -9,6 +9,7 @@ import com.klima7.services.client.features.newjob.location.LocationActivity
 import com.klima7.services.client.features.newjob.newjob.NewJobFragment
 import com.klima7.services.client.features.newjob.newjob.NewJobViewModel
 import com.klima7.services.common.models.Service
+import com.klima7.services.common.models.SimpleService
 import com.klima7.services.common.platform.BaseFragment
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
@@ -53,10 +54,10 @@ class ServiceFragment: BaseFragment<FragmentServiceBinding>(), ServiceItem.Liste
 
     override fun onServiceClicked(service: Service) {
         Log.i("Hello", "Service clicked: $service")
-        showLocationScreen(service)
+        showLocationScreen(service.toSimpleService())
     }
 
-    private fun showLocationScreen(service: Service) {
+    private fun showLocationScreen(service: SimpleService) {
         parentViewModel.setService(service)
         parentViewModel.showLocationScreen()
     }

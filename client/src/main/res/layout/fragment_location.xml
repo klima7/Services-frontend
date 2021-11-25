@@ -38,7 +38,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
-                    android:text="Wybierz lokalizację:"
+                    android:text="Podaj lokalizację:"
                     android:textSize="25sp"
                     />
 

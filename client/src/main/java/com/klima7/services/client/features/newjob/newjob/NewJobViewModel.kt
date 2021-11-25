@@ -2,7 +2,6 @@ package com.klima7.services.client.features.newjob.newjob
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
-import com.klima7.services.client.features.newjob.jobcreated.JobCreatedViewModel
 import com.klima7.services.common.models.Category
 import com.klima7.services.common.models.SimpleLocation
 import com.klima7.services.common.models.SimpleService
@@ -27,8 +26,8 @@ class NewJobViewModel: BaseViewModel() {
         object ShowJobsScreen: Event()
     }
 
-    val subtitle = MutableLiveData<String>()
     private val screen = MutableLiveData<Screen>()
+    val subtitle = screen.map(this::createSubtitle)
     val progressPosition = screen.map(this::getProgressPosition)
 
     val category = MutableLiveData<Category>()
@@ -96,6 +95,15 @@ class NewJobViewModel: BaseViewModel() {
             Screen.LOCATION -> 2
             Screen.JOB_DETAILS -> 3
             Screen.JOB_CREATED -> 3
+        }
+    }
+
+    private fun createSubtitle(screen: Screen): String {
+        return when(screen) {
+            Screen.SERVICE -> this.category.value?.name ?: ""
+            Screen.LOCATION -> this.service.value?.name ?: ""
+            Screen.JOB_DETAILS -> this.service.value?.name ?: ""
+            Screen.JOB_CREATED -> "Stworzono!"
         }
     }
 
