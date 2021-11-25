@@ -29,13 +29,6 @@ class ServiceFragment: BaseFragment<FragmentServiceBinding>(), ServiceItem.Liste
     private val groupieAdapter = GroupieAdapter()
     private val servicesSection = Section()
 
-    override fun onFirstCreation() {
-        super.onFirstCreation()
-//        val categoryId = arguments?.getString("categoryId") ?: throw Error("categoryId argument not supplied")
-//        val categoryName = arguments?.getString("categoryName") ?: throw Error("categoryName argument not supplied")
-//        viewModel.start(categoryId, categoryName)
-    }
-
     override fun init() {
         super.init()
 
@@ -45,6 +38,8 @@ class ServiceFragment: BaseFragment<FragmentServiceBinding>(), ServiceItem.Liste
         }
 
         groupieAdapter += servicesSection
+
+        parentViewModel.category.observe(viewLifecycleOwner, viewModel::setCategory)
 
         viewModel.services.observe(viewLifecycleOwner, this::updateServices)
     }
@@ -62,9 +57,7 @@ class ServiceFragment: BaseFragment<FragmentServiceBinding>(), ServiceItem.Liste
     }
 
     private fun showLocationScreen(service: Service) {
-        val intent = Intent(activity, LocationActivity::class.java)
-        intent.putExtra("serviceId", service.id)
-        intent.putExtra("serviceName", service.name)
-        startActivity(intent)
+        parentViewModel.setService(service)
+        parentViewModel.showLocationScreen()
     }
 }

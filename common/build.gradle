@@ -67,6 +67,9 @@ dependencies {
     api "com.github.bumptech.glide:recyclerview-integration:4.12.0"
     kapt "com.github.bumptech.glide:compiler:4.12.0"
 
+    // Animatoo
+    api "com.github.mohammadatif:Animatoo:master"
+
     // Rating bar
     api "com.github.ome450901:SimpleRatingBar:1.5.1"
 

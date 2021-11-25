@@ -8,7 +8,9 @@ import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.core.None
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.LastLocation
+import com.klima7.services.common.models.SimpleLocation
 import com.klima7.services.common.platform.BaseViewModel
+import java.util.*
 
 class LocationViewModel(
     private val getLastLocationsUC: GetLastLocationsUC,
@@ -16,8 +18,7 @@ class LocationViewModel(
 ): BaseViewModel() {
 
     sealed class Event: BaseEvent() {
-        data class ShowJobDetailsScreen(val serviceId: String, val serviceName: String,
-                                        val locationId: String, val locationName: String): Event();
+        data class ShowJobDetailsScreen(val location: SimpleLocation): Event();
     }
 
     private lateinit var serviceId: String
@@ -42,9 +43,9 @@ class LocationViewModel(
         loadLastLocations()
     }
 
-    fun locationSelected(placeId: String, placeName: String) {
-        addLastLocation(placeId, placeName)
-        sendEvent(Event.ShowJobDetailsScreen(serviceId, serviceName.value!!, placeId, placeName))
+    fun locationSelected(location: SimpleLocation) {
+        addLastLocation(location)
+        sendEvent(Event.ShowJobDetailsScreen(location))
     }
 
     private fun loadLastLocations() {
@@ -64,10 +65,10 @@ class LocationViewModel(
         )
     }
 
-    private fun addLastLocation(placeId: String, placeName: String) {
+    private fun addLastLocation(location: SimpleLocation) {
         addLastLocationUC.start(
             viewModelScope,
-            AddLastLocationUC.Params(placeId, placeName),
+            AddLastLocationUC.Params(location),
             { },
             {
                 Log.i("Hello", "Add last location success!")

@@ -1,7 +1,5 @@
 package com.klima7.services.client.features.newjob.location
 
-import android.content.Intent
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.model.Place
@@ -10,13 +8,14 @@ import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentLocationBinding
-import com.klima7.services.client.features.newjob.jobdetails.JobDetailsActivity
+import com.klima7.services.client.features.newjob.newjob.NewJobViewModel
 import com.klima7.services.common.models.LastLocation
-import com.klima7.services.common.models.Service
+import com.klima7.services.common.models.SimpleLocation
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.groupiex.plusAssign
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -24,6 +23,10 @@ class LocationFragment: BaseFragment<FragmentLocationBinding>(), LastLocationIte
 
     override val layoutId = R.layout.fragment_location
     override val viewModel: LocationViewModel by viewModel()
+
+    private val parentViewModel: NewJobViewModel by lazy {
+        requireParentFragment().requireParentFragment().getViewModel()
+    }
 
     private val groupieAdapter = GroupieAdapter()
 
@@ -57,11 +60,11 @@ class LocationFragment: BaseFragment<FragmentLocationBinding>(), LastLocationIte
 
         autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(place: Place) {
-                val constId = place.id
-                val constName = place.name
-                val constCoords = place.latLng
-                if(constId != null && constName != null && constCoords != null) {
-                    viewModel.locationSelected(constId, constName)
+                val cId = place.id
+                val cName = place.name
+                val cCoords = place.latLng
+                if(cId != null && cName != null && cCoords != null) {
+                    viewModel.locationSelected(SimpleLocation(cId, cName))
                 }
             }
 
@@ -77,25 +80,19 @@ class LocationFragment: BaseFragment<FragmentLocationBinding>(), LastLocationIte
     }
 
     override fun onLastLocationClicked(location: LastLocation) {
-        viewModel.locationSelected(location.placeId, location.placeName)
+        viewModel.locationSelected(location.toSimpleLocation())
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
         super.handleEvent(event)
         when(event) {
-            is LocationViewModel.Event.ShowJobDetailsScreen -> showJobDetailsScreen(event.serviceId,
-                event.serviceName, event.locationId, event.locationName)
+            is LocationViewModel.Event.ShowJobDetailsScreen -> showJobDetailsScreen(event.location)
         }
     }
 
-    private fun showJobDetailsScreen(serviceId: String, serviceName: String,
-                                     locationId: String, locationName: String) {
-        val intent = Intent(activity, JobDetailsActivity::class.java)
-        intent.putExtra("serviceId", serviceId)
-        intent.putExtra("serviceName", serviceName)
-        intent.putExtra("locationId", locationId)
-        intent.putExtra("locationName", locationName)
-        startActivity(intent)
+    private fun showJobDetailsScreen(location: SimpleLocation) {
+        parentViewModel.setLocation(location)
+        parentViewModel.showDetailsScreen()
     }
 
     override fun onResume() {

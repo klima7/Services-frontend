@@ -1,9 +1,11 @@
 package com.klima7.services.client.features.newjob.service
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.core.None
+import com.klima7.services.common.models.Category
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Service
 import com.klima7.services.common.platform.BaseViewModel
@@ -12,21 +14,23 @@ class ServiceViewModel(
     private val getServicesFromCategoryUC: GetServicesFromCategoryUC,
 ): BaseViewModel() {
 
-    private lateinit var categoryId: String
-    val categoryName = MutableLiveData<String>()
+    val category = MutableLiveData<Category>()
+    val categoryName = category.map { it.name }
     val services = MutableLiveData<List<Service>>()
 
     val loadState = MutableLiveData(LoadAreaView.State.LOAD)
     val loadFailure = MutableLiveData<Failure>()
 
-    fun start(categoryId: String, categoryName: String) {
-        this.categoryId = categoryId
-        this.categoryName.value = categoryName
-        loadServices(categoryId)
+    fun setCategory(category: Category) {
+        this.category.value = category
+        loadServices(category.id)
     }
 
     fun refresh() {
-        loadServices(categoryId)
+        val cCategory = category.value;
+        if(cCategory != null) {
+            loadServices(cCategory.id)
+        }
     }
 
     private fun loadServices(categoryId: String) {

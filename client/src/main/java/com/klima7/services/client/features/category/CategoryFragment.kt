@@ -56,6 +56,8 @@ class CategoryFragment: BaseFragment<FragmentCategoryBinding>(), CategoryItem.Li
 //        startActivity(intent)
 
         val intent = Intent(activity, NewJobActivity::class.java)
+        intent.putExtra("categoryId", category.id)
+        intent.putExtra("categoryName", category.name)
         startActivity(intent)
     }
 }
