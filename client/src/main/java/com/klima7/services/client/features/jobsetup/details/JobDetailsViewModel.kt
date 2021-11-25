@@ -29,18 +29,21 @@ class JobDetailsViewModel(
     }
 
     val loadState = MutableLiveData(LoadAreaView.State.MAIN)
-    val loadFailure = MutableLiveData<Failure>()
 
     fun start(service: SimpleService, location: SimpleLocation) {
         this.service = service
         this.location = location
     }
 
-    fun refresh() {
-
+    fun createJobClicked() {
+        createJob()
     }
 
-    fun createJobClicked() {
+    fun retryCreateJobClicked() {
+        createJob()
+    }
+
+    fun createJob() {
         val cDescription = description.value
         val cRealizationTime = realizationTime.value
         if(cDescription != null && cRealizationTime != null) {

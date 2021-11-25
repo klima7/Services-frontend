@@ -13,8 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:la_state="@{viewmodel.loadState}"
-        app:la_failure="@{viewmodel.loadFailure}"
-        app:la_onRefresh="@{() -> viewmodel.refresh()}"
         >
 
         <LinearLayout
