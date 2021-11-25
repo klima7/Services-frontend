@@ -67,6 +67,9 @@ dependencies {
     api "com.github.bumptech.glide:recyclerview-integration:4.12.0"
     kapt "com.github.bumptech.glide:compiler:4.12.0"
 
+    // Motion toast
+    api 'com.github.Spikeysanju:MotionToast:1.4'
+
     // Animatoo
     api "com.github.mohammadatif:Animatoo:master"
 

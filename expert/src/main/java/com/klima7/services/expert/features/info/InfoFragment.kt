@@ -92,7 +92,7 @@ class InfoFragment: BaseLoadFragment<FragmentInfoBinding>() {
     }
 
     private fun finishInfo() {
-        showShortToast("Profil został zaktualizowany")
+        showToastSuccess("Profil został zaktualizowany")
         requireActivity().finish()
     }
 

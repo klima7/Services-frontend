@@ -4,13 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.klima7.services.common.BR
+import com.klima7.services.common.R
 import kotlinx.coroutines.flow.collect
+import www.sanju.motiontoast.MotionToast
+import www.sanju.motiontoast.MotionToastStyle
 
 abstract class BaseFragment<DB: ViewDataBinding>: Fragment() {
 
@@ -61,11 +64,20 @@ abstract class BaseFragment<DB: ViewDataBinding>: Fragment() {
 
     open fun onFirstCreation() {}
 
-    fun showShortToast(text: String) {
-        Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
+    private fun finishActivity() {
+        requireActivity().finish()
     }
 
-    protected fun finishActivity() {
-        requireActivity().finish()
+    fun showToastSuccess(message: String, title: String = "Sukces") =
+        showToast(MotionToastStyle.SUCCESS, message, title)
+
+    private fun showToast(style: MotionToastStyle, message: String, title: String) {
+        MotionToast.createColorToast(requireActivity(),
+            title,
+            message,
+            style,
+            MotionToast.GRAVITY_BOTTOM,
+            MotionToast.SHORT_DURATION,
+            ResourcesCompat.getFont(requireActivity(), R.font.helvetica_regular))
     }
 }

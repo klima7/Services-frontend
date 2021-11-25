@@ -102,7 +102,7 @@ class WorkingAreaFragment: BaseLoadFragment<FragmentAreaBinding>() {
     }
 
     private fun finish() {
-        showShortToast("Lokalizacja została zmieniona")
+        showToastSuccess("Lokalizacja została zmieniona")
         requireActivity().finish()
     }
 }

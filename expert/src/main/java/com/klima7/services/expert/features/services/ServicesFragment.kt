@@ -58,7 +58,7 @@ class ServicesFragment: BaseLoadFragment<FragmentServicesBinding>() {
     }
 
     private fun finish() {
-        showShortToast("Usługi zostały zaktualizowane")
+        showToastSuccess("Usługi zostały zaktualizowane")
         requireActivity().finish()
     }
 

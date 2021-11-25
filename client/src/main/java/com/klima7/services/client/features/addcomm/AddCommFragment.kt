@@ -1,7 +1,6 @@
 package com.klima7.services.client.features.addcomm
 
 import android.os.Bundle
-import android.widget.Toast
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentAddCommBinding
 import com.klima7.services.common.components.faildialog.FailureDialogFragment
@@ -54,6 +53,6 @@ class AddCommFragment: BaseFragment<FragmentAddCommBinding>() {
     }
 
     private fun showCommentAddedMessage() {
-        Toast.makeText(context, "Komentarz został dodany", Toast.LENGTH_SHORT).show()
+        showToastSuccess("Komentarz został dodany")
     }
 }
