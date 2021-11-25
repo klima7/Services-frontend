@@ -1,6 +1,5 @@
 package com.klima7.services.client.features.offers
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope

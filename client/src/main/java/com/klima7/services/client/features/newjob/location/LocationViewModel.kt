@@ -10,7 +10,6 @@ import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.LastLocation
 import com.klima7.services.common.models.SimpleLocation
 import com.klima7.services.common.platform.BaseViewModel
-import java.util.*
 
 class LocationViewModel(
     private val getLastLocationsUC: GetLastLocationsUC,

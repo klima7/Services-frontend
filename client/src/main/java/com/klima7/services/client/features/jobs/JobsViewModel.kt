@@ -4,7 +4,6 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
-import com.klima7.services.common.platform.BaseLoadViewModel
 import com.klima7.services.common.platform.BaseViewModel
 
 class JobsViewModel(

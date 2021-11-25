@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.klima7.services.client.R
-import com.klima7.services.common.models.Job
 import com.klima7.services.client.databinding.ElementJobBinding
+import com.klima7.services.common.models.Job
 
 class JobViewHolder private constructor(
     private val binding: ElementJobBinding,

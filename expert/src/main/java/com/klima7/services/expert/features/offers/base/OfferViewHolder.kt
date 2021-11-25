@@ -7,7 +7,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.klima7.services.common.extensions.uppercaseFirst
 import com.klima7.services.common.models.Offer
-import com.klima7.services.common.models.OfferStatus
 import com.klima7.services.common.ui.OfferStatusStringifier
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.ElementOfferBinding

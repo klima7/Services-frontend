@@ -2,7 +2,6 @@ package com.klima7.services.expert.features.jobs.new
 
 import android.graphics.Canvas
 import android.os.Bundle
-import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +11,6 @@ import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.features.jobs.JobsViewModel
 import com.klima7.services.expert.features.jobs.base.BaseJobsListFragment
-import com.klima7.services.expert.features.offers.base.BaseOffersListFragment
 import com.klima7.services.expert.features.services.ServicesFragment
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 import kotlinx.coroutines.ExperimentalCoroutinesApi

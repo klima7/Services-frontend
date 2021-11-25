@@ -7,7 +7,6 @@ import com.klima7.services.common.platform.BaseLoadFragment
 import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentServicesBinding
-import com.klima7.services.expert.features.jobs.new.NewJobsListFragment
 import com.klima7.services.expert.features.services.multicategory.ServicesMultiCategoriesFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

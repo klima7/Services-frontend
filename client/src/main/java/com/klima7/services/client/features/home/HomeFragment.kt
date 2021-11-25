@@ -1,16 +1,11 @@
 package com.klima7.services.client.features.home
 
 import android.content.Intent
-import android.util.Log
-import androidx.core.os.bundleOf
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentHomeBinding
-import com.klima7.services.client.features.addcomm.AddCommActivity
-import com.klima7.services.client.features.delete.DeleteActivity
-import com.klima7.services.client.features.offer.OfferActivity
 import com.klima7.services.client.features.settings.SettingsActivity
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel

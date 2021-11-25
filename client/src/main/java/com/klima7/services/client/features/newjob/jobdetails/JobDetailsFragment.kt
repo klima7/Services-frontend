@@ -1,9 +1,7 @@
 package com.klima7.services.client.features.newjob.jobdetails
 
-import androidx.lifecycle.MutableLiveData
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentJobDetailsBinding
-import com.klima7.services.client.databinding.FragmentServiceBinding
 import com.klima7.services.client.features.newjob.newjob.NewJobViewModel
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel

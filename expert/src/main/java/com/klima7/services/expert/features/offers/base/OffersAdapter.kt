@@ -3,7 +3,6 @@ package com.klima7.services.expert.features.offers.base
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import com.klima7.services.common.models.ExpertJob
 import com.klima7.services.common.models.Offer
 
 class OffersAdapter(

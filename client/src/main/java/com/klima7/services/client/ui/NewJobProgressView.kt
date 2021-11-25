@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import com.anton46.stepsview.StepsView
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.ViewNewJobProgressBinding
-import com.klima7.services.common.components.views.AvatarView
 
 @androidx.databinding.BindingMethods(
     value = [

@@ -2,9 +2,7 @@ package com.klima7.services.client.features.newjob.location
 
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.ElementLastLocationBinding
-import com.klima7.services.client.databinding.ElementServiceBinding
 import com.klima7.services.common.models.LastLocation
-import com.klima7.services.common.models.Service
 import com.xwray.groupie.databinding.BindableItem
 
 

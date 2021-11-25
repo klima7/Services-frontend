@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.widget.Toast
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentAddCommBinding
-import com.klima7.services.client.features.offers.OffersFragment
 import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.common.components.yesnodialog.YesNoDialogFragment
 import com.klima7.services.common.models.Failure

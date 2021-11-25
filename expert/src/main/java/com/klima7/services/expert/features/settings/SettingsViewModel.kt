@@ -1,7 +1,6 @@
 package com.klima7.services.expert.features.settings
 
 import com.klima7.services.common.components.settings.BaseSettingsViewModel
-import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.common.usecases.SignOutUC
 
 class SettingsViewModel(

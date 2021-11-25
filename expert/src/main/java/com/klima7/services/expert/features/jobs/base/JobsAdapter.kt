@@ -4,7 +4,6 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.klima7.services.common.models.ExpertJob
-import com.klima7.services.common.models.Job
 
 class JobsAdapter(
     private val onJobListener: OnJobListener

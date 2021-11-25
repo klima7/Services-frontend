@@ -1,6 +1,5 @@
 package com.klima7.services.expert.features.info
 
-import android.util.Log
 import android.webkit.URLUtil
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations

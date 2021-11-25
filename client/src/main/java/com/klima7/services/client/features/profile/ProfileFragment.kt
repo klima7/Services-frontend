@@ -6,7 +6,6 @@ import com.klima7.services.client.databinding.FragmentProfileBinding
 import com.klima7.services.common.platform.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import kotlin.math.exp
 
 class ProfileFragment: BaseFragment<FragmentProfileBinding>() {
 

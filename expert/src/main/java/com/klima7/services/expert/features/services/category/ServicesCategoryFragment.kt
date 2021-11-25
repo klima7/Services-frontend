@@ -1,6 +1,5 @@
 package com.klima7.services.expert.features.services.category
 
-import android.content.Context
 import android.os.Bundle
 import com.klima7.services.common.models.Service
 import com.klima7.services.common.platform.BaseFragment

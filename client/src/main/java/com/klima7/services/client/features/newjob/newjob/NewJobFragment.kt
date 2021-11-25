@@ -1,18 +1,17 @@
 package com.klima7.services.client.features.newjob.newjob
 
 import android.content.Intent
-import android.util.Log
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentNewJobBinding
 import com.klima7.services.client.features.home.HomeActivity
-import com.klima7.services.common.platform.BaseFragment
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.klima7.services.common.models.Category
 import com.klima7.services.common.models.SimpleService
+import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class NewJobFragment: BaseFragment<FragmentNewJobBinding>() {

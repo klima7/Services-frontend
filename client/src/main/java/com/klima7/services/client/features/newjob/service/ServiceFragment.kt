@@ -1,12 +1,9 @@
 package com.klima7.services.client.features.newjob.service
 
-import android.content.Intent
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentServiceBinding
-import com.klima7.services.client.features.newjob.location.LocationActivity
-import com.klima7.services.client.features.newjob.newjob.NewJobFragment
 import com.klima7.services.client.features.newjob.newjob.NewJobViewModel
 import com.klima7.services.common.models.Service
 import com.klima7.services.common.models.SimpleService

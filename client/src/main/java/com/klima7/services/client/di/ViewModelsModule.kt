@@ -1,12 +1,12 @@
 package com.klima7.services.client.di
 
 import com.klima7.services.client.features.addcomm.AddCommViewModel
+import com.klima7.services.client.features.category.CategoryViewModel
 import com.klima7.services.client.features.delete.DeleteViewModel
 import com.klima7.services.client.features.home.HomeViewModel
 import com.klima7.services.client.features.info.InfoViewModel
 import com.klima7.services.client.features.job.JobViewModel
 import com.klima7.services.client.features.jobs.JobsViewModel
-import com.klima7.services.client.features.category.CategoryViewModel
 import com.klima7.services.client.features.newjob.jobcreated.JobCreatedViewModel
 import com.klima7.services.client.features.newjob.jobdetails.JobDetailsViewModel
 import com.klima7.services.client.features.newjob.location.LocationViewModel

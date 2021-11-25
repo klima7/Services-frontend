@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentCategoryBinding
 import com.klima7.services.client.features.newjob.newjob.NewJobActivity
-import com.klima7.services.client.features.newjob.service.ServiceActivity
 import com.klima7.services.common.models.Category
 import com.klima7.services.common.platform.BaseFragment
 import com.xwray.groupie.GroupieAdapter

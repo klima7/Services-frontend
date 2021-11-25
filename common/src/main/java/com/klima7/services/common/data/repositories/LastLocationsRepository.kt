@@ -7,7 +7,6 @@ import com.klima7.services.common.data.room.converters.toDomain
 import com.klima7.services.common.data.room.converters.toRoomEntity
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.LastLocation
-import java.lang.Exception
 
 class LastLocationsRepository(
     room: RoomSource
