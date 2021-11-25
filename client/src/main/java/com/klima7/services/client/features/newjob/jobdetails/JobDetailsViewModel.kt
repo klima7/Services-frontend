@@ -10,7 +10,10 @@ import com.klima7.services.common.platform.BaseViewModel
 
 class JobDetailsViewModel: BaseViewModel() {
 
-    val loadState = MutableLiveData(LoadAreaView.State.LOAD)
+    val description = MutableLiveData<String>()
+    val realizationTime = MutableLiveData<String>()
+
+    val loadState = MutableLiveData(LoadAreaView.State.MAIN)
     val loadFailure = MutableLiveData<Failure>()
 
     fun start() {

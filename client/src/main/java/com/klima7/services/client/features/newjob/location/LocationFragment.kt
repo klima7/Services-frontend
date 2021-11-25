@@ -80,18 +80,23 @@ class LocationFragment: BaseFragment<FragmentLocationBinding>(), LastLocationIte
 
     override fun onLastLocationClicked(location: LastLocation) {
         viewModel.locationSelected(location.placeId, location.placeName)
-        Log.i("Hello", "Last location clicked $location")
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
         super.handleEvent(event)
         when(event) {
-            is LocationViewModel.Event.ShowJobDetailsScreen -> showJobDetailsScreen()
+            is LocationViewModel.Event.ShowJobDetailsScreen -> showJobDetailsScreen(event.serviceId,
+                event.serviceName, event.locationId, event.locationName)
         }
     }
 
-    private fun showJobDetailsScreen() {
+    private fun showJobDetailsScreen(serviceId: String, serviceName: String,
+                                     locationId: String, locationName: String) {
         val intent = Intent(activity, JobDetailsActivity::class.java)
+        intent.putExtra("serviceId", serviceId)
+        intent.putExtra("serviceName", serviceName)
+        intent.putExtra("locationId", locationId)
+        intent.putExtra("locationName", locationName)
         startActivity(intent)
     }
 

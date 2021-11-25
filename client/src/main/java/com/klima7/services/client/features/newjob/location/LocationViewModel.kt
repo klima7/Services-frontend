@@ -16,7 +16,8 @@ class LocationViewModel(
 ): BaseViewModel() {
 
     sealed class Event: BaseEvent() {
-        class ShowJobDetailsScreen: Event();
+        data class ShowJobDetailsScreen(val serviceId: String, val serviceName: String,
+                                        val locationId: String, val locationName: String): Event();
     }
 
     private lateinit var serviceId: String
@@ -42,9 +43,8 @@ class LocationViewModel(
     }
 
     fun locationSelected(placeId: String, placeName: String) {
-        Log.i("Hello", "Location selected; name: $placeName; id: $placeId")
         addLastLocation(placeId, placeName)
-        sendEvent(Event.ShowJobDetailsScreen())
+        sendEvent(Event.ShowJobDetailsScreen(serviceId, serviceName.value!!, placeId, placeName))
     }
 
     private fun loadLastLocations() {
