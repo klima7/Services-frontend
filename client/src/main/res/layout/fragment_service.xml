@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.klima7.services.client.features.newjob.service.ServiceViewModel" />
+            type="com.klima7.services.client.features.jobsetup.service.ServiceViewModel" />
     </data>
 
         <com.klima7.services.common.components.views.LoadAreaView

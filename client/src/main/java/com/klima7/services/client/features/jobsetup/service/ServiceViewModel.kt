@@ -1,4 +1,4 @@
-package com.klima7.services.client.features.newjob.service
+package com.klima7.services.client.features.jobsetup.service
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map

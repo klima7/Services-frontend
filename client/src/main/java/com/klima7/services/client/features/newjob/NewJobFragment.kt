@@ -1,11 +1,10 @@
-package com.klima7.services.client.features.category
+package com.klima7.services.client.features.newjob
 
 import android.content.Intent
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentCategoryBinding
-import com.klima7.services.client.features.newjob.newjob.NewJobActivity
+import com.klima7.services.client.features.jobsetup.JobSetupActivity
 import com.klima7.services.common.models.Category
 import com.klima7.services.common.platform.BaseFragment
 import com.xwray.groupie.GroupieAdapter
@@ -14,10 +13,10 @@ import com.xwray.groupie.groupiex.plusAssign
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class CategoryFragment: BaseFragment<FragmentCategoryBinding>(), CategoryItem.Listener {
+class NewJobFragment: BaseFragment<FragmentCategoryBinding>(), CategoryItem.Listener {
 
     override val layoutId = R.layout.fragment_category
-    override val viewModel: CategoryViewModel by viewModel()
+    override val viewModel: NewJobViewModel by viewModel()
 
     private val groupieAdapter = GroupieAdapter()
     private val categoriesSection = Section()
@@ -47,7 +46,7 @@ class CategoryFragment: BaseFragment<FragmentCategoryBinding>(), CategoryItem.Li
     }
 
     private fun showServiceScreen(category: Category) {
-        val intent = Intent(activity, NewJobActivity::class.java)
+        val intent = Intent(activity, JobSetupActivity::class.java)
         intent.putExtra("categoryId", category.id)
         intent.putExtra("categoryName", category.name)
         startActivity(intent)

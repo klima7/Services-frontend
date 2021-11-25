@@ -1,4 +1,4 @@
-package com.klima7.services.client.features.newjob.jobdetails
+package com.klima7.services.client.features.jobsetup.details
 
 import androidx.lifecycle.MutableLiveData
 import com.klima7.services.common.components.views.LoadAreaView

@@ -1,8 +1,8 @@
-package com.klima7.services.client.features.newjob.jobdetails
+package com.klima7.services.client.features.jobsetup.details
 
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentJobDetailsBinding
-import com.klima7.services.client.features.newjob.newjob.NewJobViewModel
+import com.klima7.services.client.features.jobsetup.JobSetupViewModel
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
 import org.koin.androidx.viewmodel.ext.android.getViewModel
@@ -14,7 +14,7 @@ class JobDetailsFragment: BaseFragment<FragmentJobDetailsBinding>() {
     override val layoutId = R.layout.fragment_job_details
     override val viewModel: JobDetailsViewModel by viewModel()
 
-    private val parentViewModel: NewJobViewModel by lazy {
+    private val parentViewModel: JobSetupViewModel by lazy {
         requireParentFragment().requireParentFragment().getViewModel()
     }
 

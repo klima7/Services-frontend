@@ -1,4 +1,4 @@
-package com.klima7.services.client.features.newjob.location
+package com.klima7.services.client.features.jobsetup.location
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.common.api.Status
@@ -8,7 +8,7 @@ import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentLocationBinding
-import com.klima7.services.client.features.newjob.newjob.NewJobViewModel
+import com.klima7.services.client.features.jobsetup.JobSetupViewModel
 import com.klima7.services.common.models.LastLocation
 import com.klima7.services.common.models.SimpleLocation
 import com.klima7.services.common.platform.BaseFragment
@@ -24,7 +24,7 @@ class LocationFragment: BaseFragment<FragmentLocationBinding>(), LastLocationIte
     override val layoutId = R.layout.fragment_location
     override val viewModel: LocationViewModel by viewModel()
 
-    private val parentViewModel: NewJobViewModel by lazy {
+    private val parentViewModel: JobSetupViewModel by lazy {
         requireParentFragment().requireParentFragment().getViewModel()
     }
 

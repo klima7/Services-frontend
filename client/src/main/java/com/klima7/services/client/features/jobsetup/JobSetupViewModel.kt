@@ -1,4 +1,4 @@
-package com.klima7.services.client.features.newjob.newjob
+package com.klima7.services.client.features.jobsetup
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
@@ -7,7 +7,7 @@ import com.klima7.services.common.models.SimpleLocation
 import com.klima7.services.common.models.SimpleService
 import com.klima7.services.common.platform.BaseViewModel
 
-class NewJobViewModel: BaseViewModel() {
+class JobSetupViewModel: BaseViewModel() {
 
     enum class Screen {
         SERVICE, LOCATION, JOB_DETAILS, JOB_CREATED
@@ -18,7 +18,12 @@ class NewJobViewModel: BaseViewModel() {
     }
 
     companion object {
-        val screensOrder = listOf(Screen.SERVICE, Screen.LOCATION, Screen.JOB_DETAILS, Screen.JOB_CREATED)
+        val screensOrder = listOf(
+            Screen.SERVICE,
+            Screen.LOCATION,
+            Screen.JOB_DETAILS,
+            Screen.JOB_CREATED
+        )
     }
 
     sealed class Event: BaseEvent() {

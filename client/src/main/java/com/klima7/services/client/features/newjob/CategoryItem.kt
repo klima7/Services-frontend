@@ -1,4 +1,4 @@
-package com.klima7.services.client.features.category
+package com.klima7.services.client.features.newjob
 
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.ElementCategoryBinding

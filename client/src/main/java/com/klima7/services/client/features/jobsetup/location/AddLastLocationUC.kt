@@ -1,4 +1,4 @@
-package com.klima7.services.client.features.newjob.location
+package com.klima7.services.client.features.jobsetup.location
 
 import com.klima7.services.common.core.BaseUC
 import com.klima7.services.common.core.None

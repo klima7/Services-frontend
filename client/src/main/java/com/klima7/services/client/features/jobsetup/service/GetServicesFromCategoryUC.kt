@@ -1,4 +1,4 @@
-package com.klima7.services.client.features.newjob.service
+package com.klima7.services.client.features.jobsetup.service
 
 import com.klima7.services.common.core.BaseUC
 import com.klima7.services.common.data.repositories.ServicesRepository

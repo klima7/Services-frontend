@@ -9,6 +9,6 @@
         android:label="Moje zlecenia" />
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.klima7.services.client.features.category.CategoryFragment"
+        android:name="com.klima7.services.client.features.newjob.NewJobFragment"
         android:label="Nowe zlecenie" />
 </navigation>

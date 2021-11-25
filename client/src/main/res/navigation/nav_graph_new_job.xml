@@ -5,18 +5,18 @@
     app:startDestination="@id/serviceFragment">
     <fragment
         android:id="@+id/serviceFragment"
-        android:name="com.klima7.services.client.features.newjob.service.ServiceFragment"
+        android:name="com.klima7.services.client.features.jobsetup.service.ServiceFragment"
         android:label="ServiceFragment" />
     <fragment
         android:id="@+id/locationFragment"
-        android:name="com.klima7.services.client.features.newjob.location.LocationFragment"
+        android:name="com.klima7.services.client.features.jobsetup.location.LocationFragment"
         android:label="LocationFragment" />
     <fragment
         android:id="@+id/jobDetailsFragment"
-        android:name="com.klima7.services.client.features.newjob.jobdetails.JobDetailsFragment"
+        android:name="com.klima7.services.client.features.jobsetup.details.JobDetailsFragment"
         android:label="JobDetailsFragment" />
     <fragment
         android:id="@+id/jobCreatedFragment2"
-        android:name="com.klima7.services.client.features.newjob.jobcreated.JobCreatedFragment"
+        android:name="com.klima7.services.client.features.jobsetup.created.JobCreatedFragment"
         android:label="JobCreatedFragment" />
 </navigation>

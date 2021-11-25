@@ -1,17 +1,17 @@
 package com.klima7.services.client.di
 
 import com.klima7.services.client.features.addcomm.AddCommViewModel
-import com.klima7.services.client.features.category.CategoryViewModel
+import com.klima7.services.client.features.newjob.NewJobViewModel
 import com.klima7.services.client.features.delete.DeleteViewModel
 import com.klima7.services.client.features.home.HomeViewModel
 import com.klima7.services.client.features.info.InfoViewModel
 import com.klima7.services.client.features.job.JobViewModel
 import com.klima7.services.client.features.jobs.JobsViewModel
-import com.klima7.services.client.features.newjob.jobcreated.JobCreatedViewModel
-import com.klima7.services.client.features.newjob.jobdetails.JobDetailsViewModel
-import com.klima7.services.client.features.newjob.location.LocationViewModel
-import com.klima7.services.client.features.newjob.newjob.NewJobViewModel
-import com.klima7.services.client.features.newjob.service.ServiceViewModel
+import com.klima7.services.client.features.jobsetup.created.JobCreatedViewModel
+import com.klima7.services.client.features.jobsetup.details.JobDetailsViewModel
+import com.klima7.services.client.features.jobsetup.location.LocationViewModel
+import com.klima7.services.client.features.jobsetup.JobSetupViewModel
+import com.klima7.services.client.features.jobsetup.service.ServiceViewModel
 import com.klima7.services.client.features.offer.OfferViewModel
 import com.klima7.services.client.features.offers.OffersViewModel
 import com.klima7.services.client.features.profile.ProfileContentViewModel
@@ -37,11 +37,11 @@ val viewModelsModule = module {
     viewModel { ProfileContentViewModel(get()) }
     viewModel { OfferViewModel(get(), get()) }
     viewModel { AddCommViewModel(get(), get()) }
-    viewModel { CategoryViewModel(get()) }
+    viewModel { NewJobViewModel(get()) }
     viewModel { ServiceViewModel(get()) }
     viewModel { LocationViewModel(get(), get()) }
     viewModel { JobDetailsViewModel() }
-    viewModel { NewJobViewModel() }
+    viewModel { JobSetupViewModel() }
     viewModel { JobCreatedViewModel() }
 
 }

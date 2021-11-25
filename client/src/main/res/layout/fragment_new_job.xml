@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.klima7.services.client.features.newjob.newjob.NewJobViewModel" />
+            type="com.klima7.services.client.features.jobsetup.JobSetupViewModel" />
     </data>
 
     <LinearLayout

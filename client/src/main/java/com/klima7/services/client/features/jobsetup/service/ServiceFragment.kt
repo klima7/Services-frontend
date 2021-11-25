@@ -1,10 +1,9 @@
-package com.klima7.services.client.features.newjob.service
+package com.klima7.services.client.features.jobsetup.service
 
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentServiceBinding
-import com.klima7.services.client.features.newjob.newjob.NewJobViewModel
+import com.klima7.services.client.features.jobsetup.JobSetupViewModel
 import com.klima7.services.common.models.Service
 import com.klima7.services.common.models.SimpleService
 import com.klima7.services.common.platform.BaseFragment
@@ -20,7 +19,7 @@ class ServiceFragment: BaseFragment<FragmentServiceBinding>(), ServiceItem.Liste
     override val layoutId = R.layout.fragment_service
     override val viewModel: ServiceViewModel by viewModel()
 
-    private val parentViewModel: NewJobViewModel by lazy {
+    private val parentViewModel: JobSetupViewModel by lazy {
         requireParentFragment().requireParentFragment().getViewModel()
     }
 

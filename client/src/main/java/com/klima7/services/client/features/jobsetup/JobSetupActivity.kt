@@ -1,10 +1,10 @@
-package com.klima7.services.client.features.newjob.newjob
+package com.klima7.services.client.features.jobsetup
 
 import com.klima7.services.common.platform.BaseActivity
 
-class NewJobActivity: BaseActivity() {
+class JobSetupActivity: BaseActivity() {
 
-    private val newJobFragment = NewJobFragment()
+    private val newJobFragment = JobSetupFragment()
 
     override fun fragment() = newJobFragment
 

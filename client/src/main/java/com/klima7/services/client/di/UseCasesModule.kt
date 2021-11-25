@@ -2,13 +2,13 @@ package com.klima7.services.client.di
 
 import com.klima7.services.client.features.addcomm.AddRatingUC
 import com.klima7.services.client.features.addcomm.GetOfferWithExpertUC
-import com.klima7.services.client.features.category.GetAllCategoriesUC
+import com.klima7.services.client.features.newjob.GetAllCategoriesUC
 import com.klima7.services.client.features.delete.DeleteClientUC
 import com.klima7.services.client.features.info.SetCurrentClientInfoUC
 import com.klima7.services.client.features.jobs.GetCurrentClientJobsUC
-import com.klima7.services.client.features.newjob.location.AddLastLocationUC
-import com.klima7.services.client.features.newjob.location.GetLastLocationsUC
-import com.klima7.services.client.features.newjob.service.GetServicesFromCategoryUC
+import com.klima7.services.client.features.jobsetup.location.AddLastLocationUC
+import com.klima7.services.client.features.jobsetup.location.GetLastLocationsUC
+import com.klima7.services.client.features.jobsetup.service.GetServicesFromCategoryUC
 import com.klima7.services.client.features.offer.GetOfferStreamUC
 import com.klima7.services.client.features.offers.FinishJobUC
 import com.klima7.services.client.features.offers.GetOffersWithExpertForJobUC

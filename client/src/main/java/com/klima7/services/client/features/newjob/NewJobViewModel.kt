@@ -1,4 +1,4 @@
-package com.klima7.services.client.features.category
+package com.klima7.services.client.features.newjob
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -8,7 +8,7 @@ import com.klima7.services.common.models.Category
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.platform.BaseViewModel
 
-class CategoryViewModel(
+class NewJobViewModel(
     private val getAllCategoriesUC: GetAllCategoriesUC,
 ): BaseViewModel() {
 

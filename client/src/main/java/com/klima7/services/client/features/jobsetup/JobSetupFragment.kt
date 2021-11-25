@@ -1,4 +1,4 @@
-package com.klima7.services.client.features.newjob.newjob
+package com.klima7.services.client.features.jobsetup
 
 import android.content.Intent
 import androidx.navigation.NavController
@@ -14,10 +14,10 @@ import com.klima7.services.common.platform.BaseViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class NewJobFragment: BaseFragment<FragmentNewJobBinding>() {
+class JobSetupFragment: BaseFragment<FragmentNewJobBinding>() {
 
     override val layoutId = R.layout.fragment_new_job
-    override val viewModel: NewJobViewModel by viewModel()
+    override val viewModel: JobSetupViewModel by viewModel()
 
     private lateinit var navController: NavController
 
@@ -53,24 +53,24 @@ class NewJobFragment: BaseFragment<FragmentNewJobBinding>() {
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
         super.handleEvent(event)
         when(event) {
-            is NewJobViewModel.Event.Navigate -> navigate(event.screen, event.direction)
-            is NewJobViewModel.Event.ShowJobsScreen -> showJobsScreen()
+            is JobSetupViewModel.Event.Navigate -> navigate(event.screen, event.direction)
+            is JobSetupViewModel.Event.ShowJobsScreen -> showJobsScreen()
         }
     }
 
-    private fun navigate(screen: NewJobViewModel.Screen, direction: NewJobViewModel.Direction) {
+    private fun navigate(screen: JobSetupViewModel.Screen, direction: JobSetupViewModel.Direction) {
         val destination = when(screen) {
-            NewJobViewModel.Screen.SERVICE -> R.id.serviceFragment
-            NewJobViewModel.Screen.LOCATION -> R.id.locationFragment
-            NewJobViewModel.Screen.JOB_DETAILS -> R.id.jobDetailsFragment
-            NewJobViewModel.Screen.JOB_CREATED -> R.id.jobCreatedFragment2
+            JobSetupViewModel.Screen.SERVICE -> R.id.serviceFragment
+            JobSetupViewModel.Screen.LOCATION -> R.id.locationFragment
+            JobSetupViewModel.Screen.JOB_DETAILS -> R.id.jobDetailsFragment
+            JobSetupViewModel.Screen.JOB_CREATED -> R.id.jobCreatedFragment2
         }
 
         val animation = when(direction) {
-            NewJobViewModel.Direction.FORTH -> Pair(
+            JobSetupViewModel.Direction.FORTH -> Pair(
                 com.blogspot.atifsoftwares.animatoolib.R.anim.animate_slide_left_enter,
                 com.blogspot.atifsoftwares.animatoolib.R.anim.animate_slide_left_exit)
-            NewJobViewModel.Direction.BACK -> Pair(
+            JobSetupViewModel.Direction.BACK -> Pair(
                 com.blogspot.atifsoftwares.animatoolib.R.anim.animate_slide_in_left,
                 com.blogspot.atifsoftwares.animatoolib.R.anim.animate_slide_out_right
             )

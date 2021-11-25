@@ -1,4 +1,4 @@
-package com.klima7.services.client.features.newjob.jobcreated
+package com.klima7.services.client.features.jobsetup.created
 
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.platform.BaseViewModel
