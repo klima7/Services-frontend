@@ -15,4 +15,8 @@
         android:id="@+id/jobDetailsFragment"
         android:name="com.klima7.services.client.features.newjob.jobdetails.JobDetailsFragment"
         android:label="JobDetailsFragment" />
+    <fragment
+        android:id="@+id/jobCreatedFragment2"
+        android:name="com.klima7.services.client.features.newjob.jobcreated.JobCreatedFragment"
+        android:label="JobCreatedFragment" />
 </navigation>
