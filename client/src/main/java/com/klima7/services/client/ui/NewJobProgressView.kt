@@ -33,7 +33,6 @@ class NewJobProgressView : FrameLayout {
 
     private var binding: ViewNewJobProgressBinding
     private var position = 0
-    private var message: String? = null
 
     init {
         val inflater = LayoutInflater.from(context)
@@ -44,7 +43,6 @@ class NewJobProgressView : FrameLayout {
     private fun initTypedArray(attrs: AttributeSet) {
         val ta = context.theme.obtainStyledAttributes(attrs, R.styleable.NewJobProgress, 0, 0)
         position = ta.getInt(R.styleable.NewJobProgress_njp_position, 0)
-        message = ta.getString(R.styleable.NewJobProgress_njp_message)
         ta.recycle()
     }
 
@@ -68,8 +66,6 @@ class NewJobProgressView : FrameLayout {
 
         holder.removeAllViews()
         holder.addView(stepsView)
-
-        binding.message = message
     }
 
 }

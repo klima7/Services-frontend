@@ -3,7 +3,6 @@
 
     <declare-styleable name="NewJobProgress">
         <attr format="integer" name="njp_position" />
-        <attr format="string" name="njp_message" />
     </declare-styleable>
 
 </resources>

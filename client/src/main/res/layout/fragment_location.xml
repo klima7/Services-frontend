@@ -29,6 +29,24 @@
                 android:orientation="vertical"
                 >
 
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="15dp"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:text="Wybierz lokalizację:"
+                    android:textSize="25sp"
+                    />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="15dp"
+                    />
+
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/job_card"
                     android:layout_width="match_parent"
