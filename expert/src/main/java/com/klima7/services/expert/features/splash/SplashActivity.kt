@@ -1,7 +1,7 @@
 package com.klima7.services.expert.features.splash
 
-import com.klima7.services.common.platform.BaseActivity
+import com.klima7.services.common.components.splash.BaseSplashActivity
 
-class SplashActivity: BaseActivity() {
+class SplashActivity: BaseSplashActivity() {
     override fun fragment() = SplashFragment()
 }
