@@ -12,7 +12,7 @@ abstract class BaseActivity(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        applyStartAnimation()
+        overrideStartTransition()
         setContentView(R.layout.activity_layout)
         addFragment(savedInstanceState)
     }
@@ -25,23 +25,15 @@ abstract class BaseActivity(
                 .commit()
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        applyExitAnimation()
-    }
-
-    private fun applyStartAnimation() {
-        if(enterAnimation != null) {
-            overridePendingTransition(enterAnimation, 0)
-        }
-    }
-
-    private fun applyExitAnimation() {
-        if(exitAnimation != null) {
-            overridePendingTransition(0, exitAnimation)
-        }
+    override fun finish() {
+        super.finish()
+        overrideExitTransition()
     }
 
     abstract fun fragment(): Fragment
+
+    open fun overrideStartTransition() { }
+
+    open fun overrideExitTransition() { }
 
 }
