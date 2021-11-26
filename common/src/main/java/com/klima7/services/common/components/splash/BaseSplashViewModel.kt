@@ -4,6 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.core.None
 import com.klima7.services.common.models.UserState
 import com.klima7.services.common.platform.BaseLoadViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 open class BaseSplashViewModel(
@@ -19,7 +20,7 @@ open class BaseSplashViewModel(
     fun started() {
         showMain()
         viewModelScope.launch {
-//            delay(2000)
+            delay(2000)
             proceed()
         }
     }
