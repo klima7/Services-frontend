@@ -1,6 +1,5 @@
 package com.klima7.services.client.features.offer
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
@@ -17,12 +16,14 @@ class OfferViewModel(
 
     sealed class Event: BaseEvent() {
         data class ShowAddCommentScreen(val offerId: String): Event()
+        data class ShowExpertProfileScreen(val expertUid: String): Event()
     }
 
     private lateinit var offerId: String
     private val expert = MutableLiveData<Expert>()
     private val offer = MutableLiveData<Offer>()
 
+    val rateVisible = MutableLiveData(true)
     val expertName = expert.map { it.info.name }
     val serviceName = offer.map { it.serviceName }
 
@@ -33,6 +34,17 @@ class OfferViewModel(
 
     fun addCommentClicked() {
         sendEvent(Event.ShowAddCommentScreen(offerId))
+    }
+
+    fun callExpertClicked() {
+
+    }
+
+    fun showExpertProfileClicked() {
+        val cExpert = this.expert.value
+        if(cExpert != null) {
+            sendEvent(Event.ShowExpertProfileScreen(cExpert.uid))
+        }
     }
 
     private fun startOfferStream(offerId: String) {

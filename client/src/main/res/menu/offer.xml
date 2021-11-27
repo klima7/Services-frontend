@@ -3,8 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_add_comment"
-        android:title="Komentarz"
-        app:showAsAction="always"/>
+        android:id="@+id/item_call_expert"
+        android:title="Zadzwoń"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/icon_phone_white"
+        />
+
+    <item
+        android:id="@+id/item_expert_profile"
+        android:title="Profil wykonawcy"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/item_add_comment"
+        android:title="Oceń wykonawcę"
+        app:showAsAction="never"
+        />
 
 </menu>
