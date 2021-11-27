@@ -5,7 +5,9 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.klima7.services.common.models.Rating
 
-class CommentsAdapter: PagingDataAdapter<Rating, CommentViewHolder>(CommentsComparator) {
+class CommentsAdapter(
+    private val listener: OnCommentListener,
+): PagingDataAdapter<Rating, CommentViewHolder>(CommentsComparator) {
 
     object CommentsComparator: DiffUtil.ItemCallback<Rating>() {
         override fun areItemsTheSame(oldItem: Rating, newItem: Rating): Boolean {
@@ -18,11 +20,15 @@ class CommentsAdapter: PagingDataAdapter<Rating, CommentViewHolder>(CommentsComp
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
-        return CommentViewHolder(parent)
+        return CommentViewHolder(parent, listener)
     }
 
     override fun onBindViewHolder(holder: CommentViewHolder, position: Int) {
         holder.bind(getItem(position))
+    }
+
+    interface OnCommentListener {
+        fun onCommentClicked(rating: Rating);
     }
 
 }

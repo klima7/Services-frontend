@@ -1,14 +1,18 @@
 package com.klima7.services.common.components.comments
 
+import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentCommentsBinding
+import com.klima7.services.common.models.Rating
 import com.klima7.services.common.platform.BaseFragment
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class CommentsFragment: BaseFragment<FragmentCommentsBinding>() {
+class CommentsFragment:
+    BaseFragment<FragmentCommentsBinding>(),
+    CommentsAdapter.OnCommentListener {
 
     override val layoutId = R.layout.fragment_comments
     override val viewModel: CommentsViewModel by viewModel()
@@ -22,7 +26,7 @@ class CommentsFragment: BaseFragment<FragmentCommentsBinding>() {
     override fun init() {
         super.init()
 
-        val adapter = CommentsAdapter()
+        val adapter = CommentsAdapter(this)
         binding.commentsLoadList.apply {
             this.adapter = adapter
             layoutManager = LinearLayoutManager(requireContext())
@@ -33,5 +37,9 @@ class CommentsFragment: BaseFragment<FragmentCommentsBinding>() {
                 adapter.submitData(lifecycle, pagingData)
             }
         }
+    }
+
+    override fun onCommentClicked(rating: Rating) {
+        Log.i("Hello", "Comment clicked $rating")
     }
 }
