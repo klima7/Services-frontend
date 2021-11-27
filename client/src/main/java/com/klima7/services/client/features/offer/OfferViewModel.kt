@@ -17,6 +17,7 @@ class OfferViewModel(
     sealed class Event: BaseEvent() {
         data class ShowAddCommentScreen(val offerId: String): Event()
         data class ShowExpertProfileScreen(val expertUid: String): Event()
+        data class Call(val phoneNumber: String): Event()
     }
 
     private lateinit var offerId: String
@@ -37,7 +38,10 @@ class OfferViewModel(
     }
 
     fun callExpertClicked() {
-
+        val phone = expert.value?.info?.phone
+        if(phone != null) {
+            sendEvent(Event.Call(phone))
+        }
     }
 
     fun showExpertProfileClicked() {

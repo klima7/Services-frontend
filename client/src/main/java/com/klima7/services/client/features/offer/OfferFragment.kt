@@ -1,6 +1,7 @@
 package com.klima7.services.client.features.offer
 
 import android.content.Intent
+import android.net.Uri
 import android.view.MenuItem
 import androidx.core.os.bundleOf
 import com.klima7.services.client.R
@@ -69,6 +70,7 @@ class OfferFragment: BaseFragment<FragmentOfferBinding>() {
         when(event) {
             is OfferViewModel.Event.ShowAddCommentScreen -> showAddCommentScreen(event.offerId)
             is OfferViewModel.Event.ShowExpertProfileScreen -> showExpertProfileScreen(event.expertUid)
+            is OfferViewModel.Event.Call -> call(event.phoneNumber)
         }
     }
 
@@ -82,6 +84,11 @@ class OfferFragment: BaseFragment<FragmentOfferBinding>() {
         val intent = Intent(requireContext(), ProfileActivity::class.java)
         val bundle = bundleOf("expertUid" to expertUid)
         intent.putExtras(bundle)
+        startActivity(intent)
+    }
+
+    private fun call(phoneNumber: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("tel:$phoneNumber"))
         startActivity(intent)
     }
 }
