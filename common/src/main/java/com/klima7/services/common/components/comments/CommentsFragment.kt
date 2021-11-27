@@ -1,9 +1,12 @@
 package com.klima7.services.common.components.comments
 
+import android.content.Intent
 import android.util.Log
+import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.common.R
+import com.klima7.services.common.components.comment.CommentActivity
 import com.klima7.services.common.databinding.FragmentCommentsBinding
 import com.klima7.services.common.models.Rating
 import com.klima7.services.common.platform.BaseFragment
@@ -40,6 +43,9 @@ class CommentsFragment:
     }
 
     override fun onCommentClicked(rating: Rating) {
-        Log.i("Hello", "Comment clicked $rating")
+        val intent = Intent(requireContext(), CommentActivity::class.java)
+        val bundle = bundleOf("commentId" to rating.id)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 }

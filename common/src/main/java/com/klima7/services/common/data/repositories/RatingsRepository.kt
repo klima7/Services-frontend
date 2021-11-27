@@ -10,6 +10,10 @@ class RatingsRepository(
     private val firebase: FirebaseSource,
 ) {
 
+    suspend fun getRating(id: String): Outcome<Failure, Rating> {
+        return firebase.ratingsDao.getRating(id)
+    }
+
     suspend fun getRatingsForExpert(expertId: String, afterId: String?, count: Int):
             Outcome<Failure, List<Rating>> {
         return firebase.ratingsDao.getRatingsForExpert(expertId, afterId, count)

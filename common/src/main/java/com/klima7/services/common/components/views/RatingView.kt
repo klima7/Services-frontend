@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import androidx.databinding.BindingMethod
 import androidx.databinding.DataBindingUtil
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.ViewRatingBinding
@@ -11,6 +12,16 @@ import com.klima7.services.common.models.Rating
 import java.text.SimpleDateFormat
 import java.util.*
 
+@androidx.databinding.BindingMethods(
+    value = [
+        BindingMethod(
+            type = RatingView::class,
+            attribute = "rating_rating",
+            method = "setRating"
+        ),
+    ]
+)
+class RatingViewBindingMethods
 
 class RatingView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
 

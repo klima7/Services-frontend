@@ -19,6 +19,23 @@ class RatingsDao(
     private val functions: FirebaseFunctions,
 ) {
 
+    suspend fun getRating(id: String): Outcome<Failure, Rating> {
+        try {
+            val snapshot = firestore
+                .collection("ratings")
+                .document(id)
+                .get()
+                .await()
+            val ratingEntity = snapshot.toObject(RatingEntity::class.java)
+            val rating = ratingEntity?.toDomain(id)
+                ?: return Outcome.Failure(Failure.NotFoundFailure)
+            return Outcome.Success(rating)
+        } catch(e: Exception) {
+            Log.e("Hello", "Error during getRating", e)
+            return Outcome.Failure(e.toDomain())
+        }
+    }
+
     suspend fun getRatingsForExpert(expertId: String, afterId: String?, count: Int):
             Outcome<Failure, List<Rating>> {
         return try {

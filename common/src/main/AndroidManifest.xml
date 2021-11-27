@@ -9,6 +9,7 @@
             android:value="@string/google_maps_key" />
 
         <activity android:name=".components.comments.CommentsActivity" />
+        <activity android:name=".components.comment.CommentActivity" />
     </application>
 
 </manifest>
