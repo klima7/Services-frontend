@@ -1,6 +1,7 @@
 package com.klima7.services.client.features.splash
 
 import android.content.Intent
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.klima7.services.client.R
 import com.klima7.services.client.features.home.HomeActivity
 import com.klima7.services.client.features.login.LoginActivity
@@ -16,12 +17,14 @@ class SplashFragment: BaseSplashFragment(R.string.app_subtitle) {
     override fun showLoginScreen() {
         val intent = Intent(activity, LoginActivity::class.java)
         loginLauncher.launch(intent)
+        Animatoo.animateFade(requireActivity())
     }
 
     override fun showSetupScreen() {
         val intent = Intent(activity, SetupActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
         startActivity(intent)
+        Animatoo.animateSlideUp(requireActivity())
         requireActivity().finish()
     }
 
@@ -29,6 +32,7 @@ class SplashFragment: BaseSplashFragment(R.string.app_subtitle) {
         val intent = Intent(activity, HomeActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
         startActivity(intent)
+        Animatoo.animateSlideUp(requireActivity())
         requireActivity().finish()
     }
 
