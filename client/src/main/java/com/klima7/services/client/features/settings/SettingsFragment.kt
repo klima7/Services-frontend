@@ -1,6 +1,7 @@
 package com.klima7.services.client.features.settings
 
 import android.content.Intent
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.klima7.services.client.R
 import com.klima7.services.client.features.credits.CreditsActivity
 import com.klima7.services.client.features.delete.DeleteActivity
@@ -46,6 +47,7 @@ class SettingsFragment: BaseSettingsFragment() {
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
         startActivity(intent)
         requireActivity().finish()
+        Animatoo.animateDiagonal(requireActivity())
     }
 
     override fun showCreditsScreen() {

@@ -17,7 +17,7 @@ class SplashFragment: BaseSplashFragment(R.string.app_subtitle) {
     override fun showLoginScreen() {
         val intent = Intent(activity, LoginActivity::class.java)
         loginLauncher.launch(intent)
-        Animatoo.animateFade(requireActivity())
+        Animatoo.animateZoom(requireActivity())
     }
 
     override fun showSetupScreen() {

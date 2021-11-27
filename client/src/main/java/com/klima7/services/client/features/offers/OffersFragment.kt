@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentOffersBinding
 import com.klima7.services.client.features.job.JobActivity
@@ -115,16 +116,24 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
 
     override fun offerContentClicked(offerWithExpert: OfferWithExpert) {
         val intent = Intent(requireContext(), OfferActivity::class.java)
-        val bundle = bundleOf("offerId" to offerWithExpert.offer.id)
+        val bundle = bundleOf(
+            "offerId" to offerWithExpert.offer.id,
+            "exit" to "slideRight",
+        )
         intent.putExtras(bundle)
         startActivity(intent)
+        Animatoo.animateSlideLeft(requireActivity())
     }
 
     override fun offerExpertClicked(offerWithExpert: OfferWithExpert) {
         val intent = Intent(requireContext(), ProfileActivity::class.java)
-        val bundle = bundleOf("expertUid" to offerWithExpert.expert.uid)
+        val bundle = bundleOf(
+            "expertUid" to offerWithExpert.expert.uid,
+            "exit" to "slideRight"
+        )
         intent.putExtras(bundle)
         startActivity(intent)
+        Animatoo.animateSlideLeft(requireActivity())
     }
 
     override fun finishJobClicked() {

@@ -1,6 +1,7 @@
 package com.klima7.services.expert.features.settings
 
 import android.content.Intent
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.klima7.services.common.components.settings.BaseSettingsFragment
 import com.klima7.services.common.components.settings.SettingsOption
 import com.klima7.services.common.platform.BaseViewModel
@@ -67,5 +68,6 @@ class SettingsFragment: BaseSettingsFragment() {
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
         startActivity(intent)
         requireActivity().finish()
+        Animatoo.animateDiagonal(requireActivity())
     }
 }

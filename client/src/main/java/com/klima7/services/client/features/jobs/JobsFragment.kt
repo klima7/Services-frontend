@@ -6,6 +6,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentJobsBinding
 import com.klima7.services.client.features.offers.OffersActivity
@@ -68,9 +69,13 @@ class JobsFragment : BaseFragment<FragmentJobsBinding>(), JobsAdapter.OnJobListe
 
     private fun showOffersScreen(jobId: String) {
         val intent = Intent(requireContext(), OffersActivity::class.java)
-        val bundle = bundleOf("jobId" to jobId)
+        val bundle = bundleOf(
+            "jobId" to jobId,
+            "exit" to "slideRight",
+        )
         intent.putExtras(bundle)
         offersScreenLauncher.launch(intent)
+        Animatoo.animateSlideLeft(requireActivity())
     }
 
     private fun onOffersScreenFinish(result: ActivityResult) {

@@ -1,7 +1,9 @@
 package com.klima7.services.client.features.newjob
 
 import android.content.Intent
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentCategoryBinding
 import com.klima7.services.client.features.jobsetup.JobSetupActivity
@@ -47,8 +49,13 @@ class NewJobFragment: BaseFragment<FragmentCategoryBinding>(), CategoryItem.List
 
     private fun showServiceScreen(category: Category) {
         val intent = Intent(activity, JobSetupActivity::class.java)
-        intent.putExtra("categoryId", category.id)
-        intent.putExtra("categoryName", category.name)
+        val bundle = bundleOf(
+            "categoryId" to category.id,
+            "categoryName" to category.name,
+            "exit" to "slideRight",
+        )
+        intent.putExtras(bundle)
         startActivity(intent)
+        Animatoo.animateSlideLeft(requireActivity())
     }
 }

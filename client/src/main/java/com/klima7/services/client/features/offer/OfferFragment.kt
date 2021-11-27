@@ -77,7 +77,11 @@ class OfferFragment: BaseFragment<FragmentOfferBinding>() {
 
     private fun showAddCommentScreen(offerId: String) {
         val intent = Intent(activity, AddCommActivity::class.java)
-        intent.putExtra("offerId", offerId)
+        val bundle = bundleOf(
+            "offerId" to offerId,
+            "exit" to "slideDown",
+        )
+        intent.putExtras(bundle)
         startActivity(intent)
         Animatoo.animateSlideUp(requireActivity())
     }
