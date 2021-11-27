@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.view.MenuItem
 import androidx.core.os.bundleOf
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentOfferBinding
 import com.klima7.services.client.features.addcomm.AddCommActivity
@@ -78,13 +79,18 @@ class OfferFragment: BaseFragment<FragmentOfferBinding>() {
         val intent = Intent(activity, AddCommActivity::class.java)
         intent.putExtra("offerId", offerId)
         startActivity(intent)
+        Animatoo.animateSlideUp(requireActivity())
     }
 
     private fun showExpertProfileScreen(expertUid: String) {
         val intent = Intent(requireContext(), ProfileActivity::class.java)
-        val bundle = bundleOf("expertUid" to expertUid)
+        val bundle = bundleOf(
+            "expertUid" to expertUid,
+            "exit" to "slideDown",
+        )
         intent.putExtras(bundle)
         startActivity(intent)
+        Animatoo.animateSlideUp(requireActivity())
     }
 
     private fun call(phoneNumber: String) {
