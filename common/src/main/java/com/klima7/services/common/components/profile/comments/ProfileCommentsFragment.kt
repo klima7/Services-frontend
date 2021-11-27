@@ -2,6 +2,7 @@ package com.klima7.services.common.components.profile.comments
 
 import android.content.Intent
 import androidx.core.os.bundleOf
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.klima7.services.common.R
 import com.klima7.services.common.components.comments.CommentsActivity
 import com.klima7.services.common.databinding.FragmentProfileCommentsBinding
@@ -34,8 +35,12 @@ class ProfileCommentsFragment: BaseFragment<FragmentProfileCommentsBinding>() {
 
     private fun showCommentsScreen(expertUid: String) {
         val intent = Intent(activity, CommentsActivity::class.java)
-        val extras = bundleOf("expertUid" to expertUid)
+        val extras = bundleOf(
+            "expertUid" to expertUid,
+            "exit" to "slideDown"
+        )
         intent.putExtras(extras)
         startActivity(intent)
+        Animatoo.animateSlideUp(requireActivity())
     }
 }
