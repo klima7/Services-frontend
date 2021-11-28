@@ -40,6 +40,9 @@ class ProfileRatingsFragment: BaseFragment<FragmentProfileRatingsBinding>(), Rat
         newRatings.forEach { rating ->
             groupieAdapter += RatingItem(rating, this)
         }
+        if(newRatings.isEmpty()) {
+            groupieAdapter += NoRatingsItem()
+        }
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
