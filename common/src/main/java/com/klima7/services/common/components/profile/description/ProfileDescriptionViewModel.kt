@@ -7,8 +7,9 @@ import com.klima7.services.common.platform.BaseViewModel
 
 class ProfileDescriptionViewModel: BaseViewModel() {
 
-    val expert = MutableLiveData<Expert>()
+    private val expert = MutableLiveData<Expert>()
     val description = expert.map { expert -> expert.info.description }
+    val noDescriptionVisible = description.map { it == null }
 
     fun setExpert(expert: Expert) {
         this.expert.value = expert

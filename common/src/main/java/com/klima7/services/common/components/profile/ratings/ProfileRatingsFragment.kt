@@ -15,7 +15,6 @@ import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.groupiex.plusAssign
-import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfileRatingsFragment: BaseFragment<FragmentProfileRatingsBinding>(), RatingItem.Listener {

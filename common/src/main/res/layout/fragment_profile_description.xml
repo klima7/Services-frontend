@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="viewmodel"
             type="com.klima7.services.common.components.profile.description.ProfileDescriptionViewModel" />
@@ -19,15 +20,22 @@
             android:layout_height="wrap_content"
             layout="@layout/part_profile_header"
             app:title="@{`Opis`}"
-            android:layout_marginBottom="8dp"
             />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:text="@{viewmodel.description != null ? viewmodel.description : `Brak opisu`}"
+            android:text="@{viewmodel.description}"
             android:layout_marginHorizontal="16dp"
+            android:visibility="@{viewmodel.noDescriptionVisible ? View.GONE : View.VISIBLE}"
+            />
+
+        <com.klima7.services.common.components.profile.EmptyView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:empty_message="Wykonawca nie posiada opisu"
+            app:empty_visible="@{viewmodel.noDescriptionVisible}"
             />
 
     </LinearLayout>

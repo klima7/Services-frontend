@@ -163,16 +163,13 @@
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <com.klima7.services.common.components.profile.EmptyView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:text="Brak danych kontaktowych"
-            android:textColor="@color/black"
-            android:layout_marginTop="16dp"
-            android:visibility="@{viewmodel.noContactVisible ? View.VISIBLE : View.GONE}"/>
+            app:empty_message="Wykonawca nie posiada danych kontaktowych"
+            app:empty_visible="@{viewmodel.noContactVisible}"
+            />
 
     </LinearLayout>
-
 
 </layout>

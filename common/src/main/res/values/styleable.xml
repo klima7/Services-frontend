@@ -18,4 +18,8 @@
         <attr format="reference|color" name="settingstile_icon" />
     </declare-styleable>
 
+    <declare-styleable name="Empty">
+        <attr format="string" name="empty_message"/>
+    </declare-styleable>
+
 </resources>
