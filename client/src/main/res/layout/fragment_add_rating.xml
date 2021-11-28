@@ -7,7 +7,7 @@
         <import type="android.view.View" />
         <variable
             name="viewmodel"
-            type="com.klima7.services.client.features.addcomm.AddCommViewModel" />
+            type="com.klima7.services.client.features.addrating.AddRatingViewModel" />
     </data>
 
     <LinearLayout
@@ -17,7 +17,7 @@
         >
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/addcomm_toolbar"
+            android:id="@+id/addrating_toolbar"
             style="@style/ToolBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,7 +55,6 @@
                         >
 
                         <com.klima7.services.common.components.views.AvatarView
-                            android:id="@+id/addcomm_avatar"
                             android:layout_width="150dp"
                             android:layout_height="150dp"
                             android:layout_marginTop="16dp"
@@ -91,7 +90,6 @@
                             android:layout_height="16dp" />
 
                         <com.willy.ratingbar.BaseRatingBar
-                            android:id="@+id/addcomm_rating_bar"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             app:srb_numStars="5"
@@ -116,17 +114,15 @@
 
                         <!-- Description -->
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/info_description"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Komentarz"
                             app:counterEnabled="true"
-                            app:counterMaxLength="250"
+                            app:counterMaxLength="500"
                             style="@style/TextInputLayoutStyle"
                             >
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/shipper_field"
                                 android:layout_width="match_parent"
                                 android:layout_height="150dp"
                                 android:gravity="top"
@@ -164,7 +160,7 @@
                     android:layout_marginTop="2dp"
                     android:background="@drawable/rounded_button"
                     android:text="Dodaj ocenę"
-                    android:onClick="@{()->viewmodel.addCommentClicked()}"
+                    android:onClick="@{()->viewmodel.addRatingClicked()}"
                     android:enabled="@{viewmodel.addButtonActive}"
                     />
 

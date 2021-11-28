@@ -7,7 +7,7 @@ import androidx.core.os.bundleOf
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentOfferBinding
-import com.klima7.services.client.features.addcomm.AddCommActivity
+import com.klima7.services.client.features.addrating.AddRatingActivity
 import com.klima7.services.client.features.profile.ProfileActivity
 import com.klima7.services.common.components.rating.RatingActivity
 import com.klima7.services.common.components.msgsend.SendMessageFragment
@@ -85,7 +85,7 @@ class OfferFragment: BaseFragment<FragmentOfferBinding>() {
     }
 
     private fun showAddCommentScreen(offerId: String) {
-        val intent = Intent(activity, AddCommActivity::class.java)
+        val intent = Intent(activity, AddRatingActivity::class.java)
         val bundle = bundleOf(
             "offerId" to offerId,
             "exit" to "slideDown",

@@ -1,4 +1,4 @@
-package com.klima7.services.client.features.addcomm
+package com.klima7.services.client.features.addrating
 
 import com.klima7.services.common.core.BaseUC
 import com.klima7.services.common.core.None

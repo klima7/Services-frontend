@@ -1,7 +1,7 @@
 package com.klima7.services.client.di
 
-import com.klima7.services.client.features.addcomm.AddRatingUC
-import com.klima7.services.client.features.addcomm.GetOfferWithExpertUC
+import com.klima7.services.client.features.addrating.AddRatingUC
+import com.klima7.services.client.features.addrating.GetOfferWithExpertUC
 import com.klima7.services.client.features.delete.DeleteClientUC
 import com.klima7.services.client.features.info.SetCurrentClientInfoUC
 import com.klima7.services.client.features.jobs.GetCurrentClientJobsUC

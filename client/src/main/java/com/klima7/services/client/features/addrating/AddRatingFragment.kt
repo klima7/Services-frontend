@@ -1,8 +1,8 @@
-package com.klima7.services.client.features.addcomm
+package com.klima7.services.client.features.addrating
 
 import android.os.Bundle
 import com.klima7.services.client.R
-import com.klima7.services.client.databinding.FragmentAddCommBinding
+import com.klima7.services.client.databinding.FragmentAddRatingBinding
 import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.common.components.yesnodialog.YesNoDialogFragment
 import com.klima7.services.common.models.Failure
@@ -11,14 +11,14 @@ import com.klima7.services.common.platform.BaseViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class AddCommFragment: BaseFragment<FragmentAddCommBinding>() {
+class AddRatingFragment: BaseFragment<FragmentAddRatingBinding>() {
 
     companion object {
-        const val ADD_COMMENT_FAILURE_DIALOG_KEY = "ADD_COMMENT_FAILURE_DIALOG_KEY"
+        const val ADD_RATING_FAILURE_DIALOG_KEY = "ADD_RATING_FAILURE_DIALOG_KEY"
     }
 
-    override val layoutId = R.layout.fragment_add_comm
-    override val viewModel: AddCommViewModel by viewModel()
+    override val layoutId = R.layout.fragment_add_rating
+    override val viewModel: AddRatingViewModel by viewModel()
 
     override fun onFirstCreation() {
         super.onFirstCreation()
@@ -27,12 +27,12 @@ class AddCommFragment: BaseFragment<FragmentAddCommBinding>() {
     }
 
     override fun init() {
-        binding.addcommToolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
+        binding.addratingToolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
 
-        childFragmentManager.setFragmentResultListener(ADD_COMMENT_FAILURE_DIALOG_KEY, viewLifecycleOwner) { _: String, bundle: Bundle ->
+        childFragmentManager.setFragmentResultListener(ADD_RATING_FAILURE_DIALOG_KEY, viewLifecycleOwner) { _: String, bundle: Bundle ->
             val result = bundle.get(YesNoDialogFragment.BUNDLE_KEY)
             if(result == FailureDialogFragment.Result.RETRY) {
-                viewModel.retryAddCommentClicked()
+                viewModel.retryAddRatingClicked()
             }
         }
     }
@@ -40,19 +40,19 @@ class AddCommFragment: BaseFragment<FragmentAddCommBinding>() {
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
         super.handleEvent(event)
         when(event) {
-            is AddCommViewModel.Event.ShowAddCommentFailure -> showAddCommentFailure(event.failure)
-            AddCommViewModel.Event.ShowCommentAddedMessage -> showCommentAddedMessage()
+            is AddRatingViewModel.Event.ShowAddRatingFailure -> showAddRatingFailure(event.failure)
+            AddRatingViewModel.Event.ShowRatingAddedMessage -> showRatingAddedMessage()
         }
     }
 
-    private fun showAddCommentFailure(failure: Failure) {
+    private fun showAddRatingFailure(failure: Failure) {
         val dialog = FailureDialogFragment.createRetry(
-            ADD_COMMENT_FAILURE_DIALOG_KEY,
+            ADD_RATING_FAILURE_DIALOG_KEY,
             "Dodanie oceny się nie powiodło.", failure)
         dialog.show(childFragmentManager, "FailureDialogFragment")
     }
 
-    private fun showCommentAddedMessage() {
+    private fun showRatingAddedMessage() {
         showToastSuccess("Ocena została dodana")
     }
 }

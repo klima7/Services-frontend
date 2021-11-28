@@ -1,4 +1,4 @@
-package com.klima7.services.client.features.addcomm
+package com.klima7.services.client.features.addrating
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
@@ -10,14 +10,14 @@ import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Offer
 import com.klima7.services.common.platform.BaseViewModel
 
-class AddCommViewModel(
+class AddRatingViewModel(
     private val getOfferWithExpertUC: GetOfferWithExpertUC,
     private val addRatingUC: AddRatingUC,
 ): BaseViewModel() {
 
     sealed class Event: BaseEvent() {
-        data class ShowAddCommentFailure(val failure: Failure): Event()
-        object ShowCommentAddedMessage: Event()
+        data class ShowAddRatingFailure(val failure: Failure): Event()
+        object ShowRatingAddedMessage: Event()
     }
 
     private lateinit var offerId: String
@@ -44,11 +44,11 @@ class AddCommViewModel(
         loadContent()
     }
 
-    fun addCommentClicked() {
+    fun addRatingClicked() {
         addCurrentRating()
     }
 
-    fun retryAddCommentClicked() {
+    fun retryAddRatingClicked() {
         addCurrentRating()
     }
 
@@ -85,11 +85,11 @@ class AddCommViewModel(
             AddRatingUC.Params(offerId, rating, comment.nullifyBlank()),
             { failure ->
                 loadState.value = LoadAreaView.State.MAIN
-                sendEvent(Event.ShowAddCommentFailure(failure))
+                sendEvent(Event.ShowAddRatingFailure(failure))
             },
             {
                 loadState.value = LoadAreaView.State.MAIN
-                sendEvent(Event.ShowCommentAddedMessage)
+                sendEvent(Event.ShowRatingAddedMessage)
                 sendEvent(BaseEvent.FinishActivity)
             }
         )
