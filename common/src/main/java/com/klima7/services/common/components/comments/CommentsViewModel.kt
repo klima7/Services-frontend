@@ -11,11 +11,13 @@ class CommentsViewModel(
 ): BaseViewModel() {
 
     private val expertId = MutableLiveData<String>()
+    val subtitle = MutableLiveData<String>()
     private val pager = expertId.map { expertId -> createPager(expertId) }
     val pagingData = pager.switchMap { pager -> pager.flow.cachedIn(viewModelScope).asLiveData() }
 
-    fun start(expertId: String) {
+    fun start(expertId: String, expertName: String) {
         this.expertId.value = expertId
+        this.subtitle.value = expertName
     }
 
     private fun createPager(expertId: String) = Pager(

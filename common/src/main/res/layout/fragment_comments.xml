@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -11,6 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/comments_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Komentarze"
+            app:subtitle="@{viewmodel.subtitle}"
+            app:navigationIcon="@drawable/icon_arrow_back"
+            style="@style/ToolBar"
+            />
 
         <com.klima7.services.common.components.views.LoadRecyclerView
             android:id="@+id/comments_load_list"

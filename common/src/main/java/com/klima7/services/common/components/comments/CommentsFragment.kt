@@ -23,11 +23,14 @@ class CommentsFragment:
     override fun onFirstCreation() {
         super.onFirstCreation()
         val expertId = arguments?.getString("expertUid") ?: throw Error("expertUid argument not supplied")
-        viewModel.start(expertId)
+        val expertName = arguments?.getString("expertName") ?: ""
+        viewModel.start(expertId, expertName)
     }
 
     override fun init() {
         super.init()
+
+        binding.commentsToolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
 
         val adapter = CommentsAdapter(this)
         binding.commentsLoadList.apply {

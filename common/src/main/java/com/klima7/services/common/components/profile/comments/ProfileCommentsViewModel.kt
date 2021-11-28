@@ -12,7 +12,7 @@ class ProfileCommentsViewModel: BaseViewModel() {
     val showMoreVisible = commentsCount.map { commentsCount -> commentsCount != 0 }
 
     sealed class Event: BaseEvent() {
-        data class ShowCommentsScreen(val expertUid: String): Event()
+        data class ShowCommentsScreen(val expertUid: String, val expertName: String): Event()
     }
 
     fun setExpert(expert: Expert) {
@@ -20,9 +20,10 @@ class ProfileCommentsViewModel: BaseViewModel() {
     }
 
     fun showAllCommentsClicked() {
-        expert.value?.uid?.let {
-            sendEvent(Event.ShowCommentsScreen(it))
-        }
+        val uid = expert.value?.uid
+        val name = expert.value?.info?.name
+        if(uid != null && name != null)
+        sendEvent(Event.ShowCommentsScreen(uid, name))
     }
 
 }

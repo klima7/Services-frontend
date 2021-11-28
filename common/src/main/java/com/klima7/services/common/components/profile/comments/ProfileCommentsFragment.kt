@@ -29,14 +29,16 @@ class ProfileCommentsFragment: BaseFragment<FragmentProfileCommentsBinding>() {
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
         super.handleEvent(event)
         when(event) {
-            is ProfileCommentsViewModel.Event.ShowCommentsScreen -> showCommentsScreen(event.expertUid)
+            is ProfileCommentsViewModel.Event.ShowCommentsScreen ->
+                showCommentsScreen(event.expertUid, event.expertName)
         }
     }
 
-    private fun showCommentsScreen(expertUid: String) {
+    private fun showCommentsScreen(expertUid: String, expertName: String) {
         val intent = Intent(activity, CommentsActivity::class.java)
         val extras = bundleOf(
             "expertUid" to expertUid,
+            "expertName" to expertName,
             "exit" to "slideDown"
         )
         intent.putExtras(extras)
