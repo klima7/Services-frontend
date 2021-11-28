@@ -22,26 +22,43 @@
             app:title="@{`Ostatnie oceny`}"
             />
 
-        <fragment
-            android:id="@+id/profile_ratings_latest_fragment"
+        <com.klima7.services.common.components.views.LoadAreaView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:name="com.klima7.services.common.components.profile.ratings.ProfileRatingsLatestFragment" />
+            android:layout_height="match_parent"
+            app:la_state="@{viewmodel.loadState}"
+            app:la_failure="@{viewmodel.loadFailure}"
+            app:la_onRefresh="@{() -> viewmodel.refresh()}"
+            >
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:text="Zobacz wszystkie"
-            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-            app:icon="@drawable/icon_more"
-            android:textColor="@color/black"
-            app:iconTint="@color/black"
-            android:onClick="@{() -> viewmodel.showAllRatingsClicked()}"
-            android:visibility="@{viewmodel.showMoreVisible ? View.VISIBLE : View.GONE}"
-            />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/profile_ratings_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:text="Zobacz wszystkie"
+                    style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                    app:icon="@drawable/icon_more"
+                    android:textColor="@color/black"
+                    app:iconTint="@color/black"
+                    android:onClick="@{() -> viewmodel.showAllRatingsClicked()}"
+                    android:visibility="@{viewmodel.showMoreVisible ? View.VISIBLE : View.GONE}"
+                    />
+
+            </LinearLayout>
+
+        </com.klima7.services.common.components.views.LoadAreaView>
 
     </LinearLayout>
 
