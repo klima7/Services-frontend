@@ -71,8 +71,9 @@ class AvatarView(context: Context, attrs: AttributeSet?) : FrameLayout(context, 
         if(constProfileImage == null) {
             Glide.with(this).clear(image)
             Glide.with(this)
-                .load(R.drawable.avatar_default2)
-                .transition(DrawableTransitionOptions.withCrossFade(resources.getInteger(R.integer.avatar_fade_time)))
+                .load(R.drawable.avatar_default)
+                .transition(DrawableTransitionOptions.withCrossFade(
+                    resources.getInteger(R.integer.avatar_fade_time)))
                 .into(image)
             return
         }
