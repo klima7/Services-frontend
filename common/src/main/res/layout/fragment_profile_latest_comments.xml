@@ -12,6 +12,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/profile_comments_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
         <com.klima7.services.common.components.views.WrapContentListView
             android:id="@+id/profile_comments_list"
             android:layout_width="match_parent"
