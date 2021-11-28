@@ -21,4 +21,10 @@
         app:showAsAction="never"
         />
 
+    <item
+        android:id="@+id/item_show_comment"
+        android:title="Pokaż komentarz"
+        app:showAsAction="never"
+        />
+
 </menu>

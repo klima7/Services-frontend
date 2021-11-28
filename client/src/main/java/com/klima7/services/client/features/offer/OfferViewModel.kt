@@ -16,6 +16,7 @@ class OfferViewModel(
 
     sealed class Event: BaseEvent() {
         data class ShowAddCommentScreen(val offerId: String): Event()
+        data class ShowCommentScreen(val ratingId: String): Event()
         data class ShowExpertProfileScreen(val expertUid: String): Event()
         data class Call(val phoneNumber: String): Event()
     }
@@ -24,7 +25,8 @@ class OfferViewModel(
     private val expert = MutableLiveData<Expert>()
     private val offer = MutableLiveData<Offer>()
 
-    val rateVisible = MutableLiveData(true)
+    val rateVisible = offer.map { it.ratingId  == null }
+    val showRatingVisible = offer.map { it.ratingId  != null }
     val expertName = expert.map { it.info.name }
     val serviceName = offer.map { it.serviceName }
 
@@ -35,6 +37,13 @@ class OfferViewModel(
 
     fun addCommentClicked() {
         sendEvent(Event.ShowAddCommentScreen(offerId))
+    }
+
+    fun showCommentClicked() {
+        val ratingId = offer.value?.ratingId
+        if(ratingId != null) {
+            sendEvent(Event.ShowCommentScreen(ratingId))
+        }
     }
 
     fun callExpertClicked() {
