@@ -15,7 +15,7 @@ import com.xwray.groupie.groupiex.plusAssign
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfileCommentsLatestFragment: BaseLoadFragment<FragmentProfileLatestCommentsBinding>(),
-    CommentItem.Listener {
+    RatingItem.Listener {
 
     override val layoutId = R.layout.fragment_profile_latest_comments
     override val viewModel: ProfileCommentsLatestViewModel by viewModel()
@@ -36,11 +36,11 @@ class ProfileCommentsLatestFragment: BaseLoadFragment<FragmentProfileLatestComme
     private fun updateRatings(newRatings: List<Rating>) {
         groupieAdapter.clear()
         newRatings.forEach { rating ->
-            groupieAdapter += CommentItem(rating, this)
+            groupieAdapter += RatingItem(rating, this)
         }
     }
 
-    override fun onCommentClick(rating: Rating, ratingView: RatingView) {
+    override fun onRatingClicked(rating: Rating, ratingView: RatingView) {
         val intent = Intent(requireContext(), CommentActivity::class.java)
         val bundle = bundleOf(
             "commentId" to rating.id,

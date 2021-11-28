@@ -1,10 +1,10 @@
-package com.klima7.services.common.components.comments
+package com.klima7.services.common.components.ratings
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.klima7.services.common.models.Rating
 
-class CommentsPagingSource(
+class RatingsPagingSource(
     private val getRatingsForExpertUC: GetRatingsForExpertUC,
     private val expertId: String,
 ): PagingSource<String, Rating>() {

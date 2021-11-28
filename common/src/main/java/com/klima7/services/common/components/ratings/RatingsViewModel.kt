@@ -1,4 +1,4 @@
-package com.klima7.services.common.components.comments
+package com.klima7.services.common.components.ratings
 
 import androidx.lifecycle.*
 import androidx.paging.Pager
@@ -6,7 +6,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import com.klima7.services.common.platform.BaseViewModel
 
-class CommentsViewModel(
+class RatingsViewModel(
     private val getRatingsForExpertUC: GetRatingsForExpertUC
 ): BaseViewModel() {
 
@@ -23,7 +23,7 @@ class CommentsViewModel(
     private fun createPager(expertId: String) = Pager(
         PagingConfig(pageSize = 5)
     ) {
-        CommentsPagingSource(getRatingsForExpertUC, expertId)
+        RatingsPagingSource(getRatingsForExpertUC, expertId)
     }
 
 }

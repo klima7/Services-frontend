@@ -46,7 +46,7 @@
                         android:layout_height="16dp" />
 
                     <com.klima7.services.common.components.views.RatingView
-                        android:id="@+id/comment_rating_view"
+                        android:id="@+id/elemrating_rating_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:transitionName="rating"

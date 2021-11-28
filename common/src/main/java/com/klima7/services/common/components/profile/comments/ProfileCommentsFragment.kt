@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.core.os.bundleOf
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.klima7.services.common.R
-import com.klima7.services.common.components.comments.CommentsActivity
+import com.klima7.services.common.components.ratings.RatingsActivity
 import com.klima7.services.common.databinding.FragmentProfileCommentsBinding
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
@@ -35,7 +35,7 @@ class ProfileCommentsFragment: BaseFragment<FragmentProfileCommentsBinding>() {
     }
 
     private fun showCommentsScreen(expertUid: String, expertName: String) {
-        val intent = Intent(activity, CommentsActivity::class.java)
+        val intent = Intent(activity, RatingsActivity::class.java)
         val extras = bundleOf(
             "expertUid" to expertUid,
             "expertName" to expertName,

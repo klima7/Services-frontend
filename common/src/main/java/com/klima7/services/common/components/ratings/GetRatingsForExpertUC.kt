@@ -1,4 +1,4 @@
-package com.klima7.services.common.components.comments
+package com.klima7.services.common.components.ratings
 
 import com.klima7.services.common.core.BaseUC
 import com.klima7.services.common.core.Outcome

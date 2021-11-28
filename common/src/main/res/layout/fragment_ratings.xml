@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.klima7.services.common.components.comments.CommentsViewModel" />
+            type="com.klima7.services.common.components.ratings.RatingsViewModel" />
     </data>
 
     <LinearLayout
@@ -15,7 +15,7 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/comments_toolbar"
+            android:id="@+id/ratings_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:title="Komentarze"
@@ -25,7 +25,7 @@
             />
 
         <com.klima7.services.common.components.views.LoadRecyclerView
-            android:id="@+id/comments_load_list"
+            android:id="@+id/ratings_load_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />

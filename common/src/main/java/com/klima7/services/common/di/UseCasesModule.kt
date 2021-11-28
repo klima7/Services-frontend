@@ -1,7 +1,7 @@
 package com.klima7.services.common.di
 
 import com.klima7.services.common.components.comment.GetRatingWithExpertUC
-import com.klima7.services.common.components.comments.GetRatingsForExpertUC
+import com.klima7.services.common.components.ratings.GetRatingsForExpertUC
 import com.klima7.services.common.components.msgsend.SendImageMessageUC
 import com.klima7.services.common.components.msgsend.SendTextMessageUC
 import com.klima7.services.common.components.profile.services.GetServicesFromIds

@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <FrameLayout
-        android:id="@+id/elemcomment_container"
+        android:id="@+id/elemrating_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -13,7 +13,7 @@
         >
 
         <com.klima7.services.common.components.views.RatingView
-            android:id="@+id/comment_rating_view"
+            android:id="@+id/elemrating_rating_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:transitionName="rating"
