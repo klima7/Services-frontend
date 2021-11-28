@@ -28,7 +28,7 @@ class CommentViewHolder private constructor(
             return
         binding.commentRatingView.setRating(rating)
         binding.elemcommentContainer.setOnClickListener {
-            listener.onCommentClicked(rating)
+            listener.onCommentClicked(rating, binding.commentRatingView)
         }
     }
 

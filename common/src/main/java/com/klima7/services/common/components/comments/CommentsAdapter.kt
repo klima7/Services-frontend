@@ -3,6 +3,7 @@ package com.klima7.services.common.components.comments
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import com.klima7.services.common.components.views.RatingView
 import com.klima7.services.common.models.Rating
 
 class CommentsAdapter(
@@ -28,7 +29,7 @@ class CommentsAdapter(
     }
 
     interface OnCommentListener {
-        fun onCommentClicked(rating: Rating);
+        fun onCommentClicked(rating: Rating, ratingView: RatingView);
     }
 
 }

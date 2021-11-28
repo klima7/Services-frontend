@@ -7,11 +7,15 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.common.R
 import com.klima7.services.common.components.comment.CommentActivity
+import com.klima7.services.common.components.views.RatingView
 import com.klima7.services.common.databinding.FragmentCommentsBinding
 import com.klima7.services.common.models.Rating
 import com.klima7.services.common.platform.BaseFragment
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import androidx.core.app.ActivityOptionsCompat
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
+
 
 class CommentsFragment:
     BaseFragment<FragmentCommentsBinding>(),
@@ -45,10 +49,18 @@ class CommentsFragment:
         }
     }
 
-    override fun onCommentClicked(rating: Rating) {
+    override fun onCommentClicked(rating: Rating, ratingView: RatingView) {
         val intent = Intent(requireContext(), CommentActivity::class.java)
-        val bundle = bundleOf("commentId" to rating.id)
+        val bundle = bundleOf(
+            "commentId" to rating.id,
+            "rating" to rating,
+        )
         intent.putExtras(bundle)
-        startActivity(intent)
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            requireActivity(),
+            ratingView,
+            "rating"
+        )
+        startActivity(intent, options.toBundle())
     }
 }

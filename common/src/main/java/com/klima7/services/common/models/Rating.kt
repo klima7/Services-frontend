@@ -1,7 +1,10 @@
 package com.klima7.services.common.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import java.util.*
 
+@Parcelize
 data class Rating(
     val id: String,
     val clientName: String,
@@ -11,4 +14,4 @@ data class Rating(
     val date: Date,
     val offerId: String,
     val expertId: String,
-)
+) : Parcelable
