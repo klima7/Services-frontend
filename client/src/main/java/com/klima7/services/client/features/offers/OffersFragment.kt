@@ -3,6 +3,7 @@ package com.klima7.services.client.features.offers
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
@@ -12,6 +13,7 @@ import com.klima7.services.client.features.job.JobActivity
 import com.klima7.services.client.features.offer.OfferActivity
 import com.klima7.services.client.features.profile.ProfileActivity
 import com.klima7.services.common.components.faildialog.FailureDialogFragment
+import com.klima7.services.common.components.views.AvatarView
 import com.klima7.services.common.components.yesnodialog.YesNoDialogFragment
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.OfferWithExpert
@@ -125,15 +127,19 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
         Animatoo.animateSlideLeft(requireActivity())
     }
 
-    override fun offerExpertClicked(offerWithExpert: OfferWithExpert) {
+    override fun offerExpertClicked(offerWithExpert: OfferWithExpert, avatarView: AvatarView) {
         val intent = Intent(requireContext(), ProfileActivity::class.java)
         val bundle = bundleOf(
             "expertUid" to offerWithExpert.expert.uid,
-            "exit" to "slideRight"
         )
         intent.putExtras(bundle)
-        startActivity(intent)
-        Animatoo.animateSlideLeft(requireActivity())
+
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            requireActivity(),
+            avatarView,
+            "avatar"
+        )
+        startActivity(intent, options.toBundle())
     }
 
     override fun finishJobClicked() {

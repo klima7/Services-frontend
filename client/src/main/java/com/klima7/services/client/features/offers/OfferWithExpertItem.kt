@@ -1,7 +1,9 @@
 package com.klima7.services.client.features.offers
 
+import android.view.View
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.ElementOfferBinding
+import com.klima7.services.common.components.views.AvatarView
 import com.klima7.services.common.extensions.uppercaseFirst
 import com.klima7.services.common.models.OfferWithExpert
 import com.klima7.services.common.ui.OfferStatusStringifier
@@ -19,18 +21,20 @@ class OfferWithExpertItem(
         binding.status = OfferStatusStringifier.stringify(context, offerWithExpert.offer.status).uppercaseFirst()
 
         binding.offerelemExpertCard.setOnClickListener {
-            listener.offerExpertClicked(offerWithExpert)
+            listener.offerExpertClicked(offerWithExpert, binding.offerAvatar)
         }
 
         binding.offerelemContentCard.setOnClickListener {
             listener.offerContentClicked(offerWithExpert)
         }
+
+        binding.offerRating.rating = offerWithExpert.expert.rating.toFloat()
     }
 
     override fun getLayout() = R.layout.element_offer
 
     interface Listener {
-        fun offerExpertClicked(offerWithExpert: OfferWithExpert)
+        fun offerExpertClicked(offerWithExpert: OfferWithExpert, avatarView: AvatarView)
         fun offerContentClicked(offerWithExpert: OfferWithExpert)
     }
 
