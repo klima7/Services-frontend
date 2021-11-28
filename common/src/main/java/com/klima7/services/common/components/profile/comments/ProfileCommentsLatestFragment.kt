@@ -1,7 +1,12 @@
 package com.klima7.services.common.components.profile.comments
 
+import android.content.Intent
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.common.R
+import com.klima7.services.common.components.comment.CommentActivity
+import com.klima7.services.common.components.views.RatingView
 import com.klima7.services.common.databinding.FragmentProfileLatestCommentsBinding
 import com.klima7.services.common.models.Rating
 import com.klima7.services.common.platform.BaseLoadFragment
@@ -9,7 +14,8 @@ import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.groupiex.plusAssign
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ProfileCommentsLatestFragment: BaseLoadFragment<FragmentProfileLatestCommentsBinding>() {
+class ProfileCommentsLatestFragment: BaseLoadFragment<FragmentProfileLatestCommentsBinding>(),
+    CommentItem.Listener {
 
     override val layoutId = R.layout.fragment_profile_latest_comments
     override val viewModel: ProfileCommentsLatestViewModel by viewModel()
@@ -30,7 +36,22 @@ class ProfileCommentsLatestFragment: BaseLoadFragment<FragmentProfileLatestComme
     private fun updateRatings(newRatings: List<Rating>) {
         groupieAdapter.clear()
         newRatings.forEach { rating ->
-            groupieAdapter += CommentItem(rating)
+            groupieAdapter += CommentItem(rating, this)
         }
+    }
+
+    override fun onCommentClick(rating: Rating, ratingView: RatingView) {
+        val intent = Intent(requireContext(), CommentActivity::class.java)
+        val bundle = bundleOf(
+            "commentId" to rating.id,
+            "rating" to rating,
+        )
+        intent.putExtras(bundle)
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            requireActivity(),
+            ratingView,
+            "rating"
+        )
+        startActivity(intent, options.toBundle())
     }
 }
