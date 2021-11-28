@@ -13,17 +13,18 @@
         <attr format="boolean" name="rating_short"/>
     </declare-styleable>
 
-    <declare-styleable name="SettingsTile">
-        <attr format="string" name="settingstile_title"/>
-        <attr format="reference|color" name="settingstile_icon" />
-    </declare-styleable>
-
     <declare-styleable name="Empty">
         <attr format="string" name="empty_message"/>
     </declare-styleable>
 
     <declare-styleable name="ProfileHeader">
         <attr format="string" name="profileHeader_title"/>
+    </declare-styleable>
+
+    <declare-styleable name="ContactTile">
+        <attr format="string" name="contactTile_title" />
+        <attr format="string" name="contactTile_subtitle" />
+        <attr format="reference" name="contactTile_icon" />
     </declare-styleable>
 
 </resources>

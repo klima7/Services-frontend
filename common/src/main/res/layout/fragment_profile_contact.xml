@@ -21,149 +21,32 @@
             app:profileHeader_title="Kontakt"
             />
 
-        <LinearLayout
+        <com.klima7.services.common.components.profile.contact.ContactTileView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="@{viewmodel.phoneVisible ? View.VISIBLE : View.GONE}">
+            app:contactTile_title="Numer telefonu"
+            app:contactTile_subtitle="@{viewmodel.phoneText}"
+            app:contactTile_icon="@drawable/icon_phone"
+            android:visibility="@{viewmodel.phoneVisible ? View.VISIBLE : View.GONE}"
+            />
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="16dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginHorizontal="16dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/icon_phone"
-                    android:layout_gravity="center_vertical"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="16dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Numer telefonu"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@{viewmodel.phoneText}"
-                        android:textColor="@color/black" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
+        <com.klima7.services.common.components.profile.contact.ContactTileView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="@{viewmodel.emailVisible ? View.VISIBLE : View.GONE}">
+            app:contactTile_title="Adres email"
+            app:contactTile_subtitle="@{viewmodel.emailText}"
+            app:contactTile_icon="@drawable/icon_email"
+            android:visibility="@{viewmodel.emailVisible ? View.VISIBLE : View.GONE}"
+            />
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="16dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginHorizontal="16dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/icon_email"
-                    android:layout_gravity="center_vertical"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="16dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Adres email"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:text="@{viewmodel.emailText}"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
+        <com.klima7.services.common.components.profile.contact.ContactTileView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="@{viewmodel.websiteVisible ? View.VISIBLE : View.GONE}">
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="16dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginHorizontal="16dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/icon_website"
-                    android:layout_gravity="center_vertical"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="16dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Strona internetowa"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:text="@{viewmodel.websiteText}"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
+            app:contactTile_title="Strona internetowa"
+            app:contactTile_subtitle="@{viewmodel.websiteText}"
+            app:contactTile_icon="@drawable/icon_website"
+            android:visibility="@{viewmodel.websiteVisible ? View.VISIBLE : View.GONE}"
+            />
 
         <com.klima7.services.common.components.profile.EmptyView
             android:layout_width="match_parent"
