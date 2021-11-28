@@ -16,11 +16,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <include
+        <com.klima7.services.common.components.profile.ProfileHeaderView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            layout="@layout/part_profile_header"
-            app:title="@{`Obszar działania`}"
+            app:profileHeader_title="Obszar działania"
             />
 
         <TextView

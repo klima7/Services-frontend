@@ -15,11 +15,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <include
+        <com.klima7.services.common.components.profile.ProfileHeaderView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            layout="@layout/part_profile_header"
-            app:title="@{`Ostatnie oceny`}"
+            app:profileHeader_title="Ostatnie oceny"
             />
 
         <com.klima7.services.common.components.views.LoadAreaView

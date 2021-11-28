@@ -22,4 +22,8 @@
         <attr format="string" name="empty_message"/>
     </declare-styleable>
 
+    <declare-styleable name="ProfileHeader">
+        <attr format="string" name="profileHeader_title"/>
+    </declare-styleable>
+
 </resources>

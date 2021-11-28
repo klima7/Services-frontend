@@ -13,12 +13,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <include
+        <com.klima7.services.common.components.profile.ProfileHeaderView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            layout="@layout/part_profile_header"
-            app:title="@{`Świadczone usługi`}"
             android:layout_marginBottom="8dp"
+            app:profileHeader_title="Świadczone usługi"
             />
 
         <com.klima7.services.common.components.views.LoadAreaView

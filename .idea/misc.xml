@@ -150,7 +150,7 @@
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/part_load.xml" value="0.184375" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/part_loadable.xml" value="0.275" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/part_no_internet.xml" value="0.264" />
-        <entry key="..\:/PI/src/frontend/common/src/main/res/layout/part_profile_header.xml" value="0.24479166666666666" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/layout/part_profile_header.xml" value="0.22348484848484848" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/temp.xml" value="0.1644021739130435" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/toast.xml" value="0.16032608695652173" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/view_avatar.xml" value="0.19157608695652173" />
@@ -158,6 +158,7 @@
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/view_empty.xml" value="0.2260536398467433" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/view_job.xml" value="0.26666666666666666" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/view_load_list.xml" value="0.19635416666666666" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/layout/view_profile_header.xml" value="0.21614583333333334" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/view_rating.xml" value="0.32339449541284404" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/view_send_message_bar.xml" value="0.19635416666666666" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/view_settings_tile.xml" value="0.225" />
