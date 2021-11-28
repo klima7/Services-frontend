@@ -4,6 +4,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="rating"
+            type="com.klima7.services.common.models.Rating" />
+    </data>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -20,6 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
+                android:text="@{rating.serviceName}"
                 tools:text="Service name"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -55,6 +62,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="4dp"
+                        android:text="@{rating.clientName}"
                         tools:text="Lukasz Klimkiewicz"
                         android:textColor="@color/black"
                         android:textSize="15sp"
@@ -92,6 +100,7 @@
                 android:id="@+id/rating_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{rating.comment != null ? rating.comment : `Brak komentarza`}"
                 tools:text="Comment"
                 android:textColor="@color/black"
                 android:scrollHorizontally="true"

@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.components.views.LoadAreaView
+import com.klima7.services.common.extensions.nullifyBlank
 import com.klima7.services.common.models.Expert
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Offer
@@ -81,7 +82,7 @@ class AddCommViewModel(
         loadState.value = LoadAreaView.State.PENDING
         addRatingUC.start(
             viewModelScope,
-            AddRatingUC.Params(offerId, rating, comment),
+            AddRatingUC.Params(offerId, rating, comment.nullifyBlank()),
             { failure ->
                 loadState.value = LoadAreaView.State.MAIN
                 sendEvent(Event.ShowAddCommentFailure(failure))

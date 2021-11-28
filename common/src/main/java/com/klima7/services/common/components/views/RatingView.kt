@@ -27,6 +27,7 @@ class RatingView(context: Context, attrs: AttributeSet?) : FrameLayout(context, 
 
     companion object {
         private const val SHORT_DESCRIPTION_LINES = 4
+        private val FORMAT = SimpleDateFormat("dd.MM.yyy", Locale.US)
     }
 
     private var binding: ViewRatingBinding
@@ -56,13 +57,11 @@ class RatingView(context: Context, attrs: AttributeSet?) : FrameLayout(context, 
     private fun refreshView() {
         val cRating = rating ?: return
 
-        binding.ratingComment.text = cRating.comment
-        binding.ratingServiceName.text = cRating.serviceName
-        binding.ratingRating.rating = cRating.rating.toFloat()
-        binding.ratingClientName.text = cRating.clientName
-        binding.ratingComment.maxLines = if(short) SHORT_DESCRIPTION_LINES else Int.MAX_VALUE
-
-        val format = SimpleDateFormat("dd.MM.yyy", Locale.US)
-        binding.ratingDate.text = format.format(cRating.date)
+        binding.apply {
+            rating = cRating
+            ratingRating.rating = cRating.rating.toFloat()
+            ratingComment.maxLines = if(short) SHORT_DESCRIPTION_LINES else Int.MAX_VALUE
+            ratingDate.text = FORMAT.format(cRating.date)
+        }
     }
 }
