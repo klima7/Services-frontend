@@ -1,4 +1,4 @@
-package com.klima7.services.common.components.comment
+package com.klima7.services.common.components.rating
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
@@ -9,7 +9,7 @@ import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Rating
 import com.klima7.services.common.platform.BaseViewModel
 
-class CommentViewModel(
+class RatingViewModel(
     private val getRatingWithExpertUC: GetRatingWithExpertUC,
 ): BaseViewModel() {
 

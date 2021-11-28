@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.klima7.services.common.components.comment.CommentViewModel" />
+            type="com.klima7.services.common.components.rating.RatingViewModel" />
     </data>
 
     <LinearLayout
@@ -15,7 +15,7 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/comment_toolbar"
+            android:id="@+id/rating_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:title="Komentarz"
@@ -46,7 +46,6 @@
                         android:layout_height="16dp" />
 
                     <com.klima7.services.common.components.views.RatingView
-                        android:id="@+id/elemrating_rating_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:transitionName="rating"

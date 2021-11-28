@@ -6,7 +6,7 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.common.R
-import com.klima7.services.common.components.comment.CommentActivity
+import com.klima7.services.common.components.rating.RatingActivity
 import com.klima7.services.common.components.views.RatingView
 import com.klima7.services.common.databinding.FragmentRatingsBinding
 import com.klima7.services.common.models.Rating
@@ -48,9 +48,9 @@ class RatingsFragment:
     }
 
     override fun onRatingClicked(rating: Rating, ratingView: RatingView) {
-        val intent = Intent(requireContext(), CommentActivity::class.java)
+        val intent = Intent(requireContext(), RatingActivity::class.java)
         val bundle = bundleOf(
-            "commentId" to rating.id,
+            "ratingId" to rating.id,
             "rating" to rating,
         )
         intent.putExtras(bundle)

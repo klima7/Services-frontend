@@ -9,7 +9,7 @@
             android:value="@string/google_maps_key" />
 
         <activity android:name=".components.ratings.RatingsActivity" />
-        <activity android:name=".components.comment.CommentActivity" />
+        <activity android:name=".components.rating.RatingActivity" />
     </application>
 
 </manifest>
