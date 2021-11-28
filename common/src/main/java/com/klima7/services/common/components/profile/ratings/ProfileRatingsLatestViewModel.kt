@@ -1,4 +1,4 @@
-package com.klima7.services.common.components.profile.comments
+package com.klima7.services.common.components.profile.ratings
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -6,12 +6,12 @@ import com.klima7.services.common.components.ratings.GetRatingsForExpertUC
 import com.klima7.services.common.models.Rating
 import com.klima7.services.common.platform.BaseLoadViewModel
 
-class ProfileCommentsLatestViewModel(
+class ProfileRatingsLatestViewModel(
     private val getRatingsForExpertUC: GetRatingsForExpertUC
 ): BaseLoadViewModel() {
 
     companion object {
-        const val MAX_COMMENTS_COUNT = 3
+        const val MAX_RATINGS_COUNT = 3
     }
 
     private var expertUid: String? = null
@@ -35,7 +35,7 @@ class ProfileCommentsLatestViewModel(
         showLoading()
         getRatingsForExpertUC.start(
             viewModelScope,
-            GetRatingsForExpertUC.Params(expertUid, null, MAX_COMMENTS_COUNT),
+            GetRatingsForExpertUC.Params(expertUid, null, MAX_RATINGS_COUNT),
             { failure ->
                 showFailure(failure)
             },

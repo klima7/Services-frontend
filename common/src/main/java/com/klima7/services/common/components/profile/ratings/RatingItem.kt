@@ -1,4 +1,4 @@
-package com.klima7.services.common.components.profile.comments
+package com.klima7.services.common.components.profile.ratings
 
 import com.klima7.services.common.R
 import com.klima7.services.common.components.views.RatingView

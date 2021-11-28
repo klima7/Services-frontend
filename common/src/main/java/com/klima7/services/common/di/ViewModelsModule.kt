@@ -8,12 +8,12 @@ import com.klima7.services.common.components.login.LoginViewModel
 import com.klima7.services.common.components.msgsend.SendMessageViewModel
 import com.klima7.services.common.components.msgviewer.MessageViewerViewModel
 import com.klima7.services.common.components.profile.area.ProfileAreaViewModel
-import com.klima7.services.common.components.profile.comments.ProfileCommentsLatestViewModel
-import com.klima7.services.common.components.profile.comments.ProfileCommentsViewModel
+import com.klima7.services.common.components.profile.ratings.ProfileRatingsLatestViewModel
+import com.klima7.services.common.components.profile.ratings.ProfileRatingsViewModel
 import com.klima7.services.common.components.profile.contact.ProfileContactViewModel
 import com.klima7.services.common.components.profile.description.ProfileDescriptionViewModel
 import com.klima7.services.common.components.profile.header.ProfileHeaderViewModel
-import com.klima7.services.common.components.profile.rating.ProfileRatingViewModel
+import com.klima7.services.common.components.profile.average.ProfileAverageViewModel
 import com.klima7.services.common.components.profile.services.ProfileServicesViewModel
 import com.klima7.services.common.components.yesnodialog.YesNoDialogViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -28,9 +28,9 @@ val viewModelsModule = module {
     viewModel { ProfileContactViewModel() }
     viewModel { ProfileHeaderViewModel() }
     viewModel { ProfileDescriptionViewModel() }
-    viewModel { ProfileRatingViewModel() }
-    viewModel { ProfileCommentsLatestViewModel(get()) }
-    viewModel { ProfileCommentsViewModel() }
+    viewModel { ProfileAverageViewModel() }
+    viewModel { ProfileRatingsLatestViewModel(get()) }
+    viewModel { ProfileRatingsViewModel() }
     viewModel { RatingsViewModel(get()) }
     viewModel { ProfileAreaViewModel() }
     viewModel { LoginViewModel() }

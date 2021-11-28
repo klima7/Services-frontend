@@ -1,11 +1,11 @@
-package com.klima7.services.common.components.profile.rating
+package com.klima7.services.common.components.profile.average
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import com.klima7.services.common.models.Expert
 import com.klima7.services.common.platform.BaseViewModel
 
-class ProfileRatingViewModel: BaseViewModel() {
+class ProfileAverageViewModel: BaseViewModel() {
 
     private val expert = MutableLiveData<Expert>()
     val rating = expert.map { it.rating.toFloat() }

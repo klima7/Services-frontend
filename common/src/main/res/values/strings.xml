@@ -8,7 +8,7 @@
     <string name="not_found_failure_message">Brak żądanego zasobu</string>
 
     <!-- Other -->
-    <string name="comments_count">Łącznie %s komentarzy</string>
+    <string name="ratings_count">Łącznie %s ocen</string>
     <string name="area_description">%s, promień %s km</string>
     <string name="area_not_specified">nieokreślony</string>
     <string name="confirm">Potwierdzam</string>

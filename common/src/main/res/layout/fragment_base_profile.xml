@@ -81,7 +81,7 @@
                     android:id="@+id/profile_rating_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:name="com.klima7.services.common.components.profile.rating.ProfileRatingFragment"
+                    android:name="com.klima7.services.common.components.profile.average.ProfileAverageFragment"
                     />
 
                 <Space
@@ -92,7 +92,7 @@
                     android:id="@+id/profile_comments_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:name="com.klima7.services.common.components.profile.comments.ProfileCommentsFragment"
+                    android:name="com.klima7.services.common.components.profile.ratings.ProfileRatingsFragment"
                     />
 
 

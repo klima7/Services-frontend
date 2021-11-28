@@ -6,7 +6,7 @@
         <import type="android.view.View" />
         <variable
             name="viewmodel"
-            type="com.klima7.services.common.components.profile.comments.ProfileCommentsViewModel" />
+            type="com.klima7.services.common.components.profile.ratings.ProfileRatingsViewModel" />
     </data>
 
     <LinearLayout
@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@{@string/comments_count(viewmodel.commentsCount)}"
+            android:text="@{@string/ratings_count(viewmodel.ratingsCount)}"
             android:textStyle="bold" />
 
         <FrameLayout
@@ -34,10 +34,10 @@
             android:layout_height="wrap_content">
 
             <fragment
-                android:id="@+id/profile_comments_latest_fragment"
+                android:id="@+id/profile_ratings_latest_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:name="com.klima7.services.common.components.profile.comments.ProfileCommentsLatestFragment" />
+                android:name="com.klima7.services.common.components.profile.ratings.ProfileRatingsLatestFragment" />
 
         </FrameLayout>
 
@@ -51,7 +51,7 @@
             app:icon="@drawable/icon_more"
             android:textColor="@color/black"
             app:iconTint="@color/black"
-            android:onClick="@{() -> viewmodel.showAllCommentsClicked()}"
+            android:onClick="@{() -> viewmodel.showAllRatingsClicked()}"
             android:visibility="@{viewmodel.showMoreVisible ? View.VISIBLE : View.GONE}"
             />
 

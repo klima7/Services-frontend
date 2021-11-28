@@ -1,40 +1,41 @@
-package com.klima7.services.common.components.profile.comments
+package com.klima7.services.common.components.profile.ratings
 
 import android.content.Intent
 import androidx.core.os.bundleOf
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.klima7.services.common.R
 import com.klima7.services.common.components.ratings.RatingsActivity
-import com.klima7.services.common.databinding.FragmentProfileCommentsBinding
+import com.klima7.services.common.databinding.FragmentProfileRatingsBinding
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ProfileCommentsFragment: BaseFragment<FragmentProfileCommentsBinding>() {
+class ProfileRatingsFragment: BaseFragment<FragmentProfileRatingsBinding>() {
 
-    override val layoutId = R.layout.fragment_profile_comments
-    override val viewModel: ProfileCommentsViewModel by viewModel()
+    override val layoutId = R.layout.fragment_profile_ratings
+    override val viewModel: ProfileRatingsViewModel by viewModel()
 
     override fun init() {
         super.init()
 
-        val latestVm = childFragmentManager.findFragmentById(R.id.profile_comments_latest_fragment)
-            ?.getViewModel<ProfileCommentsLatestViewModel>()
+        val latestViewModel = childFragmentManager
+            .findFragmentById(R.id.profile_ratings_latest_fragment)
+            ?.getViewModel<ProfileRatingsLatestViewModel>()
         viewModel.expert.observe(viewLifecycleOwner) { expert ->
-            latestVm?.setExpertUid(expert.uid)
+            latestViewModel?.setExpertUid(expert.uid)
         }
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
         super.handleEvent(event)
         when(event) {
-            is ProfileCommentsViewModel.Event.ShowCommentsScreen ->
-                showCommentsScreen(event.expertUid, event.expertName)
+            is ProfileRatingsViewModel.Event.ShowRatingsScreen ->
+                showRatingsScreen(event.expertUid, event.expertName)
         }
     }
 
-    private fun showCommentsScreen(expertUid: String, expertName: String) {
+    private fun showRatingsScreen(expertUid: String, expertName: String) {
         val intent = Intent(activity, RatingsActivity::class.java)
         val extras = bundleOf(
             "expertUid" to expertUid,

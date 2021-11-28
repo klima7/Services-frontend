@@ -1,4 +1,4 @@
-package com.klima7.services.common.components.profile.comments
+package com.klima7.services.common.components.profile.ratings
 
 import android.content.Intent
 import androidx.core.app.ActivityOptionsCompat
@@ -7,25 +7,25 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.common.R
 import com.klima7.services.common.components.rating.RatingActivity
 import com.klima7.services.common.components.views.RatingView
-import com.klima7.services.common.databinding.FragmentProfileLatestCommentsBinding
+import com.klima7.services.common.databinding.FragmentProfileLatestRatingsBinding
 import com.klima7.services.common.models.Rating
 import com.klima7.services.common.platform.BaseLoadFragment
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.groupiex.plusAssign
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ProfileCommentsLatestFragment: BaseLoadFragment<FragmentProfileLatestCommentsBinding>(),
+class ProfileRatingsLatestFragment: BaseLoadFragment<FragmentProfileLatestRatingsBinding>(),
     RatingItem.Listener {
 
-    override val layoutId = R.layout.fragment_profile_latest_comments
-    override val viewModel: ProfileCommentsLatestViewModel by viewModel()
+    override val layoutId = R.layout.fragment_profile_latest_ratings
+    override val viewModel: ProfileRatingsLatestViewModel by viewModel()
 
     private val groupieAdapter = GroupieAdapter()
 
     override fun init() {
         super.init()
 
-        binding.profileCommentsRecycler.apply {
+        binding.profileRatingsRecycler.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = groupieAdapter
         }

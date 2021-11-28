@@ -2,11 +2,11 @@ package com.klima7.services.common.components.profile
 
 import com.klima7.services.common.R
 import com.klima7.services.common.components.profile.area.ProfileAreaViewModel
-import com.klima7.services.common.components.profile.comments.ProfileCommentsViewModel
+import com.klima7.services.common.components.profile.ratings.ProfileRatingsViewModel
 import com.klima7.services.common.components.profile.contact.ProfileContactViewModel
 import com.klima7.services.common.components.profile.description.ProfileDescriptionViewModel
 import com.klima7.services.common.components.profile.header.ProfileHeaderViewModel
-import com.klima7.services.common.components.profile.rating.ProfileRatingViewModel
+import com.klima7.services.common.components.profile.average.ProfileAverageViewModel
 import com.klima7.services.common.components.profile.services.ProfileServicesViewModel
 import com.klima7.services.common.databinding.FragmentBaseProfileBinding
 import com.klima7.services.common.models.Expert
@@ -46,9 +46,9 @@ abstract class BaseProfileFragment: BaseLoadFragment<FragmentBaseProfileBinding>
             findFragmentById(R.id.profile_area_fragment)
                 ?.getViewModel<ProfileAreaViewModel>()?.setArea(expert.area)
             findFragmentById(R.id.profile_rating_fragment)
-                ?.getViewModel<ProfileRatingViewModel>()?.setExpert(expert)
+                ?.getViewModel<ProfileAverageViewModel>()?.setExpert(expert)
             findFragmentById(R.id.profile_comments_fragment)
-                ?.getViewModel<ProfileCommentsViewModel>()?.setExpert(expert)
+                ?.getViewModel<ProfileRatingsViewModel>()?.setExpert(expert)
         }
     }
 }
