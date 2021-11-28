@@ -31,8 +31,8 @@ class JobViewBindingMethods
 class JobView : FrameLayout {
 
     companion object {
-        private val format = SimpleDateFormat("dd.MM.yyy HH:mm", Locale.US)
-        private const val shortDescriptionLines = 3
+        private val FORMAT = SimpleDateFormat("dd.MM.yyy HH:mm", Locale.US)
+        private const val SHORT_DESCRIPTION_LINES = 3
     }
 
     constructor(context: Context) : this(context, null, 0)
@@ -94,8 +94,8 @@ class JobView : FrameLayout {
             job = cJob
             shorter = short
             hideClient = hideClient
-            jobCreationTime.text = if(cJob != null) format.format(cJob.creationDate) else ""
-            jobviewDescription.maxLines = if(short) shortDescriptionLines else Int.MAX_VALUE
+            jobCreationTime.text = if(cJob != null) FORMAT.format(cJob.creationDate) else ""
+            jobviewDescription.maxLines = if(short) SHORT_DESCRIPTION_LINES else Int.MAX_VALUE
             if(clickListener != null) {
                 jobCard.setOnClickListener { clickListener?.invoke() }
             }

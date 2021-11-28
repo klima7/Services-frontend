@@ -94,6 +94,8 @@
                 android:layout_height="wrap_content"
                 tools:text="Comment"
                 android:textColor="@color/black"
+                android:scrollHorizontally="true"
+                android:ellipsize="end"
                 />
 
         </LinearLayout>

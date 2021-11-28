@@ -9,6 +9,10 @@
         <attr format="boolean" name="job_hide_client"/>
     </declare-styleable>
 
+    <declare-styleable name="Rating">
+        <attr format="boolean" name="rating_short"/>
+    </declare-styleable>
+
     <declare-styleable name="SettingsTile">
         <attr format="string" name="settingstile_title"/>
         <attr format="reference|color" name="settingstile_icon" />

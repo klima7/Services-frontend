@@ -25,14 +25,25 @@ class RatingViewBindingMethods
 
 class RatingView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
 
-    private var binding: ViewRatingBinding
+    companion object {
+        private const val SHORT_DESCRIPTION_LINES = 4
+    }
 
+    private var binding: ViewRatingBinding
     private var rating: Rating? = null
+    private var short = false
 
     init {
         val inflater = LayoutInflater.from(context)
         binding = DataBindingUtil.inflate(inflater, R.layout.view_rating, this, true)
+        attrs?.let { initTypedArray(it) }
         refreshView()
+    }
+
+    private fun initTypedArray(attrs: AttributeSet) {
+        val ta = context.theme.obtainStyledAttributes(attrs, R.styleable.Rating, 0, 0)
+        short = ta.getBoolean(R.styleable.Rating_rating_short, short)
+        ta.recycle()
     }
 
     fun setRating(rating: Rating?) {
@@ -49,6 +60,7 @@ class RatingView(context: Context, attrs: AttributeSet?) : FrameLayout(context, 
         binding.ratingServiceName.text = cRating.serviceName
         binding.ratingRating.rating = cRating.rating.toFloat()
         binding.ratingClientName.text = cRating.clientName
+        binding.ratingComment.maxLines = if(short) SHORT_DESCRIPTION_LINES else Int.MAX_VALUE
 
         val format = SimpleDateFormat("dd.MM.yyy", Locale.US)
         binding.ratingDate.text = format.format(cRating.date)
