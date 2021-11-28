@@ -11,7 +11,6 @@ data class ExpertEntity(
     var active: Boolean = false,
     var ready: Boolean = false,
 
-    var commentsCount: Int = 0,
     var ratingsCount: Int = 0,
     var rating: Double = 0.0,
 ) {

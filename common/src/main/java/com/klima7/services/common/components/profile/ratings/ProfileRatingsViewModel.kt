@@ -8,8 +8,7 @@ import com.klima7.services.common.platform.BaseViewModel
 class ProfileRatingsViewModel: BaseViewModel() {
 
     val expert = MutableLiveData<Expert>()
-    val ratingsCount = expert.map { expert -> expert.commentsCount }
-    val showMoreVisible = ratingsCount.map { commentsCount -> commentsCount != 0 }
+    val showMoreVisible = expert.map { expert -> expert.ratingsCount != 0 }
 
     sealed class Event: BaseEvent() {
         data class ShowRatingsScreen(val expertUid: String, val expertName: String): Event()

@@ -14,5 +14,5 @@ fun ExpertEntity.toDomain(id: String, fromCache: Boolean): Expert {
     }
     val pi = profileImage?.toDomain()
     val s = services.toSet()
-    return Expert(id, info, pi, wa, s, ratingsCount, commentsCount, rating, active, fromCache)
+    return Expert(id, info, pi, wa, s, ratingsCount, rating, active, fromCache)
 }

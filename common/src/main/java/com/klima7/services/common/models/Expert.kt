@@ -7,7 +7,6 @@ data class Expert(
     val area: WorkingArea?,
     val servicesIds: Set<String>,
     val ratingsCount: Int,
-    val commentsCount: Int,
     val rating: Double,
     val active: Boolean,
     val fromCache: Boolean
