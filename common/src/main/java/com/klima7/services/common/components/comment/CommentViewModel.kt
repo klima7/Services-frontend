@@ -1,18 +1,22 @@
 package com.klima7.services.common.components.comment
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.models.Failure
-import com.klima7.services.common.models.Rating
+import com.klima7.services.common.models.RatingWithExpert
 import com.klima7.services.common.platform.BaseViewModel
 
 class CommentViewModel(
-    private val getRatingUC: GetRatingUC
+    private val getRatingWithExpertUC: GetRatingWithExpertUC,
 ): BaseViewModel() {
 
     lateinit var ratingId: String
-    val rating = MutableLiveData<Rating>()
+
+    private val ratingWithExpert = MutableLiveData<RatingWithExpert>()
+    val rating = ratingWithExpert.map { it.rating }
+    val subtitle = ratingWithExpert.map { it.expert.info.name }
 
     val loadState = MutableLiveData(LoadAreaView.State.LOAD)
     val loadFailure = MutableLiveData<Failure>()
@@ -28,18 +32,17 @@ class CommentViewModel(
 
     private fun loadContent() {
         loadState.value = LoadAreaView.State.LOAD
-        getRatingUC.start(
+        getRatingWithExpertUC.start(
             viewModelScope,
-            GetRatingUC.Params(ratingId),
+            GetRatingWithExpertUC.Params(ratingId),
             { failure ->
                 loadFailure.value = failure
                 loadState.value = LoadAreaView.State.FAILURE
             },
-            { rating ->
-                this.rating.value = rating
+            { ratingWithExpert ->
+                this.ratingWithExpert.value = ratingWithExpert
                 loadState.value = LoadAreaView.State.MAIN
             }
         )
     }
-
 }

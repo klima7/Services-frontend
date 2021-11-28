@@ -1,7 +1,7 @@
 package com.klima7.services.client.features.profile
 
 import androidx.lifecycle.viewModelScope
-import com.klima7.services.client.usecases.GetExpertUC
+import com.klima7.services.common.usecases.GetExpertUC
 import com.klima7.services.common.components.profile.BaseProfileViewModel
 
 class ProfileContentViewModel(

@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:title="Komentarz"
+            app:subtitle="@{`Dotyczy: ` + viewmodel.subtitle}"
             app:navigationIcon="@drawable/icon_arrow_back"
             style="@style/ToolBar"
             />

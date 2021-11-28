@@ -1,4 +1,4 @@
-package com.klima7.services.client.usecases
+package com.klima7.services.common.usecases
 
 import com.klima7.services.common.core.BaseUC
 import com.klima7.services.common.core.Outcome
