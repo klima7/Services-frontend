@@ -163,7 +163,7 @@
                     android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
                     android:layout_marginTop="2dp"
                     android:background="@drawable/rounded_button"
-                    android:text="Dodaj komentarz"
+                    android:text="Dodaj ocenę"
                     android:onClick="@{()->viewmodel.addCommentClicked()}"
                     android:enabled="@{viewmodel.addButtonActive}"
                     />

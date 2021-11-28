@@ -19,27 +19,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             layout="@layout/part_profile_header"
-            app:title="@{`Ostatnie komentarze`}"
+            app:title="@{`Ostatnie oceny`}"
             />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@{@string/ratings_count(viewmodel.ratingsCount)}"
-            android:textStyle="bold" />
-
-        <FrameLayout
+        <fragment
+            android:id="@+id/profile_ratings_latest_fragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <fragment
-                android:id="@+id/profile_ratings_latest_fragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:name="com.klima7.services.common.components.profile.ratings.ProfileRatingsLatestFragment" />
-
-        </FrameLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:name="com.klima7.services.common.components.profile.ratings.ProfileRatingsLatestFragment" />
 
         <Button
             android:layout_width="wrap_content"

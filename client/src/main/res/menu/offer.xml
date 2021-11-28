@@ -23,7 +23,7 @@
 
     <item
         android:id="@+id/item_show_comment"
-        android:title="Pokaż komentarz"
+        android:title="Pokaż ocenę"
         app:showAsAction="never"
         />
 

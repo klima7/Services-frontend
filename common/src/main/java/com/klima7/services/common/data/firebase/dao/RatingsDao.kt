@@ -53,7 +53,6 @@ class RatingsDao(
                 .collection("ratings")
                 .whereEqualTo("expertId", expertId)
                 .orderBy("date", Query.Direction.DESCENDING)
-                .orderBy("rating", Query.Direction.DESCENDING)
                 .let {
                     if(afterDocument != null)
                         it.startAfter(afterDocument)

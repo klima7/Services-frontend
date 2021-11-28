@@ -48,11 +48,11 @@ class AddCommFragment: BaseFragment<FragmentAddCommBinding>() {
     private fun showAddCommentFailure(failure: Failure) {
         val dialog = FailureDialogFragment.createRetry(
             ADD_COMMENT_FAILURE_DIALOG_KEY,
-            "Dodanie komentarza się nie powiodło.", failure)
+            "Dodanie oceny się nie powiodło.", failure)
         dialog.show(childFragmentManager, "FailureDialogFragment")
     }
 
     private fun showCommentAddedMessage() {
-        showToastSuccess("Komentarz został dodany")
+        showToastSuccess("Ocena została dodana")
     }
 }
