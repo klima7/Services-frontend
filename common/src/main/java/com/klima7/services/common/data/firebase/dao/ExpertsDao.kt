@@ -26,7 +26,7 @@ class ExpertsDao(
     suspend fun createExpertAccount(): Outcome<Failure, None> {
         return try {
             functions
-                .getHttpsCallable("experts-createExpertAccount")
+                .getHttpsCallable("experts-createAccount")
                 .call()
                 .await()
             Outcome.Success(None())

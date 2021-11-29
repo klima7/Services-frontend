@@ -21,7 +21,7 @@ class ClientsDao(
     suspend fun createClientAccount(): Outcome<Failure, None> {
         return try {
             functions
-                .getHttpsCallable("clients-createClientAccount")
+                .getHttpsCallable("clients-createAccount")
                 .call()
                 .await()
             Outcome.Success(None())
