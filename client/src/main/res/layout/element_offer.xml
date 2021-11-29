@@ -158,20 +158,23 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:layout_marginVertical="8dp"
+                            >
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Status oferty: "
-                                android:textStyle="bold" />
+                                />
 
-                            <com.google.android.material.chip.Chip
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:clickable="false"
                                 android:text="@{status}"
-                                tools:text="W realizacji" />
+                                tools:text="w realizacji"
+                                android:textStyle="bold"
+                                />
 
                         </LinearLayout>
 

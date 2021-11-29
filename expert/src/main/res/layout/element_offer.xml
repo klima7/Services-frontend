@@ -125,6 +125,7 @@
                         android:id="@+id/linearLayout3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginVertical="8dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -138,12 +139,12 @@
                             android:text="Status: "
                             />
 
-                        <com.google.android.material.chip.Chip
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@{status}"
                             tools:text="W realizacji"
-                            android:clickable="false"
+                            android:textStyle="bold"
                             />
 
                     </LinearLayout>

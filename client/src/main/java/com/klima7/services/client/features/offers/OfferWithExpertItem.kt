@@ -18,7 +18,8 @@ class OfferWithExpertItem(
     override fun bind(binding: ElementOfferBinding, position: Int) {
         val context = binding.offerCard.context
         binding.offerWithExpert = offerWithExpert
-        binding.status = OfferStatusStringifier.stringify(context, offerWithExpert.offer.status).uppercaseFirst()
+        binding.status = OfferStatusStringifier.stringify(context, offerWithExpert.offer.status)
+            .uppercaseFirst()
 
         binding.offerelemExpertCard.setOnClickListener {
             listener.offerExpertClicked(offerWithExpert, binding.offerAvatar)
