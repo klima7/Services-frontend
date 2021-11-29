@@ -8,6 +8,5 @@ data class Expert(
     val servicesIds: Set<String>,
     val ratingsCount: Int,
     val rating: Double,
-    val active: Boolean,
     val fromCache: Boolean
 )

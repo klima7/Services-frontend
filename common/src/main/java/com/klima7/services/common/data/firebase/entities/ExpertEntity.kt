@@ -7,10 +7,7 @@ data class ExpertEntity(
     var profileImage: ProfileImageEntity? = null,
     var workingArea: WorkingAreaEntity? = null,
     var services: List<String> = listOf(),
-
-    var active: Boolean = false,
     var ready: Boolean = false,
-
     var ratingsCount: Int = 0,
     var rating: Double = 0.0,
 ) {
