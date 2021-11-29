@@ -13,7 +13,6 @@ import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 abstract class BaseLoginFragment(
     private val subtitle: Int
 ): BaseFragment<FragmentLoginBinding>() {

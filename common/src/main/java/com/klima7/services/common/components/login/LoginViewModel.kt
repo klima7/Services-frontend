@@ -14,7 +14,6 @@ class LoginViewModel: BaseViewModel() {
     val providers = arrayListOf(
         AuthUI.IdpConfig.EmailBuilder().setRequireName(false).build(),
         AuthUI.IdpConfig.GoogleBuilder().build(),
-        AuthUI.IdpConfig.FacebookBuilder().build(),
     )
 
     fun loginButtonClicked() {
