@@ -2,8 +2,11 @@ package com.klima7.services.client.features.offer
 
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
+import android.util.TypedValue
 import android.view.MenuItem
 import androidx.core.os.bundleOf
+import androidx.lifecycle.lifecycleScope
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentOfferBinding
@@ -16,6 +19,8 @@ import com.klima7.services.common.models.Role
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OfferFragment: BaseFragment<FragmentOfferBinding>() {
@@ -44,6 +49,21 @@ class OfferFragment: BaseFragment<FragmentOfferBinding>() {
 
         viewModel.showRatingVisible.observe(viewLifecycleOwner) { visible ->
             showRatingItem.isVisible = visible
+        }
+
+        lifecycleScope.launch {
+            var actionBarHeight = 0
+
+            val tv = TypedValue()
+            if (requireActivity().theme.resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
+                actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, resources.displayMetrics)
+            }
+
+            val view = binding.offerStatusPanel
+            view.translationY = -actionBarHeight.toFloat()
+
+            delay(300)
+            view.animate().translationY(0f)
         }
     }
 

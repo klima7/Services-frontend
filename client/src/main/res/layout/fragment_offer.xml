@@ -16,14 +16,56 @@
         android:orientation="vertical"
         >
 
-        <LinearLayout
+        <FrameLayout
             android:id="@+id/linearLayout5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            >
+
+            <LinearLayout
+                android:id="@+id/offer_status_panel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="?attr/actionBarSize"
+                android:background="@drawable/offer_chips_background"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="Status:"
+                    />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Anulowane" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="W realizacji" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Wykonane" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </LinearLayout>
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/offer_toolbar"
@@ -35,40 +77,7 @@
                 app:navigationIcon="@drawable/icon_arrow_back"
                 />
 
-            <LinearLayout
-                android:id="@+id/offer_chips"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="4dp"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/offer_chips_background"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <com.google.android.material.chip.ChipGroup
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.chip.Chip
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Odrzucone" />
-
-                    <com.google.android.material.chip.Chip
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="W trakcie" />
-
-                    <com.google.android.material.chip.Chip
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Wykonane" />
-
-                </com.google.android.material.chip.ChipGroup>
-
-            </LinearLayout>
-
-        </LinearLayout>
+        </FrameLayout>
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/offer_chat_container"
