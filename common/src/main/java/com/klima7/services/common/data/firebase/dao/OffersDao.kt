@@ -126,7 +126,7 @@ class OffersDao(
         )
         return try {
             functions
-                .getHttpsCallable("offers-setOfferArchived")
+                .getHttpsCallable("offers-setArchived")
                 .call(data)
                 .await()
             Outcome.Success(None())
