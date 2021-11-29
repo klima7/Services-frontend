@@ -13,7 +13,9 @@
         android:id="@+id/profile_contact_part"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="8dp"
+        >
 
         <com.klima7.services.common.components.profile.ProfileHeaderView
             android:layout_width="match_parent"
@@ -27,6 +29,7 @@
             app:contactTile_title="Numer telefonu"
             app:contactTile_subtitle="@{viewmodel.phoneText}"
             app:contactTile_icon="@drawable/icon_phone"
+            app:contactTile_click_listener="@{() -> viewmodel.contactPhoneClicked()}"
             android:visibility="@{viewmodel.phoneVisible ? View.VISIBLE : View.GONE}"
             />
 
@@ -36,6 +39,7 @@
             app:contactTile_title="Adres email"
             app:contactTile_subtitle="@{viewmodel.emailText}"
             app:contactTile_icon="@drawable/icon_email"
+            app:contactTile_click_listener="@{() -> viewmodel.contactEmailClicked()}"
             android:visibility="@{viewmodel.emailVisible ? View.VISIBLE : View.GONE}"
             />
 
@@ -45,6 +49,7 @@
             app:contactTile_title="Strona internetowa"
             app:contactTile_subtitle="@{viewmodel.websiteText}"
             app:contactTile_icon="@drawable/icon_website"
+            app:contactTile_click_listener="@{() -> viewmodel.contactWebsiteClicked()}"
             android:visibility="@{viewmodel.websiteVisible ? View.VISIBLE : View.GONE}"
             />
 

@@ -18,6 +18,11 @@ import com.klima7.services.common.databinding.ViewContactTileBinding
             attribute = "contactTile_subtitle",
             method = "setSubtitle"
         ),
+        BindingMethod(
+            type = ContactTileView::class,
+            attribute = "contactTile_click_listener",
+            method = "setClickListener"
+        ),
     ]
 )
 class ContactTileViewBindingMethods
@@ -28,6 +33,7 @@ class ContactTileView(context: Context, attrs: AttributeSet?) : FrameLayout(cont
     private var title: String? = null
     private var subtitle: String? = null
     private var icon: Drawable? = null
+    private var clickListener: ClickListener? = null
 
     init {
         val inflater = LayoutInflater.from(context)
@@ -49,9 +55,21 @@ class ContactTileView(context: Context, attrs: AttributeSet?) : FrameLayout(cont
         refreshView()
     }
 
+    fun setClickListener(clickListener: ClickListener?) {
+        this.clickListener = clickListener
+        refreshView()
+    }
+
     private fun refreshView() {
         binding.title = title
         binding.subtitle = subtitle
         binding.icon = icon
+        binding.viewcontacttileContainer.setOnClickListener {
+            clickListener?.clicked()
+        }
+    }
+
+    interface ClickListener {
+        fun clicked()
     }
 }

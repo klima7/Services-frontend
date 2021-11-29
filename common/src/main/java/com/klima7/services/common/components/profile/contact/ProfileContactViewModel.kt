@@ -7,6 +7,12 @@ import com.klima7.services.common.platform.BaseViewModel
 
 class ProfileContactViewModel: BaseViewModel() {
 
+    sealed class Event: BaseEvent() {
+        data class Call(val phoneNumber: String): Event()
+        data class SendEmail(val emailAddress: String): Event()
+        data class OpenWebsite(val url: String): Event()
+    }
+
     val info = MutableLiveData<ExpertInfo>()
 
     val phoneVisible = info.map { it.phone != null }
@@ -20,6 +26,27 @@ class ProfileContactViewModel: BaseViewModel() {
 
     fun setInfo(info: ExpertInfo) {
         this.info.value = info
+    }
+
+    fun contactPhoneClicked() {
+        val phone = info.value?.phone
+        if(phone != null) {
+            sendEvent(Event.Call(phone))
+        }
+    }
+
+    fun contactEmailClicked() {
+        val email = info.value?.email
+        if(email != null) {
+            sendEvent(Event.SendEmail(email))
+        }
+    }
+
+    fun contactWebsiteClicked() {
+        val website = info.value?.website
+        if(website != null) {
+            sendEvent(Event.OpenWebsite(website))
+        }
     }
 
     private fun formatPhone(phone: String?): String? {
