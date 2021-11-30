@@ -17,14 +17,27 @@ class OfferViewModel(
     private val getClientUC: GetClientUC,
 ): BaseOfferViewModel(setOfferStatusUC, getOfferStreamUC) {
 
+    sealed class Event: BaseEvent() {
+
+    }
+
     override val offer = MutableLiveData<Offer>()
     override val offerStatus = offer.map { it.status }
     private val client = MutableLiveData<Client>()
+
+    val callItemVisible = client.map { it.info.phone  != null }
     val clientName = client.map { it.info.name }
     val serviceName = offer.map { it.serviceName }
 
     init {
         Log.i("Hello", "Log test")
+    }
+
+    fun callClientClicked() {
+        val phone = client.value?.info?.phone
+        if(phone != null) {
+            sendEvent(BaseOfferViewModel.Event.Call(phone))
+        }
     }
 
     override fun onOfferUpdated(offer: Offer) {

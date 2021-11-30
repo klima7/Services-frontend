@@ -1,5 +1,6 @@
 package com.klima7.services.expert.features.offer
 
+import android.view.MenuItem
 import com.klima7.services.common.components.msgsend.SendMessageFragment
 import com.klima7.services.common.components.msgviewer.MessageViewerFragment
 import com.klima7.services.common.components.offer.BaseOfferFragment
@@ -20,6 +21,11 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>(), SendMessageBarVi
         val toolbar = binding.offerToolbar
         toolbar.setNavigationIcon(R.drawable.icon_arrow_back)
         toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
+        toolbar.inflateMenu(R.menu.offer)
+        toolbar.setOnMenuItemClickListener { item ->
+            menuItemClicked(item)
+            true
+        }
     }
 
     @ExperimentalCoroutinesApi
@@ -38,6 +44,12 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>(), SendMessageBarVi
             .commit()
 
         viewModel.start(offerId)
+    }
+
+    private fun menuItemClicked(item: MenuItem) {
+        when(item.itemId) {
+            R.id.offer_item_call_client -> viewModel.callClientClicked()
+        }
     }
 
     override fun onSendMessageClicked(smb: SendMessageBarView) {
