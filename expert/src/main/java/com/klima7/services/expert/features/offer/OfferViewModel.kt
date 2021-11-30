@@ -7,6 +7,7 @@ import com.klima7.services.common.components.offer.BaseOfferViewModel
 import com.klima7.services.common.components.offer.GetOfferStreamUC
 import com.klima7.services.common.components.offer.SetOfferStatusUC
 import com.klima7.services.common.models.Client
+import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Offer
 import com.klima7.services.expert.usecases.SetOfferArchivedUC
 
@@ -19,7 +20,10 @@ class OfferViewModel(
 
     sealed class Event: BaseEvent() {
         data class ShowJobScreen(val jobId: String): Event()
+        data class ShowArchiveFailureDialog(val failure: Failure): Event()
     }
+
+    private var lastArchive: Boolean? = null
 
     override val offer = MutableLiveData<Offer>()
     override val offerStatus = offer.map { it.status }
@@ -49,10 +53,19 @@ class OfferViewModel(
 
     fun archiveOfferClicked() {
         setOfferArchived(offerId, true)
+        lastArchive = true
     }
 
     fun unarchiveOfferClicked() {
         setOfferArchived(offerId, false)
+        lastArchive = false
+    }
+
+    fun retryArchive() {
+        val lastArchive = this.lastArchive
+        if(lastArchive != null) {
+            setOfferArchived(offerId, lastArchive)
+        }
     }
 
     override fun onOfferUpdated(offer: Offer) {
@@ -66,9 +79,7 @@ class OfferViewModel(
         getClientUC.start(
             viewModelScope,
             GetClientUC.Params(clientId),
-            {
-                // TODO: Do something
-            },
+            { },
             { client ->
                 this.client.value = client
             }
@@ -79,8 +90,8 @@ class OfferViewModel(
         setOfferArchivedUC.start(
             viewModelScope,
             SetOfferArchivedUC.Params(offerId, archived),
-            {
-                // TODO: Do something
+            { failure ->
+                sendEvent(Event.ShowArchiveFailureDialog(failure))
             },
             { }
         )

@@ -1,9 +1,7 @@
 package com.klima7.services.common.components.offer
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Offer

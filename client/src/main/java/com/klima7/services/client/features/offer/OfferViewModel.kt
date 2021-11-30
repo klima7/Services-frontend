@@ -61,9 +61,7 @@ class OfferViewModel(
         getExpertUC.start(
             viewModelScope,
             GetExpertUC.Params(expertId),
-            {
-                // TODO: Do something
-            },
+            { },
             { expert ->
                 this.expert.value = expert
             }

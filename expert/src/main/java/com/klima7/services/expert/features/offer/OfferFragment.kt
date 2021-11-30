@@ -1,13 +1,16 @@
 package com.klima7.services.expert.features.offer
 
 import android.content.Intent
+import android.os.Bundle
 import android.view.MenuItem
 import androidx.core.os.bundleOf
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.common.components.msgsend.SendMessageFragment
 import com.klima7.services.common.components.msgviewer.MessageViewerFragment
 import com.klima7.services.common.components.offer.BaseOfferFragment
 import com.klima7.services.common.components.views.SendMessageBarView
+import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Role
 import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.expert.R
@@ -18,11 +21,16 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
 
+    companion object {
+        const val ARCHIVE_FAILURE_DIALOG_KEY = "ARCHIVE_FAILURE_DIALOG_KEY"
+    }
+
     override val layoutId = R.layout.fragment_offer
     override val viewModel: OfferViewModel by viewModel()
 
     override fun init() {
         super.init()
+
         val toolbar = binding.offerToolbar
         toolbar.setNavigationIcon(R.drawable.icon_arrow_back)
         toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
@@ -41,6 +49,14 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
         viewModel.showRatingItemVisible.observe(viewLifecycleOwner, showRatingItem::setVisible)
         viewModel.archiveItemVisible.observe(viewLifecycleOwner, archiveItem::setVisible)
         viewModel.unarchiveItemVisible.observe(viewLifecycleOwner, unarchiveItem::setVisible)
+
+        childFragmentManager.setFragmentResultListener(ARCHIVE_FAILURE_DIALOG_KEY,
+            viewLifecycleOwner) { _: String, bundle: Bundle ->
+            val result = bundle.get(FailureDialogFragment.BUNDLE_KEY)
+            if(result == FailureDialogFragment.Result.RETRY) {
+                viewModel.retryArchive()
+            }
+        }
     }
 
     @ExperimentalCoroutinesApi
@@ -75,6 +91,8 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
         super.handleEvent(event)
         when(event) {
             is OfferViewModel.Event.ShowJobScreen -> showJobScreen(event.jobId)
+            is OfferViewModel.Event.ShowArchiveFailureDialog ->
+                showArchiveFailureDialog(event.failure)
         }
     }
 
@@ -87,6 +105,13 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
         intent.putExtras(bundle)
         requireActivity().startActivity(intent)
         Animatoo.animateSlideUp(requireActivity())
+    }
+
+    private fun showArchiveFailureDialog(failure: Failure) {
+        val dialog = FailureDialogFragment.createRetry(
+            ARCHIVE_FAILURE_DIALOG_KEY,
+            "Zmiana stanu oferty się nie powiodła.", failure)
+        dialog.show(childFragmentManager, "FailureDialogFragment")
     }
 
 }
