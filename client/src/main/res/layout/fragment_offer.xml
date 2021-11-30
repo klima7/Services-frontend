@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent"
             >
 
-            <com.klima7.services.common.components.views.OfferStatusToolbarView
+            <com.klima7.services.common.components.offer.OfferStatusToolbarView
                 android:id="@+id/offer_status_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

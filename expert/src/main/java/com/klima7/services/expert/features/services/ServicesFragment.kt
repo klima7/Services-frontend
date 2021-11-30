@@ -7,7 +7,6 @@ import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentServicesBinding
-import com.klima7.services.expert.features.services.multicategory.ServicesMultiCategoriesFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -50,14 +49,14 @@ class ServicesFragment: BaseFragment<FragmentServicesBinding>() {
     }
 
     private fun setServices(services: List<CategorizedSelectableServices>) {
-        val fragment = childFragmentManager.findFragmentById(R.id.services_services) as ServicesMultiCategoriesFragment
-        fragment.setServices(services)
+//        val fragment = childFragmentManager.findFragmentById(R.id.services_services) as ServicesMultiCategoriesFragment
+//        fragment.setServices(services)
     }
 
     private fun saveButtonClicked() {
-        val fragment = childFragmentManager.findFragmentById(R.id.services_services) as ServicesMultiCategoriesFragment
-        val selected = fragment.getSelectedServices()
-        viewModel.saveClicked(selected)
+//        val fragment = childFragmentManager.findFragmentById(R.id.services_services) as ServicesMultiCategoriesFragment
+//        val selected = fragment.getSelectedServices()
+//        viewModel.saveClicked(selected)
     }
 
     private fun finish() {

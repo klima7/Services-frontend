@@ -14,8 +14,6 @@ import com.klima7.services.expert.features.offers.archive.ArchiveOffersListViewM
 import com.klima7.services.expert.features.offers.current.CurrentOffersListViewModel
 import com.klima7.services.expert.features.profile.ProfileViewModel
 import com.klima7.services.expert.features.services.ServicesViewModel
-import com.klima7.services.expert.features.services.category.ServicesCategoryViewModel
-import com.klima7.services.expert.features.services.multicategory.ServicesMultiCategoryViewModel
 import com.klima7.services.expert.features.settings.SettingsViewModel
 import com.klima7.services.expert.features.setup.SetupViewModel
 import com.klima7.services.expert.features.splash.SplashViewModel
@@ -30,8 +28,6 @@ val viewModelsModule = module {
     viewModel { InfoViewModel(get(), get()) }
     viewModel { ServicesViewModel(get(), get()) }
     viewModel { WorkingAreaViewModel(get(), get()) }
-    viewModel { ServicesCategoryViewModel() }
-    viewModel { ServicesMultiCategoryViewModel() }
     viewModel { SettingsViewModel(get()) }
     viewModel { DeleteViewModel(get()) }
     viewModel { JobsViewModel() }

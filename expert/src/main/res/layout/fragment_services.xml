@@ -52,20 +52,10 @@
                     android:layout_weight="1"
                     >
 
-                    <LinearLayout
+                    <com.klima7.services.expert.features.services.ServicesSelectionListView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        >
-
-                        <androidx.fragment.app.FragmentContainerView
-                            android:id="@+id/services_services"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:name="com.klima7.services.expert.features.services.multicategory.ServicesMultiCategoriesFragment"
-                            />
-
-                    </LinearLayout>
+                        android:layout_height="match_parent"
+                        />
 
                 </ScrollView>
 

@@ -1,4 +1,4 @@
-package com.klima7.services.common.components.views
+package com.klima7.services.common.components.offer
 
 import android.content.Context
 import android.os.Bundle
