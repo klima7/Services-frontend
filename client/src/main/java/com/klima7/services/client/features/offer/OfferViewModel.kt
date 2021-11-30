@@ -21,7 +21,6 @@ class OfferViewModel(
         data class ShowAddCommentScreen(val offerId: String): Event()
         data class ShowCommentScreen(val ratingId: String): Event()
         data class ShowExpertProfileScreen(val expertUid: String): Event()
-        data class Call(val phoneNumber: String): Event()
     }
 
     override val offer = MutableLiveData<Offer>()
@@ -48,7 +47,7 @@ class OfferViewModel(
     fun callExpertClicked() {
         val phone = expert.value?.info?.phone
         if(phone != null) {
-            sendEvent(Event.Call(phone))
+            sendEvent(BaseOfferViewModel.Event.Call(phone))
         }
     }
 

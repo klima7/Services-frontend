@@ -96,7 +96,6 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
             is OfferViewModel.Event.ShowAddCommentScreen -> showAddCommentScreen(event.offerId)
             is OfferViewModel.Event.ShowCommentScreen -> showCommentScreen(event.ratingId)
             is OfferViewModel.Event.ShowExpertProfileScreen -> showExpertProfileScreen(event.expertUid)
-            is OfferViewModel.Event.Call -> call(event.phoneNumber)
         }
     }
 
@@ -131,11 +130,6 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
         intent.putExtras(bundle)
         startActivity(intent)
         Animatoo.animateSlideUp(requireActivity())
-    }
-
-    private fun call(phoneNumber: String) {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("tel:$phoneNumber"))
-        startActivity(intent)
     }
 
     override fun onResume() {

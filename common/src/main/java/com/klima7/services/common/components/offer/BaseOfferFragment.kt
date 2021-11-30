@@ -1,5 +1,7 @@
 package com.klima7.services.common.components.offer
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.databinding.ViewDataBinding
 import com.klima7.services.common.components.yesnodialog.YesNoDialogFragment
@@ -32,6 +34,7 @@ abstract class BaseOfferFragment<DB: ViewDataBinding>: BaseFragment<DB>() {
         when(event) {
             is BaseOfferViewModel.Event.ShowOfferStatusChangeEnsureDialog ->
                 showOfferStatusChangeEnsureDialog(event.newOfferStatus)
+            is BaseOfferViewModel.Event.Call -> call(event.phoneNumber)
         }
     }
 
@@ -41,5 +44,10 @@ abstract class BaseOfferFragment<DB: ViewDataBinding>: BaseFragment<DB>() {
             OFFER_STATUS_CHANGE_ENSURE_DIALOG_KEY,
             "Czy na pewno chcesz zmienić status oferty na \"$statusName\"")
         dialog.show(childFragmentManager, "YesNoDialogFragment")
+    }
+
+    private fun call(phoneNumber: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("tel:$phoneNumber"))
+        startActivity(intent)
     }
 }

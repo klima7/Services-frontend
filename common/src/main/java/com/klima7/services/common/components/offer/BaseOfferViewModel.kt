@@ -15,8 +15,9 @@ abstract class BaseOfferViewModel(
     private val getOfferStreamUC: GetOfferStreamUC,
 ): BaseViewModel() {
 
-    sealed class Event: BaseEvent() {
+    open class Event: BaseEvent() {
         data class ShowOfferStatusChangeEnsureDialog(val newOfferStatus: OfferStatus): Event()
+        data class Call(val phoneNumber: String): Event()
     }
 
     protected lateinit var offerId: String
