@@ -3,7 +3,7 @@ package com.klima7.services.expert.features.services
 import android.os.Bundle
 import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.common.models.Failure
-import com.klima7.services.common.platform.BaseLoadFragment
+import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentServicesBinding
@@ -11,7 +11,7 @@ import com.klima7.services.expert.features.services.multicategory.ServicesMultiC
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class ServicesFragment: BaseLoadFragment<FragmentServicesBinding>() {
+class ServicesFragment: BaseFragment<FragmentServicesBinding>() {
 
     companion object {
         const val SAVE_FAILURE_KEY = "SAVE_FAILURE_KEY"

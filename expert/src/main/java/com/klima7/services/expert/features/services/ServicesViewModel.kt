@@ -1,15 +1,18 @@
 package com.klima7.services.expert.features.services
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.core.None
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Service
 import com.klima7.services.common.platform.BaseLoadViewModel
+import com.klima7.services.common.platform.BaseViewModel
 
 class ServicesViewModel(
     private val getCategorisedAndMarkedServices: GetCategorisedAndMarkedServicesUC,
     private val setCurrentExpertServicesUC: SetCurrentExpertServicesUC
-): BaseLoadViewModel() {
+): BaseViewModel() {
 
     sealed class Event: BaseEvent() {
         data class SetServices(val services: List<CategorizedSelectableServices>): Event()
@@ -19,11 +22,14 @@ class ServicesViewModel(
 
     private var lastServices: List<Service>? = null
 
+    val loadState = MutableLiveData(LoadAreaView.State.LOAD)
+    val loadFailure = MutableLiveData<Failure>()
+
     fun started() {
         loadContent()
     }
 
-    override fun refresh() {
+    fun refresh() {
         loadContent()
     }
 
@@ -39,34 +45,36 @@ class ServicesViewModel(
     }
 
     private fun loadContent() {
-        showLoading()
+        loadState.value = LoadAreaView.State.LOAD
         getCategorisedAndMarkedServices.start(
             viewModelScope,
             None(),
             { failure ->
-                showFailure(failure)
+                loadFailure.value = failure
+                loadState.value = LoadAreaView.State.FAILURE
             }, { services ->
                 if(services.isEmpty()) {
-                    showFailure(Failure.InternetFailure)
+                    loadFailure.value = Failure.InternetFailure
+                    loadState.value = LoadAreaView.State.FAILURE
                 }
                 else {
                     sendEvent(Event.SetServices(services))
-                    showMain()
+                    loadState.value = LoadAreaView.State.MAIN
                 }
             }
         )
     }
 
     private fun save(services: List<Service>) {
-        showPending()
+        loadState.value = LoadAreaView.State.PENDING
         setCurrentExpertServicesUC.start(
             viewModelScope,
             SetCurrentExpertServicesUC.Params(services),
             { failure ->
-                showMain()
+                loadState.value = LoadAreaView.State.MAIN
                 sendEvent(Event.ShowSaveFailure(failure))
             }, {
-                showMain()
+                loadState.value = LoadAreaView.State.MAIN
                 sendEvent(Event.Finish)
             }
         )
