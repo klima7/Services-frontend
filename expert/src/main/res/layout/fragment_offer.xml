@@ -39,8 +39,8 @@
                 style="@style/ToolBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="Title"
-                app:subtitle="Subtitle"
+                app:title="@{viewmodel.clientName!=null ? viewmodel.clientName : `...`}"
+                app:subtitle="@{viewmodel.serviceName!=null ? viewmodel.serviceName : `...`}"
                 app:navigationIcon="@drawable/icon_arrow_back"
                 />
 

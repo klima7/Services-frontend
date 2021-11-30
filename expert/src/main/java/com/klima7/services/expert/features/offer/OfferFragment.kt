@@ -36,6 +36,8 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>(), SendMessageBarVi
             .add(R.id.offer_chat_container, messageViewerFragment)
             .add(R.id.offer_msgsend_container, sendMessageFragment)
             .commit()
+
+        viewModel.start(offerId)
     }
 
     override fun onSendMessageClicked(smb: SendMessageBarView) {
