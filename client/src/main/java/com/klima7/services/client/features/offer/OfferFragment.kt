@@ -50,21 +50,6 @@ class OfferFragment: BaseFragment<FragmentOfferBinding>() {
         viewModel.showRatingVisible.observe(viewLifecycleOwner) { visible ->
             showRatingItem.isVisible = visible
         }
-
-        lifecycleScope.launch {
-            var actionBarHeight = 0
-
-            val tv = TypedValue()
-            if (requireActivity().theme.resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
-                actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, resources.displayMetrics)
-            }
-
-            val view = binding.offerStatusPanel
-            view.translationY = -actionBarHeight.toFloat()
-
-            delay(300)
-            view.animate().translationY(0f)
-        }
     }
 
     @ExperimentalCoroutinesApi
