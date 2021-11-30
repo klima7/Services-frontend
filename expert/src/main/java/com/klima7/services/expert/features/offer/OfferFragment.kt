@@ -1,13 +1,18 @@
 package com.klima7.services.expert.features.offer
 
+import android.content.Intent
 import android.view.MenuItem
+import androidx.core.os.bundleOf
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.klima7.services.common.components.msgsend.SendMessageFragment
 import com.klima7.services.common.components.msgviewer.MessageViewerFragment
 import com.klima7.services.common.components.offer.BaseOfferFragment
 import com.klima7.services.common.components.views.SendMessageBarView
 import com.klima7.services.common.models.Role
+import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentOfferBinding
+import com.klima7.services.expert.features.job.JobActivity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -60,7 +65,26 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>(), SendMessageBarVi
         when(item.itemId) {
             R.id.offer_item_call_client -> viewModel.callClientClicked()
             R.id.offer_item_show_rating -> viewModel.showRatingClicked()
+            R.id.offer_item_show_job -> viewModel.showJobClicked()
         }
+    }
+
+    override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
+        super.handleEvent(event)
+        when(event) {
+            is OfferViewModel.Event.ShowJobScreen -> showJobScreen(event.jobId)
+        }
+    }
+
+    private fun showJobScreen(jobId: String) {
+        val intent = Intent(requireContext(), JobActivity::class.java)
+        val bundle = bundleOf(
+            "jobId" to jobId,
+            "exit" to "slideDown"
+        )
+        intent.putExtras(bundle)
+        requireActivity().startActivity(intent)
+        Animatoo.animateSlideUp(requireActivity())
     }
 
     override fun onSendMessageClicked(smb: SendMessageBarView) {

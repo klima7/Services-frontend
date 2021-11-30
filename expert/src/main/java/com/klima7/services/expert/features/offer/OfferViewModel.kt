@@ -16,7 +16,7 @@ class OfferViewModel(
 ): BaseOfferViewModel(setOfferStatusUC, getOfferStreamUC) {
 
     sealed class Event: BaseEvent() {
-
+        data class ShowJobScreen(val jobId: String): Event()
     }
 
     override val offer = MutableLiveData<Offer>()
@@ -35,6 +35,13 @@ class OfferViewModel(
         val phone = client.value?.info?.phone
         if(phone != null) {
             sendEvent(BaseOfferViewModel.Event.Call(phone))
+        }
+    }
+
+    fun showJobClicked() {
+        val jobId = offer.value?.jobId
+        if(jobId != null) {
+            sendEvent(Event.ShowJobScreen(jobId))
         }
     }
 
