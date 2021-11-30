@@ -13,6 +13,7 @@ import com.klima7.services.common.data.firebase.entities.OfferEntity
 import com.klima7.services.common.data.firebase.utils.toDomain
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Offer
+import com.klima7.services.common.models.OfferStatus
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -132,6 +133,29 @@ class OffersDao(
             Outcome.Success(None())
         } catch(e: Exception) {
             Log.e("Hello", "Error while setOfferArchived", e)
+            Outcome.Failure(e.toDomain())
+        }
+    }
+
+    suspend fun setOfferStatus(offerId: String, offerStatus: OfferStatus): Outcome<Failure, None> {
+        val statusNumber = when(offerStatus) {
+            OfferStatus.NEW -> 0
+            OfferStatus.CANCELLED -> 1
+            OfferStatus.IN_REALIZATION -> 2
+            OfferStatus.DONE -> 3
+        }
+        val data = hashMapOf(
+            "offerId" to offerId,
+            "status" to statusNumber
+        )
+        return try {
+            functions
+                .getHttpsCallable("offers-setStatus")
+                .call(data)
+                .await()
+            Outcome.Success(None())
+        } catch(e: Exception) {
+            Log.e("Hello", "Error while setOfferStatus", e)
             Outcome.Failure(e.toDomain())
         }
     }

@@ -42,6 +42,6 @@ val viewModelsModule = module {
     viewModel { CurrentOffersListViewModel(get(), get()) }
     viewModel { ArchiveOffersListViewModel(get(), get()) }
     viewModel { ProfileViewModel(get()) }
-    viewModel { OfferViewModel() }
+    viewModel { OfferViewModel(get()) }
 
 }

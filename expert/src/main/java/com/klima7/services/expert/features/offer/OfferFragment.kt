@@ -16,6 +16,7 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>(), SendMessageBarVi
     override val viewModel: OfferViewModel by viewModel()
 
     override fun init() {
+        super.init()
         val toolbar = binding.offerToolbar
         toolbar.setNavigationIcon(R.drawable.icon_arrow_back)
         toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }

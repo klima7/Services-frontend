@@ -35,7 +35,7 @@ val viewModelsModule = module {
     viewModel { JobViewModel(get(), get()) }
     viewModel { ProfileViewModel() }
     viewModel { ProfileContentViewModel(get()) }
-    viewModel { OfferViewModel(get(), get()) }
+    viewModel { OfferViewModel(get(), get(), get()) }
     viewModel { AddRatingViewModel(get(), get()) }
     viewModel { NewJobViewModel(get()) }
     viewModel { ServiceViewModel(get()) }

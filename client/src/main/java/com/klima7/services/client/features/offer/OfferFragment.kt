@@ -33,6 +33,7 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
     private lateinit var showRatingItem: MenuItem
 
     override fun init() {
+        super.init()
         val toolbar = binding.offerToolbar
         toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
         toolbar.inflateMenu(R.menu.offer)
