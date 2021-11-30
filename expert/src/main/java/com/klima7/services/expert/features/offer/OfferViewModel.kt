@@ -8,11 +8,13 @@ import com.klima7.services.common.components.offer.GetOfferStreamUC
 import com.klima7.services.common.components.offer.SetOfferStatusUC
 import com.klima7.services.common.models.Client
 import com.klima7.services.common.models.Offer
+import com.klima7.services.expert.usecases.SetOfferArchivedUC
 
 class OfferViewModel(
     setOfferStatusUC: SetOfferStatusUC,
     getOfferStreamUC: GetOfferStreamUC,
     private val getClientUC: GetClientUC,
+    private val setOfferArchivedUC: SetOfferArchivedUC
 ): BaseOfferViewModel(setOfferStatusUC, getOfferStreamUC) {
 
     sealed class Event: BaseEvent() {
@@ -45,6 +47,14 @@ class OfferViewModel(
         }
     }
 
+    fun archiveOfferClicked() {
+        setOfferArchived(offerId, true)
+    }
+
+    fun unarchiveOfferClicked() {
+        setOfferArchived(offerId, false)
+    }
+
     override fun onOfferUpdated(offer: Offer) {
         this.offer.value = offer
         if(client.value == null) {
@@ -62,6 +72,17 @@ class OfferViewModel(
             { client ->
                 this.client.value = client
             }
+        )
+    }
+
+    private fun setOfferArchived(offerId: String, archived: Boolean) {
+        setOfferArchivedUC.start(
+            viewModelScope,
+            SetOfferArchivedUC.Params(offerId, archived),
+            {
+                // TODO: Do something
+            },
+            { }
         )
     }
 

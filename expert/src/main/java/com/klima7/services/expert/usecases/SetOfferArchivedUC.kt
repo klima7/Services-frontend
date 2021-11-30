@@ -1,4 +1,4 @@
-package com.klima7.services.expert.features.offers.base
+package com.klima7.services.expert.usecases
 
 import com.klima7.services.common.core.BaseUC
 import com.klima7.services.common.core.None

@@ -66,6 +66,8 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>(), SendMessageBarVi
             R.id.offer_item_call_client -> viewModel.callClientClicked()
             R.id.offer_item_show_rating -> viewModel.showRatingClicked()
             R.id.offer_item_show_job -> viewModel.showJobClicked()
+            R.id.offer_item_archive -> viewModel.archiveOfferClicked()
+            R.id.offer_item_unarchive -> viewModel.unarchiveOfferClicked()
         }
     }
 

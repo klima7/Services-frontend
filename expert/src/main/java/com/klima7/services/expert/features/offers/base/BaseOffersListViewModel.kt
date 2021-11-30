@@ -10,6 +10,7 @@ import androidx.paging.filter
 import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.platform.BaseViewModel
+import com.klima7.services.expert.usecases.SetOfferArchivedUC
 import kotlinx.coroutines.flow.combine
 
 abstract class BaseOffersListViewModel(

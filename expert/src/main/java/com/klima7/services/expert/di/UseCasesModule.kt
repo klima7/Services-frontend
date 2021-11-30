@@ -10,7 +10,7 @@ import com.klima7.services.expert.features.jobs.new.GetNewJobsIdsUC
 import com.klima7.services.expert.features.jobs.rejected.GetRejectedJobsIdsUC
 import com.klima7.services.expert.features.offer.GetClientUC
 import com.klima7.services.expert.features.offers.archive.GetArchiveOffersForCurrentExpertUC
-import com.klima7.services.expert.features.offers.base.SetOfferArchivedUC
+import com.klima7.services.expert.usecases.SetOfferArchivedUC
 import com.klima7.services.expert.features.offers.current.GetCurrentOffersForCurrentExpertUC
 import com.klima7.services.expert.features.services.GetCategorisedAndMarkedServicesUC
 import com.klima7.services.expert.features.services.SetCurrentExpertServicesUC
