@@ -27,6 +27,9 @@ class ServicesFragment: BaseLoadFragment<FragmentServicesBinding>() {
 
     override fun init() {
         super.init()
+
+        binding.servicesToolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
+
         binding.servicesSaveButton.setOnClickListener { saveButtonClicked() }
 
         childFragmentManager.setFragmentResultListener(SAVE_FAILURE_KEY, viewLifecycleOwner) { _: String, bundle: Bundle ->
