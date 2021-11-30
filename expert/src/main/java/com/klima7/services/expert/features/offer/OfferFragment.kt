@@ -26,6 +26,16 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>(), SendMessageBarVi
             menuItemClicked(item)
             true
         }
+
+        val callItem = toolbar.menu.findItem(R.id.offer_item_call_client)
+        val showRatingItem = toolbar.menu.findItem(R.id.offer_item_show_rating)
+        val archiveItem = toolbar.menu.findItem(R.id.offer_item_archive)
+        val unarchiveItem = toolbar.menu.findItem(R.id.offer_item_unarchive)
+
+        viewModel.callItemVisible.observe(viewLifecycleOwner, callItem::setVisible)
+        viewModel.showRatingItemVisible.observe(viewLifecycleOwner, showRatingItem::setVisible)
+        viewModel.archiveItemVisible.observe(viewLifecycleOwner, archiveItem::setVisible)
+        viewModel.unarchiveItemVisible.observe(viewLifecycleOwner, unarchiveItem::setVisible)
     }
 
     @ExperimentalCoroutinesApi

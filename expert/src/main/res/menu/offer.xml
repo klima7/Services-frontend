@@ -10,8 +10,26 @@
         />
 
     <item
+        android:id="@+id/offer_item_show_job"
+        android:title="Pokaż zlecenie"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/offer_item_show_rating"
+        android:title="Pokaż ocenę"
+        app:showAsAction="never"
+        />
+
+    <item
         android:id="@+id/offer_item_archive"
         android:title="Archiwizuj"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/offer_item_unarchive"
+        android:title="Dearchiwizuj"
         app:showAsAction="never"
         />
 

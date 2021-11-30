@@ -44,17 +44,9 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
         showRatingItem = toolbar.menu.findItem(R.id.item_show_comment)
         callItem = toolbar.menu.findItem(R.id.item_call_expert)
 
-        viewModel.addRatingItemVisible.observe(viewLifecycleOwner) { visible ->
-            rateItem.isVisible = visible
-        }
-
-        viewModel.showRatingItemVisible.observe(viewLifecycleOwner) { visible ->
-            showRatingItem.isVisible = visible
-        }
-
-        viewModel.callItemVisible.observe(viewLifecycleOwner) { visible ->
-            callItem.isVisible = visible
-        }
+        viewModel.addRatingItemVisible.observe(viewLifecycleOwner, rateItem::setVisible)
+        viewModel.showRatingItemVisible.observe(viewLifecycleOwner, showRatingItem::setVisible)
+        viewModel.callItemVisible.observe(viewLifecycleOwner, callItem::setVisible)
 
         lifecycleScope.launch {
             binding.offerStatusToolbar.setVisibleInstant(false)
