@@ -6,6 +6,7 @@ import com.klima7.services.common.components.yesnodialog.YesNoDialogFragment
 import com.klima7.services.common.models.OfferStatus
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
+import com.klima7.services.common.ui.OfferStatusDescription
 
 abstract class BaseOfferFragment<DB: ViewDataBinding>: BaseFragment<DB>() {
 
@@ -35,9 +36,10 @@ abstract class BaseOfferFragment<DB: ViewDataBinding>: BaseFragment<DB>() {
     }
 
     private fun showOfferStatusChangeEnsureDialog(newOfferStatus: OfferStatus) {
+        val statusName = OfferStatusDescription.get(newOfferStatus).getText(requireContext())
         val dialog = YesNoDialogFragment.create(
             OFFER_STATUS_CHANGE_ENSURE_DIALOG_KEY,
-            "Czy na pewno chcesz zmienić status oferty na $newOfferStatus")
+            "Czy na pewno chcesz zmienić status oferty na \"$statusName\"")
         dialog.show(childFragmentManager, "YesNoDialogFragment")
     }
 }

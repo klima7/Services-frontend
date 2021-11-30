@@ -1,12 +1,11 @@
 package com.klima7.services.client.features.offers
 
-import android.view.View
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.ElementOfferBinding
 import com.klima7.services.common.components.views.AvatarView
 import com.klima7.services.common.extensions.uppercaseFirst
 import com.klima7.services.common.models.OfferWithExpert
-import com.klima7.services.common.ui.OfferStatusStringifier
+import com.klima7.services.common.ui.OfferStatusDescription
 import com.xwray.groupie.databinding.BindableItem
 
 
@@ -18,8 +17,9 @@ class OfferWithExpertItem(
     override fun bind(binding: ElementOfferBinding, position: Int) {
         val context = binding.offerCard.context
         binding.offerWithExpert = offerWithExpert
-        binding.status = OfferStatusStringifier.stringify(context, offerWithExpert.offer.status)
-            .uppercaseFirst()
+
+        val statusName = OfferStatusDescription.get(offerWithExpert.offer.status).getText(context)
+        binding.status = statusName.uppercaseFirst()
 
         binding.offerelemExpertCard.setOnClickListener {
             listener.offerExpertClicked(offerWithExpert, binding.offerAvatar)

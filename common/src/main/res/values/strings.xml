@@ -13,10 +13,10 @@
     <string name="confirm">Potwierdzam</string>
 
     <!-- Offer statuses -->
-    <string name="offer_status_new">nowa</string>
-    <string name="offer_status_rejected">odrzucono</string>
+    <string name="offer_status_new">nowe</string>
+    <string name="offer_status_cancelled">anulowane</string>
     <string name="offer_status_in_realization">w realizacji</string>
-    <string name="offer_status_done">wykonano</string>
+    <string name="offer_status_done">wykonane</string>
 
     <!-- Settings screen -->
     <string name="settings_credits">Podziękowania</string>

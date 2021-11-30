@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.klima7.services.common.extensions.uppercaseFirst
 import com.klima7.services.common.models.Offer
-import com.klima7.services.common.ui.OfferStatusStringifier
+import com.klima7.services.common.ui.OfferStatusDescription
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.ElementOfferBinding
 
@@ -37,7 +37,9 @@ class OfferViewHolder private constructor(
         binding.offerelemShowJobButton.setOnClickListener {
             onOfferListener.onShowJobClicked(offer)
         }
-        binding.status = OfferStatusStringifier.stringify(context, offer.status).uppercaseFirst()
+
+        val statusName = OfferStatusDescription.get(offer.status).getText(context)
+        binding.status = statusName.uppercaseFirst()
     }
 
 }
