@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Offer
@@ -73,9 +74,13 @@ abstract class BaseOffersListFragment(
 
     override fun onOfferClicked(offer: Offer) {
         val intent = Intent(requireContext(), OfferActivity::class.java)
-        val bundle = bundleOf("offerId" to offer.id)
+        val bundle = bundleOf(
+            "offerId" to offer.id,
+            "exit" to "slideRight",
+        )
         intent.putExtras(bundle)
         startActivity(intent)
+        Animatoo.animateSlideLeft(requireActivity())
     }
 
     override fun onShowJobClicked(offer: Offer) {
