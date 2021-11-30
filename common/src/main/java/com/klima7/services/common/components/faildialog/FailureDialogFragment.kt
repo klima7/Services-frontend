@@ -56,7 +56,7 @@ class FailureDialogFragment: DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         if(savedInstanceState == null)
-            viewModel.setData(requestKey, message, failure)
+            viewModel.setData(requestKey, message, failure, retryAbility)
 
         val inflater = this.layoutInflater
         binding = DataBindingUtil.inflate(inflater, R.layout.dialog_failure, null, false)
@@ -66,7 +66,7 @@ class FailureDialogFragment: DialogFragment() {
                 val bundle = bundleOf("result" to Result.DISMISS)
                 setFragmentResult(viewModel.requestKey, bundle)
             }
-            if(retryAbility) {
+            if(viewModel.retryAbility) {
                 setPositiveButton("Ponów próbę") { _, _ ->
                     val bundle = bundleOf("result" to Result.RETRY)
                     setFragmentResult(viewModel.requestKey, bundle)
