@@ -1,5 +1,5 @@
 package com.klima7.services.common.models
 
 enum class OfferStatus {
-    NEW, REJECTED, IN_REALIZATION, DONE
+    NEW, CANCELLED, IN_REALIZATION, DONE
 }

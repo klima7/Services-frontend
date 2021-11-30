@@ -30,6 +30,7 @@
                 android:id="@+id/offer_status_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:offerstatustoolbar_selection_listener="@{(status)->viewmodel.offerStatusSelected(status)}"
                 />
 
             <androidx.appcompat.widget.Toolbar

@@ -7,7 +7,7 @@ import com.klima7.services.common.models.OfferStatus
 fun OfferEntity.toDomain(id: String): Offer {
     val offerStatus = when(status) {
         0 -> OfferStatus.NEW
-        1 -> OfferStatus.REJECTED
+        1 -> OfferStatus.CANCELLED
         2 -> OfferStatus.IN_REALIZATION
         3 -> OfferStatus.DONE
         else -> OfferStatus.NEW

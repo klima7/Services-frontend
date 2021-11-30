@@ -1,19 +1,30 @@
 package com.klima7.services.common.components.views
 
 import android.content.Context
+import android.os.Bundle
 import android.os.Parcelable
 import android.util.AttributeSet
+import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
+import androidx.databinding.BindingMethod
 import androidx.databinding.DataBindingUtil
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.ViewOfferStatusToolbarBinding
-import android.os.Bundle
+import com.klima7.services.common.models.OfferStatus
 
-
-
+@androidx.databinding.BindingMethods(
+    value = [
+        BindingMethod(
+            type = OfferStatusToolbarView::class,
+            attribute = "offerstatustoolbar_selection_listener",
+            method = "setSelectionListener"
+        ),
+    ]
+)
+class OfferStatusToolbarViewBindingMethods
 
 class OfferStatusToolbarView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
 
@@ -21,6 +32,7 @@ class OfferStatusToolbarView(context: Context, attrs: AttributeSet?) : FrameLayo
     private var actionBarHeight = 0f
     private var panel: View
     private var visible = true
+    private var selectionListener: SelectionListener? = null
 
     init {
         val inflater = LayoutInflater.from(context)
@@ -36,8 +48,23 @@ class OfferStatusToolbarView(context: Context, attrs: AttributeSet?) : FrameLayo
         panel = binding.viewofferstatusPanel
     }
 
-    private fun refreshView() {
+    fun setSelectionListener(selectionListener: SelectionListener?) {
+        this.selectionListener = selectionListener
+        refreshView()
+    }
 
+    private fun refreshView() {
+        binding.viewofferstatusChipCancelled.setOnClickListener {
+            selectionListener?.onOfferStatusSelected(OfferStatus.CANCELLED)
+        }
+
+        binding.viewofferstatusChipInRealization.setOnClickListener {
+            selectionListener?.onOfferStatusSelected(OfferStatus.IN_REALIZATION)
+        }
+
+        binding.viewofferstatusChipDone.setOnClickListener {
+            selectionListener?.onOfferStatusSelected(OfferStatus.DONE)
+        }
     }
 
     fun setVisibleInstant(newVisible: Boolean) {
@@ -79,7 +106,7 @@ class OfferStatusToolbarView(context: Context, attrs: AttributeSet?) : FrameLayo
         super.onRestoreInstanceState(superState)
     }
 
-    interface ClickListener {
-        fun clicked()
+    interface SelectionListener {
+        fun onOfferStatusSelected(offerStatus: OfferStatus)
     }
 }

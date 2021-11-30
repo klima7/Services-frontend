@@ -4,45 +4,87 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/viewofferstatus_panel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="?attr/actionBarSize"
         android:background="@drawable/offer_chips_background"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
         >
 
-        <TextView
-            android:layout_width="wrap_content"
+        <HorizontalScrollView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:text="Status:"
-            />
+            >
 
-        <com.google.android.material.chip.ChipGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Anulowane" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                >
 
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="W realizacji" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="Status:"
+                    />
 
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Wykonane" />
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/viewofferstatus_chips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="true"
+                    app:checkedChip="@+id/viewofferstatus_chip_cancelled"
+                    >
 
-        </com.google.android.material.chip.ChipGroup>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/viewofferstatus_chip_cancelled"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Anulowane"
+                        android:checkable="true"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:textColor="@color/offer_status_chip_text"
+                        app:chipBackgroundColor="@color/offer_status_chip_background"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        />
 
-    </LinearLayout>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/viewofferstatus_chip_in_realization"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="W realizacji"
+                        android:checkable="true"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:textColor="@color/offer_status_chip_text"
+                        app:chipBackgroundColor="@color/offer_status_chip_background"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/viewofferstatus_chip_done"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Wykonane"
+                        android:checkable="true"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:textColor="@color/offer_status_chip_text"
+                        app:chipBackgroundColor="@color/offer_status_chip_background"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        />
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </FrameLayout>
 
 </layout>

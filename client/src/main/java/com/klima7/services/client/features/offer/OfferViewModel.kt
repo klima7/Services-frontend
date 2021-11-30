@@ -1,11 +1,13 @@
 package com.klima7.services.client.features.offer
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.usecases.GetExpertUC
 import com.klima7.services.common.models.Expert
 import com.klima7.services.common.models.Offer
+import com.klima7.services.common.models.OfferStatus
 import com.klima7.services.common.platform.BaseViewModel
 import kotlinx.coroutines.flow.collectLatest
 
@@ -58,6 +60,10 @@ class OfferViewModel(
         if(cExpert != null) {
             sendEvent(Event.ShowExpertProfileScreen(cExpert.uid))
         }
+    }
+
+    fun offerStatusSelected(offerStatus: OfferStatus) {
+        Log.i("Hello", "Offer status selected: $offerStatus")
     }
 
     private fun startOfferStream(offerId: String) {
