@@ -6,16 +6,14 @@ import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.core.None
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Service
-import com.klima7.services.common.platform.BaseLoadViewModel
 import com.klima7.services.common.platform.BaseViewModel
 
 class ServicesViewModel(
-    private val getCategorisedAndMarkedServices: GetCategorisedAndMarkedServicesUC,
-    private val setCurrentExpertServicesUC: SetCurrentExpertServicesUC
+    private val getAllAndSelectedServicesUC: GetAllAndSelectedServicesUC,
+    private val setCurrentExpertServicesUC: SetCurrentExpertServicesUC,
 ): BaseViewModel() {
 
     sealed class Event: BaseEvent() {
-        data class SetServices(val services: List<CategorizedSelectableServices>): Event()
         data class ShowSaveFailure(val failure: Failure): Event()
         object Finish: Event()
     }
@@ -46,19 +44,18 @@ class ServicesViewModel(
 
     private fun loadContent() {
         loadState.value = LoadAreaView.State.LOAD
-        getCategorisedAndMarkedServices.start(
+        getAllAndSelectedServicesUC.start(
             viewModelScope,
             None(),
             { failure ->
                 loadFailure.value = failure
                 loadState.value = LoadAreaView.State.FAILURE
-            }, { services ->
-                if(services.isEmpty()) {
+            }, { allAndSelectedServices ->
+                if(allAndSelectedServices.selectedIds.isEmpty()) {
                     loadFailure.value = Failure.InternetFailure
                     loadState.value = LoadAreaView.State.FAILURE
                 }
                 else {
-                    sendEvent(Event.SetServices(services))
                     loadState.value = LoadAreaView.State.MAIN
                 }
             }

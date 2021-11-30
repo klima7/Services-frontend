@@ -11,10 +11,11 @@ class SetCurrentExpertServicesUC(
     private val expertsRepository: ExpertsRepository
 ): BaseUC<SetCurrentExpertServicesUC.Params, None>() {
 
+    data class Params(val services: List<Service>)
+
     override suspend fun execute(params: Params): Outcome<Failure, None> {
         val servicesIds = params.services.map { it.id }
         return expertsRepository.setServicesIds(servicesIds)
     }
 
-    data class Params(val services: List<Service>)
 }

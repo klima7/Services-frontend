@@ -42,15 +42,9 @@ class ServicesFragment: BaseFragment<FragmentServicesBinding>() {
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
         super.handleEvent(event)
         when(event) {
-            is ServicesViewModel.Event.SetServices -> setServices(event.services)
             is ServicesViewModel.Event.ShowSaveFailure -> showSaveFailure(event.failure)
             ServicesViewModel.Event.Finish -> finish()
         }
-    }
-
-    private fun setServices(services: List<CategorizedSelectableServices>) {
-//        val fragment = childFragmentManager.findFragmentById(R.id.services_services) as ServicesMultiCategoriesFragment
-//        fragment.setServices(services)
     }
 
     private fun saveButtonClicked() {

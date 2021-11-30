@@ -10,14 +10,14 @@ import com.klima7.services.expert.features.jobs.new.GetNewJobsIdsUC
 import com.klima7.services.expert.features.jobs.rejected.GetRejectedJobsIdsUC
 import com.klima7.services.expert.features.offer.GetClientUC
 import com.klima7.services.expert.features.offers.archive.GetArchiveOffersForCurrentExpertUC
-import com.klima7.services.expert.usecases.SetOfferArchivedUC
 import com.klima7.services.expert.features.offers.current.GetCurrentOffersForCurrentExpertUC
-import com.klima7.services.expert.features.services.GetCategorisedAndMarkedServicesUC
+import com.klima7.services.expert.features.services.GetAllAndSelectedServicesUC
 import com.klima7.services.expert.features.services.SetCurrentExpertServicesUC
 import com.klima7.services.expert.features.setup.GetCurrentExpertSetupStateUC
 import com.klima7.services.expert.features.splash.GetCurrentExpertStateUC
 import com.klima7.services.expert.usecases.GetCurrentExpertUC
 import com.klima7.services.expert.usecases.RejectJobUC
+import com.klima7.services.expert.usecases.SetOfferArchivedUC
 import org.koin.dsl.module
 
 val useCasesModule = module {
@@ -27,7 +27,6 @@ val useCasesModule = module {
     single { GetCurrentExpertStateUC(get(), get()) }
     single { SetCurrentExpertServicesUC(get()) }
     single { SetCurrentExpertWorkingAreaUC(get()) }
-    single { GetCategorisedAndMarkedServicesUC(get(), get()) }
     single { SetCurrentExpertInfoAndImageUC(get()) }
     single { DeleteExpertUC(get(), get()) }
     single { GetCurrentExpertJobsUC(get()) }
@@ -40,5 +39,6 @@ val useCasesModule = module {
     single { GetArchiveOffersForCurrentExpertUC(get(), get()) }
     single { SetOfferArchivedUC(get()) }
     single { GetClientUC(get()) }
+    single { GetAllAndSelectedServicesUC(get(), get()) }
 
 }
