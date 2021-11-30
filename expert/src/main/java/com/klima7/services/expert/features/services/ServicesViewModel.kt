@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.core.None
+import com.klima7.services.common.models.CategoryWithServices
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Service
 import com.klima7.services.common.platform.BaseViewModel
@@ -18,7 +19,8 @@ class ServicesViewModel(
         object Finish: Event()
     }
 
-    private var lastServices: List<Service>? = null
+    val allServices = MutableLiveData<Set<CategoryWithServices>?>()
+    val selectedServices = MutableLiveData<Set<String>?>()
 
     val loadState = MutableLiveData(LoadAreaView.State.LOAD)
     val loadFailure = MutableLiveData<Failure>()
@@ -32,14 +34,14 @@ class ServicesViewModel(
     }
 
     fun saveClicked(services: List<Service>) {
-        lastServices = services
-        save(services)
+//        lastServices = services
+//        save(services)
     }
 
     fun retrySave() {
-        lastServices?.let { services ->
-            save(services)
-        }
+//        lastServices?.let { services ->
+//            save(services)
+//        }
     }
 
     private fun loadContent() {

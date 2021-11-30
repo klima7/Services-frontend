@@ -50,7 +50,7 @@ class GetAllAndSelectedServicesUC(
             categoriesWithServices.add(categoryWithServices)
         }
 
-        val allAndSelectedServices = AllAndSelectedServices(categoriesWithServices, selectedServices)
+        val allAndSelectedServices = AllAndSelectedServices(categoriesWithServices.toSet(), selectedServices)
         return Outcome.Success(allAndSelectedServices)
     }
 }
