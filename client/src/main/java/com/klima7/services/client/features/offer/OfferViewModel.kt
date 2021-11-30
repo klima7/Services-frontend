@@ -71,10 +71,6 @@ class OfferViewModel(
         }
     }
 
-    fun offerStatusSelected(offerStatus: OfferStatus) {
-        Log.i("Hello", "Offer status selected: $offerStatus")
-    }
-
     private fun startOfferStream(offerId: String) {
         getOfferStreamUC.start(
             viewModelScope,
