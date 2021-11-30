@@ -15,6 +15,7 @@ import com.klima7.services.client.features.profile.ProfileActivity
 import com.klima7.services.common.components.rating.RatingActivity
 import com.klima7.services.common.components.msgsend.SendMessageFragment
 import com.klima7.services.common.components.msgviewer.MessageViewerFragment
+import com.klima7.services.common.components.offer.BaseOfferFragment
 import com.klima7.services.common.models.Role
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
@@ -23,7 +24,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class OfferFragment: BaseFragment<FragmentOfferBinding>() {
+class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
 
     override val layoutId = R.layout.fragment_offer
     override val viewModel: OfferViewModel by viewModel()

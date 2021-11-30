@@ -1,17 +1,16 @@
 package com.klima7.services.expert.features.offer
 
-import android.util.Log
 import com.klima7.services.common.components.msgsend.SendMessageFragment
 import com.klima7.services.common.components.msgviewer.MessageViewerFragment
+import com.klima7.services.common.components.offer.BaseOfferFragment
 import com.klima7.services.common.components.views.SendMessageBarView
 import com.klima7.services.common.models.Role
-import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentOfferBinding
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class OfferFragment: BaseFragment<FragmentOfferBinding>(), SendMessageBarView.Listener {
+class OfferFragment: BaseOfferFragment<FragmentOfferBinding>(), SendMessageBarView.Listener {
 
     override val layoutId = R.layout.fragment_offer
     override val viewModel: OfferViewModel by viewModel()

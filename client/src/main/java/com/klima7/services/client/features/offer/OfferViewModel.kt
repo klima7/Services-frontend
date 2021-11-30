@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
+import com.klima7.services.common.components.offer.BaseOfferViewModel
 import com.klima7.services.common.usecases.GetExpertUC
 import com.klima7.services.common.models.Expert
 import com.klima7.services.common.models.Offer
@@ -16,7 +17,7 @@ import kotlinx.coroutines.launch
 class OfferViewModel(
     private val getExpertUC: GetExpertUC,
     private val getOfferStreamUC: GetOfferStreamUC
-): BaseViewModel() {
+): BaseOfferViewModel() {
 
     sealed class Event: BaseEvent() {
         data class ShowAddCommentScreen(val offerId: String): Event()
