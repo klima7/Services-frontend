@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
+import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Offer
 import com.klima7.services.common.models.OfferStatus
 import com.klima7.services.common.platform.BaseViewModel
@@ -17,14 +18,16 @@ abstract class BaseOfferViewModel(
 
     open class Event: BaseEvent() {
         data class ShowOfferStatusChangeEnsureDialog(val newOfferStatus: OfferStatus): Event()
+        data class ShowOfferStatusChangeFailureDialog(val failure: Failure): Event()
         data class Call(val phoneNumber: String): Event()
         data class ShowCommentScreen(val ratingId: String): Event()
     }
 
     protected lateinit var offerId: String
+    private var newOfferStatus: OfferStatus? = null
+
     protected abstract val offer: MutableLiveData<Offer>
     abstract val offerStatus: LiveData<OfferStatus>
-    private var newOfferStatus: OfferStatus? = null
 
     fun start(offerId: String) {
         this.offerId = offerId
@@ -39,32 +42,34 @@ abstract class BaseOfferViewModel(
     }
 
     fun offerStatusSelected(newOfferStatus: OfferStatus) {
-        Log.i("Hello", "Offer status selected: $newOfferStatus")
         this.newOfferStatus = newOfferStatus
         sendEvent(Event.ShowOfferStatusChangeEnsureDialog(newOfferStatus))
     }
 
+    fun retryChangeOfferStatus() {
+        changeOfferStatus()
+    }
+
     fun changeOfferStatusConfirmed() {
-        Log.i("Hello", "Status change confirmed")
+        changeOfferStatus()
+    }
+
+    private fun changeOfferStatus() {
         val offerId = this.offer.value?.id
         val offerStatus = this.newOfferStatus
         if(offerId != null && offerStatus != null) {
-            Log.i("Hello", "Non null")
             setOfferStatus(offerId, offerStatus)
         }
     }
 
     private fun setOfferStatus(offerId: String, offerStatus: OfferStatus) {
-        Log.i("Hello", "setOfferStatus")
         setOfferStatusUC.start(
             viewModelScope,
             SetOfferStatusUC.Params(offerId, offerStatus),
             { failure ->
-                Log.i("Hello", "Failure ocurred: $failure")
+                sendEvent(Event.ShowOfferStatusChangeFailureDialog(failure))
             },
-            {
-                Log.i("Hello", "Success")
-            }
+            { }
         )
     }
 
