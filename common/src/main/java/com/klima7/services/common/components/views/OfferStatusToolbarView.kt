@@ -36,7 +36,7 @@ class OfferStatusToolbarView(context: Context, attrs: AttributeSet?) : FrameLayo
     private var actionBarHeight = 0f
     private var panel: View
     private var visible = true
-    private var offerStatus: OfferStatus = OfferStatus.NEW
+    private var offerStatus: OfferStatus? = OfferStatus.NEW
     private var selectionListener: SelectionListener? = null
 
     init {
@@ -54,9 +54,6 @@ class OfferStatusToolbarView(context: Context, attrs: AttributeSet?) : FrameLayo
     }
 
     fun setOfferStatus(offerStatus: OfferStatus?) {
-        if(offerStatus == null) {
-            return
-        }
         this.offerStatus = offerStatus
         refreshView()
     }
@@ -88,17 +85,16 @@ class OfferStatusToolbarView(context: Context, attrs: AttributeSet?) : FrameLayo
         }
     }
 
-    private fun selectProperChip(offerStatus: OfferStatus) {
+    private fun selectProperChip(offerStatus: OfferStatus?) {
         val id = when(offerStatus) {
             OfferStatus.CANCELLED -> R.id.viewofferstatus_chip_cancelled
             OfferStatus.IN_REALIZATION -> R.id.viewofferstatus_chip_in_realization
             OfferStatus.DONE -> R.id.viewofferstatus_chip_done
-            OfferStatus.NEW -> null
+            OfferStatus.NEW -> 0
+            null -> 0
         }
 
-        if(id != null) {
-            binding.viewofferstatusChips.check(id)
-        }
+        binding.viewofferstatusChips.check(id)
     }
 
     fun setVisibleInstant(newVisible: Boolean) {
