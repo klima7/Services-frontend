@@ -13,9 +13,9 @@ import kotlinx.coroutines.flow.collectLatest
 
 class OfferViewModel(
     setOfferStatusUC: SetOfferStatusUC,
+    getOfferStreamUC: GetOfferStreamUC,
     private val getExpertUC: GetExpertUC,
-    private val getOfferStreamUC: GetOfferStreamUC,
-): BaseOfferViewModel(setOfferStatusUC) {
+): BaseOfferViewModel(setOfferStatusUC, getOfferStreamUC) {
 
     sealed class Event: BaseEvent() {
         data class ShowAddCommentScreen(val offerId: String): Event()
@@ -24,20 +24,14 @@ class OfferViewModel(
         data class Call(val phoneNumber: String): Event()
     }
 
-    private lateinit var offerId: String
-    private val expert = MutableLiveData<Expert>()
     override val offer = MutableLiveData<Offer>()
     override val offerStatus = offer.map { it.status }
+    private val expert = MutableLiveData<Expert>()
 
     val rateVisible = offer.map { it.ratingId  == null }
     val showRatingVisible = offer.map { it.ratingId  != null }
     val expertName = expert.map { it.info.name }
     val serviceName = offer.map { it.serviceName }
-
-    fun start(offerId: String) {
-        this.offerId = offerId
-        startOfferStream(offerId)
-    }
 
     fun addCommentClicked() {
         sendEvent(Event.ShowAddCommentScreen(offerId))
@@ -64,18 +58,7 @@ class OfferViewModel(
         }
     }
 
-    private fun startOfferStream(offerId: String) {
-        getOfferStreamUC.start(
-            viewModelScope,
-            GetOfferStreamUC.Params(offerId),
-            {},
-            { stream ->
-                stream.collectLatest(this::onOfferUpdated)
-            }
-        )
-    }
-
-    private fun onOfferUpdated(offer: Offer) {
+    override fun onOfferUpdated(offer: Offer) {
         this.offer.value = offer
         if(expert.value == null) {
             getExpert(offer.expertId)

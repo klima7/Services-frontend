@@ -8,18 +8,26 @@ import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.models.Offer
 import com.klima7.services.common.models.OfferStatus
 import com.klima7.services.common.platform.BaseViewModel
+import kotlinx.coroutines.flow.collectLatest
 
 abstract class BaseOfferViewModel(
     private val setOfferStatusUC: SetOfferStatusUC,
+    private val getOfferStreamUC: GetOfferStreamUC,
 ): BaseViewModel() {
 
     sealed class Event: BaseEvent() {
         data class ShowOfferStatusChangeEnsureDialog(val newOfferStatus: OfferStatus): Event()
     }
 
+    protected lateinit var offerId: String
     protected abstract val offer: MutableLiveData<Offer>
     abstract val offerStatus: LiveData<OfferStatus>
     private var newOfferStatus: OfferStatus? = null
+
+    fun start(offerId: String) {
+        this.offerId = offerId
+        startOfferStream(offerId)
+    }
 
     fun offerStatusSelected(newOfferStatus: OfferStatus) {
         Log.i("Hello", "Offer status selected: $newOfferStatus")
@@ -50,5 +58,18 @@ abstract class BaseOfferViewModel(
             }
         )
     }
+
+    private fun startOfferStream(offerId: String) {
+        getOfferStreamUC.start(
+            viewModelScope,
+            GetOfferStreamUC.Params(offerId),
+            {},
+            { stream ->
+                stream.collectLatest(this::onOfferUpdated)
+            }
+        )
+    }
+
+    protected abstract fun onOfferUpdated(offer: Offer)
 
 }
