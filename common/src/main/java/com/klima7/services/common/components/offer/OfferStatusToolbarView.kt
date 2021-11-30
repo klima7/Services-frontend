@@ -71,17 +71,23 @@ class OfferStatusToolbarView(context: Context, attrs: AttributeSet?) : FrameLayo
     private fun addSelectionListener(listener: SelectionListener?) {
         binding.viewofferstatusChipCancelled.setOnClickListener {
             selectProperChip(offerStatus)
-            listener?.onOfferStatusSelected(OfferStatus.CANCELLED)
+            if(offerStatus != OfferStatus.CANCELLED) {
+                listener?.onOfferStatusSelected(OfferStatus.CANCELLED)
+            }
         }
 
         binding.viewofferstatusChipInRealization.setOnClickListener {
             selectProperChip(offerStatus)
-            listener?.onOfferStatusSelected(OfferStatus.IN_REALIZATION)
+            if(offerStatus != OfferStatus.IN_REALIZATION) {
+                listener?.onOfferStatusSelected(OfferStatus.IN_REALIZATION)
+            }
         }
 
         binding.viewofferstatusChipDone.setOnClickListener {
             selectProperChip(offerStatus)
-            listener?.onOfferStatusSelected(OfferStatus.DONE)
+            if(offerStatus != OfferStatus.DONE) {
+                listener?.onOfferStatusSelected(OfferStatus.DONE)
+            }
         }
     }
 
