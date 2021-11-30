@@ -2,8 +2,6 @@ package com.klima7.services.client.features.offer
 
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
-import android.util.TypedValue
 import android.view.MenuItem
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
@@ -17,7 +15,6 @@ import com.klima7.services.common.components.msgsend.SendMessageFragment
 import com.klima7.services.common.components.msgviewer.MessageViewerFragment
 import com.klima7.services.common.components.offer.BaseOfferFragment
 import com.klima7.services.common.models.Role
-import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
@@ -30,6 +27,7 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
     override val viewModel: OfferViewModel by viewModel()
 
     private lateinit var rateItem: MenuItem
+    private lateinit var callItem: MenuItem
     private lateinit var showRatingItem: MenuItem
 
     override fun init() {
@@ -44,13 +42,18 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
 
         rateItem = toolbar.menu.findItem(R.id.item_add_comment)
         showRatingItem = toolbar.menu.findItem(R.id.item_show_comment)
+        callItem = toolbar.menu.findItem(R.id.item_call_expert)
 
-        viewModel.rateVisible.observe(viewLifecycleOwner) { visible ->
+        viewModel.addRatingItemVisible.observe(viewLifecycleOwner) { visible ->
             rateItem.isVisible = visible
         }
 
-        viewModel.showRatingVisible.observe(viewLifecycleOwner) { visible ->
+        viewModel.showRatingItemVisible.observe(viewLifecycleOwner) { visible ->
             showRatingItem.isVisible = visible
+        }
+
+        viewModel.callItemVisible.observe(viewLifecycleOwner) { visible ->
+            callItem.isVisible = visible
         }
 
         lifecycleScope.launch {
