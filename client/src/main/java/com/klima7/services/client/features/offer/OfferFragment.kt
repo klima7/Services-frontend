@@ -1,7 +1,6 @@
 package com.klima7.services.client.features.offer
 
 import android.content.Intent
-import android.net.Uri
 import android.view.MenuItem
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
@@ -10,7 +9,6 @@ import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentOfferBinding
 import com.klima7.services.client.features.addrating.AddRatingActivity
 import com.klima7.services.client.features.profile.ProfileActivity
-import com.klima7.services.common.components.rating.RatingActivity
 import com.klima7.services.common.components.msgsend.SendMessageFragment
 import com.klima7.services.common.components.msgviewer.MessageViewerFragment
 import com.klima7.services.common.components.offer.BaseOfferFragment
@@ -76,7 +74,7 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
     private fun menuItemClicked(item: MenuItem) {
         when(item.itemId) {
             R.id.item_add_comment -> viewModel.addCommentClicked()
-            R.id.item_show_comment -> viewModel.showCommentClicked()
+            R.id.item_show_comment -> viewModel.showRatingClicked()
             R.id.item_call_expert -> viewModel.callExpertClicked()
             R.id.item_expert_profile -> viewModel.showExpertProfileClicked()
         }
@@ -86,7 +84,6 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
         super.handleEvent(event)
         when(event) {
             is OfferViewModel.Event.ShowAddCommentScreen -> showAddCommentScreen(event.offerId)
-            is OfferViewModel.Event.ShowCommentScreen -> showCommentScreen(event.ratingId)
             is OfferViewModel.Event.ShowExpertProfileScreen -> showExpertProfileScreen(event.expertUid)
         }
     }
@@ -95,17 +92,6 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
         val intent = Intent(activity, AddRatingActivity::class.java)
         val bundle = bundleOf(
             "offerId" to offerId,
-            "exit" to "slideDown",
-        )
-        intent.putExtras(bundle)
-        startActivity(intent)
-        Animatoo.animateSlideUp(requireActivity())
-    }
-
-    private fun showCommentScreen(ratingId: String) {
-        val intent = Intent(requireContext(), RatingActivity::class.java)
-        val bundle = bundleOf(
-            "ratingId" to ratingId,
             "exit" to "slideDown",
         )
         intent.putExtras(bundle)

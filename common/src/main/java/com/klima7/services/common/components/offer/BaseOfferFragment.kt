@@ -3,7 +3,10 @@ package com.klima7.services.common.components.offer
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import androidx.core.os.bundleOf
 import androidx.databinding.ViewDataBinding
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.klima7.services.common.components.rating.RatingActivity
 import com.klima7.services.common.components.yesnodialog.YesNoDialogFragment
 import com.klima7.services.common.models.OfferStatus
 import com.klima7.services.common.platform.BaseFragment
@@ -35,6 +38,7 @@ abstract class BaseOfferFragment<DB: ViewDataBinding>: BaseFragment<DB>() {
             is BaseOfferViewModel.Event.ShowOfferStatusChangeEnsureDialog ->
                 showOfferStatusChangeEnsureDialog(event.newOfferStatus)
             is BaseOfferViewModel.Event.Call -> call(event.phoneNumber)
+            is BaseOfferViewModel.Event.ShowCommentScreen -> showCommentScreen(event.ratingId)
         }
     }
 
@@ -49,5 +53,16 @@ abstract class BaseOfferFragment<DB: ViewDataBinding>: BaseFragment<DB>() {
     private fun call(phoneNumber: String) {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse("tel:$phoneNumber"))
         startActivity(intent)
+    }
+
+    private fun showCommentScreen(ratingId: String) {
+        val intent = Intent(requireContext(), RatingActivity::class.java)
+        val bundle = bundleOf(
+            "ratingId" to ratingId,
+            "exit" to "slideDown",
+        )
+        intent.putExtras(bundle)
+        startActivity(intent)
+        Animatoo.animateSlideUp(requireActivity())
     }
 }

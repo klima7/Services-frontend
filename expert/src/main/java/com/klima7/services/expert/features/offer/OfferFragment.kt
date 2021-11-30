@@ -59,6 +59,7 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>(), SendMessageBarVi
     private fun menuItemClicked(item: MenuItem) {
         when(item.itemId) {
             R.id.offer_item_call_client -> viewModel.callClientClicked()
+            R.id.offer_item_show_rating -> viewModel.showRatingClicked()
         }
     }
 

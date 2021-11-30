@@ -19,7 +19,6 @@ class OfferViewModel(
 
     sealed class Event: BaseEvent() {
         data class ShowAddCommentScreen(val offerId: String): Event()
-        data class ShowCommentScreen(val ratingId: String): Event()
         data class ShowExpertProfileScreen(val expertUid: String): Event()
     }
 
@@ -35,13 +34,6 @@ class OfferViewModel(
 
     fun addCommentClicked() {
         sendEvent(Event.ShowAddCommentScreen(offerId))
-    }
-
-    fun showCommentClicked() {
-        val ratingId = offer.value?.ratingId
-        if(ratingId != null) {
-            sendEvent(Event.ShowCommentScreen(ratingId))
-        }
     }
 
     fun callExpertClicked() {

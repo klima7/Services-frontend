@@ -18,6 +18,7 @@ abstract class BaseOfferViewModel(
     open class Event: BaseEvent() {
         data class ShowOfferStatusChangeEnsureDialog(val newOfferStatus: OfferStatus): Event()
         data class Call(val phoneNumber: String): Event()
+        data class ShowCommentScreen(val ratingId: String): Event()
     }
 
     protected lateinit var offerId: String
@@ -28,6 +29,13 @@ abstract class BaseOfferViewModel(
     fun start(offerId: String) {
         this.offerId = offerId
         startOfferStream(offerId)
+    }
+
+    fun showRatingClicked() {
+        val ratingId = offer.value?.ratingId
+        if(ratingId != null) {
+            sendEvent(Event.ShowCommentScreen(ratingId))
+        }
     }
 
     fun offerStatusSelected(newOfferStatus: OfferStatus) {
