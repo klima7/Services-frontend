@@ -2,10 +2,10 @@ package com.klima7.services.expert.features.services
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import androidx.databinding.BindingMethod
-import androidx.databinding.DataBindingUtil
+import androidx.databinding.*
 import com.klima7.services.common.models.CategoryWithServices
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.ViewServicesSelectionListBinding
@@ -26,11 +26,24 @@ import com.klima7.services.expert.databinding.ViewServicesSelectionListBinding
 )
 class ServicesSelectionListViewBindingMethods
 
+@InverseBindingAdapter(attribute = "servicesSelectionList_selected")
+fun getRatingValue(view: ServicesSelectionListView) = view.getSelected()
+
+@BindingAdapter( "servicesSelectionList_selectedAttrChanged")
+fun setSelectionListener(view: ServicesSelectionListView, attrChange: InverseBindingListener) {
+    view.setSelectionListener(object: ServicesSelectionListView.SelectionListener {
+        override fun onSelectionChanged(selected: Set<String>?) {
+            attrChange.onChange()
+        }
+    })
+}
+
 class ServicesSelectionListView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
 
     private var binding: ViewServicesSelectionListBinding
     private var all: Set<CategoryWithServices>? = null
     private var selected: Set<String>? = null
+    private var selectionListener: SelectionListener? = null
 
     init {
         val inflater = LayoutInflater.from(context)
@@ -52,8 +65,16 @@ class ServicesSelectionListView(context: Context, attrs: AttributeSet?) : FrameL
         return null
     }
 
+    fun setSelectionListener(selectionListener: SelectionListener?) {
+        this.selectionListener = selectionListener
+    }
+
     private fun refreshView() {
 
+    }
+
+    interface SelectionListener {
+        fun onSelectionChanged(selected: Set<String>?)
     }
 
 }

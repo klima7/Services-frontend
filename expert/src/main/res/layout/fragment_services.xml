@@ -56,7 +56,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:servicesSelectionList_all="@{viewmodel.allServices}"
-                        app:servicesSelectionList_selected="@{viewmodel.selectedServices}"
+                        app:servicesSelectionList_selected="@={viewmodel.selectedServices}"
                         />
 
                 </ScrollView>

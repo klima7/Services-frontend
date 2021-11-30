@@ -59,6 +59,8 @@ class ServicesViewModel(
                 }
                 else {
                     loadState.value = LoadAreaView.State.MAIN
+                    allServices.value = allAndSelectedServices.all
+                    selectedServices.value = allAndSelectedServices.selectedIds
                 }
             }
         )
