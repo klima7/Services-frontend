@@ -1,16 +1,14 @@
 package com.klima7.services.client.features.offer
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.components.offer.BaseOfferViewModel
 import com.klima7.services.common.components.offer.SetOfferStatusUC
-import com.klima7.services.common.usecases.GetExpertUC
 import com.klima7.services.common.models.Expert
 import com.klima7.services.common.models.Offer
 import com.klima7.services.common.models.OfferStatus
-import com.klima7.services.common.platform.BaseViewModel
+import com.klima7.services.common.usecases.GetExpertUC
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -31,7 +29,7 @@ class OfferViewModel(
     private lateinit var offerId: String
     private val expert = MutableLiveData<Expert>()
     override val offer = MutableLiveData<Offer>()
-    val visibleOfferStatus = MutableLiveData(OfferStatus.IN_REALIZATION)
+    override val offerStatus = offer.map { it.status }
 
     val rateVisible = offer.map { it.ratingId  == null }
     val showRatingVisible = offer.map { it.ratingId  != null }
@@ -41,11 +39,6 @@ class OfferViewModel(
     fun start(offerId: String) {
         this.offerId = offerId
         startOfferStream(offerId)
-
-        viewModelScope.launch {
-            delay(2000)
-            visibleOfferStatus.value = OfferStatus.DONE
-        }
     }
 
     fun addCommentClicked() {

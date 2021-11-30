@@ -1,7 +1,9 @@
 package com.klima7.services.common.components.offer
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.models.Offer
 import com.klima7.services.common.models.OfferStatus
@@ -16,6 +18,7 @@ abstract class BaseOfferViewModel(
     }
 
     protected abstract val offer: MutableLiveData<Offer>
+    abstract val offerStatus: LiveData<OfferStatus>
     private var newOfferStatus: OfferStatus? = null
 
     fun offerStatusSelected(newOfferStatus: OfferStatus) {

@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:offerstatustoolbar_selection_listener="@{(status)->viewmodel.offerStatusSelected(status)}"
-                app:offerstatustoolbar_offer_status="@{viewmodel.visibleOfferStatus}"
+                app:offerstatustoolbar_offer_status="@{viewmodel.offerStatus}"
                 />
 
             <androidx.appcompat.widget.Toolbar
