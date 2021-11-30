@@ -37,7 +37,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:singleSelection="true"
-                    app:checkedChip="@+id/viewofferstatus_chip_cancelled"
                     >
 
                     <com.google.android.material.chip.Chip
@@ -45,9 +44,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Anulowane"
-                        android:checkable="true"
-                        android:clickable="true"
-                        android:focusable="true"
                         android:textColor="@color/offer_status_chip_text"
                         app:chipBackgroundColor="@color/offer_status_chip_background"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
@@ -58,9 +54,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="W realizacji"
-                        android:checkable="true"
-                        android:clickable="true"
-                        android:focusable="true"
                         android:textColor="@color/offer_status_chip_text"
                         app:chipBackgroundColor="@color/offer_status_chip_background"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
@@ -71,9 +64,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Wykonane"
-                        android:checkable="true"
-                        android:clickable="true"
-                        android:focusable="true"
                         android:textColor="@color/offer_status_chip_text"
                         app:chipBackgroundColor="@color/offer_status_chip_background"
                         style="@style/Widget.MaterialComponents.Chip.Choice"

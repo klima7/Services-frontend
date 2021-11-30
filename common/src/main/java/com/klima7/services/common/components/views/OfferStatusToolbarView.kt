@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Parcelable
 import android.util.AttributeSet
-import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +21,11 @@ import com.klima7.services.common.models.OfferStatus
             attribute = "offerstatustoolbar_selection_listener",
             method = "setSelectionListener"
         ),
+        BindingMethod(
+            type = OfferStatusToolbarView::class,
+            attribute = "offerstatustoolbar_offer_status",
+            method = "setOfferStatus"
+        ),
     ]
 )
 class OfferStatusToolbarViewBindingMethods
@@ -32,6 +36,7 @@ class OfferStatusToolbarView(context: Context, attrs: AttributeSet?) : FrameLayo
     private var actionBarHeight = 0f
     private var panel: View
     private var visible = true
+    private var offerStatus: OfferStatus = OfferStatus.NEW
     private var selectionListener: SelectionListener? = null
 
     init {
@@ -48,22 +53,51 @@ class OfferStatusToolbarView(context: Context, attrs: AttributeSet?) : FrameLayo
         panel = binding.viewofferstatusPanel
     }
 
+    fun setOfferStatus(offerStatus: OfferStatus?) {
+        if(offerStatus == null) {
+            return
+        }
+        this.offerStatus = offerStatus
+        refreshView()
+    }
+
     fun setSelectionListener(selectionListener: SelectionListener?) {
         this.selectionListener = selectionListener
         refreshView()
     }
 
     private fun refreshView() {
+        addSelectionListener(selectionListener)
+        selectProperChip(offerStatus)
+    }
+
+    private fun addSelectionListener(listener: SelectionListener?) {
         binding.viewofferstatusChipCancelled.setOnClickListener {
-            selectionListener?.onOfferStatusSelected(OfferStatus.CANCELLED)
+            selectProperChip(offerStatus)
+            listener?.onOfferStatusSelected(OfferStatus.CANCELLED)
         }
 
         binding.viewofferstatusChipInRealization.setOnClickListener {
-            selectionListener?.onOfferStatusSelected(OfferStatus.IN_REALIZATION)
+            selectProperChip(offerStatus)
+            listener?.onOfferStatusSelected(OfferStatus.IN_REALIZATION)
         }
 
         binding.viewofferstatusChipDone.setOnClickListener {
-            selectionListener?.onOfferStatusSelected(OfferStatus.DONE)
+            selectProperChip(offerStatus)
+            listener?.onOfferStatusSelected(OfferStatus.DONE)
+        }
+    }
+
+    private fun selectProperChip(offerStatus: OfferStatus) {
+        val id = when(offerStatus) {
+            OfferStatus.CANCELLED -> R.id.viewofferstatus_chip_cancelled
+            OfferStatus.IN_REALIZATION -> R.id.viewofferstatus_chip_in_realization
+            OfferStatus.DONE -> R.id.viewofferstatus_chip_done
+            OfferStatus.NEW -> null
+        }
+
+        if(id != null) {
+            binding.viewofferstatusChips.check(id)
         }
     }
 
@@ -94,6 +128,7 @@ class OfferStatusToolbarView(context: Context, attrs: AttributeSet?) : FrameLayo
         val bundle = Bundle()
         bundle.putParcelable("superState", super.onSaveInstanceState())
         bundle.putBoolean("visible", this.visible)
+        bundle.putSerializable("offerStatus", this.offerStatus)
         return bundle
     }
 
@@ -101,6 +136,7 @@ class OfferStatusToolbarView(context: Context, attrs: AttributeSet?) : FrameLayo
         var superState: Parcelable? = null
         if (state is Bundle) {
             this.visible = state.getBoolean("visible")
+            this.offerStatus = state.getSerializable("offerStatus") as OfferStatus
             superState = state.getParcelable("superState")
         }
         super.onRestoreInstanceState(superState)
