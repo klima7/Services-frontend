@@ -50,6 +50,12 @@ class OfferFragment: BaseFragment<FragmentOfferBinding>() {
         viewModel.showRatingVisible.observe(viewLifecycleOwner) { visible ->
             showRatingItem.isVisible = visible
         }
+
+        lifecycleScope.launch {
+            binding.offerStatusToolbar.setVisibleInstant(false)
+            delay(300)
+            binding.offerStatusToolbar.setVisibleAnimate(true)
+        }
     }
 
     @ExperimentalCoroutinesApi
@@ -125,5 +131,14 @@ class OfferFragment: BaseFragment<FragmentOfferBinding>() {
     private fun call(phoneNumber: String) {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse("tel:$phoneNumber"))
         startActivity(intent)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        lifecycleScope.launch {
+            binding.offerStatusToolbar.setVisibleInstant(false)
+            delay(300)
+            binding.offerStatusToolbar.setVisibleAnimate(true)
+        }
     }
 }
