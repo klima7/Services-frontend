@@ -10,7 +10,6 @@ import com.klima7.services.client.features.jobsetup.location.AddLastLocationUC
 import com.klima7.services.client.features.jobsetup.location.GetLastLocationsUC
 import com.klima7.services.client.features.jobsetup.service.GetServicesFromCategoryUC
 import com.klima7.services.client.features.newjob.GetAllCategoriesUC
-import com.klima7.services.client.features.offer.GetOfferStreamUC
 import com.klima7.services.client.features.offers.FinishJobUC
 import com.klima7.services.client.features.offers.GetOffersWithExpertForJobUC
 import com.klima7.services.client.features.setup.GetCurrentClientSetupStateUC
@@ -29,7 +28,6 @@ val useCasesModule = module {
     single { GetCurrentClientJobsUC(get(), get()) }
     single { GetJobUC(get()) }
     single { GetOffersWithExpertForJobUC(get(), get()) }
-    single { GetOfferStreamUC(get()) }
     single { FinishJobUC(get()) }
     single { GetOfferWithExpertUC(get(), get()) }
     single { AddRatingUC(get()) }

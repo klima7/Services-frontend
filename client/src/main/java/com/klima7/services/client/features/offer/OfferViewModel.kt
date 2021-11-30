@@ -4,14 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.components.offer.BaseOfferViewModel
+import com.klima7.services.common.components.offer.GetOfferStreamUC
 import com.klima7.services.common.components.offer.SetOfferStatusUC
 import com.klima7.services.common.models.Expert
 import com.klima7.services.common.models.Offer
-import com.klima7.services.common.models.OfferStatus
 import com.klima7.services.common.usecases.GetExpertUC
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 class OfferViewModel(
     setOfferStatusUC: SetOfferStatusUC,

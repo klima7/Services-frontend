@@ -1,4 +1,4 @@
-package com.klima7.services.client.features.offer
+package com.klima7.services.common.components.offer
 
 import com.klima7.services.common.core.BaseUC
 import com.klima7.services.common.core.Outcome

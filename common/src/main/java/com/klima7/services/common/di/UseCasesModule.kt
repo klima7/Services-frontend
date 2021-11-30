@@ -4,6 +4,7 @@ import com.klima7.services.common.components.rating.GetRatingWithExpertUC
 import com.klima7.services.common.components.ratings.GetRatingsForExpertUC
 import com.klima7.services.common.components.msgsend.SendImageMessageUC
 import com.klima7.services.common.components.msgsend.SendTextMessageUC
+import com.klima7.services.common.components.offer.GetOfferStreamUC
 import com.klima7.services.common.components.offer.SetOfferStatusUC
 import com.klima7.services.common.components.profile.services.GetServicesFromIds
 import com.klima7.services.common.usecases.GetExpertUC
@@ -20,5 +21,6 @@ val useCasesModule = module {
     single { GetRatingWithExpertUC(get(), get()) }
     single { GetExpertUC(get()) }
     single { SetOfferStatusUC(get()) }
+    single { GetOfferStreamUC(get()) }
 
 }
