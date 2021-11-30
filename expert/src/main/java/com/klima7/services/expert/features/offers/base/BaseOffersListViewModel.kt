@@ -14,7 +14,8 @@ import kotlinx.coroutines.flow.combine
 
 abstract class BaseOffersListViewModel(
     private val getOffersForCurrentExpertUC: GetOffersForCurrentExpertUC,
-    private val moveOfferUC: MoveOfferUC,
+    private val setOfferArchivedUC: SetOfferArchivedUC,
+    private val shouldArchive: Boolean,
 ): BaseViewModel() {
 
     sealed class Event: BaseEvent() {
@@ -52,9 +53,9 @@ abstract class BaseOffersListViewModel(
         lastMovedOfferId = offerId
         hideOffer(offerId)
         loadState.value = LoadAreaView.State.PENDING
-        moveOfferUC.start(
+        setOfferArchivedUC.start(
             viewModelScope,
-            MoveOfferUC.Params(offerId),
+            SetOfferArchivedUC.Params(offerId, shouldArchive),
             { failure ->
                 loadState.value = LoadAreaView.State.MAIN
                 sendEvent(Event.ShowMoveFailure(failure))
