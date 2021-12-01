@@ -8,7 +8,6 @@ import android.widget.FrameLayout
 import androidx.databinding.BindingMethod
 import androidx.databinding.DataBindingUtil
 import com.klima7.services.common.R
-import com.klima7.services.common.components.views.JobView
 import com.klima7.services.common.databinding.ViewContactTileBinding
 
 @androidx.databinding.BindingMethods(

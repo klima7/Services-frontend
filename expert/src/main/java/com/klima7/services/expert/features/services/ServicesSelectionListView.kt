@@ -4,9 +4,11 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import androidx.databinding.*
+import androidx.databinding.BindingAdapter
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.InverseBindingAdapter
+import androidx.databinding.InverseBindingListener
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.klima7.services.common.models.Category
 import com.klima7.services.common.models.CategoryWithServices
 import com.klima7.services.common.models.Service
 import com.klima7.services.expert.R

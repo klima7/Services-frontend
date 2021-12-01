@@ -9,7 +9,6 @@ import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.common.components.msgsend.SendMessageFragment
 import com.klima7.services.common.components.msgviewer.MessageViewerFragment
 import com.klima7.services.common.components.offer.BaseOfferFragment
-import com.klima7.services.common.components.views.SendMessageBarView
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Role
 import com.klima7.services.common.platform.BaseViewModel

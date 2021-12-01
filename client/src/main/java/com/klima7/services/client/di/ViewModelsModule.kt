@@ -1,17 +1,17 @@
 package com.klima7.services.client.di
 
 import com.klima7.services.client.features.addrating.AddRatingViewModel
-import com.klima7.services.client.features.newjob.NewJobViewModel
 import com.klima7.services.client.features.delete.DeleteViewModel
 import com.klima7.services.client.features.home.HomeViewModel
 import com.klima7.services.client.features.info.InfoViewModel
 import com.klima7.services.client.features.job.JobViewModel
 import com.klima7.services.client.features.jobs.JobsViewModel
+import com.klima7.services.client.features.jobsetup.JobSetupViewModel
 import com.klima7.services.client.features.jobsetup.created.JobCreatedViewModel
 import com.klima7.services.client.features.jobsetup.details.JobDetailsViewModel
 import com.klima7.services.client.features.jobsetup.location.LocationViewModel
-import com.klima7.services.client.features.jobsetup.JobSetupViewModel
 import com.klima7.services.client.features.jobsetup.service.ServiceViewModel
+import com.klima7.services.client.features.newjob.NewJobViewModel
 import com.klima7.services.client.features.offer.OfferViewModel
 import com.klima7.services.client.features.offers.OffersViewModel
 import com.klima7.services.client.features.profile.ProfileContentViewModel

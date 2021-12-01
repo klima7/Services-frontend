@@ -9,7 +9,6 @@ import com.klima7.services.common.components.offer.SetOfferStatusUC
 import com.klima7.services.common.models.Expert
 import com.klima7.services.common.models.Offer
 import com.klima7.services.common.usecases.GetExpertUC
-import kotlinx.coroutines.flow.collectLatest
 
 class OfferViewModel(
     setOfferStatusUC: SetOfferStatusUC,

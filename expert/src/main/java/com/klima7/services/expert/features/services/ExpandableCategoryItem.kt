@@ -1,14 +1,11 @@
 package com.klima7.services.expert.features.services
 
-import android.util.Log
 import com.airbnb.lottie.LottieAnimationView
 import com.klima7.services.common.models.Category
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.ElementExpandableCategoryBinding
 import com.xwray.groupie.ExpandableGroup
 import com.xwray.groupie.ExpandableItem
-import com.xwray.groupie.Group
-import com.xwray.groupie.GroupDataObserver
 import com.xwray.groupie.databinding.BindableItem
 
 class ExpandableCategoryItem(

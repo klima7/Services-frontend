@@ -1,6 +1,5 @@
 package com.klima7.services.expert.features.services
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
@@ -8,7 +7,6 @@ import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.core.None
 import com.klima7.services.common.models.CategoryWithServices
 import com.klima7.services.common.models.Failure
-import com.klima7.services.common.models.Service
 import com.klima7.services.common.platform.BaseViewModel
 
 class ServicesViewModel(

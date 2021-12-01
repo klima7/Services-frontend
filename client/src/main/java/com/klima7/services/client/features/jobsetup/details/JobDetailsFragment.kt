@@ -3,7 +3,6 @@ package com.klima7.services.client.features.jobsetup.details
 import android.os.Bundle
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentJobDetailsBinding
-import com.klima7.services.client.features.info.InfoFragment
 import com.klima7.services.client.features.jobsetup.JobSetupViewModel
 import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.common.models.Failure

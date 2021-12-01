@@ -1,12 +1,12 @@
 package com.klima7.services.common.di
 
-import com.klima7.services.common.components.rating.GetRatingWithExpertUC
-import com.klima7.services.common.components.ratings.GetRatingsForExpertUC
 import com.klima7.services.common.components.msgsend.SendImageMessageUC
 import com.klima7.services.common.components.msgsend.SendTextMessageUC
 import com.klima7.services.common.components.offer.GetOfferStreamUC
 import com.klima7.services.common.components.offer.SetOfferStatusUC
 import com.klima7.services.common.components.profile.services.GetServicesFromIds
+import com.klima7.services.common.components.rating.GetRatingWithExpertUC
+import com.klima7.services.common.components.ratings.GetRatingsForExpertUC
 import com.klima7.services.common.usecases.GetExpertUC
 import com.klima7.services.common.usecases.SignOutUC
 import org.koin.dsl.module
