@@ -9,151 +9,180 @@
             type="com.klima7.services.expert.features.area.WorkingAreaViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ScrollView
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/location_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="2dp"
-            app:layout_constraintBottom_toTopOf="@+id/services_save_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="wrap_content"
+            app:title="Zmiana lokalizacji"
+            app:navigationIcon="@drawable/icon_arrow_back"
+            style="@style/ToolBar"
+            />
+
+        <com.klima7.services.common.components.views.LoadAreaView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:la_state="@{viewmodel.loadState}"
+            app:la_failure="@{viewmodel.loadFailure}"
+            app:la_onRefresh="@{()->viewmodel.refresh()}"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="10dp">
+                >
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Centralna lokalizacja"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="8dp"
-                    android:textSize="17sp"
-                    />
-
-                <com.google.android.material.card.MaterialCardView
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    app:cardCornerRadius="12dp"
-                    app:cardBackgroundColor="@color/light_gray"
-                    app:strokeColor="?attr/colorPrimary"
-                    app:strokeWidth="@dimen/stroke_width_around_cards">
-
-                    <androidx.fragment.app.FragmentContainerView
-                        android:id="@+id/location_autocomplete_fragment"
-                        android:name="com.klima7.services.expert.features.area.ClearableAutocompleteSupportFragment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="16dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Promień działania"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="8dp"
-                    android:textSize="17sp"
-                    />
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    app:cardCornerRadius="12dp"
-                    app:cardBackgroundColor="@color/light_gray"
-                    app:strokeColor="?attr/colorPrimary"
-                    app:strokeWidth="@dimen/stroke_width_around_cards">
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="2dp"
+                    app:layout_constraintBottom_toTopOf="@+id/services_save_button"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:paddingTop="8dp">
-
-                        <com.google.android.material.slider.Slider
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:valueFrom="1.0"
-                            android:valueTo="50.0"
-                            android:stepSize="1.0"
-                            android:value="@={viewmodel.radiusFloat}"
-                            android:enabled="@{viewmodel.scrollEnabled}" />
+                        android:padding="10dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="right"
-                            android:text="@{Integer.toString(viewmodel.radius) + ` km`}"
+                            android:text="Centralna lokalizacja"
+                            android:textStyle="bold"
                             android:layout_marginBottom="8dp"
-                            android:layout_marginRight="8dp" />
+                            android:textSize="17sp"
+                            />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            app:cardCornerRadius="12dp"
+                            app:cardBackgroundColor="@color/light_gray"
+                            app:strokeColor="?attr/colorPrimary"
+                            app:strokeWidth="@dimen/stroke_width_around_cards">
+
+                            <androidx.fragment.app.FragmentContainerView
+                                android:id="@+id/location_autocomplete_fragment"
+                                android:name="com.klima7.services.expert.features.area.ClearableAutocompleteSupportFragment"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="16dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Promień działania"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="8dp"
+                            android:textSize="17sp"
+                            />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            app:cardCornerRadius="12dp"
+                            app:cardBackgroundColor="@color/light_gray"
+                            app:strokeColor="?attr/colorPrimary"
+                            app:strokeWidth="@dimen/stroke_width_around_cards">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:paddingTop="8dp">
+
+                                <com.google.android.material.slider.Slider
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:valueFrom="1.0"
+                                    android:valueTo="50.0"
+                                    android:stepSize="1.0"
+                                    android:value="@={viewmodel.radiusFloat}"
+                                    android:enabled="@{viewmodel.scrollEnabled}" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="right"
+                                    android:text="@{Integer.toString(viewmodel.radius) + ` km`}"
+                                    android:layout_marginBottom="8dp"
+                                    android:layout_marginRight="8dp" />
+
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="16dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Podgląd"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="8dp"
+                            android:textSize="17sp"
+                            />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            app:cardCornerRadius="12dp"
+                            app:cardBackgroundColor="@color/light_gray"
+                            app:strokeColor="?attr/colorPrimary"
+                            app:strokeWidth="@dimen/stroke_width_around_cards" >
+
+                            <androidx.fragment.app.FragmentContainerView
+                                android:id="@+id/location_area_visualization_fragment"
+                                android:name="com.klima7.services.common.components.areavisual.AreaVisualizationFragment"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+
+                        </com.google.android.material.card.MaterialCardView>
 
                     </LinearLayout>
 
-                </com.google.android.material.card.MaterialCardView>
+                </ScrollView>
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="16dp" />
-
-                <TextView
+                <Button
+                    android:id="@+id/services_save_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Podgląd"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="8dp"
-                    android:textSize="17sp"
-                    />
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    app:cardCornerRadius="12dp"
-                    app:cardBackgroundColor="@color/light_gray"
-                    app:strokeColor="?attr/colorPrimary"
-                    app:strokeWidth="@dimen/stroke_width_around_cards" >
-
-                    <androidx.fragment.app.FragmentContainerView
-                        android:id="@+id/location_area_visualization_fragment"
-                        android:name="com.klima7.services.common.components.areavisual.AreaVisualizationFragment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-
-                </com.google.android.material.card.MaterialCardView>
+                    android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
+                    android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
+                    android:background="@drawable/rounded_button"
+                    android:text="Zapisz"
+                    android:onClick="@{() -> viewmodel.saveClicked()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:enabled="@{viewmodel.saveEnabled}"/>
 
             </LinearLayout>
 
-        </ScrollView>
+        </com.klima7.services.common.components.views.LoadAreaView>
 
-        <Button
-            android:id="@+id/services_save_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
-            android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
-            android:background="@drawable/rounded_button"
-            android:text="Zapisz"
-            android:onClick="@{() -> viewmodel.saveClicked()}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:enabled="@{viewmodel.saveEnabled}"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </layout>

@@ -8,7 +8,7 @@ import com.google.android.libraries.places.widget.listener.PlaceSelectionListene
 import com.klima7.services.common.components.areavisual.AreaVisualizationFragment
 import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.common.models.Failure
-import com.klima7.services.common.platform.BaseLoadFragment
+import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentAreaBinding
@@ -16,7 +16,7 @@ import com.klima7.services.expert.features.area.ClearableAutocompleteSupportFrag
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class WorkingAreaFragment: BaseLoadFragment<FragmentAreaBinding>() {
+class WorkingAreaFragment: BaseFragment<FragmentAreaBinding>() {
 
     companion object {
         const val SAVE_LOCATION_FAILURE_KEY = "SAVE_LOCATION_FAILURE_KEY"
@@ -33,6 +33,8 @@ class WorkingAreaFragment: BaseLoadFragment<FragmentAreaBinding>() {
 
     override fun init() {
         super.init()
+
+        binding.locationToolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
 
         childFragmentManager.setFragmentResultListener(SAVE_LOCATION_FAILURE_KEY, viewLifecycleOwner) { _: String, bundle: Bundle ->
             val result = bundle.get(FailureDialogFragment.BUNDLE_KEY)

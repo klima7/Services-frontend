@@ -4,22 +4,26 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.model.LatLng
+import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.core.None
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.WorkingArea
-import com.klima7.services.common.platform.BaseLoadViewModel
+import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.common.ui.toLatLng
 import com.klima7.services.expert.usecases.GetCurrentExpertUC
 
 class WorkingAreaViewModel(
     private val getCurrentExpertUC: GetCurrentExpertUC,
     private val setCurrentExpertWorkingAreaUC: SetCurrentExpertWorkingAreaUC
-): BaseLoadViewModel() {
+): BaseViewModel() {
 
     sealed class Event: BaseEvent() {
         data class ShowSaveLocationFailure(val failure: Failure): Event()
         object Finish: Event()
     }
+
+    val loadState = MutableLiveData(LoadAreaView.State.LOAD)
+    val loadFailure = MutableLiveData<Failure>()
 
     // Internal data
     private var placeId: String? = null
@@ -38,7 +42,7 @@ class WorkingAreaViewModel(
         loadContent()
     }
 
-    override fun refresh() {
+    fun refresh() {
         loadContent()
     }
 
@@ -63,15 +67,16 @@ class WorkingAreaViewModel(
     }
 
     private fun loadContent() {
-        showLoading()
+        loadState.value = LoadAreaView.State.LOAD
         getCurrentExpertUC.start(
             viewModelScope,
             None(),
             { failure ->
-                showFailure(failure)
+                loadFailure.value = failure
+                loadState.value = LoadAreaView.State.FAILURE
             }, { expert ->
                 initWithWorkingArea(expert.area)
-                showMain()
+                loadState.value = LoadAreaView.State.MAIN
             })
     }
 
@@ -88,7 +93,7 @@ class WorkingAreaViewModel(
     }
 
     private fun save() {
-        showPending()
+        loadState.value = LoadAreaView.State.PENDING
         val constPlaceId = placeId
         val constRadius = radius.value
         if(constPlaceId != null && constRadius != null) {
@@ -96,16 +101,16 @@ class WorkingAreaViewModel(
                 viewModelScope,
                 SetCurrentExpertWorkingAreaUC.Params(constPlaceId, constRadius),
                 { failure ->
-                    showMain()
+                    loadState.value = LoadAreaView.State.MAIN
                     sendEvent(Event.ShowSaveLocationFailure(failure))
                 }, {
-                    showMain()
+                    loadState.value = LoadAreaView.State.MAIN
                     sendEvent(Event.Finish)
                 }
             )
         }
         else {
-            showMain()
+            loadState.value = LoadAreaView.State.MAIN
         }
     }
 
