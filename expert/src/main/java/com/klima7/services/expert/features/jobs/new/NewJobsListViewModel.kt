@@ -1,6 +1,7 @@
 package com.klima7.services.expert.features.jobs.new
 
 import androidx.lifecycle.viewModelScope
+import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.models.Failure
 import com.klima7.services.expert.features.jobs.base.BaseJobsListViewModel
 import com.klima7.services.expert.features.jobs.base.GetCurrentExpertJobsUC
@@ -31,17 +32,17 @@ class NewJobsListViewModel(
     private fun rejectJob(jobId: String) {
         lastRejectedJobId = jobId
         hideJob(jobId)
-        showPending()
+        loadState.value = LoadAreaView.State.PENDING
         rejectJobUC.start(
             viewModelScope,
             RejectJobUC.Params(jobId),
             { failure ->
-                showMain()
+                loadState.value = LoadAreaView.State.MAIN
                 showJob(jobId)
                 sendEvent(Event.ShowRejectFailure(failure));
             },
             {
-                showMain()
+                loadState.value = LoadAreaView.State.MAIN
             }
         )
     }

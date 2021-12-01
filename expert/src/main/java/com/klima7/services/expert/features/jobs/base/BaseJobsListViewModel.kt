@@ -7,8 +7,10 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import androidx.paging.filter
+import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.core.None
-import com.klima7.services.common.platform.BaseLoadViewModel
+import com.klima7.services.common.models.Failure
+import com.klima7.services.common.platform.BaseViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
@@ -16,10 +18,13 @@ import kotlinx.coroutines.flow.flatMapLatest
 abstract class BaseJobsListViewModel(
     private val getJobsIdsUC: BaseGetJobsIdsUC,
     private val getCurrentExpertJobsUC: GetCurrentExpertJobsUC,
-): BaseLoadViewModel() {
+): BaseViewModel() {
 
     private val allJobsIds = MutableLiveData<List<String>>()
     private val visibleJobsIds = MutableLiveData<Set<String>>()
+
+    val loadState = MutableLiveData(LoadAreaView.State.LOAD)
+    val loadFailure = MutableLiveData<Failure>()
 
     @ExperimentalCoroutinesApi
     val pagingDataFlow = allJobsIds.asFlow().flatMapLatest { list -> createPager(list).flow }
@@ -32,7 +37,7 @@ abstract class BaseJobsListViewModel(
         getIds()
     }
 
-    override fun refresh() {
+    fun refresh() {
         getIds()
     }
 
@@ -47,17 +52,18 @@ abstract class BaseJobsListViewModel(
     }
 
     private fun getIds() {
-        showLoading()
+        loadState.value = LoadAreaView.State.LOAD
         getJobsIdsUC.start(
             viewModelScope,
             None(),
             { failure ->
-                showFailure(failure)
+                loadFailure.value = failure
+                loadState.value = LoadAreaView.State.FAILURE
             },
             { ids ->
                 allJobsIds.value = ids
                 visibleJobsIds.value = ids.toMutableSet()
-                showMain()
+                loadState.value = LoadAreaView.State.MAIN
             }
         )
     }

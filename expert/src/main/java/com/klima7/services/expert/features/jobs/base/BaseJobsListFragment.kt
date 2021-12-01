@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.common.models.ExpertJob
+import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseLoadFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentJobsListBinding
@@ -18,7 +19,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 
-abstract class BaseJobsListFragment : BaseLoadFragment<FragmentJobsListBinding>(), JobsAdapter.OnJobListener {
+abstract class BaseJobsListFragment : BaseFragment<FragmentJobsListBinding>(), JobsAdapter.OnJobListener {
 
     override val layoutId = R.layout.fragment_jobs_list
     abstract override val viewModel: BaseJobsListViewModel
