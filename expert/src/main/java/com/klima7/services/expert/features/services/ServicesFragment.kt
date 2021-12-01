@@ -30,8 +30,6 @@ class ServicesFragment: BaseFragment<FragmentServicesBinding>() {
 
         binding.servicesToolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
 
-        binding.servicesSaveButton.setOnClickListener { saveButtonClicked() }
-
         childFragmentManager.setFragmentResultListener(SAVE_FAILURE_KEY, viewLifecycleOwner) { _: String, bundle: Bundle ->
             val result = bundle.get(FailureDialogFragment.BUNDLE_KEY)
             if(result == FailureDialogFragment.Result.RETRY) {
@@ -50,12 +48,6 @@ class ServicesFragment: BaseFragment<FragmentServicesBinding>() {
             is ServicesViewModel.Event.ShowSaveFailure -> showSaveFailure(event.failure)
             ServicesViewModel.Event.Finish -> finish()
         }
-    }
-
-    private fun saveButtonClicked() {
-//        val fragment = childFragmentManager.findFragmentById(R.id.services_services) as ServicesMultiCategoriesFragment
-//        val selected = fragment.getSelectedServices()
-//        viewModel.saveClicked(selected)
     }
 
     private fun finish() {

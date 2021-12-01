@@ -1,5 +1,6 @@
 package com.klima7.services.expert.features.services
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.components.views.LoadAreaView
@@ -33,15 +34,12 @@ class ServicesViewModel(
         loadContent()
     }
 
-    fun saveClicked(services: List<Service>) {
-//        lastServices = services
-//        save(services)
+    fun saveClicked() {
+        saveSelectedServices()
     }
 
     fun retrySave() {
-//        lastServices?.let { services ->
-//            save(services)
-//        }
+        saveSelectedServices()
     }
 
     private fun loadContent() {
@@ -66,11 +64,18 @@ class ServicesViewModel(
         )
     }
 
-    private fun save(services: List<Service>) {
+    private fun saveSelectedServices() {
+        val servicesIds = this.selectedServices.value
+        if(servicesIds != null) {
+            saveServices(servicesIds)
+        }
+    }
+
+    private fun saveServices(servicesIds: Set<String>) {
         loadState.value = LoadAreaView.State.PENDING
         setCurrentExpertServicesUC.start(
             viewModelScope,
-            SetCurrentExpertServicesUC.Params(services),
+            SetCurrentExpertServicesUC.Params(servicesIds),
             { failure ->
                 loadState.value = LoadAreaView.State.MAIN
                 sendEvent(Event.ShowSaveFailure(failure))
