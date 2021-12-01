@@ -13,6 +13,7 @@ class ProfileServicesViewModel(
 
     private var servicesIds = listOf<String>()
     val services = MutableLiveData<List<Service>>()
+
     val loadState = MutableLiveData(LoadAreaView.State.LOAD)
     val loadFailure = MutableLiveData<Failure>()
 

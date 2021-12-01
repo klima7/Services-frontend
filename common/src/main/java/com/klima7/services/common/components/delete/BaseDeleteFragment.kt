@@ -5,25 +5,20 @@ import com.klima7.services.common.R
 import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.common.databinding.FragmentDeleteBinding
 import com.klima7.services.common.models.Failure
-import com.klima7.services.common.platform.BaseLoadFragment
+import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
 
 
 abstract class BaseDeleteFragment(
     private val titleRes: Int,
     private val textRes: Int,
-): BaseLoadFragment<FragmentDeleteBinding>() {
+): BaseFragment<FragmentDeleteBinding>() {
 
     override val layoutId = R.layout.fragment_delete
     abstract override val viewModel: BaseDeleteViewModel
 
     companion object {
         const val DELETE_FAILURE_DIALOG_KEY = "DELETE_FAILURE_DIALOG_KEY"
-    }
-
-    override fun onFirstCreation() {
-        super.onFirstCreation()
-        viewModel.start()
     }
 
     override fun init() {
