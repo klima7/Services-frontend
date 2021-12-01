@@ -2,6 +2,7 @@ package com.klima7.services.common.components.views
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.LinearInterpolator
@@ -9,6 +10,7 @@ import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.children
 import androidx.databinding.BindingMethod
 import com.klima7.services.common.R
 import com.klima7.services.common.models.Failure
@@ -101,7 +103,10 @@ class LoadAreaView : FrameLayout {
     }
 
     private fun setup() {
-        if(childCount != 1) throw IllegalStateException("LoadAreaView must have only one child")
+        if(childCount != 1) {
+            Log.i("Hello", "Childs: ${children}")
+            throw IllegalStateException("LoadAreaView must have only one child")
+        }
         main = getChildAt(0)
         val mixin = LayoutInflater.from(context).inflate(R.layout.part_load, this, false)
         addView(mixin)

@@ -12,6 +12,7 @@ import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentAreaVisualizationBinding
 import com.klima7.services.common.models.WorkingArea
 import com.klima7.services.common.platform.BaseFragment
+import com.klima7.services.common.ui.convertDpToPixel
 import com.klima7.services.common.ui.toLatLng
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -86,7 +87,9 @@ class AreaVisualizationFragment: BaseFragment<FragmentAreaVisualizationBinding>(
         }
 
         viewModel.mapBounds.observe(viewLifecycleOwner) { bounds ->
-            map.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 20))
+            val width = resources.displayMetrics.widthPixels
+            val height: Int = convertDpToPixel(300f, requireContext())
+            map.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, width, height, 30))
         }
     }
 

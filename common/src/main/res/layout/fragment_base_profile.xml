@@ -10,109 +10,116 @@
             type="com.klima7.services.common.components.profile.BaseProfileViewModel" />
     </data>
 
-    <com.klima7.services.common.components.views.LoadAreaView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:la_state="@{viewmodel.loadState}"
-        app:la_failure="@{viewmodel.loadFailure}"
-        app:la_onRefresh="@{()->viewmodel.refresh()}"
+        android:layout_height="match_parent"
         >
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/profile_refresh_layout"
+        <com.klima7.services.common.components.views.LoadAreaView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            app:la_state="@{viewmodel.loadState}"
+            app:la_failure="@{viewmodel.loadFailure}"
+            app:la_onRefresh="@{()->viewmodel.refresh()}"
             >
 
-            <ScrollView
-                android:id="@+id/main_content"
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/profile_refresh_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                >
 
-                <LinearLayout
+                <ScrollView
+                    android:id="@+id/main_content"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingVertical="16dp">
+                    android:layout_height="match_parent">
 
-                    <fragment
-                        android:id="@+id/profile_header_fragment"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:name="com.klima7.services.common.components.profile.header.ProfileHeaderFragment" />
+                        android:orientation="vertical"
+                        android:paddingVertical="16dp">
 
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="32dp" />
+                        <fragment
+                            android:id="@+id/profile_header_fragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:name="com.klima7.services.common.components.profile.header.ProfileHeaderFragment" />
 
-                    <fragment
-                        android:id="@+id/profile_description_fragment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:name="com.klima7.services.common.components.profile.description.ProfileDescriptionFragment" />
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="32dp" />
 
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="32dp" />
+                        <fragment
+                            android:id="@+id/profile_description_fragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:name="com.klima7.services.common.components.profile.description.ProfileDescriptionFragment" />
 
-                    <fragment
-                        android:id="@+id/profile_contact_fragment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:name="com.klima7.services.common.components.profile.contact.ProfileContactFragment"
-                        />
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="32dp" />
 
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="24dp" />
+                        <fragment
+                            android:id="@+id/profile_contact_fragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:name="com.klima7.services.common.components.profile.contact.ProfileContactFragment"
+                            />
 
-                    <fragment
-                        android:id="@+id/profile_services_fragment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:name="com.klima7.services.common.components.profile.services.ProfileServicesFragment"
-                        />
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="24dp" />
 
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="32dp" />
+                        <fragment
+                            android:id="@+id/profile_services_fragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:name="com.klima7.services.common.components.profile.services.ProfileServicesFragment"
+                            />
 
-                    <fragment
-                        android:id="@+id/profile_area_fragment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:name="com.klima7.services.common.components.profile.area.ProfileAreaFragment"
-                        />
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="32dp" />
 
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="32dp" />
+                        <fragment
+                            android:id="@+id/profile_area_fragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:name="com.klima7.services.common.components.profile.area.ProfileAreaFragment"
+                            />
 
-                    <fragment
-                        android:id="@+id/profile_rating_fragment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:name="com.klima7.services.common.components.profile.average.ProfileAverageFragment"
-                        />
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="32dp" />
 
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="32dp" />
+                        <fragment
+                            android:id="@+id/profile_rating_fragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:name="com.klima7.services.common.components.profile.average.ProfileAverageFragment"
+                            />
 
-                    <fragment
-                        android:id="@+id/profile_comments_fragment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:name="com.klima7.services.common.components.profile.ratings.ProfileRatingsFragment"
-                        />
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="32dp" />
+
+                        <fragment
+                            android:id="@+id/profile_comments_fragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:name="com.klima7.services.common.components.profile.ratings.ProfileRatingsFragment"
+                            />
 
 
-                </LinearLayout>
+                    </LinearLayout>
 
-            </ScrollView>
+                </ScrollView>
 
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    </com.klima7.services.common.components.views.LoadAreaView>
+        </com.klima7.services.common.components.views.LoadAreaView>
+
+    </FrameLayout>
 
 </layout>
