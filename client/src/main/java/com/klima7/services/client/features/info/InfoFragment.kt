@@ -5,12 +5,13 @@ import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentInfoBinding
 import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.common.models.Failure
+import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseLoadFragment
 import com.klima7.services.common.platform.BaseViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class InfoFragment: BaseLoadFragment<FragmentInfoBinding>() {
+class InfoFragment: BaseFragment<FragmentInfoBinding>() {
 
     override val layoutId = R.layout.fragment_info
     override val viewModel: InfoViewModel by viewModel()
@@ -26,6 +27,8 @@ class InfoFragment: BaseLoadFragment<FragmentInfoBinding>() {
 
     override fun init() {
         super.init()
+
+        binding.infoToolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
 
         childFragmentManager.setFragmentResultListener(SAVE_INFO_FAILURE_KEY, viewLifecycleOwner) { _: String, bundle: Bundle ->
             val result = bundle.get(FailureDialogFragment.BUNDLE_KEY)

@@ -4,21 +4,26 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.client.usecases.GetCurrentClientUC
+import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.core.None
 import com.klima7.services.common.extensions.nullifyBlank
 import com.klima7.services.common.models.Client
 import com.klima7.services.common.models.ClientInfo
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.platform.BaseLoadViewModel
+import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.common.platform.CombinedLiveData
 
 class InfoViewModel(
     private val getCurrentClientUC: GetCurrentClientUC,
     private val setCurrentClientInfoUC: SetCurrentClientInfoUC
-): BaseLoadViewModel() {
+): BaseViewModel() {
 
     val name = MutableLiveData("")
     val phone = MutableLiveData("")
+
+    val loadState = MutableLiveData(LoadAreaView.State.LOAD)
+    val loadFailure = MutableLiveData<Failure>()
 
     val nameError = Transformations.map(name) {
         if (it.nullifyBlank() == null) InfoFormErrors.NameError.NotProvided else null
@@ -43,7 +48,7 @@ class InfoViewModel(
         loadContent()
     }
 
-    override fun refresh() {
+    fun refresh() {
         loadContent()
     }
 
@@ -56,16 +61,17 @@ class InfoViewModel(
     }
 
     private fun loadContent() {
-        showLoading()
+        loadState.value = LoadAreaView.State.LOAD
         getCurrentClientUC.start(
             viewModelScope,
             None(),
             { failure ->
-                showFailure(failure)
+                loadFailure.value = failure
+                loadState.value = LoadAreaView.State.FAILURE
             },
             { expert ->
                 setFields(expert)
-                showMain()
+                loadState.value = LoadAreaView.State.MAIN
             }
         )
     }
@@ -76,7 +82,7 @@ class InfoViewModel(
     }
 
     private fun save() {
-        showPending()
+        loadState.value = LoadAreaView.State.PENDING
         setCurrentClientInfoUC.start(
             viewModelScope,
             SetCurrentClientInfoUC.Params(
@@ -87,11 +93,11 @@ class InfoViewModel(
             ),
             { failure ->
                 sendEvent(Event.ShowSaveFailure(failure))
-                showMain()
+                loadState.value = LoadAreaView.State.MAIN
             },
             {
                 sendEvent(Event.FinishInfo)
-                showMain()
+                loadState.value = LoadAreaView.State.MAIN
             }
         )
     }

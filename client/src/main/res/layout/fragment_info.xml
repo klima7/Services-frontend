@@ -11,85 +11,111 @@
             type="com.klima7.services.client.features.info.InfoViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ScrollView
-            android:id="@+id/scrollView3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/services_save_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/info_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Zmiana profilu"
+            app:navigationIcon="@drawable/icon_arrow_back"
+            style="@style/ToolBar"
+            />
+
+        <com.klima7.services.common.components.views.LoadAreaView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:la_state="@{viewmodel.loadState}"
+            app:la_failure="@{viewmodel.loadFailure}"
+            app:la_onRefresh="@{()->viewmodel.refresh()}"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="16dp">
+                >
 
-                <!-- Name-->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/info_name"
+                <ScrollView
+                    android:id="@+id/scrollView3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Imie i nazwisko"
-                    app:helperText="Pole wymagane"
-                    app:startIconDrawable="@drawable/icon_person"
-                    style="@style/TextInputLayoutStyle">
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    >
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:maxLength="40"
-                        android:scrollHorizontally="true"
-                        android:singleLine="true"
-                        android:text="@={viewmodel.name}" />
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
-                </com.google.android.material.textfield.TextInputLayout>
+                        <!-- Name-->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/info_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:hint="Imie i nazwisko"
+                            app:helperText="Pole wymagane"
+                            app:startIconDrawable="@drawable/icon_person"
+                            style="@style/TextInputLayoutStyle">
 
-                <!-- Phone -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/info_phone"
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:maxLength="40"
+                                android:scrollHorizontally="true"
+                                android:singleLine="true"
+                                android:text="@={viewmodel.name}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Phone -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/info_phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:hint="Numer telefonu"
+                            app:helperText=" "
+                            app:startIconDrawable="@drawable/icon_phone"
+                            style="@style/TextInputLayoutStyle" >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:digits="0123456789+"
+                                android:inputType="phone"
+                                android:maxLength="9"
+                                android:text="@={viewmodel.phone}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+                <Button
+                    android:id="@+id/services_save_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Numer telefonu"
-                    app:helperText=" "
-                    app:startIconDrawable="@drawable/icon_phone"
-                    style="@style/TextInputLayoutStyle" >
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:digits="0123456789+"
-                        android:inputType="phone"
-                        android:maxLength="9"
-                        android:text="@={viewmodel.phone}" />
-
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
+                    android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
+                    android:enabled="@{viewmodel.saveButtonEnabled}"
+                    android:onClick="@{() -> viewmodel.saveClicked()}"
+                    android:text="Zapisz"
+                    android:background="@drawable/rounded_button"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
             </LinearLayout>
 
-        </ScrollView>
+        </com.klima7.services.common.components.views.LoadAreaView>
 
-        <Button
-            android:id="@+id/services_save_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
-            android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
-            android:enabled="@{viewmodel.saveButtonEnabled}"
-            android:onClick="@{() -> viewmodel.saveClicked()}"
-            android:text="Zapisz"
-            android:background="@drawable/rounded_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </layout>
