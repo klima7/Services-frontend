@@ -2,6 +2,7 @@ package com.klima7.services.expert.features.services
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.core.None
@@ -25,6 +26,9 @@ class ServicesViewModel(
 
     val loadState = MutableLiveData(LoadAreaView.State.LOAD)
     val loadFailure = MutableLiveData<Failure>()
+
+    val saveButtonEnabled = selectedServices.map { it?.isNotEmpty() }
+    val messageVisible = selectedServices.map { it?.isEmpty() }
 
     fun started() {
         loadContent()

@@ -20,9 +20,7 @@ class SelectableServiceItem(
         binding.elemselectableserviceCheckbox.isChecked = checked
         this.checkbox = binding.elemselectableserviceCheckbox
         binding.elemselectableserviceCheckbox.setOnCheckedChangeListener { _, isChecked ->
-            if(isChecked != checked) {
-                selectionManager.serviceSelectionChanged(service, isChecked)
-            }
+            selectionManager.serviceSelectionChanged(service, isChecked)
         }
     }
 
