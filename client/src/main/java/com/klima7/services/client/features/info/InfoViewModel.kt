@@ -10,7 +10,6 @@ import com.klima7.services.common.extensions.nullifyBlank
 import com.klima7.services.common.models.Client
 import com.klima7.services.common.models.ClientInfo
 import com.klima7.services.common.models.Failure
-import com.klima7.services.common.platform.BaseLoadViewModel
 import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.common.platform.CombinedLiveData
 

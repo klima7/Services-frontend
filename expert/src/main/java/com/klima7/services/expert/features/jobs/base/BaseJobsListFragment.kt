@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.common.models.ExpertJob
 import com.klima7.services.common.platform.BaseFragment
-import com.klima7.services.common.platform.BaseLoadFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentJobsListBinding
 import com.klima7.services.expert.features.job.JobActivity

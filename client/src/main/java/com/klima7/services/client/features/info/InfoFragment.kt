@@ -6,7 +6,6 @@ import com.klima7.services.client.databinding.FragmentInfoBinding
 import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.platform.BaseFragment
-import com.klima7.services.common.platform.BaseLoadFragment
 import com.klima7.services.common.platform.BaseViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

@@ -9,7 +9,6 @@ import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.core.None
 import com.klima7.services.common.extensions.nullifyBlank
 import com.klima7.services.common.models.*
-import com.klima7.services.common.platform.BaseLoadViewModel
 import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.common.platform.CombinedLiveData
 import com.klima7.services.expert.usecases.GetCurrentExpertUC

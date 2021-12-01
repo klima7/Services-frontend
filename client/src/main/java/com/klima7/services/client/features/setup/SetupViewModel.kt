@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.core.None
 import com.klima7.services.common.models.Failure
-import com.klima7.services.common.platform.BaseLoadViewModel
 import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.common.usecases.SignOutUC
 
