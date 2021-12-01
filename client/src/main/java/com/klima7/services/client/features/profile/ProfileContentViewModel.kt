@@ -3,6 +3,7 @@ package com.klima7.services.client.features.profile
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.usecases.GetExpertUC
 import com.klima7.services.common.components.profile.BaseProfileViewModel
+import com.klima7.services.common.components.views.LoadAreaView
 
 class ProfileContentViewModel(
     private val getExpertUC: GetExpertUC
@@ -16,16 +17,17 @@ class ProfileContentViewModel(
     }
 
     override fun loadContent() {
-        showLoading()
+        loadState.value = LoadAreaView.State.LOAD
         getExpertUC.start(
             viewModelScope,
             GetExpertUC.Params(expertUid),
             { failure ->
-                showFailure(failure)
+                loadFailure.value = failure
+                loadState.value = LoadAreaView.State.FAILURE
             },
             { expert ->
                 this.expert.value = expert
-                showMain()
+                loadState.value = LoadAreaView.State.MAIN
             }
         )
     }

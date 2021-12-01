@@ -2,6 +2,7 @@ package com.klima7.services.expert.features.profile
 
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.components.profile.BaseProfileViewModel
+import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.core.None
 import com.klima7.services.expert.usecases.GetCurrentExpertUC
 
@@ -14,16 +15,17 @@ class ProfileViewModel(
     }
 
     override fun loadContent() {
-        showPending()
+        loadState.value = LoadAreaView.State.PENDING
         getCurrentExpertUC.start(
             viewModelScope,
             None(),
             { failure ->
-                showFailure(failure)
+                loadFailure.value = failure
+                loadState.value = LoadAreaView.State.FAILURE
             },
             { expert ->
                 this.expert.value = expert
-                showMain()
+                loadState.value = LoadAreaView.State.MAIN
             }
         )
     }
