@@ -3,13 +3,13 @@ package com.klima7.services.common.components.splash
 import androidx.activity.result.contract.ActivityResultContracts
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentSplashBinding
-import com.klima7.services.common.platform.BaseLoadFragment
+import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
 
 
 abstract class BaseSplashFragment(
     private val subtitle: Int
-): BaseLoadFragment<FragmentSplashBinding>() {
+): BaseFragment<FragmentSplashBinding>() {
 
     override val layoutId = R.layout.fragment_splash
     abstract override val viewModel: BaseSplashViewModel
