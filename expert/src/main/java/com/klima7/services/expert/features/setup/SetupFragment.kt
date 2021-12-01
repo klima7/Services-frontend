@@ -30,11 +30,6 @@ class SetupFragment: BaseFragment<FragmentSetupBinding>() {
         viewModel.started()
     }
 
-    override fun init() {
-        super.init()
-        binding.setupToolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
-    }
-
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
         super.handleEvent(event)
         when(event) {

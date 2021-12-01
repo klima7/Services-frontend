@@ -7,12 +7,12 @@ import com.klima7.services.client.databinding.FragmentSetupBinding
 import com.klima7.services.client.features.home.HomeActivity
 import com.klima7.services.client.features.info.InfoActivity
 import com.klima7.services.client.features.splash.SplashActivity
-import com.klima7.services.common.platform.BaseLoadFragment
+import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class SetupFragment: BaseLoadFragment<FragmentSetupBinding>() {
+class SetupFragment: BaseFragment<FragmentSetupBinding>() {
 
     override val layoutId = R.layout.fragment_setup
     override val viewModel: SetupViewModel by viewModel()

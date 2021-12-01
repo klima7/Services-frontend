@@ -10,87 +10,105 @@
             type="com.klima7.services.client.features.setup.SetupViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settings_toolbar"
-        tools:visibility="visible">
+        android:orientation="vertical"
+        >
 
-        <ScrollView
-            android:id="@+id/scrollView2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/button2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/setup_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Uzupełnianie danych"
+            style="@style/ToolBar"
+            />
+
+        <com.klima7.services.common.components.views.LoadAreaView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:la_state="@{viewmodel.loadState}"
+            app:la_failure="@{viewmodel.loadFailure}"
+            app:la_onRefresh="@{()->viewmodel.refresh()}"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="8dp">
+                >
 
-                <TextView
-                    android:id="@+id/textView3"
+                <ScrollView
+                    android:id="@+id/scrollView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="16dp"
+                            android:text="Aby korzystać z aplikacji w roli eksperta konieczne jest uzupełnienie kilku informacji." />
+
+
+                        <include
+                            layout="@layout/part_setup_tile"
+                            app:action="@{() -> viewmodel.infoClicked()}"
+                            app:description="@{`Uzupełnij informacje o sobie. Dobry profil może zachęcić wielu klientów.`}"
+                            app:ticked="@{viewmodel.setupState.infoSetup}"
+                            app:title="@{`Uzupełnienie profilu`}" />
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+                <LinearLayout
+                    android:id="@+id/button2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="Aby korzystać z aplikacji w roli eksperta konieczne jest uzupełnienie kilku informacji." />
+                    android:orientation="vertical"
+                    >
 
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
+                        android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
+                        android:background="@drawable/rounded_button"
+                        android:onClick="@{()->viewmodel.continueClicked()}"
+                        android:text="Kontynuuj"
+                        android:enabled="@{viewmodel.continueButtonEnabled}"
+                        />
 
-                <include
-                    layout="@layout/part_setup_tile"
-                    app:action="@{() -> viewmodel.infoClicked()}"
-                    app:description="@{`Uzupełnij informacje o sobie. Dobry profil może zachęcić wielu klientów.`}"
-                    app:ticked="@{viewmodel.setupState.infoSetup}"
-                    app:title="@{`Uzupełnienie profilu`}" />
+                    <Button
+                        android:id="@+id/delete_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
+                        android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
+                        android:text="Wyloguj się"
+                        android:theme="@style/Button.Red"
+                        android:background="@drawable/rounded_button_red"
+                        android:onClick="@{()->viewmodel.logoutClicked()}"
+                        />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-        </ScrollView>
+        </com.klima7.services.common.components.views.LoadAreaView>
 
-        <LinearLayout
-            android:id="@+id/button2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            >
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
-                android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
-                android:background="@drawable/rounded_button"
-                android:onClick="@{()->viewmodel.continueClicked()}"
-                android:text="Kontynuuj"
-                android:enabled="@{viewmodel.continueButtonEnabled}"
-                />
-
-            <Button
-                android:id="@+id/delete_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
-                android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
-                android:text="Wyloguj się"
-                android:theme="@style/Button.Red"
-                android:background="@drawable/rounded_button_red"
-                android:onClick="@{()->viewmodel.logoutClicked()}"
-                />
-
-        </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </layout>

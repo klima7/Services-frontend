@@ -3,17 +3,17 @@ package com.klima7.services.client.features.setup
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
+import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.core.None
+import com.klima7.services.common.models.Failure
 import com.klima7.services.common.platform.BaseLoadViewModel
+import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.common.usecases.SignOutUC
 
 class SetupViewModel(
     private val getCurrentClientSetupStateUC: GetCurrentClientSetupStateUC,
     private val signOutUC: SignOutUC,
-): BaseLoadViewModel() {
-
-    val setupState = MutableLiveData<ClientSetupState>()
-    val continueButtonEnabled = setupState.map { it.infoSetup }
+): BaseViewModel() {
 
     sealed class Event: BaseEvent() {
         object ShowHomeScreen: Event()
@@ -21,11 +21,17 @@ class SetupViewModel(
         object ShowSplashScreen: Event()
     }
 
+    val setupState = MutableLiveData<ClientSetupState>()
+    val continueButtonEnabled = setupState.map { it.infoSetup }
+
+    val loadState = MutableLiveData(LoadAreaView.State.LOAD)
+    val loadFailure = MutableLiveData<Failure>()
+
     fun started() {
         loadContent()
     }
 
-    override fun refresh() {
+    fun refresh() {
         loadContent()
     }
 
@@ -49,24 +55,24 @@ class SetupViewModel(
         signOutUC.start(
             viewModelScope,
             None(),
+            { },
             {
-                // Do nothing - in current implementation sign out failure is impossible
-            }, {
                 sendEvent(Event.ShowSplashScreen)
             }
         )
     }
 
     private fun loadContent() {
-        showLoading()
+        loadState.value = LoadAreaView.State.LOAD
         getCurrentClientSetupStateUC.start(
             viewModelScope,
             None(),
             { failure ->
-                showFailure(failure)
+                loadFailure.value = failure
+                loadState.value = LoadAreaView.State.FAILURE
             }, { setupState ->
                 this.setupState.value = setupState
-                showMain()
+                loadState.value = LoadAreaView.State.MAIN
             }
         )
     }
