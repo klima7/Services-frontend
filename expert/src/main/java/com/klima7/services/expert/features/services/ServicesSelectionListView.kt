@@ -54,7 +54,7 @@ class ServicesSelectionListView(context: Context, attrs: AttributeSet?):
     private var selectionListener: SelectionListener? = null
 
     private val groupieAdapter = GroupieAdapter()
-    private val expandableGroups = mutableListOf<ExpandableGroup>()
+    private val expandableCategories = mutableListOf<ExpandableCategoryItem>()
 
     init {
         val inflater = LayoutInflater.from(context)
@@ -114,7 +114,7 @@ class ServicesSelectionListView(context: Context, attrs: AttributeSet?):
 
     private fun addCategories() {
         val sortedCategoriesWithServices = sortCategories(all)
-        expandableGroups.clear()
+        expandableCategories.clear()
         sortedCategoriesWithServices.forEach(this::addCategory)
     }
 
@@ -130,14 +130,14 @@ class ServicesSelectionListView(context: Context, attrs: AttributeSet?):
         categoryWithServices.services.sortedBy { it.name }.forEach { service ->
             expandableGroup.add(SelectableServiceItem(service, this))
         }
-        expandableGroups.add(expandableGroup)
+        expandableCategories.add(categoryItem)
         groupieAdapter += expandableGroup
     }
 
-    override fun categoryExpanded(category: Category, expandableGroup: ExpandableGroup) {
-        expandableGroups.forEach { group ->
-            if(group != expandableGroup) {
-                group.isExpanded = false
+    override fun categoryExpanded(expandableCategoryItem: ExpandableCategoryItem) {
+        expandableCategories.forEach { group ->
+            if(group != expandableCategoryItem) {
+                group.setExpanded(false)
             }
         }
     }
