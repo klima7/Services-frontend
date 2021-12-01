@@ -11,247 +11,271 @@
             type="com.klima7.services.expert.features.info.InfoViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ScrollView
-            android:id="@+id/scrollView3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/services_save_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/info_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Zmiana profilu"
+            app:navigationIcon="@drawable/icon_arrow_back"
+            style="@style/ToolBar"
+            />
+
+        <com.klima7.services.common.components.views.LoadAreaView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:la_state="@{viewmodel.loadState}"
+            app:la_failure="@{viewmodel.loadFailure}"
+            app:la_onRefresh="@{()->viewmodel.refresh()}"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="16dp">
+                >
 
-                <LinearLayout
+                <ScrollView
+                    android:id="@+id/scrollView3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    >
 
-                    <com.klima7.services.common.components.views.AvatarView
-                        android:id="@+id/info_avatar_view"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp" />
-
-                    <Space
-                        android:layout_width="16dp"
-                        android:layout_height="0dp" />
-
-                    <TableLayout
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        >
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
-                        <TableRow
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" >
-
-                            <Button
-                                android:id="@+id/button3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/rounded_button"
-                                android:onClick="@{() -> viewmodel.changeProfileImageClicked()}"
-                                android:text="Zmień zdjęcie"
-                                android:paddingHorizontal="35dp"
-                                />
-
-                        </TableRow>
-
-                        <TableRow
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:visibility="@{viewmodel.deleteImageVisible ? View.VISIBLE : View.GONE}">
+                            android:layout_marginBottom="16dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
 
-                            <Button
+                            <com.klima7.services.common.components.views.AvatarView
+                                android:id="@+id/info_avatar_view"
+                                android:layout_width="120dp"
+                                android:layout_height="120dp" />
+
+                            <Space
+                                android:layout_width="16dp"
+                                android:layout_height="0dp" />
+
+                            <TableLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="16dp"
-                                android:background="@drawable/rounded_button"
-                                android:onClick="@{() -> viewmodel.deleteProfileImageClicked()}"
-                                android:text="Usuń zdjęcie" />
+                                >
 
-                        </TableRow>
+                                <TableRow
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" >
 
-                        <TableRow
-                            android:layout_width="wrap_content"
+                                    <Button
+                                        android:id="@+id/button3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/rounded_button"
+                                        android:onClick="@{() -> viewmodel.changeProfileImageClicked()}"
+                                        android:text="Zmień zdjęcie"
+                                        android:paddingHorizontal="35dp"
+                                        />
+
+                                </TableRow>
+
+                                <TableRow
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:visibility="@{viewmodel.deleteImageVisible ? View.VISIBLE : View.GONE}">
+
+                                    <Button
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="16dp"
+                                        android:background="@drawable/rounded_button"
+                                        android:onClick="@{() -> viewmodel.deleteProfileImageClicked()}"
+                                        android:text="Usuń zdjęcie" />
+
+                                </TableRow>
+
+                                <TableRow
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:visibility="@{viewmodel.restoreImageVisible ? View.VISIBLE : View.GONE}">
+
+                                    <Button
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="16dp"
+                                        android:background="@drawable/rounded_button"
+                                        android:onClick="@{() -> viewmodel.restoreProfileImageClicked()}"
+                                        android:text="Przywróć zdjęcie" />
+
+                                </TableRow>
+
+                            </TableLayout>
+
+                        </LinearLayout>
+
+                        <!-- Name-->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/info_name"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:visibility="@{viewmodel.restoreImageVisible ? View.VISIBLE : View.GONE}">
+                            android:layout_marginBottom="8dp"
+                            android:hint="Imie i nazwisko"
+                            app:helperText="Pole wymagane"
+                            app:startIconDrawable="@drawable/icon_person"
+                            style="@style/TextInputLayoutStyle">
 
-                            <Button
-                                android:layout_width="wrap_content"
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="16dp"
-                                android:background="@drawable/rounded_button"
-                                android:onClick="@{() -> viewmodel.restoreProfileImageClicked()}"
-                                android:text="Przywróć zdjęcie" />
+                                android:maxLength="40"
+                                android:scrollHorizontally="true"
+                                android:singleLine="true"
+                                android:text="@={viewmodel.name}" />
 
-                        </TableRow>
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                    </TableLayout>
+                        <!-- Company-->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/info_company"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:hint="Firma"
+                            app:helperText=" "
+                            app:startIconDrawable="@drawable/icon_company"
+                            style="@style/TextInputLayoutStyle">
 
-                </LinearLayout>
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:maxLength="40"
+                                android:scrollHorizontally="true"
+                                android:singleLine="true"
+                                android:text="@={viewmodel.company}" />
 
-                <!-- Name-->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/info_name"
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Description -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/info_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:hint="Opis"
+                            app:counterEnabled="true"
+                            app:counterMaxLength="500"
+                            app:helperText=" "
+                            app:startIconDrawable="@drawable/icon_description"
+                            style="@style/TextInputLayoutStyle">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/shipper_field"
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp"
+                                android:gravity="top"
+                                android:inputType="textMultiLine"
+                                android:maxLength="500"
+                                android:overScrollMode="always"
+                                android:padding="25dp"
+                                android:scrollbarStyle="insideInset"
+                                android:scrollbars="vertical"
+                                android:text="@={viewmodel.description}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Phone -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/info_phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:hint="Numer telefonu"
+                            app:helperText=" "
+                            app:startIconDrawable="@drawable/icon_phone"
+                            style="@style/TextInputLayoutStyle" >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:digits="0123456789+"
+                                android:inputType="phone"
+                                android:maxLength="9"
+                                android:text="@={viewmodel.phone}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Email -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/info_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:hint="Adres email"
+                            app:helperText=" "
+                            app:startIconDrawable="@drawable/icon_email"
+                            style="@style/TextInputLayoutStyle" >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:maxLength="50"
+                                android:scrollHorizontally="true"
+                                android:singleLine="true"
+                                android:text="@={viewmodel.email}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Website -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/info_website"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:hint="Strona internetowa"
+                            app:helperText=" "
+                            app:startIconDrawable="@drawable/icon_website"
+                            style="@style/TextInputLayoutStyle" >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:maxLength="200"
+                                android:scrollHorizontally="true"
+                                android:singleLine="true"
+                                android:text="@={viewmodel.website}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+                <Button
+                    android:id="@+id/services_save_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Imie i nazwisko"
-                    app:helperText="Pole wymagane"
-                    app:startIconDrawable="@drawable/icon_person"
-                    style="@style/TextInputLayoutStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLength="40"
-                        android:scrollHorizontally="true"
-                        android:singleLine="true"
-                        android:text="@={viewmodel.name}" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Company-->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/info_company"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Firma"
-                    app:helperText=" "
-                    app:startIconDrawable="@drawable/icon_company"
-                    style="@style/TextInputLayoutStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLength="40"
-                        android:scrollHorizontally="true"
-                        android:singleLine="true"
-                        android:text="@={viewmodel.company}" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Description -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/info_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Opis"
-                    app:counterEnabled="true"
-                    app:counterMaxLength="500"
-                    app:helperText=" "
-                    app:startIconDrawable="@drawable/icon_description"
-                    style="@style/TextInputLayoutStyle">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/shipper_field"
-                        android:layout_width="match_parent"
-                        android:layout_height="150dp"
-                        android:gravity="top"
-                        android:inputType="textMultiLine"
-                        android:maxLength="500"
-                        android:overScrollMode="always"
-                        android:padding="25dp"
-                        android:scrollbarStyle="insideInset"
-                        android:scrollbars="vertical"
-                        android:text="@={viewmodel.description}" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Phone -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/info_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Numer telefonu"
-                    app:helperText=" "
-                    app:startIconDrawable="@drawable/icon_phone"
-                    style="@style/TextInputLayoutStyle" >
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:digits="0123456789+"
-                        android:inputType="phone"
-                        android:maxLength="9"
-                        android:text="@={viewmodel.phone}" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Email -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/info_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Adres email"
-                    app:helperText=" "
-                    app:startIconDrawable="@drawable/icon_email"
-                    style="@style/TextInputLayoutStyle" >
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLength="50"
-                        android:scrollHorizontally="true"
-                        android:singleLine="true"
-                        android:text="@={viewmodel.email}" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Website -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/info_website"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:hint="Strona internetowa"
-                    app:helperText=" "
-                    app:startIconDrawable="@drawable/icon_website"
-                    style="@style/TextInputLayoutStyle" >
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLength="200"
-                        android:scrollHorizontally="true"
-                        android:singleLine="true"
-                        android:text="@={viewmodel.website}" />
-
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
+                    android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
+                    android:enabled="@{viewmodel.saveButtonEnabled}"
+                    android:onClick="@{() -> viewmodel.saveClicked()}"
+                    android:text="Zapisz"
+                    android:background="@drawable/rounded_button"
+                    />
 
             </LinearLayout>
 
-        </ScrollView>
+        </com.klima7.services.common.components.views.LoadAreaView>
 
-        <Button
-            android:id="@+id/services_save_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
-            android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
-            android:enabled="@{viewmodel.saveButtonEnabled}"
-            android:onClick="@{() -> viewmodel.saveClicked()}"
-            android:text="Zapisz"
-            android:background="@drawable/rounded_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </layout>

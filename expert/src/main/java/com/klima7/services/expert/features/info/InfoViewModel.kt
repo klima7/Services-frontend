@@ -5,17 +5,19 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
+import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.core.None
 import com.klima7.services.common.extensions.nullifyBlank
 import com.klima7.services.common.models.*
 import com.klima7.services.common.platform.BaseLoadViewModel
+import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.common.platform.CombinedLiveData
 import com.klima7.services.expert.usecases.GetCurrentExpertUC
 
 class InfoViewModel(
     private val getCurrentExpertUC: GetCurrentExpertUC,
     private val setCurrentExpertInfoAndImageUC: SetCurrentExpertInfoAndImageUC
-): BaseLoadViewModel() {
+): BaseViewModel() {
 
     private var profileImageUrlToSave = MutableLiveData<ProfileImageUrl?>(null)
     val expert = MutableLiveData<Expert?>(null)
@@ -56,6 +58,9 @@ class InfoViewModel(
         expert.value?.profileImage != null && restoreImageVisible.value == false
     }
 
+    val loadState = MutableLiveData(LoadAreaView.State.LOAD)
+    val loadFailure = MutableLiveData<Failure>()
+
     sealed class Event: BaseEvent() {
         object FinishInfo: Event()
         object StartProfileImagePicker: Event()
@@ -66,7 +71,7 @@ class InfoViewModel(
         loadContent()
     }
 
-    override fun refresh() {
+    fun refresh() {
         loadContent()
     }
 
@@ -98,18 +103,19 @@ class InfoViewModel(
     }
 
     private fun loadContent() {
-        showLoading()
+        loadState.value = LoadAreaView.State.LOAD
         getCurrentExpertUC.start(
             viewModelScope,
             None(),
             { failure ->
-                showFailure(failure)
+                loadFailure.value = failure
+                loadState.value = LoadAreaView.State.FAILURE
             },
             { expert ->
                 this.expert.value = expert
                 setFields(expert)
                 setProfileImage(expert)
-                showMain()
+                loadState.value = LoadAreaView.State.MAIN
             }
         )
     }
@@ -136,7 +142,7 @@ class InfoViewModel(
     }
 
     private fun save() {
-        showPending()
+        loadState.value = LoadAreaView.State.PENDING
         setCurrentExpertInfoAndImageUC.start(
             viewModelScope,
             SetCurrentExpertInfoAndImageUC.Params(
@@ -152,11 +158,11 @@ class InfoViewModel(
             ),
             { failure ->
                 sendEvent(Event.ShowSaveFailure(failure))
-                showMain()
+                loadState.value = LoadAreaView.State.MAIN
             },
             {
                 sendEvent(Event.FinishInfo)
-                showMain()
+                loadState.value = LoadAreaView.State.MAIN
             }
         )
     }
