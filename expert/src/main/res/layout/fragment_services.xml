@@ -46,20 +46,12 @@
                 android:orientation="vertical"
                 >
 
-                <ScrollView
+                <com.klima7.services.expert.features.services.ServicesSelectionListView
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    >
-
-                    <com.klima7.services.expert.features.services.ServicesSelectionListView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:servicesSelectionList_all="@{viewmodel.allServices}"
-                        app:servicesSelectionList_selected="@={viewmodel.selectedServices}"
-                        />
-
-                </ScrollView>
+                    android:layout_height="match_parent"
+                    app:servicesSelectionList_all="@{viewmodel.allServices}"
+                    app:servicesSelectionList_selected="@={viewmodel.selectedServices}"
+                    />
 
                 <Button
                     android:id="@+id/services_save_button"

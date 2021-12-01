@@ -7,13 +7,20 @@ import com.xwray.groupie.ExpandableGroup
 import com.xwray.groupie.ExpandableItem
 import com.xwray.groupie.databinding.BindableItem
 
-class ExpandableCategoryItem(val category: Category):
-    BindableItem<ElementExpandableCategoryBinding>() , ExpandableItem {
+class ExpandableCategoryItem(
+    val category: Category,
+    val listener: ExpandableCategoryItem.Listener
+): BindableItem<ElementExpandableCategoryBinding>() , ExpandableItem {
 
     private lateinit var expandableGroup: ExpandableGroup
 
     override fun bind(binding: ElementExpandableCategoryBinding, position: Int) {
-
+        binding.elemexpandablecategoryContainer.setOnClickListener {
+            expandableGroup.onToggleExpanded()
+            if(expandableGroup.isExpanded) {
+                listener.categoryExpanded(category, expandableGroup)
+            }
+        }
     }
 
     override fun setExpandableGroup(onToggleListener: ExpandableGroup) {
@@ -24,6 +31,10 @@ class ExpandableCategoryItem(val category: Category):
 
     private fun changeStuff(binding: ElementExpandableCategoryBinding) {
 
+    }
+
+    interface Listener {
+        fun categoryExpanded(category: Category, expandableGroup: ExpandableGroup)
     }
 
 }

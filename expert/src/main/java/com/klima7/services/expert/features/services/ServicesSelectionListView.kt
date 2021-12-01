@@ -8,9 +8,11 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.databinding.*
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.klima7.services.common.models.Category
 import com.klima7.services.common.models.CategoryWithServices
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.ViewServicesSelectionListBinding
+import com.xwray.groupie.ExpandableGroup
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.groupiex.plusAssign
 
@@ -38,7 +40,8 @@ fun setSelectionListener(view: ServicesSelectionListView, attrChange: InverseBin
     })
 }
 
-class ServicesSelectionListView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
+class ServicesSelectionListView(context: Context, attrs: AttributeSet?):
+    FrameLayout(context, attrs), ExpandableCategoryItem.Listener {
 
     private var binding: ViewServicesSelectionListBinding
     private var all: Set<CategoryWithServices> = HashSet()
@@ -46,6 +49,7 @@ class ServicesSelectionListView(context: Context, attrs: AttributeSet?) : FrameL
     private var selectionListener: SelectionListener? = null
 
     private val groupieAdapter = GroupieAdapter()
+    private val expandableGroups = mutableListOf<ExpandableGroup>()
 
     init {
         val inflater = LayoutInflater.from(context)
@@ -87,6 +91,7 @@ class ServicesSelectionListView(context: Context, attrs: AttributeSet?) : FrameL
 
     private fun addCategories() {
         val sortedCategoriesWithServices = sortCategories(all)
+        expandableGroups.clear()
         sortedCategoriesWithServices.forEach(this::addCategory)
     }
 
@@ -97,7 +102,21 @@ class ServicesSelectionListView(context: Context, attrs: AttributeSet?) : FrameL
     }
 
     private fun addCategory(categoryWithServices: CategoryWithServices) {
-        groupieAdapter += ExpandableCategoryItem(categoryWithServices.category)
+        val categoryItem = ExpandableCategoryItem(categoryWithServices.category, this)
+        val expandableGroup = ExpandableGroup(categoryItem)
+        categoryWithServices.services.forEach { service ->
+            expandableGroup.add(SelectableServiceItem(service))
+        }
+        expandableGroups.add(expandableGroup)
+        groupieAdapter += expandableGroup
+    }
+
+    override fun categoryExpanded(category: Category, expandableGroup: ExpandableGroup) {
+        expandableGroups.forEach { group ->
+            if(group != expandableGroup) {
+                group.isExpanded = false
+            }
+        }
     }
 
     interface SelectionListener {

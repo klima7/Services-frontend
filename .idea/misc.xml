@@ -182,9 +182,11 @@
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout-land/fragment_login.xml" value="0.176" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout-land/fragment_offers.xml" value="0.165625" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/activity_single.xml" value="0.21197916666666666" />
+        <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/element_expandable_category.xml" value="0.1" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/element_expandable_category_item.xml" value="0.27076923076923076" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/element_job.xml" value="0.275" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/element_offer.xml" value="0.275" />
+        <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/element_selectable_service.xml" value="0.27076923076923076" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/entry_services_list.xml" value="0.16757246376811594" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_area.xml" value="0.2" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_avatar.xml" value="0.19157608695652173" />
@@ -217,6 +219,7 @@
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/part_toolbar.xml" value="0.12092391304347826" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/rounded_button_ripple_effect.xml" value="0.1644021739130435" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/temp.xml" value="0.1644021739130435" />
+        <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/view_services_selection_list.xml" value="0.2636986301369863" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/menu/menu_home_bottom.xml" value="0.21197916666666666" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/menu/menu_home_toolbar.xml" value="0.275" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/menu/offer.xml" value="0.2171875" />
