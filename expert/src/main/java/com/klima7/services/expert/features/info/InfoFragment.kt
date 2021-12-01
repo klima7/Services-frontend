@@ -42,6 +42,8 @@ class InfoFragment: BaseFragment<FragmentInfoBinding>() {
     override fun init() {
         super.init()
 
+        binding.infoToolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
+
         childFragmentManager.setFragmentResultListener(SAVE_INFO_FAILURE_KEY, viewLifecycleOwner) { _: String, bundle: Bundle ->
             val result = bundle.get(FailureDialogFragment.BUNDLE_KEY)
             if(result == FailureDialogFragment.Result.RETRY) {

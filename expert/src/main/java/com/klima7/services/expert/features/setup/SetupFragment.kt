@@ -2,7 +2,7 @@ package com.klima7.services.expert.features.setup
 
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContracts
-import com.klima7.services.common.platform.BaseLoadFragment
+import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentSetupBinding
@@ -14,7 +14,7 @@ import com.klima7.services.expert.features.splash.SplashActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class SetupFragment: BaseLoadFragment<FragmentSetupBinding>() {
+class SetupFragment: BaseFragment<FragmentSetupBinding>() {
 
     override val layoutId = R.layout.fragment_setup
     override val viewModel: SetupViewModel by viewModel()
@@ -28,6 +28,11 @@ class SetupFragment: BaseLoadFragment<FragmentSetupBinding>() {
     override fun onFirstCreation() {
         super.onFirstCreation()
         viewModel.started()
+    }
+
+    override fun init() {
+        super.init()
+        binding.setupToolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
