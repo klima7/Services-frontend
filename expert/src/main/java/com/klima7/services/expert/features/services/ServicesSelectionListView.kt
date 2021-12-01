@@ -2,14 +2,13 @@ package com.klima7.services.expert.features.services
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import android.widget.LinearLayout
 import androidx.databinding.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.klima7.services.common.models.Category
 import com.klima7.services.common.models.CategoryWithServices
+import com.klima7.services.common.models.Service
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.ViewServicesSelectionListBinding
 import com.xwray.groupie.ExpandableGroup
@@ -17,15 +16,21 @@ import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.groupiex.plusAssign
 
 @BindingAdapter("servicesSelectionList_all")
-fun setAll(view: ServicesSelectionListView, all: Set<CategoryWithServices>?) {
-    val allFixed = all ?: HashSet()
-    view.setAll(allFixed)
+fun setAll(view: ServicesSelectionListView, newAll: Set<CategoryWithServices>?) {
+    val currentAll = view.getAll()
+    if(currentAll != newAll) {
+        val allFixed = newAll ?: HashSet()
+        view.setAll(allFixed)
+    }
 }
 
 @BindingAdapter("servicesSelectionList_selected")
-fun setSelected(view: ServicesSelectionListView, selected: Set<String>?) {
-    val selectedFixed = selected ?: HashSet()
-    view.setSelected(selectedFixed)
+fun setSelected(view: ServicesSelectionListView, newSelected: Set<String>?) {
+    val alreadySelected = view.getSelected()
+    if(alreadySelected != newSelected) {
+        val selectedFixed = newSelected ?: HashSet()
+        view.setSelected(selectedFixed)
+    }
 }
 
 @InverseBindingAdapter(attribute = "servicesSelectionList_selected")
@@ -41,7 +46,7 @@ fun setSelectionListener(view: ServicesSelectionListView, attrChange: InverseBin
 }
 
 class ServicesSelectionListView(context: Context, attrs: AttributeSet?):
-    FrameLayout(context, attrs), ExpandableCategoryItem.Listener {
+    FrameLayout(context, attrs), ExpandableCategoryItem.Listener, SelectableServiceItem.SelectionManager {
 
     private var binding: ViewServicesSelectionListBinding
     private var all: Set<CategoryWithServices> = HashSet()
@@ -67,21 +72,39 @@ class ServicesSelectionListView(context: Context, attrs: AttributeSet?):
     }
 
     fun setAll(all: Set<CategoryWithServices>) {
+        val before = getSelected()
         this.all = all
+        val after = getSelected()
+        if(before != after) {
+            selectionListener?.onSelectionChanged(after)
+        }
         refreshView()
     }
 
     fun setSelected(selected: Set<String>) {
+        val before = getSelected()
         this.selected = selected
+        val after = getSelected()
+        if(before != after) {
+            selectionListener?.onSelectionChanged(after)
+        }
         refreshView()
     }
 
-    fun getSelected(): Set<String>? {
-        return null
+    fun getAll(): Set<CategoryWithServices> {
+        return all
+    }
+
+    fun getSelected(): Set<String> {
+        return selected.filter { isInAll(it) }.toSet()
     }
 
     fun setSelectionListener(selectionListener: SelectionListener?) {
         this.selectionListener = selectionListener
+    }
+
+    private fun isInAll(serviceId: String): Boolean {
+        return all.flatMap { it.services }.map { it.id }.contains(serviceId)
     }
 
     private fun refreshView() {
@@ -104,8 +127,8 @@ class ServicesSelectionListView(context: Context, attrs: AttributeSet?):
     private fun addCategory(categoryWithServices: CategoryWithServices) {
         val categoryItem = ExpandableCategoryItem(categoryWithServices.category, this)
         val expandableGroup = ExpandableGroup(categoryItem)
-        categoryWithServices.services.forEach { service ->
-            expandableGroup.add(SelectableServiceItem(service))
+        categoryWithServices.services.sortedBy { it.name }.forEach { service ->
+            expandableGroup.add(SelectableServiceItem(service, this))
         }
         expandableGroups.add(expandableGroup)
         groupieAdapter += expandableGroup
@@ -117,6 +140,20 @@ class ServicesSelectionListView(context: Context, attrs: AttributeSet?):
                 group.isExpanded = false
             }
         }
+    }
+
+    override fun serviceSelectionChanged(service: Service, selected: Boolean) {
+        if(selected) {
+            this.selected = this.selected.plus(service.id)
+        }
+        else {
+            this.selected = this.selected.minus(service.id)
+        }
+        selectionListener?.onSelectionChanged(getSelected())
+    }
+
+    override fun getServiceSelection(service: Service): Boolean {
+        return selected.contains(service.id)
     }
 
     interface SelectionListener {

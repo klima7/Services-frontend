@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="name"
+            type="String" />
+    </data>
+
     <LinearLayout
         android:id="@+id/elemexpandablecategory_container"
         android:layout_width="match_parent"
@@ -15,7 +21,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kategoria"
+            android:text="@{name}"
             />
 
     </LinearLayout>

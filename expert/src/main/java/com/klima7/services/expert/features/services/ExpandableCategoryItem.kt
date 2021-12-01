@@ -8,13 +8,15 @@ import com.xwray.groupie.ExpandableItem
 import com.xwray.groupie.databinding.BindableItem
 
 class ExpandableCategoryItem(
-    val category: Category,
-    val listener: ExpandableCategoryItem.Listener
+    private val category: Category,
+    private val listener: Listener
 ): BindableItem<ElementExpandableCategoryBinding>() , ExpandableItem {
 
     private lateinit var expandableGroup: ExpandableGroup
 
     override fun bind(binding: ElementExpandableCategoryBinding, position: Int) {
+        binding.name = category.name
+
         binding.elemexpandablecategoryContainer.setOnClickListener {
             expandableGroup.onToggleExpanded()
             if(expandableGroup.isExpanded) {

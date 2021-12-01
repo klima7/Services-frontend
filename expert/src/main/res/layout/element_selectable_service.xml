@@ -3,16 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="name"
+            type="String" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
 
-        <TextView
-            android:layout_width="match_parent"
+        <CheckBox
+            android:id="@+id/elemselectableservice_checkbox"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Usługa"
-            />
+            android:text="@{name}"
+            tools:text="Service"
+            android:layout_marginStart="16dp" />
 
     </LinearLayout>
 
