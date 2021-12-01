@@ -53,7 +53,7 @@ class ServicesViewModel(
                 loadFailure.value = failure
                 loadState.value = LoadAreaView.State.FAILURE
             }, { allAndSelectedServices ->
-                if(allAndSelectedServices.selectedIds.isEmpty()) {
+                if(allAndSelectedServices.all.isEmpty()) {
                     loadFailure.value = Failure.InternetFailure
                     loadState.value = LoadAreaView.State.FAILURE
                 }
