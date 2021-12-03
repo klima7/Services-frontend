@@ -153,7 +153,7 @@
                         android:id="@+id/offerelem_show_job_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pokaż zlecenie"
+                        android:text="Zlecenie"
                         app:chipIcon="@drawable/icon_job"
                         app:iconStartPadding="5dp"
                         app:layout_constraintBottom_toBottomOf="parent"

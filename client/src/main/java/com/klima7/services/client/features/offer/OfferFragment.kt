@@ -46,11 +46,7 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
         viewModel.showRatingItemVisible.observe(viewLifecycleOwner, showRatingItem::setVisible)
         viewModel.callItemVisible.observe(viewLifecycleOwner, callItem::setVisible)
 
-        lifecycleScope.launch {
-            binding.offerStatusToolbar.setVisibleInstant(false)
-            delay(300)
-            binding.offerStatusToolbar.setVisibleAnimate(true)
-        }
+        showStatusToolbarOpenAnimation()
     }
 
     @ExperimentalCoroutinesApi
@@ -112,6 +108,10 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
 
     override fun onResume() {
         super.onResume()
+        showStatusToolbarOpenAnimation()
+    }
+
+    private fun showStatusToolbarOpenAnimation() {
         lifecycleScope.launch {
             binding.offerStatusToolbar.setVisibleInstant(false)
             delay(300)

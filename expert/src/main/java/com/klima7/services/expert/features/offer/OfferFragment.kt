@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.core.os.bundleOf
+import androidx.lifecycle.lifecycleScope
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.common.components.msgsend.SendMessageFragment
@@ -16,6 +17,8 @@ import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentOfferBinding
 import com.klima7.services.expert.features.job.JobActivity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
@@ -56,6 +59,8 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
                 viewModel.retryArchive()
             }
         }
+
+        showStatusToolbarOpenAnimation()
     }
 
     @ExperimentalCoroutinesApi
@@ -111,6 +116,19 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
             ARCHIVE_FAILURE_DIALOG_KEY,
             "Zmiana stanu oferty się nie powiodła.", failure)
         dialog.show(childFragmentManager, "FailureDialogFragment")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showStatusToolbarOpenAnimation()
+    }
+
+    private fun showStatusToolbarOpenAnimation() {
+        lifecycleScope.launch {
+            binding.offerStatusToolbar.setVisibleInstant(false)
+            delay(300)
+            binding.offerStatusToolbar.setVisibleAnimate(true)
+        }
     }
 
 }
