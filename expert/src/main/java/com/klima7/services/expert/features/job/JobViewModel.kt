@@ -17,6 +17,8 @@ class JobViewModel(
 ): BaseViewModel() {
 
     sealed class Event: BaseEvent() {
+        data class ShowAcceptFailureDialog(val failure: Failure): Event()
+        data class ShowRejectFailureDialog(val failure: Failure): Event()
         object FinishWithAccept: Event()
         object FinishWithReject: Event()
         object FinishWithNoop: Event()
@@ -70,14 +72,22 @@ class JobViewModel(
         rejectJob(jobId)
     }
 
+    fun retryAccept() {
+        acceptJob(jobId)
+    }
+
+    fun retryReject() {
+        rejectJob(jobId)
+    }
+
     private fun rejectJob(jobId: String) {
         loadState.value = LoadAreaView.State.PENDING
         rejectJobUC.start(
             viewModelScope,
             RejectJobUC.Params(jobId),
             { failure ->
-                loadFailure.value = failure
-                loadState.value = LoadAreaView.State.FAILURE
+                loadState.value = LoadAreaView.State.MAIN
+                sendEvent(Event.ShowRejectFailureDialog(failure))
             },
             {
                 loadState.value = LoadAreaView.State.MAIN
@@ -92,8 +102,8 @@ class JobViewModel(
             viewModelScope,
             AcceptJobUC.Params(jobId),
             { failure ->
-                loadFailure.value = failure
-                loadState.value = LoadAreaView.State.FAILURE
+                loadState.value = LoadAreaView.State.MAIN
+                sendEvent(Event.ShowAcceptFailureDialog(failure))
             },
             {
                 loadState.value = LoadAreaView.State.MAIN
