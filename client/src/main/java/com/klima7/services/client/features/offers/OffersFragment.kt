@@ -109,7 +109,7 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
     private fun updateActive(offerActive: Boolean) {
         activeSection.clear()
         if(offerActive) {
-            activeSection.add(JobActiveItem(this))
+            activeSection.add(JobActiveItem(this, viewModel.job.value?.finishDate))
         }
         else {
             activeSection.add(JobFinishedItem())
