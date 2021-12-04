@@ -15,7 +15,8 @@ fun JobEntity.toDomain(id: String): Job {
         realizationTime,
         serviceName,
         serviceId,
-        active
+        active,
+        finishDate.toDate(),
     )
 }
 

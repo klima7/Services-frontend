@@ -13,6 +13,7 @@ data class JobEntity(
     var serviceName: String = "",
     var serviceId: String = "",
     var active: Boolean = false,
+    var finishDate: Timestamp = Timestamp.now(),
 ) {
 
     data class LocationEntity(
