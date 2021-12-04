@@ -105,7 +105,7 @@ class JobsDao(
 
     suspend fun finishJob(jobId: String): Outcome<Failure, None> {
         val data = hashMapOf(
-            "id" to jobId
+            "jobId" to jobId
         )
         try {
             functions
