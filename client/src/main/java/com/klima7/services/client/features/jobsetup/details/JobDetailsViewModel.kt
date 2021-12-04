@@ -58,14 +58,12 @@ class JobDetailsViewModel(
             viewModelScope,
             CreateJobUC.Params(service.id, location.placeId, description, realizationTime),
             { failure ->
-                Log.i("Hello", "Create job failure $failure")
                 loadState.value = LoadAreaView.State.MAIN
                 sendEvent(Event.ShowJobCreateFailure(failure))
             },
             {
-                Log.i("Hello", "Create job success")
                 loadState.value = LoadAreaView.State.MAIN
-                sendEvent(Event.ShowJobCreatedScreen)
+//                sendEvent(Event.ShowJobCreatedScreen)
             }
         )
     }

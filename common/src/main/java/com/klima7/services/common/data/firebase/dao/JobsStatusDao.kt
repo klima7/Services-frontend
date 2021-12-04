@@ -12,10 +12,9 @@ class JobsStatusDao(
     private val functions: FirebaseFunctions
 ) {
 
-    suspend fun getJobStatus(expertId: String, jobId: String): Outcome<Failure, JobStatus> {
+    suspend fun getJobStatus(jobId: String): Outcome<Failure, JobStatus> {
         return try {
             val data = hashMapOf(
-                "expertId" to expertId,
                 "jobId" to jobId,
             )
             val res = functions
@@ -23,8 +22,7 @@ class JobsStatusDao(
                 .call(data)
                 .await()
             val response = res?.data ?: return Outcome.Failure(Failure.ServerFailure)
-            val statusNo = (response as Map<*, *>)["status"]
-            return when(statusNo) {
+            return when(response) {
                 0 -> Outcome.Success(JobStatus.NEW)
                 1 -> Outcome.Success(JobStatus.REJECTED)
                 2 -> Outcome.Success(JobStatus.ACCEPTED)

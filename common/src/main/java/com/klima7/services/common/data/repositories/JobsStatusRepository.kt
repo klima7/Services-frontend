@@ -10,7 +10,7 @@ class JobsStatusRepository(
 ) {
 
     suspend fun getJobStatus(expertId: String, jobId: String): Outcome<Failure, JobStatus> {
-        return firebase.jobsStatusDao.getJobStatus(expertId, jobId)
+        return firebase.jobsStatusDao.getJobStatus(jobId)
     }
 
     suspend fun getNewJobsIds(expertId: String): Outcome<Failure, List<String>> {
