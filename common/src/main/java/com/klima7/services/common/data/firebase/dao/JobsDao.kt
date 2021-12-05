@@ -3,6 +3,7 @@ package com.klima7.services.common.data.firebase.dao
 import android.util.Log
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.functions.FirebaseFunctions
 import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
@@ -88,6 +89,7 @@ class JobsDao(
                     else
                         it
                 }
+                .orderBy("creation", Query.Direction.DESCENDING)
                 .limit(count.toLong())
                 .get()
                 .await()

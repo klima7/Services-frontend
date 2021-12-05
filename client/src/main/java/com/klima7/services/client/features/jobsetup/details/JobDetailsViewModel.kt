@@ -63,7 +63,7 @@ class JobDetailsViewModel(
             },
             {
                 loadState.value = LoadAreaView.State.MAIN
-//                sendEvent(Event.ShowJobCreatedScreen)
+                sendEvent(Event.ShowJobCreatedScreen)
             }
         )
     }
