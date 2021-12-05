@@ -135,23 +135,12 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="Ostatnia wiadomość: "
-                            android:textStyle="bold" />
-
-                        <TextView
+                        <com.klima7.services.common.components.views.LastMessageView
+                            android:id="@+id/offer_last_message"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Ekspert: Tak, jeżli posiada Pan już część materiałów, to oczywiście koszt może być mniejszy." />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="3 godziny temu"
-                            android:textColor="@color/quantum_grey600" />
+                            android:layout_marginTop="2dp"
+                            />
 
                         <LinearLayout
                             android:id="@+id/linearLayout3"

@@ -113,6 +113,11 @@ abstract class BaseOffersListFragment(
         dialog.show(childFragmentManager, ServicesFragment.SAVE_FAILURE_KEY)
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.refresh()
+    }
+
     private val itemTouchHelperCallback =
         object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
             override fun onMove(

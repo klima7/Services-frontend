@@ -91,30 +91,12 @@
                 android:paddingVertical="8dp"
                 >
 
-                <LinearLayout
+                <com.klima7.services.common.components.views.LastMessageView
+                    android:id="@+id/offer_last_message"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Ostatnia wiadomość: "
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Ekspert: Tak, jeżli posiada Pan już część materiałów, to oczywiście koszt może być mniejszy." />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="3 godziny temu"
-                        android:textColor="@color/quantum_grey600" />
-
-                </LinearLayout>
+                    android:layout_marginTop="2dp"
+                    />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

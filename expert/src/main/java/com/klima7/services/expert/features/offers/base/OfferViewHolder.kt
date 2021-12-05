@@ -1,12 +1,14 @@
 package com.klima7.services.expert.features.offers.base
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.klima7.services.common.extensions.uppercaseFirst
 import com.klima7.services.common.models.Offer
+import com.klima7.services.common.models.Role
 import com.klima7.services.common.ui.OfferStatusDescription
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.ElementOfferBinding
@@ -40,6 +42,9 @@ class OfferViewHolder private constructor(
 
         val statusName = OfferStatusDescription.get(offer.status).getText(context)
         binding.status = statusName.uppercaseFirst()
+        Log.i("Hello", "Message " + offer.lastMessage)
+        binding.offerLastMessage.setRole(Role.EXPERT)
+        binding.offerLastMessage.setMessage(offer.lastMessage)
     }
 
 }

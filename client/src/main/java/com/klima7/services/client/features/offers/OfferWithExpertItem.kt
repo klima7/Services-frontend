@@ -5,6 +5,7 @@ import com.klima7.services.client.databinding.ElementOfferBinding
 import com.klima7.services.common.components.views.AvatarView
 import com.klima7.services.common.extensions.uppercaseFirst
 import com.klima7.services.common.models.OfferWithExpert
+import com.klima7.services.common.models.Role
 import com.klima7.services.common.ui.OfferStatusDescription
 import com.xwray.groupie.databinding.BindableItem
 
@@ -16,6 +17,7 @@ class OfferWithExpertItem(
 
     override fun bind(binding: ElementOfferBinding, position: Int) {
         val context = binding.offerCard.context
+
         binding.offerWithExpert = offerWithExpert
 
         val statusName = OfferStatusDescription.get(offerWithExpert.offer.status).getText(context)
@@ -30,6 +32,10 @@ class OfferWithExpertItem(
         }
 
         binding.offerRating.rating = offerWithExpert.expert.rating.toFloat()
+
+        binding.offerLastMessage.setRole(Role.CLIENT)
+        binding.offerLastMessage.setMessage(offerWithExpert.offer.lastMessage)
+
     }
 
     override fun getLayout() = R.layout.element_offer

@@ -10,8 +10,10 @@ data class Offer(
     val archived: Boolean,
     val jobId: String,
 
-    val clientReadTime: Date,
-    val expertReadTime: Date,
+    val clientReadTime: Date?,
+    val expertReadTime: Date?,
+
+    val lastMessage: Message?,
 
     val serviceId: String,
     val serviceName: String,

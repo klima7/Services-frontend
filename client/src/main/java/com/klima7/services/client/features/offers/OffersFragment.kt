@@ -174,4 +174,9 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
             "Zamknięcie zlecenia się nie powiodło.", failure)
         dialog.show(childFragmentManager, "FailureDialogFragment")
     }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.refresh()
+    }
 }
