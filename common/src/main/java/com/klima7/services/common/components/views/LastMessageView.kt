@@ -8,6 +8,7 @@ import androidx.databinding.BindingMethod
 import androidx.databinding.DataBindingUtil
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.ViewLastMessageBinding
+import com.klima7.services.common.extensions.getPrettyTime
 import com.klima7.services.common.models.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -73,7 +74,7 @@ class LastMessageView(context: Context, attrs: AttributeSet?): FrameLayout(conte
             }
         }
 
-        binding.time = FORMAT.format(message.sendTime)
+        binding.time = message.sendTime.getPrettyTime()
     }
 
     private fun getAuthorText(author: MessageAuthor): String {
