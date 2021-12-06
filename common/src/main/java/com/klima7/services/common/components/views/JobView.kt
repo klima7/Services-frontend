@@ -2,6 +2,7 @@ package com.klima7.services.common.components.views
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.databinding.BindingMethod
@@ -93,7 +94,6 @@ class JobView : FrameLayout {
         binding.apply {
             job = cJob
             shorter = short
-            hideClient = hideClient
             jobCreationTime.text = if(cJob != null) FORMAT.format(cJob.creationDate) else ""
             jobviewDescription.maxLines = if(short) SHORT_DESCRIPTION_LINES else Int.MAX_VALUE
             if(clickListener != null) {
@@ -101,6 +101,7 @@ class JobView : FrameLayout {
             }
             jobPin.setImageResource(pinRes)
         }
+        binding.hideClient = hideClient
     }
 
 }
