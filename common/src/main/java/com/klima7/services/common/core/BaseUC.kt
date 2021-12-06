@@ -9,7 +9,7 @@ import kotlinx.coroutines.withContext
 import kotlin.coroutines.CoroutineContext
 
 abstract class BaseUC<P, R>(
-    private val context: CoroutineContext = Dispatchers.Main
+    protected val context: CoroutineContext = Dispatchers.Main
 ) {
 
     val UC_NAME: String = this::class.java.simpleName

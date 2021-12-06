@@ -20,28 +20,43 @@ class GetMessagesFlowUC(
     private lateinit var offerId: String
     private lateinit var role: Role
 
-    private var latestMessageTime: Date? = null
+    private var currentLast: Date? = null
 
     override suspend fun execute(params: Params): Outcome<Failure, Flow<List<Message>>> {
         this.offerId = params.offerId
         this.role = params.role
-        return Outcome.Success(messagesRepository.getMessages(params.offerId).onEach(this::handleLastReadMessage))
+        return Outcome.Success(messagesRepository.getMessages(params.offerId).onEach(this::updateLastReadMessage))
     }
 
-    private suspend fun handleLastReadMessage(messages: List<Message>) {
-        val cLatestMessageTime = latestMessageTime?.time
-        val latestMessage = getLatestMessage(messages)
-        if(cLatestMessageTime == null || latestMessage.sendTime.time >= cLatestMessageTime) {
-            messagesRepository.setLastReadTime(role, offerId, latestMessage.sendTime)
-            latestMessageTime = latestMessage.sendTime
+    private suspend fun updateLastReadMessage(messages: List<Message>) {
+        // Input
+        val cCurrentLast = currentLast?.time
+        val last = getLastMessageTime(messages)
+
+        // Output
+        var timeToUpdate: Date? = null
+
+        // Logic
+        if(last == null) {
+            if(cCurrentLast == null) {
+                timeToUpdate = Date()
+            }
+        }
+        else if(cCurrentLast == null || last.time >= cCurrentLast) {
+            timeToUpdate = last
+        }
+
+        // Perform operation
+        if(timeToUpdate != null) {
+            context
+            messagesRepository.setLastReadTime(role, offerId, timeToUpdate)
+            currentLast = last
         }
     }
 
-    private fun getLatestMessage(messages: List<Message>): Message {
-        val otherUserMessages =
-            messages.filter { message -> message.author != role.toMessageAuthor() }
-        val otherUserMessagesSorted =
-            otherUserMessages.sortedByDescending { message -> message.sendTime }
-        return otherUserMessagesSorted[0]
+    private fun getLastMessageTime(messages: List<Message>): Date? {
+        val processedMessages = messages
+            .sortedByDescending { message -> message.sendTime }
+        return if(processedMessages.isNotEmpty()) processedMessages[0].sendTime else null
     }
 }

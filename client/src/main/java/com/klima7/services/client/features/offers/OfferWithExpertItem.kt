@@ -1,12 +1,8 @@
 package com.klima7.services.client.features.offers
 
-import android.text.format.DateUtils
-import android.text.format.DateUtils.FORMAT_ABBREV_RELATIVE
-import android.util.Log
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.ElementOfferBinding
 import com.klima7.services.common.components.views.AvatarView
-import com.klima7.services.common.extensions.getTimeAgo
 import com.klima7.services.common.extensions.uppercaseFirst
 import com.klima7.services.common.models.OfferWithExpert
 import com.klima7.services.common.models.Role
@@ -39,6 +35,7 @@ class OfferWithExpertItem(
 
         binding.offerLastMessage.setRole(Role.CLIENT)
         binding.offerLastMessage.setMessage(offerWithExpert.offer.lastMessage)
+        binding.offerLastMessage.setReadTime(offerWithExpert.offer.clientReadTime)
 
     }
 

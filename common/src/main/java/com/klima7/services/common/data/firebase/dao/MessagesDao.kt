@@ -132,7 +132,6 @@ class MessagesDao(
                 .collection("offers")
                 .document(offerId)
                 .update(data)
-                .await()
             Outcome.Success(None())
         } catch(e: Exception) {
             Log.e("Hello", "Error during setLastReadTime", e)

@@ -1,6 +1,7 @@
 package com.klima7.services.common.data.firebase
 
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.functions.ktx.functions
 import com.google.firebase.ktx.Firebase

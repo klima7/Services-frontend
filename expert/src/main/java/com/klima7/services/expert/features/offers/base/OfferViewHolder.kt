@@ -42,9 +42,10 @@ class OfferViewHolder private constructor(
 
         val statusName = OfferStatusDescription.get(offer.status).getText(context)
         binding.status = statusName.uppercaseFirst()
-        Log.i("Hello", "Message " + offer.lastMessage)
+
         binding.offerLastMessage.setRole(Role.EXPERT)
         binding.offerLastMessage.setMessage(offer.lastMessage)
+        binding.offerLastMessage.setReadTime(offer.expertReadTime)
     }
 
 }

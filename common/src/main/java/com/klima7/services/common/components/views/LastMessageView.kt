@@ -26,6 +26,11 @@ import java.util.*
             attribute = "lastMessage_role",
             method = "setRole"
         ),
+        BindingMethod(
+            type = LastMessageView::class,
+            attribute = "lastMessage_read_time",
+            method = "setReadTime"
+        ),
     ]
 )
 class LastMessageViewBindingMethods
@@ -39,6 +44,7 @@ class LastMessageView(context: Context, attrs: AttributeSet?): FrameLayout(conte
 
     private var binding: ViewLastMessageBinding
     private var lastMessage: Message? = null
+    private var readTime: Date? = null
     private var role: Role? = null
 
     init {
@@ -52,34 +58,63 @@ class LastMessageView(context: Context, attrs: AttributeSet?): FrameLayout(conte
         refreshView()
     }
 
+    fun setReadTime(readTime: Date?) {
+        this.readTime = readTime
+        refreshView()
+    }
+
     fun setRole(role: Role) {
         this.role = role
         refreshView()
     }
 
     private fun refreshView() {
-        val message = lastMessage
+        val cLastMessage = lastMessage
+        val cReadTime = readTime
 
-        binding.present = message != null
-        if(message == null) {
+        refreshStatus(cLastMessage, cReadTime)
+
+        binding.present = cLastMessage != null
+        if(cLastMessage == null) {
             return
         }
 
-        when(message) {
+        when(cLastMessage) {
             is TextMessage -> {
-                binding.message = getAuthorText(message.author) + ": " + message.text
+                binding.message = getAuthorText(cLastMessage.author) + ": " + cLastMessage.text
             }
             is ImageMessage -> {
-                binding.message = getAuthorText(message.author) + ": " + "Wysłano zdjęcie"
+                binding.message = getAuthorText(cLastMessage.author) + ": " + "Wysłano zdjęcie"
             }
         }
 
-        binding.time = message.sendTime.getPrettyTime()
+        binding.time = cLastMessage.sendTime.getPrettyTime()
+    }
+
+    private fun refreshStatus(message: Message?, readTime: Date?) {
+        val isNeverRead = readTime == null
+        val unreadMessages = if(message == null) {
+            false
+        } else {
+            readTime?.before(message.sendTime) ?: true
+        }
+
+        if(isNeverRead && !unreadMessages) {
+            binding.newOffer = true
+            binding.unread = false
+        }
+        else if(unreadMessages) {
+            binding.newOffer = false
+            binding.unread = true
+        }
+        else {
+            binding.unread = false
+            binding.newOffer = false
+        }
     }
 
     private fun getAuthorText(author: MessageAuthor): String {
-        return if(role == Role.EXPERT && author == MessageAuthor.EXPERT ||
-            role == Role.CLIENT && author == MessageAuthor.CLIENT) {
+        return if(role?.toMessageAuthor() == author) {
             "Ty"
         } else {
             when(author) {
