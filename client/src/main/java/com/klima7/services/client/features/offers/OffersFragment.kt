@@ -82,9 +82,10 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
 
         viewModel.offersWithExperts.observe(viewLifecycleOwner, this::updateOffers)
 
-        viewModel.isJobActive.observe(viewLifecycleOwner, this::updateActive)
-
         viewModel.wasFinished.observe(viewLifecycleOwner, this::updateResult)
+
+        viewModel.isJobActive.observe(viewLifecycleOwner) { updateHeader() }
+        viewModel.offersCount.observe(viewLifecycleOwner) { updateHeader() }
 
         binding.offersRefreshLayout.setOnRefreshListener {
             binding.offersRefreshLayout.isRefreshing = false
@@ -106,10 +107,12 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
         requireActivity().setResult(Activity.RESULT_OK, intent)
     }
 
-    private fun updateActive(offerActive: Boolean) {
+    private fun updateHeader() {
+        val offerActive = viewModel.isJobActive.value ?: false
+        val offersCount = viewModel.offersCount.value ?: 0
         activeSection.clear()
         if(offerActive) {
-            activeSection.add(JobActiveItem(this, viewModel.job.value?.finishDate))
+            activeSection.add(JobActiveItem(this, viewModel.job.value?.finishDate, offersCount))
         }
         else {
             activeSection.add(JobFinishedItem())

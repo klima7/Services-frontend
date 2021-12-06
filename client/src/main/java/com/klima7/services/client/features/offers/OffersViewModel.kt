@@ -28,6 +28,7 @@ class OffersViewModel(
     val offersWithExperts = MutableLiveData<List<OfferWithExpert>>()
     val subtitle = job.map { job -> job?.serviceName ?: "" }
     val isJobActive = job.map { it?.active ?: false }
+    val offersCount = offersWithExperts.map { it.size }
 
     val loadState = MutableLiveData(LoadAreaView.State.MAIN)
     val loadFailure = MutableLiveData<Failure>()

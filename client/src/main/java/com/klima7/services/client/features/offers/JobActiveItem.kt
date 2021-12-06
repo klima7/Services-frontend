@@ -2,6 +2,7 @@ package com.klima7.services.client.features.offers
 
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.ElementJobActiveBinding
+import com.klima7.services.common.MAX_EXPERTS_PER_OFFER
 import com.xwray.groupie.databinding.BindableItem
 import java.text.SimpleDateFormat
 import java.util.*
@@ -10,6 +11,7 @@ import java.util.*
 class JobActiveItem(
     private val listener: Listener,
     private val finishDate: Date?,
+    private var offersCount: Int
 ): BindableItem<ElementJobActiveBinding>() {
 
     companion object {
@@ -21,6 +23,8 @@ class JobActiveItem(
         binding.elemjobactiveFinish.setOnClickListener {
             listener.finishJobClicked()
         }
+        binding.maxCount = MAX_EXPERTS_PER_OFFER
+        binding.count = offersCount
     }
 
     override fun getLayout() = R.layout.element_job_active

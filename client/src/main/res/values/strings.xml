@@ -11,4 +11,7 @@
     <!-- Credits -->
     <string name="credit_pin_green">"Icon made by Pixel perfect from www.flaticon.com"</string>
 
+    <!-- Offers -->
+    <string name="offers_experts_number">%s / %s wykonawców</string>
+
 </resources>

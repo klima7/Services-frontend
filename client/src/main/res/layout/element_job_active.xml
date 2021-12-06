@@ -7,6 +7,12 @@
         <variable
             name="finishDate"
             type="String" />
+        <variable
+            name="count"
+            type="int" />
+        <variable
+            name="maxCount"
+            type="int" />
     </data>
 
     <LinearLayout
@@ -43,11 +49,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Oczekiwanie na wykonawców"
+                    app:layout_constraintBottom_toTopOf="@+id/textView5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     app:layout_constraintBottom_toTopOf="@+id/textView3"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView2"
+                    tools:text="@{@string/offers_experts_number(count, maxCount)}" />
 
                 <LinearLayout
                     android:id="@+id/textView3"
@@ -58,22 +76,19 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2"
-                    >
+                    app:layout_constraintTop_toBottomOf="@+id/textView5">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="8dp"
-                        android:text="Zakończenie:"
-                        />
+                        android:text="Zakończenie:" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{finishDate}"
-                        tools:text="07.11.2021"
-                        />
+                        tools:text="07.11.2021" />
 
                 </LinearLayout>
 
