@@ -2,11 +2,13 @@ package com.klima7.services.common.data.firebase.dao
 
 import android.net.Uri
 import android.util.Log
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.MetadataChanges
 import com.google.firebase.firestore.Query
+import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.storage.FirebaseStorage
 import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
@@ -29,6 +31,7 @@ class MessagesDao(
     private val auth: FirebaseAuth,
     private val firestore: FirebaseFirestore,
     private val storage: FirebaseStorage,
+    private val functions: FirebaseFunctions,
 ) {
 
     @ExperimentalCoroutinesApi
@@ -112,6 +115,29 @@ class MessagesDao(
         }
     }
 
-    // sendMessage
+    suspend fun setLastReadTime(role: Role, offerId: String, date: Date): Outcome<Failure, None> {
+        return try {
+            val data: Map<String, Any>
+            if(role == Role.CLIENT) {
+                data = hashMapOf<String, Any>(
+                    "clientReadTime" to Timestamp(date),
+                )
+            }
+            else {
+                data = hashMapOf<String, Any>(
+                    "expertReadTime" to Timestamp(date),
+                )
+            }
+            firestore
+                .collection("offers")
+                .document(offerId)
+                .update(data)
+                .await()
+            Outcome.Success(None())
+        } catch(e: Exception) {
+            Log.e("Hello", "Error during setLastReadTime", e)
+            Outcome.Failure(e.toDomain())
+        }
+    }
 
 }

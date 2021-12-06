@@ -2,6 +2,7 @@ package com.klima7.services.common.di
 
 import com.klima7.services.common.components.msgsend.SendImageMessageUC
 import com.klima7.services.common.components.msgsend.SendTextMessageUC
+import com.klima7.services.common.components.msgviewer.GetMessagesFlowUC
 import com.klima7.services.common.components.offer.GetOfferStreamUC
 import com.klima7.services.common.components.offer.SetOfferStatusUC
 import com.klima7.services.common.components.profile.services.GetServicesFromIds
@@ -22,5 +23,6 @@ val useCasesModule = module {
     single { GetExpertUC(get()) }
     single { SetOfferStatusUC(get()) }
     single { GetOfferStreamUC(get()) }
+    single { GetMessagesFlowUC(get()) }
 
 }

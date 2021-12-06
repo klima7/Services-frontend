@@ -35,7 +35,7 @@ class FirebaseSource {
     val expertsDao = ExpertsDao(auth, firestore, functions, storage)
     val jobsDao = JobsDao(firestore, functions)
     val jobsStatusDao = JobsStatusDao(functions)
-    val messagesDao = MessagesDao(auth, firestore, storage)
+    val messagesDao = MessagesDao(auth, firestore, storage, functions)
     val offersDao = OffersDao(firestore, functions)
     val ratingsDao = RatingsDao(firestore, functions)
     val servicesDao = ServicesDao(firestore)

@@ -8,6 +8,7 @@ import com.klima7.services.common.models.Message
 import com.klima7.services.common.models.Role
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
+import java.util.*
 
 class MessagesRepository(
     private val firebase: FirebaseSource,
@@ -16,10 +17,6 @@ class MessagesRepository(
     @ExperimentalCoroutinesApi
     suspend fun getMessages(offerId: String): Flow<List<Message>> {
         return firebase.messagesDao.getMessages(offerId)
-    }
-
-    suspend fun getLastMessage(offerId: String): Outcome<Failure, Message> {
-        throw NotImplementedError()
     }
 
     suspend fun sendTextMessage(offerId: String, sender: Role, message: String): Outcome<Failure, None> {
@@ -31,6 +28,8 @@ class MessagesRepository(
         return firebase.messagesDao.sendImageMessage(offerId, sender, imagePath)
     }
 
-    // sendMessage
+    suspend fun setLastReadTime(role: Role, offerId: String, date: Date): Outcome<Failure, None> {
+        return firebase.messagesDao.setLastReadTime(role, offerId, date)
+    }
 
 }

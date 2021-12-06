@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class MessageViewerViewModel(
-    private val messagesRepository: MessagesRepository
+    private val getMessagesFlowUC: GetMessagesFlowUC
 ): BaseViewModel() {
 
     private val messages = MutableLiveData<List<Message>>(listOf())
@@ -23,11 +23,16 @@ class MessageViewerViewModel(
     @ExperimentalCoroutinesApi
     fun start(offerId: String, role: Role) {
         this.role = role
-        viewModelScope.launch {
-            messagesRepository.getMessages(offerId).collect {
-                messages.value = it
+        getMessagesFlowUC.start(
+            viewModelScope,
+            GetMessagesFlowUC.Params(role, offerId),
+            { },
+            { messagesFlow ->
+                messagesFlow.collect {
+                    messages.value = it
+                }
             }
-        }
+        )
     }
 
     private fun createItems(messages: List<Message>): List<Group> {
