@@ -59,10 +59,6 @@ class MessagesDao(
         }
     }
 
-    suspend fun getLastMessage(offerId: String): Outcome<Failure, Message> {
-        throw NotImplementedError()
-    }
-
     suspend fun sendTextMessage(offerId: String, sender: Role, message: String): Outcome<Failure, None> {
         try {
             val data = hashMapOf(
