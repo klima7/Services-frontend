@@ -15,7 +15,12 @@ class CompleteLoginUC(
 
     override suspend fun execute(params: None): Outcome<Failure, None> {
         Log.i("Hello", "Completing login")
-        tokensStorageRepository.updateToken("test token")
-        return Outcome.Success(None())
+        return tokensRepository.getToken().foldS(
+            { failure ->
+                Outcome.Failure(failure)
+            }, { token ->
+                return@foldS tokensStorageRepository.updateToken(token)
+            }
+        )
     }
 }

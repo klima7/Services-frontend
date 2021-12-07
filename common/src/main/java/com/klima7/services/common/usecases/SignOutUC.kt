@@ -16,8 +16,19 @@ class SignOutUC(
 
     override suspend fun execute(params: None): Outcome<Failure, None> {
         authRepository.signOut()
-        tokensStorageRepository.deleteToken("test token")
-        return Outcome.Success(None())
+        val deleteResult = deleteToken()
+        if(deleteResult.isFailure) {
+            return deleteResult
+        }
+        return tokensRepository.deleteToken()
     }
 
+    private suspend fun deleteToken(): Outcome<Failure, None> {
+        return tokensRepository.getToken().foldS({ failure ->
+            Outcome.Failure(failure)
+        },
+        { token ->
+            tokensStorageRepository.deleteToken(token)
+        })
+    }
 }

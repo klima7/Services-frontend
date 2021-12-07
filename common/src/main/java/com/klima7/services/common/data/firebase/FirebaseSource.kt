@@ -5,6 +5,7 @@ import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.functions.ktx.functions
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.ktx.messaging
 import com.google.firebase.storage.ktx.storage
 import com.klima7.services.common.BuildConfig
 import com.klima7.services.common.data.firebase.dao.*
@@ -18,6 +19,7 @@ class FirebaseSource {
     private val firestore = Firebase.firestore
     private val auth = Firebase.auth
     private val storage = Firebase.storage
+    private val messaging = Firebase.messaging
 
     private fun setupEmulator() {
         functions.useEmulator(EMULATOR_HOST, 5001)
@@ -41,5 +43,6 @@ class FirebaseSource {
     val ratingsDao = RatingsDao(firestore, functions)
     val servicesDao = ServicesDao(firestore)
     val tokensStorageDao = TokensStorageDao(auth, firestore)
+    val tokensDao = TokensDao(messaging)
 
 }
