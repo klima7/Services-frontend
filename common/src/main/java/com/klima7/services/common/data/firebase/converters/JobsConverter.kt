@@ -18,6 +18,7 @@ fun JobEntity.toDomain(id: String): Job {
         serviceId,
         active,
         finishDate.toDate().applyTimezone(),
+        unreadOffers.size,
     )
 }
 

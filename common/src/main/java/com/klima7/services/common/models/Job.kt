@@ -14,4 +14,5 @@ data class Job(
     val serviceId: String,
     val active: Boolean,
     val finishDate: Date?,
+    val unreadOffersCount: Int,
 )

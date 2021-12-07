@@ -49,6 +49,7 @@ class JobView : FrameLayout {
     private var clickListener: (() -> Unit)? = null
     private var short = false
     private var hideClient = false
+    private var unreadChanges = 0
 
     init {
         val inflater = LayoutInflater.from(context)
@@ -77,6 +78,11 @@ class JobView : FrameLayout {
         requestLayout()
     }
 
+    fun setUnreadChanges(unreadChanges: Int) {
+        this.unreadChanges = unreadChanges
+        refreshView()
+    }
+
     fun setClickListener(clickListener: (() -> Unit)?) {
         this.clickListener = clickListener
     }
@@ -102,6 +108,7 @@ class JobView : FrameLayout {
             jobPin.setImageResource(pinRes)
         }
         binding.hideClient = hideClient
+        binding.unreadChanges = unreadChanges
     }
 
 }

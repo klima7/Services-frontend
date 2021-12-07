@@ -1,6 +1,7 @@
 package com.klima7.services.client.features.jobs
 
 import android.content.Intent
+import android.util.Log
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
@@ -84,5 +85,10 @@ class JobsFragment : BaseFragment<FragmentJobsBinding>(), JobsAdapter.OnJobListe
         if(wasFinished) {
             jobsAdapter.refresh()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.refresh()
     }
 }

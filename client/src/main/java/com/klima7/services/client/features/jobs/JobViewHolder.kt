@@ -30,6 +30,7 @@ class JobViewHolder private constructor(
         binding.jobelemJob.setClickListener {
             onJobListener.onJobClicked(job)
         }
+        binding.jobelemJob.setUnreadChanges(job.unreadOffersCount)
     }
 
 }

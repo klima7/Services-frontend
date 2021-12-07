@@ -14,6 +14,7 @@ data class JobEntity(
     var serviceId: String = "",
     var active: Boolean = false,
     var finishDate: Timestamp = Timestamp.now(),
+    var unreadOffers: List<String> = listOf(),
 ) {
 
     data class LocationEntity(
