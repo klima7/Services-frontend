@@ -34,30 +34,19 @@
             android:orientation="vertical"
             >
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="right"
+                android:visibility="@{unread || newOffer ? View.VISIBLE : View.GONE}"
                 >
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ostatnia wiadomość: "
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Nowe wiadomości"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     android:textColor="#ff0000"
                     android:visibility="@{unread ? View.VISIBLE : View.GONE}"
                     />
@@ -67,14 +56,37 @@
                     android:layout_height="wrap_content"
                     android:text="Nowa oferta"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     android:textColor="#ff0000"
                     android:visibility="@{newOffer ? View.VISIBLE : View.GONE}"
+                    tools:visibility="gone"
                     />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                <Space
+                    android:layout_width="16dp"
+                    android:layout_height="0dp"
+                    />
+
+                <TextView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/unread_offers_circle"
+                    android:gravity="center"
+                    android:text="!"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ostatnia wiadomość: "
+                android:textStyle="bold"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
