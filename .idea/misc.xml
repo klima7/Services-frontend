@@ -42,6 +42,7 @@
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/fragment_splash_decoration.xml" value="0.2171875" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/view_expert_rating.xml" value="0.4" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/view_new_job_progress.xml" value="0.27076923076923076" />
+        <entry key="..\:/PI/src/frontend/client/src/main/res/layout/view_unread_count.xml" value="0.1828125" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/menu/home_bottom.xml" value="0.27076923076923076" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/menu/menu_home_bottom.xml" value="0.19074074074074074" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/menu/offer.xml" value="0.27076923076923076" />
@@ -89,6 +90,7 @@
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/toast_background.xml" value="0.19907407407407407" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/toolbar_background.xml" value="0.20185185185185187" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/toolbar_rounded_background.xml" value="0.1875" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/drawable/unread_offers_circle.xml" value="0.2574074074074074" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout-land/element_no_ratings.xml" value="0.1359375" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout-land/element_settings_option.xml" value="0.18333333333333332" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout-land/fragment_credits.xml" value="0.13541666666666666" />
@@ -171,6 +173,7 @@
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/view_selection_list_view.xml" value="0.20572916666666666" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/view_send_message_bar.xml" value="0.19635416666666666" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/layout/view_settings_tile.xml" value="0.225" />
+        <entry key="..\:/PI/src/frontend/common/src/main/res/layout/view_unread_count.xml" value="0.536" />
         <entry key="..\:/PI/src/frontend/common/src/main/res/menu/menu_offer.xml" value="0.275" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/drawable/icon.xml" value="0.1935185185185185" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/drawable/icon_foreground.xml" value="0.1935185185185185" />

@@ -101,26 +101,13 @@
                 android:layout_marginVertical="8dp"
                 >
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <com.klima7.services.common.components.views.UnreadOffersView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="right"
+                    android:layout_gravity="end"
+                    app:unreadcount_count="@{unreadChanges}"
                     android:visibility="@{unreadChanges!=0 ? View.VISIBLE : View.GONE}"
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Nowe wiadomości"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:textColor="#ff0000"
-                        />
-
-                </LinearLayout>
+                    />
 
                 <TextView
                     android:id="@+id/jobview_description"
