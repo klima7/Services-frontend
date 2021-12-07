@@ -1,9 +1,13 @@
 package com.klima7.services.common.components.login
 
+import androidx.lifecycle.viewModelScope
 import com.firebase.ui.auth.AuthUI
+import com.klima7.services.common.core.None
 import com.klima7.services.common.platform.BaseViewModel
 
-class LoginViewModel: BaseViewModel() {
+class LoginViewModel(
+    private val completeLoginUC: CompleteLoginUC
+): BaseViewModel() {
 
     sealed class Event: BaseEvent() {
         object LaunchSignIn: Event()
@@ -25,11 +29,24 @@ class LoginViewModel: BaseViewModel() {
     }
 
     fun loginSuccess() {
-        sendEvent(Event.Finish)
+        completeLogin()
     }
 
     fun loginFailure() {
         sendEvent(Event.ShowFailure)
+    }
+
+    private fun completeLogin() {
+        completeLoginUC.start(
+            viewModelScope,
+            None(),
+            {
+                sendEvent(Event.Finish)
+            },
+            {
+                sendEvent(Event.Finish)
+            }
+        )
     }
 
 }

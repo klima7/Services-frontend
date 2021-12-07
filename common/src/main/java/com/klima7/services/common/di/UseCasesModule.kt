@@ -1,5 +1,6 @@
 package com.klima7.services.common.di
 
+import com.klima7.services.common.components.login.CompleteLoginUC
 import com.klima7.services.common.components.msgsend.SendImageMessageUC
 import com.klima7.services.common.components.msgsend.SendTextMessageUC
 import com.klima7.services.common.components.msgviewer.GetMessagesFlowUC
@@ -16,7 +17,7 @@ val useCasesModule = module {
 
     single { GetServicesFromIds(get()) }
     single { GetRatingsForExpertUC(get()) }
-    single { SignOutUC(get()) }
+    single { SignOutUC(get(), get(), get()) }
     single { SendTextMessageUC(get()) }
     single { SendImageMessageUC(get()) }
     single { GetRatingWithExpertUC(get(), get()) }
@@ -24,5 +25,6 @@ val useCasesModule = module {
     single { SetOfferStatusUC(get()) }
     single { GetOfferStreamUC(get()) }
     single { GetMessagesFlowUC(get()) }
+    single { CompleteLoginUC(get(), get()) }
 
 }

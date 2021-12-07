@@ -1,23 +1,21 @@
-package com.klima7.services.common.usecases
+package com.klima7.services.common.components.login
 
+import android.util.Log
 import com.klima7.services.common.core.BaseUC
 import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
-import com.klima7.services.common.data.repositories.AuthRepository
 import com.klima7.services.common.data.repositories.TokensRepository
 import com.klima7.services.common.data.repositories.TokensStorageRepository
 import com.klima7.services.common.models.Failure
 
-class SignOutUC(
-    private val authRepository: AuthRepository,
+class CompleteLoginUC(
     private val tokensRepository: TokensRepository,
-    private val tokensStorageRepository: TokensStorageRepository,
+    private val tokensStorageRepository: TokensStorageRepository
 ): BaseUC<None, None>() {
 
     override suspend fun execute(params: None): Outcome<Failure, None> {
-        authRepository.signOut()
-        tokensStorageRepository.deleteToken("test token")
+        Log.i("Hello", "Completing login")
+        tokensStorageRepository.updateToken("test token")
         return Outcome.Success(None())
     }
-
 }

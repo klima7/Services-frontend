@@ -102,6 +102,7 @@ dependencies {
     api "com.google.firebase:firebase-auth-ktx"
     api "com.google.firebase:firebase-storage-ktx"
     api "com.google.firebase:firebase-database-ktx"
+    api "com.google.firebase:firebase-messaging-ktx"
 
     // Room
     api "androidx.room:room-runtime:2.3.0"
