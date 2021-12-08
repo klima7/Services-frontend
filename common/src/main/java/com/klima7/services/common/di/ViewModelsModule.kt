@@ -2,7 +2,6 @@ package com.klima7.services.common.di
 
 import com.klima7.services.common.components.areavisual.AreaVisualizationViewModel
 import com.klima7.services.common.components.faildialog.FailureDialogViewModel
-import com.klima7.services.common.components.login.LoginViewModel
 import com.klima7.services.common.components.msgsend.SendMessageViewModel
 import com.klima7.services.common.components.msgviewer.MessageViewerViewModel
 import com.klima7.services.common.components.profile.area.ProfileAreaViewModel
@@ -31,7 +30,6 @@ val viewModelsModule = module {
     viewModel { ProfileRatingsViewModel(get()) }
     viewModel { RatingsViewModel(get()) }
     viewModel { ProfileAreaViewModel() }
-    viewModel { LoginViewModel(get()) }
     viewModel { SendMessageViewModel(get(), get(), get()) }
     viewModel { MessageViewerViewModel(get()) }
     viewModel { RatingViewModel(get()) }

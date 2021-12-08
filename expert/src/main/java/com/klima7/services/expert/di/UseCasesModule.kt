@@ -8,6 +8,7 @@ import com.klima7.services.expert.features.job.GetCurrentExpertJobUC
 import com.klima7.services.expert.features.jobs.base.GetCurrentExpertJobsUC
 import com.klima7.services.expert.features.jobs.new.GetNewJobsIdsUC
 import com.klima7.services.expert.features.jobs.rejected.GetRejectedJobsIdsUC
+import com.klima7.services.expert.features.login.CompleteExpertLoginUC
 import com.klima7.services.expert.features.offer.GetClientUC
 import com.klima7.services.expert.features.offers.archive.GetArchiveOffersForCurrentExpertUC
 import com.klima7.services.expert.features.offers.current.GetCurrentOffersForCurrentExpertUC
@@ -18,6 +19,7 @@ import com.klima7.services.expert.features.splash.GetCurrentExpertStateUC
 import com.klima7.services.expert.usecases.GetCurrentExpertUC
 import com.klima7.services.expert.usecases.RejectJobUC
 import com.klima7.services.expert.usecases.SetOfferArchivedUC
+import com.klima7.services.expert.usecases.SignOutExpertUC
 import org.koin.dsl.module
 
 val useCasesModule = module {
@@ -40,5 +42,7 @@ val useCasesModule = module {
     single { SetOfferArchivedUC(get()) }
     single { GetClientUC(get()) }
     single { GetAllAndSelectedServicesUC(get(), get()) }
+    single { SignOutExpertUC(get(), get(), get()) }
+    single { CompleteExpertLoginUC(get(), get()) }
 
 }

@@ -11,7 +11,6 @@ import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.common.databinding.FragmentLoginBinding
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 abstract class BaseLoginFragment(
     private val subtitle: Int
@@ -22,7 +21,7 @@ abstract class BaseLoginFragment(
     }
 
     override val layoutId = R.layout.fragment_login
-    override val viewModel: LoginViewModel by viewModel()
+    abstract override val viewModel: BaseLoginViewModel
 
     private val signInLauncher = registerForActivityResult(
         FirebaseAuthUIActivityResultContract()
@@ -83,9 +82,9 @@ abstract class BaseLoginFragment(
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
         super.handleEvent(event)
         when(event) {
-            LoginViewModel.Event.LaunchSignIn -> signIn()
-            LoginViewModel.Event.Finish -> finish()
-            LoginViewModel.Event.ShowFailure -> showFailure()
+            BaseLoginViewModel.Event.LaunchSignIn -> signIn()
+            BaseLoginViewModel.Event.Finish -> finish()
+            BaseLoginViewModel.Event.ShowFailure -> showFailure()
         }
     }
 

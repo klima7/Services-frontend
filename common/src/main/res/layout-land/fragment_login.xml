@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.klima7.services.common.components.login.LoginViewModel" />
+            type="com.klima7.services.common.components.login.BaseLoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

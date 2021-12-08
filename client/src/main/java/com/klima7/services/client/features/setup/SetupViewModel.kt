@@ -3,15 +3,15 @@ package com.klima7.services.client.features.setup
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
+import com.klima7.services.client.usecases.SignOutClientUC
 import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.core.None
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.platform.BaseViewModel
-import com.klima7.services.common.usecases.SignOutUC
 
 class SetupViewModel(
     private val getCurrentClientSetupStateUC: GetCurrentClientSetupStateUC,
-    private val signOutUC: SignOutUC,
+    private val signOutClientUC: SignOutClientUC,
 ): BaseViewModel() {
 
     sealed class Event: BaseEvent() {
@@ -51,7 +51,7 @@ class SetupViewModel(
     }
 
     private fun signOut() {
-        signOutUC.start(
+        signOutClientUC.start(
             viewModelScope,
             None(),
             { },

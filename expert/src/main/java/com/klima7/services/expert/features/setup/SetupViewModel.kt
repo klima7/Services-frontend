@@ -7,11 +7,11 @@ import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.core.None
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.platform.BaseViewModel
-import com.klima7.services.common.usecases.SignOutUC
+import com.klima7.services.expert.usecases.SignOutExpertUC
 
 class SetupViewModel(
     private val getCurrentExpertSetupStateUC: GetCurrentExpertSetupStateUC,
-    private val signOutUC: SignOutUC,
+    private val signOutExpertUC: SignOutExpertUC,
 ): BaseViewModel() {
 
     val setupState = MutableLiveData<ExpertSetupState>()
@@ -61,7 +61,7 @@ class SetupViewModel(
     }
 
     private fun signOut() {
-        signOutUC.start(
+        signOutExpertUC.start(
             viewModelScope,
             None(),
             {

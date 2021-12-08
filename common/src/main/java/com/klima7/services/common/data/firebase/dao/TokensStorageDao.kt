@@ -21,7 +21,7 @@ class TokensStorageDao(
     private val firestore: FirebaseFirestore,
 ) {
 
-    suspend fun updateToken(token: String): Outcome<Failure, None> {
+    suspend fun updateToken(role: Role, token: String): Outcome<Failure, None> {
         try {
             val uid = auth.currentUser?.uid ?: return Outcome.Failure(Failure.PermissionFailure)
 
@@ -61,7 +61,7 @@ class TokensStorageDao(
         }
     }
 
-    suspend fun deleteToken(token: String): Outcome<Failure, None> {
+    suspend fun deleteToken(role: Role, token: String): Outcome<Failure, None> {
         return try {
             val documents = firestore
                 .collection("tokens")

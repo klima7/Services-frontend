@@ -8,9 +8,8 @@ import com.klima7.services.common.data.repositories.TokensRepository
 import com.klima7.services.common.data.repositories.TokensStorageRepository
 import com.klima7.services.common.models.Failure
 
-class CompleteLoginUC(
+abstract class CompleteLoginUC(
     private val tokensRepository: TokensRepository,
-    private val tokensStorageRepository: TokensStorageRepository
 ): BaseUC<None, None>() {
 
     override suspend fun execute(params: None): Outcome<Failure, None> {
@@ -19,8 +18,10 @@ class CompleteLoginUC(
             { failure ->
                 Outcome.Failure(failure)
             }, { token ->
-                return@foldS tokensStorageRepository.updateToken(token)
+                return@foldS updateTokenInStorage(token)
             }
         )
     }
+
+    abstract suspend fun updateTokenInStorage(token: String): Outcome<Failure, None>
 }

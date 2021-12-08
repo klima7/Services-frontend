@@ -5,7 +5,7 @@ import com.klima7.services.common.core.None
 import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.common.usecases.SignOutUC
 
-open class BaseSettingsViewModel(
+abstract class BaseSettingsViewModel(
     private val signOutUC: SignOutUC
 ): BaseViewModel() {
 

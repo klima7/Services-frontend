@@ -1,11 +1,11 @@
 package com.klima7.services.expert.features.settings
 
 import com.klima7.services.common.components.settings.BaseSettingsViewModel
-import com.klima7.services.common.usecases.SignOutUC
+import com.klima7.services.expert.usecases.SignOutExpertUC
 
 class SettingsViewModel(
-    signOutUC: SignOutUC
-): BaseSettingsViewModel(signOutUC) {
+    signOutExpertUC: SignOutExpertUC
+): BaseSettingsViewModel(signOutExpertUC) {
 
     sealed class Event: BaseEvent() {
         object ShowInfoScreen: Event()

@@ -5,7 +5,7 @@ import com.firebase.ui.auth.AuthUI
 import com.klima7.services.common.core.None
 import com.klima7.services.common.platform.BaseViewModel
 
-class LoginViewModel(
+abstract class BaseLoginViewModel(
     private val completeLoginUC: CompleteLoginUC
 ): BaseViewModel() {
 

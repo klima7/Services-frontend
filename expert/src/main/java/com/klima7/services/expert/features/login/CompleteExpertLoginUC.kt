@@ -1,0 +1,19 @@
+package com.klima7.services.expert.features.login
+
+import com.klima7.services.common.components.login.CompleteLoginUC
+import com.klima7.services.common.core.None
+import com.klima7.services.common.core.Outcome
+import com.klima7.services.common.data.repositories.TokensRepository
+import com.klima7.services.common.data.repositories.TokensStorageRepository
+import com.klima7.services.common.models.Failure
+import com.klima7.services.common.models.Role
+
+class CompleteExpertLoginUC(
+    tokensRepository: TokensRepository,
+    private val tokensStorageRepository: TokensStorageRepository
+): CompleteLoginUC(tokensRepository) {
+
+    override suspend fun updateTokenInStorage(token: String): Outcome<Failure, None> {
+        return tokensStorageRepository.updateToken(Role.EXPERT, token)
+    }
+}

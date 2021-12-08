@@ -11,6 +11,7 @@ import com.klima7.services.client.features.jobsetup.created.JobCreatedViewModel
 import com.klima7.services.client.features.jobsetup.details.JobDetailsViewModel
 import com.klima7.services.client.features.jobsetup.location.LocationViewModel
 import com.klima7.services.client.features.jobsetup.service.ServiceViewModel
+import com.klima7.services.client.features.login.LoginViewModel
 import com.klima7.services.client.features.newjob.NewJobViewModel
 import com.klima7.services.client.features.offer.OfferViewModel
 import com.klima7.services.client.features.offers.OffersViewModel
@@ -43,5 +44,6 @@ val viewModelsModule = module {
     viewModel { JobDetailsViewModel(get()) }
     viewModel { JobSetupViewModel() }
     viewModel { JobCreatedViewModel() }
+    viewModel { LoginViewModel(get()) }
 
 }
