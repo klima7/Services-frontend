@@ -1,4 +1,4 @@
-package com.klima7.services.client.platform
+package com.klima7.services.expert.platform
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -12,7 +12,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.google.firebase.messaging.ktx.messaging
-import com.klima7.services.client.features.splash.SplashActivity
+import com.klima7.services.expert.features.splash.SplashActivity
 import com.klima7.services.common.R
 import java.lang.Exception
 
@@ -53,7 +53,7 @@ class MessagingService: FirebaseMessagingService() {
         val builder = NotificationCompat.Builder(this, "792922250")
             .setSmallIcon(R.drawable.avatar_default)
             .setContentTitle(remoteMessage.data["type"] ?: "no-type")
-            .setContentText("Client")
+            .setContentText("Expert")
             .setPriority(NotificationCompat.PRIORITY_MAX)
             .setContentIntent(pendingIntent)
 

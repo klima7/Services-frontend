@@ -24,21 +24,23 @@ class TokensStorageDao(
     suspend fun updateToken(role: Role, token: String): Outcome<Failure, None> {
         try {
             val uid = auth.currentUser?.uid ?: return Outcome.Failure(Failure.PermissionFailure)
-
-            val documents = firestore
+            val collectionName = if(role == Role.CLIENT) "clients" else "experts"
+            val tokensCollection = firestore
+                .collection(collectionName)
+                .document(uid)
                 .collection("tokens")
+
+            val documents = tokensCollection
                 .whereEqualTo("token", token)
                 .get(Source.SERVER)
                 .await().documents
 
             if(documents.isEmpty()) {
                 val data = hashMapOf(
-                    "uid" to uid,
                     "token" to token,
                     "time" to FieldValue.serverTimestamp(),
                 )
-                firestore
-                    .collection("tokens")
+                tokensCollection
                     .add(data)
                     .await()
                 return Outcome.Success(None())
@@ -47,8 +49,7 @@ class TokensStorageDao(
             else {
                 val id = documents[0].id
                 val data: Map<String, Any> = hashMapOf("time" to FieldValue.serverTimestamp())
-                firestore
-                    .collection("tokens")
+                tokensCollection
                     .document(id)
                     .update(data)
                     .await()
@@ -62,9 +63,14 @@ class TokensStorageDao(
     }
 
     suspend fun deleteToken(role: Role, token: String): Outcome<Failure, None> {
+        val uid = auth.currentUser?.uid ?: return Outcome.Failure(Failure.PermissionFailure)
+        val collectionName = if(role == Role.CLIENT) "clients" else "experts"
+        val tokensCollection = firestore
+            .collection(collectionName)
+            .document(uid)
+            .collection("tokens")
         return try {
-            val documents = firestore
-                .collection("tokens")
+            val documents = tokensCollection
                 .whereEqualTo("token", token)
                 .get(Source.SERVER)
                 .await().documents

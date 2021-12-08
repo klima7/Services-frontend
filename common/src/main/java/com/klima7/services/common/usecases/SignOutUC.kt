@@ -15,12 +15,12 @@ abstract class SignOutUC(
 ): BaseUC<None, None>() {
 
     override suspend fun execute(params: None): Outcome<Failure, None> {
-        authRepository.signOut()
         val deleteResult = getAndDeleteToken()
         if(deleteResult.isFailure) {
             return deleteResult
         }
-        return tokensRepository.deleteToken()
+        tokensRepository.deleteToken()
+        return authRepository.signOut()
     }
 
     private suspend fun getAndDeleteToken(): Outcome<Failure, None> {
