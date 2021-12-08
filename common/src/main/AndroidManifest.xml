@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.klima7.services.common">
 
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application>
 
         <meta-data
@@ -17,14 +20,6 @@
 
         <activity android:name=".components.ratings.RatingsActivity" />
         <activity android:name=".components.rating.RatingActivity" />
-
-        <service
-            android:name=".platform.MessagingService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
 
     </application>
 

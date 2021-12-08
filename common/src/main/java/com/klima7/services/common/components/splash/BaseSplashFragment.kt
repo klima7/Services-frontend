@@ -1,6 +1,13 @@
 package com.klima7.services.common.components.splash
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.content.Context.NOTIFICATION_SERVICE
+import android.os.Build
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat.getSystemService
 import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentSplashBinding
 import com.klima7.services.common.platform.BaseFragment
@@ -22,6 +29,15 @@ abstract class BaseSplashFragment(
 
     override fun onFirstCreation() {
         super.onFirstCreation()
+
+        val screen = arguments?.getString("screen") as String?
+        val argument = arguments?.getString("argument") as String?
+        Toast.makeText(requireContext(), "Screen: $screen; argument: $argument", Toast.LENGTH_LONG).show()
+
+        if(screen != null) {
+            binding.splashMotionLayout.progress = 1f
+        }
+
         viewModel.started()
     }
 

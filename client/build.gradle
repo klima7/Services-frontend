@@ -4,6 +4,7 @@ plugins {
     id 'com.google.gms.google-services'
     id 'kotlin-kapt'
 }
+apply plugin: 'kotlin-android'
 
 android {
     compileSdk COMPILE_SDK
@@ -43,4 +44,7 @@ android {
 dependencies {
     implementation "com.anton46:stepsview:0.0.2"
     implementation project(path: ':common')
+    implementation "androidx.core:core-ktx:+"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

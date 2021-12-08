@@ -18,7 +18,7 @@
         >
 
         <androidx.constraintlayout.motion.widget.MotionLayout
-            android:id="@+id/constraintLayout2"
+            android:id="@+id/splash_motion_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutDescription="@xml/animation_splash_screen">
