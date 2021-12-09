@@ -47,6 +47,7 @@ class MessageViewerViewModel(
             when(message) {
                 is TextMessage -> items.add(TextMessageItem(message, side))
                 is ImageMessage -> items.add(ImageMessageItem(message, side))
+                is StatusChangeMessage -> items.add(StatusChangeMessageItem(message, side))
             }
         }
         return items

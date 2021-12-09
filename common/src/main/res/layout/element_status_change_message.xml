@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="cardColor"
+            type="Integer" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/msgtext_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="2dp"
+        >
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/msgtext_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:contentPadding="8dp"
+            app:contentPaddingLeft="14dp"
+            app:contentPaddingRight="14dp"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@{cardColor}"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/msgtext_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?messageCloudTextColor"
+                    android:textSize="15sp"
+                    />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</layout>

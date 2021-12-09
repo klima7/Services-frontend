@@ -30,4 +30,7 @@
     <string name="text_message_from">Wiadomość od %s</string>
     <string name="image_message_sent">Wysłano obraz</string>
 
+    <!-- Messages -->
+    <string name="changing_offer_status_message">Zmieniam status oferty na \"%s\"</string>
+
 </resources>
