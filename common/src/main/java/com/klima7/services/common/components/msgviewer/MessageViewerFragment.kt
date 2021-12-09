@@ -3,6 +3,7 @@ package com.klima7.services.common.components.msgviewer
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +12,7 @@ import com.klima7.services.common.R
 import com.klima7.services.common.databinding.FragmentMessageViewerBinding
 import com.klima7.services.common.models.Role
 import com.klima7.services.common.platform.BaseFragment
+import com.klima7.services.common.platform.BaseViewModel
 import com.xwray.groupie.Group
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.Section
@@ -98,6 +100,17 @@ class MessageViewerFragment:
 
     private fun isOnBottom(): Boolean {
         return !recycler.canScrollVertically(1)
+    }
+
+    override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
+        super.handleEvent(event)
+        when(event) {
+            is MessageViewerViewModel.Event.RemoveNotifications -> removeNotifications(event.offerId)
+        }
+    }
+
+    private fun removeNotifications(offerId: String) {
+        NotificationManagerCompat.from(requireActivity()).cancel(offerId.hashCode())
     }
 
     private inner class ScrollListener: RecyclerView.OnScrollListener() {

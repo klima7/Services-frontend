@@ -1,15 +1,23 @@
 package com.klima7.services.common.notifications
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.app.Service
+import android.app.*
+import android.app.ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
+import android.app.ActivityManager.RunningAppProcessInfo.IMPORTANCE_VISIBLE
 import android.graphics.BitmapFactory
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.klima7.services.common.R
+import android.service.notification.StatusBarNotification
+
+import android.content.Context.NOTIFICATION_SERVICE
+import androidx.core.content.ContextCompat
+
+import androidx.core.content.ContextCompat.getSystemService
+
+
+
 
 abstract class BaseNotificationManager(
     private val service: Service
@@ -83,6 +91,10 @@ abstract class BaseNotificationManager(
     }
 
     private fun showNotification(id: String, title: String, body: String, intent: PendingIntent? = null) {
+        if(isAppInForeground() && !isNotificationVisible(id)) {
+            return
+        }
+
         val largeIconDrawable = BitmapFactory.decodeResource(service.applicationContext.resources,
             largeIcon)
 
@@ -104,6 +116,23 @@ abstract class BaseNotificationManager(
     private fun cancelNotification(id: String) {
         val intId = id.hashCode()
         NotificationManagerCompat.from(service).cancel(intId)
+    }
+
+    private fun isAppInForeground(): Boolean {
+        val appProcessInfo = ActivityManager.RunningAppProcessInfo();
+        ActivityManager.getMyMemoryState(appProcessInfo);
+        return (appProcessInfo.importance == IMPORTANCE_FOREGROUND || appProcessInfo.importance == IMPORTANCE_VISIBLE)
+    }
+
+    private fun isNotificationVisible(id: String): Boolean {
+        val mNotificationManager = getSystemService(service, NotificationManager::class.java)
+        val notifications = mNotificationManager?.activeNotifications ?: return false
+        for (notification in notifications) {
+            if(notification.id == id.hashCode()) {
+                return true
+            }
+        }
+        return false
     }
 
 }

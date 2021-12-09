@@ -15,6 +15,10 @@ class MessageViewerViewModel(
     private val getMessagesFlowUC: GetMessagesFlowUC
 ): BaseViewModel() {
 
+    sealed class Event: BaseEvent() {
+        data class RemoveNotifications(val offerId: String): Event()
+    }
+
     private val messages = MutableLiveData<List<Message>>(listOf())
     val messagesItems = messages.map { messages -> createItems(messages) }
 
@@ -29,6 +33,7 @@ class MessageViewerViewModel(
             { },
             { messagesFlow ->
                 messagesFlow.collect {
+                    sendEvent(Event.RemoveNotifications(offerId))
                     messages.value = it
                 }
             }
