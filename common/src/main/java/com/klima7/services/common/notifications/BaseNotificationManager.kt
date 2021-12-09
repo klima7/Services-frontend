@@ -15,8 +15,8 @@ import android.content.Context.NOTIFICATION_SERVICE
 import androidx.core.content.ContextCompat
 
 import androidx.core.content.ContextCompat.getSystemService
-
-
+import com.klima7.services.common.models.OfferStatus
+import com.klima7.services.common.ui.OfferStatusDescription
 
 
 abstract class BaseNotificationManager(
@@ -65,6 +65,10 @@ abstract class BaseNotificationManager(
                 handleReadMessage(notificationData)
                 true
             }
+            "status-change" -> {
+                handleStatusChangeMessage(notificationData)
+                true
+            }
             else -> false
         }
     }
@@ -85,12 +89,29 @@ abstract class BaseNotificationManager(
         showNotification(offerId, title, body)
     }
 
+    private fun handleStatusChangeMessage(notificationData: Map<String, String>) {
+        val senderName = notificationData["sender"] ?: return
+        val offerId = notificationData["offerId"] ?: return
+        val newStatus = notificationData["offerId"] ?: return
+        val title = service.resources.getString(R.string.notification_status_change_title, senderName)
+        val status = when(newStatus) {
+            "0" -> OfferStatus.NEW
+            "1" -> OfferStatus.CANCELLED
+            "2" -> OfferStatus.IN_REALIZATION
+            "3" -> OfferStatus.DONE
+            else -> OfferStatus.NEW
+        }
+        val statusName = OfferStatusDescription.get(status).getText(service)
+        val body = service.resources.getString(R.string.notification_status_change_body, statusName)
+        showNotification(offerId, title, body)
+    }
+
     private fun handleReadMessage(notificationData: Map<String, String>) {
         val offerId = notificationData["offerId"] ?: return
         cancelNotification(offerId)
     }
 
-    private fun showNotification(id: String, title: String, body: String, intent: PendingIntent? = null) {
+    protected fun showNotification(id: String, title: String, body: String, intent: PendingIntent? = null) {
         if(isAppInForeground() && !isNotificationVisible(id)) {
             return
         }

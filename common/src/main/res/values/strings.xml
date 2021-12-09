@@ -29,6 +29,10 @@
     <!-- Notifications -->
     <string name="text_message_from">Wiadomość od %s</string>
     <string name="image_message_sent">Wysłano obraz</string>
+    <string name="notification_status_change_title">%s zmienił status oferty</string>
+    <string name="notification_status_change_body">Zmieniono status na \"%s\"</string>
+    <string name="notification_rating_added_title">%s dodał ocenę</string>
+    <string name="notification_rating_added_body">Zostałeś oceniony na %s</string>
 
     <!-- Messages -->
     <string name="changing_offer_status_message">Zmieniam status oferty na \"%s\"</string>
