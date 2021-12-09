@@ -1,8 +1,10 @@
-package com.klima7.services.client.messaging
+package com.klima7.services.expert.messaging
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Intent
-import android.graphics.BitmapFactory
+import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -10,12 +12,9 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.google.firebase.messaging.ktx.messaging
-import com.klima7.services.client.features.splash.SplashActivity
+import com.klima7.services.expert.features.splash.SplashActivity
+import com.klima7.services.common.R
 import java.lang.Exception
-
-import com.klima7.services.client.R
-import com.klima7.services.common.extensions.getAttrColor
-
 
 class MessagingService: FirebaseMessagingService() {
 
