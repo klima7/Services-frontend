@@ -12,8 +12,4 @@ class NotificationManager(
     override val largeIcon = R.drawable.icon_notification_large
     override val smallIcon = R.drawable.icon_notification_small
 
-    override fun handle(notificationData: Map<String, String>): Boolean {
-        return true
-    }
-
 }

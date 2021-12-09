@@ -6,6 +6,7 @@ import android.app.PendingIntent
 import android.app.Service
 import android.graphics.BitmapFactory
 import android.os.Build
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.klima7.services.common.R
@@ -41,6 +42,7 @@ abstract class BaseNotificationManager(
     }
 
     open fun handle(notificationData: Map<String, String>): Boolean {
+        Log.i("Hello", "Message received: ${notificationData["type"]}]")
         val type = notificationData["type"] ?: return false
         return when(type) {
             "text-message" -> {

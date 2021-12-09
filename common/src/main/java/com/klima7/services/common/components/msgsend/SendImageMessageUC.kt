@@ -21,7 +21,7 @@ class SendImageMessageUC(
     @ExperimentalTime
     override suspend fun execute(params: Params): Outcome<Failure, None> {
         return try {
-            withTimeout(Duration.seconds(3)) {
+            withTimeout(Duration.seconds(5)) {
                 messagesRepository.sendImageMessage(params.offerId, params.sender, params.imagePath)
             }
         } catch (e: Exception) {
