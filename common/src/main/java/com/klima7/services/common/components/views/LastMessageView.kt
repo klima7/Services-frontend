@@ -10,6 +10,7 @@ import com.klima7.services.common.R
 import com.klima7.services.common.databinding.ViewLastMessageBinding
 import com.klima7.services.common.extensions.getPrettyTime
 import com.klima7.services.common.models.*
+import com.klima7.services.common.ui.OfferStatusDescription
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -79,12 +80,20 @@ class LastMessageView(context: Context, attrs: AttributeSet?): FrameLayout(conte
             return
         }
 
+        binding.author = getAuthorText(cLastMessage.author)
         when(cLastMessage) {
             is TextMessage -> {
-                binding.message = getAuthorText(cLastMessage.author) + ": " + cLastMessage.text
+                binding.message = cLastMessage.text
             }
             is ImageMessage -> {
-                binding.message = getAuthorText(cLastMessage.author) + ": " + "Wysłano zdjęcie"
+                binding.message = context.resources.getString(R.string.last_message_photo_send)
+            }
+            is StatusChangeMessage -> {
+                val statusName = OfferStatusDescription.get(cLastMessage.newStatus).getText(context)
+                binding.message = context.resources.getString(R.string.last_message_status_changed, statusName)
+            }
+            is RatingMessage -> {
+                binding.message = context.resources.getString(R.string.last_message_rating_added)
             }
         }
 

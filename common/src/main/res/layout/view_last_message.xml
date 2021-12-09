@@ -17,6 +17,9 @@
             name="newOffer"
             type="boolean" />
         <variable
+            name="author"
+            type="String" />
+        <variable
             name="message"
             type="String" />
         <variable
@@ -98,7 +101,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{message}"
+                    android:text="@{@string/last_message_scheme(author, message)}"
                     tools:text="Ekspert: Tak, jeżli posiada Pan już część materiałów, to oczywiście koszt może być mniejszy."
                     />
 

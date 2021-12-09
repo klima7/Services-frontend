@@ -34,4 +34,10 @@
     <string name="changing_offer_status_message">Zmieniam status oferty na \"%s\"</string>
     <string name="rating_created_message">Dokonałem oceny na %s</string>
 
+    <!-- Last message -->
+    <string name="last_message_scheme">%s: %s</string>
+    <string name="last_message_photo_send">Wysłano zdjęcie</string>
+    <string name="last_message_status_changed">Zmieniono status zlecenia na \"%s\"</string>
+    <string name="last_message_rating_added">Dodano ocenę</string>
+
 </resources>
