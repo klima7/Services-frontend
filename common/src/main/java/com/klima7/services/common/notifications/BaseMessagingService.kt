@@ -8,11 +8,11 @@ import com.google.firebase.messaging.RemoteMessage
 
 abstract class BaseMessagingService: FirebaseMessagingService() {
 
-    abstract val notificationHandler: BaseNotificationsHandler
+    abstract val notificationManager: BaseNotificationManager
 
     override fun onCreate() {
         super.onCreate()
-        notificationHandler.init()
+        notificationManager.init()
     }
 
     override fun getStartCommandIntent(p0: Intent): Intent {
@@ -28,7 +28,7 @@ abstract class BaseMessagingService: FirebaseMessagingService() {
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         Log.i("Hello", "Message read")
         val data = remoteMessage.data
-        notificationHandler.handle(data)
+        notificationManager.handle(data)
     }
 
     override fun onDeletedMessages() {

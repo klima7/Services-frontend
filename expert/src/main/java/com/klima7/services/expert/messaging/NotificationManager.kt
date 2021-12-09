@@ -1,22 +1,18 @@
 package com.klima7.services.expert.messaging
 
 import android.app.Service
-import com.klima7.services.common.notifications.BaseNotificationsHandler
+import com.klima7.services.common.notifications.BaseNotificationManager
 import com.klima7.services.expert.R
 
-class NotificationHandler(
+class NotificationManager(
     private val service: Service,
-): BaseNotificationsHandler(service) {
+): BaseNotificationManager(service) {
 
     override val channelId = "services expert";
     override val largeIcon = R.drawable.icon_notification_large
     override val smallIcon = R.drawable.icon_notification_small
 
     override fun handle(notificationData: Map<String, String>): Boolean {
-        if(super.handle(notificationData)) {
-            return true
-        }
-        showNotification(1, "Title", "Body")
         return true
     }
 

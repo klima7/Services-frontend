@@ -8,8 +8,9 @@ import android.graphics.BitmapFactory
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import com.klima7.services.common.R
 
-abstract class BaseNotificationsHandler(
+abstract class BaseNotificationManager(
     private val service: Service
 ) {
 
@@ -40,10 +41,37 @@ abstract class BaseNotificationsHandler(
     }
 
     open fun handle(notificationData: Map<String, String>): Boolean {
-        return false
+        val type = notificationData["type"] ?: return false
+        return when(type) {
+            "text-message" -> {
+                handleTextMessage(notificationData)
+                true
+            }
+            "image-message" -> {
+                handleImageMessage(notificationData)
+                true
+            }
+            else -> false
+        }
     }
 
-    fun showNotification(id: Int, title: String, body: String, intent: PendingIntent? = null) {
+    private fun handleTextMessage(notificationData: Map<String, String>) {
+        val senderName = notificationData["sender"] ?: return
+        val message = notificationData["message"] ?: return
+        val offerId = notificationData["offerId"] ?: return
+        val title = service.resources.getString(R.string.text_message_from, senderName)
+        showNotification(offerId, title, message)
+    }
+
+    private fun handleImageMessage(notificationData: Map<String, String>) {
+        val senderName = notificationData["sender"] ?: return
+        val offerId = notificationData["offerId"] ?: return
+        val title = service.resources.getString(R.string.text_message_from, senderName)
+        val body = service.resources.getString(R.string.image_message_sent)
+        showNotification(offerId, title, body)
+    }
+
+    private fun showNotification(id: String, title: String, body: String, intent: PendingIntent? = null) {
         val largeIconDrawable = BitmapFactory.decodeResource(service.applicationContext.resources,
             largeIcon)
 
@@ -58,7 +86,8 @@ abstract class BaseNotificationsHandler(
             builder.setContentIntent(intent)
         }
 
-        NotificationManagerCompat.from(service).notify(id, builder.build())
+        val intId = id.hashCode()
+        NotificationManagerCompat.from(service).notify(intId, builder.build())
     }
 
 }
