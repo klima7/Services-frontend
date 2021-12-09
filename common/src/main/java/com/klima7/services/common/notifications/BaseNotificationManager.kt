@@ -53,6 +53,10 @@ abstract class BaseNotificationManager(
                 handleImageMessage(notificationData)
                 true
             }
+            "offer-read" -> {
+                handleReadMessage(notificationData)
+                true
+            }
             else -> false
         }
     }
@@ -73,6 +77,11 @@ abstract class BaseNotificationManager(
         showNotification(offerId, title, body)
     }
 
+    private fun handleReadMessage(notificationData: Map<String, String>) {
+        val offerId = notificationData["offerId"] ?: return
+        cancelNotification(offerId)
+    }
+
     private fun showNotification(id: String, title: String, body: String, intent: PendingIntent? = null) {
         val largeIconDrawable = BitmapFactory.decodeResource(service.applicationContext.resources,
             largeIcon)
@@ -90,6 +99,11 @@ abstract class BaseNotificationManager(
 
         val intId = id.hashCode()
         NotificationManagerCompat.from(service).notify(intId, builder.build())
+    }
+
+    private fun cancelNotification(id: String) {
+        val intId = id.hashCode()
+        NotificationManagerCompat.from(service).cancel(intId)
     }
 
 }
