@@ -32,5 +32,6 @@
 
     <!-- Messages -->
     <string name="changing_offer_status_message">Zmieniam status oferty na \"%s\"</string>
+    <string name="rating_created_message">Dokonałem oceny na %s</string>
 
 </resources>

@@ -26,6 +26,7 @@ fun MessageEntity.toDomain(pendingWrite: Boolean): Message {
             Log.i("Hello", "StatusChange message: $a")
             a
         }
+        3 -> RatingMessage(author, sendTime, ratingId ?: "", rating ?: .0)
         else -> TextMessage(author, sendTime,"Error", false)
     }
 }

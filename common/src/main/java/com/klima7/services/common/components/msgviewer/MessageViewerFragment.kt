@@ -1,5 +1,6 @@
 package com.klima7.services.common.components.msgviewer
 
+import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.view.View
@@ -7,8 +8,10 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.klima7.services.common.R
+import com.klima7.services.common.components.rating.RatingActivity
 import com.klima7.services.common.databinding.FragmentMessageViewerBinding
 import com.klima7.services.common.models.Role
 import com.klima7.services.common.platform.BaseFragment
@@ -106,11 +109,23 @@ class MessageViewerFragment:
         super.handleEvent(event)
         when(event) {
             is MessageViewerViewModel.Event.RemoveNotifications -> removeNotifications(event.offerId)
+            is MessageViewerViewModel.Event.ShowRating -> showRating(event.ratingId)
         }
     }
 
     private fun removeNotifications(offerId: String) {
         NotificationManagerCompat.from(requireActivity()).cancel(offerId.hashCode())
+    }
+
+    private fun showRating(ratingId: String) {
+        val intent = Intent(requireContext(), RatingActivity::class.java)
+        val bundle = bundleOf(
+            "ratingId" to ratingId,
+            "exit" to "slideDown",
+        )
+        intent.putExtras(bundle)
+        startActivity(intent)
+        Animatoo.animateSlideUp(requireActivity())
     }
 
     private inner class ScrollListener: RecyclerView.OnScrollListener() {

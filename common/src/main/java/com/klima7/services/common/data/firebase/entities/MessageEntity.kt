@@ -11,7 +11,7 @@ data class MessageEntity(
     var message: String? = null,
     var imageUrl: String? = null,
     var newStatus: Int? = null,
-    var offerId: String? = null,
+    var ratingId: String? = null,
     var rating: Double? = null,
 )
 

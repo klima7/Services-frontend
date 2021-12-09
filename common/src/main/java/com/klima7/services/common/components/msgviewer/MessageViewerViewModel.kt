@@ -13,10 +13,11 @@ import kotlinx.coroutines.launch
 
 class MessageViewerViewModel(
     private val getMessagesFlowUC: GetMessagesFlowUC
-): BaseViewModel() {
+): BaseViewModel(), RatingMessageItem.Listener {
 
     sealed class Event: BaseEvent() {
         data class RemoveNotifications(val offerId: String): Event()
+        data class ShowRating(val ratingId: String): Event()
     }
 
     private val messages = MutableLiveData<List<Message>>(listOf())
@@ -48,6 +49,7 @@ class MessageViewerViewModel(
                 is TextMessage -> items.add(TextMessageItem(message, side))
                 is ImageMessage -> items.add(ImageMessageItem(message, side))
                 is StatusChangeMessage -> items.add(StatusChangeMessageItem(message, side))
+                is RatingMessage -> items.add(RatingMessageItem(message, side, this))
             }
         }
         return items
@@ -66,5 +68,9 @@ class MessageViewerViewModel(
                 MessageAuthor.CLIENT -> Side.RIGHT
             }
         }
+    }
+
+    override fun showRatingClicked(ratingId: String) {
+        sendEvent(Event.ShowRating(ratingId))
     }
 }
