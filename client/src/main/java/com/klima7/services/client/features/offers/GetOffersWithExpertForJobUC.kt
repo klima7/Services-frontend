@@ -2,11 +2,13 @@ package com.klima7.services.client.features.offers
 
 import com.klima7.services.common.core.BaseUC
 import com.klima7.services.common.core.Outcome
+import com.klima7.services.common.core.map
 import com.klima7.services.common.data.repositories.ExpertsRepository
 import com.klima7.services.common.data.repositories.OffersRepository
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Offer
 import com.klima7.services.common.models.OfferWithExpert
+import kotlin.math.exp
 
 class GetOffersWithExpertForJobUC(
     private val offersRepository: OffersRepository,
@@ -30,10 +32,9 @@ class GetOffersWithExpertForJobUC(
     private suspend fun getExpertsPart(offers: List<Offer>): Outcome<Failure, List<OfferWithExpert>> {
         val results = mutableListOf<OfferWithExpert>()
         for(offer in offers) {
-            when(val outcome = expertsRepository.getExpert(offer.expertId)) {
+            when(val outcome = getExpert(offer)) {
                 is Outcome.Success -> {
-                    val result = OfferWithExpert(offer, outcome.b)
-                    results.add(result)
+                    results.add(outcome.b)
                 }
                 is Outcome.Failure -> {
                     if(outcome.a !is Failure.InternetFailure) {
@@ -43,5 +44,10 @@ class GetOffersWithExpertForJobUC(
             }
         }
         return Outcome.Success(results)
+    }
+
+    private suspend fun getExpert(offer: Offer): Outcome<Failure, OfferWithExpert> {
+        val expertId = offer.expertId ?: return Outcome.Success(OfferWithExpert(offer, null))
+        return expertsRepository.getExpert(expertId).map {OfferWithExpert(offer, it)}
     }
 }

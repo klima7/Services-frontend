@@ -31,7 +31,7 @@ class OfferWithExpertItem(
             listener.offerContentClicked(offerWithExpert)
         }
 
-        binding.offerRating.rating = offerWithExpert.expert.rating.toFloat()
+        binding.offerRating.rating = offerWithExpert.expert?.rating?.toFloat() ?: 0f
 
         binding.offerLastMessage.setRole(Role.CLIENT)
         binding.offerLastMessage.setMessage(offerWithExpert.offer.lastMessage)

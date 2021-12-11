@@ -28,7 +28,8 @@ class GetOfferWithExpertUC(
     }
 
     private suspend fun getExpertPart(offer: Offer): Outcome<Failure, OfferWithExpert> {
-        return expertsRepository.getExpert(offer.expertId).foldS({ failure ->
+        val expertId = offer.expertId ?: return Outcome.Success(OfferWithExpert(offer, null))
+        return expertsRepository.getExpert(expertId).foldS({ failure ->
             Outcome.Failure(failure)
         }, { expert ->
             Outcome.Success(OfferWithExpert(offer, expert))

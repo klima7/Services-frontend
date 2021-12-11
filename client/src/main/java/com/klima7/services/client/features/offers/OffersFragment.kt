@@ -131,9 +131,10 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
     }
 
     override fun offerExpertClicked(offerWithExpert: OfferWithExpert, avatarView: AvatarView) {
+        val expertUid = offerWithExpert.expert?.uid ?: return
         val intent = Intent(requireContext(), ProfileActivity::class.java)
         val bundle = bundleOf(
-            "expertUid" to offerWithExpert.expert.uid,
+            "expertUid" to expertUid,
         )
         intent.putExtras(bundle)
 

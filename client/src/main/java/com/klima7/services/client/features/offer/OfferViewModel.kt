@@ -23,12 +23,12 @@ class OfferViewModel(
 
     override val offer = MutableLiveData<Offer>()
     override val offerStatus = offer.map { it.status }
-    private val expert = MutableLiveData<Expert>()
+    private val expert = MutableLiveData<Expert?>()
 
     val addRatingItemVisible = offer.map { it.ratingId  == null }
     val showRatingItemVisible = offer.map { it.ratingId  != null }
-    val callItemVisible = expert.map { it.info.phone  != null }
-    val expertName = expert.map { it.info.name }
+    val callItemVisible = expert.map { it?.info?.phone != null }
+    val expertName = offer.map { it.expertName }
     val serviceName = offer.map { it.serviceName }
 
     fun addCommentClicked() {
@@ -52,7 +52,13 @@ class OfferViewModel(
     override fun onOfferUpdated(offer: Offer) {
         this.offer.value = offer
         if(expert.value == null) {
-            getExpert(offer.expertId)
+            val expertId = offer.expertId
+            if(expertId == null) {
+                this.expert.value = null
+            }
+            else {
+                getExpert(expertId)
+            }
         }
     }
 
