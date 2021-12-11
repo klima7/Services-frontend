@@ -12,6 +12,5 @@ data class Rating(
     val comment: String?,
     val rating: Double,
     val date: Date,
-    val offerId: String,
     val expertId: String,
 ) : Parcelable
