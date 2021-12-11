@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="offerWithExpert"
             type="com.klima7.services.common.models.OfferWithExpert" />
@@ -46,7 +47,7 @@
                     >
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -63,7 +64,7 @@
                             />
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
                             android:layout_gravity="center_vertical"
@@ -73,26 +74,45 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@{offerWithExpert.expert.info.name}"
+                                android:text="@{offerWithExpert.offer.expertName}"
                                 tools:text="Lucjan Zawadzki"
                                 android:textStyle="bold"
                                 android:textSize="19sp"
                                 android:layout_marginLeft="3dp"
                                 />
 
-                            <com.willy.ratingbar.BaseRatingBar
-                                android:id="@+id/offer_rating"
-                                android:layout_width="wrap_content"
+                            <FrameLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:srb_drawableEmpty="@drawable/icon_star_empty"
-                                app:srb_drawableFilled="@drawable/icon_star_filled"
-                                app:srb_isIndicator="true"
-                                app:srb_numStars="5"
-                                app:srb_scrollable="true"
-                                app:srb_starHeight="30dp"
-                                app:srb_starWidth="30dp"
-                                app:srb_starPadding="1dp"
-                                app:srb_stepSize="0.01" />
+                                >
+
+                                <com.willy.ratingbar.BaseRatingBar
+                                    android:id="@+id/offer_rating"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:srb_drawableEmpty="@drawable/icon_star_empty"
+                                    app:srb_drawableFilled="@drawable/icon_star_filled"
+                                    app:srb_isIndicator="true"
+                                    app:srb_numStars="5"
+                                    app:srb_scrollable="true"
+                                    app:srb_starHeight="30dp"
+                                    app:srb_starWidth="30dp"
+                                    app:srb_starPadding="1dp"
+                                    app:srb_stepSize="0.01"
+                                    android:visibility="@{offerWithExpert.offer.expertId != null ? View.VISIBLE : View.GONE}"
+                                    />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Wykonawca usunął konto"
+                                    android:textColor="#FF0000"
+                                    android:textStyle="bold"
+                                    android:textSize="17sp"
+                                    android:visibility="@{offerWithExpert.offer.expertId == null ? View.VISIBLE : View.GONE}"
+                                    />
+
+                            </FrameLayout>
 
                         </LinearLayout>
 
@@ -104,6 +124,7 @@
                         android:layout_height="24dp"
                         android:layout_marginEnd="16dp"
                         android:src="@drawable/icon_arrow_right"
+                        android:visibility="@{offerWithExpert.offer.expertId != null ? View.VISIBLE : View.GONE}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />

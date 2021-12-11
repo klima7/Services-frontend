@@ -27,6 +27,7 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
     private lateinit var rateItem: MenuItem
     private lateinit var callItem: MenuItem
     private lateinit var showRatingItem: MenuItem
+    private lateinit var profileItem: MenuItem
 
     override fun init() {
         super.init()
@@ -38,10 +39,12 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
             true
         }
 
+        profileItem = toolbar.menu.findItem(R.id.item_expert_profile)
         rateItem = toolbar.menu.findItem(R.id.item_add_comment)
         showRatingItem = toolbar.menu.findItem(R.id.item_show_comment)
         callItem = toolbar.menu.findItem(R.id.item_call_expert)
 
+        viewModel.profileItemVisible.observe(viewLifecycleOwner, profileItem::setVisible)
         viewModel.addRatingItemVisible.observe(viewLifecycleOwner, rateItem::setVisible)
         viewModel.showRatingItemVisible.observe(viewLifecycleOwner, showRatingItem::setVisible)
         viewModel.callItemVisible.observe(viewLifecycleOwner, callItem::setVisible)
