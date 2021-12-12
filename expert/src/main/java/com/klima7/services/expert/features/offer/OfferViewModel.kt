@@ -27,12 +27,14 @@ class OfferViewModel(
 
     override val offer = MutableLiveData<Offer>()
     override val offerStatus = offer.map { it.status }
-    private val client = MutableLiveData<Client>()
+    private val client = MutableLiveData<Client?>()
 
-    val clientName = client.map { it.info.name }
+    val clientActive = offer.map { it.clientId != null }
+
+    val clientName = offer.map { it.clientName }
     val serviceName = offer.map { it.serviceName }
 
-    val callItemVisible = client.map { it.info.phone  != null }
+    val callItemVisible = client.map { it?.info?.phone  != null }
     val showRatingItemVisible = offer.map { it.ratingId  != null }
     val archiveItemVisible = offer.map { !it.archived }
     val unarchiveItemVisible = offer.map { it.archived }
@@ -71,7 +73,13 @@ class OfferViewModel(
     override fun onOfferUpdated(offer: Offer) {
         this.offer.value = offer
         if(client.value == null) {
-            getClient(offer.clientId)
+            val clientId = offer.clientId
+            if(clientId == null) {
+                this.client.value = null
+            }
+            else {
+                getClient(clientId)
+            }
         }
     }
 

@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="offer"
             type="com.klima7.services.common.models.Offer" />
@@ -68,6 +69,16 @@
                             android:text="@{offer.clientName}"
                             tools:text="Fryderyk Jankowski"
                             android:textSize="22sp"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Klient usunął konto"
+                            android:textColor="#FF0000"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
+                            android:visibility="@{offer.clientId == null ? View.VISIBLE : View.GONE}"
                             />
 
                         <TextView

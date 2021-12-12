@@ -18,7 +18,7 @@ data class OfferEntity(
     var serviceId: String = "",
     var serviceName: String = "",
 
-    var clientId: String = "",
+    var clientId: String? = null,
     var clientName: String = "",
 
     var expertId: String? = null,

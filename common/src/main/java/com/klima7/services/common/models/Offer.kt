@@ -18,7 +18,7 @@ data class Offer(
     val serviceId: String,
     val serviceName: String,
 
-    val clientId: String,
+    val clientId: String?,
     val clientName: String,
 
     val expertId: String?,
