@@ -29,15 +29,6 @@ abstract class BaseSplashFragment(
 
     override fun onFirstCreation() {
         super.onFirstCreation()
-
-        val screen = arguments?.getString("screen") as String?
-        val argument = arguments?.getString("argument") as String?
-        Toast.makeText(requireContext(), "Screen: $screen; argument: $argument", Toast.LENGTH_LONG).show()
-
-        if(screen != null) {
-            binding.splashMotionLayout.progress = 1f
-        }
-
         viewModel.started()
     }
 
