@@ -4,7 +4,7 @@ import java.util.*
 
 data class Job(
     val id: String,
-    val clientId: String,
+    val clientId: String?,
     val clientName: String,
     val creationDate: Date,
     val description: String,

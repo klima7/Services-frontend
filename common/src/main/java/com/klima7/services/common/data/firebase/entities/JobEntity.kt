@@ -4,7 +4,7 @@ import com.google.firebase.Timestamp
 import com.google.firebase.firestore.GeoPoint
 
 data class JobEntity(
-    var clientId: String = "",
+    var clientId: String? = null,
     var clientName: String = "",
     var creation: Timestamp = Timestamp.now(),
     var description: String = "",
