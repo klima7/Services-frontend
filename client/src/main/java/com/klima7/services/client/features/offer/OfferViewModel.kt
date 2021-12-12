@@ -25,7 +25,9 @@ class OfferViewModel(
     override val offerStatus = offer.map { it.status }
     private val expert = MutableLiveData<Expert?>()
 
-    val profileItemVisible = offer.map { it.expertId  != null }
+    val expertActive = offer.map { it.expertId != null }
+
+    val profileItemVisible = expertActive.map { it }
     val addRatingItemVisible = offer.map { it.ratingId  == null }
     val showRatingItemVisible = offer.map { it.ratingId  != null }
     val callItemVisible = expert.map { it?.info?.phone != null }
