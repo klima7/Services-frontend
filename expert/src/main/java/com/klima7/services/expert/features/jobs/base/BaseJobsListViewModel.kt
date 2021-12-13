@@ -24,7 +24,7 @@ abstract class BaseJobsListViewModel(
     private val getCurrentExpertServicesUC: GetCurrentExpertServicesUC,
 ): BaseViewModel() {
 
-    private val services = MutableLiveData<List<Service>>()
+    val services = MutableLiveData<List<Service>>()
     private val allJobsIds = MutableLiveData<List<String>>()
     private val visibleJobsIds = MutableLiveData<Set<String>>()
     private val visibleServicesIds = MutableLiveData<Set<String>>(emptySet())
