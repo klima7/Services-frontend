@@ -205,7 +205,7 @@
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_info.xml" value="0.2" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_job.xml" value="0.1359375" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_jobs.xml" value="0.21195652173913043" />
-        <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_jobs_list.xml" value="0.262037037037037" />
+        <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_jobs_list.xml" value="0.2" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_location.xml" value="0.264" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_login.xml" value="0.12" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_login_decoration.xml" value="0.275" />
@@ -225,11 +225,13 @@
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_splash_decoration.xml" value="0.2171875" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_toolbar.xml" value="0.15760869565217392" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_toolbar_legacy.xml" value="0.1" />
+        <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/job_filter_view.xml" value="0.27076923076923076" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/part_settings_tile.xml" value="0.2" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/part_setup_tile.xml" value="0.16" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/part_toolbar.xml" value="0.12092391304347826" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/rounded_button_ripple_effect.xml" value="0.1644021739130435" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/temp.xml" value="0.1644021739130435" />
+        <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/view_job_filter.xml" value="0.2" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/view_services_selection_list.xml" value="0.2636986301369863" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/menu/menu_home_bottom.xml" value="0.21197916666666666" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/menu/menu_home_toolbar.xml" value="0.275" />
