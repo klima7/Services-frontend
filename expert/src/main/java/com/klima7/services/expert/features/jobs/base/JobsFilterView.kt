@@ -8,12 +8,9 @@ import android.widget.FrameLayout
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import com.androidbuts.multispinnerfilter.KeyPairBoolData
-import com.androidbuts.multispinnerfilter.MultiSpinnerListener
-import com.klima7.services.common.models.CategoryWithServices
 import com.klima7.services.common.models.Service
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.ViewJobFilterBinding
-import com.klima7.services.expert.features.services.ServicesSelectionListView
 
 @BindingAdapter("jobsFilterView_services")
 fun setServices(view: JobsFilterView, newServices: List<Service>?) {
@@ -22,10 +19,18 @@ fun setServices(view: JobsFilterView, newServices: List<Service>?) {
     }
 }
 
+@BindingAdapter("jobsFilterView_selectedServicesIds")
+fun setSelectedServicesIds(view: JobsFilterView, newSelectedServicesIds: Set<String>?) {
+    if(newSelectedServicesIds != null) {
+        view.setSelectedServicesIds(newSelectedServicesIds)
+    }
+}
+
 class JobsFilterView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
 
     private var binding: ViewJobFilterBinding
     private var services = emptyList<Service>()
+    private var selectedServicesIds = emptySet<String>()
 
     init {
         val inflater = LayoutInflater.from(context)
@@ -38,11 +43,18 @@ class JobsFilterView(context: Context, attrs: AttributeSet?) : FrameLayout(conte
         refreshView()
     }
 
+    fun setSelectedServicesIds(selectedServicesIds: Set<String>) {
+        this.selectedServicesIds = selectedServicesIds
+        refreshView()
+    }
+
     private fun refreshView() {
         val spinner = binding.viewjobfilterSpinner
 
         spinner.setSearchHint("Napisz aby wyszukać")
         spinner.isSearchEnabled = false
+
+        val sortedServices = services.sortedBy { service -> service.name }
 
         val items = listOf(
             KeyPairBoolData("Sadzenie drzew", false),

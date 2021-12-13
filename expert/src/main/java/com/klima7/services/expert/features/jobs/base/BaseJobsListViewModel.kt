@@ -27,7 +27,7 @@ abstract class BaseJobsListViewModel(
     val services = MutableLiveData<List<Service>>()
     private val allJobsIds = MutableLiveData<List<String>>()
     private val visibleJobsIds = MutableLiveData<Set<String>>()
-    private val visibleServicesIds = MutableLiveData<Set<String>>(emptySet())
+    val visibleServicesIds = MutableLiveData<Set<String>>(emptySet())
 
     val jobFilterVisible = allJobsIds.map { it.isNotEmpty() }
 
