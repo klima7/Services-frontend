@@ -5,13 +5,15 @@ import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.models.Failure
 import com.klima7.services.expert.features.jobs.base.BaseJobsListViewModel
 import com.klima7.services.expert.features.jobs.base.GetCurrentExpertJobsUC
+import com.klima7.services.expert.features.jobs.base.GetCurrentExpertServicesUC
 import com.klima7.services.expert.usecases.RejectJobUC
 
 class NewJobsListViewModel(
     getNewJobsIdsUC: GetNewJobsIdsUC,
     getCurrentExpertJobsUC: GetCurrentExpertJobsUC,
+    getCurrentExpertServicesUC: GetCurrentExpertServicesUC,
     private val rejectJobUC: RejectJobUC
-): BaseJobsListViewModel(getNewJobsIdsUC, getCurrentExpertJobsUC) {
+): BaseJobsListViewModel(getNewJobsIdsUC, getCurrentExpertJobsUC, getCurrentExpertServicesUC) {
 
     sealed class Event: BaseEvent() {
         class ShowRejectFailure(val failure: Failure): Event()

@@ -6,6 +6,7 @@ import com.klima7.services.expert.features.info.SetCurrentExpertInfoAndImageUC
 import com.klima7.services.expert.features.job.AcceptJobUC
 import com.klima7.services.expert.features.job.GetCurrentExpertJobUC
 import com.klima7.services.expert.features.jobs.base.GetCurrentExpertJobsUC
+import com.klima7.services.expert.features.jobs.base.GetCurrentExpertServicesUC
 import com.klima7.services.expert.features.jobs.new.GetNewJobsIdsUC
 import com.klima7.services.expert.features.jobs.rejected.GetRejectedJobsIdsUC
 import com.klima7.services.expert.features.login.CompleteExpertLoginUC
@@ -44,5 +45,6 @@ val useCasesModule = module {
     single { GetAllAndSelectedServicesUC(get(), get()) }
     single { SignOutExpertUC(get(), get(), get()) }
     single { CompleteExpertLoginUC(get(), get()) }
+    single { GetCurrentExpertServicesUC(get(), get()) }
 
 }

@@ -13,12 +13,11 @@
         android:layout_height="wrap_content"
         >
 
-        <com.google.android.material.card.MaterialCardView
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
-            app:cardBackgroundColor="?attr/colorPrimary"
-            app:cardCornerRadius="16dp"
+            android:background="@drawable/job_filter_background"
             >
 
             <LinearLayout
@@ -27,16 +26,19 @@
                 android:orientation="horizontal"
                 >
 
-                <TextView
+                <com.androidbuts.multispinnerfilter.MultiSpinnerSearch
+                    android:id="@+id/viewjobfilter_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Jobs filter"
-                    android:paddingVertical="16dp"
+                    android:layout_margin="10dp"
+                    app:hintText="Filtruj zlecenia"
+                    app:clearText="Wyczyść"
+                    android:background="@color/white"
                     />
 
             </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+        </FrameLayout>
 
     </FrameLayout>
 

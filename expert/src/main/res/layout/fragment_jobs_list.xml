@@ -4,6 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="viewmodel"
             type="com.klima7.services.expert.features.jobs.base.BaseJobsListViewModel" />
@@ -33,6 +34,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="4dp"
+                    android:visibility="@{viewmodel.jobFilterVisible ? View.VISIBLE : View.GONE}"
                     />
 
                 <com.klima7.services.common.components.views.LoadRecyclerView
