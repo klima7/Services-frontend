@@ -48,6 +48,9 @@ abstract class BaseOffersListViewModel(
         .combine(visibleServicesIds.asFlow()) { pagingData, visibleList ->
             pagingData.filter { offer -> visibleList.isEmpty() || visibleList.contains(offer.serviceId) }
         }
+        .combine(visibleStatuses.asFlow()) { pagingData, statuses ->
+            pagingData.filter { offer -> statuses.contains(offer.status) }
+        }
 
     private fun createPager() = Pager(
         PagingConfig(pageSize = 5)

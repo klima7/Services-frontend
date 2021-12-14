@@ -39,7 +39,7 @@
                 <com.klima7.services.common.components.views.StatusSelectionView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:statusSelectionView_statuses="@{viewmodel.visibleStatuses}"
+                    app:statusSelectionView_statuses="@={viewmodel.visibleStatuses}"
                     />
 
                 <com.klima7.services.common.components.views.LoadRecyclerView
