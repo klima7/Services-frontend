@@ -72,7 +72,7 @@ class TokensStorageDao(
         return try {
             val documents = tokensCollection
                 .whereEqualTo("token", token)
-                .get(Source.SERVER)
+                .get()
                 .await().documents
 
             documents.forEach { document ->
