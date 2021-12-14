@@ -14,6 +14,7 @@ import com.klima7.services.common.core.None
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Service
 import com.klima7.services.common.platform.BaseViewModel
+import com.klima7.services.expert.usecases.GetCurrentExpertServicesUC
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest

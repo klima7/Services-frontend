@@ -1,4 +1,4 @@
-package com.klima7.services.expert.features.jobs.base
+package com.klima7.services.expert.usecases
 
 import com.klima7.services.common.components.profile.services.GetServicesFromIds
 import com.klima7.services.common.core.BaseUC
@@ -7,7 +7,6 @@ import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.models.Expert
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Service
-import com.klima7.services.expert.usecases.GetCurrentExpertUC
 
 class GetCurrentExpertServicesUC(
     private val getCurrentExpertUC: GetCurrentExpertUC,

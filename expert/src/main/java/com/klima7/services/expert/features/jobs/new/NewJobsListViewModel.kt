@@ -5,7 +5,7 @@ import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.models.Failure
 import com.klima7.services.expert.features.jobs.base.BaseJobsListViewModel
 import com.klima7.services.expert.features.jobs.base.GetCurrentExpertJobsUC
-import com.klima7.services.expert.features.jobs.base.GetCurrentExpertServicesUC
+import com.klima7.services.expert.usecases.GetCurrentExpertServicesUC
 import com.klima7.services.expert.usecases.RejectJobUC
 
 class NewJobsListViewModel(

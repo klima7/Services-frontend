@@ -72,6 +72,11 @@ abstract class BaseOffersListFragment(
         (ItemTouchHelper(itemTouchHelperCallback)).attachToRecyclerView(binding.offersLoadList.recycler)
     }
 
+    override fun onFirstCreation() {
+        super.onFirstCreation()
+        viewModel.start()
+    }
+
     override fun onOfferClicked(offer: Offer) {
         val intent = Intent(requireContext(), OfferActivity::class.java)
         val bundle = bundleOf(

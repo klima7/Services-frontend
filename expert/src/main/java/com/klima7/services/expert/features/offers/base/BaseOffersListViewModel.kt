@@ -1,5 +1,6 @@
 package com.klima7.services.expert.features.offers.base
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
@@ -8,14 +9,18 @@ import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import androidx.paging.filter
 import com.klima7.services.common.components.views.LoadAreaView
+import com.klima7.services.common.core.None
 import com.klima7.services.common.models.Failure
+import com.klima7.services.common.models.Service
 import com.klima7.services.common.platform.BaseViewModel
+import com.klima7.services.expert.usecases.GetCurrentExpertServicesUC
 import com.klima7.services.expert.usecases.SetOfferArchivedUC
 import kotlinx.coroutines.flow.combine
 
 abstract class BaseOffersListViewModel(
     private val getOffersForCurrentExpertUC: GetOffersForCurrentExpertUC,
     private val setOfferArchivedUC: SetOfferArchivedUC,
+    private val getCurrentExpertServicesUC: GetCurrentExpertServicesUC,
     private val shouldArchive: Boolean,
 ): BaseViewModel() {
 
@@ -23,6 +28,8 @@ abstract class BaseOffersListViewModel(
         object Refresh: Event()
         class ShowMoveFailure(val failure: Failure): Event()
     }
+
+    val services = MutableLiveData<List<Service>>()
 
     val loadState = MutableLiveData(LoadAreaView.State.MAIN)
     private var lastMovedOfferId: String? = null
@@ -39,6 +46,10 @@ abstract class BaseOffersListViewModel(
         PagingConfig(pageSize = 5)
     ) {
         OffersPagingSource(getOffersForCurrentExpertUC)
+    }
+
+    fun start() {
+        getServices()
     }
 
     fun refresh() {
@@ -90,5 +101,17 @@ abstract class BaseOffersListViewModel(
             newHiddenOffersIds.remove(offerId)
             hiddenOffersIds.value = newHiddenOffersIds
         }
+    }
+
+    private fun getServices() {
+        getCurrentExpertServicesUC.start(
+            viewModelScope,
+            None(),
+            { },
+            { services ->
+                this.services.value = services
+                Log.i("Hello", "Services get: $services")
+            }
+        )
     }
 }

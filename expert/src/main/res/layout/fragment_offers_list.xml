@@ -30,7 +30,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:layout_marginBottom="4dp" />
+                    android:layout_marginBottom="4dp"
+                    app:servicesSelectionSpinner_services="@{viewmodel.services}"
+                    />
 
                 <com.klima7.services.common.components.views.LoadRecyclerView
                     android:id="@+id/offers_load_list"
