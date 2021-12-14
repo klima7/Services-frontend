@@ -1,8 +1,7 @@
-package com.klima7.services.expert.features.jobs.base
+package com.klima7.services.common.components.views
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.databinding.BindingAdapter
@@ -10,42 +9,41 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
 import com.androidbuts.multispinnerfilter.KeyPairBoolData
+import com.klima7.services.common.databinding.ViewServicesSelectionSpinnerBinding
 import com.klima7.services.common.models.Service
-import com.klima7.services.expert.R
-import com.klima7.services.expert.databinding.ViewJobFilterBinding
-import com.willy.ratingbar.BaseRatingBar
+import com.klima7.services.common.R
 
-@BindingAdapter("jobsFilterView_services")
-fun setServices(view: JobsFilterView, newServices: List<Service>?) {
+@BindingAdapter("servicesSelectionSpinner_services")
+fun setServices(view: ServicesSelectionSpinner, newServices: List<Service>?) {
     val currentServices = view.getServices()
     if(newServices != null && newServices != currentServices) {
         view.setServices(newServices)
     }
 }
 
-@BindingAdapter("jobsFilterView_selectedServicesIds")
-fun setSelectedServicesIds(view: JobsFilterView, newSelectedServicesIds: Set<String>?) {
+@BindingAdapter("servicesSelectionSpinner_selectedIds")
+fun setSelectedServicesIds(view: ServicesSelectionSpinner, newSelectedServicesIds: Set<String>?) {
     val currentSelectedServicesIds = view.getSelectedServicesIds()
     if(newSelectedServicesIds != null && currentSelectedServicesIds != newSelectedServicesIds) {
         view.setSelectedServicesIds(newSelectedServicesIds)
     }
 }
 
-@InverseBindingAdapter(attribute = "jobsFilterView_selectedServicesIds")
-fun getSelectedServicesIds(view: JobsFilterView) = view.getSelectedServicesIds()
+@InverseBindingAdapter(attribute = "servicesSelectionSpinner_selectedIds")
+fun getSelectedServicesIds(view: ServicesSelectionSpinner) = view.getSelectedServicesIds()
 
-@BindingAdapter( "jobsFilterView_selectedServicesIdsAttrChanged")
-fun setSelectedServicesIdsListener(view: JobsFilterView, attrChange: InverseBindingListener) {
-    view.setListener(object: JobsFilterView.Listener {
-        override fun servicesSelected(view: JobsFilterView, selectedServicesIds: Set<String>) {
+@BindingAdapter( "servicesSelectionSpinner_selectedIdsAttrChanged")
+fun setSelectedServicesIdsListener(view: ServicesSelectionSpinner, attrChange: InverseBindingListener) {
+    view.setListener(object: ServicesSelectionSpinner.Listener {
+        override fun servicesSelected(view: ServicesSelectionSpinner, selectedServicesIds: Set<String>) {
             attrChange.onChange()
         }
     })
 }
 
-class JobsFilterView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
+class ServicesSelectionSpinner(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
 
-    private var binding: ViewJobFilterBinding
+    private var binding: ViewServicesSelectionSpinnerBinding
 
     private var services = emptyList<Service>()
     private var selectedServicesIds = emptySet<String>()
@@ -53,7 +51,7 @@ class JobsFilterView(context: Context, attrs: AttributeSet?) : FrameLayout(conte
 
     init {
         val inflater = LayoutInflater.from(context)
-        binding = DataBindingUtil.inflate(inflater, R.layout.view_job_filter, this, true)
+        binding = DataBindingUtil.inflate(inflater, R.layout.view_services_selection_spinner, this, true)
         refreshView()
     }
 
@@ -120,6 +118,6 @@ class JobsFilterView(context: Context, attrs: AttributeSet?) : FrameLayout(conte
     }
 
     interface Listener {
-        fun servicesSelected(view: JobsFilterView, selectedServicesIds: Set<String>)
+        fun servicesSelected(view: ServicesSelectionSpinner, selectedServicesIds: Set<String>)
     }
 }
