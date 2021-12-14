@@ -1,18 +1,19 @@
 package com.klima7.services.common.components.msgviewer
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
-import com.klima7.services.common.data.repositories.MessagesRepository
 import com.klima7.services.common.models.*
 import com.klima7.services.common.platform.BaseViewModel
 import com.xwray.groupie.Group
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
+import java.util.*
 
 class MessageViewerViewModel(
-    private val getMessagesFlowUC: GetMessagesFlowUC
+    private val getMessagesFlowUC: GetMessagesFlowUC,
+    private val getConverserReadTimeUC: GetConverserReadTimeUC,
 ): BaseViewModel(), RatingMessageItem.Listener {
 
     sealed class Event: BaseEvent() {
@@ -21,6 +22,7 @@ class MessageViewerViewModel(
     }
 
     private val messages = MutableLiveData<List<Message>>(listOf())
+    private val readTime = MutableLiveData<Date?>()
     val messagesItems = messages.map { messages -> createItems(messages) }
 
     private lateinit var role: Role
@@ -28,6 +30,11 @@ class MessageViewerViewModel(
     @ExperimentalCoroutinesApi
     fun start(offerId: String, role: Role) {
         this.role = role
+        getMessages(role, offerId)
+        getReadTime(role, offerId)
+    }
+
+    private fun getMessages(role: Role, offerId: String) {
         getMessagesFlowUC.start(
             viewModelScope,
             GetMessagesFlowUC.Params(role, offerId),
@@ -36,6 +43,21 @@ class MessageViewerViewModel(
                 messagesFlow.collect {
                     sendEvent(Event.RemoveNotifications(offerId))
                     messages.value = it
+                }
+            }
+        )
+    }
+
+    private fun getReadTime(role: Role, offerId: String) {
+        getConverserReadTimeUC.start(
+            viewModelScope,
+            GetConverserReadTimeUC.Params(role, offerId),
+            { },
+            { messagesFlow ->
+                messagesFlow.collect {
+                    sendEvent(Event.RemoveNotifications(offerId))
+                    readTime.value = it
+                    Log.i("Hello", "Received read time: $it")
                 }
             }
         )

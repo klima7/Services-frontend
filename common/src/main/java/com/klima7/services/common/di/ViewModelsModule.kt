@@ -31,7 +31,7 @@ val viewModelsModule = module {
     viewModel { RatingsViewModel(get()) }
     viewModel { ProfileAreaViewModel() }
     viewModel { SendMessageViewModel(get(), get(), get()) }
-    viewModel { MessageViewerViewModel(get()) }
+    viewModel { MessageViewerViewModel(get(), get()) }
     viewModel { RatingViewModel(get()) }
 
 }
