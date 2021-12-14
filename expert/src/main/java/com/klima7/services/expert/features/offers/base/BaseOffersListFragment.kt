@@ -70,18 +70,6 @@ abstract class BaseOffersListFragment(
             }
         }
 
-        offersAdapter.registerAdapterDataObserver(object: RecyclerView.AdapterDataObserver() {
-            override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
-                super.onItemRangeInserted(positionStart, itemCount)
-                viewModel.setItemsCount(offersAdapter.itemCount)
-            }
-
-            override fun onItemRangeRemoved(positionStart: Int, itemCount: Int) {
-                super.onItemRangeRemoved(positionStart, itemCount)
-                viewModel.setItemsCount(offersAdapter.itemCount)
-            }
-        })
-
         (ItemTouchHelper(itemTouchHelperCallback)).attachToRecyclerView(binding.offersLoadList.recycler)
     }
 

@@ -32,7 +32,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="4dp"
-                    android:visibility="@{viewmodel.serviceFilterVisible ? View.VISIBLE : View.GONE}"
                     app:servicesSelectionSpinner_services="@{viewmodel.services}"
                     app:servicesSelectionSpinner_selectedIds="@={viewmodel.visibleServicesIds}"
                     />
