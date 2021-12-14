@@ -41,7 +41,7 @@ abstract class BaseJobsListViewModel(
             pagingData.filter { expertJob -> visibleList.contains(expertJob.job.id) }
         }
         .combine(visibleServicesIds.asFlow()) { pagingData, visibleList ->
-            pagingData.filter { expertJob -> visibleList.isEmpty() || visibleList.contains(expertJob.job.id) }
+            pagingData.filter { expertJob -> visibleList.isEmpty() || visibleList.contains(expertJob.job.serviceId) }
         }
 
     fun start() {

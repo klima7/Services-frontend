@@ -36,7 +36,7 @@
                     android:layout_marginBottom="4dp"
                     android:visibility="@{viewmodel.jobFilterVisible ? View.VISIBLE : View.GONE}"
                     app:jobsFilterView_services="@{viewmodel.services}"
-                    app:jobsFilterView_selectedServicesIds="@{viewmodel.visibleServicesIds}"
+                    app:jobsFilterView_selectedServicesIds="@={viewmodel.visibleServicesIds}"
                     />
 
                 <com.klima7.services.common.components.views.LoadRecyclerView
