@@ -46,6 +46,9 @@ class StatusSelectionView(context: Context, attrs: AttributeSet?) : FrameLayout(
     }
 
     fun setSelected(selected: Set<OfferStatus>) {
+        if(this.selected == selected) {
+            return
+        }
         this.selected = selected
         listener?.statusSelectionChanged(selected)
         refreshView()

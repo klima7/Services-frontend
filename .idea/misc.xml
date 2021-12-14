@@ -20,6 +20,7 @@
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/element_message.xml" value="0.1" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/element_no_offers.xml" value="0.275" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/element_offer.xml" value="0.163855421686747" />
+        <entry key="..\:/PI/src/frontend/client/src/main/res/layout/element_offer_status_filter.xml" value="0.23802083333333332" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/element_progress.xml" value="0.27076923076923076" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/element_service.xml" value="0.27076923076923076" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/fragment_add_comm.xml" value="0.21041666666666667" />
