@@ -92,7 +92,7 @@ abstract class BaseNotificationManager(
     private fun handleStatusChangeMessage(notificationData: Map<String, String>) {
         val senderName = notificationData["sender"] ?: return
         val offerId = notificationData["offerId"] ?: return
-        val newStatus = notificationData["offerId"] ?: return
+        val newStatus = notificationData["newStatus"] ?: return
         val title = service.resources.getString(R.string.notification_status_change_title, senderName)
         val status = when(newStatus) {
             "0" -> OfferStatus.NEW
