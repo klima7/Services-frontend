@@ -6,6 +6,7 @@ import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.models.*
 import com.klima7.services.common.platform.BaseViewModel
+import com.klima7.services.common.platform.CombinedLiveData
 import com.xwray.groupie.Group
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
@@ -23,7 +24,9 @@ class MessageViewerViewModel(
 
     private val messages = MutableLiveData<List<Message>>(listOf())
     private val readTime = MutableLiveData<Date?>()
-    val messagesItems = messages.map { messages -> createItems(messages) }
+    val messagesItems = CombinedLiveData(messages, readTime) {
+        createItems(messages.value, readTime.value)
+    }
 
     private lateinit var role: Role
 
@@ -63,7 +66,11 @@ class MessageViewerViewModel(
         )
     }
 
-    private fun createItems(messages: List<Message>): List<Group> {
+    private fun createItems(messages: List<Message>?, readTime: Date?): List<Group> {
+        if(messages == null) {
+            return listOf()
+        }
+
         val items = mutableListOf<Group>()
         for(message in messages) {
             val side = getSide(message)
@@ -74,6 +81,7 @@ class MessageViewerViewModel(
                 is RatingMessage -> items.add(RatingMessageItem(message, side, this))
             }
         }
+        items.add(ReadByConverserItem())
         return items
     }
 
