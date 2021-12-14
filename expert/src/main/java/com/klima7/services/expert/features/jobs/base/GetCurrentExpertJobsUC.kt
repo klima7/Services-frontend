@@ -5,10 +5,11 @@ import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.models.ExpertJob
 import com.klima7.services.common.models.Failure
 import com.klima7.services.expert.features.job.GetCurrentExpertJobUC
+import kotlinx.coroutines.Dispatchers
 
 class GetCurrentExpertJobsUC(
     private val getCurrentExpertJobUC: GetCurrentExpertJobUC
-): BaseUC<GetCurrentExpertJobsUC.Params, List<ExpertJob>>() {
+): BaseUC<GetCurrentExpertJobsUC.Params, List<ExpertJob>>(Dispatchers.IO) {
 
     data class Params(val jobsIds: List<String>)
 

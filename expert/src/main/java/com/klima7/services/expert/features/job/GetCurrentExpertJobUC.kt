@@ -9,12 +9,13 @@ import com.klima7.services.common.models.ExpertJob
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Job
 import com.klima7.services.common.models.JobStatus
+import kotlinx.coroutines.Dispatchers
 
 class GetCurrentExpertJobUC(
     private val jobsRepository: JobsRepository,
     private val jobsStatusRepository: JobsStatusRepository,
     private val authRepository: AuthRepository
-): BaseUC<GetCurrentExpertJobUC.Params, ExpertJob>() {
+): BaseUC<GetCurrentExpertJobUC.Params, ExpertJob>(Dispatchers.IO) {
 
     data class Params(val jobId: String)
 

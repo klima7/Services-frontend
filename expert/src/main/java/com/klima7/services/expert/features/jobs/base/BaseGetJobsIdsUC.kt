@@ -5,10 +5,11 @@ import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.repositories.AuthRepository
 import com.klima7.services.common.models.Failure
+import kotlinx.coroutines.Dispatchers
 
 abstract class BaseGetJobsIdsUC(
     private val authRepository: AuthRepository,
-): BaseUC<None, List<String>>() {
+): BaseUC<None, List<String>>(Dispatchers.IO) {
 
     override suspend fun execute(params: None): Outcome<Failure, List<String>> {
         return getUidPart()

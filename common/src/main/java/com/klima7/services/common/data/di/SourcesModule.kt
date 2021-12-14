@@ -12,7 +12,7 @@ val sourcesModule = module {
         Room.databaseBuilder(
             androidApplication(),
             RoomSource::class.java, "database"
-        ).build()
+        ).allowMainThreadQueries().build()
     }
 
     single {
