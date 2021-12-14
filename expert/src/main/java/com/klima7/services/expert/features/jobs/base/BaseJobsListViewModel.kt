@@ -1,6 +1,5 @@
 package com.klima7.services.expert.features.jobs.base
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.map
@@ -92,7 +91,6 @@ abstract class BaseJobsListViewModel(
             { },
             { services ->
                 this.services.value = services
-                Log.i("Hello", "Services get: $services")
             }
         )
     }

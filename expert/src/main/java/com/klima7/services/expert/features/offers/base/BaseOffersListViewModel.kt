@@ -16,6 +16,7 @@ import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.expert.usecases.GetCurrentExpertServicesUC
 import com.klima7.services.expert.usecases.SetOfferArchivedUC
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.onEach
 
 abstract class BaseOffersListViewModel(
     private val getOffersForCurrentExpertUC: GetOffersForCurrentExpertUC,
@@ -30,6 +31,8 @@ abstract class BaseOffersListViewModel(
     }
 
     val services = MutableLiveData<List<Service>>()
+    val visibleServicesIds = MutableLiveData<Set<String>>(emptySet())
+    val serviceFilterVisible = MutableLiveData(true)
 
     val loadState = MutableLiveData(LoadAreaView.State.MAIN)
     private var lastMovedOfferId: String? = null
@@ -39,8 +42,11 @@ abstract class BaseOffersListViewModel(
     val pagingDataFlow = pager.flow
         .cachedIn(viewModelScope)
         .combine(hiddenOffersIds.asFlow()) { pagingData, hiddenList ->
-        pagingData.filter { offer -> !hiddenList.contains(offer.id) }
-    }
+            pagingData.filter { offer -> !hiddenList.contains(offer.id) }
+        }
+        .combine(visibleServicesIds.asFlow()) { pagingData, visibleList ->
+            pagingData.filter { offer -> visibleList.isEmpty() || visibleList.contains(offer.serviceId) }
+        }
 
     private fun createPager() = Pager(
         PagingConfig(pageSize = 5)
@@ -110,7 +116,6 @@ abstract class BaseOffersListViewModel(
             { },
             { services ->
                 this.services.value = services
-                Log.i("Hello", "Services get: $services")
             }
         )
     }
