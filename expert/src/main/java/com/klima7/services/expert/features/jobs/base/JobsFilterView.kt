@@ -68,6 +68,7 @@ class JobsFilterView(context: Context, attrs: AttributeSet?) : FrameLayout(conte
 
     fun setSelectedServicesIds(selectedServicesIds: Set<String>) {
         this.selectedServicesIds = selectedServicesIds
+        listener?.servicesSelected(this, selectedServicesIds)
         refreshView()
     }
 
@@ -80,10 +81,12 @@ class JobsFilterView(context: Context, attrs: AttributeSet?) : FrameLayout(conte
     }
 
     private fun refreshView() {
-        val spinner = binding.viewjobfilterSpinner
+        binding.viewjobfilterClear.setOnClickListener { clear() }
 
+        val spinner = binding.viewjobfilterSpinner
         spinner.setSearchHint("Napisz aby wyszukać")
         spinner.isSearchEnabled = true
+        refreshCross()
 
         val sortedServices = services.sortedBy { service -> service.name }
         val items = prepareItems(sortedServices, selectedServicesIds)
@@ -95,8 +98,12 @@ class JobsFilterView(context: Context, attrs: AttributeSet?) : FrameLayout(conte
             }.toSet()
             this.selectedServicesIds = selectedServicesIds
             listener?.servicesSelected(this, selectedServicesIds)
-            Log.i("Hello", "Selected services: $selectedServicesIds")
+            refreshCross()
         }
+    }
+
+    private fun refreshCross() {
+        binding.clearVisible = selectedServicesIds.isNotEmpty()
     }
 
     private fun prepareItems(services: List<Service>, selectedIds: Set<String>): List<KeyPairBoolData> {
@@ -106,6 +113,10 @@ class JobsFilterView(context: Context, attrs: AttributeSet?) : FrameLayout(conte
                 `object` = service
             }
         }
+    }
+
+    private fun clear() {
+        this.setSelectedServicesIds(emptySet())
     }
 
     interface Listener {
