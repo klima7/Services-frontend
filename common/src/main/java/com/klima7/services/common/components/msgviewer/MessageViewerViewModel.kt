@@ -2,7 +2,6 @@ package com.klima7.services.common.components.msgviewer
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.models.*
 import com.klima7.services.common.platform.BaseViewModel
@@ -72,17 +71,36 @@ class MessageViewerViewModel(
         }
 
         val items = mutableListOf<Group>()
-        for(message in messages) {
-            val side = getSide(message)
-            when(message) {
-                is TextMessage -> items.add(TextMessageItem(message, side))
-                is ImageMessage -> items.add(ImageMessageItem(message, side))
-                is StatusChangeMessage -> items.add(StatusChangeMessageItem(message, side))
-                is RatingMessage -> items.add(RatingMessageItem(message, side, this))
-            }
+
+        for(index: Int in messages.indices) {
+            val message = messages[index]
+            val nextMessage = if(index+1<messages.size) messages[index+1] else null
+            val item = createItemsPart(message, nextMessage, readTime)
+            items.addAll(item)
         }
-        items.add(ReadByConverserItem())
+
         return items
+    }
+
+    private fun createItemsPart(message: Message, nextMessage: Message?, readTime: Date?): List<Group> {
+        val result = mutableListOf<Group>()
+        val side = getSide(message)
+
+        when(message) {
+            is TextMessage -> result.add(TextMessageItem(message, side))
+            is ImageMessage -> result.add(ImageMessageItem(message, side))
+            is StatusChangeMessage -> result.add(StatusChangeMessageItem(message, side))
+            is RatingMessage -> result.add(RatingMessageItem(message, side, this))
+        }
+
+        if(readTime != null &&
+            ((nextMessage != null && message.sendTime <= readTime && nextMessage.sendTime > readTime) ||
+            (nextMessage == null && readTime >= message.sendTime))
+        ) {
+            result.add(ReadByConverserItem())
+        }
+
+        return result
     }
 
     private fun getSide(message: Message): Side {
