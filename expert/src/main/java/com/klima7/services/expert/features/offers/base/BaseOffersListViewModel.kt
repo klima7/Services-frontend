@@ -3,6 +3,7 @@ package com.klima7.services.expert.features.offers.base
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asFlow
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -32,7 +33,9 @@ abstract class BaseOffersListViewModel(
 
     val services = MutableLiveData<List<Service>>()
     val visibleServicesIds = MutableLiveData<Set<String>>(emptySet())
-    val serviceFilterVisible = MutableLiveData(true)
+
+    private val itemsInAdapter = MutableLiveData(0)
+    val serviceFilterVisible = itemsInAdapter.map { it != 0 }
 
     val loadState = MutableLiveData(LoadAreaView.State.MAIN)
     private var lastMovedOfferId: String? = null
@@ -65,6 +68,10 @@ abstract class BaseOffersListViewModel(
 
     fun offerSwiped(offerId: String) {
         moveOffer(offerId)
+    }
+
+    fun setItemsCount(count: Int) {
+        itemsInAdapter.value = count
     }
 
     private fun moveOffer(offerId: String) {

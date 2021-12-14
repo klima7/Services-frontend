@@ -3,6 +3,7 @@ package com.klima7.services.expert.features.offers.base
 import android.content.Intent
 import android.graphics.Canvas
 import android.os.Bundle
+import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
@@ -68,6 +69,18 @@ abstract class BaseOffersListFragment(
                 offersAdapter.submitData(pagingData)
             }
         }
+
+        offersAdapter.registerAdapterDataObserver(object: RecyclerView.AdapterDataObserver() {
+            override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+                super.onItemRangeInserted(positionStart, itemCount)
+                viewModel.setItemsCount(offersAdapter.itemCount)
+            }
+
+            override fun onItemRangeRemoved(positionStart: Int, itemCount: Int) {
+                super.onItemRangeRemoved(positionStart, itemCount)
+                viewModel.setItemsCount(offersAdapter.itemCount)
+            }
+        })
 
         (ItemTouchHelper(itemTouchHelperCallback)).attachToRecyclerView(binding.offersLoadList.recycler)
     }
