@@ -36,6 +36,11 @@
                     app:servicesSelectionSpinner_selectedIds="@={viewmodel.visibleServicesIds}"
                     />
 
+                <com.klima7.services.common.components.views.StatusSelectionView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
                 <com.klima7.services.common.components.views.LoadRecyclerView
                     android:id="@+id/offers_load_list"
                     android:layout_width="match_parent"

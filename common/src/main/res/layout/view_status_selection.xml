@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="clearVisible"
+            type="Boolean" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:scrollbars="none"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="Status:"
+                    />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/viewstatusselection_chips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/viewstatusselection_chip_new"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nowe"
+                        android:textColor="@color/offer_status_chip_text"
+                        app:chipBackgroundColor="@color/offer_status_chip_background"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/viewstatusselection_chip_cancelled"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Anulowane"
+                        android:textColor="@color/offer_status_chip_text"
+                        app:chipBackgroundColor="@color/offer_status_chip_background"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/viewstatusselection_chip_in_realization"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="W realizacji"
+                        android:textColor="@color/offer_status_chip_text"
+                        app:chipBackgroundColor="@color/offer_status_chip_background"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/viewstatusselection_chip_done"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Wykonane"
+                        android:textColor="@color/offer_status_chip_text"
+                        app:chipBackgroundColor="@color/offer_status_chip_background"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        />
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </FrameLayout>
+
+</layout>
