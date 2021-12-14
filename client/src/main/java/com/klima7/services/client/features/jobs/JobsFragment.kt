@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentJobsBinding
@@ -50,6 +51,11 @@ class JobsFragment : BaseFragment<FragmentJobsBinding>(), JobsAdapter.OnJobListe
                 jobsAdapter.submitData(pagingData)
             }
         }
+    }
+
+    override fun onFirstCreation() {
+        super.onFirstCreation()
+        viewModel.start()
     }
 
     override fun onJobClicked(job: Job) {

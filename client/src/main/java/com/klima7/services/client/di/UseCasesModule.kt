@@ -4,6 +4,7 @@ import com.klima7.services.client.features.addrating.AddRatingUC
 import com.klima7.services.client.features.addrating.GetOfferWithExpertUC
 import com.klima7.services.client.features.delete.DeleteClientUC
 import com.klima7.services.client.features.info.SetCurrentClientInfoUC
+import com.klima7.services.client.features.jobs.GetAllServicesUC
 import com.klima7.services.client.features.jobs.GetCurrentClientJobsUC
 import com.klima7.services.client.features.jobsetup.details.CreateJobUC
 import com.klima7.services.client.features.jobsetup.location.AddLastLocationUC
@@ -40,5 +41,6 @@ val useCasesModule = module {
     single { CreateJobUC(get()) }
     single { SignOutClientUC(get(), get(), get()) }
     single { CompleteClientLoginUC(get(), get()) }
+    single { GetAllServicesUC(get()) }
 
 }

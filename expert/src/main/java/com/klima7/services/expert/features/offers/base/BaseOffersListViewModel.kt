@@ -1,6 +1,5 @@
 package com.klima7.services.expert.features.offers.base
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.map
@@ -17,7 +16,6 @@ import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.expert.usecases.GetCurrentExpertServicesUC
 import com.klima7.services.expert.usecases.SetOfferArchivedUC
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.onEach
 
 abstract class BaseOffersListViewModel(
     private val getOffersForCurrentExpertUC: GetOffersForCurrentExpertUC,
