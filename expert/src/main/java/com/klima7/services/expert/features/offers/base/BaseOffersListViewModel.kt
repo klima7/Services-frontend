@@ -11,6 +11,7 @@ import androidx.paging.filter
 import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.core.None
 import com.klima7.services.common.models.Failure
+import com.klima7.services.common.models.OfferStatus
 import com.klima7.services.common.models.Service
 import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.expert.usecases.GetCurrentExpertServicesUC
@@ -31,6 +32,8 @@ abstract class BaseOffersListViewModel(
 
     val services = MutableLiveData<List<Service>>()
     val visibleServicesIds = MutableLiveData<Set<String>>(emptySet())
+    val visibleStatuses = MutableLiveData(setOf(OfferStatus.NEW, OfferStatus.CANCELLED,
+        OfferStatus.IN_REALIZATION, OfferStatus.DONE))
 
     val loadState = MutableLiveData(LoadAreaView.State.MAIN)
     private var lastMovedOfferId: String? = null

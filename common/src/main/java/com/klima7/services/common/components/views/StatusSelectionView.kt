@@ -5,11 +5,33 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.InverseBindingAdapter
+import androidx.databinding.InverseBindingListener
 import com.klima7.services.common.R
-import com.klima7.services.common.components.offer.OfferStatusToolbarView
 import com.klima7.services.common.databinding.ViewStatusSelectionBinding
 import com.klima7.services.common.models.OfferStatus
+
+@BindingAdapter("statusSelectionView_statuses")
+fun setStatuses(view: StatusSelectionView, newStatuses: Set<OfferStatus>?) {
+    val currentStatuses = view.getSelected()
+    if(newStatuses != null && currentStatuses != newStatuses) {
+        view.setSelected(newStatuses)
+    }
+}
+
+@InverseBindingAdapter(attribute = "statusSelectionView_statuses")
+fun getStatuses(view: StatusSelectionView) = view.getSelected()
+
+@BindingAdapter( "statusSelectionView_statusesAttrChanged")
+fun setStatusesListener(view: StatusSelectionView, attrChange: InverseBindingListener) {
+    view.setListener(object: StatusSelectionView.Listener {
+        override fun statusSelectionChanged(selected: Set<OfferStatus>) {
+            attrChange.onChange()
+        }
+    })
+}
 
 class StatusSelectionView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
 
@@ -52,7 +74,6 @@ class StatusSelectionView(context: Context, attrs: AttributeSet?) : FrameLayout(
     private fun selectionChanged() {
         selected = getSelectedStatuses()
         listener?.statusSelectionChanged(selected)
-        Log.i("Hello", "Checked: $selected")
     }
 
     private fun selectProperChips() {
