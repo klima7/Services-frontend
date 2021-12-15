@@ -1,4 +1,4 @@
-package com.klima7.services.common.notifications
+package com.klima7.services.common.messaging
 
 import android.content.Intent
 import android.util.Log
@@ -28,6 +28,7 @@ abstract class BaseMessagingService: FirebaseMessagingService() {
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         Log.i("Hello", "Message read")
         val data = remoteMessage.data
+        this.
         notificationManager.handle(data)
     }
 

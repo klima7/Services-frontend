@@ -2,7 +2,7 @@ package com.klima7.services.client.messaging
 
 import android.app.Service
 import com.klima7.services.client.R
-import com.klima7.services.common.notifications.BaseNotificationManager
+import com.klima7.services.common.messaging.BaseNotificationManager
 
 class NotificationManager(
     private val service: Service,

@@ -1,4 +1,4 @@
-package com.klima7.services.common.notifications
+package com.klima7.services.common.messaging
 
 import android.app.*
 import android.app.ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
@@ -8,13 +8,10 @@ import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import com.klima7.services.common.R
-import android.service.notification.StatusBarNotification
-
-import android.content.Context.NOTIFICATION_SERVICE
-import androidx.core.content.ContextCompat
-
 import androidx.core.content.ContextCompat.getSystemService
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.klima7.services.common.R
 import com.klima7.services.common.models.OfferStatus
 import com.klima7.services.common.ui.OfferStatusDescription
 
@@ -22,6 +19,8 @@ import com.klima7.services.common.ui.OfferStatusDescription
 abstract class BaseNotificationManager(
     private val service: Service
 ) {
+
+    private val auth = Firebase.auth
 
     companion object {
         const val NOTIFICATION_PRIORITY = NotificationCompat.PRIORITY_MAX
@@ -50,6 +49,12 @@ abstract class BaseNotificationManager(
     }
 
     open fun handle(notificationData: Map<String, String>): Boolean {
+        val uid = notificationData["uid"]
+        if(uid == null || uid != auth.uid) {
+            Log.i("Hello", "Ignoring notification")
+            return true
+        }
+
         Log.i("Hello", "Message received: ${notificationData["type"]}]")
         val type = notificationData["type"] ?: return false
         return when(type) {

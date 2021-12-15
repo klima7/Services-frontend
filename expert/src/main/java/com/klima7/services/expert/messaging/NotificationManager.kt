@@ -1,8 +1,7 @@
 package com.klima7.services.expert.messaging
 
 import android.app.Service
-import android.util.Log
-import com.klima7.services.common.notifications.BaseNotificationManager
+import com.klima7.services.common.messaging.BaseNotificationManager
 import com.klima7.services.expert.R
 import java.lang.NumberFormatException
 
