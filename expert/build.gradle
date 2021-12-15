@@ -40,6 +40,12 @@ android {
     }
 }
 
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    kotlinOptions {
+        freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
+    }
+}
+
 dependencies {
     implementation "com.github.CanHub:Android-Image-Cropper:3.2.2"
 
