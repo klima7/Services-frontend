@@ -17,8 +17,7 @@ class SendImageMessageUC(
 
     data class Params(val offerId: String, val sender: Role, val imagePath: String)
 
-    @ExperimentalCoroutinesApi
-    @ExperimentalTime
+    @OptIn(ExperimentalTime::class)
     override suspend fun execute(params: Params): Outcome<Failure, None> {
         return try {
             withTimeout(Duration.seconds(5)) {

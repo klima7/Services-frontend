@@ -34,7 +34,7 @@ class MessagesDao(
     private val functions: FirebaseFunctions,
 ) {
 
-    @ExperimentalCoroutinesApi
+    @OptIn(ExperimentalCoroutinesApi::class)
     suspend fun getMessages(offerId: String): Flow<List<Message>> = callbackFlow {
 
         val query = firestore
@@ -83,7 +83,6 @@ class MessagesDao(
         }
     }
 
-    @ExperimentalCoroutinesApi
     suspend fun sendImageMessage(offerId: String, sender: Role, imagePath: String):
             Outcome<Failure, None> = suspendCancellableCoroutine { continuation ->
 

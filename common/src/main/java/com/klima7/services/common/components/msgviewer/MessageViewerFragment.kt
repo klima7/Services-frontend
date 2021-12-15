@@ -23,7 +23,7 @@ import com.xwray.groupie.groupiex.plusAssign
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@ExperimentalCoroutinesApi
+
 class MessageViewerFragment:
     BaseFragment<FragmentMessageViewerBinding>(), View.OnLayoutChangeListener{
 
@@ -95,7 +95,7 @@ class MessageViewerFragment:
 
         if(newHeight < oldHeight) {
             Handler(Looper.getMainLooper()).postDelayed(
-                Runnable { binding.msgviewerRecycler.scrollToPosition(adapter.itemCount - 1) },
+                { binding.msgviewerRecycler.scrollToPosition(adapter.itemCount - 1) },
                 0
             )
         }

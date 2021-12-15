@@ -14,7 +14,6 @@ class MessagesRepository(
     private val firebase: FirebaseSource,
 ) {
 
-    @ExperimentalCoroutinesApi
     suspend fun getMessages(offerId: String): Flow<List<Message>> {
         return firebase.messagesDao.getMessages(offerId)
     }
@@ -23,7 +22,6 @@ class MessagesRepository(
         return firebase.messagesDao.sendTextMessage(offerId, sender, message)
     }
 
-    @ExperimentalCoroutinesApi
     suspend fun sendImageMessage(offerId: String, sender: Role, imagePath: String): Outcome<Failure, None> {
         return firebase.messagesDao.sendImageMessage(offerId, sender, imagePath)
     }

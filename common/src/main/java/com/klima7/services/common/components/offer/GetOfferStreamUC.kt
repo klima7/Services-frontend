@@ -14,7 +14,6 @@ class GetOfferStreamUC(
 
     data class Params(val offerId: String)
 
-    @ExperimentalCoroutinesApi
     override suspend fun execute(params: Params): Outcome<Failure, Flow<Offer>> {
         return Outcome.Success(offersRepository.getOfferStream(params.offerId))
     }

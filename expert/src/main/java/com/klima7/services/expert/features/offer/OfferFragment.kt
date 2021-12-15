@@ -63,7 +63,6 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
         showStatusToolbarOpenAnimation()
     }
 
-    @ExperimentalCoroutinesApi
     override fun onFirstCreation() {
         super.onFirstCreation()
 

@@ -34,7 +34,7 @@ abstract class BaseJobsListViewModel(
     val loadState = MutableLiveData(LoadAreaView.State.LOAD)
     val loadFailure = MutableLiveData<Failure>()
 
-    @ExperimentalCoroutinesApi
+    @OptIn(ExperimentalCoroutinesApi::class)
     val pagingDataFlow = allJobsIds.asFlow().flatMapLatest { list -> createPager(list).flow }
         .cachedIn(viewModelScope)
         .combine(visibleJobsIds.asFlow()) { pagingData, visibleList ->

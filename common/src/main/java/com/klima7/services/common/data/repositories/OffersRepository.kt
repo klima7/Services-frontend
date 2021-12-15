@@ -25,8 +25,7 @@ class OffersRepository(
     suspend fun getOffer(id: String): Outcome<Failure, Offer> {
         return firebase.offersDao.getOffer(id)
     }
-
-    @ExperimentalCoroutinesApi
+    
     suspend fun getOfferStream(offerId: String): Flow<Offer> {
         return firebase.offersDao.getOfferStream(offerId)
     }

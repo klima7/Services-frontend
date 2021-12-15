@@ -30,9 +30,9 @@ class NotificationManager(
     private fun handleRatingAddedMessage(notificationData: Map<String, String>) {
         val senderName = notificationData["sender"] ?: return
         val offerId = notificationData["offerId"] ?: return
-        val ratingId = notificationData["ratingId"] ?: return
+//        val ratingId = notificationData["ratingId"] ?: return
         val ratingString = notificationData["rating"] ?: return
-        var ratingNumber = 0.0
+        var ratingNumber: Double
         try {
             ratingNumber = ratingString.toDouble()
         } catch (e: NumberFormatException) {

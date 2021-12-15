@@ -103,7 +103,7 @@ class OffersDao(
         }
     }
 
-    @ExperimentalCoroutinesApi
+    @OptIn(ExperimentalCoroutinesApi::class)
     suspend fun getOfferStream(offerId: String): Flow<Offer> = callbackFlow {
         val query = firestore
             .collection("offers")

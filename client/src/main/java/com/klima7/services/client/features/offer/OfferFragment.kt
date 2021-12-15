@@ -14,7 +14,6 @@ import com.klima7.services.common.components.msgviewer.MessageViewerFragment
 import com.klima7.services.common.components.offer.BaseOfferFragment
 import com.klima7.services.common.models.Role
 import com.klima7.services.common.platform.BaseViewModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -52,7 +51,6 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
         showStatusToolbarOpenAnimation()
     }
 
-    @ExperimentalCoroutinesApi
     override fun onFirstCreation() {
         super.onFirstCreation()
 

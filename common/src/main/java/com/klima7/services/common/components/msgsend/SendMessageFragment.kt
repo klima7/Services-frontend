@@ -15,11 +15,9 @@ import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Role
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-@ExperimentalCoroutinesApi
 class SendMessageFragment:
     BaseFragment<FragmentSendMessageBinding>(), SendMessageBarView.Listener {
 

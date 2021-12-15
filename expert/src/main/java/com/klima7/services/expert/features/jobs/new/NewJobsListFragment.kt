@@ -28,7 +28,6 @@ class NewJobsListFragment: BaseJobsListFragment() {
         requireParentFragment().requireParentFragment().getViewModel()
     }
 
-    @ExperimentalCoroutinesApi
     override fun init() {
         super.init()
         attachItemTouchHelper(ItemTouchHelper(itemTouchHelperCallback))

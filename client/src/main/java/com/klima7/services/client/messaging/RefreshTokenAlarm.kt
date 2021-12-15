@@ -12,7 +12,7 @@ class RefreshTokenAlarm: BaseRefreshTokenAlarm() {
 
     private val updateTokenUC = UpdateTokenUC()
 
-    @DelicateCoroutinesApi
+    @OptIn(DelicateCoroutinesApi::class)
     override fun performAction(context: Context) {
         GlobalScope.launch {
             updateTokenUC.run(None())

@@ -13,7 +13,6 @@ import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentJobsListBinding
 import com.klima7.services.expert.features.job.JobActivity
 import com.klima7.services.expert.features.job.JobFragment
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -36,7 +35,6 @@ abstract class BaseJobsListFragment : BaseFragment<FragmentJobsListBinding>(), J
         viewModel.start()
     }
 
-    @ExperimentalCoroutinesApi
     override fun init() {
         super.init()
 

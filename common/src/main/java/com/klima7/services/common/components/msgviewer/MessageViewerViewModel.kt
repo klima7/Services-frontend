@@ -29,7 +29,7 @@ class MessageViewerViewModel(
 
     private lateinit var role: Role
 
-    @ExperimentalCoroutinesApi
+    @OptIn(ExperimentalCoroutinesApi::class)
     fun start(offerId: String, role: Role) {
         this.role = role
         getMessages(role, offerId)
