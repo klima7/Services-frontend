@@ -23,7 +23,7 @@ open class BaseSplashViewModel(
     val loadState = MutableLiveData(LoadAreaView.State.MAIN)
     val loadFailure = MutableLiveData<Failure>()
 
-    fun started() {
+    open fun started() {
         viewModelScope.launch {
             delay(2000)
             proceed()

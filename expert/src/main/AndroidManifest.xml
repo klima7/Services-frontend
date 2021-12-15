@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:name="com.klima7.services.expert.ExpertApp"
@@ -15,6 +16,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Expert"
         android:usesCleartextTraffic="true">
+
+        <receiver android:process=":remote" android:name=".messaging.AutoStart">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:process=":expertrefresh" android:name=".messaging.RefreshTokenAlarm" />
 
         <activity
             android:name=".features.splash.SplashActivity"
