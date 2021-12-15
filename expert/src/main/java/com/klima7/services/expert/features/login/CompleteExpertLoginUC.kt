@@ -13,7 +13,7 @@ class CompleteExpertLoginUC(
     private val tokensStorageRepository: TokensStorageRepository
 ): CompleteLoginUC(tokensRepository) {
 
-    override suspend fun updateTokenInStorage(token: String): Outcome<Failure, None> {
+    override suspend fun updateTokenInStoragePart(token: String): Outcome<Failure, None> {
         return tokensStorageRepository.updateToken(Role.EXPERT, token)
     }
 }
