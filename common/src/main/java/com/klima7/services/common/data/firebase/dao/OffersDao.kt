@@ -1,6 +1,7 @@
 package com.klima7.services.common.data.firebase.dao
 
 import android.util.Log
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.MetadataChanges
@@ -21,6 +22,7 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
 
 class OffersDao(
+    private val auth: FirebaseAuth,
     private val firestore: FirebaseFirestore,
     private val functions: FirebaseFunctions,
 ) {
@@ -66,9 +68,11 @@ class OffersDao(
 
     suspend fun getOffersForJob(jobId: String): Outcome<Failure, List<Offer>> {
         return try {
+            val uid = auth.uid ?: return Outcome.Failure(Failure.PermissionFailure)
             val snapshot = firestore
                 .collection("offers")
                 .whereEqualTo("jobId", jobId)
+                .whereEqualTo("clientId", uid)
                 .get()
                 .await()
 
