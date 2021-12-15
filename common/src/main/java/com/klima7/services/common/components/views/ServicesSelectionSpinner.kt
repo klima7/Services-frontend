@@ -89,8 +89,8 @@ class ServicesSelectionSpinner(context: Context, attrs: AttributeSet?) : FrameLa
         val sortedServices = services.sortedBy { service -> service.name }
         val items = prepareItems(sortedServices, selectedServicesIds)
 
-        spinner.setItems(items) { items ->
-            val selectedServicesIds = items.map { item ->
+        spinner.setItems(items) { newItems ->
+            val selectedServicesIds = newItems.map { item ->
                 val service = item.`object` as Service
                 service.id
             }.toSet()

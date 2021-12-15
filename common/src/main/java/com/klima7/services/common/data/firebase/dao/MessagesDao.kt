@@ -83,7 +83,7 @@ class MessagesDao(
         }
     }
 
-    suspend fun sendImageMessage(offerId: String, sender: Role, imagePath: String):
+    suspend fun sendImageMessage(offerId: String, @Suppress("UNUSED_PARAMETER") sender: Role, imagePath: String):
             Outcome<Failure, None> = suspendCancellableCoroutine { continuation ->
 
         val uid = auth.currentUser?.uid

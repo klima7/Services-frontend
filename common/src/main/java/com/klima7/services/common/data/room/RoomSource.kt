@@ -7,7 +7,8 @@ import com.klima7.services.common.data.room.dao.LastLocationDao
 import com.klima7.services.common.data.room.entities.JobStatusEntity
 import com.klima7.services.common.data.room.entities.LastLocationEntity
 
-@Database(entities = [LastLocationEntity::class, JobStatusEntity::class], version = 1)
+@Database(entities = [LastLocationEntity::class, JobStatusEntity::class], version = 1,
+    exportSchema = false)
 abstract class RoomSource : RoomDatabase() {
     abstract fun lastLocationDao(): LastLocationDao
     abstract fun jobStatusDao(): JobStatusDao
