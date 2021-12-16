@@ -8,11 +8,13 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentJobsBinding
 import com.klima7.services.client.features.offers.OffersActivity
 import com.klima7.services.client.features.offers.OffersFragment
+import com.klima7.services.common.extensions.isLarge
 import com.klima7.services.common.models.Job
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
@@ -39,7 +41,8 @@ class JobsFragment : BaseFragment<FragmentJobsBinding>(), JobsAdapter.OnJobListe
 
         jobsAdapter = JobsAdapter(this)
         binding.jobsLoadList.adapter = jobsAdapter
-        binding.jobsLoadList.layoutManager = LinearLayoutManager(requireContext())
+        val columns = if(requireContext().isLarge()) 2 else 1
+        binding.jobsLoadList.layoutManager = StaggeredGridLayoutManager(columns, StaggeredGridLayoutManager.VERTICAL)
 
         binding.jobsRefreshLayout.setOnRefreshListener {
             binding.jobsRefreshLayout.isRefreshing = false

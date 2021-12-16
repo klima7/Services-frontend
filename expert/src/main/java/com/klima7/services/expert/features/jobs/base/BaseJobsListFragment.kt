@@ -5,8 +5,11 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.klima7.services.common.extensions.isLarge
 import com.klima7.services.common.models.ExpertJob
 import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.expert.R
@@ -40,7 +43,8 @@ abstract class BaseJobsListFragment : BaseFragment<FragmentJobsListBinding>(), J
 
         jobsAdapter = JobsAdapter(this)
         binding.jobsLoadList.adapter = jobsAdapter
-        binding.jobsLoadList.layoutManager = LinearLayoutManager(requireContext())
+        val columns = if(requireContext().isLarge()) 2 else 1
+        binding.jobsLoadList.layoutManager = StaggeredGridLayoutManager(columns, StaggeredGridLayoutManager.VERTICAL)
 
         lifecycleScope.launch {
             viewModel.pagingDataFlow.collectLatest { pagingData ->

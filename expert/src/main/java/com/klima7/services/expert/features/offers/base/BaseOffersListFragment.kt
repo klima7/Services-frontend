@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.klima7.services.common.components.faildialog.FailureDialogFragment
+import com.klima7.services.common.extensions.isLarge
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Offer
 import com.klima7.services.common.platform.BaseFragment
@@ -61,7 +63,8 @@ abstract class BaseOffersListFragment(
         offersAdapter = OffersAdapter(this)
         binding.offersLoadList.apply {
             this.adapter = offersAdapter
-            layoutManager = LinearLayoutManager(requireContext())
+            val columns = if(requireContext().isLarge()) 2 else 1
+            layoutManager = StaggeredGridLayoutManager(columns, StaggeredGridLayoutManager.VERTICAL)
         }
 
         lifecycleScope.launch {
