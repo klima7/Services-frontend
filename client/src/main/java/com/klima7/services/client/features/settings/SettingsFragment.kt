@@ -44,7 +44,7 @@ class SettingsFragment: BaseSettingsFragment() {
 
     override fun showSplashScreen() {
         val intent = Intent(activity, SplashActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
         requireActivity().finish()
         Animatoo.animateDiagonal(requireActivity())
