@@ -36,7 +36,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:layout_marginBottom="4dp"
-                        app:servicesSelectionSpinner_services="@{viewmodel.services}"
+                        app:servicesSelectionSpinner_services="@{viewmodel.spinnerServices}"
                         app:servicesSelectionSpinner_selectedIds="@={viewmodel.visibleServicesIds}"
                         />
 

@@ -2,7 +2,6 @@ package com.klima7.services.client.features.jobs
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asFlow
-import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -23,7 +22,7 @@ class JobsViewModel(
         object RefreshJobs: Event()
     }
 
-    val services = MutableLiveData<List<Service>>()
+    val spinnerServices = MutableLiveData<List<Service>>()
     val visibleServicesIds = MutableLiveData<Set<String>>(emptySet())
 
     private val pager = createPager()
@@ -57,7 +56,7 @@ class JobsViewModel(
             None(),
             { },
             { services ->
-                this.services.value = services
+                this.spinnerServices.value = services
             }
         )
     }
