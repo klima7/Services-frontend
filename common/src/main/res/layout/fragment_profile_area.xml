@@ -27,48 +27,56 @@
             android:layout_height="wrap_content"
             >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="4dp"
-                tools:text="@{viewmodel.isSpecified ? @string/area_description(viewmodel.name, viewmodel.radius) : @string/area_not_specified}"
-                android:textColor="@color/black"
-                android:textSize="17sp"/>
-
-            <com.google.android.material.card.MaterialCardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="4dp"
-                android:layout_gravity="center_horizontal|center_vertical"
-                app:cardCornerRadius="12dp"
-                app:cardBackgroundColor="@color/light_gray"
-                app:strokeColor="?attr/colorPrimary"
-                app:strokeWidth="@dimen/stroke_width_around_cards"
+                android:orientation="vertical"
                 >
 
-            <fragment
-                android:id="@+id/profile_area_visualization_fragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:name="com.klima7.services.common.components.areavisual.AreaVisualizationFragment"
-                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="4dp"
+                    tools:text="@{viewmodel.isSpecified ? @string/area_description(viewmodel.name, viewmodel.radius) : @string/area_not_specified}"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"/>
 
-            </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    app:cardCornerRadius="12dp"
+                    app:cardBackgroundColor="@color/light_gray"
+                    app:strokeColor="?attr/colorPrimary"
+                    app:strokeWidth="@dimen/stroke_width_around_cards"
+                    >
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Pokaż w Google Maps"
-                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-                app:icon="@drawable/icon_map"
-                android:textColor="@color/black"
-                app:iconTint="#555555"
-                android:visibility="@{viewmodel.isSpecified ? View.VISIBLE : View.GONE}"
-                android:onClick="@{() -> viewmodel.openInGoogleMapClicked()}"
-                />
+                <fragment
+                    android:id="@+id/profile_area_visualization_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:name="com.klima7.services.common.components.areavisual.AreaVisualizationFragment"
+                    />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Pokaż w Google Maps"
+                    style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                    app:icon="@drawable/icon_map"
+                    android:textColor="@color/black"
+                    app:iconTint="#555555"
+                    android:visibility="@{viewmodel.isSpecified ? View.VISIBLE : View.GONE}"
+                    android:onClick="@{() -> viewmodel.openInGoogleMapClicked()}"
+                    />
+
+            </LinearLayout>
 
         </com.klima7.services.common.components.views.ConstrainedColumnView>
 
