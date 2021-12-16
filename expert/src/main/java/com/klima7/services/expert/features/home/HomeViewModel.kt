@@ -1,15 +1,5 @@
 package com.klima7.services.expert.features.home
 
-import com.klima7.services.common.platform.BaseViewModel
+import com.klima7.services.common.components.home.BaseHomeViewModel
 
-class HomeViewModel: BaseViewModel() {
-
-    sealed class Event: BaseEvent() {
-        object ShowSettingsScreen: Event()
-    }
-
-    fun settingsIconClicked() {
-        sendEvent(Event.ShowSettingsScreen)
-    }
-
-}
+class HomeViewModel: BaseHomeViewModel()
