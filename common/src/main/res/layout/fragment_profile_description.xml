@@ -22,22 +22,29 @@
             app:profileHeader_title="Opis"
             />
 
-        <TextView
+        <com.klima7.services.common.components.views.ConstrainedColumnView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginHorizontal="16dp"
-            android:textColor="@color/black"
-            android:text="@{viewmodel.description}"
-            android:visibility="@{viewmodel.noDescriptionVisible ? View.GONE : View.VISIBLE}"
-            />
+            >
 
-        <com.klima7.services.common.components.profile.EmptyView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:empty_message="Wykonawca nie posiada opisu"
-            app:empty_visible="@{viewmodel.noDescriptionVisible}"
-            />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="16dp"
+                android:textColor="@color/black"
+                android:text="@{viewmodel.description}"
+                android:visibility="@{viewmodel.noDescriptionVisible ? View.GONE : View.VISIBLE}"
+                />
+
+            <com.klima7.services.common.components.profile.EmptyView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:empty_message="Wykonawca nie posiada opisu"
+                app:empty_visible="@{viewmodel.noDescriptionVisible}"
+                />
+
+        </com.klima7.services.common.components.views.ConstrainedColumnView>
 
     </LinearLayout>
 

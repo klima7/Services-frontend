@@ -23,42 +23,49 @@
             app:profileHeader_title="Kontakt"
             />
 
-        <com.klima7.services.common.components.profile.contact.ContactTileView
+        <com.klima7.services.common.components.views.ConstrainedColumnView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:contactTile_title="Numer telefonu"
-            app:contactTile_subtitle="@{viewmodel.phoneText}"
-            app:contactTile_icon="@drawable/icon_phone"
-            app:contactTile_click_listener="@{() -> viewmodel.contactPhoneClicked()}"
-            android:visibility="@{viewmodel.phoneVisible ? View.VISIBLE : View.GONE}"
-            />
+            >
 
-        <com.klima7.services.common.components.profile.contact.ContactTileView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:contactTile_title="Adres email"
-            app:contactTile_subtitle="@{viewmodel.emailText}"
-            app:contactTile_icon="@drawable/icon_email"
-            app:contactTile_click_listener="@{() -> viewmodel.contactEmailClicked()}"
-            android:visibility="@{viewmodel.emailVisible ? View.VISIBLE : View.GONE}"
-            />
+            <com.klima7.services.common.components.profile.contact.ContactTileView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:contactTile_title="Numer telefonu"
+                app:contactTile_subtitle="@{viewmodel.phoneText}"
+                app:contactTile_icon="@drawable/icon_phone"
+                app:contactTile_click_listener="@{() -> viewmodel.contactPhoneClicked()}"
+                android:visibility="@{viewmodel.phoneVisible ? View.VISIBLE : View.GONE}"
+                />
 
-        <com.klima7.services.common.components.profile.contact.ContactTileView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:contactTile_title="Strona internetowa"
-            app:contactTile_subtitle="@{viewmodel.websiteText}"
-            app:contactTile_icon="@drawable/icon_website"
-            app:contactTile_click_listener="@{() -> viewmodel.contactWebsiteClicked()}"
-            android:visibility="@{viewmodel.websiteVisible ? View.VISIBLE : View.GONE}"
-            />
+            <com.klima7.services.common.components.profile.contact.ContactTileView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:contactTile_title="Adres email"
+                app:contactTile_subtitle="@{viewmodel.emailText}"
+                app:contactTile_icon="@drawable/icon_email"
+                app:contactTile_click_listener="@{() -> viewmodel.contactEmailClicked()}"
+                android:visibility="@{viewmodel.emailVisible ? View.VISIBLE : View.GONE}"
+                />
 
-        <com.klima7.services.common.components.profile.EmptyView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:empty_message="Wykonawca nie posiada danych kontaktowych"
-            app:empty_visible="@{viewmodel.noContactVisible}"
-            />
+            <com.klima7.services.common.components.profile.contact.ContactTileView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:contactTile_title="Strona internetowa"
+                app:contactTile_subtitle="@{viewmodel.websiteText}"
+                app:contactTile_icon="@drawable/icon_website"
+                app:contactTile_click_listener="@{() -> viewmodel.contactWebsiteClicked()}"
+                android:visibility="@{viewmodel.websiteVisible ? View.VISIBLE : View.GONE}"
+                />
+
+            <com.klima7.services.common.components.profile.EmptyView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:empty_message="Wykonawca nie posiada danych kontaktowych"
+                app:empty_visible="@{viewmodel.noContactVisible}"
+                />
+
+        </com.klima7.services.common.components.views.ConstrainedColumnView>
 
     </LinearLayout>
 
