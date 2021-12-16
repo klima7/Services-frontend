@@ -11,5 +11,6 @@ class JobFinishedItem : BindableItem<ElementJobFinishedBinding>() {
 
     override fun getLayout() = R.layout.element_job_finished
 
+    override fun getSpanSize(spanCount: Int, position: Int) = 2
 
 }

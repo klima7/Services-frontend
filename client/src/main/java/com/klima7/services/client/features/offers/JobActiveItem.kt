@@ -29,6 +29,8 @@ class JobActiveItem(
 
     override fun getLayout() = R.layout.element_job_active
 
+    override fun getSpanSize(spanCount: Int, position: Int) = 2
+
     interface Listener {
         fun finishJobClicked()
     }

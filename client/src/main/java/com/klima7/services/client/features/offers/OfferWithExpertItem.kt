@@ -13,6 +13,7 @@ import com.xwray.groupie.databinding.BindableItem
 class OfferWithExpertItem(
     private val offerWithExpert: OfferWithExpert,
     private val listener: Listener,
+    private val span: Int,
 ) : BindableItem<ElementOfferBinding>() {
 
     override fun bind(binding: ElementOfferBinding, position: Int) {
@@ -40,6 +41,8 @@ class OfferWithExpertItem(
     }
 
     override fun getLayout() = R.layout.element_offer
+
+    override fun getSpanSize(spanCount: Int, position: Int) = span
 
     interface Listener {
         fun offerExpertClicked(offerWithExpert: OfferWithExpert, avatarView: AvatarView)

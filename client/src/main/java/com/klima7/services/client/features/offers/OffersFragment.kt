@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.os.bundleOf
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.klima7.services.client.R
 import com.klima7.services.client.databinding.FragmentOffersBinding
@@ -17,6 +19,7 @@ import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.common.components.views.AvatarView
 import com.klima7.services.common.components.views.StatusSelectionView
 import com.klima7.services.common.components.yesnodialog.YesNoDialogFragment
+import com.klima7.services.common.extensions.isLarge
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.OfferStatus
 import com.klima7.services.common.models.OfferWithExpert
@@ -78,13 +81,16 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
             }
         }
 
+        groupieAdapter.spanCount = 2
         groupieAdapter.add(activeSection)
         groupieAdapter.add(filterSection)
         groupieAdapter.add(offersSection)
 
         binding.offersRecycler.apply {
             adapter = groupieAdapter
-            layoutManager = LinearLayoutManager(requireContext())
+            layoutManager = GridLayoutManager(requireContext(), 2).apply {
+                spanSizeLookup = groupieAdapter.spanSizeLookup
+            }
         }
 
         viewModel.visibleOffersWithExperts.observe(viewLifecycleOwner, this::updateOffers)
@@ -106,7 +112,8 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
     }
 
     private fun updateOffers(offers: List<OfferWithExpert>) {
-        val newItems = offers.map { offer -> OfferWithExpertItem(offer, this) }
+        val columns = if(requireContext().isLarge()) 1 else 2
+        val newItems = offers.map { offer -> OfferWithExpertItem(offer, this, columns) }
         offersSection.clear()
         offersSection.addAll(newItems)
     }

@@ -25,6 +25,8 @@ class OfferStatusFilterItem(
 
     override fun getLayout() = R.layout.element_offer_status_filter
 
+    override fun getSpanSize(spanCount: Int, position: Int) = 2
+
     fun setSelectedStatuses(selected: Set<OfferStatus>) {
         this.selected = selected
         binding?.elemofferstatusfilterSelection?.setSelected(selected)
