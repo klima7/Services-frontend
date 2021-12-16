@@ -15,6 +15,8 @@ open class BaseSplashViewModel(
     private val getCurrentUserStateUC: GetCurrentUserStateUC
 ): BaseViewModel() {
 
+    private var offerId: String? = null
+
     sealed class Event: BaseEvent() {
         object ShowLoginScreen: Event()
         data class ShowHomeScreen(val offerId: String?): Event()
@@ -25,6 +27,8 @@ open class BaseSplashViewModel(
     val loadFailure = MutableLiveData<Failure>()
 
     open fun started(offerId: String?) {
+        this.offerId = offerId
+
         if(offerId != null) {
             proceed(offerId)
         }
@@ -41,7 +45,7 @@ open class BaseSplashViewModel(
     }
 
     fun loginActivityFinished() {
-        proceed()
+        proceed(offerId)
     }
 
     private fun proceed(offerId: String? = null) {
