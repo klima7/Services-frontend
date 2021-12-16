@@ -24,7 +24,7 @@ abstract class BaseOfferViewModel(
     protected lateinit var offerId: String
     private var newOfferStatus: OfferStatus? = null
 
-    protected abstract val offer: MutableLiveData<Offer>
+    protected val offer = MutableLiveData<Offer?>(null)
     abstract val offerStatus: LiveData<OfferStatus>
 
     fun start(offerId: String) {

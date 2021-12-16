@@ -9,6 +9,7 @@ import com.klima7.services.common.components.offer.SetOfferStatusUC
 import com.klima7.services.common.models.Client
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Offer
+import com.klima7.services.common.models.OfferStatus
 import com.klima7.services.expert.usecases.SetOfferArchivedUC
 
 class OfferViewModel(
@@ -25,19 +26,18 @@ class OfferViewModel(
 
     private var lastArchive: Boolean? = null
 
-    override val offer = MutableLiveData<Offer>()
-    override val offerStatus = offer.map { it.status }
+    override val offerStatus = offer.map { it?.status ?: OfferStatus.NEW }
     private val client = MutableLiveData<Client?>()
 
-    val clientActive = offer.map { it.clientId != null }
+    val clientActive = offer.map { it == null || it.clientId != null }
 
-    val clientName = offer.map { it.clientName }
-    val serviceName = offer.map { it.serviceName }
+    val clientName = offer.map { it?.clientName }
+    val serviceName = offer.map { it?.serviceName }
 
-    val callItemVisible = client.map { it?.info?.phone  != null }
-    val showRatingItemVisible = offer.map { it.ratingId  != null }
-    val archiveItemVisible = offer.map { !it.archived }
-    val unarchiveItemVisible = offer.map { it.archived }
+    val callItemVisible = client.map { it?.info?.phone != null }
+    val showRatingItemVisible = offer.map { it?.ratingId != null }
+    val archiveItemVisible = offer.map { it?.archived ?: false }
+    val unarchiveItemVisible = offer.map { it?.archived ?: false }
 
     fun callClientClicked() {
         val phone = client.value?.info?.phone

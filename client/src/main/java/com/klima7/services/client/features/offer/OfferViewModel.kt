@@ -8,6 +8,7 @@ import com.klima7.services.common.components.offer.GetOfferStreamUC
 import com.klima7.services.common.components.offer.SetOfferStatusUC
 import com.klima7.services.common.models.Expert
 import com.klima7.services.common.models.Offer
+import com.klima7.services.common.models.OfferStatus
 import com.klima7.services.common.usecases.GetExpertUC
 
 class OfferViewModel(
@@ -21,18 +22,18 @@ class OfferViewModel(
         data class ShowExpertProfileScreen(val expertUid: String): Event()
     }
 
-    override val offer = MutableLiveData<Offer>()
-    override val offerStatus = offer.map { it.status }
+    override val offerStatus = offer.map { it?.status ?: OfferStatus.NEW }
     private val expert = MutableLiveData<Expert?>()
 
-    val expertActive = offer.map { it.expertId != null }
+    val expertActive = offer.map { it == null || it.expertId != null }
+
+    val expertName = offer.map { it?.expertName }
+    val serviceName = offer.map { it?.serviceName }
 
     val profileItemVisible = expertActive.map { it }
-    val addRatingItemVisible = offer.map { it.ratingId  == null }
-    val showRatingItemVisible = offer.map { it.ratingId  != null }
+    val addRatingItemVisible = offer.map { it != null && it.ratingId  == null }
+    val showRatingItemVisible = offer.map { it?.ratingId != null }
     val callItemVisible = expert.map { it?.info?.phone != null }
-    val expertName = offer.map { it.expertName }
-    val serviceName = offer.map { it.serviceName }
 
     fun addCommentClicked() {
         sendEvent(Event.ShowAddCommentScreen(offerId))
