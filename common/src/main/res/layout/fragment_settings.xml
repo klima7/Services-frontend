@@ -21,11 +21,18 @@
             app:navigationIcon="@drawable/icon_arrow_back"
             style="@style/ToolBar" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/settings_recycler"
+        <com.klima7.services.common.components.views.ConstrainedColumnView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="wrap_content"
+            >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/settings_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+        </com.klima7.services.common.components.views.ConstrainedColumnView>
 
     </LinearLayout>
 

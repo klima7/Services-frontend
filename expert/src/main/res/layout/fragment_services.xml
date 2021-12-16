@@ -69,13 +69,20 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
-                <com.klima7.services.expert.features.services.ServicesSelectionListView
+                <com.klima7.services.common.components.views.ConstrainedColumnView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    app:servicesSelectionList_all="@{viewmodel.allServices}"
-                    app:servicesSelectionList_selected="@={viewmodel.selectedServices}"
-                    />
+                    >
+
+                    <com.klima7.services.expert.features.services.ServicesSelectionListView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:servicesSelectionList_all="@{viewmodel.allServices}"
+                        app:servicesSelectionList_selected="@={viewmodel.selectedServices}"
+                        />
+
+                </com.klima7.services.common.components.views.ConstrainedColumnView>
 
                 <Button
                     android:id="@+id/services_save_button"

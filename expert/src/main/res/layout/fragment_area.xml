@@ -47,121 +47,128 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <LinearLayout
+                    <com.klima7.services.common.components.views.ConstrainedColumnView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="10dp">
+                        >
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Centralna lokalizacja"
-                            android:textStyle="bold"
-                            android:layout_marginBottom="8dp"
-                            android:textSize="17sp"
-                            />
-
-                        <com.google.android.material.card.MaterialCardView
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal|center_vertical"
-                            app:cardCornerRadius="12dp"
-                            app:cardBackgroundColor="@color/light_gray"
-                            app:strokeColor="?attr/colorPrimary"
-                            app:strokeWidth="@dimen/stroke_width_around_cards">
+                            android:orientation="vertical"
+                            android:padding="10dp">
 
-                            <androidx.fragment.app.FragmentContainerView
-                                android:id="@+id/location_autocomplete_fragment"
-                                android:name="com.klima7.services.expert.features.area.ClearableAutocompleteSupportFragment"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Centralna lokalizacja"
+                                android:textStyle="bold"
+                                android:layout_marginBottom="8dp"
+                                android:textSize="17sp"
+                                />
+
+                            <com.google.android.material.card.MaterialCardView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                app:cardCornerRadius="12dp"
+                                app:cardBackgroundColor="@color/light_gray"
+                                app:strokeColor="?attr/colorPrimary"
+                                app:strokeWidth="@dimen/stroke_width_around_cards">
 
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <Space
-                            android:layout_width="match_parent"
-                            android:layout_height="16dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Promień działania"
-                            android:textStyle="bold"
-                            android:layout_marginBottom="8dp"
-                            android:textSize="17sp"
-                            />
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal|center_vertical"
-                            app:cardCornerRadius="12dp"
-                            app:cardBackgroundColor="@color/light_gray"
-                            app:strokeColor="?attr/colorPrimary"
-                            app:strokeWidth="@dimen/stroke_width_around_cards">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:paddingTop="8dp">
-
-                                <com.google.android.material.slider.Slider
+                                <androidx.fragment.app.FragmentContainerView
+                                    android:id="@+id/location_autocomplete_fragment"
+                                    android:name="com.klima7.services.expert.features.area.ClearableAutocompleteSupportFragment"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:valueFrom="1.0"
-                                    android:valueTo="50.0"
-                                    android:stepSize="1.0"
-                                    android:value="@={viewmodel.radiusFloat}"
-                                    android:enabled="@{viewmodel.scrollEnabled}" />
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="right"
-                                    android:text="@{Integer.toString(viewmodel.radius) + ` km`}"
-                                    android:layout_marginBottom="8dp"
-                                    android:layout_marginRight="8dp" />
+                            </com.google.android.material.card.MaterialCardView>
 
-                            </LinearLayout>
-
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <Space
-                            android:layout_width="match_parent"
-                            android:layout_height="16dp" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Podgląd"
-                            android:textStyle="bold"
-                            android:layout_marginBottom="8dp"
-                            android:textSize="17sp"
-                            />
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal|center_vertical"
-                            app:cardCornerRadius="12dp"
-                            app:cardBackgroundColor="@color/light_gray"
-                            app:strokeColor="?attr/colorPrimary"
-                            app:strokeWidth="@dimen/stroke_width_around_cards" >
-
-                            <androidx.fragment.app.FragmentContainerView
-                                android:id="@+id/location_area_visualization_fragment"
-                                android:name="com.klima7.services.common.components.areavisual.AreaVisualizationFragment"
+                            <Space
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="16dp" />
 
-                        </com.google.android.material.card.MaterialCardView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Promień działania"
+                                android:textStyle="bold"
+                                android:layout_marginBottom="8dp"
+                                android:textSize="17sp"
+                                />
 
-                    </LinearLayout>
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                app:cardCornerRadius="12dp"
+                                app:cardBackgroundColor="@color/light_gray"
+                                app:strokeColor="?attr/colorPrimary"
+                                app:strokeWidth="@dimen/stroke_width_around_cards">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingTop="8dp">
+
+                                    <com.google.android.material.slider.Slider
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:valueFrom="1.0"
+                                        android:valueTo="50.0"
+                                        android:stepSize="1.0"
+                                        android:value="@={viewmodel.radiusFloat}"
+                                        android:enabled="@{viewmodel.scrollEnabled}" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="right"
+                                        android:text="@{Integer.toString(viewmodel.radius) + ` km`}"
+                                        android:layout_marginBottom="8dp"
+                                        android:layout_marginRight="8dp" />
+
+                                </LinearLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="16dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Podgląd"
+                                android:textStyle="bold"
+                                android:layout_marginBottom="8dp"
+                                android:textSize="17sp"
+                                />
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                app:cardCornerRadius="12dp"
+                                app:cardBackgroundColor="@color/light_gray"
+                                app:strokeColor="?attr/colorPrimary"
+                                app:strokeWidth="@dimen/stroke_width_around_cards" >
+
+                                <androidx.fragment.app.FragmentContainerView
+                                    android:id="@+id/location_area_visualization_fragment"
+                                    android:name="com.klima7.services.common.components.areavisual.AreaVisualizationFragment"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"/>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                        </LinearLayout>
+
+                    </com.klima7.services.common.components.views.ConstrainedColumnView>
 
                 </ScrollView>
 

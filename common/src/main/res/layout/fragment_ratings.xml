@@ -24,11 +24,18 @@
             style="@style/ToolBar"
             />
 
-        <com.klima7.services.common.components.views.LoadRecyclerView
-            android:id="@+id/ratings_load_list"
+        <com.klima7.services.common.components.views.ConstrainedColumnView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="wrap_content"
+            >
+
+            <com.klima7.services.common.components.views.LoadRecyclerView
+                android:id="@+id/ratings_load_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+        </com.klima7.services.common.components.views.ConstrainedColumnView>
 
     </LinearLayout>
 
