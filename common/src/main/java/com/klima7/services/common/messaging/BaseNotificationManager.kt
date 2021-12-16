@@ -136,7 +136,7 @@ abstract class BaseNotificationManager(
         if(offerId != null) {
             val intent = getSplashIntent()
             val bundle = bundleOf(
-                "offerId" to "offerId",
+                "offerId" to offerId,
             )
             intent.putExtras(bundle)
             intent.flags = (Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)

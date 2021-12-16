@@ -5,6 +5,7 @@ import android.app.NotificationManager
 import android.content.Context
 import android.content.Context.NOTIFICATION_SERVICE
 import android.os.Build
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat.getSystemService
@@ -29,7 +30,8 @@ abstract class BaseSplashFragment(
 
     override fun onFirstCreation() {
         super.onFirstCreation()
-        viewModel.started()
+        val offerId = arguments?.getString("offerId", "abc")
+        viewModel.started(offerId)
     }
 
     override fun init() {
@@ -41,7 +43,7 @@ abstract class BaseSplashFragment(
         super.handleEvent(event)
         when(event) {
             BaseSplashViewModel.Event.ShowLoginScreen -> showLoginScreen()
-            BaseSplashViewModel.Event.ShowHomeScreen -> showHomeScreen()
+            is BaseSplashViewModel.Event.ShowHomeScreen -> showHomeScreen(event.animate)
             BaseSplashViewModel.Event.ShowSetupScreen -> showSetupScreen()
         }
     }
@@ -54,6 +56,6 @@ abstract class BaseSplashFragment(
 
     protected abstract fun showSetupScreen();
 
-    protected abstract fun showHomeScreen();
+    protected abstract fun showHomeScreen(animate: Boolean);
 
 }

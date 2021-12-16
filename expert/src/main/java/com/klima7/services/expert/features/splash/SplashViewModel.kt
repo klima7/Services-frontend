@@ -9,8 +9,8 @@ class SplashViewModel(
     getCurrentExpertStateUC: GetCurrentExpertStateUC
 ): BaseSplashViewModel(getCurrentExpertStateUC) {
 
-    override fun started() {
-        super.started()
+    override fun started(offerId: String?) {
+        super.started(offerId)
         UpdateTokenUC().start(
             viewModelScope,
             None(),

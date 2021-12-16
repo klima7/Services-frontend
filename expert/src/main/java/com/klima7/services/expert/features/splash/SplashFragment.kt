@@ -28,11 +28,13 @@ class SplashFragment: BaseSplashFragment(R.string.app_subtitle) {
         requireActivity().finish()
     }
 
-    override fun showHomeScreen() {
+    override fun showHomeScreen(animate: Boolean) {
         val intent = Intent(activity, HomeActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
         startActivity(intent)
-        Animatoo.animateSlideUp(requireActivity())
+        if(animate) {
+            Animatoo.animateSlideUp(requireActivity())
+        }
         requireActivity().finish()
     }
 

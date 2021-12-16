@@ -1,5 +1,6 @@
 package com.klima7.services.common.components.splash
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.components.views.LoadAreaView
@@ -16,29 +17,37 @@ open class BaseSplashViewModel(
 
     sealed class Event: BaseEvent() {
         object ShowLoginScreen: Event()
-        object ShowHomeScreen: Event()
+        data class ShowHomeScreen(val animate: Boolean): Event()
         object ShowSetupScreen: Event()
     }
 
     val loadState = MutableLiveData(LoadAreaView.State.MAIN)
     val loadFailure = MutableLiveData<Failure>()
 
-    open fun started() {
-        viewModelScope.launch {
-            delay(2000)
-            proceed()
+    open fun started(offerId: String?) {
+        if(offerId != null) {
+            viewModelScope.launch {
+                delay(500)
+                proceed(false)
+            }
+        }
+        else {
+            viewModelScope.launch {
+                delay(2000)
+                proceed(true)
+            }
         }
     }
 
     fun refresh() {
-        proceed()
+        proceed(true)
     }
 
     fun loginActivityFinished() {
-        proceed()
+        proceed(true)
     }
 
-    private fun proceed() {
+    private fun proceed(animate: Boolean) {
         getCurrentUserStateUC.start(
             viewModelScope,
             None(),
@@ -49,7 +58,7 @@ open class BaseSplashViewModel(
                 loadState.value = LoadAreaView.State.MAIN
                 when(userState) {
                     UserState.NOT_LOGGED -> sendEvent(Event.ShowLoginScreen)
-                    UserState.READY -> sendEvent(Event.ShowHomeScreen)
+                    UserState.READY -> sendEvent(Event.ShowHomeScreen(animate))
                     UserState.NOT_READY -> sendEvent(Event.ShowSetupScreen)
                 }
             }
