@@ -30,7 +30,10 @@ abstract class BaseSplashFragment(
 
     override fun onFirstCreation() {
         super.onFirstCreation()
-        val offerId = arguments?.getString("offerId", "abc")
+        val offerId = arguments?.getString("offerId")
+        if(offerId != null) {
+            binding.splashMotionLayout.progress = 1f
+        }
         viewModel.started(offerId)
     }
 

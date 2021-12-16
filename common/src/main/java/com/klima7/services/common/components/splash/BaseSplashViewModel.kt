@@ -26,10 +26,7 @@ open class BaseSplashViewModel(
 
     open fun started(offerId: String?) {
         if(offerId != null) {
-            viewModelScope.launch {
-                delay(500)
-                proceed(offerId)
-            }
+            proceed(offerId)
         }
         else {
             viewModelScope.launch {

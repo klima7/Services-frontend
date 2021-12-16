@@ -123,6 +123,8 @@ abstract class BaseNotificationManager(
             return
         }
 
+        val intId = id.hashCode()
+
         val largeIconDrawable = BitmapFactory.decodeResource(service.applicationContext.resources,
             largeIcon)
 
@@ -141,12 +143,11 @@ abstract class BaseNotificationManager(
             intent.putExtras(bundle)
             intent.flags =
                 Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-            val pendingIntent = PendingIntent.getActivity(service.applicationContext, 0, intent, 0)
+            val pendingIntent = PendingIntent.getActivity(service.applicationContext, intId, intent, 0)
             builder.setContentIntent(pendingIntent)
             builder.setAutoCancel(true)
         }
 
-        val intId = id.hashCode()
         NotificationManagerCompat.from(service).notify(intId, builder.build())
     }
 

@@ -28,7 +28,6 @@ abstract class BaseMessagingService: FirebaseMessagingService() {
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         Log.i("Hello", "Message read")
         val data = remoteMessage.data
-        this.
         notificationManager.handle(data)
     }
 
