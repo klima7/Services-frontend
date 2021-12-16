@@ -2,7 +2,6 @@ package com.klima7.services.expert.features.offers.base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asFlow
-import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -30,7 +29,7 @@ abstract class BaseOffersListViewModel(
         class ShowMoveFailure(val failure: Failure): Event()
     }
 
-    val services = MutableLiveData<List<Service>>()
+    val spinnerServies = MutableLiveData<List<Service>>()
     val visibleServicesIds = MutableLiveData<Set<String>>(emptySet())
     val visibleStatuses = MutableLiveData(setOf(OfferStatus.NEW, OfferStatus.CANCELLED,
         OfferStatus.IN_REALIZATION, OfferStatus.DONE))
@@ -119,7 +118,7 @@ abstract class BaseOffersListViewModel(
             None(),
             { },
             { services ->
-                this.services.value = services
+                this.spinnerServies.value = services
             }
         )
     }
