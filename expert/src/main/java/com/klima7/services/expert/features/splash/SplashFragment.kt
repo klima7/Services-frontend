@@ -1,6 +1,7 @@
 package com.klima7.services.expert.features.splash
 
 import android.content.Intent
+import androidx.core.os.bundleOf
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.klima7.services.common.components.splash.BaseSplashFragment
 import com.klima7.services.expert.R
@@ -28,11 +29,14 @@ class SplashFragment: BaseSplashFragment(R.string.app_subtitle) {
         requireActivity().finish()
     }
 
-    override fun showHomeScreen(animate: Boolean) {
+    override fun showHomeScreen(offerId: String?) {
         val intent = Intent(activity, HomeActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME
+        if(offerId != null) {
+            intent.putExtras(bundleOf("offerId" to offerId))
+        }
         startActivity(intent)
-        if(animate) {
+        if(offerId == null) {
             Animatoo.animateSlideUp(requireActivity())
         }
         requireActivity().finish()

@@ -17,7 +17,7 @@ open class BaseSplashViewModel(
 
     sealed class Event: BaseEvent() {
         object ShowLoginScreen: Event()
-        data class ShowHomeScreen(val animate: Boolean): Event()
+        data class ShowHomeScreen(val offerId: String?): Event()
         object ShowSetupScreen: Event()
     }
 
@@ -28,26 +28,26 @@ open class BaseSplashViewModel(
         if(offerId != null) {
             viewModelScope.launch {
                 delay(500)
-                proceed(false)
+                proceed(offerId)
             }
         }
         else {
             viewModelScope.launch {
                 delay(2000)
-                proceed(true)
+                proceed()
             }
         }
     }
 
     fun refresh() {
-        proceed(true)
+        proceed()
     }
 
     fun loginActivityFinished() {
-        proceed(true)
+        proceed()
     }
 
-    private fun proceed(animate: Boolean) {
+    private fun proceed(offerId: String? = null) {
         getCurrentUserStateUC.start(
             viewModelScope,
             None(),
@@ -58,7 +58,7 @@ open class BaseSplashViewModel(
                 loadState.value = LoadAreaView.State.MAIN
                 when(userState) {
                     UserState.NOT_LOGGED -> sendEvent(Event.ShowLoginScreen)
-                    UserState.READY -> sendEvent(Event.ShowHomeScreen(animate))
+                    UserState.READY -> sendEvent(Event.ShowHomeScreen(offerId))
                     UserState.NOT_READY -> sendEvent(Event.ShowSetupScreen)
                 }
             }

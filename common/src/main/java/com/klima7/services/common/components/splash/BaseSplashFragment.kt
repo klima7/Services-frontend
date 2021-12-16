@@ -43,7 +43,7 @@ abstract class BaseSplashFragment(
         super.handleEvent(event)
         when(event) {
             BaseSplashViewModel.Event.ShowLoginScreen -> showLoginScreen()
-            is BaseSplashViewModel.Event.ShowHomeScreen -> showHomeScreen(event.animate)
+            is BaseSplashViewModel.Event.ShowHomeScreen -> showHomeScreen(event.offerId)
             BaseSplashViewModel.Event.ShowSetupScreen -> showSetupScreen()
         }
     }
@@ -56,6 +56,6 @@ abstract class BaseSplashFragment(
 
     protected abstract fun showSetupScreen();
 
-    protected abstract fun showHomeScreen(animate: Boolean);
+    protected abstract fun showHomeScreen(offerId: String?);
 
 }

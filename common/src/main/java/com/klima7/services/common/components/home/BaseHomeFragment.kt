@@ -14,6 +14,12 @@ abstract class BaseHomeFragment: BaseFragment<FragmentHomeBinding>() {
     override val layoutId = R.layout.fragment_home
     abstract override val viewModel: BaseHomeViewModel
 
+    override fun onFirstCreation() {
+        super.onFirstCreation()
+        val offerId = arguments?.getString("offerId")
+        viewModel.start(offerId)
+    }
+
     override fun init() {
         val navHostFragment = childFragmentManager.findFragmentById(R.id.home_nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
@@ -36,10 +42,13 @@ abstract class BaseHomeFragment: BaseFragment<FragmentHomeBinding>() {
         super.handleEvent(event)
         when(event) {
             BaseHomeViewModel.Event.ShowSettingsScreen -> showSettingsScreen()
+            is BaseHomeViewModel.Event.ShowOfferScreen -> showOfferScreen(event.offerId)
         }
     }
 
     abstract fun showSettingsScreen()
+
+    abstract fun showOfferScreen(offerId: String)
 
     abstract fun getDestinations(): Set<Int>
 
