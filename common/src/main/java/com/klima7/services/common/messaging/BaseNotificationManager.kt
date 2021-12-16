@@ -3,12 +3,14 @@ package com.klima7.services.common.messaging
 import android.app.*
 import android.app.ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
 import android.app.ActivityManager.RunningAppProcessInfo.IMPORTANCE_VISIBLE
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.os.bundleOf
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.klima7.services.common.R
@@ -17,7 +19,7 @@ import com.klima7.services.common.ui.OfferStatusDescription
 
 
 abstract class BaseNotificationManager(
-    private val service: Service
+    private val service: Service,
 ) {
 
     private val auth = Firebase.auth
@@ -83,7 +85,7 @@ abstract class BaseNotificationManager(
         val message = notificationData["message"] ?: return
         val offerId = notificationData["offerId"] ?: return
         val title = service.resources.getString(R.string.text_message_from, senderName)
-        showNotification(offerId, title, message)
+        showNotification(offerId, title, message, offerId)
     }
 
     private fun handleImageMessage(notificationData: Map<String, String>) {
@@ -91,7 +93,7 @@ abstract class BaseNotificationManager(
         val offerId = notificationData["offerId"] ?: return
         val title = service.resources.getString(R.string.text_message_from, senderName)
         val body = service.resources.getString(R.string.image_message_sent)
-        showNotification(offerId, title, body)
+        showNotification(offerId, title, body, offerId)
     }
 
     private fun handleStatusChangeMessage(notificationData: Map<String, String>) {
@@ -108,7 +110,7 @@ abstract class BaseNotificationManager(
         }
         val statusName = OfferStatusDescription.get(status).getText(service)
         val body = service.resources.getString(R.string.notification_status_change_body, statusName)
-        showNotification(offerId, title, body)
+        showNotification(offerId, title, body, offerId)
     }
 
     private fun handleReadMessage(notificationData: Map<String, String>) {
@@ -116,7 +118,7 @@ abstract class BaseNotificationManager(
         cancelNotification(offerId)
     }
 
-    protected fun showNotification(id: String, title: String, body: String, intent: PendingIntent? = null) {
+    protected fun showNotification(id: String, title: String, body: String, offerId: String? = null) {
         if(isAppInForeground() && !isNotificationVisible(id)) {
             return
         }
@@ -131,13 +133,23 @@ abstract class BaseNotificationManager(
             .setContentTitle(title)
             .setContentText(body)
 
-        if(intent != null) {
-            builder.setContentIntent(intent)
+        if(offerId != null) {
+            val intent = getSplashIntent()
+            val bundle = bundleOf(
+                "offerId" to "offerId",
+            )
+            intent.putExtras(bundle)
+            intent.flags = (Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            val pendingIntent = PendingIntent.getActivity(service.applicationContext, 0, intent, 0)
+            builder.setContentIntent(pendingIntent)
+            builder.setAutoCancel(true)
         }
 
         val intId = id.hashCode()
         NotificationManagerCompat.from(service).notify(intId, builder.build())
     }
+
+    abstract fun getSplashIntent(): Intent
 
     private fun cancelNotification(id: String) {
         val intId = id.hashCode()

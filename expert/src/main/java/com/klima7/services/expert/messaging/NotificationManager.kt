@@ -1,8 +1,10 @@
 package com.klima7.services.expert.messaging
 
 import android.app.Service
+import android.content.Intent
 import com.klima7.services.common.messaging.BaseNotificationManager
 import com.klima7.services.expert.R
+import com.klima7.services.expert.features.splash.SplashActivity
 import java.lang.NumberFormatException
 
 class NotificationManager(
@@ -44,5 +46,9 @@ class NotificationManager(
         val body = service.resources.getString(
             com.klima7.services.common.R.string.notification_rating_added_body, formattedRating)
         showNotification(offerId, title, body)
+    }
+
+    override fun getSplashIntent(): Intent {
+        return Intent(service.applicationContext, SplashActivity::class.java)
     }
 }
