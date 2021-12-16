@@ -46,55 +46,62 @@
                     android:layout_weight="1"
                     >
 
-                    <LinearLayout
+                    <com.klima7.services.common.components.views.ConstrainedColumnView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
+                        >
 
-                        <!-- Name-->
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/info_name"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
-                            android:hint="Imie i nazwisko"
-                            app:helperText="Pole wymagane"
-                            app:startIconDrawable="@drawable/icon_person"
-                            style="@style/TextInputLayoutStyle">
+                            android:orientation="vertical"
+                            android:padding="16dp">
 
-                            <com.google.android.material.textfield.TextInputEditText
+                            <!-- Name-->
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/info_name"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:maxLength="40"
-                                android:scrollHorizontally="true"
-                                android:singleLine="true"
-                                android:text="@={viewmodel.name}" />
+                                android:layout_marginBottom="8dp"
+                                android:hint="Imie i nazwisko"
+                                app:helperText="Pole wymagane"
+                                app:startIconDrawable="@drawable/icon_person"
+                                style="@style/TextInputLayoutStyle">
 
-                        </com.google.android.material.textfield.TextInputLayout>
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:maxLength="40"
+                                    android:scrollHorizontally="true"
+                                    android:singleLine="true"
+                                    android:text="@={viewmodel.name}" />
 
-                        <!-- Phone -->
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/info_phone"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
-                            android:hint="Numer telefonu"
-                            app:helperText=" "
-                            app:startIconDrawable="@drawable/icon_phone"
-                            style="@style/TextInputLayoutStyle" >
+                            </com.google.android.material.textfield.TextInputLayout>
 
-                            <com.google.android.material.textfield.TextInputEditText
+                            <!-- Phone -->
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/info_phone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:digits="0123456789+"
-                                android:inputType="phone"
-                                android:maxLength="9"
-                                android:text="@={viewmodel.phone}" />
+                                android:layout_marginBottom="8dp"
+                                android:hint="Numer telefonu"
+                                app:helperText=" "
+                                app:startIconDrawable="@drawable/icon_phone"
+                                style="@style/TextInputLayoutStyle" >
 
-                        </com.google.android.material.textfield.TextInputLayout>
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:digits="0123456789+"
+                                    android:inputType="phone"
+                                    android:maxLength="9"
+                                    android:text="@={viewmodel.phone}" />
 
-                    </LinearLayout>
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </LinearLayout>
+
+                    </com.klima7.services.common.components.views.ConstrainedColumnView>
 
                 </ScrollView>
 

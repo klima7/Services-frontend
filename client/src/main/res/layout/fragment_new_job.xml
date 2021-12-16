@@ -25,11 +25,18 @@
             style="@style/ToolBar"
             />
 
-        <com.klima7.services.client.ui.NewJobProgressView
+        <com.klima7.services.common.components.views.ConstrainedColumnView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:njp_position="@{viewmodel.progressPosition}"
-            />
+            >
+
+            <com.klima7.services.client.ui.NewJobProgressView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:njp_position="@{viewmodel.progressPosition}"
+                />
+
+        </com.klima7.services.common.components.views.ConstrainedColumnView>
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/home_nav_host_fragment"

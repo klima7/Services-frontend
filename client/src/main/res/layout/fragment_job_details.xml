@@ -27,79 +27,86 @@
                 android:layout_weight="1"
                 >
 
-                <LinearLayout
+                <com.klima7.services.common.components.views.ConstrainedColumnView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginHorizontal="16dp"
+                    android:layout_height="wrap_content"
                     >
 
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="15dp"
-                        />
-
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Uzupełnij opis:"
-                        android:textSize="25sp"
-                        />
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginHorizontal="16dp"
+                        >
 
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="15dp"
-                        />
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="15dp"
+                            />
 
-                    <!-- Description -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:hint="Opis"
-                        app:counterEnabled="true"
-                        app:counterMaxLength="500"
-                        style="@style/TextInputLayoutStyle">
-
-                        <com.google.android.material.textfield.TextInputEditText
+                        <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="150dp"
-                            android:gravity="top"
-                            android:inputType="textMultiLine"
-                            android:maxLength="500"
-                            android:overScrollMode="always"
-                            android:padding="25dp"
-                            android:scrollbarStyle="insideInset"
-                            android:scrollbars="vertical"
-                            android:text="@={viewmodel.description}" />
+                            android:layout_height="wrap_content"
+                            android:text="Uzupełnij opis:"
+                            android:textSize="25sp"
+                            />
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="15dp"
+                            />
 
-                    <!-- Description -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:hint="Czas realizacji"
-                        app:counterEnabled="true"
-                        app:counterMaxLength="100"
-                        style="@style/TextInputLayoutStyle">
-
-                        <com.google.android.material.textfield.TextInputEditText
+                        <!-- Description -->
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:gravity="top"
-                            android:inputType="textMultiLine"
-                            android:maxLength="500"
-                            android:overScrollMode="always"
-                            android:padding="25dp"
-                            android:scrollbarStyle="insideInset"
-                            android:scrollbars="vertical"
-                            android:text="@={viewmodel.realizationTime}" />
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:hint="Opis"
+                            app:counterEnabled="true"
+                            app:counterMaxLength="500"
+                            style="@style/TextInputLayoutStyle">
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp"
+                                android:gravity="top"
+                                android:inputType="textMultiLine"
+                                android:maxLength="500"
+                                android:overScrollMode="always"
+                                android:padding="25dp"
+                                android:scrollbarStyle="insideInset"
+                                android:scrollbars="vertical"
+                                android:text="@={viewmodel.description}" />
 
-                </LinearLayout>
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Description -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:hint="Czas realizacji"
+                            app:counterEnabled="true"
+                            app:counterMaxLength="100"
+                            style="@style/TextInputLayoutStyle">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:gravity="top"
+                                android:inputType="textMultiLine"
+                                android:maxLength="500"
+                                android:overScrollMode="always"
+                                android:padding="25dp"
+                                android:scrollbarStyle="insideInset"
+                                android:scrollbars="vertical"
+                                android:text="@={viewmodel.realizationTime}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                </com.klima7.services.common.components.views.ConstrainedColumnView>
 
             </androidx.core.widget.NestedScrollView>
 

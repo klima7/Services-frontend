@@ -37,20 +37,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <LinearLayout
+                <com.klima7.services.common.components.views.ConstrainedColumnView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    >
 
-                    <com.klima7.services.common.components.views.JobView
-                        android:id="@+id/job_view"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:job_job="@{viewmodel.job}"
-                        app:job_hide_client="true"
-                        />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <com.klima7.services.common.components.views.JobView
+                            android:id="@+id/job_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:job_job="@{viewmodel.job}"
+                            app:job_hide_client="true"
+                            />
+
+                    </LinearLayout>
+
+                </com.klima7.services.common.components.views.ConstrainedColumnView>
 
             </ScrollView>
 

@@ -46,108 +46,115 @@
                     android:layout_weight="1"
                     >
 
-                    <LinearLayout
+                    <com.klima7.services.common.components.views.ConstrainedColumnView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:paddingHorizontal="16dp"
-                        android:paddingBottom="8dp"
                         >
 
-                        <com.klima7.services.common.components.views.AvatarView
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:layout_marginTop="16dp"
-                            android:layout_gravity="center_horizontal"
-                            app:avatar_profile_image="@{viewmodel.profileImage}"
-                            />
-
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="8dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:text="@{viewmodel.name != null ? viewmodel.name : `Brak nazwy`}"
-                            tools:text="Name"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="21sp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:text="@{viewmodel.serviceName}"
-                            tools:text="Service"
-                            android:textSize="18sp"
-                            android:visibility="@{viewmodel.serviceName != null ? View.VISIBLE : View.GONE}"/>
-
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="16dp" />
-
-                        <com.willy.ratingbar.BaseRatingBar
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:srb_numStars="5"
-                            app:srb_minimumStars="0"
-                            app:srb_rating="@={viewmodel.rating}"
-                            app:srb_starWidth="50dp"
-                            app:srb_starHeight="50dp"
-                            app:srb_starPadding="10dp"
-                            app:srb_stepSize="0.01"
-                            app:srb_isIndicator="false"
-                            app:srb_clickable="true"
-                            app:srb_scrollable="true"
-                            app:srb_clearRatingEnabled="false"
-                            app:srb_drawableEmpty="@drawable/icon_star_empty"
-                            app:srb_drawableFilled="@drawable/icon_star_filled"
-                            android:layout_gravity="center">
-                        </com.willy.ratingbar.BaseRatingBar>
-
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="16dp" />
-
-                        <!-- Description -->
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Komentarz"
-                            app:counterEnabled="true"
-                            app:counterMaxLength="500"
-                            style="@style/TextInputLayoutStyle"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="16dp"
+                            android:paddingBottom="8dp"
                             >
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
+                            <com.klima7.services.common.components.views.AvatarView
+                                android:layout_width="150dp"
                                 android:layout_height="150dp"
-                                android:gravity="top"
-                                android:inputType="textMultiLine"
-                                android:maxLength="500"
-                                android:overScrollMode="always"
-                                android:padding="25dp"
-                                android:scrollbarStyle="insideInset"
-                                android:scrollbars="vertical"
-                                android:text="@={viewmodel.comment}"
+                                android:layout_marginTop="16dp"
+                                android:layout_gravity="center_horizontal"
+                                app:avatar_profile_image="@{viewmodel.profileImage}"
                                 />
 
-                        </com.google.android.material.textfield.TextInputLayout>
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="8dp" />
 
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="24dp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@{viewmodel.name != null ? viewmodel.name : `Brak nazwy`}"
+                                tools:text="Name"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:textSize="21sp"/>
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Pamiętaj, dodanej oceny nie można już zmienić, ani usunąć!"
-                            />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@{viewmodel.serviceName}"
+                                tools:text="Service"
+                                android:textSize="18sp"
+                                android:visibility="@{viewmodel.serviceName != null ? View.VISIBLE : View.GONE}"/>
 
-                    </LinearLayout>
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="16dp" />
+
+                            <com.willy.ratingbar.BaseRatingBar
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:srb_numStars="5"
+                                app:srb_minimumStars="0"
+                                app:srb_rating="@={viewmodel.rating}"
+                                app:srb_starWidth="50dp"
+                                app:srb_starHeight="50dp"
+                                app:srb_starPadding="10dp"
+                                app:srb_stepSize="0.01"
+                                app:srb_isIndicator="false"
+                                app:srb_clickable="true"
+                                app:srb_scrollable="true"
+                                app:srb_clearRatingEnabled="false"
+                                app:srb_drawableEmpty="@drawable/icon_star_empty"
+                                app:srb_drawableFilled="@drawable/icon_star_filled"
+                                android:layout_gravity="center">
+                            </com.willy.ratingbar.BaseRatingBar>
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="16dp" />
+
+                            <!-- Description -->
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Komentarz"
+                                app:counterEnabled="true"
+                                app:counterMaxLength="500"
+                                style="@style/TextInputLayoutStyle"
+                                >
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="150dp"
+                                    android:gravity="top"
+                                    android:inputType="textMultiLine"
+                                    android:maxLength="500"
+                                    android:overScrollMode="always"
+                                    android:padding="25dp"
+                                    android:scrollbarStyle="insideInset"
+                                    android:scrollbars="vertical"
+                                    android:text="@={viewmodel.comment}"
+                                    />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="24dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Pamiętaj, dodanej oceny nie można już zmienić, ani usunąć!"
+                                />
+
+                        </LinearLayout>
+
+                    </com.klima7.services.common.components.views.ConstrainedColumnView>
 
                 </ScrollView>
 
