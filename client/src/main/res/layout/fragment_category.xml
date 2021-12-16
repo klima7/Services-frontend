@@ -57,6 +57,11 @@
                         android:layout_height="match_parent"
                         />
 
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="15dp"
+                        />
+
                 </LinearLayout>
 
             </com.klima7.services.common.components.views.ConstrainedColumnView>
