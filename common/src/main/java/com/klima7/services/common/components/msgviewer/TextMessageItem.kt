@@ -19,7 +19,7 @@ class TextMessageItem(
 
     override fun bind(binding: ElementTextMessageBinding, position: Int) {
         binding.apply {
-            msgtextText.text = message.text;
+            msgtextText.text = message.text
             msgtextPending.visibility = if(message.pending) View.VISIBLE else View.GONE
 
             if(side == Side.LEFT) {

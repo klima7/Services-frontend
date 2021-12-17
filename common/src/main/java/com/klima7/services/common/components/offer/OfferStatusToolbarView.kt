@@ -126,7 +126,7 @@ class OfferStatusToolbarView(context: Context, attrs: AttributeSet?) : FrameLayo
         }
     }
 
-    override fun onSaveInstanceState(): Parcelable? {
+    override fun onSaveInstanceState(): Parcelable {
         val bundle = Bundle()
         bundle.putParcelable("superState", super.onSaveInstanceState())
         bundle.putBoolean("visible", this.visible)

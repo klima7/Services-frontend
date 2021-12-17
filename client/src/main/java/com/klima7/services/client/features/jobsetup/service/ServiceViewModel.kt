@@ -26,7 +26,7 @@ class ServiceViewModel(
     }
 
     fun refresh() {
-        val cCategory = category.value;
+        val cCategory = category.value
         if(cCategory != null) {
             loadServices(cCategory.id)
         }

@@ -41,7 +41,7 @@ class NewJobsListViewModel(
             { failure ->
                 loadState.value = LoadAreaView.State.MAIN
                 showJob(jobId)
-                sendEvent(Event.ShowRejectFailure(failure));
+                sendEvent(Event.ShowRejectFailure(failure))
             },
             {
                 loadState.value = LoadAreaView.State.MAIN

@@ -32,7 +32,7 @@ class SendMessageBarView: FrameLayout {
             listener?.onSelectImageClicked(this)
         }
 
-        binding.msgbarText.addTextChangedListener { it ->
+        binding.msgbarText.addTextChangedListener {
             val empty = it.isNullOrBlank()
             binding.msgbarImageIcon.visibility = if(empty) View.VISIBLE else View.GONE
             binding.msgbarSendButton.isEnabled = !empty

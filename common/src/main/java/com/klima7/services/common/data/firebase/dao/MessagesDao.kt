@@ -114,16 +114,14 @@ class MessagesDao(
         }
     }
 
-    suspend fun setLastReadTime(role: Role, offerId: String, date: Date): Outcome<Failure, None> {
+    fun setLastReadTime(role: Role, offerId: String, date: Date): Outcome<Failure, None> {
         return try {
-            val data: Map<String, Any>
-            if(role == Role.CLIENT) {
-                data = hashMapOf<String, Any>(
+            val data: Map<String, Any> = if(role == Role.CLIENT) {
+                hashMapOf<String, Any>(
                     "clientReadTime" to Timestamp(date),
                 )
-            }
-            else {
-                data = hashMapOf<String, Any>(
+            } else {
+                hashMapOf<String, Any>(
                     "expertReadTime" to Timestamp(date),
                 )
             }

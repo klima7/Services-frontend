@@ -10,7 +10,7 @@ class NotificationManager(
     private val service: Service,
 ): BaseNotificationManager(service) {
 
-    override val channelId = "services expert";
+    override val channelId = "services expert"
     override val largeIcon = R.drawable.icon_notification_large
     override val smallIcon = R.drawable.icon_notification_small
 

@@ -32,7 +32,7 @@ class JobsAdapter(
     }
 
     interface OnJobListener {
-        fun onJobClicked(expertJob: ExpertJob);
+        fun onJobClicked(expertJob: ExpertJob)
     }
 
 }

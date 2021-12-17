@@ -16,7 +16,7 @@ class LocationViewModel(
 ): BaseViewModel() {
 
     sealed class Event: BaseEvent() {
-        data class ShowJobDetailsScreen(val location: SimpleLocation): Event();
+        data class ShowJobDetailsScreen(val location: SimpleLocation): Event()
     }
 
     private lateinit var serviceId: String

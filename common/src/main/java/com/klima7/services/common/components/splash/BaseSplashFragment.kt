@@ -49,8 +49,8 @@ abstract class BaseSplashFragment(
 
     protected abstract fun showLoginScreen()
 
-    protected abstract fun showSetupScreen();
+    protected abstract fun showSetupScreen()
 
-    protected abstract fun showHomeScreen(offerId: String?);
+    protected abstract fun showHomeScreen(offerId: String?)
 
 }

@@ -28,7 +28,7 @@ class JobsAdapter(
     }
 
     interface OnJobListener {
-        fun onJobClicked(job: Job);
+        fun onJobClicked(job: Job)
     }
 
 }

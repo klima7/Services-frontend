@@ -29,7 +29,7 @@ class RatingsAdapter(
     }
 
     interface OnRatingListener {
-        fun onRatingClicked(rating: Rating, ratingView: RatingView);
+        fun onRatingClicked(rating: Rating, ratingView: RatingView)
     }
 
 }

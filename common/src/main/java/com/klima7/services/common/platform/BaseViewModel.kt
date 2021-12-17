@@ -8,8 +8,6 @@ import kotlinx.coroutines.launch
 
 open class BaseViewModel: ViewModel() {
 
-    val TAG: String = this::class.java.simpleName
-
     open class BaseEvent {
         object FinishActivity: BaseEvent()
     }

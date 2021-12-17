@@ -37,7 +37,7 @@ class GetOffersWithExpertForJobUC(
                 }
                 is Outcome.Failure -> {
                     if(outcome.a !is Failure.InternetFailure) {
-                        return Outcome.Failure(outcome.a);
+                        return Outcome.Failure(outcome.a)
                     }
                 }
             }

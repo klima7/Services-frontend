@@ -21,8 +21,6 @@ abstract class BaseFragment<DB: ViewDataBinding>: Fragment() {
     protected abstract val viewModel: BaseViewModel
     protected lateinit var binding: DB
 
-    val TAG: String = this::class.java.simpleName
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

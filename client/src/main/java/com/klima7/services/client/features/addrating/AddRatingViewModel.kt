@@ -66,7 +66,7 @@ class AddRatingViewModel(
                 val expert = offerWithExpert.expert
 
                 if(expert == null) {
-                    loadFailure.value = Failure.NotFoundFailure;
+                    loadFailure.value = Failure.NotFoundFailure
                     loadState.value = LoadAreaView.State.FAILURE
                 }
                 else {

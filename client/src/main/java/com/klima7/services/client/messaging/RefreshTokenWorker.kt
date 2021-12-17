@@ -39,7 +39,7 @@ abstract class RefreshTokenWorker(
                 .build()
 
             WorkManager.getInstance(context)
-                .enqueueUniquePeriodicWork("refresh token", ExistingPeriodicWorkPolicy.KEEP, work);
+                .enqueueUniquePeriodicWork("refresh token", ExistingPeriodicWorkPolicy.KEEP, work)
         }
     }
 

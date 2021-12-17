@@ -32,7 +32,7 @@ class FirebaseSource {
             setupEmulator()
     }
 
-    val authDao = AuthDao(auth);
+    val authDao = AuthDao(auth)
     val clientsDao = ClientsDao(firestore, functions)
     val expertsDao = ExpertsDao(auth, firestore, functions, storage)
     val jobsDao = JobsDao(firestore, functions)
