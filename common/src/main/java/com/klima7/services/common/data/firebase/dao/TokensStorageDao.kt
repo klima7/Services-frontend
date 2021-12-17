@@ -1,6 +1,5 @@
 package com.klima7.services.common.data.firebase.dao
 
-import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
@@ -11,6 +10,7 @@ import com.klima7.services.common.data.firebase.utils.toDomain
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Role
 import kotlinx.coroutines.tasks.await
+import timber.log.Timber
 
 class TokensStorageDao(
     private val auth: FirebaseAuth,
@@ -53,7 +53,7 @@ class TokensStorageDao(
             }
 
         } catch(e: Exception) {
-            Log.e("Hello", "Error during updateToken", e)
+            Timber.e(e, "Error during updateToken")
             return Outcome.Failure(e.toDomain())
         }
     }
@@ -76,7 +76,7 @@ class TokensStorageDao(
             }
             Outcome.Success(None())
         } catch(e: Exception) {
-            Log.e("Hello", "Error during updateToken", e)
+            Timber.e(e, "Error during updateToken")
             Outcome.Failure(e.toDomain())
         }
     }

@@ -1,7 +1,6 @@
 package com.klima7.services.common.data.firebase.dao
 
 import android.net.Uri
-import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.functions.FirebaseFunctions
@@ -16,6 +15,7 @@ import com.klima7.services.common.models.Expert
 import com.klima7.services.common.models.ExpertInfo
 import com.klima7.services.common.models.Failure
 import kotlinx.coroutines.tasks.await
+import timber.log.Timber
 
 class ExpertsDao(
     private val auth: FirebaseAuth,
@@ -32,7 +32,7 @@ class ExpertsDao(
                 .await()
             Outcome.Success(None())
         } catch(e: Exception) {
-            Log.e("Hello", "Error while createExpertAccount", e)
+            Timber.e(e, "Error while createExpertAccount")
             Outcome.Failure(e.toDomain())
         }
     }
@@ -49,7 +49,7 @@ class ExpertsDao(
                 ?: return Outcome.Failure(Failure.NotFoundFailure)
             return Outcome.Success(expert)
         } catch(e: Exception) {
-            Log.e("Hello", "Error during getExpert", e)
+            Timber.e(e, "Error during getExpert")
             return Outcome.Failure(e.toDomain())
         }
     }
@@ -71,7 +71,7 @@ class ExpertsDao(
                 .await()
             Outcome.Success(None())
         } catch(e: Exception) {
-            Log.e("Hello", "Error while setExpertInfo", e)
+            Timber.e(e, "Error while setExpertInfo")
             Outcome.Failure(e.toDomain())
         }
     }
@@ -88,7 +88,7 @@ class ExpertsDao(
                 .await()
             Outcome.Success(None())
         } catch(e: Exception) {
-            Log.e("Hello", "Error while setExpertImage", e)
+            Timber.e(e, "Error while setExpertImage")
             Outcome.Failure(e.toDomain())
         }
     }
@@ -105,7 +105,7 @@ class ExpertsDao(
                 .await()
             Outcome.Success(None())
         } catch(e: Exception) {
-            Log.e("Hello", "Error while clearProfileImage", e)
+            Timber.e(e, "Error while clearProfileImage")
             Outcome.Failure(e.toDomain())
         }
     }
@@ -122,7 +122,7 @@ class ExpertsDao(
                 .await()
             Outcome.Success(None())
         } catch(e: Exception) {
-            Log.e("Hello", "Error while setServicesIds", e)
+            Timber.e(e, "Error while setServicesIds")
             Outcome.Failure(e.toDomain())
         }
     }
@@ -140,7 +140,7 @@ class ExpertsDao(
                 .await()
             Outcome.Success(None())
         } catch(e: Exception) {
-            Log.e("Hello", "Error while setWorkingArea", e)
+            Timber.e(e, "Error while setWorkingArea")
             Outcome.Failure(e.toDomain())
         }
     }
@@ -153,7 +153,7 @@ class ExpertsDao(
                 .await()
             Outcome.Success(None())
         } catch(e: Exception) {
-            Log.e("Hello", "Error while experts-deleteAccount", e)
+            Timber.e(e, "Error while experts-deleteAccount")
             Outcome.Failure(e.toDomain())
         }
     }

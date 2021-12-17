@@ -1,6 +1,5 @@
 package com.klima7.services.common.components.msgsend
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.data.repositories.MessagesRepository
 import com.klima7.services.common.models.Failure
@@ -53,11 +52,8 @@ class SendMessageViewModel(
         sendTextMessageUC.start(
             viewModelScope,
             SendTextMessageUC.Params(fOfferId, fSender, message),
-            { failure ->
-                // Always should success
-                Log.e("Hello", "Send text message failure: $failure")
-            },
-            {}
+            { },
+            { }
         )
     }
 

@@ -1,29 +1,26 @@
 package com.klima7.services.common.core
 
-import android.util.Log
 import com.klima7.services.common.models.Failure
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 import kotlin.coroutines.CoroutineContext
 
 abstract class BaseUC<P, R>(
     protected val context: CoroutineContext = Dispatchers.Main
 ) {
-
-    val UC_NAME: String = this::class.java.simpleName
-    val TAG: String = "usecase-$UC_NAME"
-
     protected abstract suspend fun execute(params: P): Outcome<Failure, R>
 
     suspend fun run(params: P): Outcome<Failure, R> {
-        Log.v(TAG, "Executing $UC_NAME UC with parameters: $params")
+        val name = this::class.java.simpleName
+        Timber.v("Executing $name UC with parameters: $params")
         val outcome = execute(params)
         outcome.fold({ failure ->
-            Log.v(TAG, "UC $UC_NAME failed with failure: $failure")
+            Timber.v("UC $name failed with failure: $failure")
         }, { result ->
-            Log.v(TAG, "UC $UC_NAME finished successfully with result: $result")
+            Timber.v("UC $name finished successfully with result: $result")
         })
         return outcome
     }

@@ -1,7 +1,6 @@
 package com.klima7.services.common.data.firebase.dao
 
 import android.net.Uri
-import android.util.Log
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
@@ -24,6 +23,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.tasks.await
+import timber.log.Timber
 import java.util.*
 import kotlin.coroutines.resume
 
@@ -78,7 +78,7 @@ class MessagesDao(
                 .await()
             return Outcome.Success(None())
         } catch(e: Exception) {
-            Log.e("Hello", "Error during sendTextMessage", e)
+            Timber.e(e, "Error during sendTextMessage")
             return Outcome.Failure(e.toDomain())
         }
     }
@@ -133,7 +133,7 @@ class MessagesDao(
                 .update(data)
             Outcome.Success(None())
         } catch(e: Exception) {
-            Log.e("Hello", "Error during setLastReadTime", e)
+            Timber.e(e, "Error during setLastReadTime")
             Outcome.Failure(e.toDomain())
         }
     }

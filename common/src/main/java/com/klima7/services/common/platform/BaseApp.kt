@@ -14,6 +14,10 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import org.koin.core.module.Module
+import timber.log.Timber
+
+
+
 
 abstract class BaseApp: Application() {
 
@@ -30,9 +34,14 @@ abstract class BaseApp: Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+        initTimber()
         setupKoin()
         initPlaces()
         watchInternetConnection()
+    }
+
+    private fun initTimber() {
+        Timber.plant(Timber.DebugTree())
     }
 
     private fun setupKoin() {

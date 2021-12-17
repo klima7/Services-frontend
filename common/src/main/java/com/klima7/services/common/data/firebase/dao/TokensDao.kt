@@ -1,12 +1,12 @@
 package com.klima7.services.common.data.firebase.dao
 
-import android.util.Log
 import com.google.firebase.messaging.FirebaseMessaging
 import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.firebase.utils.toDomain
 import com.klima7.services.common.models.Failure
 import kotlinx.coroutines.tasks.await
+import timber.log.Timber
 
 class TokensDao(
     private val messaging: FirebaseMessaging
@@ -17,7 +17,7 @@ class TokensDao(
             val token = messaging.token.await()
             Outcome.Success(token)
         } catch(e: Exception) {
-            Log.e("Hello", "Error during getToken", e)
+            Timber.e(e, "Error during getToken")
             Outcome.Failure(e.toDomain())
         }
     }
@@ -27,7 +27,7 @@ class TokensDao(
             messaging.deleteToken().await()
             Outcome.Success(None())
         } catch(e: Exception) {
-            Log.e("Hello", "Error during deleteToken", e)
+            Timber.e(e, "Error during deleteToken")
             Outcome.Failure(e.toDomain())
         }
     }

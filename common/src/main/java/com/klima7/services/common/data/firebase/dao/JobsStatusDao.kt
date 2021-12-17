@@ -1,12 +1,12 @@
 package com.klima7.services.common.data.firebase.dao
 
-import android.util.Log
 import com.google.firebase.functions.FirebaseFunctions
 import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.firebase.utils.toDomain
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.JobStatus
 import kotlinx.coroutines.tasks.await
+import timber.log.Timber
 
 class JobsStatusDao(
     private val functions: FirebaseFunctions
@@ -29,7 +29,7 @@ class JobsStatusDao(
                 else -> Outcome.Failure(Failure.ServerFailure)
             }
         } catch(e: Exception) {
-            Log.e("Hello", "Error while getJobStatus", e)
+            Timber.e(e, "Error while getJobStatus")
             Outcome.Failure(e.toDomain())
         }
     }
@@ -51,7 +51,7 @@ class JobsStatusDao(
                 Outcome.Failure(Failure.ServerFailure)
             }
         } catch(e: Exception) {
-            Log.e("Hello", "Error while getAvailableJobIds", e)
+            Timber.e(e, "Error while getAvailableJobIds")
             Outcome.Failure(e.toDomain())
         }
     }
@@ -73,7 +73,7 @@ class JobsStatusDao(
                 Outcome.Failure(Failure.ServerFailure)
             }
         } catch(e: Exception) {
-            Log.e("Hello", "Error while getRejectedJobsIds", e)
+            Timber.e(e, "Error while getRejectedJobsIds")
             Outcome.Failure(e.toDomain())
         }
     }

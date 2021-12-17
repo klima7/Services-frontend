@@ -1,6 +1,5 @@
 package com.klima7.services.common.data.firebase.dao
 
-import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
@@ -21,6 +20,7 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
+import timber.log.Timber
 
 class OffersDao(
     private val auth: FirebaseAuth,
@@ -62,7 +62,7 @@ class OffersDao(
             Outcome.Success(offers)
         }
         catch(e: Exception) {
-            Log.e("Hello", "Error during getOffersForExpert", e)
+            Timber.e(e, "Error during getOffersForExpert")
             Outcome.Failure(e.toDomain())
         }
     }
@@ -82,7 +82,7 @@ class OffersDao(
             }.filter { it.second != null }.map { it.second!!.toDomain(it.first) }
             Outcome.Success(offers)
         } catch(e: Exception) {
-            Log.e("Hello", "Error during getOffersForJob", e)
+            Timber.e(e, "Error during getOffersForJob")
             Outcome.Failure(e.toDomain())
         }
     }
@@ -99,7 +99,7 @@ class OffersDao(
                 ?: return Outcome.Failure(Failure.NotFoundFailure)
             return Outcome.Success(offer)
         } catch(e: Exception) {
-            Log.e("Hello", "Error during getOffer", e)
+            Timber.e(e, "Error during getOffer")
             return Outcome.Failure(e.toDomain())
         }
     }
@@ -137,7 +137,7 @@ class OffersDao(
                 .await()
             Outcome.Success(None())
         } catch(e: Exception) {
-            Log.e("Hello", "Error while setOfferArchived", e)
+            Timber.e(e, "Error while setOfferArchived")
             Outcome.Failure(e.toDomain())
         }
     }
@@ -160,7 +160,7 @@ class OffersDao(
                 .await()
             Outcome.Success(None())
         } catch(e: Exception) {
-            Log.e("Hello", "Error while setOfferStatus", e)
+            Timber.e(e, "Error while setOfferStatus")
             Outcome.Failure(e.toDomain())
         }
     }

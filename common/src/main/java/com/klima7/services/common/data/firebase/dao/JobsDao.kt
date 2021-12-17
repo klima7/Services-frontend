@@ -1,6 +1,5 @@
 package com.klima7.services.common.data.firebase.dao
 
-import android.util.Log
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -14,6 +13,7 @@ import com.klima7.services.common.data.firebase.utils.toDomain
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Job
 import kotlinx.coroutines.tasks.await
+import timber.log.Timber
 
 class JobsDao(
     private val firestore: FirebaseFirestore,
@@ -32,7 +32,7 @@ class JobsDao(
                 ?: return Outcome.Failure(Failure.NotFoundFailure)
             return Outcome.Success(job)
         } catch(e: Exception) {
-            Log.e("Hello", "Error during getJob", e)
+            Timber.e(e, "Error during getJob")
             return Outcome.Failure(e.toDomain())
         }
     }
@@ -47,7 +47,7 @@ class JobsDao(
                 .call(data)
                 .await()
         } catch(e: Exception) {
-            Log.e("Hello", "Error while acceptJob", e)
+            Timber.e(e, "Error while acceptJob")
             return Outcome.Failure(e.toDomain())
         }
         return Outcome.Success(None())
@@ -63,7 +63,7 @@ class JobsDao(
                 .call(data)
                 .await()
         } catch(e: Exception) {
-            Log.e("Hello", "Error while rejectJob", e)
+            Timber.e(e, "Error while rejectJob")
             return Outcome.Failure(e.toDomain())
         }
         return Outcome.Success(None())
@@ -101,7 +101,7 @@ class JobsDao(
             Outcome.Success(jobs)
         }
         catch(e: Exception) {
-            Log.e("Hello", "Error during getClientJobs", e)
+            Timber.e(e, "Error during getClientJobs")
             return Outcome.Failure(e.toDomain())
         }
     }
@@ -116,7 +116,7 @@ class JobsDao(
                 .call(data)
                 .await()
         } catch(e: Exception) {
-            Log.e("Hello", "Error while finishJob", e)
+            Timber.e(e, "Error while finishJob")
             return Outcome.Failure(e.toDomain())
         }
         return Outcome.Success(None())
@@ -136,7 +136,7 @@ class JobsDao(
                 .call(data)
                 .await()
         } catch(e: Exception) {
-            Log.e("Hello", "Error while createJob", e)
+            Timber.e(e, "Error while createJob")
             return Outcome.Failure(e.toDomain())
         }
         return Outcome.Success(None())

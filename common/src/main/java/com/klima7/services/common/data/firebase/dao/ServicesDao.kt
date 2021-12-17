@@ -1,6 +1,5 @@
 package com.klima7.services.common.data.firebase.dao
 
-import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.firebase.converters.toDomain
@@ -13,6 +12,7 @@ import com.klima7.services.common.models.Category
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Service
 import kotlinx.coroutines.tasks.await
+import timber.log.Timber
 
 class ServicesDao(
     private val firestore: FirebaseFirestore
@@ -29,7 +29,7 @@ class ServicesDao(
             }.filter { it.second != null }.map { it.second!!.toDomain(it.first) }
             Outcome.Success(services)
         } catch(e: Exception) {
-            Log.e("Hello", "Error during getAllServices", e)
+            Timber.e(e, "Error during getAllServices")
             Outcome.Failure(e.toDomain())
         }
     }
@@ -45,7 +45,7 @@ class ServicesDao(
             }.filter { it.second != null }.map { it.second!!.toDomain(it.first) }
             Outcome.Success(categories)
         } catch(e: Exception) {
-            Log.e("Hello", "Error during getAllCategories", e)
+            Timber.e(e, "Error during getAllCategories")
             Outcome.Failure(e.toDomain())
         }
     }
@@ -62,7 +62,7 @@ class ServicesDao(
                 ?: return Outcome.Failure(Failure.NotFoundFailure)
             return Outcome.Success(service)
         } catch(e: Exception) {
-            Log.e("Hello", "Error during getService", e)
+            Timber.e(e, "Error during getService")
             return Outcome.Failure(e.toDomain())
         }
     }
@@ -79,7 +79,7 @@ class ServicesDao(
                 ?: return Outcome.Failure(Failure.NotFoundFailure)
             return Outcome.Success(category)
         } catch(e: Exception) {
-            Log.e("Hello", "Error during getExpert", e)
+            Timber.e(e, "Error during getExpert")
             return Outcome.Failure(e.toDomain())
         }
     }
@@ -96,7 +96,7 @@ class ServicesDao(
             }.filter { it.second != null }.map { it.second!!.toDomain(it.first) }
             Outcome.Success(services)
         } catch(e: Exception) {
-            Log.e("Hello", "Error during getServicesFromCategory", e)
+            Timber.e(e, "Error during getServicesFromCategory")
             Outcome.Failure(e.toDomain())
         }
     }

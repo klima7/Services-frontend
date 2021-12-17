@@ -1,6 +1,5 @@
 package com.klima7.services.common.data.firebase.dao
 
-import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.functions.FirebaseFunctions
 import com.klima7.services.common.core.None
@@ -13,6 +12,7 @@ import com.klima7.services.common.models.Client
 import com.klima7.services.common.models.ClientInfo
 import com.klima7.services.common.models.Failure
 import kotlinx.coroutines.tasks.await
+import timber.log.Timber
 
 class ClientsDao(
     private val firestore: FirebaseFirestore,
@@ -27,7 +27,7 @@ class ClientsDao(
                 .await()
             Outcome.Success(None())
         } catch(e: Exception) {
-            Log.e("Hello", "Error while createClientAccount", e)
+            Timber.e(e, "Error while createClientAccount")
             Outcome.Failure(e.toDomain())
         }
     }
@@ -44,7 +44,7 @@ class ClientsDao(
                 ?: return Outcome.Failure(Failure.NotFoundFailure)
             return Outcome.Success(client)
         } catch(e: Exception) {
-            Log.e("Hello", "Error during getClient", e)
+            Timber.e(e, "Error during getClient")
             return Outcome.Failure(e.toDomain())
         }
     }
@@ -62,7 +62,7 @@ class ClientsDao(
                 .await()
             Outcome.Success(None())
         } catch(e: Exception) {
-            Log.e("Hello", "Error while setClientInfo", e)
+            Timber.e(e, "Error while setClientInfo")
             Outcome.Failure(e.toDomain())
         }
     }
@@ -75,7 +75,7 @@ class ClientsDao(
                 .await()
             Outcome.Success(None())
         } catch(e: Exception) {
-            Log.e("Hello", "Error while clients-deleteAccount", e)
+            Timber.e(e, "Error while clients-deleteAccount")
             Outcome.Failure(e.toDomain())
         }
     }

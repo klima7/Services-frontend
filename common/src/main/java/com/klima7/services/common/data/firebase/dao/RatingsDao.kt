@@ -1,6 +1,5 @@
 package com.klima7.services.common.data.firebase.dao
 
-import android.util.Log
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -14,6 +13,7 @@ import com.klima7.services.common.data.firebase.utils.toDomain
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Rating
 import kotlinx.coroutines.tasks.await
+import timber.log.Timber
 
 class RatingsDao(
     private val firestore: FirebaseFirestore,
@@ -32,7 +32,7 @@ class RatingsDao(
                 ?: return Outcome.Failure(Failure.NotFoundFailure)
             return Outcome.Success(rating)
         } catch(e: Exception) {
-            Log.e("Hello", "Error during getRating", e)
+            Timber.e(e, "Error during getRating")
             return Outcome.Failure(e.toDomain())
         }
     }
@@ -70,7 +70,7 @@ class RatingsDao(
             Outcome.Success(ratings)
         }
         catch(e: Exception) {
-            Log.e("Hello", "Error during getRatingsForExpert", e)
+            Timber.e(e, "Error during getRatingsForExpert")
             Outcome.Failure(e.toDomain())
         }
     }
@@ -89,7 +89,7 @@ class RatingsDao(
                 .await()
             Outcome.Success(None())
         } catch(e: Exception) {
-            Log.e("Hello", "Error while addRating", e)
+            Timber.e(e, "Error while addRating")
             Outcome.Failure(e.toDomain())
         }
     }
