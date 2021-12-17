@@ -1,17 +1,22 @@
 <resources>
+
+    <!-- general -->
     <string name="app_name">Usługi</string>
     <string name="app_subtitle"> </string>
-    <string name="delete_title">Usuwanie konta klienta</string>
-    <string name="delete_text">Czy jesteś pewien, że chcesz usunąć konto klienta? Operacja ta jest nieodwracalna.</string>
 
-    <!-- Settings screen -->
-    <string name="settings_profile">Zmiana profilu</string>
-    <string name="settings_delete">Usuń konto klienta</string>
+    <!-- settings -->
+    <string name="settings__profile">Zmiana profilu</string>
+    <string name="settings__delete">Usuń konto klienta</string>
 
-    <!-- Credits -->
-    <string name="credit_pin_green">"Icon made by Pixel perfect from www.flaticon.com"</string>
+    <!-- credits -->
+    <string name="credits__pin_green">"Icon made by Pixel perfect from www.flaticon.com"</string>
 
-    <!-- Offers -->
-    <string name="offers_experts_number">%s / %s wykonawców</string>
+    <!-- offers -->
+    <string name="offers__experts_number">%s / %s wykonawców</string>
+
+    <!-- delete -->
+    <string name="delete__title">Usuwanie konta klienta</string>
+    <string name="delete__text">Czy jesteś pewien, że chcesz usunąć konto klienta? Operacja ta jest nieodwracalna.</string>
+
 
 </resources>

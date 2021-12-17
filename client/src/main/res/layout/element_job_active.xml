@@ -65,7 +65,7 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView2"
-                    tools:text="@{@string/offers_experts_number(count, maxCount)}" />
+                    tools:text="@{@string/offers__experts_number(count, maxCount)}" />
 
                 <LinearLayout
                     android:id="@+id/textView3"

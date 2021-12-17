@@ -19,8 +19,8 @@ class SettingsFragment: BaseSettingsFragment() {
 
     override fun getSpecificSettingsOptions(): List<SettingsOption> {
         return listOf(
-            SettingsOption(R.drawable.icon_profile, R.string.settings_profile, SettingsViewModel.Event.ShowInfoScreen),
-            SettingsOption(R.drawable.icon_delete_account, R.string.settings_delete, SettingsViewModel.Event.ShowDeleteScreen),
+            SettingsOption(R.drawable.icon_profile, R.string.settings__profile, SettingsViewModel.Event.ShowInfoScreen),
+            SettingsOption(R.drawable.icon_delete_account, R.string.settings__delete, SettingsViewModel.Event.ShowDeleteScreen),
         )
     }
 

@@ -7,6 +7,6 @@ import com.klima7.services.common.components.credits.Credit
 class CreditsFragment: BaseCreditsFragment() {
 
     override fun getSpecificCredits() = listOf(
-        Credit(R.drawable.pin_green, R.string.credit_pin_green)
+        Credit(R.drawable.pin_green, R.string.credits__pin_green)
     )
 }
