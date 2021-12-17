@@ -62,9 +62,18 @@ class AddRatingViewModel(
                 loadState.value = LoadAreaView.State.FAILURE
             },
             { offerWithExpert ->
-                loadState.value = LoadAreaView.State.MAIN
-                offer.value = offerWithExpert.offer
-                expert.value = offerWithExpert.expert
+                val offer = offerWithExpert.offer
+                val expert = offerWithExpert.expert
+
+                if(expert == null) {
+                    loadFailure.value = Failure.NotFoundFailure;
+                    loadState.value = LoadAreaView.State.FAILURE
+                }
+                else {
+                    loadState.value = LoadAreaView.State.MAIN
+                    this.offer.value = offer
+                    this.expert.value = expert
+                }
             }
         )
     }
