@@ -7,6 +7,6 @@ import com.klima7.services.expert.R
 class CreditsFragment: BaseCreditsFragment() {
 
     override fun getSpecificCredits() = listOf(
-        Credit(R.drawable.deal_hand, R.string.credit_deal_hand)
+        Credit(R.drawable.deal_hand, R.string.credits__deal_hand)
     )
 }

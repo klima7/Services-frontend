@@ -7,8 +7,8 @@ import com.klima7.services.expert.features.splash.SplashActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DeleteFragment: BaseDeleteFragment(
-    R.string.delete_title,
-    R.string.delete_text
+    R.string.delete__title,
+    R.string.delete__text
 ) {
 
     override val viewModel: DeleteViewModel by viewModel()

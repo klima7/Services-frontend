@@ -21,10 +21,10 @@ class SettingsFragment: BaseSettingsFragment() {
 
     override fun getSpecificSettingsOptions(): List<SettingsOption> {
         return listOf(
-            SettingsOption(R.drawable.icon_profile, R.string.settings_profile, SettingsViewModel.Event.ShowInfoScreen),
-            SettingsOption(R.drawable.icon_service, R.string.settings_services, SettingsViewModel.Event.ShowServicesScreen),
-            SettingsOption(R.drawable.icon_location, R.string.settings_location, SettingsViewModel.Event.ShowWorkingAreaScreen),
-            SettingsOption(R.drawable.icon_delete_account, R.string.settings_delete, SettingsViewModel.Event.ShowDeleteScreen),
+            SettingsOption(R.drawable.icon_profile, R.string.settings__profile, SettingsViewModel.Event.ShowInfoScreen),
+            SettingsOption(R.drawable.icon_service, R.string.settings__services, SettingsViewModel.Event.ShowServicesScreen),
+            SettingsOption(R.drawable.icon_location, R.string.settings__location, SettingsViewModel.Event.ShowWorkingAreaScreen),
+            SettingsOption(R.drawable.icon_delete_account, R.string.settings__delete, SettingsViewModel.Event.ShowDeleteScreen),
         )
     }
 

@@ -7,7 +7,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class CurrentOffersListFragment: BaseOffersListFragment(
     R.color.swipe_current_offer_background,
     R.drawable.icon_offers_archive,
-    R.string.move_offer_to_archive_failure_msg,
+    R.string.offers__move_to_archive_failure,
 ) {
 
     override val viewModel: CurrentOffersListViewModel by viewModel()

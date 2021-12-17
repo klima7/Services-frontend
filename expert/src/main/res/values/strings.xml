@@ -1,20 +1,27 @@
 <resources>
+
+    <!-- general -->
     <string name="app_name">Usługi dla wykonawców</string>
     <string name="app_subtitle">dla wykonawców</string>
-    <string name="delete_title">Usuwanie konta wykonawcy</string>
-    <string name="delete_text">Czy jesteś pewien, że chcesz usunąć konto wykonawcy? Operacja ta jest nieodwracalna.</string>
-    <string name="job_title_placeholder">Zlecenie</string>
 
-    <string name="move_offer_to_archive_failure_msg">Przeniesienie oferty do archiwum nieudane.</string>
-    <string name="move_offer_to_current_failure_msg">Przeniesienie oferty do aktualnych nieudane.</string>
+    <!-- settings -->
+    <string name="settings__profile">Zmiana profilu</string>
+    <string name="settings__services">Zmiana świadczonych usług</string>
+    <string name="settings__location">Zmiana lokalizacji</string>
+    <string name="settings__delete">Usuń konto wykonawcy</string>
 
-    <!-- Settings screen -->
-    <string name="settings_profile">Zmiana profilu</string>
-    <string name="settings_services">Zmiana świadczonych usług</string>
-    <string name="settings_location">Zmiana lokalizacji</string>
-    <string name="settings_delete">Usuń konto wykonawcy</string>
+    <!-- credits -->
+    <string name="credits__deal_hand">"Icon made by Webalys from www.flaticon.com"</string>
 
-    <!-- Credits -->
-    <string name="credit_deal_hand">"Icon made by Webalys from www.flaticon.com"</string>
+    <!-- delete -->
+    <string name="delete__title">Usuwanie konta wykonawcy</string>
+    <string name="delete__text">Czy jesteś pewien, że chcesz usunąć konto wykonawcy? Operacja ta jest nieodwracalna.</string>
+
+    <!-- offers -->
+    <string name="offers__move_to_archive_failure">Przeniesienie oferty do archiwum nieudane.</string>
+    <string name="offers__move_to_current_failure">Przeniesienie oferty do aktualnych nieudane.</string>
+
+    <!-- job -->
+    <string name="job__title_placeholder">Zlecenie</string>
 
 </resources>
