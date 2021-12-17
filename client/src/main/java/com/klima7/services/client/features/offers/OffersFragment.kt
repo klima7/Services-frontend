@@ -99,9 +99,6 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
         viewModel.offersCount.observe(viewLifecycleOwner) { updateHeader() }
         viewModel.filterVisible.observe(viewLifecycleOwner, this::updateFilterVisibility)
         viewModel.visibleStatuses.observe(viewLifecycleOwner, this::updateFilterStatuses)
-        viewModel.visibleStatuses.observe(viewLifecycleOwner) {
-            Log.i("Hello", "Visible statuses: $it")
-        }
 
         binding.offersRefreshLayout.setOnRefreshListener {
             binding.offersRefreshLayout.isRefreshing = false

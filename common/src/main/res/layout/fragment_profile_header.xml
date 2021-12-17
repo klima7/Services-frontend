@@ -22,7 +22,7 @@
             android:transitionName="avatar"
             android:layout_gravity="center_horizontal"/>
 
-        <Space
+        <View
             android:layout_width="0dp"
             android:layout_height="16dp" />
 

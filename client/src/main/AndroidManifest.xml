@@ -48,9 +48,6 @@
         <activity android:name=".features.offer.OfferActivity" />
         <activity android:name=".features.credits.CreditsActivity" />
         <activity android:name=".features.addrating.AddRatingActivity" />
-        <activity android:name=".features.jobsetup.service.ServiceActivity" />
-        <activity android:name=".features.jobsetup.location.LocationActivity" />
-        <activity android:name=".features.jobsetup.details.JobDetailsActivity" />
         <activity android:name=".features.jobsetup.JobSetupActivity" />
 
         <service

@@ -119,7 +119,7 @@
                     android:ellipsize="end"
                     />
 
-                <Space
+                <View
                     android:layout_width="0dp"
                     android:layout_height="10dp"
                     />
@@ -145,7 +145,7 @@
                     android:visibility="@{shorter ? View.GONE : View.VISIBLE}"
                     >
 
-                    <Space
+                    <View
                         android:layout_width="0dp"
                         android:layout_height="10dp"
                         />
@@ -166,7 +166,7 @@
 
                 </LinearLayout>
 
-                <Space
+                <View
                     android:layout_width="0dp"
                     android:layout_height="10dp"
                     />

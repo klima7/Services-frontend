@@ -67,7 +67,7 @@
                                 app:avatar_profile_image="@{viewmodel.profileImage}"
                                 />
 
-                            <Space
+                            <View
                                 android:layout_width="0dp"
                                 android:layout_height="8dp" />
 
@@ -90,7 +90,7 @@
                                 android:textSize="18sp"
                                 android:visibility="@{viewmodel.serviceName != null ? View.VISIBLE : View.GONE}"/>
 
-                            <Space
+                            <View
                                 android:layout_width="0dp"
                                 android:layout_height="16dp" />
 
@@ -113,7 +113,7 @@
                                 android:layout_gravity="center">
                             </com.willy.ratingbar.BaseRatingBar>
 
-                            <Space
+                            <View
                                 android:layout_width="0dp"
                                 android:layout_height="16dp" />
 
@@ -142,7 +142,7 @@
 
                             </com.google.android.material.textfield.TextInputLayout>
 
-                            <Space
+                            <View
                                 android:layout_width="0dp"
                                 android:layout_height="24dp" />
 

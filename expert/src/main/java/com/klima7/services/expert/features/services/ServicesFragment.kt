@@ -36,10 +36,6 @@ class ServicesFragment: BaseFragment<FragmentServicesBinding>() {
                 viewModel.retrySave()
             }
         }
-
-        viewModel.selectedServices.observe(viewLifecycleOwner) { selected ->
-            Log.i("Hello","--------> Selected services: ${selected?.size} $selected")
-        }
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {

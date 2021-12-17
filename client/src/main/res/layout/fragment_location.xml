@@ -33,7 +33,7 @@
                     android:orientation="vertical"
                     >
 
-                    <Space
+                    <View
                         android:layout_width="0dp"
                         android:layout_height="15dp"
                         />
@@ -46,7 +46,7 @@
                         android:textSize="25sp"
                         />
 
-                    <Space
+                    <View
                         android:layout_width="0dp"
                         android:layout_height="15dp"
                         />

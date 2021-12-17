@@ -33,7 +33,7 @@
                 android:textColor="#ff0000"
                 />
 
-            <Space
+            <View
                 android:layout_width="16dp"
                 android:layout_height="0dp"
                 />

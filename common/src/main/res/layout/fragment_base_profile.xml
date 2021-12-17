@@ -46,7 +46,7 @@
                             android:layout_height="wrap_content"
                             android:name="com.klima7.services.common.components.profile.header.ProfileHeaderFragment" />
 
-                        <Space
+                        <View
                             android:layout_width="0dp"
                             android:layout_height="32dp" />
 
@@ -56,7 +56,7 @@
                             android:layout_height="wrap_content"
                             android:name="com.klima7.services.common.components.profile.description.ProfileDescriptionFragment" />
 
-                        <Space
+                        <View
                             android:layout_width="0dp"
                             android:layout_height="32dp" />
 
@@ -67,7 +67,7 @@
                             android:name="com.klima7.services.common.components.profile.contact.ProfileContactFragment"
                             />
 
-                        <Space
+                        <View
                             android:layout_width="0dp"
                             android:layout_height="24dp" />
 
@@ -78,7 +78,7 @@
                             android:name="com.klima7.services.common.components.profile.services.ProfileServicesFragment"
                             />
 
-                        <Space
+                        <View
                             android:layout_width="0dp"
                             android:layout_height="32dp" />
 
@@ -89,7 +89,7 @@
                             android:name="com.klima7.services.common.components.profile.area.ProfileAreaFragment"
                             />
 
-                        <Space
+                        <View
                             android:layout_width="0dp"
                             android:layout_height="32dp" />
 
@@ -100,7 +100,7 @@
                             android:name="com.klima7.services.common.components.profile.average.ProfileAverageFragment"
                             />
 
-                        <Space
+                        <View
                             android:layout_width="0dp"
                             android:layout_height="32dp" />
 
