@@ -8,6 +8,12 @@
     <string name="you">You</string>
     <string name="job">Zlecenie</string>
 
+    <!-- dialog -->
+    <string name="dialog__yes">Tak</string>
+    <string name="dialog__no">Nie</string>
+    <string name="dialog__retry">Ponów próbę</string>
+    <string name="dialog__cancel">Anuluj</string>
+
     <!-- offer_status -->
     <string name="offer_status__new">Nowe</string>
     <string name="offer_status__cancelled">Anulowane</string>

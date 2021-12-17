@@ -51,11 +51,11 @@ class YesNoDialogFragment: DialogFragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.dialog_yes_no, null, false)
 
         val dialog: AlertDialog = MaterialAlertDialogBuilder(requireContext()).run {
-            setNegativeButton("Nie") { _, _ ->
+            setNegativeButton(requireContext().getString(R.string.dialog__no)) { _, _ ->
                 val bundle = bundleOf("result" to Result.NO)
                 setFragmentResult(viewModel.requestKey, bundle)
             }
-            setPositiveButton("Tak") { _, _ ->
+            setPositiveButton(requireContext().getString(R.string.dialog__yes)) { _, _ ->
                 val bundle = bundleOf("result" to Result.YES)
                 setFragmentResult(viewModel.requestKey, bundle)
             }

@@ -62,12 +62,12 @@ class FailureDialogFragment: DialogFragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.dialog_failure, null, false)
 
         val dialog: AlertDialog = MaterialAlertDialogBuilder(requireContext()).run {
-            setNegativeButton("Anuluj") { _, _ ->
+            setNegativeButton(requireContext().getString(R.string.dialog__cancel)) { _, _ ->
                 val bundle = bundleOf("result" to Result.DISMISS)
                 setFragmentResult(viewModel.requestKey, bundle)
             }
             if(viewModel.retryAbility) {
-                setPositiveButton("Ponów próbę") { _, _ ->
+                setPositiveButton(requireContext().getString(R.string.dialog__retry)) { _, _ ->
                     val bundle = bundleOf("result" to Result.RETRY)
                     setFragmentResult(viewModel.requestKey, bundle)
                 }
