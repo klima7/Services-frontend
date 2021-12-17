@@ -63,6 +63,9 @@ dependencies {
     // Paging
     api "androidx.paging:paging-runtime-ktx:3.0.1"
 
+    // Work manager
+    api "androidx.work:work-runtime-ktx:2.7.1"
+
     // Groupie
     api "com.github.lisawray.groupie:groupie:2.10.0"
     api "com.github.lisawray.groupie:groupie-kotlin-android-extensions:2.10.0"

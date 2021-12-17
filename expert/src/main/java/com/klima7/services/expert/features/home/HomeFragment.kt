@@ -6,7 +6,7 @@ import com.klima7.services.common.components.home.BaseHomeFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.features.offer.OfferActivity
 import com.klima7.services.expert.features.settings.SettingsActivity
-import com.klima7.services.expert.messaging.RefreshTokenAlarm
+import com.klima7.services.expert.messaging.RefreshTokenWorker
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -17,7 +17,7 @@ class HomeFragment: BaseHomeFragment() {
 
     override fun onFirstCreation() {
         super.onFirstCreation()
-        RefreshTokenAlarm().setAlarm(requireContext())
+        RefreshTokenWorker.schedule(requireContext())
     }
 
     override fun getDestinations() =
