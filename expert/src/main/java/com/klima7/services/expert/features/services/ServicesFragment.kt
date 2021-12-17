@@ -58,7 +58,9 @@ class ServicesFragment: BaseFragment<FragmentServicesBinding>() {
     private fun showSaveFailure(failure: Failure) {
         val dialog = FailureDialogFragment.createRetry(
             SAVE_FAILURE_KEY,
-            "Zmiana usług się nie powiodła.", failure)
+            requireContext().getString(R.string.services__update_failure_message),
+            failure
+        )
         dialog.show(childFragmentManager, SAVE_FAILURE_KEY)
     }
 }

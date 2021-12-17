@@ -200,14 +200,17 @@ class OffersFragment: BaseFragment<FragmentOffersBinding>(), OfferWithExpertItem
     private fun showFinishQueryDialog() {
         val dialog = YesNoDialogFragment.create(
             FINISH_JOB_ENSURE_DIALOG_KEY,
-            "Czy na pewno chcesz zamknąć zlecenie?",)
+            requireContext().getString(R.string.offers__finish_ensure_message),
+        )
         dialog.show(childFragmentManager, "YesNoDialogFragment")
     }
 
     private fun showFinishJobFailure(failure: Failure) {
         val dialog = FailureDialogFragment.createRetry(
             FINISH_JOB_FAILURE_DIALOG_KEY,
-            "Zamknięcie zlecenia się nie powiodło.", failure)
+            requireContext().getString(R.string.offers__finish_failure_message),
+            failure
+        )
         dialog.show(childFragmentManager, "FailureDialogFragment")
     }
 

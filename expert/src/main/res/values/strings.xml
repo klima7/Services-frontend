@@ -39,11 +39,14 @@
 
     <!-- offer -->
     <string name="offer__client_deleted_account">Klient usunął konto</string>
+    <string name="offer__change_archive_failure_message">Zmiana stanu archiwizacji nieudana..</string>
 
     <!-- job -->
     <string name="job__title_placeholder">Zlecenie</string>
     <string name="job__accept">Akceptuj</string>
     <string name="job__reject">Odrzuć</string>
+    <string name="job__accept_failure_message">Akceptacja się nie powiodła.</string>
+    <string name="job__reject_failure_message">Odrzucenie się nie powiodło.</string>
 
     <!-- area -->
     <string name="area__title">Zmiana lokalizacji</string>
@@ -51,6 +54,7 @@
     <string name="area__radius">Promień działania</string>
     <string name="area__preview">Podgląd</string>
     <string name="area__save">Zapisz</string>
+    <string name="area__update_failure_message">Zmiana lokalizacji się nie powiodła.</string>
 
     <!-- info -->
     <string name="info__title">Zmiana profilu</string>
@@ -74,6 +78,7 @@
     <string name="services__title">Zmiana usług</string>
     <string name="services__select_one_at_least">Wybierz przynajmniej jedną usługę</string>
     <string name="services__save">Zapisz</string>
+    <string name="services__update_failure_message">Zmiana usług się nie powiodła.</string>
 
     <!-- setup -->
     <string name="setup__info_title">Uzupełnienie profilu</string>

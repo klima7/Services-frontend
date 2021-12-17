@@ -24,6 +24,8 @@
     <string name="offers__finish_now">Zakończ teraz</string>
     <string name="offers__finished_message">Zlecenie zostało zakończone</string>
     <string name="offers__details">Szczegóły</string>
+    <string name="offers__finish_ensure_message">Czy na pewno chcesz zamknąć zlecenie?</string>
+    <string name="offers__finish_failure_message">Zamknięcie zlecenia się nie powiodło.</string>
 
     <!-- offer -->
     <string name="offer__title">Zlecenie</string>
@@ -40,6 +42,7 @@
     <string name="addrating__comment">Komentarz</string>
     <string name="addrating__warning">Pamiętaj, dodanej oceny nie można już zmienić, ani usunąć!</string>
     <string name="addrating__add">Dodaj ocenę</string>
+    <string name="addrating__add_failure_message">Dodanie oceny się nie powiodło.</string>
 
     <!-- categories -->
     <string name="categories__list_header">Kategorie usług:</string>
@@ -73,6 +76,7 @@
     <string name="job_setup__details_create">Stwórz zlecenie</string>
     <string name="job_setup__created_title">Stworzono zlecenie!</string>
     <string name="job_setup__created_text">Pozostaje czekać</string>
+    <string name="job_setup__create_failure_message">"Utworzenie oferty się nie powiodło"</string>
 
     <!-- setup -->
     <string name="setup__explanation">Aby korzystać z aplikacji w roli eksperta konieczne jest uzupełnienie kilku informacji.</string>

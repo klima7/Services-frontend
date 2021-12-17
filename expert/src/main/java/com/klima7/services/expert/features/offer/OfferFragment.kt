@@ -113,7 +113,9 @@ class OfferFragment: BaseOfferFragment<FragmentOfferBinding>() {
     private fun showArchiveFailureDialog(failure: Failure) {
         val dialog = FailureDialogFragment.createRetry(
             ARCHIVE_FAILURE_DIALOG_KEY,
-            "Zmiana stanu oferty się nie powiodła.", failure)
+            requireContext().getString(R.string.offer__change_archive_failure_message),
+            failure
+        )
         dialog.show(childFragmentManager, "FailureDialogFragment")
     }
 

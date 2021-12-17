@@ -99,7 +99,9 @@ class WorkingAreaFragment: BaseFragment<FragmentAreaBinding>() {
 
     private fun showSaveLocationError(failure: Failure) {
         val dialog = FailureDialogFragment.createRetry(SAVE_LOCATION_FAILURE_KEY,
-            "Zmiana lokalizacji się nie powiodła.", failure)
+            requireContext().getString(R.string.area__update_failure_message),
+            failure
+        )
         dialog.show(childFragmentManager, "FailureDialogFragment")
     }
 

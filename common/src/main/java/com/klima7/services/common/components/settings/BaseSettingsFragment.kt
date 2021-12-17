@@ -71,7 +71,8 @@ abstract class BaseSettingsFragment:
     private fun showLogoutQuery() {
         val dialog = YesNoDialogFragment.create(
             LOGOUT_QUERY_DIALOG_KEY,
-            "Czy na pewno chcesz się wylogować?")
+            requireContext().getString(R.string.settings__logout_ensure_message)
+        )
         dialog.show(childFragmentManager, "YesNoDialogFragment")
     }
 

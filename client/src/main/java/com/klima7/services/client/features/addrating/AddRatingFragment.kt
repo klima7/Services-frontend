@@ -48,7 +48,9 @@ class AddRatingFragment: BaseFragment<FragmentAddRatingBinding>() {
     private fun showAddRatingFailure(failure: Failure) {
         val dialog = FailureDialogFragment.createRetry(
             ADD_RATING_FAILURE_DIALOG_KEY,
-            "Dodanie oceny się nie powiodło.", failure)
+            requireContext().getString(R.string.addrating__add_failure_message),
+            failure
+        )
         dialog.show(childFragmentManager, "FailureDialogFragment")
     }
 

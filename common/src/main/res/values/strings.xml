@@ -96,15 +96,20 @@
     <string name="offer__rating_add_message">Dokonałem oceny na %s</string>
     <string name="offer__call">Zadzwoń</string>
     <string name="offer__show_rating">Pokaż ocenę</string>
+    <string name="offer__image_send_failure_message">Wysyłanie obrazu nieudane.</string>
+    <string name="offer__status_change_ensure_message">Czy na pewno chcesz zmienić status oferty na \"%s\"</string>
+    <string name="offer__status_change_failure_message">Zmiana stanu oferty się nie powiodła.</string>
 
     <!-- delete -->
     <string name="delete__confirm_message">W celu potwierdzenia operacji wpisz “Potwierdzam” w polu powyżej.</string>
     <string name="delete__delete">Usuń konto</string>
     <string name="delete__text_to_retype">Potwierdzam</string>
+    <string name="delete__delete_failure_message">Usunięcie konta się nie powiodło.</string>
 
     <!-- login -->
     <string name="login__login_required">Aplikacja wymaga logowania</string>
     <string name="login__login">Zaloguj się</string>
+    <string name="login__login_failure_message">Logowanie się nie powiodło.</string>
 
     <!-- rating -->
     <string name="rating__title">Ocena wykonawcy</string>
@@ -116,6 +121,7 @@
     <string name="settings__title">Ustawienia</string>
     <string name="settings__credits">Podziękowania</string>
     <string name="settings__logout">Wyloguj się</string>
+    <string name="settings__logout_ensure_message">Czy na pewno chcesz się wylogować?</string>
 
     <!-- credits -->
     <string name="credits__title">Podziękowania</string>
@@ -132,5 +138,6 @@
     <string name="info__field_required_error">To pole jest wymagane</string>
     <string name="info__phone_too_short_error">Numer za krótki</string>
     <string name="info__updated_successfully_message">Profil został zaktualizowany</string>
+    <string name="info__update_failure_message">Profil został zaktualizowany</string>
 
 </resources>

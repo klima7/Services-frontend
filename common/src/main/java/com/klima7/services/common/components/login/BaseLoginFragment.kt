@@ -95,7 +95,7 @@ abstract class BaseLoginFragment(
     private fun showFailure() {
         val dialog = FailureDialogFragment.createRetry(
             LOGIN_FAILURE_DIALOG_KEY,
-            "Logowanie się nie powiodło."
+            requireContext().getString(R.string.login__login_failure_message),
         )
         dialog.show(childFragmentManager, "FailureDialogFragment")
     }

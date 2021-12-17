@@ -58,7 +58,9 @@ class JobDetailsFragment: BaseFragment<FragmentJobDetailsBinding>() {
     private fun showJobCreationFailure(failure: Failure) {
         val dialog = FailureDialogFragment.createRetry(
             CREATE_JOB_FAILURE_DIALOG_KEY,
-            "Utworzenie oferty się nie powiodło", failure)
+            requireContext().getString(R.string.job_setup__create_failure_message),
+            failure
+        )
         dialog.show(childFragmentManager, "FailureDialogFragment")
     }
 

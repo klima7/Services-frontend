@@ -52,7 +52,9 @@ abstract class BaseDeleteFragment(
     private fun showDeleteFailure(failure: Failure) {
         val dialog = FailureDialogFragment.createRetry(
             DELETE_FAILURE_DIALOG_KEY,
-            "Usunięcie konta się nie powiodło.", failure)
+            requireContext().getString(R.string.delete__delete_failure_message),
+            failure
+        )
         dialog.show(childFragmentManager, "FailureDialogFragment")
     }
 

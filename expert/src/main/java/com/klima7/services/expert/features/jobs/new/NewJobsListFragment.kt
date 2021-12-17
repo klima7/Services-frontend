@@ -50,7 +50,9 @@ class NewJobsListFragment: BaseJobsListFragment() {
     private fun showRejectFailure(failure: Failure) {
         val dialog = FailureDialogFragment.createRetry(
             DIALOG_REJECT_FAILURE_KEY,
-            "Odrzucenie oferty nieudane.", failure)
+            requireContext().getString(R.string.job__reject_failure_message),
+            failure
+        )
         dialog.show(childFragmentManager, ServicesFragment.SAVE_FAILURE_KEY)
     }
 

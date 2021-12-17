@@ -83,14 +83,18 @@ class JobFragment: BaseFragment<FragmentJobBinding>() {
     private fun showAcceptFailureDialog(failure: Failure) {
         val dialog = FailureDialogFragment.createRetry(
             ACCEPT_FAILURE_DIALOG_KEY,
-            "Akceptacja się nie powiodła.", failure)
+            requireContext().getString(R.string.job__accept_failure_message),
+            failure
+        )
         dialog.show(childFragmentManager, "FailureDialogFragment")
     }
 
     private fun showRejectFailureDialog(failure: Failure) {
         val dialog = FailureDialogFragment.createRetry(
             REJECT_FAILURE_DIALOG_KEY,
-            "Odrzucenie się nie powiodło.", failure)
+            requireContext().getString(R.string.job__reject_failure_message),
+            failure
+        )
         dialog.show(childFragmentManager, "FailureDialogFragment")
     }
 

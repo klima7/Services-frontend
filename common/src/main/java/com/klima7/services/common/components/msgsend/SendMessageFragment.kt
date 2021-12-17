@@ -98,7 +98,9 @@ class SendMessageFragment:
     private fun showSendImageFailure(failure: Failure) {
         val dialog = FailureDialogFragment.createRetry(
             SEND_IMAGE_FAILURE_DIALOG_KEY,
-            "Wysyłanie obrazu nieudane.", failure)
+            requireContext().getString(R.string.offer__image_send_failure_message),
+            failure
+        )
         dialog.show(childFragmentManager, "FailureDialogFragment")
     }
 

@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.core.os.bundleOf
 import androidx.databinding.ViewDataBinding
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.klima7.services.common.R
 import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.common.components.rating.RatingActivity
 import com.klima7.services.common.components.yesnodialog.YesNoDialogFragment
@@ -61,7 +62,8 @@ abstract class BaseOfferFragment<DB: ViewDataBinding>: BaseFragment<DB>() {
         val statusName = OfferStatusDescription.get(newOfferStatus).getText(requireContext())
         val dialog = YesNoDialogFragment.create(
             OFFER_STATUS_CHANGE_ENSURE_DIALOG_KEY,
-            "Czy na pewno chcesz zmienić status oferty na \"$statusName\"")
+            requireContext().getString(R.string.offer__status_change_ensure_message, statusName),
+        )
         dialog.show(childFragmentManager, "YesNoDialogFragment")
     }
 
@@ -84,7 +86,9 @@ abstract class BaseOfferFragment<DB: ViewDataBinding>: BaseFragment<DB>() {
     private fun showOfferStatusChangeFailureDialog(failure: Failure) {
         val dialog = FailureDialogFragment.createRetry(
             OFFER_STATUS_CHANGE_FAILURE_DIALOG_KEY,
-            "Zmiana statusu oferty się nie powiodła.", failure)
+            requireContext().getString(R.string.offer__image_send_failure_message),
+            failure
+        )
         dialog.show(childFragmentManager, "FailureDialogFragment")
     }
 }

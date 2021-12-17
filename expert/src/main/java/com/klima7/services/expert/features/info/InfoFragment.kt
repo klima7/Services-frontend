@@ -139,7 +139,9 @@ class InfoFragment: BaseFragment<FragmentInfoBinding>() {
     private fun showSaveError(failure: Failure) {
         val dialog = FailureDialogFragment.createRetry(
             SAVE_INFO_FAILURE_KEY,
-            "Zmiana profilu się nie powiodła.", failure)
+            requireContext().getString(R.string.info__update_failure_message),
+            failure
+        )
         dialog.show(childFragmentManager, "FailureDialogFragment")
     }
 
