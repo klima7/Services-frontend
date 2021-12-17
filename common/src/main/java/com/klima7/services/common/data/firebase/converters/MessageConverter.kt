@@ -22,9 +22,7 @@ fun MessageEntity.toDomain(pendingWrite: Boolean): Message {
                 3 -> OfferStatus.DONE
                 else -> OfferStatus.NEW
             }
-            val a = StatusChangeMessage(author, sendTime, offerStatus)
-            Log.i("Hello", "StatusChange message: $a")
-            a
+            StatusChangeMessage(author, sendTime, offerStatus)
         }
         3 -> RatingMessage(author, sendTime, ratingId ?: "", rating ?: .0)
         else -> TextMessage(author, sendTime,"Error", false)

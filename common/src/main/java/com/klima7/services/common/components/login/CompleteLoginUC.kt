@@ -12,7 +12,6 @@ abstract class CompleteLoginUC(
 ): BaseUC<None, None>() {
 
     override suspend fun execute(params: None): Outcome<Failure, None> {
-        Log.i("Hello", "Completing login")
         return deleteTokenPart()
     }
 

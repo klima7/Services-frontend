@@ -53,11 +53,9 @@ abstract class BaseNotificationManager(
     open fun handle(notificationData: Map<String, String>): Boolean {
         val uid = notificationData["uid"]
         if(uid == null || uid != auth.uid) {
-            Log.i("Hello", "Ignoring notification")
             return true
         }
 
-        Log.i("Hello", "Message received: ${notificationData["type"]}]")
         val type = notificationData["type"] ?: return false
         return when(type) {
             "text-message" -> {

@@ -8,8 +8,6 @@ import com.klima7.services.common.platform.BaseApp
 fun DocumentReference.getEnhanced(): Task<DocumentSnapshot> {
     val internetAvailable = BaseApp.getInstance().isInternetAvailable()
 
-    Log.i("Enhanced", "Inside getEnhanced (internet: $internetAvailable)")
-
     return if(internetAvailable) {
         get(Source.DEFAULT)
     }

@@ -18,7 +18,6 @@ class ConstrainedColumnView(context: Context, attrs: AttributeSet?) : FrameLayou
     init {
         LayoutInflater.from(context).inflate(R.layout.view_constrained_column, this)
         content = findViewById(R.id.viewconstrainedcolumn_content)
-        Log.i("Hello", "Content created")
     }
 
     override fun addView(child: View?, index: Int, params: ViewGroup.LayoutParams?) {
@@ -28,6 +27,5 @@ class ConstrainedColumnView(context: Context, attrs: AttributeSet?) : FrameLayou
         else {
             content?.addView(child, index, params)
         }
-//        Log.i("Hello", "Null")
     }
 }

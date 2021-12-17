@@ -1,16 +1,13 @@
 package com.klima7.services.common.data.room.dao
 
-import android.util.Log
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.room.entities.JobStatusEntity
-import com.klima7.services.common.data.room.entities.LastLocationEntity
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.JobStatus
-import java.lang.Exception
 
 @Dao
 interface JobStatusDao {
@@ -28,12 +25,8 @@ interface JobStatusDao {
     fun roomDeleteOther(uid: String, status: Int, presentJobIds: List<String>)
 
     fun updateSingle(uid: String, jobId: String, status: JobStatus) {
-        try {
-            val entity = JobStatusEntity(uid, jobId, JobStatusEntity.jobStatusToInt(status))
-            roomInsertOrUpdate(entity)
-        } catch(e: Exception) {
-            Log.i("Hello", "room-updateSingle EXCEPTION", e)
-        }
+        val entity = JobStatusEntity(uid, jobId, JobStatusEntity.jobStatusToInt(status))
+        roomInsertOrUpdate(entity)
     }
 
     fun updateMultiple(uid: String, jobIds: List<String>, status: JobStatus) {

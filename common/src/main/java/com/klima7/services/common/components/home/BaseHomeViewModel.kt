@@ -14,7 +14,6 @@ abstract class BaseHomeViewModel: BaseViewModel() {
         if(offerId != null) {
             sendEvent(Event.ShowOfferScreen(offerId))
         }
-        Log.i("Hello", "Inside home: $offerId")
     }
 
     fun settingsIconClicked() {

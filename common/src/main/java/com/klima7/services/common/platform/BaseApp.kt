@@ -55,12 +55,10 @@ abstract class BaseApp: Application() {
         val connectivityManager = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         connectivityManager.registerDefaultNetworkCallback(object : ConnectivityManager.NetworkCallback() {
             override fun onAvailable(network: Network) {
-                Log.i("Enhanced", "Internet available")
                 internetAvailable = true
             }
 
             override fun onLost(network: Network) {
-                Log.i("Enhanced", "Internet lost")
                 internetAvailable = false
             }
         })
