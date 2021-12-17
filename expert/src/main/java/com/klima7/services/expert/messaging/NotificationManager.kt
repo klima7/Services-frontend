@@ -5,7 +5,6 @@ import android.content.Intent
 import com.klima7.services.common.messaging.BaseNotificationManager
 import com.klima7.services.expert.R
 import com.klima7.services.expert.features.splash.SplashActivity
-import java.lang.NumberFormatException
 
 class NotificationManager(
     private val service: Service,

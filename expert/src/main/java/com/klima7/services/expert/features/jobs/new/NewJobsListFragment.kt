@@ -13,7 +13,6 @@ import com.klima7.services.expert.features.jobs.JobsViewModel
 import com.klima7.services.expert.features.jobs.base.BaseJobsListFragment
 import com.klima7.services.expert.features.services.ServicesFragment
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

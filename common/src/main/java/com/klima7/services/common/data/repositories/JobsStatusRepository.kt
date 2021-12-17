@@ -1,6 +1,5 @@
 package com.klima7.services.common.data.repositories
 
-import android.util.Log
 import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.firebase.FirebaseSource
 import com.klima7.services.common.data.room.RoomSource

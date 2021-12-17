@@ -5,7 +5,6 @@ import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.repositories.OffersRepository
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Offer
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 
 class GetOfferStreamUC(

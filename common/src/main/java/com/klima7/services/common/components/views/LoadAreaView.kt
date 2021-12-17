@@ -2,7 +2,6 @@ package com.klima7.services.common.components.views
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.LinearInterpolator
@@ -10,7 +9,6 @@ import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.view.children
 import androidx.databinding.BindingMethod
 import com.klima7.services.common.R
 import com.klima7.services.common.models.Failure

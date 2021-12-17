@@ -4,9 +4,6 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.Network
-import android.os.Build
-import android.util.Log
-import androidx.annotation.RequiresApi
 import com.google.android.libraries.places.api.Places
 import com.klima7.services.common.data.di.reposModule
 import com.klima7.services.common.data.di.sourcesModule

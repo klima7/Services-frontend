@@ -1,6 +1,5 @@
 package com.klima7.services.common.components.home
 
-import android.util.Log
 import com.klima7.services.common.platform.BaseViewModel
 
 abstract class BaseHomeViewModel: BaseViewModel() {

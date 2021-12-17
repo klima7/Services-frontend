@@ -8,7 +8,6 @@ import com.klima7.services.common.data.repositories.OffersRepository
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Offer
 import com.klima7.services.common.models.OfferWithExpert
-import kotlin.math.exp
 
 class GetOffersWithExpertForJobUC(
     private val offersRepository: OffersRepository,

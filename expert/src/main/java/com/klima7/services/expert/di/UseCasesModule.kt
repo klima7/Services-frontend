@@ -6,7 +6,6 @@ import com.klima7.services.expert.features.info.SetCurrentExpertInfoAndImageUC
 import com.klima7.services.expert.features.job.AcceptJobUC
 import com.klima7.services.expert.features.job.GetCurrentExpertJobUC
 import com.klima7.services.expert.features.jobs.base.GetCurrentExpertJobsUC
-import com.klima7.services.expert.usecases.GetCurrentExpertServicesUC
 import com.klima7.services.expert.features.jobs.new.GetNewJobsIdsUC
 import com.klima7.services.expert.features.jobs.rejected.GetRejectedJobsIdsUC
 import com.klima7.services.expert.features.login.CompleteExpertLoginUC
@@ -17,10 +16,7 @@ import com.klima7.services.expert.features.services.GetAllAndSelectedServicesUC
 import com.klima7.services.expert.features.services.SetCurrentExpertServicesUC
 import com.klima7.services.expert.features.setup.GetCurrentExpertSetupStateUC
 import com.klima7.services.expert.features.splash.GetCurrentExpertStateUC
-import com.klima7.services.expert.usecases.GetCurrentExpertUC
-import com.klima7.services.expert.usecases.RejectJobUC
-import com.klima7.services.expert.usecases.SetOfferArchivedUC
-import com.klima7.services.expert.usecases.SignOutExpertUC
+import com.klima7.services.expert.usecases.*
 import org.koin.dsl.module
 
 val useCasesModule = module {

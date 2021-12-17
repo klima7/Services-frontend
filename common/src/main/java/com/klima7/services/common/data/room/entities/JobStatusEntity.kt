@@ -1,7 +1,6 @@
 package com.klima7.services.common.data.room.entities
 
 import androidx.room.Entity
-import androidx.room.PrimaryKey
 import com.klima7.services.common.models.JobStatus
 
 @Entity(primaryKeys = ["uid", "jobId"])

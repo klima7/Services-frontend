@@ -9,9 +9,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
 import com.androidbuts.multispinnerfilter.KeyPairBoolData
+import com.klima7.services.common.R
 import com.klima7.services.common.databinding.ViewServicesSelectionSpinnerBinding
 import com.klima7.services.common.models.Service
-import com.klima7.services.common.R
 
 @BindingAdapter("servicesSelectionSpinner_services")
 fun setServices(view: ServicesSelectionSpinner, newServices: List<Service>?) {

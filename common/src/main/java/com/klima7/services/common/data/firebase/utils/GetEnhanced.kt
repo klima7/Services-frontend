@@ -1,6 +1,5 @@
 package com.klima7.services.common.data.firebase.utils
 
-import android.util.Log
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.*
 import com.klima7.services.common.platform.BaseApp

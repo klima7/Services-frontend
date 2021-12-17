@@ -6,7 +6,6 @@ import com.klima7.services.common.data.firebase.FirebaseSource
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Offer
 import com.klima7.services.common.models.OfferStatus
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 
 class OffersRepository(

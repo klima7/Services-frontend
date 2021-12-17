@@ -1,6 +1,5 @@
 package com.klima7.services.common.data.firebase.converters
 
-import android.util.Log
 import com.klima7.services.common.data.firebase.entities.MessageEntity
 import com.klima7.services.common.extensions.applyTimezone
 import com.klima7.services.common.models.*

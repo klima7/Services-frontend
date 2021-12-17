@@ -1,6 +1,5 @@
 package com.klima7.services.common.components.splash
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.components.views.LoadAreaView

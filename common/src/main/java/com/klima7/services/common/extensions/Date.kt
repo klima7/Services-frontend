@@ -1,7 +1,6 @@
 package com.klima7.services.common.extensions
 
 import android.text.format.DateUtils
-import android.text.format.DateUtils.MINUTE_IN_MILLIS
 import java.util.*
 
 

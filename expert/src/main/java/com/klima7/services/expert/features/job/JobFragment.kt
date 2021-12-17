@@ -9,7 +9,6 @@ import com.klima7.services.common.platform.BaseFragment
 import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.expert.R
 import com.klima7.services.expert.databinding.FragmentJobBinding
-import com.klima7.services.expert.features.info.InfoFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class JobFragment: BaseFragment<FragmentJobBinding>() {

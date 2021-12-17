@@ -1,7 +1,6 @@
 package com.klima7.services.common.data.firebase.entities
 
 import com.google.firebase.Timestamp
-import java.util.*
 
 data class OfferEntity(
     var creationTime: Timestamp = Timestamp.now(),

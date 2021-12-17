@@ -1,6 +1,5 @@
 package com.klima7.services.common.components.login
 
-import android.util.Log
 import com.klima7.services.common.core.BaseUC
 import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
