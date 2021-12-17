@@ -1,6 +1,12 @@
 package com.klima7.services.common.platform
 
 import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.Network
+import android.os.Build
+import android.util.Log
+import androidx.annotation.RequiresApi
 import com.google.android.libraries.places.api.Places
 import com.klima7.services.common.data.di.reposModule
 import com.klima7.services.common.data.di.sourcesModule
@@ -14,10 +20,22 @@ import org.koin.core.module.Module
 
 abstract class BaseApp: Application() {
 
+    companion object {
+        private lateinit var instance: BaseApp
+
+        fun getInstance(): BaseApp {
+            return instance
+        }
+    }
+
+    private var internetAvailable = false
+
     override fun onCreate() {
         super.onCreate()
+        instance = this
         setupKoin()
         initPlaces()
+        watchInternetConnection()
     }
 
     private fun setupKoin() {
@@ -31,6 +49,25 @@ abstract class BaseApp: Application() {
 
     private fun initPlaces() {
         Places.initialize(applicationContext, "AIzaSyBgMDgU7VMT0L35f9TL4LZUB7v3NAS9pTs")
+    }
+
+    private fun watchInternetConnection() {
+        val connectivityManager = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        connectivityManager.registerDefaultNetworkCallback(object : ConnectivityManager.NetworkCallback() {
+            override fun onAvailable(network: Network) {
+                Log.i("Enhanced", "Internet available")
+                internetAvailable = true
+            }
+
+            override fun onLost(network: Network) {
+                Log.i("Enhanced", "Internet lost")
+                internetAvailable = false
+            }
+        })
+    }
+
+    fun isInternetAvailable(): Boolean {
+        return internetAvailable
     }
 
     private val commonModules = listOf(sourcesModule, reposModule, viewModelsModule, useCasesModule)
