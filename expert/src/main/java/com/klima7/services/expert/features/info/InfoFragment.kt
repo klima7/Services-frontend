@@ -53,28 +53,32 @@ class InfoFragment: BaseFragment<FragmentInfoBinding>() {
         viewModel.nameError.observe(viewLifecycleOwner) { nameError ->
             binding.infoName.error = when(nameError) {
                 null -> null
-                InfoFormErrors.NameError.NotProvided -> "To pole jest wymagane"
+                InfoFormErrors.NameError.NotProvided ->
+                    requireContext().getString(R.string.info__field_required_error)
             }
         }
 
         viewModel.phoneError.observe(viewLifecycleOwner) { phoneError ->
             binding.infoPhone.error = when(phoneError) {
                 null -> null
-                InfoFormErrors.PhoneError.TooShort -> "Numer za krótki"
+                InfoFormErrors.PhoneError.TooShort ->
+                    requireContext().getString(R.string.info__phone_too_short_error)
             }
         }
 
         viewModel.emailError.observe(viewLifecycleOwner) { emailError ->
             binding.infoEmail.error = when(emailError) {
                 null -> null
-                InfoFormErrors.EmailError.InvalidFormat -> "Nieprawidłowy format adresu email"
+                InfoFormErrors.EmailError.InvalidFormat ->
+                    requireContext().getString(R.string.info__email_format_error)
             }
         }
 
         viewModel.websiteError.observe(viewLifecycleOwner) { websiteError ->
             binding.infoWebsite.error = when(websiteError) {
                 null -> null
-                InfoFormErrors.WebsiteError.InvalidFormat -> "Nieprawidłowy format adresu URL"
+                InfoFormErrors.WebsiteError.InvalidFormat ->
+                    requireContext().getString(R.string.info__website_format_error)
             }
         }
 
@@ -94,7 +98,7 @@ class InfoFragment: BaseFragment<FragmentInfoBinding>() {
     }
 
     private fun finishInfo() {
-        showToastSuccess("Profil został zaktualizowany")
+        showToastSuccess(requireContext().getString(R.string.info__updated_successfully_message))
         requireActivity().finish()
     }
 

@@ -39,14 +39,16 @@ class InfoFragment: BaseFragment<FragmentInfoBinding>() {
         viewModel.nameError.observe(viewLifecycleOwner) { nameError ->
             binding.infoName.error = when(nameError) {
                 null -> null
-                InfoFormErrors.NameError.NotProvided -> "To pole jest wymagane"
+                InfoFormErrors.NameError.NotProvided ->
+                    requireContext().getString(R.string.info__field_required_error)
             }
         }
 
         viewModel.phoneError.observe(viewLifecycleOwner) { phoneError ->
             binding.infoPhone.error = when(phoneError) {
                 null -> null
-                InfoFormErrors.PhoneError.TooShort -> "Numer za krótki"
+                InfoFormErrors.PhoneError.TooShort ->
+                    requireContext().getString(R.string.info__phone_too_short_error)
             }
         }
 
@@ -61,7 +63,7 @@ class InfoFragment: BaseFragment<FragmentInfoBinding>() {
     }
 
     private fun finishInfo() {
-        showToastSuccess("Profil został zaktualizowany")
+        showToastSuccess(requireContext().getString(R.string.info__updated_successfully_message))
         requireActivity().finish()
     }
 

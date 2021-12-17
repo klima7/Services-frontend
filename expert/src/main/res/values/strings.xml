@@ -64,6 +64,8 @@
     <string name="info__email">Adres email</string>
     <string name="info__website">Strona internetowa</string>
     <string name="info__save">Zapisz</string>
+    <string name="info__email_format_error">Nieprawidłowy format adresu email</string>
+    <string name="info__website_format_error">Nieprawidłowy format adresu URL</string>
 
     <!-- login -->
     <string name="login__info_about_clients_app">Jeżeli korzystasz już z aplikacji dla klientów możesz zalogować się tutaj korzystając z tych samych danych</string>

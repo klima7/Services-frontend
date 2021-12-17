@@ -128,4 +128,9 @@
     <string name="setup__continue">Kontynuuj</string>
     <string name="setup__logout">Wyloguj się</string>
 
+    <!-- info -->
+    <string name="info__field_required_error">To pole jest wymagane</string>
+    <string name="info__phone_too_short_error">Numer za krótki</string>
+    <string name="info__updated_successfully_message">Profil został zaktualizowany</string>
+
 </resources>
