@@ -151,4 +151,13 @@ class MessageViewerFragment:
             }
     }
 
+    override fun onStart() {
+        super.onStart()
+        viewModel.screenStarted()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        viewModel.screenStopped()
+    }
 }

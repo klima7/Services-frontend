@@ -1,6 +1,5 @@
 package com.klima7.services.common.components.msgviewer
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.models.*
@@ -8,7 +7,10 @@ import com.klima7.services.common.platform.BaseViewModel
 import com.klima7.services.common.platform.CombinedLiveData
 import com.xwray.groupie.Group
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.cancellable
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import java.util.*
 
 class MessageViewerViewModel(
@@ -21,6 +23,7 @@ class MessageViewerViewModel(
         data class ShowRating(val ratingId: String): Event()
     }
 
+    private var offerId: String? = null
     private val messages = MutableLiveData<List<Message>>(listOf())
     private val readTime = MutableLiveData<Date?>()
     val messagesItems = CombinedLiveData(messages, readTime) {
@@ -28,26 +31,39 @@ class MessageViewerViewModel(
     }
 
     private lateinit var role: Role
+    private var job: Job? = null
 
     @OptIn(ExperimentalCoroutinesApi::class)
     fun start(offerId: String, role: Role) {
+        this.offerId = offerId
         this.role = role
-        getMessages(role, offerId)
         getReadTime(role, offerId)
     }
 
-    private fun getMessages(role: Role, offerId: String) {
-        getMessagesFlowUC.start(
-            viewModelScope,
-            GetMessagesFlowUC.Params(role, offerId),
-            { },
-            { messagesFlow ->
-                messagesFlow.collect {
-                    sendEvent(Event.RemoveNotifications(offerId))
-                    messages.value = it
-                }
-            }
-        )
+    fun screenStarted() {
+        offerId?.apply {
+            job = launchJob(role, this)
+        }
+    }
+
+    fun screenStopped() {
+        job?.cancel()
+    }
+
+    private fun launchJob(role: Role, offerId: String): Job {
+        return viewModelScope.launch {
+            getMessagesFlowUC.run(
+                GetMessagesFlowUC.Params(role, offerId)
+            ).foldS(
+                {},
+                { messagesFlow ->
+                    messagesFlow.collect {
+                        sendEvent(Event.RemoveNotifications(offerId))
+                        messages.value = it
+                    }
+                    messagesFlow.cancellable()
+                })
+        }
     }
 
     private fun getReadTime(role: Role, offerId: String) {
@@ -59,7 +75,6 @@ class MessageViewerViewModel(
                 messagesFlow.collect {
                     sendEvent(Event.RemoveNotifications(offerId))
                     readTime.value = it
-                    Log.i("Hello", "Received read time: $it")
                 }
             }
         )
