@@ -74,7 +74,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Klient usunął konto"
+                            android:text="@string/offer__client_deleted_account"
                             android:textColor="#FF0000"
                             android:textStyle="bold"
                             android:textSize="17sp"
@@ -129,7 +129,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Status: "
+                            android:text="@string/offer__status_tile_prefix"
                             />
 
                         <TextView
@@ -146,7 +146,7 @@
                         android:id="@+id/offerelem_show_job_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Zlecenie"
+                        android:text="@string/job"
                         app:chipIcon="@drawable/icon_job"
                         app:iconStartPadding="5dp"
                         app:layout_constraintBottom_toBottomOf="parent"

@@ -6,6 +6,7 @@
     <string name="client">Klient</string>
     <string name="expert">Expert</string>
     <string name="you">You</string>
+    <string name="job">Zlecenie</string>
 
     <!-- offer_status -->
     <string name="offer_status__new">Nowe</string>
@@ -44,7 +45,7 @@
     <string name="view_last_message__rating_added">Dodano ocenę</string>
 
     <!-- view_services_selection_spinner -->
-    <string name="view_services_selection_spinner_search_hint">Napisz aby wyszukać</string>
+    <string name="view_services_selection_spinner__search_hint">Napisz aby wyszukać</string>
     <string name="credits__thank_message">Bardzo dziękujemy poniżej wymienionym twórcom za możliwość wykorzystania ich grafik!</string>
     <string name="view_load_list__error_occurred">Wystąpił problem</string>
     <string name="view_load_list__retry">Retry</string>
@@ -81,12 +82,13 @@
     <string name="profile__show_all_ratings">Zobacz wszystkie</string>
     <string name="profile__header_services">Świadczone usługi</string>
     <string name="profile__area_description">%s, promień %s km</string>
-    <string name="area_not_specified">nieokreślony</string>
+    <string name="profile__area_not_specified">nieokreślony</string>
 
     <!-- offer -->
     <string name="offer__read_by_converser">Odczytane przez rozmówcę</string>
     <string name="offer__pending_message">Wysyłanie</string>
     <string name="offer__status_toolbar_prefix">Status:</string>
+    <string name="offer__status_tile_prefix">Status: </string>
     <string name="offer__change_status_message">Zmieniam status oferty na \"%s\"</string>
     <string name="offer__rating_add_message">Dokonałem oceny na %s</string>
 
@@ -113,5 +115,11 @@
     <string name="credits__title">Podziękowania</string>
     <string name="credits_pin_red">Icon made by Pixel perfect from www.flaticon.com</string>
     <string name="credits_avatar_default">Icons made by Becris from www.flaticon.com</string>
+
+    <!-- setup -->
+    <string name="setup__title">Uzupełnianie danych</string>
+    <string name="setup__explanation">Aby korzystać z aplikacji w roli eksperta konieczne jest uzupełnienie kilku informacji.</string>
+    <string name="setup__continue">Kontynuuj</string>
+    <string name="setup__logout">Wyloguj się</string>
 
 </resources>

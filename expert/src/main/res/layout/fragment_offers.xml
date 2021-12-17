@@ -26,13 +26,13 @@
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Aktualne"
+                    android:text="@string/offers__current"
                     android:icon="@drawable/icon_offers_current" />
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Archiwalne"
+                    android:text="@string/offers__archival"
                     android:icon="@drawable/icon_offers_archive"/>
 
             </com.google.android.material.tabs.TabLayout>

@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="4dp"
-                    tools:text="@{viewmodel.isSpecified ? @string/profile__area_description(viewmodel.name, viewmodel.radius) : @string/area_not_specified}"
+                    tools:text="@{viewmodel.isSpecified ? @string/profile__area_description(viewmodel.name, viewmodel.radius) : @string/profile__area_not_specified}"
                     android:textColor="@color/black"
                     android:textSize="17sp"/>
 

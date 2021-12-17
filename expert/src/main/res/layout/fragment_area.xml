@@ -18,7 +18,7 @@
             android:id="@+id/location_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Zmiana lokalizacji"
+            app:title="@string/area__title"
             app:navigationIcon="@drawable/icon_arrow_back"
             style="@style/ToolBar"
             />
@@ -61,7 +61,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Centralna lokalizacja"
+                                android:text="@string/area__central_location"
                                 android:textStyle="bold"
                                 android:layout_marginBottom="8dp"
                                 android:textSize="17sp"
@@ -94,7 +94,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Promień działania"
+                                android:text="@string/area__radius"
                                 android:textStyle="bold"
                                 android:layout_marginBottom="8dp"
                                 android:textSize="17sp"
@@ -130,7 +130,7 @@
                                         android:layout_gravity="right"
                                         android:text="@{Integer.toString(viewmodel.radius) + ` km`}"
                                         android:layout_marginBottom="8dp"
-                                        android:layout_marginRight="8dp" />
+                                        android:layout_marginEnd="8dp" />
 
                                 </LinearLayout>
 
@@ -143,7 +143,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Podgląd"
+                                android:text="@string/area__preview"
                                 android:textStyle="bold"
                                 android:layout_marginBottom="8dp"
                                 android:textSize="17sp"
@@ -179,7 +179,7 @@
                     android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
                     android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
                     android:background="@drawable/rounded_button"
-                    android:text="Zapisz"
+                    android:text="@string/area__save"
                     android:onClick="@{() -> viewmodel.saveClicked()}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

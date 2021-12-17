@@ -26,13 +26,13 @@
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nowe"
+                    android:text="@string/job_status__new"
                     android:icon="@drawable/icon_jobs_new" />
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Odrzucone"
+                    android:text="@string/job_status__rejected"
                     android:icon="@drawable/icon_jobs_rejected"/>
 
             </com.google.android.material.tabs.TabLayout>

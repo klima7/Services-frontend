@@ -20,7 +20,7 @@
             android:id="@+id/services_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Zmiana usług"
+            app:title="@string/services__title"
             app:navigationIcon="@drawable/icon_arrow_back"
             style="@style/ToolBar"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +69,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Wybierz przynajmniej jedną usługę"
+                            android:text="@string/services__select_one_at_least"
                             />
 
                     </com.google.android.material.card.MaterialCardView>
@@ -97,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="8dp"
                     android:layout_marginBottom="8dp"
-                    android:text="Zapisz"
+                    android:text="@string/services__save"
                     android:onClick="@{()->viewmodel.saveClicked()}"
                     android:enabled="@{viewmodel.saveButtonEnabled}"
                     app:layout_constraintBottom_toBottomOf="parent"

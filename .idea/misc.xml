@@ -216,7 +216,7 @@
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/element_expandable_category.xml" value="0.264" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/element_expandable_category_item.xml" value="0.27076923076923076" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/element_job.xml" value="0.275" />
-        <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/element_offer.xml" value="0.275" />
+        <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/element_offer.xml" value="0.14570858283433133" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/element_selectable_service.xml" value="0.2636986301369863" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/entry_services_list.xml" value="0.16757246376811594" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_area.xml" value="0.2" />
@@ -228,7 +228,7 @@
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_jobs_list.xml" value="0.2" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_location.xml" value="0.264" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_login.xml" value="0.12" />
-        <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_login_decoration.xml" value="0.275" />
+        <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_login_decoration.xml" value="0.2664233576642336" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_offer.xml" value="0.2203125" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_offers.xml" value="0.21195652173913043" />
         <entry key="..\:/PI/src/frontend/expert/src/main/res/layout/fragment_offers2.xml" value="0.18020833333333333" />

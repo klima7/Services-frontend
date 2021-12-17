@@ -20,7 +20,7 @@
             android:id="@+id/setup_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Uzupełnianie danych"
+            app:title="@string/setup__title"
             style="@style/ToolBar"
             />
 
@@ -64,29 +64,32 @@
                                 android:layout_marginTop="8dp"
                                 android:layout_marginEnd="8dp"
                                 android:layout_marginBottom="16dp"
-                                android:text="Aby korzystać z aplikacji w roli eksperta konieczne jest uzupełnienie kilku informacji." />
+                                android:text="@string/setup__explanation" />
 
 
                             <include
                                 layout="@layout/part_setup_tile"
+                                app:title="@{@string/setup__info_title}"
+                                app:description="@{@string/setup__info_description}"
                                 app:action="@{() -> viewmodel.infoClicked()}"
-                                app:description="@{`Uzupełnij informacje o sobie. Dobry profil może zachęcić wielu klientów.`}"
                                 app:ticked="@{viewmodel.setupState.infoSetup}"
-                                app:title="@{`Uzupełnienie profilu`}" />
+                                />
 
                             <include
                                 layout="@layout/part_setup_tile"
+                                app:title="@{@string/setup__services_title}"
+                                app:description="@{@string/setup__services_description}"
                                 app:action="@{() -> viewmodel.servicesClicked()}"
-                                app:description="@{`Określ jakie usługi realizujesz, wybierając je z listy.`}"
                                 app:ticked="@{viewmodel.setupState.servicesSetup}"
-                                app:title="@{`Określenie usług`}" />
+                                />
 
                             <include
                                 layout="@layout/part_setup_tile"
+                                app:title="@{@string/setup__area_title}"
+                                app:description="@{@string/setup__are_description}"
                                 app:action="@{() -> viewmodel.locationClicked()}"
-                                app:description="@{`Określ w jakim obszarze realizujesz swoje usługi.`}"
                                 app:ticked="@{viewmodel.setupState.locationSetup}"
-                                app:title="@{`Określenie lokalizacji`}" />
+                                />
 
                         </LinearLayout>
 
@@ -108,7 +111,7 @@
                         android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
                         android:background="@drawable/rounded_button"
                         android:onClick="@{()->viewmodel.continueClicked()}"
-                        android:text="Kontynuuj"
+                        android:text="@string/setup__continue"
                         android:enabled="@{viewmodel.continueButtonEnabled}"
                         />
 
@@ -118,7 +121,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
                         android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
-                        android:text="Wyloguj się"
+                        android:text="@string/setup__logout"
                         android:theme="@style/Button.Red"
                         android:background="@drawable/rounded_button_red"
                         android:onClick="@{()->viewmodel.logoutClicked()}"
