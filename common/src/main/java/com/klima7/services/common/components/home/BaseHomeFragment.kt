@@ -14,6 +14,9 @@ abstract class BaseHomeFragment: BaseFragment<FragmentHomeBinding>() {
     override val layoutId = R.layout.fragment_home
     abstract override val viewModel: BaseHomeViewModel
 
+    abstract val navGraphId: Int
+    abstract val bottomMenuId: Int
+
     override fun onFirstCreation() {
         super.onFirstCreation()
         val offerId = arguments?.getString("offerId")
@@ -22,6 +25,20 @@ abstract class BaseHomeFragment: BaseFragment<FragmentHomeBinding>() {
 
     override fun init() {
         val navHostFragment = childFragmentManager.findFragmentById(R.id.home_nav_host_fragment) as NavHostFragment
+
+        // Inflate nav graph
+        val inflater = navHostFragment.navController.navInflater
+        val graph = inflater.inflate(navGraphId)
+        navHostFragment.navController.graph = graph
+
+        // Inflate bottom menu
+        binding.homeBottomNav.apply {
+            menu.clear()
+            inflateMenu(bottomMenuId)
+        }
+
+
+        // Configure navigation components
         val navController = navHostFragment.navController
         binding.homeBottomNav.setupWithNavController(navController)
         val destinations = getDestinations()

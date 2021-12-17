@@ -15,6 +15,9 @@ class HomeFragment: BaseHomeFragment() {
     override val layoutId = R.layout.fragment_home
     override val viewModel: HomeViewModel by viewModel()
 
+    override val navGraphId = R.navigation.nav_graph_home
+    override val bottomMenuId = R.menu.home_bottom
+
     override fun onFirstCreation() {
         super.onFirstCreation()
         RefreshTokenWorker.schedule(requireContext())
