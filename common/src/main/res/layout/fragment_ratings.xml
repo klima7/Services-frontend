@@ -18,7 +18,7 @@
             android:id="@+id/ratings_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Oceny wykonawcy"
+            app:title="@string/ratings__title"
             app:subtitle="@{viewmodel.subtitle}"
             app:navigationIcon="@drawable/icon_arrow_back"
             style="@style/ToolBar"

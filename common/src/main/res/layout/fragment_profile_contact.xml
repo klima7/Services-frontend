@@ -20,7 +20,7 @@
         <com.klima7.services.common.components.profile.ProfileHeaderView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:profileHeader_title="Kontakt"
+            app:profileHeader_title="@string/profile__header_contact"
             />
 
         <com.klima7.services.common.components.views.ConstrainedColumnView
@@ -31,7 +31,7 @@
             <com.klima7.services.common.components.profile.contact.ContactTileView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:contactTile_title="Numer telefonu"
+                app:contactTile_title="@string/profile__contact_phone"
                 app:contactTile_subtitle="@{viewmodel.phoneText}"
                 app:contactTile_icon="@drawable/icon_phone"
                 app:contactTile_click_listener="@{() -> viewmodel.contactPhoneClicked()}"
@@ -41,7 +41,7 @@
             <com.klima7.services.common.components.profile.contact.ContactTileView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:contactTile_title="Adres email"
+                app:contactTile_title="@string/profile__contact_email"
                 app:contactTile_subtitle="@{viewmodel.emailText}"
                 app:contactTile_icon="@drawable/icon_email"
                 app:contactTile_click_listener="@{() -> viewmodel.contactEmailClicked()}"
@@ -51,7 +51,7 @@
             <com.klima7.services.common.components.profile.contact.ContactTileView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:contactTile_title="Strona internetowa"
+                app:contactTile_title="@string/profile__contact_website"
                 app:contactTile_subtitle="@{viewmodel.websiteText}"
                 app:contactTile_icon="@drawable/icon_website"
                 app:contactTile_click_listener="@{() -> viewmodel.contactWebsiteClicked()}"
@@ -61,7 +61,7 @@
             <com.klima7.services.common.components.profile.EmptyView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:empty_message="Wykonawca nie posiada danych kontaktowych"
+                app:empty_message="@string/profile__no_contact"
                 app:empty_visible="@{viewmodel.noContactVisible}"
                 />
 

@@ -48,8 +48,8 @@ abstract class BaseSettingsFragment:
 
     private fun getCommonSettingsOptions(): List<SettingsOption> {
         return listOf(
-            SettingsOption(R.drawable.icon_heart, R.string.settings_credits, BaseSettingsViewModel.Event.ShowCreditsScreen),
-            SettingsOption(R.drawable.icon_logout, R.string.settings_logout, BaseSettingsViewModel.Event.ShowSplashScreen),
+            SettingsOption(R.drawable.icon_heart, R.string.settings__credits, BaseSettingsViewModel.Event.ShowCreditsScreen),
+            SettingsOption(R.drawable.icon_logout, R.string.settings__logout, BaseSettingsViewModel.Event.ShowSplashScreen),
         )
     }
 

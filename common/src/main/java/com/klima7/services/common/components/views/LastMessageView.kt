@@ -86,14 +86,14 @@ class LastMessageView(context: Context, attrs: AttributeSet?): FrameLayout(conte
                 binding.message = cLastMessage.text
             }
             is ImageMessage -> {
-                binding.message = context.resources.getString(R.string.last_message_photo_send)
+                binding.message = context.resources.getString(R.string.view_last_message__photo_send)
             }
             is StatusChangeMessage -> {
                 val statusName = OfferStatusDescription.get(cLastMessage.newStatus).getText(context)
-                binding.message = context.resources.getString(R.string.last_message_status_changed, statusName)
+                binding.message = context.resources.getString(R.string.view_last_message__status_changed, statusName)
             }
             is RatingMessage -> {
-                binding.message = context.resources.getString(R.string.last_message_rating_added)
+                binding.message = context.resources.getString(R.string.view_last_message__rating_added)
             }
         }
 
@@ -123,14 +123,15 @@ class LastMessageView(context: Context, attrs: AttributeSet?): FrameLayout(conte
     }
 
     private fun getAuthorText(author: MessageAuthor): String {
-        return if(role?.toMessageAuthor() == author) {
-            "Ty"
+        val resource = if(role?.toMessageAuthor() == author) {
+            R.string.you
         } else {
             when(author) {
-                MessageAuthor.EXPERT -> "Wykonawca"
-                MessageAuthor.CLIENT -> "Klient"
+                MessageAuthor.EXPERT -> R.string.expert
+                MessageAuthor.CLIENT -> R.string.client
             }
         }
+        return context.getString(resource)
     }
 
 }

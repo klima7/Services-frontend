@@ -9,15 +9,15 @@ data class FailureDescription(val textId: Int, val imageId: Int) {
 
         private val all = mapOf(
             Failure.InternetFailure to
-                    FailureDescription(R.string.internet_failure_message, R.drawable.icon_error_no_internet),
+                    FailureDescription(R.string.failure__internet_failure_message, R.drawable.icon_error_no_internet),
             Failure.ServerFailure to
-                    FailureDescription(R.string.server_failure_message, R.drawable.icon_error_server),
+                    FailureDescription(R.string.failure__server_failure_message, R.drawable.icon_error_server),
             Failure.UnknownFailure to
-                    FailureDescription(R.string.unknown_failure_message, R.drawable.icon_error_unknown),
+                    FailureDescription(R.string.failure__unknown_failure_message, R.drawable.icon_error_unknown),
             Failure.PermissionFailure to
-                    FailureDescription(R.string.permission_failure_message, R.drawable.icon_error_permission),
+                    FailureDescription(R.string.failure__permission_failure_message, R.drawable.icon_error_permission),
             Failure.NotFoundFailure to
-                    FailureDescription(R.string.not_found_failure_message, R.drawable.icon_error_not_found),
+                    FailureDescription(R.string.failure__not_found_failure_message, R.drawable.icon_error_not_found),
         )
 
         fun get(failure: Failure): FailureDescription {

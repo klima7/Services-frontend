@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="?messageCloudTextColor"
                     android:textSize="15sp"
-                    android:text="@{@string/rating_created_message(rating)}"
+                    android:text="@{@string/offer__rating_add_message(rating)}"
                     />
 
                 <com.willy.ratingbar.BaseRatingBar

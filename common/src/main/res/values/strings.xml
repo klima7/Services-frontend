@@ -1,47 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Error messages -->
-    <string name="internet_failure_message">Brak połączenia z internetem</string>
-    <string name="server_failure_message">Błąd serwera</string>
-    <string name="unknown_failure_message">Nieznany błąd</string>
-    <string name="permission_failure_message">Brak uprawnień</string>
-    <string name="not_found_failure_message">Brak żądanego zasobu</string>
 
-    <!-- Other -->
-    <string name="area_description">%s, promień %s km</string>
+    <!-- general -->
+    <string name="app_common_name">Usługi</string>
+    <string name="client">Klient</string>
+    <string name="expert">Expert</string>
+    <string name="you">You</string>
+
+    <!-- offer_status -->
+    <string name="offer_status__new">Nowe</string>
+    <string name="offer_status__cancelled">Anulowane</string>
+    <string name="offer_status__in_realization">Anulowane</string>
+    <string name="offer_status__done">Wykonane</string>
+
+    <!-- failure -->
+    <string name="failure__internet_failure_message">Brak połączenia z internetem</string>
+    <string name="failure__server_failure_message">Błąd serwera</string>
+    <string name="failure__unknown_failure_message">Nieznany błąd</string>
+    <string name="failure__permission_failure_message">Brak uprawnień</string>
+    <string name="failure__not_found_failure_message">Brak żądanego zasobu</string>
+
+    <!-- notifications -->
+    <string name="notification__text_message_from">Wiadomość od %s</string>
+    <string name="notification__image_message_sent">Wysłano obraz</string>
+    <string name="notification__status_change_title">%s zmienił status oferty</string>
+    <string name="notification__status_change_body">Zmieniono status na \"%s\"</string>
+    <string name="notification__rating_added_title">%s dodał ocenę</string>
+    <string name="notification__rating_added_body">Zostałeś oceniony na %s</string>
+
+    <!-- view_job -->
+    <string name="view_job__realization_time">Czas na realizację:</string>
+    <string name="view_job__location">Lokalizacja:</string>
+
+    <!-- view_last_message -->
+    <string name="view_last_message__new_messages">Nowe wiadomości</string>
+    <string name="view_last_message__new_offer">Nowa oferta</string>
+    <string name="view_last_message__exclamation">!</string>
+    <string name="view_last_message__last_message">Ostatnia wiadomość:</string>
+    <string name="view_last_message__no_messages">Brak wiadomości</string>
+    <string name="view_last_message__scheme">%s: %s</string>
+    <string name="view_last_message__photo_send">Wysłano zdjęcie</string>
+    <string name="view_last_message__status_changed">Zmieniono status zlecenia na \"%s\"</string>
+    <string name="view_last_message__rating_added">Dodano ocenę</string>
+
+    <!-- view_services_selection_spinner -->
+    <string name="view_services_selection_spinner_search_hint">Napisz aby wyszukać</string>
+    <string name="credits__thank_message">Bardzo dziękujemy poniżej wymienionym twórcom za możliwość wykorzystania ich grafik!</string>
+    <string name="view_load_list__error_occurred">Wystąpił problem</string>
+    <string name="view_load_list__retry">Retry</string>
+
+    <!-- view_load_list -->
+    <string name="view_load_list__loading">Ładowanie...</string>
+    <string name="view_load_list__error">Wystąpił błąd</string>
+
+    <!-- view_rating -->
+    <string name="view_rating__no_comment">Brak komentarza</string>
+
+    <!-- view_services_selection_spinner -->
+    <string name="view_services_selection_spinner__hint">Filtruj po usłudze</string>
+    <string name="view_services_selection_spinner__clear">Wyczyść</string>
+
+    <!-- view_unread_count -->
+    <string name="view_unread_count__new_changes">Nowe zmiany</string>
+
+    <!-- profile -->
+    <string name="profile__no_ratings">Wykonawca nie posiada ocen</string>
+    <string name="profile__header_description">Opis</string>
+    <string name="profile__header_area">Obszar działania</string>
+    <string name="profile__header_contact">Kontakt</string>
+    <string name="profile__header_average">Średnia ocena</string>
+    <string name="profile__header_ratings">Ostatnie oceny</string>
+    <string name="profile__show_area_in_google">Pokaż w Google Maps</string>
+    <string name="profile__contact_phone">Numer telefonu</string>
+    <string name="profile__contact_email">Adres email</string>
+    <string name="profile__contact_website">Strona internetowa</string>
+    <string name="profile__no_contact">Wykonawca nie posiada danych kontaktowych</string>
+    <string name="profile__no_description">Wykonawca nie posiada opisu</string>
+    <string name="profile__average">Średnia</string>
+    <string name="profile__ratings_count">Liczba ocen</string>
+    <string name="profile__show_all_ratings">Zobacz wszystkie</string>
+    <string name="profile__header_services">Świadczone usługi</string>
+    <string name="profile__area_description">%s, promień %s km</string>
     <string name="area_not_specified">nieokreślony</string>
-    <string name="confirm">Potwierdzam</string>
 
-    <!-- Offer statuses -->
-    <string name="offer_status_new">nowe</string>
-    <string name="offer_status_cancelled">anulowane</string>
-    <string name="offer_status_in_realization">w realizacji</string>
-    <string name="offer_status_done">wykonane</string>
+    <!-- offer -->
+    <string name="offer__read_by_converser">Odczytane przez rozmówcę</string>
+    <string name="offer__pending_message">Wysyłanie</string>
+    <string name="offer__status_toolbar_prefix">Status:</string>
+    <string name="offer__change_status_message">Zmieniam status oferty na \"%s\"</string>
+    <string name="offer__rating_add_message">Dokonałem oceny na %s</string>
 
-    <!-- Settings screen -->
-    <string name="settings_credits">Podziękowania</string>
-    <string name="settings_logout">Wyloguj się</string>
+    <!-- delete -->
+    <string name="delete__confirm_message">W celu potwierdzenia operacji wpisz “Potwierdzam” w polu powyżej.</string>
+    <string name="delete__delete">Usuń konto</string>
+    <string name="delete__text_to_retype">Potwierdzam</string>
 
-    <!-- Credits -->
-    <string name="credit_pin_red">Icon made by Pixel perfect from www.flaticon.com</string>
-    <string name="credit_avatar_default">Icons made by Becris from www.flaticon.com</string>
+    <!-- login -->
+    <string name="login__login">Zaloguj się</string>
 
-    <!-- Notifications -->
-    <string name="text_message_from">Wiadomość od %s</string>
-    <string name="image_message_sent">Wysłano obraz</string>
-    <string name="notification_status_change_title">%s zmienił status oferty</string>
-    <string name="notification_status_change_body">Zmieniono status na \"%s\"</string>
-    <string name="notification_rating_added_title">%s dodał ocenę</string>
-    <string name="notification_rating_added_body">Zostałeś oceniony na %s</string>
+    <!-- rating -->
+    <string name="rating__title">Ocena wykonawcy</string>
 
-    <!-- Messages -->
-    <string name="changing_offer_status_message">Zmieniam status oferty na \"%s\"</string>
-    <string name="rating_created_message">Dokonałem oceny na %s</string>
+    <!-- ratings -->
+    <string name="ratings__title">Oceny wykonawcy</string>
 
-    <!-- Last message -->
-    <string name="last_message_scheme">%s: %s</string>
-    <string name="last_message_photo_send">Wysłano zdjęcie</string>
-    <string name="last_message_status_changed">Zmieniono status zlecenia na \"%s\"</string>
-    <string name="last_message_rating_added">Dodano ocenę</string>
+    <!-- settings -->
+    <string name="settings__title">Ustawienia</string>
+    <string name="settings__credits">Podziękowania</string>
+    <string name="settings__logout">Wyloguj się</string>
+
+    <!-- credits -->
+    <string name="credits__title">Podziękowania</string>
+    <string name="credits_pin_red">Icon made by Pixel perfect from www.flaticon.com</string>
+    <string name="credits_avatar_default">Icons made by Becris from www.flaticon.com</string>
 
 </resources>

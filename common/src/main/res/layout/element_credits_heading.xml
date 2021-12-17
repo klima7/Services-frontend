@@ -11,7 +11,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bardzo dziękujemy poniżej wymienionym twórcom za możliwość wykorzystania ich grafik!"
+            android:text="@string/credits__thank_message"
             android:textAlignment="center"
             android:textSize="14sp"
             />

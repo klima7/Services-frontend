@@ -31,7 +31,7 @@ abstract class BaseDeleteFragment(
             }
         }
 
-        viewModel.setConfirmText(resources.getString(R.string.confirm))
+        viewModel.setConfirmText(resources.getString(R.string.delete__text_to_retype))
         binding.deleteToolbar.apply {
             title = resources.getString(titleRes)
             setNavigationIcon(R.drawable.icon_arrow_back)

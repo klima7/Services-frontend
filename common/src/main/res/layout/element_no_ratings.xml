@@ -5,7 +5,7 @@
     <com.klima7.services.common.components.profile.EmptyView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:empty_message="Wykonawca nie posiada ocen"
+        app:empty_message="@string/profile__no_ratings"
         />
 
 </layout>

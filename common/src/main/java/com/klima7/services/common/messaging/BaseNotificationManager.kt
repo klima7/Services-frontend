@@ -84,15 +84,15 @@ abstract class BaseNotificationManager(
         val senderName = notificationData["sender"] ?: return
         val message = notificationData["message"] ?: return
         val offerId = notificationData["offerId"] ?: return
-        val title = service.resources.getString(R.string.text_message_from, senderName)
+        val title = service.resources.getString(R.string.notification__text_message_from, senderName)
         showNotification(offerId, title, message, offerId)
     }
 
     private fun handleImageMessage(notificationData: Map<String, String>) {
         val senderName = notificationData["sender"] ?: return
         val offerId = notificationData["offerId"] ?: return
-        val title = service.resources.getString(R.string.text_message_from, senderName)
-        val body = service.resources.getString(R.string.image_message_sent)
+        val title = service.resources.getString(R.string.notification__text_message_from, senderName)
+        val body = service.resources.getString(R.string.notification__image_message_sent)
         showNotification(offerId, title, body, offerId)
     }
 
@@ -100,7 +100,7 @@ abstract class BaseNotificationManager(
         val senderName = notificationData["sender"] ?: return
         val offerId = notificationData["offerId"] ?: return
         val newStatus = notificationData["newStatus"] ?: return
-        val title = service.resources.getString(R.string.notification_status_change_title, senderName)
+        val title = service.resources.getString(R.string.notification__status_change_title, senderName)
         val status = when(newStatus) {
             "0" -> OfferStatus.NEW
             "1" -> OfferStatus.CANCELLED
@@ -109,7 +109,7 @@ abstract class BaseNotificationManager(
             else -> OfferStatus.NEW
         }
         val statusName = OfferStatusDescription.get(status).getText(service)
-        val body = service.resources.getString(R.string.notification_status_change_body, statusName)
+        val body = service.resources.getString(R.string.notification__status_change_body, statusName)
         showNotification(offerId, title, body, offerId)
     }
 

@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
             android:layout_gravity="center_horizontal"
-            android:text="Ładowanie..."/>
+            android:text="@string/view_load_list__loading"/>
 
         <LinearLayout
             android:id="@+id/loadlist_failure"
@@ -45,7 +45,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:text="Wystąpił błąd" />
+                android:text="@string/view_load_list__error" />
 
             <ImageButton
                 android:id="@+id/loadlist_refresh_button"

@@ -86,7 +86,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="W celu potwierdzenia operacji wpisz “Potwierdzam” w polu powyżej." />
+                            android:text="@string/delete__confirm_message" />
 
 
                         <com.airbnb.lottie.LottieAnimationView
@@ -116,7 +116,7 @@
             android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
             android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
             android:enabled="@{viewmodel.buttonEnabled}"
-            android:text="Usuń konto"
+            android:text="@string/delete__delete"
             android:theme="@style/Button.Red"
             android:background="@drawable/rounded_button_red"
             android:onClick="@{()->viewmodel.deleteClicked()}"

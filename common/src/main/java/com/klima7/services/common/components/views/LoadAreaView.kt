@@ -104,7 +104,6 @@ class LoadAreaView : FrameLayout {
 
     private fun setup() {
         if(childCount != 1) {
-            Log.i("Hello", "Childs: ${children}")
             throw IllegalStateException("LoadAreaView must have only one child")
         }
         main = getChildAt(0)

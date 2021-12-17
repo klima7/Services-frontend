@@ -82,7 +82,7 @@ class ServicesSelectionSpinner(context: Context, attrs: AttributeSet?) : FrameLa
         binding.viewjobfilterClear.setOnClickListener { clear() }
 
         val spinner = binding.viewjobfilterSpinner
-        spinner.setSearchHint("Napisz aby wyszukać")
+        spinner.setSearchHint(context.getString(R.string.view_services_selection_spinner_search_hint))
         spinner.isSearchEnabled = true
         refreshCross()
 

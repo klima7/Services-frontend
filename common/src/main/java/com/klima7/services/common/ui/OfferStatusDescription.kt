@@ -11,10 +11,10 @@ data class OfferStatusDescription(
     companion object {
 
         private val all = mapOf(
-            OfferStatus.NEW to OfferStatusDescription(R.string.offer_status_new, 0),
-            OfferStatus.CANCELLED to OfferStatusDescription(R.string.offer_status_cancelled, 0),
-            OfferStatus.IN_REALIZATION to OfferStatusDescription(R.string.offer_status_in_realization, 0),
-            OfferStatus.DONE to OfferStatusDescription(R.string.offer_status_done, 0),
+            OfferStatus.NEW to OfferStatusDescription(R.string.offer_status__new, 0),
+            OfferStatus.CANCELLED to OfferStatusDescription(R.string.offer_status__cancelled, 0),
+            OfferStatus.IN_REALIZATION to OfferStatusDescription(R.string.offer_status__in_realization, 0),
+            OfferStatus.DONE to OfferStatusDescription(R.string.offer_status__done, 0),
         )
 
         fun get(offerStatus: OfferStatus): OfferStatusDescription {

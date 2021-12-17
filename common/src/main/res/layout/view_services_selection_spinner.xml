@@ -35,8 +35,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_margin="10dp"
-                    app:hintText="Filtruj po usłudze"
-                    app:clearText="Wyczyść"
+                    app:hintText="@string/view_services_selection_spinner__hint"
+                    app:clearText="@string/view_services_selection_spinner__clear"
                     android:background="@color/white"
                     />
 

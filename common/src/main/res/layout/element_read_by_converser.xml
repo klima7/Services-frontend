@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Odczytane przez rozmówcę"
+            android:text="@string/offer__read_by_converser"
             />
 
     </LinearLayout>

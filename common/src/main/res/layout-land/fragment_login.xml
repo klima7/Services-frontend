@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -36,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="0dp"
-                android:text="Usługi"
+                android:text="@string/app_common_name"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="60sp"
@@ -47,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="dla wykonawców"
+                tools:text="dla wykonawców"
                 android:textColor="@color/black"
                 android:fontFamily="@font/baloo"
                 android:textSize="22sp"/>
@@ -62,7 +63,7 @@
             android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
             android:background="@drawable/rounded_button"
             android:onClick="@{() -> viewmodel.loginButtonClicked()}"
-            android:text="Zaloguj się"
+            android:text="@string/login__login"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/login_guideline" />

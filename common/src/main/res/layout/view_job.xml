@@ -127,7 +127,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Czas na realizację:"
+                    android:text="@string/view_job__realization_time"
                     android:textStyle="bold"
                     />
 
@@ -153,7 +153,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Lokalizacja:"
+                        android:text="@string/view_job__location"
                         android:textStyle="bold"
                         />
 

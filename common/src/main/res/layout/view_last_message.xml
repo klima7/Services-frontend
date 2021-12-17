@@ -48,7 +48,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nowe wiadomości"
+                    android:text="@string/view_last_message__new_messages"
                     android:textStyle="bold"
                     android:textColor="#ff0000"
                     android:visibility="@{unread ? View.VISIBLE : View.GONE}"
@@ -57,7 +57,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nowa oferta"
+                    android:text="@string/view_last_message__new_offer"
                     android:textStyle="bold"
                     android:textColor="#ff0000"
                     android:visibility="@{newOffer ? View.VISIBLE : View.GONE}"
@@ -75,7 +75,7 @@
                     android:layout_marginEnd="8dp"
                     android:background="@drawable/unread_offers_circle"
                     android:gravity="center"
-                    android:text="!"
+                    android:text="@string/view_last_message__exclamation"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@android:color/white"
@@ -87,7 +87,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ostatnia wiadomość: "
+                android:text="@string/view_last_message__last_message"
                 android:textStyle="bold"
                 />
 
@@ -101,7 +101,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{@string/last_message_scheme(author, message)}"
+                    android:text="@{@string/view_last_message__scheme(author, message)}"
                     tools:text="Ekspert: Tak, jeżli posiada Pan już część materiałów, to oczywiście koszt może być mniejszy."
                     />
 
@@ -124,7 +124,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Brak wiadomości"
+                    android:text="@string/view_last_message__no_messages"
                     />
 
             </LinearLayout>

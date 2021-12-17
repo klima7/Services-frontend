@@ -17,7 +17,7 @@
         <com.klima7.services.common.components.profile.ProfileHeaderView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:profileHeader_title="Średnia ocena"
+            app:profileHeader_title="@string/profile__header_average"
             />
 
         <com.klima7.services.common.components.views.ConstrainedColumnView
@@ -49,7 +49,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline2"
                     android:layout_width="wrap_content"
@@ -80,7 +79,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="Średnia"
+                        android:text="@string/profile__average"
                         />
 
                 </LinearLayout>
@@ -107,10 +106,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="Liczba ocen" />
+                        android:text="@string/profile__ratings_count" />
 
                 </LinearLayout>
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -19,7 +19,7 @@
         <com.klima7.services.common.components.profile.ProfileHeaderView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:profileHeader_title="Opis"
+            app:profileHeader_title="@string/profile__header_description"
             />
 
         <com.klima7.services.common.components.views.ConstrainedColumnView
@@ -40,7 +40,7 @@
             <com.klima7.services.common.components.profile.EmptyView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:empty_message="Wykonawca nie posiada opisu"
+                app:empty_message="@string/profile__no_description"
                 app:empty_visible="@{viewmodel.noDescriptionVisible}"
                 />
 

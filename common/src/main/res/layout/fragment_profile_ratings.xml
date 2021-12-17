@@ -18,7 +18,7 @@
         <com.klima7.services.common.components.profile.ProfileHeaderView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:profileHeader_title="Ostatnie oceny"
+            app:profileHeader_title="@string/profile__header_ratings"
             />
 
             <com.klima7.services.common.components.views.ConstrainedColumnView
@@ -50,8 +50,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="10dp"
-                        android:text="Zobacz wszystkie"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/profile__show_all_ratings"
                         style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
                         app:icon="@drawable/icon_more"
                         android:textColor="@color/black"

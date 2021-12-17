@@ -11,7 +11,7 @@
             android:id="@+id/credits_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Podziękowania"
+            app:title="@string/credits__title"
             app:navigationIcon="@drawable/icon_arrow_back"
             style="@style/ToolBar"
             app:layout_constraintEnd_toEndOf="parent"

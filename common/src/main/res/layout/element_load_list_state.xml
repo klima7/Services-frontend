@@ -13,7 +13,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:text="Wystąpił problem"
+            android:text="@string/view_load_list__error_occurred"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/design_default_color_error"
             android:textSize="16sp" />
@@ -33,7 +33,7 @@
             android:paddingHorizontal="32dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:text="Retry"
+            android:text="@string/view_load_list__retry"
             android:layout_alignParentRight="true" />
 
     </RelativeLayout>

@@ -46,7 +46,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:tint="?attr/colorPrimary"
-                    android:layout_marginLeft="-6dp"/>
+                    android:layout_marginStart="-6dp"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
                         android:id="@+id/rating_client_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="4dp"
+                        android:layout_marginStart="4dp"
                         android:text="@{rating.clientName}"
                         tools:text="Lukasz Klimkiewicz"
                         android:textColor="@color/black"
@@ -100,7 +100,7 @@
                 android:id="@+id/rating_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{rating.comment != null ? rating.comment : `Brak komentarza`}"
+                android:text="@{rating.comment != null ? rating.comment : @string/view_rating__no_comment}"
                 tools:text="Comment"
                 android:textColor="@color/black"
                 android:scrollHorizontally="true"

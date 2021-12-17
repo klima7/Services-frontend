@@ -36,8 +36,8 @@ abstract class BaseCreditsFragment: BaseFragment<FragmentCreditsBinding>() {
 
     private fun getCommonCredits(): List<Credit> {
         return listOf(
-            Credit(R.drawable.pin_red, R.string.credit_pin_red),
-            Credit(R.drawable.avatar_default, R.string.credit_avatar_default),
+            Credit(R.drawable.pin_red, R.string.credits_pin_red),
+            Credit(R.drawable.avatar_default, R.string.credits_avatar_default),
         )
     }
 

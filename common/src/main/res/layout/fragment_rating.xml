@@ -18,8 +18,8 @@
             android:id="@+id/rating_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Ocena wykonawcy"
-            app:subtitle="@{viewmodel.subtitle != null ? viewmodel.subtitle : ``}"
+            app:title="@string/rating__title"
+            app:subtitle="@{viewmodel.subtitle}"
             app:navigationIcon="@drawable/icon_arrow_back"
             style="@style/ToolBar"
             />
