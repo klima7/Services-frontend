@@ -56,7 +56,6 @@
     <string name="info__save">Zapisz</string>
 
     <!-- login -->
-    <string name="login__login_required">Aplikacja wymaga logowania</string>
     <string name="login__info_about_clients_app">Jeżeli korzystasz już z aplikacji dla klientów możesz zalogować się tutaj korzystając z tych samych danych</string>
 
     <!-- services -->

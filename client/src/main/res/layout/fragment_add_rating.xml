@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="@drawable/icon_arrow_back"
-            app:title="Ocenianie wykonawcy" />
+            app:title="@string/addrating__title" />
 
         <com.klima7.services.common.components.views.LoadAreaView
             android:layout_width="match_parent"
@@ -75,7 +75,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:text="@{viewmodel.name != null ? viewmodel.name : `Brak nazwy`}"
+                                android:text="@{viewmodel.name}"
                                 tools:text="Name"
                                 android:textColor="@color/black"
                                 android:textStyle="bold"
@@ -121,7 +121,7 @@
                             <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Komentarz"
+                                android:hint="@string/addrating__comment"
                                 app:counterEnabled="true"
                                 app:counterMaxLength="500"
                                 style="@style/TextInputLayoutStyle"
@@ -149,7 +149,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Pamiętaj, dodanej oceny nie można już zmienić, ani usunąć!"
+                                android:text="@string/addrating__warning"
                                 />
 
                         </LinearLayout>
@@ -166,7 +166,7 @@
                     android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
                     android:layout_marginTop="2dp"
                     android:background="@drawable/rounded_button"
-                    android:text="Dodaj ocenę"
+                    android:text="@string/addrating__add"
                     android:onClick="@{()->viewmodel.addRatingClicked()}"
                     android:enabled="@{viewmodel.addButtonActive}"
                     />

@@ -68,7 +68,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp"
                             >
 
                             <TextView
@@ -78,7 +78,7 @@
                                 tools:text="Lucjan Zawadzki"
                                 android:textStyle="bold"
                                 android:textSize="19sp"
-                                android:layout_marginLeft="3dp"
+                                android:layout_marginStart="3dp"
                                 />
 
                             <FrameLayout
@@ -105,7 +105,7 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Wykonawca usunął konto"
+                                    android:text="@string/offer__expert_deleted_account"
                                     android:textColor="#FF0000"
                                     android:textStyle="bold"
                                     android:textSize="17sp"
@@ -167,7 +167,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Status oferty: "
+                            android:text="@string/offer__status_tile_prefix"
                             />
 
                         <TextView

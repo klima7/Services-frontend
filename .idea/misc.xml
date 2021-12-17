@@ -13,7 +13,7 @@
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/element_category.xml" value="0.27076923076923076" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/element_item.xml" value="0.27076923076923076" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/element_job.xml" value="0.21822916666666667" />
-        <entry key="..\:/PI/src/frontend/client/src/main/res/layout/element_job_active.xml" value="0.4188562596599691" />
+        <entry key="..\:/PI/src/frontend/client/src/main/res/layout/element_job_active.xml" value="0.2234513274336283" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/element_job_finished.xml" value="0.20677083333333332" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/element_last_location.xml" value="0.27076923076923076" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/element_location_picker.xml" value="0.27076923076923076" />
@@ -29,6 +29,7 @@
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/fragment_home.xml" value="0.19074074074074074" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/fragment_info.xml" value="0.19074074074074074" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/fragment_job.xml" value="0.2" />
+        <entry key="..\:/PI/src/frontend/client/src/main/res/layout/fragment_job_created.xml" value="0.1" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/fragment_job_details.xml" value="0.20625" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/fragment_jobs.xml" value="0.19074074074074074" />
         <entry key="..\:/PI/src/frontend/client/src/main/res/layout/fragment_location.xml" value="0.152" />

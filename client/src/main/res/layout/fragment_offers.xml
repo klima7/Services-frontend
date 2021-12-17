@@ -19,7 +19,7 @@
             android:id="@+id/offers_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Zlecenie"
+            app:title="@string/offer__title"
             app:subtitle="@{viewmodel.subtitle}"
             app:navigationIcon="@drawable/icon_arrow_back"
             app:menu="@menu/offers_toolbar"

@@ -20,7 +20,7 @@
             android:id="@+id/info_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Zmiana profilu"
+            app:title="@string/info__title"
             app:navigationIcon="@drawable/icon_arrow_back"
             style="@style/ToolBar"
             />
@@ -63,7 +63,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp"
-                                android:hint="Imie i nazwisko"
+                                android:hint="@string/info__name_and_surname"
                                 app:helperText="Pole wymagane"
                                 app:startIconDrawable="@drawable/icon_person"
                                 style="@style/TextInputLayoutStyle">
@@ -84,7 +84,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp"
-                                android:hint="Numer telefonu"
+                                android:hint="@string/info__phone"
                                 app:helperText=" "
                                 app:startIconDrawable="@drawable/icon_phone"
                                 style="@style/TextInputLayoutStyle" >
@@ -113,7 +113,7 @@
                     android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
                     android:enabled="@{viewmodel.saveButtonEnabled}"
                     android:onClick="@{() -> viewmodel.saveClicked()}"
-                    android:text="Zapisz"
+                    android:text="@string/info__save"
                     android:background="@drawable/rounded_button"
                     />
 

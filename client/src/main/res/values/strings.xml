@@ -13,10 +13,67 @@
 
     <!-- offers -->
     <string name="offers__experts_number">%s / %s wykonawców</string>
+    <string name="offers__waiting_for_clients">Oczekiwanie na wykonawców</string>
+    <string name="offers__finish_time">Zakończenie:</string>
+    <string name="offers__finish_now">Zakończ teraz</string>
+    <string name="offers__finished_message">Zlecenie zostało zakończone</string>
+
+    <!-- offer -->
+    <string name="offer__title">Zlecenie</string>
+    <string name="offer__expert_deleted_account">Wykonawca usunął konto</string>
 
     <!-- delete -->
     <string name="delete__title">Usuwanie konta klienta</string>
     <string name="delete__text">Czy jesteś pewien, że chcesz usunąć konto klienta? Operacja ta jest nieodwracalna.</string>
+
+    <!-- addrating -->
+    <string name="addrating__title">Ocenianie wykonawcy</string>
+    <string name="addrating__comment">Komentarz</string>
+    <string name="addrating__warning">Pamiętaj, dodanej oceny nie można już zmienić, ani usunąć!</string>
+    <string name="addrating__add">Dodaj ocenę</string>
+
+    <!-- categories -->
+    <string name="categories__list_header">Kategorie usług:</string>
+
+    <!-- profile -->
+    <string name="profile__title">Profil wykonawcy</string>
+
+    <!-- info -->
+    <string name="info__title">Zmiana profilu</string>
+    <string name="info__name_and_surname">Imie i nazwisko</string>
+    <string name="info__phone">Numer telefonu</string>
+    <string name="info__save">Zapisz</string>
+
+    <!-- job -->
+    <string name="job__title">Szczegóły zlecenia</string>
+
+    <!-- job_service -->
+    <string name="job_service__header">Wybierz usługę:</string>
+
+    <!-- job_setup -->
+    <string name="job_setup__title">Nowe zlecenie</string>
+    <string name="job_setup__stage_category">Kategoria</string>
+    <string name="job_setup__stage_service">Usługa</string>
+    <string name="job_setup__stage_location">Lokalizacja</string>
+    <string name="job_setup__stage_details">Opis</string>
+    <string name="job_setup__job_location_header">Podaj lokalizację:</string>
+    <string name="job_setup__recent_locations">Ostatnie lokalizacje</string>
+    <string name="job_setup__details_header">Uzupełnij opis:</string>
+    <string name="job_setup__details_description">Opis</string>
+    <string name="job_setup__details_realization_time">Czas realizacji</string>
+    <string name="job_setup__details_create">Stwórz zlecenie</string>
+    <string name="job_setup__created_title">Stworzono zlecenie!</string>
+    <string name="job_setup__created_text">Pozostaje czekać</string>
+
+    <!-- setup -->
+    <string name="setup__explanation">Aby korzystać z aplikacji w roli eksperta konieczne jest uzupełnienie kilku informacji.</string>
+    <string name="setup__continue">Kontynuuj</string>
+    <string name="setup__logout">Wyloguj się</string>
+    <string name="setup__info_title">Uzupełnienie profilu</string>
+    <string name="setup__info_description">Uzupełnij informacje o sobie. Dobry profil może zachęcić wielu klientów.</string>
+
+    <string name="neww">New</string>
+
 
 
 </resources>

@@ -88,7 +88,7 @@
     <string name="offer__read_by_converser">Odczytane przez rozmówcę</string>
     <string name="offer__pending_message">Wysyłanie</string>
     <string name="offer__status_toolbar_prefix">Status:</string>
-    <string name="offer__status_tile_prefix">Status: </string>
+    <string name="offer__status_tile_prefix">Status:&#032;</string>
     <string name="offer__change_status_message">Zmieniam status oferty na \"%s\"</string>
     <string name="offer__rating_add_message">Dokonałem oceny na %s</string>
 
@@ -98,6 +98,7 @@
     <string name="delete__text_to_retype">Potwierdzam</string>
 
     <!-- login -->
+    <string name="login__login_required">Aplikacja wymaga logowania</string>
     <string name="login__login">Zaloguj się</string>
 
     <!-- rating -->

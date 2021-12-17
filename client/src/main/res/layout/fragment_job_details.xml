@@ -47,7 +47,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Uzupełnij opis:"
+                            android:text="@string/job_setup__details_header"
                             android:textSize="25sp"
                             />
 
@@ -61,7 +61,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
-                            android:hint="Opis"
+                            android:hint="@string/job_setup__details_description"
                             app:counterEnabled="true"
                             app:counterMaxLength="500"
                             style="@style/TextInputLayoutStyle">
@@ -85,7 +85,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
-                            android:hint="Czas realizacji"
+                            android:hint="@string/job_setup__details_realization_time"
                             app:counterEnabled="true"
                             app:counterMaxLength="100"
                             style="@style/TextInputLayoutStyle">
@@ -116,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/bottom_button_horizontal_margin"
                 android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
-                android:text="Stwórz zlecenie"
+                android:text="@string/job_setup__details_create"
                 android:background="@drawable/rounded_button"
                 android:onClick="@{()->viewmodel.createJobClicked()}"
                 android:enabled="@{viewmodel.createButtonEnabled}"

@@ -1,4 +1,4 @@
-package com.klima7.services.client.ui
+package com.klima7.services.client.features.jobsetup
 
 import android.content.Context
 import android.util.AttributeSet
@@ -33,9 +33,18 @@ class NewJobProgressView : FrameLayout {
     private var binding: ViewNewJobProgressBinding
     private var position = 0
 
+    private var category: String
+    private var service: String
+    private var location: String
+    private var details: String
+
     init {
         val inflater = LayoutInflater.from(context)
         binding = DataBindingUtil.inflate(inflater, R.layout.view_new_job_progress, this, true)
+        category = context.getString(R.string.job_setup__stage_category)
+        service = context.getString(R.string.job_setup__stage_service)
+        location = context.getString(R.string.job_setup__stage_location)
+        details = context.getString(R.string.job_setup__stage_details)
         refreshView()
     }
 
@@ -56,7 +65,7 @@ class NewJobProgressView : FrameLayout {
         val stepsView = StepsView(context)
 
         stepsView
-            .setLabels(listOf("Kategoria", "Usługa", "Lokalizacja", "Opis").toTypedArray())
+            .setLabels(listOf(category, service, location, details).toTypedArray())
             .setBarColorIndicator(context.resources.getColor(R.color.material_blue_grey_800, null))
             .setProgressColorIndicator(context.resources.getColor(R.color.quantum_googgreen500, null))
             .setLabelColorIndicator(context.resources.getColor(R.color.black, null))

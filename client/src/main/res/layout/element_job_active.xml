@@ -48,7 +48,7 @@
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Oczekiwanie na wykonawców"
+                    android:text="@string/offers__waiting_for_clients"
                     app:layout_constraintBottom_toTopOf="@+id/textView5"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -82,7 +82,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="8dp"
-                        android:text="Zakończenie:" />
+                        android:text="@string/offers__finish_time" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -98,7 +98,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_button"
                     android:paddingHorizontal="25dp"
-                    android:text="Zakończ teraz"
+                    android:text="@string/offers__finish_now"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"

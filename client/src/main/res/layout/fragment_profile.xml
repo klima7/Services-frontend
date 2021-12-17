@@ -19,7 +19,7 @@
             android:id="@+id/profile_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Profil wykonawcy"
+            app:title="@string/profile__title"
             tools:subtitle="Marcin Klimkiewicz"
             app:navigationIcon="@drawable/icon_arrow_back"
             style="@style/ToolBar"

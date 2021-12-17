@@ -19,7 +19,7 @@
             android:id="@+id/newjob_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Nowe zlecenie"
+            app:title="@string/job_setup__title"
             app:subtitle="@{viewmodel.subtitle}"
             app:navigationIcon="@drawable/icon_arrow_back"
             style="@style/ToolBar"
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             >
 
-            <com.klima7.services.client.ui.NewJobProgressView
+            <com.klima7.services.client.features.jobsetup.NewJobProgressView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:njp_position="@{viewmodel.progressPosition}"
