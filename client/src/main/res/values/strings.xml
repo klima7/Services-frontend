@@ -4,6 +4,12 @@
     <string name="app_name">Usługi</string>
     <string name="app_subtitle"> </string>
 
+    <!-- home -->
+    <string name="home__jobs_tab_title">Moje zlecenia</string>
+    <string name="home__add_job_tab_title">Nowe zlecenie</string>
+    <string name="home__jobs_tab_name">Zlecenia</string>
+    <string name="home__add_job_tab_name">Nowe zlecenie</string>
+
     <!-- settings -->
     <string name="settings__profile">Zmiana profilu</string>
     <string name="settings__delete">Usuń konto klienta</string>
@@ -17,10 +23,13 @@
     <string name="offers__finish_time">Zakończenie:</string>
     <string name="offers__finish_now">Zakończ teraz</string>
     <string name="offers__finished_message">Zlecenie zostało zakończone</string>
+    <string name="offers__details">Szczegóły</string>
 
     <!-- offer -->
     <string name="offer__title">Zlecenie</string>
     <string name="offer__expert_deleted_account">Wykonawca usunął konto</string>
+    <string name="offer__expert_profile">Profil wykonawcy</string>
+    <string name="offer__rate">Oceń wykonawcę</string>
 
     <!-- delete -->
     <string name="delete__title">Usuwanie konta klienta</string>

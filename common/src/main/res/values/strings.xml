@@ -64,6 +64,9 @@
     <!-- view_unread_count -->
     <string name="view_unread_count__new_changes">Nowe zmiany</string>
 
+    <!-- home -->
+    <string name="home__settings">Ustawienia</string>
+
     <!-- profile -->
     <string name="profile__no_ratings">Wykonawca nie posiada ocen</string>
     <string name="profile__header_description">Opis</string>
@@ -91,6 +94,8 @@
     <string name="offer__status_tile_prefix">Status:&#032;</string>
     <string name="offer__change_status_message">Zmieniam status oferty na \"%s\"</string>
     <string name="offer__rating_add_message">Dokonałem oceny na %s</string>
+    <string name="offer__call">Zadzwoń</string>
+    <string name="offer__show_rating">Pokaż ocenę</string>
 
     <!-- delete -->
     <string name="delete__confirm_message">W celu potwierdzenia operacji wpisz “Potwierdzam” w polu powyżej.</string>

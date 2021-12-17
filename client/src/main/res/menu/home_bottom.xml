@@ -3,12 +3,12 @@
 
     <item
         android:id="@+id/jobsFragment"
-        android:title="Zlecenia"
+        android:title="@string/home__jobs_tab_name"
         android:icon="@drawable/icon_job" />
 
     <item
         android:id="@+id/searchFragment"
-        android:title="Nowe zlecenie"
+        android:title="@string/home__add_job_tab_name"
         android:icon="@drawable/icon_new_job" />
 
 </menu>

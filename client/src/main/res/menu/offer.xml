@@ -4,26 +4,26 @@
 
     <item
         android:id="@+id/item_call_expert"
-        android:title="Zadzwoń"
+        android:title="@string/offer__call"
         app:showAsAction="ifRoom"
         android:icon="@drawable/icon_phone_white"
         />
 
     <item
         android:id="@+id/item_expert_profile"
-        android:title="Profil wykonawcy"
+        android:title="@string/offer__expert_profile"
         app:showAsAction="never"
         />
 
     <item
         android:id="@+id/item_add_comment"
-        android:title="Oceń wykonawcę"
+        android:title="@string/offer__rate"
         app:showAsAction="never"
         />
 
     <item
         android:id="@+id/item_show_comment"
-        android:title="Pokaż ocenę"
+        android:title="@string/offer__show_rating"
         app:showAsAction="never"
         />
 

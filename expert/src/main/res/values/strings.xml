@@ -8,6 +8,16 @@
     <string name="job_status__new">Nowe</string>
     <string name="job_status__rejected">Odrzucone</string>
 
+    <!-- home -->
+    <string name="home__jobs_tab_name">Zlecenia</string>
+    <string name="home__offers_tab_name">Oferty</string>
+    <string name="home__profile_tab_name">Mój profil</string>
+
+    <!-- profile -->
+    <string name="home__jobs_tab_title">Zlecenia</string>
+    <string name="home__offers_tab_title">Oferty</string>
+    <string name="home__profile_tab_title">Mój profil</string>
+
     <!-- settings -->
     <string name="settings__profile">Zmiana profilu</string>
     <string name="settings__services">Zmiana świadczonych usług</string>
@@ -70,8 +80,5 @@
     <string name="setup__info_description">Uzupełnij informacje o sobie. Dobry profil może zachęcić wielu klientów.</string>
     <string name="setup__services_description">Określ jakie usługi realizujesz, wybierając je z listy.</string>
     <string name="setup__are_description">Określ w jakim obszarze realizujesz swoje usługi.</string>
-
-    <string name="nowe">Nowe</string>
-
 
 </resources>
