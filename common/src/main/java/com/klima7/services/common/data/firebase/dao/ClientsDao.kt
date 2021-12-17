@@ -7,6 +7,7 @@ import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.firebase.converters.toDomain
 import com.klima7.services.common.data.firebase.entities.ClientEntity
+import com.klima7.services.common.data.firebase.utils.getEnhanced
 import com.klima7.services.common.data.firebase.utils.toDomain
 import com.klima7.services.common.models.Client
 import com.klima7.services.common.models.ClientInfo
@@ -36,7 +37,7 @@ class ClientsDao(
             val snapshot = firestore
                 .collection("clients")
                 .document(uid)
-                .get()
+                .getEnhanced()
                 .await()
             val clientEntity = snapshot.toObject(ClientEntity::class.java)
             val client = clientEntity?.toDomain(uid, snapshot.metadata.isFromCache)

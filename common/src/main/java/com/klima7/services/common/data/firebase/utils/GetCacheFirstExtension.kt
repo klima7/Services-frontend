@@ -17,6 +17,6 @@ fun DocumentReference.getCacheFirst(): Task<DocumentSnapshot> {
             t.setResult(result)
             t.task
         } else
-            get(Source.SERVER)
+            getEnhanced()
     }
 }

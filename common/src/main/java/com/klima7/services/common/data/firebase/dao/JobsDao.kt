@@ -9,6 +9,7 @@ import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.firebase.converters.toDomain
 import com.klima7.services.common.data.firebase.entities.JobEntity
+import com.klima7.services.common.data.firebase.utils.getEnhanced
 import com.klima7.services.common.data.firebase.utils.toDomain
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Job
@@ -24,7 +25,7 @@ class JobsDao(
             val snapshot = firestore
                 .collection("jobs")
                 .document(id)
-                .get()
+                .getEnhanced()
                 .await()
             val jobEntity = snapshot.toObject(JobEntity::class.java)
             val job = jobEntity?.toDomain(id)
@@ -76,7 +77,7 @@ class JobsDao(
                 afterDocument = firestore
                     .collection("jobs")
                     .document(afterId)
-                    .get()
+                    .getEnhanced()
                     .await()
             }
 
@@ -91,7 +92,7 @@ class JobsDao(
                 }
                 .orderBy("creation", Query.Direction.DESCENDING)
                 .limit(count.toLong())
-                .get()
+                .getEnhanced()
                 .await()
 
             val jobs: List<Job> = snapshot.documents.map { document ->

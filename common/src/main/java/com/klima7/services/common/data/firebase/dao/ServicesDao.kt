@@ -7,6 +7,7 @@ import com.klima7.services.common.data.firebase.converters.toDomain
 import com.klima7.services.common.data.firebase.entities.CategoryEntity
 import com.klima7.services.common.data.firebase.entities.ServiceEntity
 import com.klima7.services.common.data.firebase.utils.getCacheFirst
+import com.klima7.services.common.data.firebase.utils.getEnhanced
 import com.klima7.services.common.data.firebase.utils.toDomain
 import com.klima7.services.common.models.Category
 import com.klima7.services.common.models.Failure
@@ -21,7 +22,7 @@ class ServicesDao(
         return try {
             val snapshot = firestore
                 .collection("services")
-                .get()
+                .getEnhanced()
                 .await()
             val services: List<Service> = snapshot.documents.map { document ->
                 Pair(document.id, document.toObject(ServiceEntity::class.java))
@@ -37,7 +38,7 @@ class ServicesDao(
         return try {
             val snapshot = firestore
                 .collection("categories")
-                .get()
+                .getEnhanced()
                 .await()
             val categories: List<Category> = snapshot.documents.map { document ->
                 Pair(document.id, document.toObject(CategoryEntity::class.java))
@@ -88,7 +89,7 @@ class ServicesDao(
             val snapshot = firestore
                 .collection("services")
                 .whereEqualTo("categoryId", categoryId)
-                .get()
+                .getEnhanced()
                 .await()
             val services: List<Service> = snapshot.documents.map { document ->
                 Pair(document.id, document.toObject(ServiceEntity::class.java))

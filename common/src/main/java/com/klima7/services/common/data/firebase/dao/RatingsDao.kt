@@ -9,6 +9,7 @@ import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.firebase.converters.toDomain
 import com.klima7.services.common.data.firebase.entities.RatingEntity
+import com.klima7.services.common.data.firebase.utils.getEnhanced
 import com.klima7.services.common.data.firebase.utils.toDomain
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Rating
@@ -24,7 +25,7 @@ class RatingsDao(
             val snapshot = firestore
                 .collection("ratings")
                 .document(id)
-                .get()
+                .getEnhanced()
                 .await()
             val ratingEntity = snapshot.toObject(RatingEntity::class.java)
             val rating = ratingEntity?.toDomain(id)
@@ -45,7 +46,7 @@ class RatingsDao(
                 afterDocument = firestore
                     .collection("ratings")
                     .document(afterId)
-                    .get()
+                    .getEnhanced()
                     .await()
             }
 
@@ -60,7 +61,7 @@ class RatingsDao(
                         it
                 }
                 .limit(count.toLong())
-                .get()
+                .getEnhanced()
                 .await()
 
             val ratings: List<Rating> = snapshot.documents.map { document ->

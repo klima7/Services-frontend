@@ -10,6 +10,7 @@ import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.firebase.converters.toDomain
 import com.klima7.services.common.data.firebase.entities.ExpertEntity
+import com.klima7.services.common.data.firebase.utils.getEnhanced
 import com.klima7.services.common.data.firebase.utils.toDomain
 import com.klima7.services.common.models.Expert
 import com.klima7.services.common.models.ExpertInfo
@@ -41,7 +42,7 @@ class ExpertsDao(
             val snapshot = firestore
                 .collection("experts")
                 .document(uid)
-                .get()
+                .getEnhanced()
                 .await()
             val expertEntity = snapshot.toObject(ExpertEntity::class.java)
             val expert = expertEntity?.toDomain(uid, snapshot.metadata.isFromCache)

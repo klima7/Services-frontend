@@ -21,8 +21,6 @@ fun DocumentReference.getEnhanced(): Task<DocumentSnapshot> {
 fun Query.getEnhanced(): Task<QuerySnapshot> {
     val internetAvailable = BaseApp.getInstance().isInternetAvailable()
 
-    Log.i("Enhanced", "Inside getEnhanced (internet: $internetAvailable)")
-
     return if(internetAvailable) {
         get(Source.DEFAULT)
     }

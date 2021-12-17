@@ -11,6 +11,7 @@ import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.firebase.converters.toDomain
 import com.klima7.services.common.data.firebase.entities.OfferEntity
+import com.klima7.services.common.data.firebase.utils.getEnhanced
 import com.klima7.services.common.data.firebase.utils.toDomain
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Offer
@@ -52,7 +53,7 @@ class OffersDao(
                         it
                 }
                 .limit(count.toLong())
-                .get()
+                .getEnhanced()
                 .await()
 
             val offers: List<Offer> = snapshot.documents.map { document ->
@@ -73,7 +74,7 @@ class OffersDao(
                 .collection("offers")
                 .whereEqualTo("jobId", jobId)
                 .whereEqualTo("clientId", uid)
-                .get()
+                .getEnhanced()
                 .await()
 
             val offers: List<Offer> = snapshot.documents.map { document ->
@@ -91,7 +92,7 @@ class OffersDao(
             val snapshot = firestore
                 .collection("offers")
                 .document(id)
-                .get()
+                .getEnhanced()
                 .await()
             val offerEntity = snapshot.toObject(OfferEntity::class.java)
             val offer = offerEntity?.toDomain(id)
