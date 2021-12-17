@@ -5,7 +5,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.functions.FirebaseFunctionsException
 import com.google.firebase.storage.StorageException
 import com.klima7.services.common.models.Failure
-import java.net.ConnectException
+import java.io.IOException
 
 fun Exception.toDomain(): Failure {
     return handleException(this)
@@ -65,7 +65,7 @@ private fun handleFunctionsException(e: FirebaseFunctionsException): Failure {
 
 private fun handleFunctionsInternalException(e: FirebaseFunctionsException): Failure {
     return when(e.cause) {
-        is ConnectException -> Failure.InternetFailure
+        is IOException -> Failure.InternetFailure
         else -> Failure.ServerFailure
     }
 }
