@@ -21,7 +21,7 @@ abstract class BaseRefreshTokenAlarm: BroadcastReceiver() {
     fun setAlarm(context: Context) {
         val alarmService = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, this::class.java)
-        val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+        val pendingIntent = PendingIntent.getBroadcast(context, 1, intent, PendingIntent.FLAG_IMMUTABLE)
         alarmService.setRepeating(
             AlarmManager.RTC_WAKEUP,
             System.currentTimeMillis(),

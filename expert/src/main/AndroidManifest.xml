@@ -18,13 +18,13 @@
         android:theme="@style/Theme.Expert"
         android:usesCleartextTraffic="true">
 
-        <receiver android:process=":remote" android:name=".messaging.AutoStart">
+        <receiver android:name=".messaging.AutoStart">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
-        <receiver android:process=":expertrefresh" android:name=".messaging.RefreshTokenAlarm" />
+        <receiver android:name=".messaging.RefreshTokenAlarm" />
 
         <activity
             android:name=".features.splash.SplashActivity"

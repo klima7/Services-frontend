@@ -6,6 +6,7 @@ import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.klima7.services.client.R
 import com.klima7.services.client.features.offer.OfferActivity
 import com.klima7.services.client.features.settings.SettingsActivity
+import com.klima7.services.client.messaging.RefreshTokenAlarm
 import com.klima7.services.common.components.home.BaseHomeFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -14,6 +15,11 @@ class HomeFragment: BaseHomeFragment() {
 
     override val layoutId = R.layout.fragment_home
     override val viewModel: HomeViewModel by viewModel()
+
+    override fun onFirstCreation() {
+        super.onFirstCreation()
+        RefreshTokenAlarm().setAlarm(requireContext())
+    }
 
     override fun getDestinations() = setOf(R.id.jobsFragment, R.id.searchFragment)
 

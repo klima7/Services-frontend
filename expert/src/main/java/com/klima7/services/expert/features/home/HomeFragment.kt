@@ -6,6 +6,7 @@ import com.klima7.services.common.components.home.BaseHomeFragment
 import com.klima7.services.expert.R
 import com.klima7.services.expert.features.offer.OfferActivity
 import com.klima7.services.expert.features.settings.SettingsActivity
+import com.klima7.services.expert.messaging.RefreshTokenAlarm
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -13,6 +14,11 @@ class HomeFragment: BaseHomeFragment() {
 
     override val layoutId = R.layout.fragment_home
     override val viewModel: HomeViewModel by viewModel()
+
+    override fun onFirstCreation() {
+        super.onFirstCreation()
+        RefreshTokenAlarm().setAlarm(requireContext())
+    }
 
     override fun getDestinations() =
         setOf(R.id.jobsFragment, R.id.offersFragment, R.id.profileFragment)
