@@ -24,8 +24,6 @@
             </intent-filter>
         </receiver>
 
-<!--        <receiver android:name=".messaging.RefreshTokenAlarm" />-->
-
         <activity
             android:name=".features.splash.SplashActivity"
             android:exported="true"

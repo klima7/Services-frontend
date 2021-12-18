@@ -1,7 +1,6 @@
 package com.klima7.services.expert.messaging
 
 import android.content.Context
-import android.widget.Toast
 import androidx.work.*
 import com.klima7.services.common.core.None
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -9,8 +8,8 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
-abstract class RefreshTokenWorker(
-    protected val context: Context,
+class RefreshTokenWorker(
+    context: Context,
     workerParams: WorkerParameters
 ):
     Worker(context, workerParams) {
@@ -19,7 +18,6 @@ abstract class RefreshTokenWorker(
 
     @OptIn(DelicateCoroutinesApi::class)
     override fun doWork(): Result {
-        Toast.makeText(context, "Refreshing expert", Toast.LENGTH_LONG).show()
         GlobalScope.launch {
             updateTokenUC.run(None())
         }
@@ -34,8 +32,8 @@ abstract class RefreshTokenWorker(
 
             val work = PeriodicWorkRequest.Builder(
                 RefreshTokenWorker::class.java,
-                PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS,
-                TimeUnit.MILLISECONDS
+                30,
+                TimeUnit.DAYS
             )
                 .setConstraints(constraints)
                 .build()
