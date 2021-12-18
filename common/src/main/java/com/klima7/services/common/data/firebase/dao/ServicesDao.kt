@@ -67,23 +67,6 @@ class ServicesDao(
         }
     }
 
-    suspend fun getCategory(categoryId: String): Outcome<Failure, Category> {
-        try {
-            val snapshot = firestore
-                .collection("categories")
-                .document(categoryId)
-                .getCacheFirst()
-                .await()
-            val categoryEntity = snapshot.toObject(CategoryEntity::class.java)
-            val category = categoryEntity?.toDomain(snapshot.id)
-                ?: return Outcome.Failure(Failure.NotFoundFailure)
-            return Outcome.Success(category)
-        } catch(e: Exception) {
-            Timber.e(e, "Error during getExpert")
-            return Outcome.Failure(e.toDomain())
-        }
-    }
-
     suspend fun getServicesFromCategory(categoryId: String): Outcome<Failure, List<Service>> {
         return try {
             val snapshot = firestore

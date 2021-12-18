@@ -4,9 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.klima7.services.common.data.repositories.OffersRepository
 import com.klima7.services.common.platform.BaseViewModel
 
-class OffersViewModel(
-    private val offersRepository: OffersRepository
-): BaseViewModel() {
+class OffersViewModel: BaseViewModel() {
 
     sealed class Event: BaseEvent() {
         object ShowCurrentTab: Event()

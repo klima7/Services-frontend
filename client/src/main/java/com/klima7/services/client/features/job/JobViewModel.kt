@@ -12,7 +12,6 @@ import com.klima7.services.common.platform.BaseViewModel
 
 class JobViewModel(
     private val getJobUC: GetJobUC,
-    private val offersRepository: OffersRepository
 ): BaseViewModel() {
 
     sealed class Event: BaseEvent() {

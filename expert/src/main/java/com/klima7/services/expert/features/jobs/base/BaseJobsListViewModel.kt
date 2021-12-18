@@ -57,10 +57,6 @@ abstract class BaseJobsListViewModel(
         hideJob(jobId)
     }
 
-    fun servicesFiltersSelected(visibleServicesIds: Set<String>) {
-        this.visibleServicesIds.value = visibleServicesIds
-    }
-
     private fun createPager(jobsIds: List<String>) = Pager(
         PagingConfig(pageSize = 5)
     ) {

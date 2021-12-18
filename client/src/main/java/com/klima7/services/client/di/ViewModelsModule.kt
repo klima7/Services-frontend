@@ -33,7 +33,7 @@ val viewModelsModule = module {
     viewModel { SettingsViewModel(get()) }
     viewModel { JobsViewModel(get(), get()) }
     viewModel { OffersViewModel(get(), get(), get()) }
-    viewModel { JobViewModel(get(), get()) }
+    viewModel { JobViewModel(get()) }
     viewModel { ProfileViewModel() }
     viewModel { ProfileContentViewModel(get()) }
     viewModel { OfferViewModel(get(), get(), get()) }

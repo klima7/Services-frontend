@@ -22,10 +22,6 @@ class ServicesRepository(
         return firebase.servicesDao.getService(serviceId)
     }
 
-    suspend fun getCategory(categoryId: String): Outcome<Failure, Category> {
-        return firebase.servicesDao.getCategory(categoryId)
-    }
-
     suspend fun getServicesFromCategory(categoryId: String): Outcome<Failure, List<Service>> {
         return firebase.servicesDao.getServicesFromCategory(categoryId)
     }

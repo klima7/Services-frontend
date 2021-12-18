@@ -3,7 +3,6 @@ package com.klima7.services.client.features.offers
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.GridLayoutManager

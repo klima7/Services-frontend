@@ -1,7 +1,6 @@
 package com.klima7.services.client.features.jobsetup.service
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.klima7.services.common.components.views.LoadAreaView
 import com.klima7.services.common.models.Category
@@ -14,7 +13,6 @@ class ServiceViewModel(
 ): BaseViewModel() {
 
     val category = MutableLiveData<Category>()
-    val categoryName = category.map { it.name }
     val services = MutableLiveData<List<Service>>()
 
     val loadState = MutableLiveData(LoadAreaView.State.LOAD)

@@ -10,7 +10,6 @@ fun Context.getAttrColor(id: Int): Int {
     return typedValue.data
 }
 
-
 fun Context.isLarge(): Boolean {
     return ((this.resources.configuration.screenLayout
             and Configuration.SCREENLAYOUT_SIZE_MASK)

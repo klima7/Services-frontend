@@ -30,7 +30,7 @@ val viewModelsModule = module {
     viewModel { ProfileRatingsViewModel(get()) }
     viewModel { RatingsViewModel(get()) }
     viewModel { ProfileAreaViewModel() }
-    viewModel { SendMessageViewModel(get(), get(), get()) }
+    viewModel { SendMessageViewModel(get(), get()) }
     viewModel { MessageViewerViewModel(get(), get()) }
     viewModel { RatingViewModel(get()) }
 

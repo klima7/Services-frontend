@@ -25,7 +25,7 @@ class MessagesRepository(
         return firebase.messagesDao.sendImageMessage(offerId, sender, imagePath)
     }
 
-    suspend fun setLastReadTime(role: Role, offerId: String, date: Date): Outcome<Failure, None> {
+    fun setLastReadTime(role: Role, offerId: String, date: Date): Outcome<Failure, None> {
         return firebase.messagesDao.setLastReadTime(role, offerId, date)
     }
 

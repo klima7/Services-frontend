@@ -39,10 +39,6 @@ class LastMessageViewBindingMethods
 
 class LastMessageView(context: Context, attrs: AttributeSet?): FrameLayout(context, attrs) {
 
-    companion object {
-        private val FORMAT = SimpleDateFormat("dd.MM.yyy HH:mm", Locale.US)
-    }
-
     private var binding: ViewLastMessageBinding
     private var lastMessage: Message? = null
     private var readTime: Date? = null

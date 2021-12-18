@@ -1,7 +1,6 @@
 package com.klima7.services.expert.features.services
 
 import android.os.Bundle
-import android.util.Log
 import com.klima7.services.common.components.faildialog.FailureDialogFragment
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.platform.BaseFragment

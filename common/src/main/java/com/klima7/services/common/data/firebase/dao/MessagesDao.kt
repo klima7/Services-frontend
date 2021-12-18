@@ -31,7 +31,6 @@ class MessagesDao(
     private val auth: FirebaseAuth,
     private val firestore: FirebaseFirestore,
     private val storage: FirebaseStorage,
-    private val functions: FirebaseFunctions,
 ) {
 
     @OptIn(ExperimentalCoroutinesApi::class)

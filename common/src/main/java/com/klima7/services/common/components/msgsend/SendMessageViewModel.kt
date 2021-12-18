@@ -9,7 +9,6 @@ import com.klima7.services.common.platform.BaseViewModel
 class SendMessageViewModel(
     private val sendTextMessageUC: SendTextMessageUC,
     private val sendImageMessageUC: SendImageMessageUC,
-    private val messagesRepository: MessagesRepository
 ): BaseViewModel() {
 
     private var sender: Role? = null
