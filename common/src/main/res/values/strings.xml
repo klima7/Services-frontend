@@ -17,7 +17,7 @@
     <!-- offer_status -->
     <string name="offer_status__new">Nowe</string>
     <string name="offer_status__cancelled">Anulowane</string>
-    <string name="offer_status__in_realization">Anulowane</string>
+    <string name="offer_status__in_realization">W realizacji</string>
     <string name="offer_status__done">Wykonane</string>
 
     <!-- failure -->
