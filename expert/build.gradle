@@ -19,7 +19,8 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            signingConfig signingConfigs.debug
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         emulated {
@@ -38,6 +39,10 @@ android {
 
     buildFeatures {
         dataBinding = true
+    }
+
+    lintOptions {
+        disable 'Instantiatable'
     }
 }
 
