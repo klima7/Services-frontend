@@ -5,7 +5,6 @@ import com.klima7.services.common.core.None
 import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.firebase.FirebaseSource
 import com.klima7.services.common.data.repositories.TokensRepository
-import com.klima7.services.common.data.repositories.TokensStorageRepository
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Role
 
@@ -14,7 +13,6 @@ abstract class BaseUpdateTokenUC(
 ): BaseUC<None, None>() {
 
     private val tokensRepository = TokensRepository(FirebaseSource())
-    private val tokensStorageRepository = TokensStorageRepository(FirebaseSource())
 
     override suspend fun execute(params: None): Outcome<Failure, None> {
         return getTokenPart()
@@ -29,6 +27,6 @@ abstract class BaseUpdateTokenUC(
     }
 
     private suspend fun refreshTokenPart(token: String): Outcome<Failure, None> {
-        return tokensStorageRepository.updateToken(role, token)
+        return tokensRepository.updateStoredToken(role, token)
     }
 }

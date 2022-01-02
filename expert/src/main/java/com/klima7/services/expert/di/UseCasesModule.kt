@@ -39,8 +39,8 @@ val useCasesModule = module {
     single { SetOfferArchivedUC(get()) }
     single { GetClientUC(get()) }
     single { GetAllAndSelectedServicesUC(get(), get()) }
-    single { SignOutExpertUC(get(), get(), get()) }
-    single { CompleteExpertLoginUC(get(), get()) }
+    single { SignOutExpertUC(get(), get()) }
+    single { CompleteExpertLoginUC(get()) }
     single { GetCurrentExpertServicesUC(get(), get()) }
 
 }

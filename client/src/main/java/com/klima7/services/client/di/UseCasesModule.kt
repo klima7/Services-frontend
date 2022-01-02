@@ -39,8 +39,8 @@ val useCasesModule = module {
     single { AddLastLocationUC(get()) }
     single { GetLastLocationsUC(get()) }
     single { CreateJobUC(get()) }
-    single { SignOutClientUC(get(), get(), get()) }
-    single { CompleteClientLoginUC(get(), get()) }
+    single { SignOutClientUC(get(), get()) }
+    single { CompleteClientLoginUC(get()) }
     single { GetAllServicesUC(get()) }
 
 }

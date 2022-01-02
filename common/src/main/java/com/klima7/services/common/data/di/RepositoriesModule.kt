@@ -16,6 +16,5 @@ val reposModule = module {
     single { MessagesRepository(get()) }
     single { LastLocationsRepository(get()) }
     single { TokensRepository(get()) }
-    single { TokensStorageRepository(get()) }
 
 }
