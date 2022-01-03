@@ -8,7 +8,7 @@ import com.klima7.services.common.core.None
 import com.klima7.services.common.models.Failure
 import com.klima7.services.common.platform.BaseViewModel
 
-open class BaseDeleteViewModel(
+abstract class BaseDeleteViewModel(
     private val deleteUserUC: BaseDeleteUserUC
 ): BaseViewModel() {
 
