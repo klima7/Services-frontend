@@ -52,7 +52,7 @@
 
     <!-- info -->
     <string name="info__title">Zmiana profilu</string>
-    <string name="info__name_and_surname">Imie i nazwisko</string>
+    <string name="info__name_and_surname">Imię i nazwisko</string>
     <string name="info__phone">Numer telefonu</string>
     <string name="info__save">Zapisz</string>
 
@@ -79,14 +79,12 @@
     <string name="job_setup__create_failure_message">"Utworzenie oferty się nie powiodło"</string>
 
     <!-- setup -->
-    <string name="setup__explanation">Aby korzystać z aplikacji w roli eksperta konieczne jest uzupełnienie kilku informacji.</string>
+    <string name="setup__explanation">Aby korzystać z aplikacji w roli klienta konieczne jest uzupełnienie kilku informacji.</string>
     <string name="setup__continue">Kontynuuj</string>
     <string name="setup__logout">Wyloguj się</string>
     <string name="setup__info_title">Uzupełnienie profilu</string>
-    <string name="setup__info_description">Uzupełnij informacje o sobie. Dobry profil może zachęcić wielu klientów.</string>
+    <string name="setup__info_description">Uzupełnij informacje o sobie. Wystarczy imię i nazwisko.</string>
 
     <string name="neww">New</string>
-
-
 
 </resources>

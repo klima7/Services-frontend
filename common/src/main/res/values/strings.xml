@@ -4,8 +4,8 @@
     <!-- general -->
     <string name="app_common_name">Usługi</string>
     <string name="client">Klient</string>
-    <string name="expert">Expert</string>
-    <string name="you">You</string>
+    <string name="expert">Wykonawca</string>
+    <string name="you">Ty</string>
     <string name="job">Zlecenie</string>
 
     <!-- dialog -->

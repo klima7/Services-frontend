@@ -61,7 +61,7 @@
     <string name="info__change_photo">Zmień zdjęcie</string>
     <string name="info__delete_photo">Usuń zdjęcie</string>
     <string name="info__restore_photo">Przywróć zdjęcie</string>
-    <string name="info__name_and_surname">Imie i nazwisko</string>
+    <string name="info__name_and_surname">Imię i nazwisko</string>
     <string name="info__company">Firma</string>
     <string name="info__description">Opis</string>
     <string name="info__phone">Numer telefonu</string>
@@ -72,7 +72,7 @@
     <string name="info__website_format_error">Nieprawidłowy format adresu URL</string>
 
     <!-- login -->
-    <string name="login__info_about_clients_app">Jeżeli korzystasz już z aplikacji dla klientów możesz zalogować się tutaj korzystając z tych samych danych</string>
+    <string name="login__info_about_clients_app">Jeżeli korzystasz już z aplikacji dla klientów, to możesz zalogować się tutaj korzystając z tych samych danych</string>
 
     <!-- services -->
     <string name="services__title">Zmiana usług</string>
@@ -85,7 +85,7 @@
     <string name="setup__services_title">Określenie usług</string>
     <string name="setup__area_title">Określenie lokalizacji</string>
     <string name="setup__info_description">Uzupełnij informacje o sobie. Dobry profil może zachęcić wielu klientów.</string>
-    <string name="setup__services_description">Określ jakie usługi realizujesz, wybierając je z listy.</string>
+    <string name="setup__services_description">Określ jakie usługi realizujesz wybierając je z listy.</string>
     <string name="setup__are_description">Określ w jakim obszarze realizujesz swoje usługi.</string>
 
 </resources>
