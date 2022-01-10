@@ -11,6 +11,7 @@ import com.klima7.services.common.models.Failure
 import com.klima7.services.common.models.Offer
 import com.klima7.services.common.models.OfferStatus
 import com.klima7.services.expert.usecases.SetOfferArchivedUC
+import timber.log.Timber
 
 class OfferViewModel(
     setOfferStatusUC: SetOfferStatusUC,
@@ -36,7 +37,7 @@ class OfferViewModel(
 
     val callItemVisible = client.map { it?.info?.phone != null }
     val showRatingItemVisible = offer.map { it?.ratingId != null }
-    val archiveItemVisible = offer.map { it?.archived ?: false }
+    val archiveItemVisible = offer.map { !(it?.archived ?: false) }
     val unarchiveItemVisible = offer.map { it?.archived ?: false }
 
     fun callClientClicked() {

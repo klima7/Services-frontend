@@ -26,7 +26,7 @@ class RatingViewBindingMethods
 class RatingView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
 
     companion object {
-        private const val SHORT_DESCRIPTION_LINES = 4
+        private const val SHORT_DESCRIPTION_LINES = 3
         private val FORMAT = SimpleDateFormat("dd.MM.yyy", Locale.US)
     }
 

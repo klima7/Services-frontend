@@ -99,7 +99,7 @@
     <string name="offer__status_toolbar_prefix">Status:</string>
     <string name="offer__status_tile_prefix">Status:&#032;</string>
     <string name="offer__change_status_message">Zmieniam status oferty na \"%s\"</string>
-    <string name="offer__rating_add_message">Dokonałem oceny na %s</string>
+    <string name="offer__rating_add_message">Dokonano oceny na %s</string>
     <string name="offer__call">Zadzwoń</string>
     <string name="offer__show_rating">Pokaż ocenę</string>
     <string name="offer__image_send_failure_message">Wysyłanie obrazu nieudane.</string>
