@@ -21,7 +21,7 @@
     <!-- settings -->
     <string name="settings__profile">Zmiana profilu</string>
     <string name="settings__services">Zmiana świadczonych usług</string>
-    <string name="settings__location">Zmiana lokalizacji</string>
+    <string name="settings__location">Zmiana obszaru działania</string>
     <string name="settings__delete">Usuń konto wykonawcy</string>
 
     <!-- credits -->
@@ -49,7 +49,7 @@
     <string name="job__reject_failure_message">Odrzucenie się nie powiodło.</string>
 
     <!-- area -->
-    <string name="area__title">Zmiana lokalizacji</string>
+    <string name="area__title">Zmiana obszaru działania</string>
     <string name="area__central_location">Centralna lokalizacja</string>
     <string name="area__radius">Promień działania</string>
     <string name="area__preview">Podgląd</string>
@@ -83,7 +83,7 @@
     <!-- setup -->
     <string name="setup__info_title">Uzupełnienie profilu</string>
     <string name="setup__services_title">Określenie usług</string>
-    <string name="setup__area_title">Określenie lokalizacji</string>
+    <string name="setup__area_title">Określenie obszaru działania</string>
     <string name="setup__info_description">Uzupełnij informacje o sobie. Dobry profil może zachęcić wielu klientów.</string>
     <string name="setup__services_description">Określ jakie usługi realizujesz wybierając je z listy.</string>
     <string name="setup__are_description">Określ w jakim obszarze realizujesz swoje usługi.</string>

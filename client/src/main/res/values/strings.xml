@@ -87,4 +87,15 @@
 
     <string name="neww">New</string>
 
+    <!-- DT scale -->
+    <string-array name="dt_scale">
+        <item>Okropnie</item>
+        <item>Niezadowalająco</item>
+        <item>Raczej niesatysfakcjonująco</item>
+        <item>Neutralnie</item>
+        <item>Raczej satysfakcjonująco</item>
+        <item>Zadowalająco</item>
+        <item>Zachwycająco</item>
+    </string-array>
+
 </resources>

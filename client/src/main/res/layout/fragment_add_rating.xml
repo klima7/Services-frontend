@@ -8,6 +8,9 @@
         <variable
             name="viewmodel"
             type="com.klima7.services.client.features.addrating.AddRatingViewModel" />
+        <variable
+            name="description"
+            type="String" />
     </data>
 
     <LinearLayout
@@ -93,6 +96,13 @@
                             <View
                                 android:layout_width="0dp"
                                 android:layout_height="16dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@{description}"
+                                />
 
                             <com.willy.ratingbar.BaseRatingBar
                                 android:layout_width="match_parent"

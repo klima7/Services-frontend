@@ -35,6 +35,19 @@ class AddRatingFragment: BaseFragment<FragmentAddRatingBinding>() {
                 viewModel.retryAddRatingClicked()
             }
         }
+
+        viewModel.rating.observe(viewLifecycleOwner, this::updateDescription)
+    }
+
+    private fun updateDescription(rating: Float) {
+        if(rating < 0) {
+            return
+        }
+        val dtValues = resources.getStringArray(R.array.dt_scale)
+        val dtSize = dtValues.size
+        val index = (rating / (5.0f / dtSize)).toInt().coerceAtMost(dtSize - 1)
+        val value = dtValues[index]
+        binding.description = value
     }
 
     override suspend fun handleEvent(event: BaseViewModel.BaseEvent) {
