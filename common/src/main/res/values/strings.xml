@@ -34,6 +34,8 @@
     <string name="notification__status_change_body">Zmieniono status na \"%s\"</string>
     <string name="notification__rating_added_title">%s dodał ocenę</string>
     <string name="notification__rating_added_body">Zostałeś oceniony na %s</string>
+    <string name="notification__new_offer_title">Nowa oferta od %s</string>
+    <string name="notification__new_offer_body">Dotyczy usługi %s</string>
 
     <!-- view_job -->
     <string name="view_job__realization_time">Czas na realizację:</string>

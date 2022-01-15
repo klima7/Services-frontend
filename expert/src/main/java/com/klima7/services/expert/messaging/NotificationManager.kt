@@ -44,7 +44,7 @@ class NotificationManager(
             com.klima7.services.common.R.string.notification__rating_added_title, senderName)
         val body = service.resources.getString(
             com.klima7.services.common.R.string.notification__rating_added_body, formattedRating)
-        showNotification(offerId, title, body)
+        showNotification(offerId, title, body, offerId)
     }
 
     override fun getSplashIntent(): Intent {
