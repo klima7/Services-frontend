@@ -1,6 +1,7 @@
 package com.klima7.services.common.data.firebase
 
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.functions.ktx.functions
 import com.google.firebase.ktx.Firebase
@@ -15,7 +16,12 @@ const val EMULATOR_HOST = "10.0.2.2"
 class FirebaseSource {
 
     private val functions = Firebase.functions
-    private val firestore = Firebase.firestore
+    private val firestore = Firebase.firestore.apply {
+        val settings = FirebaseFirestoreSettings.Builder()
+            .setCacheSizeBytes(200L*1024L*1024L)
+            .build()
+        firestoreSettings = settings
+    }
     private val auth = Firebase.auth
     private val storage = Firebase.storage
     private val messaging = Firebase.messaging
