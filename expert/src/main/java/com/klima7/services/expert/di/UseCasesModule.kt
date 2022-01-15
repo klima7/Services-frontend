@@ -8,7 +8,7 @@ import com.klima7.services.expert.features.job.GetCurrentExpertJobUC
 import com.klima7.services.expert.features.jobs.base.GetCurrentExpertJobsUC
 import com.klima7.services.expert.features.jobs.new.GetNewJobsIdsUC
 import com.klima7.services.expert.features.jobs.rejected.GetRejectedJobsIdsUC
-import com.klima7.services.expert.features.login.CompleteExpertLoginUC
+import com.klima7.services.expert.features.login.RefreshExpertTokenUC
 import com.klima7.services.expert.features.offer.GetClientUC
 import com.klima7.services.expert.features.offers.archive.GetArchiveOffersForCurrentExpertUC
 import com.klima7.services.expert.features.offers.current.GetCurrentOffersForCurrentExpertUC
@@ -40,7 +40,7 @@ val useCasesModule = module {
     single { GetClientUC(get()) }
     single { GetAllAndSelectedServicesUC(get(), get()) }
     single { SignOutExpertUC(get(), get()) }
-    single { CompleteExpertLoginUC(get()) }
+    single { RefreshExpertTokenUC(get()) }
     single { GetCurrentExpertServicesUC(get(), get()) }
 
 }

@@ -6,7 +6,7 @@ import com.klima7.services.common.core.Outcome
 import com.klima7.services.common.data.repositories.TokensRepository
 import com.klima7.services.common.models.Failure
 
-abstract class CompleteLoginUC(
+abstract class RefreshTokenUC(
     private val tokensRepository: TokensRepository,
 ): BaseUC<None, None>() {
 

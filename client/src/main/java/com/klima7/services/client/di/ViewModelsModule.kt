@@ -28,7 +28,7 @@ val viewModelsModule = module {
     viewModel { SplashViewModel(get()) }
     viewModel { SetupViewModel(get(), get()) }
     viewModel { InfoViewModel(get(), get()) }
-    viewModel { HomeViewModel() }
+    viewModel { HomeViewModel(get()) }
     viewModel { DeleteViewModel(get()) }
     viewModel { SettingsViewModel(get()) }
     viewModel { JobsViewModel(get(), get()) }
@@ -44,6 +44,6 @@ val viewModelsModule = module {
     viewModel { JobDetailsViewModel(get()) }
     viewModel { JobSetupViewModel() }
     viewModel { JobCreatedViewModel() }
-    viewModel { LoginViewModel(get()) }
+    viewModel { LoginViewModel() }
 
 }
