@@ -5,6 +5,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.Network
 import com.google.android.libraries.places.api.Places
+import com.klima7.services.common.BuildConfig
 import com.klima7.services.common.data.di.reposModule
 import com.klima7.services.common.data.di.sourcesModule
 import com.klima7.services.common.di.useCasesModule
@@ -54,7 +55,7 @@ abstract class BaseApp: Application() {
     }
 
     private fun initPlaces() {
-        Places.initialize(applicationContext, "AIzaSyBgMDgU7VMT0L35f9TL4LZUB7v3NAS9pTs")
+        Places.initialize(applicationContext, BuildConfig.MAPS_API_KEY)
     }
 
     private fun watchInternetConnection() {
