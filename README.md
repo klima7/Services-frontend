@@ -1,7 +1,8 @@
 # Services frontend
-Mobile applications to simplify ordering services by customers and serving them by contractors.
+Mobile applications to simplify ordering services by customers and serving them by contractors. 
+Have functionalities such as chat, rating system, push notifications, offline support and UI optymalization for tablets.
 
-<img src="https://github.com/klima7/Services-frontend/blob/images/images/screens.png" width="600" style="float: left;" />
+<img src="https://github.com/klima7/Services-frontend/blob/images/images/screens.png" width="700" style="float: left;" />
 
 # Two apps
 Two apps have been created. One for customers and one for contractors.
@@ -21,12 +22,12 @@ Three layer architecture is used.
 <img src="https://github.com/klima7/Services-frontend/blob/images/images/Layers.png" width="400"/>
 
 # Repositories
-Following repositories have been created
+Following repositories have been created in data layer.
 
 <img src="https://github.com/klima7/Services-frontend/blob/images/images/repositories.png" width="600"/>
 
 # MVVM pattern
-In Presentation layers MVVM pattern has been applied
+In Presentation layers MVVM pattern has been applied.
 
 <img src="https://github.com/klima7/Services-frontend/blob/images/images/mvvm_general.png" width="600"/>
 
